@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyViewController : UIViewController {
+@interface MyViewController : UITableViewController {
    @private
     NSInteger number_;
 }
