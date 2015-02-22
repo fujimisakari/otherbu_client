@@ -15,19 +15,20 @@
 
 @interface DataManager : NSObject
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, SelectType) {
     PAGE,
     CATEGORY,
     BOOKMARK,
-} SelectType;
+};
 
 @property(nonatomic) NSMutableDictionary *pageDict;
 @property(nonatomic) NSMutableDictionary *categoryDict;
 @property(nonatomic) NSMutableDictionary *bookmarkDict;
 
-+ (DataManager *)getInstance;
++ (DataManager *)sharedManager;
 
 - (void)insertData:(NSDictionary *)jsonData;
+- (void)reloadDataWithBlock:(void (^)(NSError *error))block;
 
 - (PageData *)getPage:(NSNumber *)dataId;
 - (CategoryData *)getCategory:(NSNumber *)dataId;

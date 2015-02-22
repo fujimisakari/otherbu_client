@@ -32,7 +32,7 @@
 - (NSArray *)getBookmarkList {
     // ブックマークリストを生成
     NSMutableArray *tmpResultList = [[NSMutableArray alloc] init];
-    DataManager *dataManager = [DataManager getInstance];
+    DataManager *dataManager = [DataManager sharedManager];
     for (BookmarkData *bookmarkObj in [dataManager.bookmarkDict objectEnumerator]) {
         if (bookmarkObj.categoryId == (int)_dataId) {
             [tmpResultList addObject:bookmarkObj];

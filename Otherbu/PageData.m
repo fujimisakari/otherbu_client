@@ -29,7 +29,7 @@
 }
 
 - (NSMutableArray *)getCategoryList {
-    DataManager *dataManager = [DataManager getInstance];
+    DataManager *dataManager = [DataManager sharedManager];
     NSMutableArray *resultList = [[NSMutableArray alloc] init];
 
     NSArray *categoryIdList = [_categoryIdsStr componentsSeparatedByString:@","];
@@ -44,7 +44,7 @@
 }
 
 - (NSMutableDictionary *)getCategoryListOfAngle {
-    DataManager *dataManager = [DataManager getInstance];
+    DataManager *dataManager = [DataManager sharedManager];
 
     // アングル別のカテゴリリストを生成
     NSMutableDictionary *angleDict = [self getMapByArg:_angleIdsStr];

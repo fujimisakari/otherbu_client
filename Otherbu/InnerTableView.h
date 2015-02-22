@@ -1,5 +1,5 @@
 //
-//  MyViewController.h
+//  InnerTableView.h
 //  Otherbu
 //
 //  Created by fujimisakari on 2015/02/17.
@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyViewController : UITableViewController {
+@interface InnerTableView : UITableView {
    @private
     NSInteger number_;
 }
 
 @property (nonatomic, assign) NSInteger number;
 
-+ (MyViewController *)myViewControllerWithNumber:(NSInteger)number;
++ (InnerTableView *)initInnerTableViewWithNumber:(NSInteger)number;
+- (NSMutableArray *)categoryList;
 
 @end

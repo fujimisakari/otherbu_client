@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MyViewController.h"
 
-@interface ViewController : UIViewController<UIScrollViewDelegate>
+@interface ViewController : UIViewController<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic) NSArray *tableDataList;
 
 @end
 

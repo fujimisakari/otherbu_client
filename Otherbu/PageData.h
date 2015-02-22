@@ -11,11 +11,12 @@
 
 @interface PageData : NSObject
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, AngleType) {
     LEFT = 1,
     CENTER,
     RIGHT,
-} AngleType;
+    LastAngle,
+};
 
 @property(nonatomic) NSInteger dataId;          // ID
 @property(nonatomic) NSInteger userId;          // ユーザーID

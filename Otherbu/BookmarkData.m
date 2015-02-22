@@ -30,7 +30,7 @@
 
 - (CategoryData *)category {
     NSNumber *number = [[NSNumber alloc] initWithInt:(int)_categoryId];
-    return [[DataManager getInstance] getCategory:number];
+    return [[DataManager sharedManager] getCategory:number];
 }
 
 @end

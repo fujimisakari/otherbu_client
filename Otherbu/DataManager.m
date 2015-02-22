@@ -7,12 +7,13 @@
 //
 
 #import "DataManager.h"
+#import "OtherbuAPIClient.h"
 
 @implementation DataManager
 
 static DataManager *intance = nil;
 
-+ (DataManager *)getInstance {
++ (DataManager *)sharedManager {
     if (!intance) {
         intance = [[DataManager alloc] init];
     }
@@ -48,6 +49,19 @@ static DataManager *intance = nil;
         BookmarkData *data = [[BookmarkData alloc] initWithDictionary:bookmarkDict];
         [_bookmarkDict setObject:data forKey:bookmarkDict[@"id"]];
     }
+}
+
+- (void)reloadDataWithBlock:(void (^)(NSError *error))block {
+    [[OtherbuAPIClient sharedClient]
+        getBookmarksWithCompletion:^(NSDictionary *results, NSError *error) {
+        if (results) {
+            [self insertData:results];
+            // NSArray *bookmarksJSON = results[@"bookmarks"];
+            // self.bookmarks = [self parseBookmarks:bookmarksJSON];
+        }
+        if (block) block(error);
+    }
+     ];
 }
 
 - (PageData *)getPage:(NSNumber *)dataId {
