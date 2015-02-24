@@ -52,7 +52,7 @@ static const NSInteger kViewHeight = 460;
         InnerTableView *innerTableView = [InnerTableView initInnerTableViewWithNumber:i];
         innerTableView.frame = CGRectMake(kViewWidth * (i - 1), 0, kViewWidth, kViewHeight);
         innerTableView.tag = i;
-        NSLog(@"InnerTableView, %d", i);
+        innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         innerTableView.delegate = self;
         innerTableView.dataSource = self;
         [_scrollView addSubview:innerTableView];

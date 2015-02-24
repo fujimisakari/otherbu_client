@@ -57,17 +57,15 @@ static NSString * const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
 - (void)getBookmarksWithCompletion:(void (^)(NSDictionary *results, NSError *error))block {
     [self.sessionManager GET:@"/mock/"
        parameters:@{}
-          success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"hoge");
-        if (block) block(responseObject, nil);
-    }
-failure:
-    ^(NSURLSessionDataTask * task, NSError * error) {
-        NSLog(@"foge");
-
-        if (block) {
-            block(nil, error);
-        }
+        success:
+             ^(NSURLSessionDataTask *task, id responseObject) {
+                if (block) block(responseObject, nil);
+             }
+        failure:
+             ^(NSURLSessionDataTask * task, NSError * error) {
+             if (block) {
+                 block(nil, error);
+             }
         // 401 が返ったときログインが必要.
         // if (((NSHTTPURLResponse *)task.response).statusCode == 401 && [self needsLogin]) {
         //     if (block) block(nil, nil);
