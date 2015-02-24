@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (nonatomic) NSArray *tableDataList;
 
 @end
 

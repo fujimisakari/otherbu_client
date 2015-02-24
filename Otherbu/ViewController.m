@@ -11,6 +11,7 @@
 #import "DataManager.h"
 #import "OtherbuAPIClient.h"
 #import "PageData.h"
+#import "CustomSectionHeaderView.h"
 
 @interface ViewController ()
 
@@ -127,7 +128,10 @@ static const NSInteger kViewHeight = 460;
         NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
         CategoryData *categoryData = categoryListOfAngle[angleNumber][section];
         NSArray *bookmarkList = [categoryData getBookmarkList];
-        return bookmarkList.count;
+        // return bookmarkList.count;
+
+        // セクションが閉じている場合は0を返す
+        return categoryData.tagOpen ? bookmarkList.count : 0;
     } else {
         return 0;
     }
@@ -156,6 +160,110 @@ static const NSInteger kViewHeight = 460;
         cell.detailTextLabel.text = bookmark.url;
     }
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+/**
+ セクションヘッダーの高さを返す
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    // if (self.isHideSection) {
+    //     return 0.0f;
+    // }
+    return 40.0f;
+}
+
+/**
+ セクションヘッダーのコンテンツを設定する
+ */
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    // if (self.isHideSection) {
+    //     return nil;
+    // }
+    PageData *page = [[DataManager sharedManager] getPage:pageId];
+    if (page) {
+        NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
+        NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
+        CategoryData *categoryData = categoryListOfAngle[angleNumber][section];
+
+        CustomSectionHeaderView *containerView = [[CustomSectionHeaderView alloc] initWithCategory:categoryData section:section angle:angleNumber tag:tableView.tag];
+;
+        containerView.delegate = self;
+        return containerView;
+    } else {
+        return nil;
+    }
+}
+
+/**
+ セルタップ時に実行される処理
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 今回は何もしない
+}
+
+#pragma mark - CustomSectionHeaderViewDelegate
+
+/**
+ シングルタップ時に実行される処理
+ 
+ @param sectionIndex セクションのインデックス
+ @param isOpen セクションの開閉状態
+ */
+- (void)didSectionHeaderSingleTap:(NSInteger)section angle:(NSNumber *)angleNumber tag:(NSInteger)tag {
+    PageData *page = [[DataManager sharedManager] getPage:pageId];
+    NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
+    CategoryData *categoryData = categoryListOfAngle[angleNumber][section];
+    // if (categoryData.tagOpen) {
+    //     categoryData.tagOpen = 0;
+    // } else {
+    //     categoryData.tagOpen = 1;
+    // }
+
+    UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tag];
+
+    [tableView beginUpdates];
+
+    if (categoryData.tagOpen) {
+        [self openSectionContents:section TableView:tableView CategoryData:categoryData];
+    } else {
+        [self closeSectionContents:section TableView:tableView CategoryData:categoryData];
+    }
+
+    [tableView endUpdates];
+}
+
+#pragma mark - Private Methods
+/**
+ 指定セクション配下のコンテンツを開く
+
+ @param sectionIndex セクションのインデックス
+ */
+- (void)openSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {
+    NSArray *bookmarkList = [categoryData getBookmarkList];
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
+    for (int i = 0; i < bookmarkList.count; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:section]];
+    }
+    [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+}
+
+/**
+ 指定セクション配下のコンテンツを閉じる
+
+ @param sectionIndex セクションのインデックス
+ */
+- (void)closeSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {
+    NSArray *bookmarkList = [categoryData getBookmarkList];
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
+    for (int i = 0; i < bookmarkList.count; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:section]];
+    }
+    [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 }
 
 @end

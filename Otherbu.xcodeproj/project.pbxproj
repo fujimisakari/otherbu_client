@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B39F52E1A9CEE860036CB69 /* CustomSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F52D1A9CEE860036CB69 /* CustomSectionHeaderView.m */; };
 		7B565EF61A92486F00D6A420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF51A92486F00D6A420 /* main.m */; };
 		7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF81A92486F00D6A420 /* AppDelegate.m */; };
 		7B565EFC1A92486F00D6A420 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EFB1A92486F00D6A420 /* ViewController.m */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B39F52C1A9CEE860036CB69 /* CustomSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSectionHeaderView.h; sourceTree = "<group>"; };
+		7B39F52D1A9CEE860036CB69 /* CustomSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSectionHeaderView.m; sourceTree = "<group>"; };
 		7B565EF01A92486F00D6A420 /* Otherbu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Otherbu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565EF41A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565EF51A92486F00D6A420 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,6 +94,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7B39F52F1A9CEEA70036CB69 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7B39F52C1A9CEE860036CB69 /* CustomSectionHeaderView.h */,
+				7B39F52D1A9CEE860036CB69 /* CustomSectionHeaderView.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		7B565EE71A92486F00D6A420 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +129,7 @@
 				7B565EF71A92486F00D6A420 /* AppDelegate.h */,
 				7B565EF81A92486F00D6A420 /* AppDelegate.m */,
 				7B565EFD1A92486F00D6A420 /* Main.storyboard */,
+				7B39F52F1A9CEEA70036CB69 /* view */,
 				7B565F2B1A938A9600D6A420 /* Controller */,
 				7B565F251A924A1000D6A420 /* Model */,
 				7B565F001A92486F00D6A420 /* Images.xcassets */,
@@ -324,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B39F52E1A9CEE860036CB69 /* CustomSectionHeaderView.m in Sources */,
 				7B565F241A9249FA00D6A420 /* PageData.m in Sources */,
 				7B565EFC1A92486F00D6A420 /* ViewController.m in Sources */,
 				7B565F2E1A938BD300D6A420 /* InnerTableView.m in Sources */,
