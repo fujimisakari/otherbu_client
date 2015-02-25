@@ -8,42 +8,33 @@
 
 #import "OtherbuAPIClient.h"
 
-static NSString * const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
+static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
 
-@interface OtherbuAPIClient()
+@interface OtherbuAPIClient ()
 
-@property (nonatomic) AFHTTPSessionManager *sessionManager;
+@property(nonatomic) AFHTTPSessionManager *sessionManager;
 
 @end
 
-
-
 @implementation OtherbuAPIClient
 
-+ (instancetype)sharedClient
-{
++ (instancetype)sharedClient {
     static OtherbuAPIClient *_sharedClient = nil;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedClient = [[self alloc] init];
-    });
+    dispatch_once(&onceToken, ^{ _sharedClient = [[self alloc] init]; });
 
     return _sharedClient;
 }
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        configuration.HTTPAdditionalHeaders = @{
-            @"Accept" : @"application/json",
-        };
+        configuration.HTTPAdditionalHeaders = @{@"Accept" : @"application/json", };
         // self.sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString]];
 
-        self.sessionManager = [[AFHTTPSessionManager alloc]
-                         initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString]
-                         sessionConfiguration:configuration];
+        self.sessionManager =
+            [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString] sessionConfiguration:configuration];
     }
 
     return self;

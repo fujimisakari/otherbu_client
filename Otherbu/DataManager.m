@@ -7,6 +7,9 @@
 //
 
 #import "DataManager.h"
+#import "BookmarkData.h"
+#import "CategoryData.h"
+#import "PageData.h"
 #import "OtherbuAPIClient.h"
 
 @implementation DataManager

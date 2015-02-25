@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DataManager.h"
 
 @class CategoryData;
 

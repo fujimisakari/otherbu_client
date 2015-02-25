@@ -7,11 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "CustomSectionHeaderView.h"
 #import "InnerTableView.h"
 #import "DataManager.h"
-#import "OtherbuAPIClient.h"
+#import "BookmarkData.h"
+#import "CategoryData.h"
 #import "PageData.h"
-#import "CustomSectionHeaderView.h"
 
 @interface ViewController ()
 
@@ -187,7 +188,7 @@ static const NSInteger kViewHeight = 460;
  シングルタップ時に実行される処理
 
  @param section セクションのインデックス
- @param isOpen セクションの開閉状態
+ @param tag TableViewのタグ名
  */
 - (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag {
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
@@ -214,7 +215,9 @@ static const NSInteger kViewHeight = 460;
 /**
  指定セクション配下のコンテンツを開く
 
- @param sectionIndex セクションのインデックス
+ @param section セクションのインデックス
+ @param tableView TableViewオジェクト
+ @param categoryData CategoryDataオジェクト
  */
 - (void)openSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {
     NSArray *bookmarkList = [categoryData getBookmarkList];
@@ -228,7 +231,9 @@ static const NSInteger kViewHeight = 460;
 /**
  指定セクション配下のコンテンツを閉じる
 
- @param sectionIndex セクションのインデックス
+ @param section セクションのインデックス
+ @param tableView TableViewオジェクト
+ @param categoryData CategoryDataオジェクト
  */
 - (void)closeSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {
     NSArray *bookmarkList = [categoryData getBookmarkList];

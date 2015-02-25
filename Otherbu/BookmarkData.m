@@ -7,6 +7,7 @@
 //
 
 #import "BookmarkData.h"
+#import "DataManager.h"
 
 @implementation BookmarkData
 

@@ -8,6 +8,7 @@
 
 #import "InnerTableView.h"
 #import "DataManager.h"
+#import "PageData.h"
 
 @implementation InnerTableView
 

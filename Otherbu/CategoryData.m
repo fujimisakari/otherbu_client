@@ -7,6 +7,8 @@
 //
 
 #import "CategoryData.h"
+#import "DataManager.h"
+#import "BookmarkData.h"
 
 @implementation CategoryData
 
