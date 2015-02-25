@@ -28,6 +28,7 @@ typedef NS_ENUM(NSUInteger, AngleType) {
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 
 - (NSMutableArray *)getCategoryList;
+- (NSMutableArray *)getCategoryListByTag:(NSInteger)tag;
 - (NSMutableDictionary *)getCategoryListOfAngle;
 
 @end

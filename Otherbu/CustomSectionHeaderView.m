@@ -17,7 +17,6 @@
     CGSize _rightImgSize;
     CategoryData *_categoryData;
     NSInteger _section;
-    NSNumber *_angleNumber;
     NSInteger _tag;
 }
 
@@ -32,12 +31,11 @@
 }
 
 // デフォルト設定で初期化
-- (id)initWithCategory:(CategoryData *)categoryData section:(NSInteger)section angle:(NSNumber *)angleNumber tag:(NSInteger)tag {
+- (id)initWithCategory:(CategoryData *)categoryData section:(NSInteger)section tag:(NSInteger)tag {
     self = [super init];
     if (self) {
         _categoryData = categoryData;
         _section = section;
-        _angleNumber = angleNumber;
         _tag = tag;
         [self setDefaultStyle];
         [self switchArrowImg];
@@ -91,7 +89,7 @@
  */
 - (void)sigleTapped {
     [self switchArrowImg];
-    [self.delegate didSectionHeaderSingleTap:_section angle:_angleNumber tag:_tag];
+    [self.delegate didSectionHeaderSingleTap:_section tag:_tag];
 }
 
 /**

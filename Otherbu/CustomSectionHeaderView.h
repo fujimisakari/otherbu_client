@@ -18,7 +18,7 @@
  @param sectionIndex セクションのインデックス
  @param isOpen 開閉状態（YES:開, NO:閉）
  */
-- (void)didSectionHeaderSingleTap:(NSInteger)section angle:(NSNumber *)angleNumber tag:(NSInteger)tag;
+- (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag;
 
 @end
 
@@ -29,6 +29,6 @@
 /**
  セクションのタイトルを指定して初期化
  */
-- (id)initWithCategory:(CategoryData *)categoryData section:(NSInteger)section angle:(NSNumber *)angleNumber tag:(NSInteger)tag;
+- (id)initWithCategory:(CategoryData *)categoryData section:(NSInteger)section tag:(NSInteger)tag;
 
 @end

@@ -28,7 +28,7 @@ static const NSInteger kViewHeight = 460;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageIdをセット
+    _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
 
     [self refreshBookmarks:self];
 
@@ -58,7 +58,6 @@ static const NSInteger kViewHeight = 460;
         innerTableView.dataSource = self;
         [_scrollView addSubview:innerTableView];
     }
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,9 +93,7 @@ static const NSInteger kViewHeight = 460;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
-        NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
-        NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
-        NSArray *categoryList = categoryListOfAngle[angleNumber];
+        NSArray *categoryList = [page getCategoryListByTag:tableView.tag];
         return categoryList.count;
     } else {
         return 0;
@@ -109,9 +106,7 @@ static const NSInteger kViewHeight = 460;
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
-        NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
-        NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
-        CategoryData *categoryData = categoryListOfAngle[angleNumber][section];
+        CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
         return categoryData.name;
     } else {
         return @"";
@@ -124,13 +119,8 @@ static const NSInteger kViewHeight = 460;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
-        NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
-        NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
-        CategoryData *categoryData = categoryListOfAngle[angleNumber][section];
+        CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
         NSArray *bookmarkList = [categoryData getBookmarkList];
-        // return bookmarkList.count;
-
-        // セクションが閉じている場合は0を返す
         return categoryData.isOpenSection ? bookmarkList.count : 0;
     } else {
         return 0;
@@ -151,11 +141,8 @@ static const NSInteger kViewHeight = 460;
 
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
-        NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
-        NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
-        CategoryData *categoryData = categoryListOfAngle[angleNumber][indexPath.section];
-        NSArray *bookmarkList = [categoryData getBookmarkList];
-        BookmarkData *bookmark = bookmarkList[indexPath.row];
+        CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][indexPath.section];
+        BookmarkData *bookmark = [categoryData getBookmarkList][indexPath.row];
         cell.textLabel.text = bookmark.name;
         cell.detailTextLabel.text = bookmark.url;
     }
@@ -167,30 +154,19 @@ static const NSInteger kViewHeight = 460;
 /**
  セクションヘッダーの高さを返す
  */
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    // if (self.isHideSection) {
-    //     return 0.0f;
-    // }
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 40.0f;
 }
 
 /**
  セクションヘッダーのコンテンツを設定する
  */
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    // if (self.isHideSection) {
-    //     return nil;
-    // }
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
-        NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
-        NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
-        CategoryData *categoryData = categoryListOfAngle[angleNumber][section];
-
-        CustomSectionHeaderView *containerView = [[CustomSectionHeaderView alloc] initWithCategory:categoryData section:section angle:angleNumber tag:tableView.tag];
-;
+        CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
+        CustomSectionHeaderView *containerView =
+            [[CustomSectionHeaderView alloc] initWithCategory:categoryData section:section tag:tableView.tag];
         containerView.delegate = self;
         return containerView;
     } else {
@@ -201,8 +177,7 @@ static const NSInteger kViewHeight = 460;
 /**
  セルタップ時に実行される処理
  */
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // 今回は何もしない
 }
 
@@ -210,21 +185,19 @@ static const NSInteger kViewHeight = 460;
 
 /**
  シングルタップ時に実行される処理
- 
- @param sectionIndex セクションのインデックス
+
+ @param section セクションのインデックス
  @param isOpen セクションの開閉状態
  */
-- (void)didSectionHeaderSingleTap:(NSInteger)section angle:(NSNumber *)angleNumber tag:(NSInteger)tag {
+- (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag {
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
-    NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
-    CategoryData *categoryData = categoryListOfAngle[angleNumber][section];
+    CategoryData *categoryData = [page getCategoryListByTag:tag][section];
+    UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tag];
     // if (categoryData.isOpenSection) {
     //     categoryData.isOpenSection = 0;
     // } else {
     //     categoryData.isOpenSection = 1;
     // }
-
-    UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tag];
 
     [tableView beginUpdates];
 

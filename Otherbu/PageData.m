@@ -43,6 +43,13 @@
     return resultList;
 }
 
+- (NSMutableArray *)getCategoryListByTag:(NSInteger)tag {
+    NSMutableDictionary *categoryListOfAngle = [self getCategoryListOfAngle];
+    NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tag];
+    NSMutableArray *categoryList = categoryListOfAngle[angleNumber];
+    return categoryList;
+}
+
 - (NSMutableDictionary *)getCategoryListOfAngle {
     DataManager *dataManager = [DataManager sharedManager];
 
