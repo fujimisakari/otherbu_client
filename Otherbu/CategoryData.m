@@ -19,14 +19,14 @@
         self.angle = [dataDict[@"angle"] integerValue];
         self.sort = [dataDict[@"sort"] integerValue];
         self.colorId = [dataDict[@"color_id"] integerValue];
-        self.tagOpen = [dataDict[@"tag_open"] integerValue];
+        self.isOpenSection = [dataDict[@"tag_open"] boolValue];
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%ld, userId=%ld name=%@ angle=%ld, sort=%ld, colorId=%ld, tagOpen=%ld", _dataId, _userId,
-                                      _name, _angle, _sort, _colorId, _tagOpen];
+    return [NSString stringWithFormat:@"dataId=%ld, userId=%ld name=%@ angle=%ld, sort=%ld, colorId=%ld, isOpenSection=%d", _dataId, _userId,
+                                      _name, _angle, _sort, _colorId, _isOpenSection];
 }
 
 - (NSArray *)getBookmarkList {

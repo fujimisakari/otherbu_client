@@ -18,7 +18,7 @@
 @end
 
 @implementation ViewController {
-    NSNumber *pageId;
+    NSNumber *_pageId;
 }
 
 static const NSInteger kNumberOfPages = 3;
@@ -28,7 +28,7 @@ static const NSInteger kViewHeight = 460;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    pageId = [[NSNumber alloc] initWithInt:16];
+    _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageIdをセット
 
     [self refreshBookmarks:self];
 
@@ -92,7 +92,7 @@ static const NSInteger kViewHeight = 460;
  * テーブル全体のセクションの数を返す
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    PageData *page = [[DataManager sharedManager] getPage:pageId];
+    PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
         NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
@@ -107,7 +107,7 @@ static const NSInteger kViewHeight = 460;
  * 指定されたセクションのセクション名を返す
  */
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    PageData *page = [[DataManager sharedManager] getPage:pageId];
+    PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
         NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
@@ -122,7 +122,7 @@ static const NSInteger kViewHeight = 460;
  * 指定されたセクションの項目数を返す
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    PageData *page = [[DataManager sharedManager] getPage:pageId];
+    PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
         NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
@@ -131,7 +131,7 @@ static const NSInteger kViewHeight = 460;
         // return bookmarkList.count;
 
         // セクションが閉じている場合は0を返す
-        return categoryData.tagOpen ? bookmarkList.count : 0;
+        return categoryData.isOpenSection ? bookmarkList.count : 0;
     } else {
         return 0;
     }
@@ -149,7 +149,7 @@ static const NSInteger kViewHeight = 460;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    PageData *page = [[DataManager sharedManager] getPage:pageId];
+    PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
         NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
@@ -183,7 +183,7 @@ static const NSInteger kViewHeight = 460;
     // if (self.isHideSection) {
     //     return nil;
     // }
-    PageData *page = [[DataManager sharedManager] getPage:pageId];
+    PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
         NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tableView.tag];
@@ -215,23 +215,23 @@ static const NSInteger kViewHeight = 460;
  @param isOpen セクションの開閉状態
  */
 - (void)didSectionHeaderSingleTap:(NSInteger)section angle:(NSNumber *)angleNumber tag:(NSInteger)tag {
-    PageData *page = [[DataManager sharedManager] getPage:pageId];
+    PageData *page = [[DataManager sharedManager] getPage:_pageId];
     NSMutableDictionary *categoryListOfAngle = [page getCategoryListOfAngle];
     CategoryData *categoryData = categoryListOfAngle[angleNumber][section];
-    // if (categoryData.tagOpen) {
-    //     categoryData.tagOpen = 0;
+    // if (categoryData.isOpenSection) {
+    //     categoryData.isOpenSection = 0;
     // } else {
-    //     categoryData.tagOpen = 1;
+    //     categoryData.isOpenSection = 1;
     // }
 
     UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tag];
 
     [tableView beginUpdates];
 
-    if (categoryData.tagOpen) {
-        [self openSectionContents:section TableView:tableView CategoryData:categoryData];
-    } else {
+    if (categoryData.isOpenSection) {
         [self closeSectionContents:section TableView:tableView CategoryData:categoryData];
+    } else {
+        [self openSectionContents:section TableView:tableView CategoryData:categoryData];
     }
 
     [tableView endUpdates];

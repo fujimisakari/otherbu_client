@@ -98,7 +98,7 @@
  矢印画像を切り替える
  */
 - (void)switchArrowImg {
-    if (_categoryData.tagOpen) {
+    if (_categoryData.isOpenSection) {
         _arrowImgView.image = _downImg;
         _arrowImgView.frame = CGRectMake(20, 15, _downImgSize.width, _downImgSize.height);
     } else {

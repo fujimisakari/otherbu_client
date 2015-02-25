@@ -17,7 +17,7 @@
 @property(nonatomic) NSInteger angle;    // 位置
 @property(nonatomic) NSInteger sort;     // Sort番号
 @property(nonatomic) NSInteger colorId;  // カテゴリカラーID
-@property(nonatomic) NSInteger tagOpen;  // 初期開放
+@property(nonatomic) BOOL isOpenSection; // 初期開放
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 - (NSArray *)getBookmarkList;
