@@ -20,11 +20,11 @@
 
 @implementation ViewController {
     NSNumber *_pageId;
+    NSInteger _kViewWidth;
+    NSInteger _kViewHeight;
 }
 
 static const NSInteger kNumberOfPages = 3;
-static const NSInteger kViewWidth = 375;
-static const NSInteger kViewHeight = 460;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,12 +38,19 @@ static const NSInteger kViewHeight = 460;
     _pageControl.numberOfPages = kNumberOfPages;          // ページ数を設定
     _pageControl.currentPage = 0;                         // 現在のページを設定
 
+    _kViewWidth = self.view.frame.size.width;
+    _kViewHeight = self.view.frame.size.height;
+
+    // NSLog(@"%f", self.view.frame.size.width);
+    // NSLog(@"%f", self.view.frame.size.height);
+
     // setup ScrollView
     _scrollView.delegate = self;
     _scrollView.frame = self.view.bounds;
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     // 横にページスクロールできるようにコンテンツの大きさを横長に設定
-    _scrollView.contentSize = CGSizeMake(kViewWidth * kNumberOfPages, kViewHeight);
+    // _scrollView.contentSize = CGSizeMake(kViewWidth * kNumberOfPages, kViewHeight);
+    _scrollView.contentSize = CGSizeMake(_kViewWidth * kNumberOfPages, _kViewHeight);
     _scrollView.pagingEnabled = YES;                  // ページごとのスクロールにする
     _scrollView.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
     _scrollView.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
@@ -52,7 +59,7 @@ static const NSInteger kViewHeight = 460;
     // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
         InnerTableView *innerTableView = [InnerTableView initInnerTableViewWithNumber:i];
-        innerTableView.frame = CGRectMake(kViewWidth * (i - 1), 0, kViewWidth, kViewHeight);
+        innerTableView.frame = CGRectMake(_kViewWidth * (i - 1), 0, _kViewWidth, _kViewHeight);
         innerTableView.tag = i;
         innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         innerTableView.delegate = self;
@@ -68,7 +75,7 @@ static const NSInteger kViewHeight = 460;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
-    _pageControl.currentPage = _scrollView.contentOffset.x / kViewWidth;
+    _pageControl.currentPage = _scrollView.contentOffset.x / _kViewWidth;
 }
 
 - (void)refreshBookmarks:(id)sender {
