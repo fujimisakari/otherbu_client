@@ -201,19 +201,17 @@ static const NSInteger kNumberOfPages = 3;
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     CategoryData *categoryData = [page getCategoryListByTag:tag][section];
     UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tag];
-    // if (categoryData.isOpenSection) {
-    //     categoryData.isOpenSection = 0;
-    // } else {
-    //     categoryData.isOpenSection = 1;
-    // }
 
     [tableView beginUpdates];
 
     if (categoryData.isOpenSection) {
+        categoryData.isOpenSection = 0;
         [self closeSectionContents:section TableView:tableView CategoryData:categoryData];
     } else {
+        categoryData.isOpenSection = 1;
         [self openSectionContents:section TableView:tableView CategoryData:categoryData];
     }
+
 
     [tableView endUpdates];
 }
