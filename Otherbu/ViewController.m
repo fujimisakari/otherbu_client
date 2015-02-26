@@ -29,7 +29,10 @@ static const NSInteger NumberOfPages = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // setup view init
     _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
+    _viewWidth = self.view.frame.size.width;
+    _viewHeight = self.view.frame.size.height;
 
     [self refreshBookmarks:self];
 
@@ -37,12 +40,6 @@ static const NSInteger NumberOfPages = 3;
     _pageControl.backgroundColor = [UIColor blackColor];  // 背景色を設定
     _pageControl.numberOfPages = NumberOfPages;          // ページ数を設定
     _pageControl.currentPage = 0;                         // 現在のページを設定
-
-    _viewWidth = self.view.frame.size.width;
-    _viewHeight = self.view.frame.size.height;
-
-    // NSLog(@"%f", self.view.frame.size.width);
-    // NSLog(@"%f", self.view.frame.size.height);
 
     // setup ScrollView
     _scrollView.delegate = self;
