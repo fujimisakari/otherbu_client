@@ -20,11 +20,11 @@
 
 @implementation ViewController {
     NSNumber *_pageId;
-    NSInteger _kViewWidth;
-    NSInteger _kViewHeight;
+    NSInteger _viewWidth;
+    NSInteger _viewHeight;
 }
 
-static const NSInteger kNumberOfPages = 3;
+static const NSInteger NumberOfPages = 3;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -35,11 +35,11 @@ static const NSInteger kNumberOfPages = 3;
 
     // setup PageControl
     _pageControl.backgroundColor = [UIColor blackColor];  // 背景色を設定
-    _pageControl.numberOfPages = kNumberOfPages;          // ページ数を設定
+    _pageControl.numberOfPages = NumberOfPages;          // ページ数を設定
     _pageControl.currentPage = 0;                         // 現在のページを設定
 
-    _kViewWidth = self.view.frame.size.width;
-    _kViewHeight = self.view.frame.size.height;
+    _viewWidth = self.view.frame.size.width;
+    _viewHeight = self.view.frame.size.height;
 
     // NSLog(@"%f", self.view.frame.size.width);
     // NSLog(@"%f", self.view.frame.size.height);
@@ -49,8 +49,7 @@ static const NSInteger kNumberOfPages = 3;
     _scrollView.frame = self.view.bounds;
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     // 横にページスクロールできるようにコンテンツの大きさを横長に設定
-    // _scrollView.contentSize = CGSizeMake(kViewWidth * kNumberOfPages, kViewHeight);
-    _scrollView.contentSize = CGSizeMake(_kViewWidth * kNumberOfPages, _kViewHeight);
+    _scrollView.contentSize = CGSizeMake(_viewWidth * NumberOfPages, _viewHeight);
     _scrollView.pagingEnabled = YES;                  // ページごとのスクロールにする
     _scrollView.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
     _scrollView.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
@@ -59,7 +58,7 @@ static const NSInteger kNumberOfPages = 3;
     // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
         InnerTableView *innerTableView = [InnerTableView initInnerTableViewWithNumber:i];
-        innerTableView.frame = CGRectMake(_kViewWidth * (i - 1), 0, _kViewWidth, _kViewHeight);
+        innerTableView.frame = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
         innerTableView.tag = i;
         innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         innerTableView.delegate = self;
@@ -75,7 +74,7 @@ static const NSInteger kNumberOfPages = 3;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
-    _pageControl.currentPage = _scrollView.contentOffset.x / _kViewWidth;
+    _pageControl.currentPage = _scrollView.contentOffset.x / _viewWidth;
 }
 
 - (void)refreshBookmarks:(id)sender {
@@ -205,13 +204,12 @@ static const NSInteger kNumberOfPages = 3;
     [tableView beginUpdates];
 
     if (categoryData.isOpenSection) {
-        categoryData.isOpenSection = 0;
+        categoryData.isOpenSection = NO;
         [self closeSectionContents:section TableView:tableView CategoryData:categoryData];
     } else {
-        categoryData.isOpenSection = 1;
+        categoryData.isOpenSection = YES;
         [self openSectionContents:section TableView:tableView CategoryData:categoryData];
     }
-
 
     [tableView endUpdates];
 }

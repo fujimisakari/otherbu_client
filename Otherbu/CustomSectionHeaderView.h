@@ -15,8 +15,8 @@
 /**
  シングルタップ
 
- @param sectionIndex セクションのインデックス
- @param isOpen 開閉状態（YES:開, NO:閉）
+ @param section セクションのインデックス；
+ @param tag TableViewのtag名
  */
 - (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag;
 
@@ -28,6 +28,9 @@
 
 /**
  セクションのタイトルを指定して初期化
+
+ @param section セクションのインデックス；
+ @param tag TableViewのtag名
  */
 - (id)initWithCategory:(CategoryData *)categoryData section:(NSInteger)section tag:(NSInteger)tag;
 

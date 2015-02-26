@@ -24,7 +24,6 @@ typedef NS_ENUM(NSUInteger, SelectType) {
 
 + (DataManager *)sharedManager;
 
-- (void)insertData:(NSDictionary *)jsonData;
 - (void)reloadDataWithBlock:(void (^)(NSError *error))block;
 
 - (PageData *)getPage:(NSNumber *)dataId;

@@ -8,14 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InnerTableView : UITableView {
-   @private
-    NSInteger number_;
-}
+@interface InnerTableView : UITableView
 
 @property (nonatomic, assign) NSInteger number;
 
 + (InnerTableView *)initInnerTableViewWithNumber:(NSInteger)number;
-- (NSMutableArray *)categoryList;
 
 @end

@@ -45,7 +45,7 @@
     return self;
 }
 
-#pragma mark - Public Methods
+#pragma mark - Private Methods
 
 // セクションのタイトルを設定する
 - (void)setTitle {
@@ -59,8 +59,6 @@
     [self addSubview:titleLbl];
 }
 
-#pragma mark - Private Methods
-
 /**
  デフォルトのスタイル設定
  */
@@ -69,9 +67,7 @@
     _rightImg = [UIImage imageNamed:@"rightArrow"];
     _downImgSize = _downImg.size;
     _rightImgSize = _rightImg.size;
-
     _arrowImgView = [[UIImageView alloc] init];
-
     self.backgroundColor = [UIColor blackColor];
     [self addSubview:_arrowImgView];
 }
@@ -88,8 +84,8 @@
  シングルタップイベント
  */
 - (void)sigleTapped {
-    [self switchArrowImg];
     [self.delegate didSectionHeaderSingleTap:_section tag:_tag];
+    [self switchArrowImg];
 }
 
 /**

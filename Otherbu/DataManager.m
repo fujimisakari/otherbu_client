@@ -23,6 +23,8 @@ static DataManager *intance = nil;
     return intance;
 }
 
+#pragma mark - Initialization
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -33,26 +35,7 @@ static DataManager *intance = nil;
     return self;
 }
 
-- (void)insertData:(NSDictionary *)jsonData {
-    NSArray *pageList = [jsonData objectForKey:@"page_list"];
-    NSArray *categoryList = [jsonData objectForKey:@"category_list"];
-    NSArray *bookmarkList = [jsonData objectForKey:@"bookmark_list"];
-
-    for (NSDictionary *pageDict in pageList) {
-        PageData *data = [[PageData alloc] initWithDictionary:pageDict];
-        [_pageDict setObject:data forKey:pageDict[@"id"]];
-    }
-
-    for (NSDictionary *categoryDict in categoryList) {
-        CategoryData *data = [[CategoryData alloc] initWithDictionary:categoryDict];
-        [_categoryDict setObject:data forKey:categoryDict[@"id"]];
-    }
-
-    for (NSDictionary *bookmarkDict in bookmarkList) {
-        BookmarkData *data = [[BookmarkData alloc] initWithDictionary:bookmarkDict];
-        [_bookmarkDict setObject:data forKey:bookmarkDict[@"id"]];
-    }
-}
+#pragma mark - Public Methods
 
 - (void)reloadDataWithBlock:(void (^)(NSError *error))block {
     [[OtherbuAPIClient sharedClient]
@@ -77,6 +60,29 @@ static DataManager *intance = nil;
 
 - (BookmarkData *)getBookmark:(NSNumber *)dataId {
     return _bookmarkDict[dataId];
+}
+
+#pragma mark - Private Methods
+
+- (void)insertData:(NSDictionary *)jsonData {
+    NSArray *pageList = [jsonData objectForKey:@"page_list"];
+    NSArray *categoryList = [jsonData objectForKey:@"category_list"];
+    NSArray *bookmarkList = [jsonData objectForKey:@"bookmark_list"];
+
+    for (NSDictionary *pageDict in pageList) {
+        PageData *data = [[PageData alloc] initWithDictionary:pageDict];
+        [_pageDict setObject:data forKey:pageDict[@"id"]];
+    }
+
+    for (NSDictionary *categoryDict in categoryList) {
+        CategoryData *data = [[CategoryData alloc] initWithDictionary:categoryDict];
+        [_categoryDict setObject:data forKey:categoryDict[@"id"]];
+    }
+
+    for (NSDictionary *bookmarkDict in bookmarkList) {
+        BookmarkData *data = [[BookmarkData alloc] initWithDictionary:bookmarkDict];
+        [_bookmarkDict setObject:data forKey:bookmarkDict[@"id"]];
+    }
 }
 
 @end
