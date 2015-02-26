@@ -30,6 +30,9 @@
                                       _name, _categoryIdsStr, _angleIdsStr, _sortIdsStr];
 }
 
+/**
+ カテゴリ一覧を取得
+ */
 - (NSMutableArray *)getCategoryList {
     DataManager *dataManager = [DataManager sharedManager];
     NSMutableArray *resultList = [[NSMutableArray alloc] init];
@@ -45,6 +48,11 @@
     return resultList;
 }
 
+/**
+ tag(angle)からカテゴリ一覧を取得
+
+ @param tag TableViewのタグ名
+ */
 - (NSMutableArray *)getCategoryListByTag:(NSInteger)tag {
     NSMutableDictionary *categoryListOfAngle = [self getCategoryListOfAngle];
     NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tag];
@@ -52,6 +60,9 @@
     return categoryList;
 }
 
+/**
+ アングル別のカテゴリー一覧を取得
+ */
 - (NSMutableDictionary *)getCategoryListOfAngle {
     DataManager *dataManager = [DataManager sharedManager];
 
@@ -85,6 +96,12 @@
     return resultDict;
 }
 
+
+/**
+ 引数の文字列をパースしてdictionaryリストを生成する
+
+ @param strData パース対象文字列
+ */
 - (NSMutableDictionary *)getMapByArg:(NSString *)strData {
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
     NSArray *list_ = [strData componentsSeparatedByString:@","];
