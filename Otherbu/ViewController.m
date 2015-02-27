@@ -70,8 +70,14 @@ static const NSInteger NumberOfPages = 3;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
-    _pageControl.currentPage = _scrollView.contentOffset.x / _viewWidth;
+    if (scrollView == _scrollView) {
+        CGPoint origin = [scrollView contentOffset];
+        [scrollView setContentOffset:CGPointMake(origin.x, 0.0)];
+
+         // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
+         _pageControl.currentPage = _scrollView.contentOffset.x / _viewWidth;
+
+    }
 }
 
 - (void)refreshBookmarks:(id)sender {
