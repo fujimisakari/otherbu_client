@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "CustomSectionHeaderView.h"
-#import "InnerTableView.h"
 #import "DataManager.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
@@ -54,7 +53,7 @@ static const NSInteger NumberOfPages = 3;
 
     // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
-        InnerTableView *innerTableView = [InnerTableView initInnerTableViewWithNumber:i];
+        UITableView *innerTableView = [[UITableView alloc] init];
         innerTableView.frame = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
         innerTableView.tag = i;
         innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
