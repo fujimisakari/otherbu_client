@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7B39F52E1A9CEE860036CB69 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */; };
+		7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */; };
+		7B39F5381AA321740036CB69 /* ColorData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5371AA321740036CB69 /* ColorData.m */; };
 		7B565EF61A92486F00D6A420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF51A92486F00D6A420 /* main.m */; };
 		7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF81A92486F00D6A420 /* AppDelegate.m */; };
 		7B565EFC1A92486F00D6A420 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EFB1A92486F00D6A420 /* ViewController.m */; };
@@ -36,6 +38,10 @@
 /* Begin PBXFileReference section */
 		7B39F52C1A9CEE860036CB69 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
 		7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
+		7B39F5321AA31DA20036CB69 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		7B39F5361AA321740036CB69 /* ColorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorData.h; sourceTree = "<group>"; };
+		7B39F5371AA321740036CB69 /* ColorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorData.m; sourceTree = "<group>"; };
 		7B565EF01A92486F00D6A420 /* Otherbu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Otherbu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565EF41A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565EF51A92486F00D6A420 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -91,13 +97,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7B39F52F1A9CEEA70036CB69 /* view */ = {
+		7B39F52F1A9CEEA70036CB69 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				7B39F52C1A9CEE860036CB69 /* SectionHeaderView.h */,
 				7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */,
 			);
-			name = view;
+			name = View;
+			sourceTree = "<group>";
+		};
+		7B39F5351AA31F7A0036CB69 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7B39F5321AA31DA20036CB69 /* UIColor+Hex.h */,
+				7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		7B565EE71A92486F00D6A420 = {
@@ -126,7 +141,7 @@
 				7B565EF71A92486F00D6A420 /* AppDelegate.h */,
 				7B565EF81A92486F00D6A420 /* AppDelegate.m */,
 				7B565EFD1A92486F00D6A420 /* Main.storyboard */,
-				7B39F52F1A9CEEA70036CB69 /* view */,
+				7B39F52F1A9CEEA70036CB69 /* View */,
 				7B565F2B1A938A9600D6A420 /* Controller */,
 				7B565F251A924A1000D6A420 /* Model */,
 				7B565F001A92486F00D6A420 /* Images.xcassets */,
@@ -175,6 +190,8 @@
 				7B565F1B1A9249FA00D6A420 /* CategoryData.h */,
 				7B565F1A1A9249FA00D6A420 /* BookmarkData.m */,
 				7B565F191A9249FA00D6A420 /* BookmarkData.h */,
+				7B39F5361AA321740036CB69 /* ColorData.h */,
+				7B39F5371AA321740036CB69 /* ColorData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -184,6 +201,7 @@
 			children = (
 				7B565EFA1A92486F00D6A420 /* ViewController.h */,
 				7B565EFB1A92486F00D6A420 /* ViewController.m */,
+				7B39F5351AA31F7A0036CB69 /* Utility */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -333,6 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B39F52E1A9CEE860036CB69 /* SectionHeaderView.m in Sources */,
+				7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */,
 				7B565F241A9249FA00D6A420 /* PageData.m in Sources */,
 				7B565EFC1A92486F00D6A420 /* ViewController.m in Sources */,
 				7B565F231A9249FA00D6A420 /* DataManager.m in Sources */,
@@ -341,6 +360,7 @@
 				7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */,
 				7B565EF61A92486F00D6A420 /* main.m in Sources */,
 				7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */,
+				7B39F5381AA321740036CB69 /* ColorData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

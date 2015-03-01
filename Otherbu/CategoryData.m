@@ -48,4 +48,9 @@
     return resultList;
 }
 
+- (ColorData *)color {
+    NSNumber *number = [[NSNumber alloc] initWithInt:(int)_colorId];
+    return [[DataManager sharedManager] getColor:number];
+}
+
 @end

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class PageData, CategoryData, BookmarkData;
+@class PageData, CategoryData, BookmarkData, ColorData;
 
 @interface DataManager : NSObject
 
@@ -16,11 +16,13 @@ typedef NS_ENUM(NSUInteger, SelectType) {
     PAGE,
     CATEGORY,
     BOOKMARK,
+    Color,
 };
 
 @property(nonatomic) NSMutableDictionary *pageDict;
 @property(nonatomic) NSMutableDictionary *categoryDict;
 @property(nonatomic) NSMutableDictionary *bookmarkDict;
+@property(nonatomic) NSMutableDictionary *colorDict;
 
 + (DataManager *)sharedManager;
 
@@ -29,5 +31,6 @@ typedef NS_ENUM(NSUInteger, SelectType) {
 - (PageData *)getPage:(NSNumber *)dataId;
 - (CategoryData *)getCategory:(NSNumber *)dataId;
 - (BookmarkData *)getBookmark:(NSNumber *)dataId;
+- (ColorData *)getColor:(NSNumber *)dataId;
 
 @end

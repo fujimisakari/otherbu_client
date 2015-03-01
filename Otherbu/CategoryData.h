@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ColorData;
+
 @interface CategoryData : NSObject
 
 @property(nonatomic) NSInteger dataId;   // ID
@@ -19,6 +21,8 @@
 @property(nonatomic) BOOL isOpenSection; // 初期開放
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
+
 - (NSArray *)getBookmarkList;
+- (ColorData *)color;
 
 @end

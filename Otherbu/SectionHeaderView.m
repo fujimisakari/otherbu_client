@@ -8,6 +8,8 @@
 
 #import "SectionHeaderView.h"
 #import "CategoryData.h"
+#import "ColorData.h"
+#import "UIColor+Hex.h"
 
 @implementation SectionHeaderView {
     UIImageView *_arrowImgView;
@@ -51,15 +53,10 @@
     _arrowImgView = [[UIImageView alloc] init];
     [self addSubview:_arrowImgView];
 
-    // 背景色（グラデーション）
+    // 背景色(グラデーション)
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.bounds;
-    gradient.colors = @[
-        // 開始色
-        (id)[UIColor colorWithRed : 0.26 green : 1.29 blue : 2.36 alpha : 1.0].CGColor,
-        // 終了色
-        (id)[UIColor colorWithRed : 0.52 green : 0.25 blue : 1.32 alpha : 1.0].CGColor
-    ];
+    gradient.colors = [[_categoryData color] getGradientColorList];
     [self.layer insertSublayer:gradient atIndex:0];
     self.backgroundColor = [UIColor darkGrayColor];
 

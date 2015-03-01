@@ -10,6 +10,7 @@
 #import "BookmarkData.h"
 #import "CategoryData.h"
 #import "PageData.h"
+#import "ColorData.h"
 #import "OtherbuAPIClient.h"
 
 @implementation DataManager
@@ -31,6 +32,7 @@ static DataManager *intance = nil;
         self.pageDict = [@{} mutableCopy];
         self.categoryDict = [@{} mutableCopy];
         self.bookmarkDict = [@{} mutableCopy];
+        self.colorDict = [@{} mutableCopy];
     }
     return self;
 }
@@ -62,12 +64,18 @@ static DataManager *intance = nil;
     return _bookmarkDict[dataId];
 }
 
+- (ColorData *)getColor:(NSNumber *)dataId {
+    return _colorDict[dataId];
+}
+
+
 #pragma mark - Private Methods
 
 - (void)insertData:(NSDictionary *)jsonData {
     NSArray *pageList = [jsonData objectForKey:@"page_list"];
     NSArray *categoryList = [jsonData objectForKey:@"category_list"];
     NSArray *bookmarkList = [jsonData objectForKey:@"bookmark_list"];
+    NSArray *colorList = [jsonData objectForKey:@"color_list"];
 
     for (NSDictionary *pageDict in pageList) {
         PageData *data = [[PageData alloc] initWithDictionary:pageDict];
@@ -82,6 +90,11 @@ static DataManager *intance = nil;
     for (NSDictionary *bookmarkDict in bookmarkList) {
         BookmarkData *data = [[BookmarkData alloc] initWithDictionary:bookmarkDict];
         [_bookmarkDict setObject:data forKey:bookmarkDict[@"id"]];
+    }
+
+    for (NSDictionary *colorDict in colorList) {
+        ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
+        [_colorDict setObject:data forKey:colorDict[@"id"]];
     }
 }
 
