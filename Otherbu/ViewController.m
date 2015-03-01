@@ -11,6 +11,7 @@
 #import "DataManager.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
+#import "ColorData.h"
 #import "PageData.h"
 
 @interface ViewController ()
@@ -156,7 +157,26 @@ static const NSInteger NumberOfPages = 3;
         cell.textLabel.textColor = [UIColor whiteColor];
         cell.detailTextLabel.text = bookmark.url;
         cell.detailTextLabel.textColor = [UIColor whiteColor];
-        cell.contentView.backgroundColor = [UIColor blackColor];
+        // cell.contentView.backgroundColor = [UIColor blackColor];
+
+        // セルの背景指定
+        UIView *cellBackgroundView = [[UIView alloc] init];
+        cellBackgroundView.backgroundColor = [[categoryData color] getCellBackGroundColor];
+
+        CALayer *layer = [CALayer layer];
+        CGRect rect = CGRectMake(cell.bounds.origin.x + 10, cell.bounds.origin.y, cell.bounds.size.width, cell.bounds.size.height);
+        layer.frame = rect;
+        layer.backgroundColor = [UIColor blackColor].CGColor;
+        [cellBackgroundView.layer addSublayer:layer];
+        // [cellBackgroundView.layer insertSublayer:layer atIndex:0];
+
+        cell.backgroundView = cellBackgroundView;
+
+
+        // セルの選択時の背景指定
+        // UIView *cellSelectedBackgroundView = [[UIView alloc] init];
+        // cellSelectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.95f green:0.95f blue:0.95f alpha:1.0f];
+        // cell.selectedBackgroundView = cellSelectedBackgroundView;
     }
     return cell;
 }

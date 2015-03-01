@@ -28,20 +28,31 @@
     return self;
 }
 
+#pragma mark - Public Methods
+
 - (NSArray *)getGradientColorList {
-
-    NSString *(^removeSharp)(NSString *) = ^NSString *(NSString *hexColorCode) {
-        // hexColorCodeの先頭の#を削除
-        NSMutableString *str = [NSMutableString stringWithString:hexColorCode];
-        [str deleteCharactersInRange:NSMakeRange(0, 1)];
-        return str;
-    };
-
-    UIColor *color1 = [UIColor colorWithHex:removeSharp(_color_code1)];
-    UIColor *color2 = [UIColor colorWithHex:removeSharp(_color_code2)];
-    UIColor *color3 = [UIColor colorWithHex:removeSharp(_color_code3)];
+    UIColor *color1 = [UIColor colorWithHex:[self removeSharp:_color_code1]];
+    UIColor *color2 = [UIColor colorWithHex:[self removeSharp:_color_code2]];
+    UIColor *color3 = [UIColor colorWithHex:[self removeSharp:_color_code3]];
     NSArray *gradientColorList = @[ (id)color1.CGColor, (id)color2.CGColor, (id)color3.CGColor ];
     return gradientColorList;
 }
+
+- (UIColor *)getCellBackGroundColor {
+    return [UIColor colorWithHex:[self removeSharp:_color_code3]];
+}
+
+#pragma mark - Private Methods
+
+/**
+ hexColorCodeの先頭の#を削除
+
+ @parms hexColorCode hex(#FFFF00)
+ */
+- (NSString *)removeSharp:(NSString *)hexColorCode {
+    NSMutableString *str = [NSMutableString stringWithString:hexColorCode];
+    [str deleteCharactersInRange:NSMakeRange(0, 1)];
+    return str;
+};
 
 @end

@@ -17,6 +17,8 @@
     UIImage *_rightImg;
     CGSize _downImgSize;
     CGSize _rightImgSize;
+    CAShapeLayer *_maskLayerOfSectionOpen;
+    CAShapeLayer *_maskLayerOfSectionClose;
     CategoryData *_categoryData;
     NSInteger _section;
     NSInteger _tag;
@@ -33,7 +35,7 @@
         _tag = tag;
         [self setDefaultStyle];
         [self setTitle];
-        [self switchArrowImg];
+        [self switchDataByTapped];
         [self addTapGesture];
     }
     return self;
@@ -58,12 +60,36 @@
     gradient.frame = self.bounds;
     gradient.colors = [[_categoryData color] getGradientColorList];
     [self.layer insertSublayer:gradient atIndex:0];
-    self.backgroundColor = [UIColor darkGrayColor];
 
-    //角丸
-    // self.layer.cornerRadius = 10.0f;
-    self.layer.cornerRadius = 5.0;
-    self.layer.masksToBounds = YES;
+    // 角丸
+    [self setMaskLayerWithSectionType:YES];
+    [self setMaskLayerWithSectionType:NO];
+}
+
+/**
+ 角丸のmaskLayerを設定する
+ */
+- (void)setMaskLayerWithSectionType:(BOOL)isOpenSection {
+    UIBezierPath *maskPath;
+    if (isOpenSection) {
+        maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                         byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
+                                               cornerRadii:CGSizeMake(12.0, 12.0)];
+    } else {
+        maskPath = [UIBezierPath
+            bezierPathWithRoundedRect:self.bounds
+                    byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomLeft | UIRectCornerBottomRight)
+                          cornerRadii:CGSizeMake(12.0, 12.0)];
+    }
+
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    if (isOpenSection) {
+        _maskLayerOfSectionOpen = maskLayer;
+    } else {
+        _maskLayerOfSectionClose = maskLayer;
+    }
 }
 
 /**
@@ -93,19 +119,21 @@
  */
 - (void)sigleTapped {
     [self.delegate didSectionHeaderSingleTap:_section tag:_tag];
-    [self switchArrowImg];
+    [self switchDataByTapped];
 }
 
 /**
- 矢印画像を切り替える
+ タップ時のデータ切り替え
  */
-- (void)switchArrowImg {
+- (void)switchDataByTapped {
     if (_categoryData.isOpenSection) {
         _arrowImgView.image = _downImg;
         _arrowImgView.frame = CGRectMake(20, 15, _downImgSize.width, _downImgSize.height);
+        self.layer.mask = _maskLayerOfSectionOpen;
     } else {
         _arrowImgView.image = _rightImg;
         _arrowImgView.frame = CGRectMake(25, 12, _rightImgSize.width, _rightImgSize.height);
+        self.layer.mask = _maskLayerOfSectionClose;
     }
 }
 

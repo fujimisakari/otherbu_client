@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface ColorData : NSObject
 
@@ -22,5 +23,6 @@
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 - (NSArray *)getGradientColorList;
+- (UIColor *)getCellBackGroundColor;
 
 @end
