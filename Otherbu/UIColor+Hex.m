@@ -33,7 +33,9 @@
     NSString *hexCodeStr;
     const char *hexCode;
     char *endptr;
-    CGFloat red, green, blue;
+    CGFloat red = 0;
+    CGFloat green = 0;
+    CGFloat blue = 0;
 
     for (NSInteger i = 0; i < 3; i++) {
         hexCodeStr = [NSString stringWithFormat:@"+0x%@", [colorCode substringWithRange:NSMakeRange(i * 2, 2)]];
@@ -55,7 +57,6 @@
                 break;
         }
     }
-
     return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
 }
 

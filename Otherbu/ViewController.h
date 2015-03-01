@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SectionHeaderView.h"
 
-@interface ViewController : UIViewController<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface ViewController : UIViewController<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
