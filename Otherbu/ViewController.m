@@ -56,7 +56,7 @@ static const NSInteger NumberOfPages = 3;
         CGRect rect = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
         UITableView *innerTableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
         innerTableView.tag = i;
-        innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        // innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         innerTableView.delegate = self;
         innerTableView.dataSource = self;
         [_scrollView addSubview:innerTableView];
@@ -145,7 +145,7 @@ static const NSInteger NumberOfPages = 3;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
 
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
@@ -153,7 +153,10 @@ static const NSInteger NumberOfPages = 3;
         CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][indexPath.section];
         BookmarkData *bookmark = [categoryData getBookmarkList][indexPath.row];
         cell.textLabel.text = bookmark.name;
+        cell.textLabel.textColor = [UIColor whiteColor];
         cell.detailTextLabel.text = bookmark.url;
+        cell.detailTextLabel.textColor = [UIColor whiteColor];
+        cell.contentView.backgroundColor = [UIColor blackColor];
     }
     return cell;
 }
