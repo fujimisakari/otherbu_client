@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "CustomSectionHeaderView.h"
+#import "SectionHeaderView.h"
 #import "DataManager.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
@@ -53,8 +53,8 @@ static const NSInteger NumberOfPages = 3;
 
     // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
-        UITableView *innerTableView = [[UITableView alloc] init];
-        innerTableView.frame = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
+        CGRect rect = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
+        UITableView *innerTableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
         innerTableView.tag = i;
         innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         innerTableView.delegate = self;
@@ -174,8 +174,9 @@ static const NSInteger NumberOfPages = 3;
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
-        CustomSectionHeaderView *containerView =
-            [[CustomSectionHeaderView alloc] initWithCategory:categoryData section:section tag:tableView.tag];
+        CGRect frame = CGRectMake(0, 0, tableView.frame.size.width, 50);
+        SectionHeaderView *containerView =
+            [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section tag:tableView.tag];
         containerView.delegate = self;
         return containerView;
     } else {

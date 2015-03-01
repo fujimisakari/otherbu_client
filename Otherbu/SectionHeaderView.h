@@ -22,14 +22,15 @@
 
 @end
 
-@interface CustomSectionHeaderView : UIView
+@interface SectionHeaderView : UIView
 
-@property (nonatomic, weak) id<CustomSectionHeaderViewDelegate> delegate;
+@property (nonatomic, weak) id<SectionHeaderViewDelegate> delegate;
 
 /**
  セクションのタイトルを指定して初期化
 
- @param section セクションのインデックス；
+ @parms frame セクションのframe
+ @param section セクションのインデックス
  @param tag TableViewのtag名
  */
 - (id)initWithCategory:(CategoryData *)categoryData frame:(CGRect)frame  section:(NSInteger)section tag:(NSInteger)tag;
