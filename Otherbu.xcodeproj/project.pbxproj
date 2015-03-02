@@ -10,6 +10,7 @@
 		7B39F52E1A9CEE860036CB69 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */; };
 		7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */; };
 		7B39F5381AA321740036CB69 /* ColorData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5371AA321740036CB69 /* ColorData.m */; };
+		7B39F53B1AA39BCA0036CB69 /* TableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F53A1AA39BCA0036CB69 /* TableCellView.m */; };
 		7B565EF61A92486F00D6A420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF51A92486F00D6A420 /* main.m */; };
 		7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF81A92486F00D6A420 /* AppDelegate.m */; };
 		7B565EFC1A92486F00D6A420 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EFB1A92486F00D6A420 /* ViewController.m */; };
@@ -42,6 +43,8 @@
 		7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		7B39F5361AA321740036CB69 /* ColorData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorData.h; sourceTree = "<group>"; };
 		7B39F5371AA321740036CB69 /* ColorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorData.m; sourceTree = "<group>"; };
+		7B39F5391AA39BCA0036CB69 /* TableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellView.h; sourceTree = "<group>"; };
+		7B39F53A1AA39BCA0036CB69 /* TableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellView.m; sourceTree = "<group>"; };
 		7B565EF01A92486F00D6A420 /* Otherbu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Otherbu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565EF41A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565EF51A92486F00D6A420 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 		7B39F52F1A9CEEA70036CB69 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B39F5391AA39BCA0036CB69 /* TableCellView.h */,
+				7B39F53A1AA39BCA0036CB69 /* TableCellView.m */,
 				7B39F52C1A9CEE860036CB69 /* SectionHeaderView.h */,
 				7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */,
 			);
@@ -359,6 +364,7 @@
 				7B565F211A9249FA00D6A420 /* BookmarkData.m in Sources */,
 				7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */,
 				7B565EF61A92486F00D6A420 /* main.m in Sources */,
+				7B39F53B1AA39BCA0036CB69 /* TableCellView.m in Sources */,
 				7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */,
 				7B39F5381AA321740036CB69 /* ColorData.m in Sources */,
 			);
