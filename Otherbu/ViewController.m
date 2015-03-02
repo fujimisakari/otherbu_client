@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SectionHeaderView.h"
+#import "TableCellView.h"
 #import "DataManager.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
@@ -38,7 +39,7 @@ static const NSInteger NumberOfPages = 3;
 
     // setup PageControl
     _pageControl.backgroundColor = [UIColor blackColor];  // 背景色を設定
-    _pageControl.numberOfPages = NumberOfPages;          // ページ数を設定
+    _pageControl.numberOfPages = NumberOfPages;           // ページ数を設定
     _pageControl.currentPage = 0;                         // 現在のページを設定
 
     // setup ScrollView
@@ -57,11 +58,42 @@ static const NSInteger NumberOfPages = 3;
         CGRect rect = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
         UITableView *innerTableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
         innerTableView.tag = i;
-        // innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         innerTableView.delegate = self;
         innerTableView.dataSource = self;
         [_scrollView addSubview:innerTableView];
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+
+    // テーブルビューの最後の位置を保持
+    // _lastScrollOffset = [_myTableView contentOffset];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    // テーブルビューのセルが選択されていた場合に選択を解除する
+    // NSIndexPath *selection = [_myTableView indexPathForSelectedRow];
+    // if (selection) {
+    //     [_myTableView deselectRowAtIndexPath:selection animated:YES];
+    // }
+    // [_myTableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    // // テーブルビューを最後に保存した位置までスクロールする
+    // [_myTableView setContentOffset:_lastScrollOffset];
+
+    // // テーブルビューが更新された時にスクロールバーが点滅するよう指定
+    // [_myTableView flashScrollIndicators];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -143,40 +175,15 @@ static const NSInteger NumberOfPages = 3;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     NSString *cellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    TableCellView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+        cell = [TableCellView initWithCellIdentifier:cellIdentifier];
     }
 
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
-        CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][indexPath.section];
-        BookmarkData *bookmark = [categoryData getBookmarkList][indexPath.row];
-        cell.textLabel.text = bookmark.name;
-        cell.textLabel.textColor = [UIColor whiteColor];
-        cell.detailTextLabel.text = bookmark.url;
-        cell.detailTextLabel.textColor = [UIColor whiteColor];
-        // cell.contentView.backgroundColor = [UIColor blackColor];
-
-        // セルの背景指定
-        UIView *cellBackgroundView = [[UIView alloc] init];
-        cellBackgroundView.backgroundColor = [[categoryData color] getCellBackGroundColor];
-
-        CALayer *layer = [CALayer layer];
-        CGRect rect = CGRectMake(cell.bounds.origin.x + 10, cell.bounds.origin.y, cell.bounds.size.width, cell.bounds.size.height);
-        layer.frame = rect;
-        layer.backgroundColor = [UIColor blackColor].CGColor;
-        [cellBackgroundView.layer addSublayer:layer];
-        // [cellBackgroundView.layer insertSublayer:layer atIndex:0];
-
-        cell.backgroundView = cellBackgroundView;
-
-
-        // セルの選択時の背景指定
-        // UIView *cellSelectedBackgroundView = [[UIView alloc] init];
-        // cellSelectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.95f green:0.95f blue:0.95f alpha:1.0f];
-        // cell.selectedBackgroundView = cellSelectedBackgroundView;
+        cell = [cell setUpWithPageData:page tableView:tableView indexPath:indexPath];
     }
     return cell;
 }
@@ -197,7 +204,7 @@ static const NSInteger NumberOfPages = 3;
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
-        CGRect frame = CGRectMake(0, 0, tableView.frame.size.width, 50);
+        CGRect frame = CGRectMake(0, 0, tableView.frame.size.width, 40);
         SectionHeaderView *containerView =
             [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section tag:tableView.tag];
         containerView.delegate = self;
