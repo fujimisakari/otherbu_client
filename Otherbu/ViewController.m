@@ -185,6 +185,29 @@ static const NSInteger NumberOfPages = 3;
     return cell;
 }
 
+// - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//     PageData *page = [[DataManager sharedManager] getPage:_pageId];
+//     if (page) {
+//         CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][indexPath.section];
+//         NSArray *bookmarkList = [categoryData getBookmarkList];
+//         TableCellView *cell = [cell setUpWithPageData:page tableView:tableView indexPath:indexPath];
+//         NSLog(@"section----------------- %ld", indexPath.section);
+//         NSLog(@"count----------------- %ld", bookmarkList.count);
+//         NSLog(@"row----------------- %ld", indexPath.row);
+
+//         int ss = indexPath.row + 1;
+//         if (ss == bookmarkList.count) {
+//             NSLog(@"last-----------------");
+//             [cell setMaskLayer];
+//             return 50.0;
+//         } else {
+//             NSLog(@"maddd-----------------");
+//             return 44.0;
+//         }
+//     }
+//     return 0;
+// }
+
 #pragma mark - UITableViewDelegate
 
 /**

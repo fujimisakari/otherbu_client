@@ -55,6 +55,24 @@
     [super setFrame:frame];
 }
 
+
+/**
+ 角丸のmaskLayerを設定する
+ */
+- (void)setMaskLayer {
+    UIBezierPath *maskPath;
+    maskPath = [UIBezierPath
+        bezierPathWithRoundedRect:self.bounds
+                byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)
+                      cornerRadii:CGSizeMake(12.0, 12.0)];
+
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
+}
+
+
 #pragma mark - Private Methods
 
 - (void)setupBackground {
