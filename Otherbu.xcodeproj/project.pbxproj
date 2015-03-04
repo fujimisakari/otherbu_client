@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B11FCFE1AA7044F0093E63A /* InnerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11FCFD1AA7044F0093E63A /* InnerTableView.m */; };
 		7B39F52E1A9CEE860036CB69 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */; };
 		7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */; };
 		7B39F5381AA321740036CB69 /* ColorData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5371AA321740036CB69 /* ColorData.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B11FCFC1AA7044F0093E63A /* InnerTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerTableView.h; sourceTree = "<group>"; };
+		7B11FCFD1AA7044F0093E63A /* InnerTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerTableView.m; sourceTree = "<group>"; };
 		7B39F52C1A9CEE860036CB69 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
 		7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
 		7B39F5321AA31DA20036CB69 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 			children = (
 				7B39F5391AA39BCA0036CB69 /* TableCellView.h */,
 				7B39F53A1AA39BCA0036CB69 /* TableCellView.m */,
+				7B11FCFC1AA7044F0093E63A /* InnerTableView.h */,
+				7B11FCFD1AA7044F0093E63A /* InnerTableView.m */,
 				7B39F52C1A9CEE860036CB69 /* SectionHeaderView.h */,
 				7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */,
 			);
@@ -271,9 +276,11 @@
 				TargetAttributes = {
 					7B565EEF1A92486F00D6A420 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 2NTKX77UEL;
 					};
 					7B565F081A92486F00D6A420 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 2NTKX77UEL;
 						TestTargetID = 7B565EEF1A92486F00D6A420;
 					};
 				};
@@ -355,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B11FCFE1AA7044F0093E63A /* InnerTableView.m in Sources */,
 				7B39F52E1A9CEE860036CB69 /* SectionHeaderView.m in Sources */,
 				7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */,
 				7B565F241A9249FA00D6A420 /* PageData.m in Sources */,
@@ -491,9 +499,12 @@
 			baseConfigurationReference = A68444AA09945B1E11DBE4E7 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ryo Fujimoto (QDS4AZF6PE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Otherbu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "125584c3-a925-4dd2-a5e4-1ea60fabd407";
 			};
 			name = Debug;
 		};
@@ -502,9 +513,12 @@
 			baseConfigurationReference = 9EA2AE421497E7D0C4741265 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ryo Fujimoto (QDS4AZF6PE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Otherbu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "125584c3-a925-4dd2-a5e4-1ea60fabd407";
 			};
 			name = Release;
 		};
@@ -512,6 +526,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -523,6 +539,7 @@
 				INFOPLIST_FILE = OtherbuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Otherbu.app/Otherbu";
 			};
 			name = Debug;
@@ -531,6 +548,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -538,6 +557,7 @@
 				INFOPLIST_FILE = OtherbuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Otherbu.app/Otherbu";
 			};
 			name = Release;

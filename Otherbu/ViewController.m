@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SectionHeaderView.h"
+#import "InnerTableView.h"
 #import "TableCellView.h"
 #import "DataManager.h"
 #import "BookmarkData.h"
@@ -56,11 +57,8 @@ static const NSInteger NumberOfPages = 3;
     // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
         CGRect rect = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
-        UITableView *innerTableView = [[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
-        innerTableView.tag = i;
-        innerTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        innerTableView.delegate = self;
-        innerTableView.dataSource = self;
+        InnerTableView *innerTableView = [InnerTableView initWithTag:i frame:rect];
+        [innerTableView setUpWithViewController:self];
         [_scrollView addSubview:innerTableView];
     }
 }
@@ -103,12 +101,11 @@ static const NSInteger NumberOfPages = 3;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == _scrollView) {
-        CGPoint origin = [scrollView contentOffset];
-        [scrollView setContentOffset:CGPointMake(origin.x, 0.0)];
+        CGPoint currentPoint = [scrollView contentOffset];
+        [scrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
 
          // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
          _pageControl.currentPage = _scrollView.contentOffset.x / _viewWidth;
-
     }
 }
 
