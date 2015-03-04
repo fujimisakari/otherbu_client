@@ -34,7 +34,7 @@ static const NSInteger NumberOfPages = 3;
     // setup view init
     _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
     _viewWidth = self.view.frame.size.width;
-    _viewHeight = self.view.frame.size.height;
+    _viewHeight = _scrollView.frame.size.height - 40;
 
     [self refreshBookmarks:self];
 
