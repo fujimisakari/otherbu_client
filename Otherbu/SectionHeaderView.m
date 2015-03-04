@@ -24,8 +24,6 @@
     NSInteger _tag;
 }
 
-#pragma mark - initialization
-
 // デフォルト設定で初期化
 - (id)initWithCategory:(CategoryData *)categoryData frame:(CGRect)frame section:(NSInteger)section tag:(NSInteger)tag {
     self = [super initWithFrame:frame];
@@ -39,6 +37,12 @@
         [self addTapGesture];
     }
     return self;
+}
+
+- (void)setFrame:(CGRect)frame {
+    frame.origin.x += 10;
+    frame.size.width -= 2 * 10;
+    [super setFrame:frame];
 }
 
 #pragma mark - Private Methods

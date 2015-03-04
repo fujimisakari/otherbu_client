@@ -49,6 +49,12 @@
     return self;
 }
 
+- (void)setFrame:(CGRect)frame {
+    frame.origin.x += 10;
+    frame.size.width = _tableView.contentSize.width - 20;
+    [super setFrame:frame];
+}
+
 #pragma mark - Private Methods
 
 - (void)setupBackground {
@@ -60,8 +66,7 @@
 
     // 前面の背景指定
     CALayer *layer = [CALayer layer];
-    // layer.frame = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, self.bounds.size.width - 10, self.bounds.size.height);
-    layer.frame = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, _tableView.contentSize.width - 10, self.bounds.size.height);
+    layer.frame = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, _tableView.contentSize.width - 30, self.bounds.size.height);
     layer.backgroundColor = [UIColor blackColor].CGColor;
     [cellBackgroundView.layer addSublayer:layer];
 
@@ -78,7 +83,7 @@
 
 - (void)setupBorder {
     // セルのボーダーライン配置（既定のだと後面の背景まで線が越えてしまうため）
-    CGRect rect = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, _tableView.contentSize.width - 10, 0.5f);
+    CGRect rect = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, _tableView.contentSize.width - 30, 0.5f);
     UIView *borderline = [[UIView alloc] initWithFrame:rect];
     borderline.backgroundColor = [UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1.0f];
     [self.contentView addSubview:borderline];
