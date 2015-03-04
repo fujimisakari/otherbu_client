@@ -34,7 +34,9 @@ static const NSInteger NumberOfPages = 3;
     // setup view init
     _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
     _viewWidth = self.view.frame.size.width;
-    _viewHeight = _scrollView.frame.size.height - 40;
+    _viewHeight = self.view.frame.size.height - 30; // todo この30はなんとかする
+    // NSLog(@"%f", _scrollView.frame.size.height);
+    // NSLog(@"%f", self.view.frame.size.height);
 
     [self refreshBookmarks:self];
 
@@ -55,9 +57,15 @@ static const NSInteger NumberOfPages = 3;
     _scrollView.scrollsToTop = NO;  // ステータスバータップでトップにスクロールする機能をOFFにする
 
     // setup innerTableView
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
+    [[UIImage imageNamed:@"wood_wallpeper.jpg"] drawInRect:self.view.bounds];
+    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
     for (int i = 1; i < LastAngle; ++i) {
         CGRect rect = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
         InnerTableView *innerTableView = [InnerTableView initWithTag:i frame:rect];
+        innerTableView.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
         [innerTableView setUpWithViewController:self];
         [_scrollView addSubview:innerTableView];
     }
@@ -185,29 +193,6 @@ static const NSInteger NumberOfPages = 3;
     return cell;
 }
 
-// - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//     PageData *page = [[DataManager sharedManager] getPage:_pageId];
-//     if (page) {
-//         CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][indexPath.section];
-//         NSArray *bookmarkList = [categoryData getBookmarkList];
-//         TableCellView *cell = [cell setUpWithPageData:page tableView:tableView indexPath:indexPath];
-//         NSLog(@"section----------------- %ld", indexPath.section);
-//         NSLog(@"count----------------- %ld", bookmarkList.count);
-//         NSLog(@"row----------------- %ld", indexPath.row);
-
-//         int ss = indexPath.row + 1;
-//         if (ss == bookmarkList.count) {
-//             NSLog(@"last-----------------");
-//             [cell setMaskLayer];
-//             return 50.0;
-//         } else {
-//             NSLog(@"maddd-----------------");
-//             return 44.0;
-//         }
-//     }
-//     return 0;
-// }
-
 #pragma mark - UITableViewDelegate
 
 /**
@@ -224,7 +209,7 @@ static const NSInteger NumberOfPages = 3;
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
-        CGRect frame = CGRectMake(0, 0, tableView.frame.size.width, 40);
+        CGRect frame = CGRectMake(0, 0, tableView.frame.size.width, 40); // todo 40はなんとかする
         SectionHeaderView *containerView =
             [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section tag:tableView.tag];
         containerView.delegate = self;

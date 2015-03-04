@@ -13,6 +13,7 @@
 #import "ColorData.h"
 
 @implementation TableCellView {
+    NSIndexPath *_indexPath;
     UITableView *_tableView;
     CategoryData *_category;
     BookmarkData *_bookmark;
@@ -24,6 +25,7 @@
 }
 
 - (id)setUpWithPageData:(PageData *)page tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    _indexPath = indexPath;
     _tableView = tableView;
     _category = [page getCategoryListByTag:_tableView.tag][indexPath.section];
     _bookmark = [_category getBookmarkList][indexPath.row];
@@ -55,24 +57,6 @@
     [super setFrame:frame];
 }
 
-
-/**
- 角丸のmaskLayerを設定する
- */
-- (void)setMaskLayer {
-    UIBezierPath *maskPath;
-    maskPath = [UIBezierPath
-        bezierPathWithRoundedRect:self.bounds
-                byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)
-                      cornerRadii:CGSizeMake(12.0, 12.0)];
-
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = self.bounds;
-    maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
-}
-
-
 #pragma mark - Private Methods
 
 - (void)setupBackground {
@@ -82,13 +66,46 @@
     // 後面の背景指定
     cellBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
 
+    // セクションの最後のセルの場合はfooterのUIViewを付ける
+    if ([self isLastCellOfSection]) {
+        UIView *footerView = [self createFooterViewOfLastCell];
+        [cellBackgroundView addSubview:footerView];
+    }
+
     // 前面の背景指定
+    float width = _tableView.contentSize.width - 30;
+    float height = self.bounds.size.height;
     CALayer *layer = [CALayer layer];
-    layer.frame = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, _tableView.contentSize.width - 30, self.bounds.size.height);
+    layer.frame = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, width, height);
     layer.backgroundColor = [UIColor blackColor].CGColor;
     [cellBackgroundView.layer addSublayer:layer];
 
     self.backgroundView = cellBackgroundView;
+}
+
+- (UIView *)createFooterViewOfLastCell {
+    int x = self.bounds.origin.x;
+    int y = self.bounds.origin.y + self.bounds.size.height;
+    float width = _tableView.contentSize.width - 20;  // todo この20をなんとかする
+    float height = 5;
+    CGRect rect = CGRectMake(x, y, width, height);
+
+    UIView *footerView = [[UIView alloc] initWithFrame:rect];
+    footerView.backgroundColor = [[_category color] getCellBackGroundColor];
+
+    // 角丸にする
+    UIBezierPath *maskPath;
+    maskPath = [UIBezierPath
+        bezierPathWithRoundedRect:footerView.bounds
+                byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)
+                      cornerRadii:CGSizeMake(24.0, 24.0)];
+
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = footerView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    footerView.layer.mask = maskLayer;
+
+    return footerView;
 }
 
 - (void)setupText {
@@ -105,6 +122,12 @@
     UIView *borderline = [[UIView alloc] initWithFrame:rect];
     borderline.backgroundColor = [UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1.0f];
     [self.contentView addSubview:borderline];
+}
+
+- (BOOL)isLastCellOfSection {
+    NSArray *bookmarkList = [_category getBookmarkList];
+    int lastCellIndex = _indexPath.row + 1;
+    return (lastCellIndex == bookmarkList.count) ? YES : NO;
 }
 
 @end

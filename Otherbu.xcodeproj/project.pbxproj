@@ -24,6 +24,7 @@
 		7B565F231A9249FA00D6A420 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F1E1A9249FA00D6A420 /* DataManager.m */; };
 		7B565F241A9249FA00D6A420 /* PageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F201A9249FA00D6A420 /* PageData.m */; };
 		7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F681A96565500D6A420 /* OtherbuAPIClient.m */; };
+		7BE555071AA78945009D50B8 /* wood_wallpeper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */; };
 		C598670734C75CA12CEEA2B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAE3DF2804B4E2305DACDCD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		7B565F201A9249FA00D6A420 /* PageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageData.m; sourceTree = "<group>"; };
 		7B565F671A96565500D6A420 /* OtherbuAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherbuAPIClient.h; sourceTree = "<group>"; };
 		7B565F681A96565500D6A420 /* OtherbuAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherbuAPIClient.m; sourceTree = "<group>"; };
+		7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood_wallpeper.jpg; sourceTree = "<group>"; };
 		7EAE3DF2804B4E2305DACDCD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA2AE421497E7D0C4741265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A68444AA09945B1E11DBE4E7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				7B565F2B1A938A9600D6A420 /* Controller */,
 				7B565F251A924A1000D6A420 /* Model */,
 				7B565F001A92486F00D6A420 /* Images.xcassets */,
+				7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */,
 				7B565F021A92486F00D6A420 /* LaunchScreen.xib */,
 				7B565EF31A92486F00D6A420 /* Supporting Files */,
 			);
@@ -310,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B565EFF1A92486F00D6A420 /* Main.storyboard in Resources */,
+				7BE555071AA78945009D50B8 /* wood_wallpeper.jpg in Resources */,
 				7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */,
 				7B565F011A92486F00D6A420 /* Images.xcassets in Resources */,
 			);
