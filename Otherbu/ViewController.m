@@ -34,9 +34,7 @@ static const NSInteger NumberOfPages = 3;
     // setup view init
     _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
     _viewWidth = self.view.frame.size.width;
-    _viewHeight = self.view.frame.size.height - 30; // todo この30はなんとかする
-    // NSLog(@"%f", _scrollView.frame.size.height);
-    // NSLog(@"%f", self.view.frame.size.height);
+    _viewHeight = self.view.frame.size.height - _scrollView.frame.origin.y;
 
     [self refreshBookmarks:self];
 
@@ -47,7 +45,6 @@ static const NSInteger NumberOfPages = 3;
 
     // setup ScrollView
     _scrollView.delegate = self;
-    _scrollView.frame = self.view.bounds;
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     // 横にページスクロールできるようにコンテンツの大きさを横長に設定
     _scrollView.contentSize = CGSizeMake(_viewWidth * NumberOfPages, _viewHeight);
@@ -56,15 +53,16 @@ static const NSInteger NumberOfPages = 3;
     _scrollView.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
     _scrollView.scrollsToTop = NO;  // ステータスバータップでトップにスクロールする機能をOFFにする
 
-    // setup innerTableView
+    // setup BackgroundImage
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
     [[UIImage imageNamed:@"wood-wallpeper.jpg"] drawInRect:self.view.bounds];
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
 
+    // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
-        CGRect rect = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
+        CGRect rect = CGRectMake(_viewWidth * (i - 1), _scrollView.frame.origin.y, _viewWidth, _viewHeight);
         InnerTableView *innerTableView = [InnerTableView initWithTag:i frame:rect];
         [innerTableView setUpWithViewController:self];
         [_scrollView addSubview:innerTableView];
