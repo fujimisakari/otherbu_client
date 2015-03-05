@@ -31,6 +31,9 @@ static const NSInteger NumberOfPages = 3;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    // ステータスバーを文字を白にする
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     // setup view init
     _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
     _viewWidth = self.view.frame.size.width;
@@ -39,7 +42,7 @@ static const NSInteger NumberOfPages = 3;
     [self refreshBookmarks:self];
 
     // setup PageControl
-    _pageControl.backgroundColor = [UIColor blackColor];  // 背景色を設定
+    // _pageControl.backgroundColor = [UIColor blackColor];  // 背景色を設定
     _pageControl.numberOfPages = NumberOfPages;           // ページ数を設定
     _pageControl.currentPage = 0;                         // 現在のページを設定
 
