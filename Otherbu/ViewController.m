@@ -58,14 +58,14 @@ static const NSInteger NumberOfPages = 3;
 
     // setup innerTableView
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
-    [[UIImage imageNamed:@"wood_wallpeper.jpg"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:@"wood-wallpeper.jpg"] drawInRect:self.view.bounds];
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
 
     for (int i = 1; i < LastAngle; ++i) {
         CGRect rect = CGRectMake(_viewWidth * (i - 1), 0, _viewWidth, _viewHeight);
         InnerTableView *innerTableView = [InnerTableView initWithTag:i frame:rect];
-        innerTableView.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
         [innerTableView setUpWithViewController:self];
         [_scrollView addSubview:innerTableView];
     }

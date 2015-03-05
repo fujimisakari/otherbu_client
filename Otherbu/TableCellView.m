@@ -52,6 +52,7 @@
 }
 
 - (void)setFrame:(CGRect)frame {
+    // todo このマジックナンバーをなんとかする
     frame.origin.x += 10;
     frame.size.width = _tableView.contentSize.width - 20;
     [super setFrame:frame];
@@ -73,7 +74,7 @@
     }
 
     // 前面の背景指定
-    float width = _tableView.contentSize.width - 30;
+    float width = _tableView.contentSize.width - 30;  // todo この30をなんとかする
     float height = self.bounds.size.height;
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, width, height);

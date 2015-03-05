@@ -18,9 +18,18 @@
 }
 
 - (id)setUpWithViewController:(ViewController *)viewController {
-    self.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.separatorStyle = UITableViewCellSeparatorStyleNone; // 自前で区切り線は用意するので利用しない
     self.delegate = viewController;
     self.dataSource = viewController;
+
+    // テーブルの上部に余白を空ける
+    self.contentInset = UIEdgeInsetsMake(35.0, 0, 0, 0);
+
+    // 背景は透過させる
+    UIColor *color = [UIColor blackColor];
+    UIColor *alphaColor = [color colorWithAlphaComponent:0.0];
+    self.backgroundColor = alphaColor;
+
     return self;
 }
 
