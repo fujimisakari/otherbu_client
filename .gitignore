@@ -24,3 +24,5 @@ Podfile.lock
 *.swp
 !.gitkeep
 .DS_Store
+
+_frameworks
