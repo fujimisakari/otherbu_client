@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -16,24 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FL-Uu-96L">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </scrollView>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7q-bE-bwn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="65H-Lh-BlT"/>
+                                </items>
+                            </navigationBar>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="89Z-XC-jgZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="b7v-4X-NPM"/>
                                 </constraints>
                             </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FL-Uu-96L">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="89Z-XC-jgZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="1mm-HP-SO6"/>
+                            <constraint firstItem="r7q-bE-bwn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HNo-qb-q3Q"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7FL-Uu-96L" secondAttribute="bottom" id="HdM-SP-say"/>
                             <constraint firstAttribute="trailing" secondItem="7FL-Uu-96L" secondAttribute="trailing" id="Iw1-at-Kdd"/>
                             <constraint firstItem="7FL-Uu-96L" firstAttribute="top" secondItem="89Z-XC-jgZ" secondAttribute="bottom" id="Ju9-eC-k0I"/>
                             <constraint firstItem="89Z-XC-jgZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XQ6-r3-3Lo"/>
                             <constraint firstAttribute="trailing" secondItem="89Z-XC-jgZ" secondAttribute="trailing" id="jJh-Gv-5dg"/>
+                            <constraint firstAttribute="trailing" secondItem="r7q-bE-bwn" secondAttribute="trailing" id="qlr-zC-W8O"/>
                             <constraint firstItem="7FL-Uu-96L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wb7-vo-McY"/>
                         </constraints>
                     </view>
