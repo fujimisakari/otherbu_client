@@ -47,12 +47,16 @@ static const NSInteger NumberOfPages = 3;
     _pageControl.currentPage = 0;                         // 現在のページを設定
 
     // setup NavigationBar
-    _navigationBar.topItem.title = @"Otherbu";
+    _navigationBar.topItem.title = @"Otherbu";  // タイトル設定
+    // カラーフォント設定
     NSDictionary *attributes = @{
         UITextAttributeFont : [UIFont fontWithName:@"Futura-Medium" size:18],
         UITextAttributeTextColor : [UIColor whiteColor],
     };
     [_navigationBar setTitleTextAttributes:attributes];
+    // 位置設定
+    CGFloat verticalOffset = -10;
+    [_navigationBar setTitleVerticalPositionAdjustment:verticalOffset forBarMetrics:UIBarMetricsDefault];
 
     // setup ScrollView
     _scrollView.delegate = self;
@@ -73,7 +77,7 @@ static const NSInteger NumberOfPages = 3;
 
     // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
-        CGRect rect = CGRectMake(_viewWidth * (i - 1), _scrollView.frame.origin.y, _viewWidth, _viewHeight);
+        CGRect rect = CGRectMake(_viewWidth * (i - 1), _scrollView.bounds.origin.y, _viewWidth, _viewHeight);
         InnerTableView *innerTableView = [InnerTableView initWithTag:i frame:rect];
         [innerTableView setUpWithViewController:self];
         [_scrollView addSubview:innerTableView];
