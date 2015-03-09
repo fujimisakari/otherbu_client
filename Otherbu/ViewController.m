@@ -46,6 +46,14 @@ static const NSInteger NumberOfPages = 3;
     _pageControl.numberOfPages = NumberOfPages;           // ページ数を設定
     _pageControl.currentPage = 0;                         // 現在のページを設定
 
+    // setup NavigationBar
+    _navigationBar.topItem.title = @"Otherbu";
+    NSDictionary *attributes = @{
+        UITextAttributeFont : [UIFont fontWithName:@"Futura-Medium" size:18],
+        UITextAttributeTextColor : [UIColor whiteColor],
+    };
+    [_navigationBar setTitleTextAttributes:attributes];
+
     // setup ScrollView
     _scrollView.delegate = self;
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

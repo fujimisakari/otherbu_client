@@ -114,7 +114,8 @@
     self.textLabel.textColor = [UIColor whiteColor];
     self.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:16];
     self.detailTextLabel.text = _bookmark.url;
-    self.detailTextLabel.textColor = [UIColor whiteColor];
+    self.detailTextLabel.textColor = [UIColor lightGrayColor];
+    self.detailTextLabel.font = [UIFont fontWithName:@"Futura-Medium" size:12];
 }
 
 - (void)setupBorder {

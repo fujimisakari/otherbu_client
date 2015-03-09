@@ -24,6 +24,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="dLg-go-bRP"/>
                                 </constraints>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Title" id="65H-Lh-BlT"/>
                                 </items>
@@ -50,6 +54,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="r7q-bE-bwn" id="btM-ba-sXT"/>
                         <outlet property="pageControl" destination="89Z-XC-jgZ" id="eKb-Wj-YP7"/>
                         <outlet property="scrollView" destination="7FL-Uu-96L" id="SFR-P8-eS7"/>
                     </connections>

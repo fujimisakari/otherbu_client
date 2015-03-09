@@ -103,10 +103,11 @@
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = _categoryData.name;
     titleLbl.textColor = [UIColor whiteColor];
+    titleLbl.font = [UIFont fontWithName:@"Futura-Medium" size:18];
     titleLbl.backgroundColor = [UIColor clearColor];
     [titleLbl sizeToFit];
     CGSize lglSize = titleLbl.frame.size;
-    titleLbl.frame = CGRectMake(50, 10, lglSize.width, lglSize.height);
+    titleLbl.frame = CGRectMake(50, 7, lglSize.width, lglSize.height);
     [self addSubview:titleLbl];
 }
 
