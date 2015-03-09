@@ -55,7 +55,7 @@ static const NSInteger NumberOfPages = 3;
     };
     [_navigationBar setTitleTextAttributes:attributes];
     // 位置設定
-    CGFloat verticalOffset = -10;
+    CGFloat verticalOffset = -7;
     [_navigationBar setTitleVerticalPositionAdjustment:verticalOffset forBarMetrics:UIBarMetricsDefault];
 
     // setup ScrollView
