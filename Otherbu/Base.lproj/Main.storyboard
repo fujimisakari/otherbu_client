@@ -19,8 +19,11 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FL-Uu-96L">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                             </scrollView>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r7q-bE-bwn">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7q-bE-bwn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="dLg-go-bRP"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Title" id="65H-Lh-BlT"/>
                                 </items>
@@ -43,6 +46,7 @@
                             <constraint firstAttribute="trailing" secondItem="89Z-XC-jgZ" secondAttribute="trailing" id="jJh-Gv-5dg"/>
                             <constraint firstAttribute="trailing" secondItem="r7q-bE-bwn" secondAttribute="trailing" id="qlr-zC-W8O"/>
                             <constraint firstItem="7FL-Uu-96L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wb7-vo-McY"/>
+                            <constraint firstItem="r7q-bE-bwn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zOe-bH-p1q"/>
                         </constraints>
                     </view>
                     <connections>
