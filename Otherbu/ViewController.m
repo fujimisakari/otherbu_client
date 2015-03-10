@@ -16,17 +16,14 @@
 #import "ColorData.h"
 #import "PageData.h"
 
-@interface ViewController ()
-
-@end
-
 @implementation ViewController {
     NSNumber *_pageId;
     NSInteger _viewWidth;
     NSInteger _viewHeight;
 }
 
-static const NSInteger NumberOfPages = 3;
+static const NSInteger NumberOfPages = 3;  // ページ数
+static const CGFloat NavTitleVerticalOffset = -7;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +50,7 @@ static const NSInteger NumberOfPages = 3;
         @{NSFontAttributeName : [UIFont fontWithName:@"Futura-Medium" size:18], NSForegroundColorAttributeName : [UIColor whiteColor], };
     [_navigationBar setTitleTextAttributes:attributes];
     // 位置設定
-    CGFloat verticalOffset = -7;
+    CGFloat verticalOffset = NavTitleVerticalOffset;
     [_navigationBar setTitleVerticalPositionAdjustment:verticalOffset forBarMetrics:UIBarMetricsDefault];
 
     // setup ScrollView
@@ -67,16 +64,7 @@ static const NSInteger NumberOfPages = 3;
     _scrollView.scrollsToTop = NO;  // ステータスバータップでトップにスクロールする機能をOFFにする
 
     // setup BackgroundImage
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
-    [[UIImage imageNamed:@"wood-wallpeper.jpg"] drawInRect:self.view.bounds];
-    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    CALayer *layer = [CALayer layer];
-    layer.contents = (id)backgroundImage.CGImage;
-    layer.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
-                             self.view.frame.size.width, self.view.frame.size.height);
-    layer.zPosition = -1.0;
-    [self.view.layer addSublayer:layer];
+    [self setupBackgroundImage];
 
     // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
@@ -299,6 +287,22 @@ static const NSInteger NumberOfPages = 3;
         [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:section]];
     }
     [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+}
+
+/**
+ 背景を設定する
+ */
+- (void)setupBackgroundImage {
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
+    [[UIImage imageNamed:@"wood-wallpeper.jpg"] drawInRect:self.view.bounds];
+    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CALayer *layer = [CALayer layer];
+    layer.contents = (id)backgroundImage.CGImage;
+    layer.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
+                             self.view.frame.size.width, self.view.frame.size.height);
+    layer.zPosition = -1.0;
+    [self.view.layer addSublayer:layer];
 }
 
 @end

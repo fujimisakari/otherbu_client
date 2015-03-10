@@ -107,7 +107,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7B39F52F1A9CEEA70036CB69 /* View */ = {
+		7B39F52F1A9CEEA70036CB69 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				7B39F5391AA39BCA0036CB69 /* TableCellView.h */,
@@ -117,7 +117,7 @@
 				7B39F52C1A9CEE860036CB69 /* SectionHeaderView.h */,
 				7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */,
 			);
-			name = View;
+			name = CustomView;
 			sourceTree = "<group>";
 		};
 		7B39F5351AA31F7A0036CB69 /* Utility */ = {
@@ -155,9 +155,9 @@
 				7B565EF71A92486F00D6A420 /* AppDelegate.h */,
 				7B565EF81A92486F00D6A420 /* AppDelegate.m */,
 				7B565EFD1A92486F00D6A420 /* Main.storyboard */,
-				7B39F52F1A9CEEA70036CB69 /* View */,
-				7B565F2B1A938A9600D6A420 /* Controller */,
+				7B565F2B1A938A9600D6A420 /* MainView */,
 				7B565F251A924A1000D6A420 /* Model */,
+				7B39F5351AA31F7A0036CB69 /* Utility */,
 				7B565F001A92486F00D6A420 /* Images.xcassets */,
 				7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */,
 				590F230E1AA81F4900589E7C /* wood-wallpeper.jpg */,
@@ -212,14 +212,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		7B565F2B1A938A9600D6A420 /* Controller */ = {
+		7B565F2B1A938A9600D6A420 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				7B565EFA1A92486F00D6A420 /* ViewController.h */,
 				7B565EFB1A92486F00D6A420 /* ViewController.m */,
-				7B39F5351AA31F7A0036CB69 /* Utility */,
+				7B39F52F1A9CEEA70036CB69 /* CustomView */,
 			);
-			name = Controller;
+			name = MainView;
 			sourceTree = "<group>";
 		};
 		CBC7E21A43E4C7771A9B3CF5 /* Pods */ = {
