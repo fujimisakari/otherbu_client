@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class ViewController;
+@class MainViewController;
 
 @interface InnerTableView : UITableView
 
 + (id)initWithTag:(int)tag frame:(CGRect)rect;
 
-- (id)setUpWithViewController:(ViewController *)viewController;
+- (id)setUpWithViewController:(MainViewController *)viewController;
 
 @end

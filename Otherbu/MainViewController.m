@@ -1,13 +1,14 @@
 //
-//  ViewController.m
+//  MainViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari on 2015/02/17.
 //  Copyright (c) 2015年 fujimisakari. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "SectionHeaderView.h"
+#import "ScrollView.h"
 #import "InnerTableView.h"
 #import "TableCellView.h"
 #import "DataManager.h"
@@ -16,7 +17,7 @@
 #import "ColorData.h"
 #import "PageData.h"
 
-@implementation ViewController {
+@implementation MainViewController {
     NSNumber *_pageId;
     NSInteger _viewWidth;
     NSInteger _viewHeight;
@@ -37,7 +38,10 @@ static const CGFloat NavTitleVerticalOffset = -7;
 
     // setup view init
     _viewWidth = self.view.frame.size.width;
-    _viewHeight = self.view.frame.size.height - _scrollView.frame.origin.y;
+    _viewHeight = self.view.frame.size.height - _navigationBar.frame.size.height;
+
+    // setup BackgroundImage
+    [self setupBackgroundImage];
 
     // setup PageControl
     _pageControl.numberOfPages = NumberOfPages;  // ページ数を設定
@@ -54,25 +58,8 @@ static const CGFloat NavTitleVerticalOffset = -7;
     [_navigationBar setTitleVerticalPositionAdjustment:verticalOffset forBarMetrics:UIBarMetricsDefault];
 
     // setup ScrollView
-    _scrollView.delegate = self;
-    _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    // 横にページスクロールできるようにコンテンツの大きさを横長に設定
-    _scrollView.contentSize = CGSizeMake(_viewWidth * NumberOfPages, _viewHeight);
-    _scrollView.pagingEnabled = YES;                  // ページごとのスクロールにする
-    _scrollView.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
-    _scrollView.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
-    _scrollView.scrollsToTop = NO;  // ステータスバータップでトップにスクロールする機能をOFFにする
-
-    // setup BackgroundImage
-    [self setupBackgroundImage];
-
-    // setup innerTableView
-    for (int i = 1; i < LastAngle; ++i) {
-        CGRect rect = CGRectMake(_viewWidth * (i - 1), _scrollView.bounds.origin.y, _viewWidth, _viewHeight);
-        InnerTableView *innerTableView = [InnerTableView initWithTag:i frame:rect];
-        [innerTableView setUpWithViewController:self];
-        [_scrollView addSubview:innerTableView];
-    }
+    CGSize cgSize = CGSizeMake(_viewWidth * NumberOfPages, _viewHeight);
+    [_scrollView setUpWithCGSize:cgSize viewController:self];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
