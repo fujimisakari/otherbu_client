@@ -23,7 +23,7 @@
     self.dataSource = viewController;
 
     // テーブルの上部に余白を空ける
-    self.contentInset = UIEdgeInsetsMake(35.0, 0, 0, 0);
+    self.contentInset = UIEdgeInsetsMake(20.0, 0, 0, 0);
 
     // 背景は透過させる
     UIColor *color = [UIColor blackColor];

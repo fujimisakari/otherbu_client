@@ -17,6 +17,7 @@
     UITableView *_tableView;
     CategoryData *_category;
     BookmarkData *_bookmark;
+    UIView *_cellBackgroundView;
 };
 
 + (id)initWithCellIdentifier:(NSString *)cellIdentifier {
@@ -29,6 +30,7 @@
     _tableView = tableView;
     _category = [page getCategoryListByTag:_tableView.tag][indexPath.section];
     _bookmark = [_category getBookmarkList][indexPath.row];
+    _cellBackgroundView = [[UIView alloc] init];
 
     // 背景設定
     [self setupBackground];
@@ -62,15 +64,13 @@
 
 - (void)setupBackground {
 
-    UIView *cellBackgroundView = [[UIView alloc] init];
-
     // 後面の背景指定
-    cellBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
+    _cellBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
 
     // セクションの最後のセルの場合はfooterのUIViewを付ける
     if ([self isLastCellOfSection]) {
         UIView *footerView = [self createFooterViewOfLastCell];
-        [cellBackgroundView addSubview:footerView];
+        [_cellBackgroundView addSubview:footerView];
     }
 
     // 前面の背景指定
@@ -79,9 +79,9 @@
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, width, height);
     layer.backgroundColor = [UIColor blackColor].CGColor;
-    [cellBackgroundView.layer addSublayer:layer];
+    [_cellBackgroundView.layer addSublayer:layer];
 
-    self.backgroundView = cellBackgroundView;
+    self.backgroundView = _cellBackgroundView;
 }
 
 - (UIView *)createFooterViewOfLastCell {
@@ -120,15 +120,21 @@
 
 - (void)setupBorder {
     // セルのボーダーライン配置（既定のだと後面の背景まで線が越えてしまうため）
-    CGRect rect = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, _tableView.contentSize.width - 30, 0.5f);
-    UIView *borderline = [[UIView alloc] initWithFrame:rect];
-    borderline.backgroundColor = [UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1.0f];
-    [self.contentView addSubview:borderline];
+    if (![self isFirstCellOfSection]) {
+        CGRect rect = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, _tableView.contentSize.width - 30, 0.5f);
+        UIView *borderline = [[UIView alloc] initWithFrame:rect];
+        borderline.backgroundColor = [UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1.0f];
+        [_cellBackgroundView addSubview:borderline];
+    }
+}
+
+- (BOOL)isFirstCellOfSection {
+    return (_indexPath.row == 0) ? YES : NO;
 }
 
 - (BOOL)isLastCellOfSection {
     NSArray *bookmarkList = [_category getBookmarkList];
-    int lastCellIndex = _indexPath.row + 1;
+    int lastCellIndex = (int)_indexPath.row + 1;
     return (lastCellIndex == bookmarkList.count) ? YES : NO;
 }
 

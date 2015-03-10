@@ -34,25 +34,23 @@ static const NSInteger NumberOfPages = 3;
     // ステータスバーを文字を白にする
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
-    // setup view init
     _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
-    _viewWidth = self.view.frame.size.width;
-    _viewHeight = self.view.frame.size.height - _scrollView.frame.origin.y;
 
     [self refreshBookmarks:self];
 
+    // setup view init
+    _viewWidth = self.view.frame.size.width;
+    _viewHeight = self.view.frame.size.height - _scrollView.frame.origin.y;
+
     // setup PageControl
-    // _pageControl.backgroundColor = [UIColor blackColor];  // 背景色を設定
-    _pageControl.numberOfPages = NumberOfPages;           // ページ数を設定
-    _pageControl.currentPage = 0;                         // 現在のページを設定
+    _pageControl.numberOfPages = NumberOfPages;  // ページ数を設定
+    _pageControl.currentPage = 0;                // 現在のページを設定
 
     // setup NavigationBar
     _navigationBar.topItem.title = @"Otherbu";  // タイトル設定
     // カラーフォント設定
-    NSDictionary *attributes = @{
-        UITextAttributeFont : [UIFont fontWithName:@"Futura-Medium" size:18],
-        UITextAttributeTextColor : [UIColor whiteColor],
-    };
+    NSDictionary *attributes =
+        @{NSFontAttributeName : [UIFont fontWithName:@"Futura-Medium" size:18], NSForegroundColorAttributeName : [UIColor whiteColor], };
     [_navigationBar setTitleTextAttributes:attributes];
     // 位置設定
     CGFloat verticalOffset = -7;
@@ -73,7 +71,12 @@ static const NSInteger NumberOfPages = 3;
     [[UIImage imageNamed:@"wood-wallpeper.jpg"] drawInRect:self.view.bounds];
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    self.view.backgroundColor = [UIColor colorWithPatternImage:backgroundImage];
+    CALayer *layer = [CALayer layer];
+    layer.contents = (id)backgroundImage.CGImage;
+    layer.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
+                             self.view.frame.size.width, self.view.frame.size.height);
+    layer.zPosition = -1.0;
+    [self.view.layer addSublayer:layer];
 
     // setup innerTableView
     for (int i = 1; i < LastAngle; ++i) {
