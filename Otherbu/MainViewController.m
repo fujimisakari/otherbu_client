@@ -16,15 +16,13 @@
 #import "CategoryData.h"
 #import "ColorData.h"
 #import "PageData.h"
+#import "Constants.h"
 
 @implementation MainViewController {
     NSNumber *_pageId;
-    NSInteger _viewWidth;
-    NSInteger _viewHeight;
+    float _viewWidth;
+    float _viewHeight;
 }
-
-static const NSInteger NumberOfPages = 3;  // ページ数
-static const CGFloat NavTitleVerticalOffset = -7;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,21 +42,22 @@ static const CGFloat NavTitleVerticalOffset = -7;
     [self setupBackgroundImage];
 
     // setup PageControl
-    _pageControl.numberOfPages = NumberOfPages;  // ページ数を設定
-    _pageControl.currentPage = 0;                // 現在のページを設定
+    _pageControl.numberOfPages = kNumberOfPages;  // ページ数を設定
+    _pageControl.currentPage = 0;                 // 現在のページを設定
 
     // setup NavigationBar
-    _navigationBar.topItem.title = @"Otherbu";  // タイトル設定
-    // カラーフォント設定
-    NSDictionary *attributes =
-        @{NSFontAttributeName : [UIFont fontWithName:@"Futura-Medium" size:18], NSForegroundColorAttributeName : [UIColor whiteColor], };
+    _navigationBar.topItem.title = kTitle;  // タイトル設定
+    // フォントのカラー設定
+    NSDictionary *attributes = @{
+        NSFontAttributeName : [UIFont fontWithName:kDefaultFont size:kFontSizeOfTitle],
+        NSForegroundColorAttributeName : [UIColor whiteColor],
+    };
     [_navigationBar setTitleTextAttributes:attributes];
-    // 位置設定
-    CGFloat verticalOffset = NavTitleVerticalOffset;
-    [_navigationBar setTitleVerticalPositionAdjustment:verticalOffset forBarMetrics:UIBarMetricsDefault];
+    // フォントの位置設定
+    [_navigationBar setTitleVerticalPositionAdjustment:kVerticalOffsetOfTitle forBarMetrics:UIBarMetricsDefault];
 
     // setup ScrollView
-    CGSize cgSize = CGSizeMake(_viewWidth * NumberOfPages, _viewHeight);
+    CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
     [_scrollView setUpWithCGSize:cgSize viewController:self];
 }
 
@@ -169,7 +168,6 @@ static const CGFloat NavTitleVerticalOffset = -7;
  * 指定された箇所のセルを作成する
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     NSString *cellIdentifier = @"Cell";
     TableCellView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 
@@ -190,7 +188,7 @@ static const CGFloat NavTitleVerticalOffset = -7;
  セクションヘッダーの高さを返す
  */
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40.0f;
+    return kHeightOfSectionHeader;
 }
 
 /**
@@ -200,7 +198,7 @@ static const CGFloat NavTitleVerticalOffset = -7;
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
         CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
-        CGRect frame = CGRectMake(0, 0, tableView.frame.size.width, 40); // todo 40はなんとかする
+        CGRect frame = CGRectMake(0, 0, _viewWidth, kHeightOfSectionHeader);
         SectionHeaderView *containerView =
             [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section tag:tableView.tag];
         containerView.delegate = self;
@@ -214,7 +212,7 @@ static const CGFloat NavTitleVerticalOffset = -7;
  セルタップ時に実行される処理
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 今回は何もしない
+    // まだ何もしない
 }
 
 #pragma mark - CustomSectionHeaderViewDelegate

@@ -27,6 +27,7 @@
 		7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F681A96565500D6A420 /* OtherbuAPIClient.m */; };
 		7BE555071AA78945009D50B8 /* wood_wallpeper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */; };
 		7BF6979D1AAF4ADA008C1BAE /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979C1AAF4ADA008C1BAE /* ScrollView.m */; };
+		7BF697A01AAF657E008C1BAE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979F1AAF657E008C1BAE /* Constants.m */; };
 		C598670734C75CA12CEEA2B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAE3DF2804B4E2305DACDCD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,8 @@
 		7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood_wallpeper.jpg; sourceTree = "<group>"; };
 		7BF6979B1AAF4ADA008C1BAE /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
 		7BF6979C1AAF4ADA008C1BAE /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
+		7BF6979E1AAF657E008C1BAE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		7BF6979F1AAF657E008C1BAE /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		7EAE3DF2804B4E2305DACDCD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA2AE421497E7D0C4741265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A68444AA09945B1E11DBE4E7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 			children = (
 				7B39F5321AA31DA20036CB69 /* UIColor+Hex.h */,
 				7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */,
+				7BF6979E1AAF657E008C1BAE /* Constants.h */,
+				7BF6979F1AAF657E008C1BAE /* Constants.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */,
 				7B565F241A9249FA00D6A420 /* PageData.m in Sources */,
 				7B565EFC1A92486F00D6A420 /* MainViewController.m in Sources */,
+				7BF697A01AAF657E008C1BAE /* Constants.m in Sources */,
 				7B565F231A9249FA00D6A420 /* DataManager.m in Sources */,
 				7B565F221A9249FA00D6A420 /* CategoryData.m in Sources */,
 				7B565F211A9249FA00D6A420 /* BookmarkData.m in Sources */,
