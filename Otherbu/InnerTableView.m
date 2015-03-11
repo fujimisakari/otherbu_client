@@ -8,6 +8,7 @@
 
 #import "InnerTableView.h"
 #import "MainViewController.h"
+#import "Constants.h"
 
 @implementation InnerTableView
 
@@ -18,12 +19,14 @@
 }
 
 - (id)setUpWithViewController:(MainViewController *)viewController {
-    self.separatorStyle = UITableViewCellSeparatorStyleNone; // 自前で区切り線は用意するので利用しない
     self.delegate = viewController;
     self.dataSource = viewController;
 
+    // 自前で区切り線は用意するので利用しない
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     // テーブルの上部に余白を空ける
-    self.contentInset = UIEdgeInsetsMake(20.0, 0, 0, 0);
+    self.contentInset = UIEdgeInsetsMake(kMarginTopOfTableFrame, 0, 0, 0);
 
     // 背景は透過させる
     UIColor *color = [UIColor blackColor];

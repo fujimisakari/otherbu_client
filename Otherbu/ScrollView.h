@@ -12,6 +12,6 @@
 
 @interface ScrollView : UIScrollView
 
-- (void)setUpWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController;
+- (void)setupWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController;
 
 @end

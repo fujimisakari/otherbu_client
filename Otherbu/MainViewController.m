@@ -27,23 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // ステータスバーを文字を白にする
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
+    // setup view init
+    _viewWidth = self.view.frame.size.width;
+    _viewHeight = self.view.frame.size.height - _navigationBar.frame.size.height;
     _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
 
     [self refreshBookmarks:self];
 
-    // setup view init
-    _viewWidth = self.view.frame.size.width;
-    _viewHeight = self.view.frame.size.height - _navigationBar.frame.size.height;
-
     // setup BackgroundImage
     [self setupBackgroundImage];
-
-    // setup PageControl
-    _pageControl.numberOfPages = kNumberOfPages;  // ページ数を設定
-    _pageControl.currentPage = 0;                 // 現在のページを設定
 
     // setup NavigationBar
     _navigationBar.topItem.title = kTitle;  // タイトル設定
@@ -58,7 +50,7 @@
 
     // setup ScrollView
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
-    [_scrollView setUpWithCGSize:cgSize viewController:self];
+    [_scrollView setupWithCGSize:cgSize viewController:self];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -177,7 +169,7 @@
 
     PageData *page = [[DataManager sharedManager] getPage:_pageId];
     if (page) {
-        cell = [cell setUpWithPageData:page tableView:tableView indexPath:indexPath];
+        cell = [cell setupWithPageData:page tableView:tableView indexPath:indexPath];
     }
     return cell;
 }
@@ -279,7 +271,7 @@
  */
 - (void)setupBackgroundImage {
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
-    [[UIImage imageNamed:@"wood-wallpeper.jpg"] drawInRect:self.view.bounds];
+    [[UIImage imageNamed:kDefaultImageName] drawInRect:self.view.bounds];
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     CALayer *layer = [CALayer layer];

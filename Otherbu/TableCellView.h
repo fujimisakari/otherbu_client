@@ -21,6 +21,6 @@
  */
 + (id)initWithCellIdentifier:(NSString *)cellIdentifier;
 
-- (id)setUpWithPageData:(PageData *)page tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath;
+- (id)setupWithPageData:(PageData *)page tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath;
 
 @end

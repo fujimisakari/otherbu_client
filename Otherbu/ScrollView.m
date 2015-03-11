@@ -13,7 +13,7 @@
 
 @implementation ScrollView
 
-- (void)setUpWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController {
+- (void)setupWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController {
     self.delegate = (id)viewController;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.pagingEnabled = YES;                  // ページごとのスクロールにする

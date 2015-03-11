@@ -10,6 +10,7 @@
 #import "CategoryData.h"
 #import "ColorData.h"
 #import "UIColor+Hex.h"
+#import "Constants.h"
 
 @implementation SectionHeaderView {
     UIImageView *_arrowImgView;
@@ -40,8 +41,8 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-    frame.origin.x += 10;
-    frame.size.width -= 2 * 10;
+    frame.origin.x += kHorizontalOffsetOfTableCell;
+    frame.size.width -= kHorizontalAdaptSizeOfTableCell;
     [super setFrame:frame];
 }
 
@@ -52,8 +53,8 @@
  */
 - (void)setDefaultStyle {
     // 開閉画像作成
-    _downImg = [UIImage imageNamed:@"downArrow"];
-    _rightImg = [UIImage imageNamed:@"rightArrow"];
+    _downImg = [UIImage imageNamed:kDownArrowImageName];
+    _rightImg = [UIImage imageNamed:kRightArrowImageName];
     _downImgSize = _downImg.size;
     _rightImgSize = _rightImg.size;
     _arrowImgView = [[UIImageView alloc] init];
@@ -103,11 +104,11 @@
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = _categoryData.name;
     titleLbl.textColor = [UIColor whiteColor];
-    titleLbl.font = [UIFont fontWithName:@"Futura-Medium" size:18];
+    titleLbl.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfSectionTitle];
     titleLbl.backgroundColor = [UIColor clearColor];
     [titleLbl sizeToFit];
-    CGSize lglSize = titleLbl.frame.size;
-    titleLbl.frame = CGRectMake(50, 7, lglSize.width, lglSize.height);
+    CGSize cgSize = titleLbl.frame.size;
+    titleLbl.frame = CGRectMake(kHorizontalOffsetOfSectionTitle, kVerticalOffsetOfSectionTitle, cgSize.width, cgSize.height);
     [self addSubview:titleLbl];
 }
 
@@ -133,11 +134,11 @@
 - (void)switchDataByTapped {
     if (_categoryData.isOpenSection) {
         _arrowImgView.image = _downImg;
-        _arrowImgView.frame = CGRectMake(20, 15, _downImgSize.width, _downImgSize.height);
+        _arrowImgView.frame = CGRectMake(kHorizontalOffsetOfDownArrow, kVerticalOffsetOfDownArrow, _downImgSize.width, _downImgSize.height);
         self.layer.mask = _maskLayerOfSectionOpen;
     } else {
         _arrowImgView.image = _rightImg;
-        _arrowImgView.frame = CGRectMake(25, 12, _rightImgSize.width, _rightImgSize.height);
+        _arrowImgView.frame = CGRectMake(kHorizontalOffsetOfRightArrow, kVerticalOffsetOfRightArrow, _rightImgSize.width, _rightImgSize.height);
         self.layer.mask = _maskLayerOfSectionClose;
     }
 }

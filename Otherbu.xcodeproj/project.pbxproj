@@ -25,7 +25,6 @@
 		7B565F231A9249FA00D6A420 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F1E1A9249FA00D6A420 /* DataManager.m */; };
 		7B565F241A9249FA00D6A420 /* PageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F201A9249FA00D6A420 /* PageData.m */; };
 		7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F681A96565500D6A420 /* OtherbuAPIClient.m */; };
-		7BE555071AA78945009D50B8 /* wood_wallpeper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */; };
 		7BF6979D1AAF4ADA008C1BAE /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979C1AAF4ADA008C1BAE /* ScrollView.m */; };
 		7BF697A01AAF657E008C1BAE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979F1AAF657E008C1BAE /* Constants.m */; };
 		C598670734C75CA12CEEA2B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAE3DF2804B4E2305DACDCD /* libPods.a */; };
@@ -76,7 +75,6 @@
 		7B565F201A9249FA00D6A420 /* PageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageData.m; sourceTree = "<group>"; };
 		7B565F671A96565500D6A420 /* OtherbuAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherbuAPIClient.h; sourceTree = "<group>"; };
 		7B565F681A96565500D6A420 /* OtherbuAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherbuAPIClient.m; sourceTree = "<group>"; };
-		7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood_wallpeper.jpg; sourceTree = "<group>"; };
 		7BF6979B1AAF4ADA008C1BAE /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
 		7BF6979C1AAF4ADA008C1BAE /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
 		7BF6979E1AAF657E008C1BAE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 				7B565F251A924A1000D6A420 /* Model */,
 				7B39F5351AA31F7A0036CB69 /* Utility */,
 				7B565F001A92486F00D6A420 /* Images.xcassets */,
-				7BE555061AA78945009D50B8 /* wood_wallpeper.jpg */,
 				590F230E1AA81F4900589E7C /* wood-wallpeper.jpg */,
 				7B565F021A92486F00D6A420 /* LaunchScreen.xib */,
 				7B565EF31A92486F00D6A420 /* Supporting Files */,
@@ -327,7 +324,6 @@
 			files = (
 				7B565EFF1A92486F00D6A420 /* Main.storyboard in Resources */,
 				590F230F1AA81F4900589E7C /* wood-wallpeper.jpg in Resources */,
-				7BE555071AA78945009D50B8 /* wood_wallpeper.jpg in Resources */,
 				7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */,
 				7B565F011A92486F00D6A420 /* Images.xcassets in Resources */,
 			);

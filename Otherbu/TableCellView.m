@@ -23,28 +23,26 @@
     float _cellInnerWidth;
 };
 
+
 + (id)initWithCellIdentifier:(NSString *)cellIdentifier {
     TableCellView *cell = [[TableCellView alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     return cell;
 }
 
-- (id)setUpWithPageData:(PageData *)page tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+- (id)setupWithPageData:(PageData *)page tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     _indexPath = indexPath;
     _tableView = tableView;
     _category = [page getCategoryListByTag:_tableView.tag][indexPath.section];
     _bookmark = [_category getBookmarkList][indexPath.row];
     _cellBackgroundView = [[UIView alloc] init];
     _cellWidth = _tableView.contentSize.width - kHorizontalAdaptSizeOfTableCell;
-    _cellInnerWidth = _tableView.contentSize.width - (kHorizontalAdaptSizeOfTableCell + kHorizontalAdaptPositionOfTableCell);
+    _cellInnerWidth = _tableView.contentSize.width - (kHorizontalAdaptSizeOfTableCell + kHorizontalOffsetOfTableCell);
 
     // 背景設定
     [self setupBackground];
 
     // セルの選択時の背景指定
-    // UIView *cellSelectedBackgroundView = [[UIView alloc] init];
-    // cellSelectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.95f green:0.95f blue:0.95f alpha:1.0f];
-    // cell.selectedBackgroundView = cellSelectedBackgroundView;
-    // cell.contentView.backgroundColor = [UIColor blackColor];
+    [self setupCellSelectBackground];
 
     // セルの右側に矢印アイコンを表示
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -59,7 +57,7 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-    frame.origin.x += kHorizontalAdaptPositionOfTableCell;
+    frame.origin.x += kHorizontalOffsetOfTableCell;
     frame.size.width = _cellWidth;
     [super setFrame:frame];
 }
@@ -67,7 +65,6 @@
 #pragma mark - Private Methods
 
 - (void)setupBackground {
-
     // 後面の背景指定
     _cellBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
 
@@ -86,6 +83,13 @@
     [_cellBackgroundView.layer addSublayer:layer];
 
     self.backgroundView = _cellBackgroundView;
+}
+
+- (void)setupCellSelectBackground {
+    // UIView *cellSelectedBackgroundView = [[UIView alloc] init];
+    // cellSelectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.95f green:0.95f blue:0.95f alpha:1.0f];
+    // cell.selectedBackgroundView = cellSelectedBackgroundView;
+    // cell.contentView.backgroundColor = [UIColor blackColor];
 }
 
 - (UIView *)createFooterViewOfLastCell {
