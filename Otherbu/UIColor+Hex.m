@@ -60,4 +60,10 @@
     return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
 }
 
++ (NSString *)removeSharp:(NSString *)hexColorCode {
+    NSMutableString *str = [NSMutableString stringWithString:hexColorCode];
+    [str deleteCharactersInRange:NSMakeRange(0, 1)];
+    return str;
+};
+
 @end

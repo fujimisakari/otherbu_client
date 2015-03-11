@@ -30,4 +30,11 @@
  */
 + (UIColor *)colorWithHex:(NSString *)colorCode alpha:(CGFloat)alpha;
 
+/**
+ hexColorCodeの先頭の#を削除
+
+ @parms hexColorCode hex(#FFFF00)
+ */
++ (NSString *)removeSharp:(NSString *)hexColorCode;
+
 @end

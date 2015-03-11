@@ -103,7 +103,7 @@
 - (void)setTitle {
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = _categoryData.name;
-    titleLbl.textColor = [UIColor whiteColor];
+    titleLbl.textColor = [[_categoryData color] getSectionHeaderFontColor];
     titleLbl.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfSectionTitle];
     titleLbl.backgroundColor = [UIColor clearColor];
     [titleLbl sizeToFit];

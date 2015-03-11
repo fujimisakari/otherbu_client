@@ -11,7 +11,14 @@
 #import "CategoryData.h"
 #import "PageData.h"
 #import "ColorData.h"
+#import "DesignData.h"
 #import "OtherbuAPIClient.h"
+
+@interface DataManager ()
+
+@property(nonatomic) DesignData *design;
+
+@end
 
 @implementation DataManager
 
@@ -33,6 +40,7 @@ static DataManager *intance = nil;
         self.categoryDict = [@{} mutableCopy];
         self.bookmarkDict = [@{} mutableCopy];
         self.colorDict = [@{} mutableCopy];
+        self.design = nil;
     }
     return self;
 }
@@ -68,6 +76,9 @@ static DataManager *intance = nil;
     return _colorDict[dataId];
 }
 
+- (DesignData *)getDesign {
+    return _design;
+}
 
 #pragma mark - Private Methods
 
@@ -76,6 +87,7 @@ static DataManager *intance = nil;
     NSArray *categoryList = [jsonData objectForKey:@"category_list"];
     NSArray *bookmarkList = [jsonData objectForKey:@"bookmark_list"];
     NSArray *colorList = [jsonData objectForKey:@"color_list"];
+    NSDictionary *design = [jsonData objectForKey:@"design"];
 
     for (NSDictionary *pageDict in pageList) {
         PageData *data = [[PageData alloc] initWithDictionary:pageDict];
@@ -96,6 +108,8 @@ static DataManager *intance = nil;
         ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
         [_colorDict setObject:data forKey:colorDict[@"id"]];
     }
+
+    _design = [[DesignData alloc] initWithDictionary:design];
 }
 
 @end

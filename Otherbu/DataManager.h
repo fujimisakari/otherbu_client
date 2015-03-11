@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class PageData, CategoryData, BookmarkData, ColorData;
+@class PageData, CategoryData, BookmarkData, ColorData, DesignData;
 
 @interface DataManager : NSObject
 
@@ -32,5 +32,6 @@ typedef NS_ENUM(NSUInteger, SelectType) {
 - (CategoryData *)getCategory:(NSNumber *)dataId;
 - (BookmarkData *)getBookmark:(NSNumber *)dataId;
 - (ColorData *)getColor:(NSNumber *)dataId;
+- (DesignData *)getDesign;
 
 @end

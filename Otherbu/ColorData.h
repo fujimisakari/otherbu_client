@@ -13,8 +13,8 @@
 
 @property(nonatomic) NSInteger dataId;               // ID
 @property(nonatomic) NSString *name;                 // カラー名
-@property(nonatomic) NSString *font_color;           // fontColor
-@property(nonatomic) NSString *icon_color;           // Bookmark名
+@property(nonatomic) NSString *font_color;           // BookmarkのColor
+@property(nonatomic) NSString *icon_color;           // リンクIconカラー(使用してない)
 @property(nonatomic) NSInteger sort;                 // 選択時の表示順
 @property(nonatomic) NSString *color_code1;          // カラーグラデーション(上部)
 @property(nonatomic) NSString *color_code2;          // カラーグラデーション(中部)
@@ -24,5 +24,6 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 - (NSArray *)getGradientColorList;
 - (UIColor *)getCellBackGroundColor;
+- (UIColor *)getSectionHeaderFontColor;
 
 @end

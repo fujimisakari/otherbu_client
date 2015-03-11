@@ -7,9 +7,11 @@
 //
 
 #import "TableCellView.h"
+#import "DataManager.h"
 #import "PageData.h"
 #import "CategoryData.h"
 #import "BookmarkData.h"
+#import "DesignData.h"
 #import "ColorData.h"
 #import "Constants.h"
 
@@ -18,6 +20,7 @@
     UITableView *_tableView;
     CategoryData *_category;
     BookmarkData *_bookmark;
+    DesignData *_design;
     UIView *_cellBackgroundView;
     float _cellWidth;
     float _cellInnerWidth;
@@ -37,6 +40,7 @@
     _cellBackgroundView = [[UIView alloc] init];
     _cellWidth = _tableView.contentSize.width - kHorizontalAdaptSizeOfTableCell;
     _cellInnerWidth = _tableView.contentSize.width - (kHorizontalAdaptSizeOfTableCell + kHorizontalOffsetOfTableCell);
+    _design = [[DataManager sharedManager] getDesign];
 
     // 背景設定
     [self setupBackground];
@@ -79,17 +83,28 @@
     float height = self.bounds.size.height;
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, width, height);
-    layer.backgroundColor = [UIColor blackColor].CGColor;
+    layer.backgroundColor = [_design getTableBackGroundColor].CGColor;
     [_cellBackgroundView.layer addSublayer:layer];
 
     self.backgroundView = _cellBackgroundView;
 }
 
 - (void)setupCellSelectBackground {
-    // UIView *cellSelectedBackgroundView = [[UIView alloc] init];
-    // cellSelectedBackgroundView.backgroundColor = [UIColor colorWithRed:0.95f green:0.95f blue:0.95f alpha:1.0f];
-    // cell.selectedBackgroundView = cellSelectedBackgroundView;
-    // cell.contentView.backgroundColor = [UIColor blackColor];
+
+    // 後面の背景指定
+    UIView *cellSelectedBackgroundView = [[UIView alloc] init];
+    cellSelectedBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
+
+    // 前面の背景指定
+    float width = _cellInnerWidth;
+    float height = self.bounds.size.height + 1;
+    CALayer *layer = [CALayer layer];
+    layer.frame = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, width, height);
+    UIColor *backGroundColor = [self getCellSelectBackgroundColor:[_design getTableBackGroundColor]];
+    layer.backgroundColor = backGroundColor.CGColor;
+    [cellSelectedBackgroundView.layer addSublayer:layer];
+
+    self.selectedBackgroundView = cellSelectedBackgroundView;
 }
 
 - (UIView *)createFooterViewOfLastCell {
@@ -118,10 +133,10 @@
 
 - (void)setupText {
     self.textLabel.text = _bookmark.name;
-    self.textLabel.textColor = [UIColor whiteColor];
+    self.textLabel.textColor = [_design getbookmarkColor];
     self.textLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfBookmark];
     self.detailTextLabel.text = _bookmark.url;
-    self.detailTextLabel.textColor = [UIColor lightGrayColor];
+    self.detailTextLabel.textColor = [_design getUrlColor];
     self.detailTextLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfUrl];
 }
 
@@ -130,7 +145,7 @@
     if (![self isFirstCellOfSection]) {
         CGRect rect = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, _cellInnerWidth, kHeightOfBorderLine);
         UIView *borderline = [[UIView alloc] initWithFrame:rect];
-        borderline.backgroundColor = [UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1.0f];
+        borderline.backgroundColor = [UIColor lightGrayColor];;
         [_cellBackgroundView addSubview:borderline];
     }
 }
@@ -143,6 +158,25 @@
     NSArray *bookmarkList = [_category getBookmarkList];
     int lastCellIndex = (int)_indexPath.row + 1;
     return (lastCellIndex == bookmarkList.count) ? YES : NO;
+}
+
+- (UIColor *)getCellSelectBackgroundColor:(UIColor *)baseColor {
+    CGFloat red;
+    CGFloat green;
+    CGFloat blue;
+    CGFloat alpha;
+    [baseColor getRed:&red green:&green blue:&blue alpha:&alpha];
+
+    if (red < 0.5f) {
+        red += 0.1;
+        green += 0.1;
+        blue += 0.1;
+    } else {
+        red -= 0.1;
+        green -= 0.1;
+        blue -= 0.1;
+    }
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 @end
