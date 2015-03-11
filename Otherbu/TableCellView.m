@@ -11,6 +11,7 @@
 #import "CategoryData.h"
 #import "BookmarkData.h"
 #import "ColorData.h"
+#import "Constants.h"
 
 @implementation TableCellView {
     NSIndexPath *_indexPath;
@@ -18,6 +19,8 @@
     CategoryData *_category;
     BookmarkData *_bookmark;
     UIView *_cellBackgroundView;
+    float _cellWidth;
+    float _cellInnerWidth;
 };
 
 + (id)initWithCellIdentifier:(NSString *)cellIdentifier {
@@ -31,6 +34,8 @@
     _category = [page getCategoryListByTag:_tableView.tag][indexPath.section];
     _bookmark = [_category getBookmarkList][indexPath.row];
     _cellBackgroundView = [[UIView alloc] init];
+    _cellWidth = _tableView.contentSize.width - kHorizontalAdaptSizeOfTableCell;
+    _cellInnerWidth = _tableView.contentSize.width - (kHorizontalAdaptSizeOfTableCell + kHorizontalAdaptPositionOfTableCell);
 
     // 背景設定
     [self setupBackground];
@@ -54,9 +59,8 @@
 }
 
 - (void)setFrame:(CGRect)frame {
-    // todo このマジックナンバーをなんとかする
-    frame.origin.x += 10;
-    frame.size.width = _tableView.contentSize.width - 20;
+    frame.origin.x += kHorizontalAdaptPositionOfTableCell;
+    frame.size.width = _cellWidth;
     [super setFrame:frame];
 }
 
@@ -74,10 +78,10 @@
     }
 
     // 前面の背景指定
-    float width = _tableView.contentSize.width - 30;  // todo この30をなんとかする
+    float width = _cellInnerWidth;
     float height = self.bounds.size.height;
     CALayer *layer = [CALayer layer];
-    layer.frame = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, width, height);
+    layer.frame = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, width, height);
     layer.backgroundColor = [UIColor blackColor].CGColor;
     [_cellBackgroundView.layer addSublayer:layer];
 
@@ -87,8 +91,8 @@
 - (UIView *)createFooterViewOfLastCell {
     int x = self.bounds.origin.x;
     int y = self.bounds.origin.y + self.bounds.size.height;
-    float width = _tableView.contentSize.width - 20;  // todo この20をなんとかする
-    float height = 5;
+    float width = _cellWidth;
+    float height = kSizeOfTableFrame;
     CGRect rect = CGRectMake(x, y, width, height);
 
     UIView *footerView = [[UIView alloc] initWithFrame:rect];
@@ -96,10 +100,9 @@
 
     // 角丸にする
     UIBezierPath *maskPath;
-    maskPath = [UIBezierPath
-        bezierPathWithRoundedRect:footerView.bounds
-                byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)
-                      cornerRadii:CGSizeMake(24.0, 24.0)];
+    maskPath = [UIBezierPath bezierPathWithRoundedRect:footerView.bounds
+                                     byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight)
+                                           cornerRadii:CGSizeMake(24.0, 24.0)];
 
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = footerView.bounds;
@@ -112,16 +115,16 @@
 - (void)setupText {
     self.textLabel.text = _bookmark.name;
     self.textLabel.textColor = [UIColor whiteColor];
-    self.textLabel.font = [UIFont fontWithName:@"Futura-Medium" size:16];
+    self.textLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfBookmark];
     self.detailTextLabel.text = _bookmark.url;
     self.detailTextLabel.textColor = [UIColor lightGrayColor];
-    self.detailTextLabel.font = [UIFont fontWithName:@"Futura-Medium" size:12];
+    self.detailTextLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfUrl];
 }
 
 - (void)setupBorder {
     // セルのボーダーライン配置（既定のだと後面の背景まで線が越えてしまうため）
     if (![self isFirstCellOfSection]) {
-        CGRect rect = CGRectMake(self.bounds.origin.x + 5, self.bounds.origin.y, _tableView.contentSize.width - 30, 0.5f);
+        CGRect rect = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, _cellInnerWidth, kHeightOfBorderLine);
         UIView *borderline = [[UIView alloc] initWithFrame:rect];
         borderline.backgroundColor = [UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1.0f];
         [_cellBackgroundView addSubview:borderline];
