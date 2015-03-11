@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SectionHeaderView.h"
 
-@class ScrollView;
+@class ScrollView, NavigationBar;
 
 @interface MainViewController : UIViewController<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet ScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet NavigationBar *navigationBar;
 
 @end
 

@@ -19,7 +19,6 @@ const float kVerticalOffsetOfTitle = -7;                     // タイトル名�
 NSString * const kDefaultFont = @"Futura-Medium";            // デフォルトフォント名
 NSString * const kDefaultImageName = @"wood-wallpeper.jpg";  // デフォルト背景
 const int kNumberOfPages = 3;                                // ページ数
-const float kHeightOfSectionHeader = 40.0f;                  // セクションヘッダーの高さ
 
 #pragma mark - Table Value
 const float kMarginTopOfTableFrame = 20.0f;                  // テーブルの上部に余白
@@ -31,6 +30,7 @@ const int kFontSizeOfBookmark = 16;                          // ブックマー�
 const int kFontSizeOfUrl = 12;                               // URLのフォントサイズ
 
 #pragma mark - Table Section Value
+const float kHeightOfSectionHeader = 40.0f;                  // セクションヘッダーの高さ
 const int kFontSizeOfSectionTitle = 18;                      // セクションタイトル名のフォントサイズ
 const int kVerticalOffsetOfSectionTitle = 7;                 // セクションタイトル名のx位置調整
 const int kHorizontalOffsetOfSectionTitle = 50;              // セクションタイトル名のy位置調整

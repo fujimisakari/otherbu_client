@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "SectionHeaderView.h"
 #import "ScrollView.h"
+#import "NavigationBar.h"
 #import "InnerTableView.h"
 #import "TableCellView.h"
 #import "DataManager.h"
@@ -27,26 +28,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self refreshBookmarks:self];
+
     // setup view init
     _viewWidth = self.view.frame.size.width;
     _viewHeight = self.view.frame.size.height - _navigationBar.frame.size.height;
     _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
 
-    [self refreshBookmarks:self];
-
     // setup BackgroundImage
     [self setupBackgroundImage];
 
     // setup NavigationBar
-    _navigationBar.topItem.title = kTitle;  // タイトル設定
-    // フォントのカラー設定
-    NSDictionary *attributes = @{
-        NSFontAttributeName : [UIFont fontWithName:kDefaultFont size:kFontSizeOfTitle],
-        NSForegroundColorAttributeName : [UIColor whiteColor],
-    };
-    [_navigationBar setTitleTextAttributes:attributes];
-    // フォントの位置設定
-    [_navigationBar setTitleVerticalPositionAdjustment:kVerticalOffsetOfTitle forBarMetrics:UIBarMetricsDefault];
+    [_navigationBar setup];
 
     // setup ScrollView
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);

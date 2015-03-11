@@ -17,7 +17,6 @@ extern const float kVerticalOffsetOfTitle;
 extern NSString * const kDefaultFont;
 extern NSString * const kDefaultImageName;
 extern const int kNumberOfPages;
-extern const float kHeightOfSectionHeader;
 
 extern const float kMarginTopOfTableFrame;
 extern const float kHorizontalAdaptSizeOfTableCell;
@@ -27,6 +26,7 @@ extern const float kHeightOfBorderLine;
 extern const int kFontSizeOfBookmark;
 extern const int kFontSizeOfUrl;
 
+extern const float kHeightOfSectionHeader;
 extern const int kFontSizeOfSectionTitle;
 extern const int kVerticalOffsetOfSectionTitle;
 extern const int kHorizontalOffsetOfSectionTitle;
