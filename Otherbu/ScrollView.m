@@ -19,8 +19,9 @@
     self.pagingEnabled = YES;                  // ページごとのスクロールにする
     self.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
     self.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
-    self.scrollsToTop = NO;     // ステータスバータップでトップにスクロールする機能をOFFにする
+    self.scrollsToTop = NO;                    // ステータスバータップでトップにスクロールする機能をOFFにする
     self.contentSize = cgSize;  // 横にページスクロールできるようにコンテンツの大きさを横長に設定
+    // self.userInteractionEnabled = YES;
 
     // create innerTableView
     float _viewWidth = viewController.view.frame.size.width;
@@ -57,9 +58,14 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"hoooooooooooooo!");
+    // [super touchesEnded: touches withEvent: event];
     NSLog(@"hoooooooooooooo %d", self.dragging);
-    if (self.dragging){ 
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:self];
+    self.beginScrollOffsetY = location.y;
+    NSLog(@"x:%f y:%f", location.x, location.y);
+
+    if (self.dragging) {
         NSLog(@"oooooooooooooooo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         // シングルタッチの場合
         UITouch *touch = [touches anyObject];
@@ -67,13 +73,15 @@
         self.beginScrollOffsetY = location.y;
         NSLog(@"x:%f y:%f", location.x, location.y);
     }
+    // [super touchesEnded: touches withEvent: event];
+    // [self.nextResponder touchesBegan: touches withEvent:event];
 
-   // if (!self.dragging){ 
-   //    [self.nextResponder touchesBegan: touches withEvent:event]; 
-   //  }
-   //  else{
-   //    [super touchesEnded: touches withEvent: event];
-   //  }
- }
+    // if (!self.dragging){
+    //    [self.nextResponder touchesBegan: touches withEvent:event];
+    //  }
+    //  else{
+    //    [super touchesEnded: touches withEvent: event];
+    //  }
+}
 
 @end

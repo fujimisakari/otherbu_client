@@ -29,6 +29,8 @@
 		7BF697A01AAF657E008C1BAE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979F1AAF657E008C1BAE /* Constants.m */; };
 		7BF697A31AB08B3C008C1BAE /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF697A21AB08B3C008C1BAE /* NavigationBar.m */; };
 		7BF697A61AB09AD8008C1BAE /* DesignData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF697A51AB09AD8008C1BAE /* DesignData.m */; };
+		7BF697AE1AB3FFB9008C1BAE /* UIScrollView+TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF697AD1AB3FFB9008C1BAE /* UIScrollView+TouchEvent.m */; };
+		7BF697B11AB42A94008C1BAE /* PageTabLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF697B01AB42A94008C1BAE /* PageTabLabel.m */; };
 		C598670734C75CA12CEEA2B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EAE3DF2804B4E2305DACDCD /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,11 @@
 		7BF697A21AB08B3C008C1BAE /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
 		7BF697A41AB09AD8008C1BAE /* DesignData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignData.h; sourceTree = "<group>"; };
 		7BF697A51AB09AD8008C1BAE /* DesignData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignData.m; sourceTree = "<group>"; };
+		7BF697AB1AB3FDB1008C1BAE /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		7BF697AC1AB3FFB9008C1BAE /* UIScrollView+TouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TouchEvent.h"; sourceTree = "<group>"; };
+		7BF697AD1AB3FFB9008C1BAE /* UIScrollView+TouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TouchEvent.m"; sourceTree = "<group>"; };
+		7BF697AF1AB42A94008C1BAE /* PageTabLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTabLabel.h; sourceTree = "<group>"; };
+		7BF697B01AB42A94008C1BAE /* PageTabLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTabLabel.m; sourceTree = "<group>"; };
 		7EAE3DF2804B4E2305DACDCD /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EA2AE421497E7D0C4741265 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A68444AA09945B1E11DBE4E7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +137,8 @@
 				7BF6979C1AAF4ADA008C1BAE /* ScrollView.m */,
 				7BF697A11AB08B3C008C1BAE /* NavigationBar.h */,
 				7BF697A21AB08B3C008C1BAE /* NavigationBar.m */,
+				7BF697AF1AB42A94008C1BAE /* PageTabLabel.h */,
+				7BF697B01AB42A94008C1BAE /* PageTabLabel.m */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -141,6 +150,8 @@
 				7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */,
 				7BF6979E1AAF657E008C1BAE /* Constants.h */,
 				7BF6979F1AAF657E008C1BAE /* Constants.m */,
+				7BF697AC1AB3FFB9008C1BAE /* UIScrollView+TouchEvent.h */,
+				7BF697AD1AB3FFB9008C1BAE /* UIScrollView+TouchEvent.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 		7B565EF31A92486F00D6A420 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7BF697AB1AB3FDB1008C1BAE /* PrefixHeader.pch */,
 				7B565EF41A92486F00D6A420 /* Info.plist */,
 				7B565EF51A92486F00D6A420 /* main.m */,
 			);
@@ -392,8 +404,10 @@
 				7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */,
 				7B565F241A9249FA00D6A420 /* PageData.m in Sources */,
 				7B565EFC1A92486F00D6A420 /* MainViewController.m in Sources */,
+				7BF697AE1AB3FFB9008C1BAE /* UIScrollView+TouchEvent.m in Sources */,
 				7BF697A01AAF657E008C1BAE /* Constants.m in Sources */,
 				7B565F231A9249FA00D6A420 /* DataManager.m in Sources */,
+				7BF697B11AB42A94008C1BAE /* PageTabLabel.m in Sources */,
 				7B565F221A9249FA00D6A420 /* CategoryData.m in Sources */,
 				7B565F211A9249FA00D6A420 /* BookmarkData.m in Sources */,
 				7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */,
@@ -529,6 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = Otherbu/PrefixHeader.pch;
 				INFOPLIST_FILE = Otherbu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -543,6 +558,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREFIX_HEADER = Otherbu/PrefixHeader.pch;
 				INFOPLIST_FILE = Otherbu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
