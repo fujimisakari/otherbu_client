@@ -270,9 +270,9 @@
                                         lineBreakMode:NSLineBreakByWordWrapping];
         CGRect rect;
         if ((int)pageData.dataId == [_pageId intValue]) {
-            rect = CGRectMake(x, 0, textSize.width + 40, 40);
+            rect = CGRectMake(x, 0, textSize.width + 80, 40);
         } else {
-            rect = CGRectMake(x, 10, textSize.width + 40, 30);
+            rect = CGRectMake(x, 10, textSize.width + 80, 30);
         }
         PageTabLabel *pageTabLabel = [[PageTabLabel alloc] initWithFrame:(CGRect)rect];
         [pageTabLabel setUpWithPage:pageData];
