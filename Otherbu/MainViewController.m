@@ -23,6 +23,12 @@
     NSNumber *_pageId;
     float _viewWidth;
     float _viewHeight;
+    UIScrollView *_tabScrollView;
+    UIView *_tabFrameView;
+    CGPoint _tabScrollViewCenter;
+    CGPoint _tabFrameViewCenter;
+    CGPoint _scrollViewCenter;
+    CGFloat _beginScrollOffsetY;
 }
 
 - (void)viewDidLoad {
@@ -44,6 +50,26 @@
     // setup ScrollView
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
     [_scrollView setupWithCGSize:cgSize viewController:self];
+     _scrollViewCenter = [_scrollView center];
+
+    // set TabScrollView
+    CGRect cgRect = CGRectMake(0, _viewHeight - 44, _viewWidth, 40);
+    _tabScrollView = [[UIScrollView alloc] initWithFrame:cgRect];
+    _tabScrollView.backgroundColor = [UIColor clearColor];
+    _tabScrollViewCenter = [_tabScrollView center];
+    _tabScrollView.pagingEnabled = NO;
+    _tabScrollView.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
+    _tabScrollView.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
+    _tabScrollView.scrollsToTop = NO;     // ステータスバータップでトップにスクロールする機能をOFFにする
+
+    [_scrollView addSubview:_tabScrollView];
+
+    // set TabFrameView
+    CGRect rect = CGRectMake(0, _viewHeight - 4, _viewWidth, 4);
+    _tabFrameView = [[UIView alloc] initWithFrame:(CGRect)rect];
+    _tabFrameView.backgroundColor = [UIColor blueColor];
+    _tabFrameViewCenter = [_tabFrameView center];
+    [_scrollView addSubview:_tabFrameView];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -82,20 +108,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (scrollView == _scrollView) {
-        CGPoint currentPoint = [scrollView contentOffset];
-        [scrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
-
-         // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
-         _pageControl.currentPage = _scrollView.contentOffset.x / _viewWidth;
-    }
-}
-
 - (void)refreshBookmarks:(id)sender {
     // [self.refreshControl beginRefreshing];
 
-    [[DataManager sharedManager] reloadDataWithBlock:^(NSError *error) {
+    DataManager *dataManager = [DataManager sharedManager];
+
+    [dataManager reloadDataWithBlock:^(NSError *error) {
         if (error) {
             NSLog(@"error = %@", error);
         }
@@ -104,8 +122,95 @@
             UITableView *tableView = (UITableView *)[_scrollView viewWithTag:i];
             [tableView reloadData];
         }
+
+        // ラベル例文
+        int idx = 1;
+        float x = 0;
+        for (PageData *pageData in [dataManager.pageDict objectEnumerator]) {
+            UILabel *label = [[UILabel alloc] init];
+            CGSize textSize = [pageData.name
+                                sizeWithFont:[UIFont fontWithName:kDefaultFont size:16]
+                                constrainedToSize:CGSizeMake(200, 2000)
+                                lineBreakMode:UILineBreakModeWordWrap];
+            NSLog(@"textSize width %f", textSize.width);
+            NSLog(@"textSize height %f", textSize.height);
+            label.frame = CGRectMake(x, 0, textSize.width + 100, 40);
+            label.backgroundColor = [UIColor yellowColor];
+            label.textColor = [UIColor blueColor];
+            label.font = [UIFont fontWithName:kDefaultFont size:16];
+            label.numberOfLines = 1;
+            label.textAlignment = UITextAlignmentCenter;
+            label.text = pageData.name;
+            // [self addSubview:label];
+            [_tabScrollView addSubview:label];
+            idx += 10;
+            x += label.bounds.size.width + 1;
+        }
+        NSLog(@"width %f", x);
+        CGSize cgSize = CGSizeMake(x, 40);
+        CGRect cgRect = CGRectMake(0, _viewHeight - 44, _viewWidth, 40);
+        _tabScrollView.frame = cgRect;
+        _tabScrollView.contentSize = cgSize;
+
+        // [_tabScrollView addSubview:_tabScrollView];
         // [self.refreshControl endRefreshing];
     }];
+}
+
+- (float)adjustWidth:(NSString *)show_word fontSize:(float)fSize labelWidth:(float)lWidth labelHeight:(float)lHeight {
+    UIFont *font = [UIFont systemFontOfSize:fSize];
+    CGSize size = CGSizeMake(lWidth, lHeight);
+
+    CGRect totalRect = [show_word boundingRectWithSize:size
+                                               options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine)
+                                            attributes:[NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName]
+                                               context:nil];
+    float fitSizeWidth = totalRect.size.width;
+
+    return fitSizeWidth;
+}
+
+#pragma mark - UIScrollViewDelegate
+
+//スクロールビューをドラッグし始めた際に一度実行される
+// - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+//     // NSLog(@"---- %f", [scrollView contentOffset].y);
+//     if (scrollView == _scrollView) {
+//         NSLog(@"----hhhhhhhhh------%f-", _scrollView.beginScrollOffsetY);
+//     NSLog(@"--llllllll--");
+//     _beginScrollOffsetY = scrollView.frame.origin.y;
+//     } else {
+//     NSLog(@"--ccccccccc--");
+//     }
+//     NSLog(@"----------%f-", scrollView.frame.origin.y);
+// }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == _scrollView) {
+        float tabViewMax = _tabScrollView.frame.origin.y + _tabScrollView.frame.size.height;
+        NSLog(@"------------------------");
+        NSLog(@"%f", _tabScrollView.frame.origin.y);
+        NSLog(@"%f", _scrollView.beginScrollOffsetY);
+        NSLog(@"%f", tabViewMax);
+
+        CGPoint currentPoint = [scrollView contentOffset];
+        if (_tabScrollView.frame.origin.y <  _scrollView.beginScrollOffsetY && _scrollView.beginScrollOffsetY < tabViewMax) {
+            NSLog(@"ewwwwwwwwwwwwwwwwwwwwwww");
+            [scrollView setContentOffset:CGPointMake(0, 0)];
+            [_tabScrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
+             // _scrollView.center = CGPointMake(_tabScrollViewCenter.x + currentPoint.x, _tabScrollViewCenter.y);
+            // _tabScrollView.center = CGPointMake(_tabScrollViewCenter.x + currentPoint.x, _tabScrollViewCenter.y);
+        } else {
+            NSLog(@"qqqqqqqqqqqqqq");
+            [scrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
+            [_tabScrollView setContentOffset:CGPointMake(0, 0)];
+            _tabScrollView.center = CGPointMake(_tabScrollViewCenter.x + currentPoint.x, _tabScrollViewCenter.y);
+            _tabFrameView.center = CGPointMake(_tabFrameViewCenter.x + currentPoint.x, _tabFrameViewCenter.y);
+        }
+
+        // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
+        _pageControl.currentPage = _scrollView.contentOffset.x / _viewWidth;
+    }
 }
 
 #pragma mark - Table View

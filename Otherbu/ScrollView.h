@@ -10,7 +10,9 @@
 
 @class MainViewController;
 
-@interface ScrollView : UIScrollView
+@interface ScrollView : UIScrollView<UIScrollViewDelegate>
+
+@property(nonatomic) CGFloat beginScrollOffsetY;
 
 - (void)setupWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController;
 
