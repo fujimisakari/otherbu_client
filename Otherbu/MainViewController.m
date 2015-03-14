@@ -48,14 +48,11 @@
     [_scrollView setupWithCGSize:cgSize viewController:self];
 
     // set TabScrollView
-    // CGRect cgRect = CGRectMake(0, _viewHeight - 44, _viewWidth, 40);
-    // _tabScrollView = [[UIScrollView alloc] initWithFrame:cgRect];
     _tabScrollView.backgroundColor = [UIColor blackColor];
     _tabScrollView.pagingEnabled = NO;
     _tabScrollView.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
     _tabScrollView.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
-    _tabScrollView.scrollsToTop = NO;     // ステータスバータップでトップにスクロールする機能をOFFにする
-    // [_scrollView addSubview:_tabScrollView];
+    _tabScrollView.scrollsToTop = NO;  // ステータスバータップでトップにスクロールする機能をOFFにする
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,29 +83,8 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == _scrollView) {
-        // float tabViewMax = _tabScrollView.frame.origin.y + _tabScrollView.frame.size.height;
-        // NSLog(@"------------------------");
-        // NSLog(@"%f", _tabScrollView.frame.origin.y);
-        // NSLog(@"%f", _scrollView.beginScrollOffsetY);
-        // NSLog(@"%f", tabViewMax);
-
         CGPoint currentPoint = [scrollView contentOffset];
-        // if (_tabScrollView.frame.origin.y <  _scrollView.beginScrollOffsetY && _scrollView.beginScrollOffsetY < tabViewMax) {
-        //     // NSLog(@"ewwwwwwwwwwwwwwwwwwwwwww");
-        //     [scrollView setContentOffset:CGPointMake(0, 0)];
-        //      // _scrollView.center = CGPointMake(_tabScrollViewCenter.x + currentPoint.x, _tabScrollViewCenter.y);
-        //     // _tabScrollView.center = CGPointMake(_tabScrollViewCenter.x + currentPoint.x, _tabScrollViewCenter.y);
-        // } else {
-        //     // NSLog(@"qqqqqqqqqqqqqq");
-        //     [scrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
-        // }
-
         [scrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
-
-        // NSLog(@"dddddd %f", _tabScrollView.frame.origin.x);
-
-       //  [_tabScrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
-       //   [scrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
 
         // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
         _pageControl.currentPage = _scrollView.contentOffset.x / _viewWidth;
