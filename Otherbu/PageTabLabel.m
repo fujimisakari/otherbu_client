@@ -8,6 +8,8 @@
 
 #import "PageTabLabel.h"
 #import "PageData.h"
+#import "DataManager.h"
+#import "ColorData.h"
 #import "Constants.h"
 
 @implementation PageTabLabel {
@@ -25,15 +27,39 @@
 */
 - (void)setUpWithPage:(PageData *)page {
     _page = page;
+
     UIFont *font = [UIFont fontWithName:kDefaultFont size:16];
     CGSize textSize = [_page.name sizeWithFont:font constrainedToSize:CGSizeMake(200, 2000) lineBreakMode:UILineBreakModeWordWrap];
     self.font = font;
     self.text = _page.name;
-
-    self.backgroundColor = [UIColor yellowColor];
-    self.textColor = [UIColor blueColor];
+    self.textColor = [[page color] getSectionHeaderFontColor];
     self.numberOfLines = 1;
     self.textAlignment = UITextAlignmentCenter;
+
+    // 背景色(グラデーション)
+    NSLog(@"self %f", self.bounds.origin.x);
+    NSLog(@"self %f", self.bounds.origin.y);
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.bounds;
+    gradient.colors = [[page color] getGradientColorList];
+    [self.layer insertSublayer:gradient atIndex:0];
+
+    // 角丸にする
+    [self setMaskLayerWithSectionType];
+}
+
+/**
+ 角丸のmaskLayerを設定する
+ */
+- (void)setMaskLayerWithSectionType {
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                         byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
+                                               cornerRadii:CGSizeMake(12.0, 12.0)];
+
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = self.bounds;
+    maskLayer.path = maskPath.CGPath;
+    self.layer.mask = maskLayer;
 }
 
 @end

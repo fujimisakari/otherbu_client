@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ColorData;
+
 @interface PageData : NSObject
 
 typedef NS_ENUM(NSUInteger, AngleType) {
@@ -23,11 +25,13 @@ typedef NS_ENUM(NSUInteger, AngleType) {
 @property(nonatomic) NSString *categoryIdsStr;  // ページに含むカテゴリ
 @property(nonatomic) NSString *angleIdsStr;     // ページに含むカテゴリ位置
 @property(nonatomic) NSString *sortIdsStr;      // ページに含むカテゴリ順番
+@property(nonatomic) NSInteger colorId;         // カラーID
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 
 - (NSMutableArray *)getCategoryList;
 - (NSMutableArray *)getCategoryListByTag:(NSInteger)tag;
 - (NSMutableDictionary *)getCategoryListOfAngle;
+- (ColorData *)color;
 
 @end

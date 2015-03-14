@@ -21,6 +21,7 @@
         self.categoryIdsStr = dataDict[@"category_ids_str"];
         self.angleIdsStr = dataDict[@"angle_ids_str"];
         self.sortIdsStr = dataDict[@"sort_ids_str"];
+        self.colorId = 12;
     }
     return self;
 }
@@ -113,6 +114,11 @@
         [resultDict setObject:argId forKey:categoryId];
     }
     return resultDict;
+}
+
+- (ColorData *)color {
+    NSNumber *number = [[NSNumber alloc] initWithInt:(int)_colorId];
+    return [[DataManager sharedManager] getColor:number];
 }
 
 @end

@@ -56,20 +56,13 @@
     // set TabScrollView
     CGRect cgRect = CGRectMake(0, _viewHeight - 44, _viewWidth, 40);
     _tabScrollView = [[UIScrollView alloc] initWithFrame:cgRect];
-    _tabScrollView.backgroundColor = [UIColor cyanColor];
+    _tabScrollView.backgroundColor = [UIColor clearColor];
     _tabScrollViewCenter = [_tabScrollView center];
     _tabScrollView.pagingEnabled = NO;
     _tabScrollView.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
     _tabScrollView.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
     _tabScrollView.scrollsToTop = NO;     // ステータスバータップでトップにスクロールする機能をOFFにする
     [_scrollView addSubview:_tabScrollView];
-
-    // set TabFrameView
-    CGRect rect = CGRectMake(0, _viewHeight - 4, _viewWidth, 4);
-    _tabFrameView = [[UIView alloc] initWithFrame:(CGRect)rect];
-    _tabFrameView.backgroundColor = [UIColor blueColor];
-    _tabFrameViewCenter = [_tabFrameView center];
-    [_scrollView addSubview:_tabFrameView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,7 +83,7 @@
             [tableView reloadData];
         }
 
-        [self createPageTabViews];
+        // [self createPageTabViews];
 
         // [self.refreshControl endRefreshing];
     }];
@@ -312,15 +305,28 @@
         CGSize textSize = [pageData.name sizeWithFont:[UIFont fontWithName:kDefaultFont size:16]
                                     constrainedToSize:CGSizeMake(200, 2000)
                                         lineBreakMode:UILineBreakModeWordWrap];
-        CGRect rect = CGRectMake(x, 0, textSize.width + 100, 40);
+        CGRect rect;
+        if ((int)pageData.dataId == [_pageId intValue]) {
+            rect = CGRectMake(x, 0, textSize.width + 40, 40);
+        } else {
+            rect = CGRectMake(x, 10, textSize.width + 40, 30);
+        }
         PageTabLabel *pageTabLabel = [[PageTabLabel alloc] initWithFrame:(CGRect)rect];
         [pageTabLabel setUpWithPage:pageData];
         [_tabScrollView addSubview:pageTabLabel];
-        x += pageTabLabel.bounds.size.width + 1;
+        x += pageTabLabel.bounds.size.width;
     }
     CGSize cgSize = CGSizeMake(x, 40);
     _tabScrollView.contentSize = cgSize;
-}
 
+    // set TabFrameView
+    PageData *page = [dataManager getPage:_pageId];
+    CGRect rect = CGRectMake(0, _viewHeight - 4, _viewWidth, 4);
+    _tabFrameView = [[UIView alloc] initWithFrame:(CGRect)rect];
+    _tabFrameView.backgroundColor = [[page color] getCellBackGroundColor];
+    _tabFrameViewCenter = [_tabFrameView center];
+    [_scrollView addSubview:_tabFrameView];
+
+}
 
 @end
