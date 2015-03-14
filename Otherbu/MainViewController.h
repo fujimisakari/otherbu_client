@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet ScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UIScrollView *tabScrollView;
+@property (weak, nonatomic) IBOutlet UIView *tabFrameView;
 
 @end
 

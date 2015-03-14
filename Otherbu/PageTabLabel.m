@@ -29,16 +29,13 @@
     _page = page;
 
     UIFont *font = [UIFont fontWithName:kDefaultFont size:16];
-    CGSize textSize = [_page.name sizeWithFont:font constrainedToSize:CGSizeMake(200, 2000) lineBreakMode:UILineBreakModeWordWrap];
     self.font = font;
     self.text = _page.name;
     self.textColor = [[page color] getSectionHeaderFontColor];
     self.numberOfLines = 1;
-    self.textAlignment = UITextAlignmentCenter;
+    self.textAlignment = NSTextAlignmentCenter;
 
     // 背景色(グラデーション)
-    NSLog(@"self %f", self.bounds.origin.x);
-    NSLog(@"self %f", self.bounds.origin.y);
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.bounds;
     gradient.colors = [[page color] getGradientColorList];

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FL-Uu-96L" customClass="ScrollView">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7q-bE-bwn" customClass="NavigationBar">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -38,18 +38,38 @@
                                     <constraint firstAttribute="height" constant="20" id="b7v-4X-NPM"/>
                                 </constraints>
                             </pageControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBD-cR-rnL" userLabel="Tab View">
+                                <rect key="frame" x="0.0" y="596" width="600" height="4"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="4" id="Gls-Fn-xdw"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbB-Aw-uiu" userLabel="Tab Scroll View">
+                                <rect key="frame" x="0.0" y="556" width="600" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="r4c-lr-pZc"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="GBD-cR-rnL" firstAttribute="top" secondItem="jbB-Aw-uiu" secondAttribute="bottom" id="0V9-8c-oG5"/>
                             <constraint firstItem="7FL-Uu-96L" firstAttribute="top" secondItem="r7q-bE-bwn" secondAttribute="bottom" id="4BZ-0F-Dtp"/>
+                            <constraint firstAttribute="trailing" secondItem="jbB-Aw-uiu" secondAttribute="trailing" id="51h-YM-CE5"/>
+                            <constraint firstItem="GBD-cR-rnL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7Yp-Mx-9WK"/>
                             <constraint firstItem="r7q-bE-bwn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HNo-qb-q3Q"/>
-                            <constraint firstAttribute="trailing" secondItem="7FL-Uu-96L" secondAttribute="trailing" id="Iw1-at-Kdd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GBD-cR-rnL" secondAttribute="bottom" id="JmH-tB-NCH"/>
+                            <constraint firstItem="jbB-Aw-uiu" firstAttribute="top" secondItem="7FL-Uu-96L" secondAttribute="bottom" id="L6e-7c-eCa"/>
                             <constraint firstItem="89Z-XC-jgZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XQ6-r3-3Lo"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7FL-Uu-96L" secondAttribute="bottom" id="iLM-52-xxW"/>
+                            <constraint firstItem="jbB-Aw-uiu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gdZ-dP-0Zz"/>
+                            <constraint firstAttribute="trailing" secondItem="GBD-cR-rnL" secondAttribute="trailing" id="hcp-Vz-Tfp"/>
+                            <constraint firstAttribute="trailing" secondItem="7FL-Uu-96L" secondAttribute="trailing" id="iYU-kJ-ClG"/>
                             <constraint firstAttribute="trailing" secondItem="89Z-XC-jgZ" secondAttribute="trailing" id="jJh-Gv-5dg"/>
                             <constraint firstItem="89Z-XC-jgZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="23" id="p3d-Rv-pS3"/>
+                            <constraint firstItem="jbB-Aw-uiu" firstAttribute="top" secondItem="7FL-Uu-96L" secondAttribute="bottom" id="qI5-HU-pMy"/>
                             <constraint firstAttribute="trailing" secondItem="r7q-bE-bwn" secondAttribute="trailing" id="qlr-zC-W8O"/>
-                            <constraint firstItem="7FL-Uu-96L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wb7-vo-McY"/>
+                            <constraint firstItem="7FL-Uu-96L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qr4-Lk-weH"/>
                             <constraint firstItem="r7q-bE-bwn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zOe-bH-p1q"/>
                         </constraints>
                     </view>
@@ -57,6 +77,8 @@
                         <outlet property="navigationBar" destination="r7q-bE-bwn" id="btM-ba-sXT"/>
                         <outlet property="pageControl" destination="89Z-XC-jgZ" id="eKb-Wj-YP7"/>
                         <outlet property="scrollView" destination="7FL-Uu-96L" id="SFR-P8-eS7"/>
+                        <outlet property="tabFrameView" destination="GBD-cR-rnL" id="qhc-8w-Mju"/>
+                        <outlet property="tabScrollView" destination="jbB-Aw-uiu" id="lAa-uv-ryC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

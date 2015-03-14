@@ -25,5 +25,6 @@
 - (NSArray *)getGradientColorList;
 - (UIColor *)getCellBackGroundColor;
 - (UIColor *)getSectionHeaderFontColor;
+- (UIColor *)getColorWithNumber:(int)number;
 
 @end

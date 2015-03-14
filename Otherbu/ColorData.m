@@ -46,4 +46,22 @@
     return [UIColor colorWithHex:[UIColor removeSharp:_font_color]];
 }
 
+- (UIColor *)getColorWithNumber:(int)number {
+    UIColor *color;
+    switch (number) {
+        case 0:
+            color = [UIColor colorWithHex:[UIColor removeSharp:_font_color]];
+        case 1:
+            color = [UIColor colorWithHex:[UIColor removeSharp:_color_code1]];
+            break;
+        case 2:
+            color = [UIColor colorWithHex:[UIColor removeSharp:_color_code2]];
+            break;
+        case 3:
+            color = [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
+            break;
+    }
+    return color;
+}
+
 @end
