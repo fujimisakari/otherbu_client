@@ -33,8 +33,9 @@
     [self refreshBookmarks:self];
 
     // setup view init
+    float marginOfHeight = _navigationBar.frame.size.height + _tabScrollView.frame.size.height + _tabFrameView.frame.size.height;
     _viewWidth = self.view.frame.size.width;
-    _viewHeight = self.view.frame.size.height - _navigationBar.frame.size.height - 44;
+    _viewHeight = self.view.frame.size.height - marginOfHeight;
 
     // setup BackgroundImage
     [self setupBackgroundImage];
