@@ -19,6 +19,7 @@ extern NSString * const kDefaultImageName;
 extern const int kNumberOfPages;
 
 extern const float kMarginTopOfTableFrame;
+extern const float kMarginBottomOfTableFrame;
 extern const float kHorizontalAdaptSizeOfTableCell;
 extern const float kHorizontalOffsetOfTableCell;
 extern const float kSizeOfTableFrame;

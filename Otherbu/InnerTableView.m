@@ -26,7 +26,7 @@
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     // テーブルの上部に余白を空ける
-    self.contentInset = UIEdgeInsetsMake(kMarginTopOfTableFrame, 0, 40, 0);
+    self.contentInset = UIEdgeInsetsMake(kMarginTopOfTableFrame, 0, kMarginBottomOfTableFrame, 0);
 
     // 背景は透過させる
     UIColor *color = [UIColor blackColor];

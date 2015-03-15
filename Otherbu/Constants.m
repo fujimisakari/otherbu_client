@@ -22,6 +22,7 @@ const int kNumberOfPages = 3;                                // ページ数
 
 #pragma mark - Table Value
 const float kMarginTopOfTableFrame = 20.0f;                  // テーブルの上部に余白
+const float kMarginBottomOfTableFrame = 30.0f;               // テーブルの下部に余白
 const float kHorizontalAdaptSizeOfTableCell = 20.0f;         // セルのサイズ調整
 const float kHorizontalOffsetOfTableCell = 10.0f;            // セルのx位置調整
 const float kSizeOfTableFrame = 5.0f;                        // テーブルフレームのサイズ

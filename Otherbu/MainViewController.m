@@ -21,9 +21,9 @@
 #import "Constants.h"
 
 @implementation MainViewController {
-    NSNumber *_pageId;
     float _viewWidth;
     float _viewHeight;
+    PageData *_currentPage;
     PageTabView *_currentPageTabView;
 }
 
@@ -35,7 +35,6 @@
     // setup view init
     _viewWidth = self.view.frame.size.width;
     _viewHeight = self.view.frame.size.height - _navigationBar.frame.size.height - 44;
-    _pageId = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
 
     // setup BackgroundImage
     [self setupBackgroundImage];
@@ -67,6 +66,10 @@
         if (error) {
             NSLog(@"error = %@", error);
         }
+
+        NSNumber *number = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
+        _currentPage = [[DataManager sharedManager] getPage:number];
+
         [self reloadTableData];
         [self createPageTabViews];
         // [self.refreshControl endRefreshing];
@@ -90,9 +93,8 @@
  * テーブル全体のセクションの数を返す
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    PageData *page = [[DataManager sharedManager] getPage:_pageId];
-    if (page) {
-        NSArray *categoryList = [page getCategoryListByTag:tableView.tag];
+    if (_currentPage) {
+        NSArray *categoryList = [_currentPage getCategoryListByTag:tableView.tag];
         return categoryList.count;
     } else {
         return 0;
@@ -103,9 +105,8 @@
  * 指定されたセクションのセクション名を返す
  */
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    PageData *page = [[DataManager sharedManager] getPage:_pageId];
-    if (page) {
-        CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
+    if (_currentPage) {
+        CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
         return categoryData.name;
     } else {
         return @"";
@@ -116,9 +117,8 @@
  * 指定されたセクションの項目数を返す
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    PageData *page = [[DataManager sharedManager] getPage:_pageId];
-    if (page) {
-        CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
+    if (_currentPage) {
+        CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
         NSArray *bookmarkList = [categoryData getBookmarkList];
         return categoryData.isOpenSection ? bookmarkList.count : 0;
     } else {
@@ -137,9 +137,8 @@
         cell = [TableCellView initWithCellIdentifier:cellIdentifier];
     }
 
-    PageData *page = [[DataManager sharedManager] getPage:_pageId];
-    if (page) {
-        cell = [cell setupWithPageData:page tableView:tableView indexPath:indexPath];
+    if (_currentPage) {
+        cell = [cell setupWithPageData:_currentPage tableView:tableView indexPath:indexPath];
     }
     return cell;
 }
@@ -157,9 +156,8 @@
  セクションヘッダーのコンテンツを設定する
  */
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    PageData *page = [[DataManager sharedManager] getPage:_pageId];
-    if (page) {
-        CategoryData *categoryData = [page getCategoryListByTag:tableView.tag][section];
+    if (_currentPage) {
+        CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
         CGRect frame = CGRectMake(0, 0, _viewWidth, kHeightOfSectionHeader);
         SectionHeaderView *containerView =
             [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section tag:tableView.tag];
@@ -186,8 +184,7 @@
  @param tag TableViewのタグ名
  */
 - (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag {
-    PageData *page = [[DataManager sharedManager] getPage:_pageId];
-    CategoryData *categoryData = [page getCategoryListByTag:tag][section];
+    CategoryData *categoryData = [_currentPage getCategoryListByTag:tag][section];
     UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tag];
 
     [tableView beginUpdates];
@@ -206,8 +203,7 @@
 #pragma mark - PageTabViewDelegate
 
 - (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
-    NSNumber *number = [[NSNumber alloc] initWithInt:(int)selectPage.dataId];
-    _pageId = number;
+    _currentPage = selectPage;
 
     [self reloadTableData];
 
@@ -297,7 +293,7 @@
         PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:(CGRect)rect];
         [pageTabView setUpWithPage:pageData];
         pageTabView.delegate = self;
-        if ((int)pageData.dataId == [_pageId intValue]) {
+        if ((int)pageData.dataId == (int)_currentPage.dataId) {
             _currentPageTabView = pageTabView;
             [pageTabView switchTabStatus];
         }
@@ -308,8 +304,7 @@
     _tabScrollView.contentSize = cgSize;
 
     // set TabFrameView
-    PageData *page = [dataManager getPage:_pageId];
-    _tabFrameView.backgroundColor = [[page color] getColorWithNumber:3];
+    _tabFrameView.backgroundColor = [[_currentPage color] getColorWithNumber:3];
 }
 
 @end
