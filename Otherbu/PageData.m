@@ -85,13 +85,30 @@
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *sortDict = [self getMapByArg:_sortIdsStr];
     for (NSNumber *angleId in tmpResultDict) {
+        //sortIdが0 or 1 始まりのため、 firstCategoryDataは0始まりだった時の先頭categoryを保持してる
+        CategoryData *firstCategoryData = nil;
         NSMutableArray *array = [NSMutableArray arrayWithArray:tmpResultDict[angleId]];
         for (CategoryData *category in tmpResultDict[angleId]) {
             NSNumber *categoryId = [[NSNumber alloc] initWithInt:(int)category.dataId];
             NSNumber *sortId = sortDict[categoryId];
             int idx = (int)[sortId integerValue] - 1;
-            array[idx] = category;
+            if (idx >= 0) {
+                array[idx] = category;
+            } else {
+                firstCategoryData = category;
+            }
         }
+
+        // firstCategoryDataを先頭に置き替える
+        if (firstCategoryData) {
+            NSMutableArray *tmpArray = [NSMutableArray arrayWithObject:firstCategoryData];
+            [array removeLastObject];
+            for (CategoryData *category in array) {
+                [tmpArray addObject:(id)category];
+            }
+            array = tmpArray;
+        }
+
         resultDict[angleId] = array;
     }
     return resultDict;
@@ -106,7 +123,6 @@
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
     NSArray *list_ = [strData componentsSeparatedByString:@","];
     for (id data in list_) {
-        // NSString *data_ = (NSString *)data;
         NSArray *aList = [(NSString *)data componentsSeparatedByString:@":"];
         NSNumber *categoryId = [[NSNumber alloc] initWithInt:[aList[0] intValue]];
         NSNumber *argId = [[NSNumber alloc] initWithInt:[aList[1] intValue]];
