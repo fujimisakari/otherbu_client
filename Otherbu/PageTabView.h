@@ -8,9 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@class PageData;
+@class PageData, PageTabView;
+
+@protocol PageTabDelegate
+
+/**
+ シングルタップ
+
+ @param section セクションのインデックス；
+ @param tag TableViewのtag名
+ */
+- (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)pageTabView;
+
+@end
 
 @interface PageTabView : UIView
+
+@property (nonatomic, weak) id<PageTabDelegate> delegate;
 
 + (id)initWithFrame:(CGRect)rect;
 

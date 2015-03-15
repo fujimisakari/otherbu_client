@@ -35,6 +35,9 @@
 
     // 角丸にする
     [self setMaskLayerWithSectionType];
+
+    // タップジェスチャーを設定
+    [self addTapGesture];
 }
 
 /**
@@ -75,6 +78,21 @@
     maskLayer.frame = self.bounds;
     maskLayer.path = maskPath.CGPath;
     self.layer.mask = maskLayer;
+}
+
+/**
+ タップジェスチャを追加
+ */
+- (void)addTapGesture {
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sigleTapped)];
+    [self addGestureRecognizer:singleTap];
+}
+
+/**
+ シングルタップイベント
+ */
+- (void)sigleTapped {
+    [self.delegate didPageTabSingleTap:_page pageTabView:self];
 }
 
 @end

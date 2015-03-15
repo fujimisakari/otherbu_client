@@ -24,7 +24,7 @@
     NSNumber *_pageId;
     float _viewWidth;
     float _viewHeight;
-    CGFloat _beginScrollOffsetY;
+    PageTabView *_pageTabView;
 }
 
 - (void)viewDidLoad {
@@ -183,7 +183,7 @@
     // まだ何もしない
 }
 
-#pragma mark - CustomSectionHeaderViewDelegate
+#pragma mark - SectionHeaderViewDelegate
 
 /**
  シングルタップ時に実行される処理
@@ -207,6 +207,40 @@
     }
 
     [tableView endUpdates];
+}
+
+#pragma mark - PageTabViewDelegate
+
+- (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)pageTabView {
+    NSLog(@"select Page %ld", selectPage.dataId);
+    NSNumber *number = [[NSNumber alloc] initWithInt:(int)selectPage.dataId];
+    _pageId = number;
+    for (int i = 1; i < LastAngle; ++i) {
+        UITableView *tableView = (UITableView *)[_scrollView viewWithTag:i];
+        [tableView reloadData];
+    }
+
+    NSLog(@"width %f", pageTabView.width);
+    NSLog(@"height %f", _pageTabView.height);
+
+    CGFloat ccoffsetY = pageTabView.frame.origin.y;
+    float ccheight = pageTabView.frame.size.height;
+
+    CGFloat offsetY = _pageTabView.frame.origin.y;
+    float height = _pageTabView.frame.size.height;
+
+    // タップされたタブを拡大する
+    CGRect cgRect1 = CGRectMake(pageTabView.frame.origin.x, offsetY, pageTabView.frame.size.width, height);
+    pageTabView.frame = cgRect1;
+
+    // タップされたタブを縮小する
+    CGRect cgRect2 = CGRectMake(_pageTabView.frame.origin.x, ccoffsetY, _pageTabView.frame.size.width, ccheight);
+    _pageTabView.frame = cgRect2;
+
+    _pageTabView = pageTabView;
+
+    // set TabFrameView
+    _tabFrameView.backgroundColor = [[selectPage color] getColorWithNumber:3];
 }
 
 #pragma mark - Private Methods
@@ -270,14 +304,18 @@
                                         lineBreakMode:NSLineBreakByWordWrapping];
         CGRect rect;
         if ((int)pageData.dataId == [_pageId intValue]) {
-            rect = CGRectMake(x, 0, textSize.width + 80, 40);
+            rect = CGRectMake(x, 0, textSize.width + 30, 40);
         } else {
-            rect = CGRectMake(x, 10, textSize.width + 80, 30);
+            rect = CGRectMake(x, 10, textSize.width + 30, 30);
         }
         PageTabView *pageTabLabel = [[PageTabView alloc] initWithFrame:(CGRect)rect];
+        if ((int)pageData.dataId == [_pageId intValue]) {
+            _pageTabView = pageTabLabel;
+        }
         [pageTabLabel setUpWithPage:pageData];
+        pageTabLabel.delegate = self;
         [_tabScrollView addSubview:pageTabLabel];
-        x += pageTabLabel.bounds.size.width;
+        x += pageTabLabel.bounds.size.width + 1;
     }
     CGSize cgSize = CGSizeMake(x, 40);
     _tabScrollView.contentSize = cgSize;

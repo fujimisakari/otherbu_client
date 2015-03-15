@@ -69,9 +69,9 @@
 
     // アングル別のカテゴリリストを生成
     NSMutableDictionary *angleDict = [self getMapByArg:_angleIdsStr];
-    NSMutableDictionary *tmpResultDict = [@{[NSNumber numberWithInt: LEFT]: [[NSMutableArray alloc] init],
-                                            [NSNumber numberWithInt: CENTER]: [[NSMutableArray alloc] init],
-                                            [NSNumber numberWithInt: RIGHT]: [[NSMutableArray alloc] init]
+    NSMutableDictionary *tmpResultDict = [@{[NSNumber numberWithInt : LEFT] : [[NSMutableArray alloc] init],
+                                            [NSNumber numberWithInt:CENTER] : [[NSMutableArray alloc] init],
+                                            [NSNumber numberWithInt:RIGHT] : [[NSMutableArray alloc] init]
                                           } mutableCopy];
     for (NSNumber *categoryId in angleDict) {
         CategoryData *data = [dataManager getCategory:categoryId];
@@ -96,7 +96,6 @@
     }
     return resultDict;
 }
-
 
 /**
  引数の文字列をパースしてdictionaryリストを生成する
