@@ -24,7 +24,7 @@
     NSNumber *_pageId;
     float _viewWidth;
     float _viewHeight;
-    PageTabView *_pageTabView;
+    PageTabView *_currentPageTabView;
 }
 
 - (void)viewDidLoad {
@@ -67,14 +67,8 @@
         if (error) {
             NSLog(@"error = %@", error);
         }
-
-        for (int i = 1; i < LastAngle; ++i) {
-            UITableView *tableView = (UITableView *)[_scrollView viewWithTag:i];
-            [tableView reloadData];
-        }
-
+        [self reloadTableData];
         [self createPageTabViews];
-
         // [self.refreshControl endRefreshing];
     }];
 }
@@ -211,39 +205,33 @@
 
 #pragma mark - PageTabViewDelegate
 
-- (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)pageTabView {
-    NSLog(@"select Page %ld", selectPage.dataId);
+- (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
     NSNumber *number = [[NSNumber alloc] initWithInt:(int)selectPage.dataId];
     _pageId = number;
-    for (int i = 1; i < LastAngle; ++i) {
-        UITableView *tableView = (UITableView *)[_scrollView viewWithTag:i];
-        [tableView reloadData];
-    }
 
-    NSLog(@"width %f", pageTabView.width);
-    NSLog(@"height %f", _pageTabView.height);
+    [self reloadTableData];
 
-    CGFloat ccoffsetY = pageTabView.frame.origin.y;
-    float ccheight = pageTabView.frame.size.height;
-
-    CGFloat offsetY = _pageTabView.frame.origin.y;
-    float height = _pageTabView.frame.size.height;
-
-    // タップされたタブを拡大する
-    CGRect cgRect1 = CGRectMake(pageTabView.frame.origin.x, offsetY, pageTabView.frame.size.width, height);
-    pageTabView.frame = cgRect1;
-
-    // タップされたタブを縮小する
-    CGRect cgRect2 = CGRectMake(_pageTabView.frame.origin.x, ccoffsetY, _pageTabView.frame.size.width, ccheight);
-    _pageTabView.frame = cgRect2;
-
-    _pageTabView = pageTabView;
+    // switch PageTabView
+    [tappedPageTabView switchTabStatus];
+    [_currentPageTabView switchTabStatus];
+    _currentPageTabView = tappedPageTabView;
 
     // set TabFrameView
     _tabFrameView.backgroundColor = [[selectPage color] getColorWithNumber:3];
 }
 
 #pragma mark - Private Methods
+
+/**
+ Tableデータの再読み込み
+ */
+-(void)reloadTableData {
+    for (int i = 1; i < LastAngle; ++i) {
+        UITableView *tableView = (UITableView *)[_scrollView viewWithTag:i];
+        [tableView reloadData];
+    }
+}
+
 /**
  指定セクション配下のコンテンツを開く
 
@@ -297,25 +285,24 @@
  */
 - (void)createPageTabViews {
     DataManager *dataManager = [DataManager sharedManager];
+
+    // set PageTabView
     float x = 0;
     for (PageData *pageData in [dataManager.pageDict objectEnumerator]) {
         CGSize textSize = [pageData.name sizeWithFont:[UIFont fontWithName:kDefaultFont size:16]
                                     constrainedToSize:CGSizeMake(200, 2000)
                                         lineBreakMode:NSLineBreakByWordWrapping];
-        CGRect rect;
+
+        CGRect rect = CGRectMake(x, 0, textSize.width + 30, 40);
+        PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:(CGRect)rect];
+        [pageTabView setUpWithPage:pageData];
+        pageTabView.delegate = self;
         if ((int)pageData.dataId == [_pageId intValue]) {
-            rect = CGRectMake(x, 0, textSize.width + 30, 40);
-        } else {
-            rect = CGRectMake(x, 10, textSize.width + 30, 30);
+            _currentPageTabView = pageTabView;
+            [pageTabView switchTabStatus];
         }
-        PageTabView *pageTabLabel = [[PageTabView alloc] initWithFrame:(CGRect)rect];
-        if ((int)pageData.dataId == [_pageId intValue]) {
-            _pageTabView = pageTabLabel;
-        }
-        [pageTabLabel setUpWithPage:pageData];
-        pageTabLabel.delegate = self;
-        [_tabScrollView addSubview:pageTabLabel];
-        x += pageTabLabel.bounds.size.width + 1;
+        [_tabScrollView addSubview:pageTabView];
+        x += pageTabView.bounds.size.width + 1;
     }
     CGSize cgSize = CGSizeMake(x, 40);
     _tabScrollView.contentSize = cgSize;

@@ -14,6 +14,9 @@
 
 @implementation PageTabView {
     PageData *_page;
+    UIView *_activeTab;
+    UIView *_stanbyTab;
+    BOOL _isActive;
 }
 
 + (id)initWithFrame:(CGRect)rect {
@@ -21,63 +24,99 @@
     return pageTab;
 }
 
+#pragma mark - Public Methods
+
 /**
- pageラベル生成
+ 初期設定
 */
 - (void)setUpWithPage:(PageData *)page {
+    CGFloat offsetX = 0;
+    CGFloat offsetY = self.frame.origin.y;
+    CGFloat width = self.frame.size.width;
+    CGFloat height = self.frame.size.height;
+    CGRect activeRect = CGRectMake(offsetX, offsetY, width, height);
+    CGRect stanbyRect = CGRectMake(offsetX, offsetY + 10, width, height - 10);
+    _activeTab = [[UIView alloc] initWithFrame:activeRect];
+    _stanbyTab = [[UIView alloc] initWithFrame:stanbyRect];
+    _activeTab.hidden = YES;
+    _stanbyTab.hidden = NO;
+    _isActive = NO;
     _page = page;
 
+    self.backgroundColor = [UIColor clearColor];
+    [self addSubview:_activeTab];
+    [self addSubview:_stanbyTab];
+
     // タイトル生成
-    [self setTitle];
+    [self setTitle:_activeTab];
+    [self setTitle:_stanbyTab];
 
     // 背景色の設定
-    [self setBackground];
+    [self setBackground:_activeTab];
+    [self setBackground:_stanbyTab];
 
     // 角丸にする
-    [self setMaskLayerWithSectionType];
+    [self setMaskLayerWithSectionType:_activeTab];
+    [self setMaskLayerWithSectionType:_stanbyTab];
 
     // タップジェスチャーを設定
     [self addTapGesture];
 }
 
 /**
+ Tabの状態の切り換え
+ */
+- (void)switchTabStatus {
+    if (_isActive) {
+        _activeTab.hidden = YES;
+        _stanbyTab.hidden = NO;
+        _isActive = NO;
+    } else {
+        _activeTab.hidden = NO;
+        _stanbyTab.hidden = YES;
+        _isActive = YES;
+    }
+}
+
+#pragma mark - Private Methods
+
+/**
  ラベルのタイトルを設定する
  */
-- (void)setTitle {
+- (void)setTitle:(UIView *)view {
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = _page.name;
     titleLbl.textColor = [[_page color] getSectionHeaderFontColor];
     titleLbl.font = [UIFont fontWithName:kDefaultFont size:16];
     titleLbl.backgroundColor = [UIColor clearColor];
     [titleLbl sizeToFit];
-    CGFloat titleLabelOffsetX = (self.bounds.size.width - titleLbl.bounds.size.width) / 2;
-    titleLbl.frame = CGRectMake(titleLabelOffsetX, self.bounds.origin.y, self.frame.size.width, self.frame.size.height);
-    [self addSubview:titleLbl];
+    CGFloat titleLabelOffsetX = (view.bounds.size.width - titleLbl.bounds.size.width) / 2;
+    titleLbl.frame = CGRectMake(titleLabelOffsetX, view.bounds.origin.y, view.frame.size.width, view.frame.size.height);
+    [view addSubview:titleLbl];
 }
 
 /**
  背景色(グラデーション)を設定する
  */
-- (void)setBackground {
-    //
+- (void)setBackground:(UIView *)view {
     CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = self.bounds;
+    gradient.frame = view.bounds;
     gradient.colors = [[_page color] getGradientColorList];
-    [self.layer insertSublayer:gradient atIndex:0];
+    [view.layer insertSublayer:gradient atIndex:0];
 }
 
 /**
  角丸のmaskLayerを設定する
  */
-- (void)setMaskLayerWithSectionType {
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+- (void)setMaskLayerWithSectionType:(UIView *)view {
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
                                                    byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
                                                          cornerRadii:CGSizeMake(6.0, 6.0)];
 
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = self.bounds;
+    maskLayer.frame = view.bounds;
     maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
+    view.layer.mask = maskLayer;
 }
 
 /**

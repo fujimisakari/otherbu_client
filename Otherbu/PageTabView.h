@@ -29,5 +29,6 @@
 + (id)initWithFrame:(CGRect)rect;
 
 - (void)setUpWithPage:(PageData *)page;
+- (void)switchTabStatus;
 
 @end
