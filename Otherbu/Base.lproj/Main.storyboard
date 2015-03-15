@@ -32,7 +32,7 @@
                                     <navigationItem title="Title" id="65H-Lh-BlT"/>
                                 </items>
                             </navigationBar>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="89Z-XC-jgZ">
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="89Z-XC-jgZ">
                                 <rect key="frame" x="0.0" y="43" width="600" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="b7v-4X-NPM"/>
@@ -45,8 +45,9 @@
                                     <constraint firstAttribute="height" constant="4" id="Gls-Fn-xdw"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbB-Aw-uiu" userLabel="Tab Scroll View">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbB-Aw-uiu" userLabel="Tab Scroll View">
                                 <rect key="frame" x="0.0" y="556" width="600" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="r4c-lr-pZc"/>
                                 </constraints>

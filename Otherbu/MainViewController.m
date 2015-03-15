@@ -45,13 +45,6 @@
     // setup ScrollView
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
     [_scrollView setupWithCGSize:cgSize viewController:self];
-
-    // set TabScrollView
-    _tabScrollView.backgroundColor = [UIColor blackColor];
-    _tabScrollView.pagingEnabled = NO;
-    _tabScrollView.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
-    _tabScrollView.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
-    _tabScrollView.scrollsToTop = NO;  // ステータスバータップでトップにスクロールする機能をOFFにする
 }
 
 - (void)didReceiveMemoryWarning {
