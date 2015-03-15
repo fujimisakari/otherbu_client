@@ -1,5 +1,5 @@
 //
-//  PageTabLabel.h
+//  PageTabView.h
 //  Otherbu
 //
 //  Created by fujimisakari on 2015/03/14.
@@ -10,7 +10,7 @@
 
 @class PageData;
 
-@interface PageTabLabel : UILabel
+@interface PageTabView : UIView
 
 + (id)initWithFrame:(CGRect)rect;
 

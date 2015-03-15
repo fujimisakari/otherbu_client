@@ -21,7 +21,7 @@
         self.categoryIdsStr = dataDict[@"category_ids_str"];
         self.angleIdsStr = dataDict[@"angle_ids_str"];
         self.sortIdsStr = dataDict[@"sort_ids_str"];
-        self.colorId = 10;
+        self.colorId = 11;
     }
     return self;
 }

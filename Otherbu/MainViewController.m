@@ -17,7 +17,7 @@
 #import "CategoryData.h"
 #import "ColorData.h"
 #import "PageData.h"
-#import "PageTabLabel.h"
+#import "PageTabView.h"
 #import "Constants.h"
 
 @implementation MainViewController {
@@ -274,7 +274,7 @@
         } else {
             rect = CGRectMake(x, 10, textSize.width + 80, 30);
         }
-        PageTabLabel *pageTabLabel = [[PageTabLabel alloc] initWithFrame:(CGRect)rect];
+        PageTabView *pageTabLabel = [[PageTabView alloc] initWithFrame:(CGRect)rect];
         [pageTabLabel setUpWithPage:pageData];
         [_tabScrollView addSubview:pageTabLabel];
         x += pageTabLabel.bounds.size.width;
