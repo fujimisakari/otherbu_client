@@ -38,4 +38,9 @@ extern const int kVerticalOffsetOfDownArrow;
 extern const int kHorizontalOffsetOfRightArrow;
 extern const int kVerticalOffsetOfRightArrow;
 
+extern const int kFontSizeOfPageTab;
+extern const float kHeightOfPageTab;
+extern const float kAdaptWidthOfPageTab;
+extern const float kAdaptHeightOfPageTab;
+
 @end

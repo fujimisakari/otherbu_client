@@ -42,4 +42,10 @@ const int kVerticalOffsetOfDownArrow = 15;                   // 開閉画像名(
 const int kHorizontalOffsetOfRightArrow = 25;                // 開閉画像(→)のx位置調整
 const int kVerticalOffsetOfRightArrow = 12;                  // 開閉画像(→)のy位置調整
 
+#pragma mark - PageTab Value
+const int kFontSizeOfPageTab = 16;                           // PageTabのフォントサイズ
+const float kHeightOfPageTab = 40.0f;                        // PageTabの高さ
+const float kAdaptWidthOfPageTab = 30.0f;                    // PageTabのサイズ調整(width)
+const float kAdaptHeightOfPageTab = 10.0f;                   // PageTabのサイズ調整(height)
+
 @end

@@ -35,7 +35,7 @@
     CGFloat width = self.frame.size.width;
     CGFloat height = self.frame.size.height;
     CGRect activeRect = CGRectMake(offsetX, offsetY, width, height);
-    CGRect stanbyRect = CGRectMake(offsetX, offsetY + 10, width, height - 10);
+    CGRect stanbyRect = CGRectMake(offsetX, offsetY + kAdaptHeightOfPageTab, width, height - kAdaptHeightOfPageTab);
     _activeTab = [[UIView alloc] initWithFrame:activeRect];
     _stanbyTab = [[UIView alloc] initWithFrame:stanbyRect];
     _activeTab.hidden = YES;

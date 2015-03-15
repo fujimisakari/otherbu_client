@@ -49,7 +49,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)refreshBookmarks:(id)sender {
@@ -270,7 +269,7 @@
 }
 
 /**
- ページタブViewを生成する
+ PageTabViewを生成する
  */
 - (void)createPageTabViews {
     DataManager *dataManager = [DataManager sharedManager];
@@ -278,11 +277,11 @@
     // set PageTabView
     float x = 0;
     for (PageData *pageData in [dataManager.pageDict objectEnumerator]) {
-        CGSize textSize = [pageData.name sizeWithFont:[UIFont fontWithName:kDefaultFont size:16]
+        CGSize textSize = [pageData.name sizeWithFont:[UIFont fontWithName:kDefaultFont size:kFontSizeOfPageTab]
                                     constrainedToSize:CGSizeMake(200, 2000)
                                         lineBreakMode:NSLineBreakByWordWrapping];
 
-        CGRect rect = CGRectMake(x, 0, textSize.width + 30, 40);
+        CGRect rect = CGRectMake(x, 0, textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
         PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:(CGRect)rect];
         [pageTabView setUpWithPage:pageData];
         pageTabView.delegate = self;
@@ -293,7 +292,7 @@
         [_tabScrollView addSubview:pageTabView];
         x += pageTabView.bounds.size.width + 1;
     }
-    CGSize cgSize = CGSizeMake(x, 40);
+    CGSize cgSize = CGSizeMake(x, kHeightOfPageTab);
     _tabScrollView.contentSize = cgSize;
 
     // set TabFrameView
