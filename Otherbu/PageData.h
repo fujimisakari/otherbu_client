@@ -10,13 +10,6 @@
 
 @interface PageData : NSObject
 
-typedef NS_ENUM(NSUInteger, AngleType) {
-    LEFT = 1,
-    CENTER,
-    RIGHT,
-    LastAngle,
-};
-
 @property(nonatomic) NSInteger dataId;          // ID
 @property(nonatomic) NSInteger userId;          // ユーザーID
 @property(nonatomic) NSString *name;            // カテゴリ名

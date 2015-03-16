@@ -8,6 +8,13 @@
 
 @interface Constants : NSObject
 
+typedef NS_ENUM(NSUInteger, AngleType) {
+    LEFT = 1,
+    CENTER,
+    RIGHT,
+    LastAngle,
+};
+
 extern NSString * const kTitle;
 extern const int kFontSizeOfTitle;
 extern const float kVerticalOffsetOfTitle;

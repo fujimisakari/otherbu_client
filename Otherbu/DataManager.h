@@ -10,13 +10,6 @@
 
 @interface DataManager : NSObject
 
-typedef NS_ENUM(NSUInteger, SelectType) {
-    PAGE,
-    CATEGORY,
-    BOOKMARK,
-    Color,
-};
-
 @property(nonatomic) NSMutableDictionary *pageDict;
 @property(nonatomic) NSMutableDictionary *categoryDict;
 @property(nonatomic) NSMutableDictionary *bookmarkDict;
@@ -25,7 +18,6 @@ typedef NS_ENUM(NSUInteger, SelectType) {
 + (DataManager *)sharedManager;
 
 - (void)reloadDataWithBlock:(void (^)(NSError *error))block;
-
 - (PageData *)getPage:(NSNumber *)dataId;
 - (CategoryData *)getCategory:(NSNumber *)dataId;
 - (BookmarkData *)getBookmark:(NSNumber *)dataId;
