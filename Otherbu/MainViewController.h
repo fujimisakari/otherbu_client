@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "SectionHeaderView.h"
 #import "PageTabView.h"
 

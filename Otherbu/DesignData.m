@@ -7,7 +7,6 @@
 //
 
 #import "DesignData.h"
-#import "UIColor+Hex.h"
 
 @implementation DesignData
 

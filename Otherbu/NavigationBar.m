@@ -7,7 +7,6 @@
 //
 
 #import "NavigationBar.h"
-#import "Constants.h"
 
 @implementation NavigationBar
 

@@ -8,7 +8,6 @@
 
 #import "ColorData.h"
 #import "DataManager.h"
-#import "UIColor+Hex.h"
 
 @implementation ColorData
 

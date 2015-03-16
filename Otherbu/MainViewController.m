@@ -18,7 +18,6 @@
 #import "ColorData.h"
 #import "PageData.h"
 #import "PageTabView.h"
-#import "Constants.h"
 
 @implementation MainViewController {
     float _viewWidth;

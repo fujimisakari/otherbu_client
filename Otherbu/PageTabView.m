@@ -10,7 +10,6 @@
 #import "PageData.h"
 #import "DataManager.h"
 #import "ColorData.h"
-#import "Constants.h"
 
 @implementation PageTabView {
     PageData *_page;

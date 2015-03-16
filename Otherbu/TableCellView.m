@@ -13,7 +13,6 @@
 #import "BookmarkData.h"
 #import "DesignData.h"
 #import "ColorData.h"
-#import "Constants.h"
 
 @implementation TableCellView {
     NSIndexPath *_indexPath;

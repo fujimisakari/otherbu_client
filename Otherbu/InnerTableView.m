@@ -8,7 +8,6 @@
 
 #import "InnerTableView.h"
 #import "MainViewController.h"
-#import "Constants.h"
 
 @implementation InnerTableView
 

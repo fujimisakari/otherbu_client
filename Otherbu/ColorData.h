@@ -6,9 +6,6 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
 @interface ColorData : NSObject
 
 @property(nonatomic) NSInteger dataId;               // ID

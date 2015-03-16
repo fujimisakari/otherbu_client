@@ -9,8 +9,6 @@
 #import "SectionHeaderView.h"
 #import "CategoryData.h"
 #import "ColorData.h"
-#import "UIColor+Hex.h"
-#import "Constants.h"
 
 @implementation SectionHeaderView {
     UIImageView *_arrowImgView;
