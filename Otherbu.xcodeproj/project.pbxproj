@@ -26,7 +26,7 @@
 		7B565F241A9249FA00D6A420 /* PageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F201A9249FA00D6A420 /* PageData.m */; };
 		7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F681A96565500D6A420 /* OtherbuAPIClient.m */; };
 		7BA1E85D1AB5B0EA00FD879E /* UIView+ViewFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1E85C1AB5B0EA00FD879E /* UIView+ViewFrame.m */; };
-		7BF6979D1AAF4ADA008C1BAE /* ScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979C1AAF4ADA008C1BAE /* ScrollView.m */; };
+		7BF6979D1AAF4ADA008C1BAE /* MainScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979C1AAF4ADA008C1BAE /* MainScrollView.m */; };
 		7BF697A01AAF657E008C1BAE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979F1AAF657E008C1BAE /* Constants.m */; };
 		7BF697A31AB08B3C008C1BAE /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF697A21AB08B3C008C1BAE /* NavigationBar.m */; };
 		7BF697A61AB09AD8008C1BAE /* DesignData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF697A51AB09AD8008C1BAE /* DesignData.m */; };
@@ -81,8 +81,8 @@
 		7B565F681A96565500D6A420 /* OtherbuAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherbuAPIClient.m; sourceTree = "<group>"; };
 		7BA1E85B1AB5B0EA00FD879E /* UIView+ViewFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewFrame.h"; sourceTree = "<group>"; };
 		7BA1E85C1AB5B0EA00FD879E /* UIView+ViewFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewFrame.m"; sourceTree = "<group>"; };
-		7BF6979B1AAF4ADA008C1BAE /* ScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollView.h; sourceTree = "<group>"; };
-		7BF6979C1AAF4ADA008C1BAE /* ScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollView.m; sourceTree = "<group>"; };
+		7BF6979B1AAF4ADA008C1BAE /* MainScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScrollView.h; sourceTree = "<group>"; };
+		7BF6979C1AAF4ADA008C1BAE /* MainScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScrollView.m; sourceTree = "<group>"; };
 		7BF6979E1AAF657E008C1BAE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		7BF6979F1AAF657E008C1BAE /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		7BF697A11AB08B3C008C1BAE /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
@@ -133,8 +133,8 @@
 				7B11FCFD1AA7044F0093E63A /* InnerTableView.m */,
 				7B39F52C1A9CEE860036CB69 /* SectionHeaderView.h */,
 				7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */,
-				7BF6979B1AAF4ADA008C1BAE /* ScrollView.h */,
-				7BF6979C1AAF4ADA008C1BAE /* ScrollView.m */,
+				7BF6979B1AAF4ADA008C1BAE /* MainScrollView.h */,
+				7BF6979C1AAF4ADA008C1BAE /* MainScrollView.m */,
 				7BF697A11AB08B3C008C1BAE /* NavigationBar.h */,
 				7BF697A21AB08B3C008C1BAE /* NavigationBar.m */,
 				7BF697AF1AB42A94008C1BAE /* PageTabView.h */,
@@ -412,7 +412,7 @@
 				7B565F211A9249FA00D6A420 /* BookmarkData.m in Sources */,
 				7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */,
 				7B565EF61A92486F00D6A420 /* main.m in Sources */,
-				7BF6979D1AAF4ADA008C1BAE /* ScrollView.m in Sources */,
+				7BF6979D1AAF4ADA008C1BAE /* MainScrollView.m in Sources */,
 				7B39F53B1AA39BCA0036CB69 /* TableCellView.m in Sources */,
 				7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */,
 				7B39F5381AA321740036CB69 /* ColorData.m in Sources */,

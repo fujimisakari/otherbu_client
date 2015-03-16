@@ -1,17 +1,17 @@
 //
-//  ScrollView.m
+//  MainScrollView.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "ScrollView.h"
+#import "MainScrollView.h"
 #import "InnerTableView.h"
 #import "MainViewController.h"
 #import "PageData.h"
 
-@implementation ScrollView
+@implementation MainScrollView
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --

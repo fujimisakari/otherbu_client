@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "SectionHeaderView.h"
-#import "ScrollView.h"
+#import "MainScrollView.h"
 #import "NavigationBar.h"
 #import "InnerTableView.h"
 #import "TableCellView.h"

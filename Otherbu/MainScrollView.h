@@ -1,5 +1,5 @@
 //
-//  ScrollView.h
+//  MainScrollView.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,7 +8,7 @@
 
 @class MainViewController;
 
-@interface ScrollView : UIScrollView
+@interface MainScrollView : UIScrollView
 
 - (void)setupWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController;
 - (void)reloadTableData;
