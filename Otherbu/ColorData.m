@@ -12,6 +12,10 @@
 
 @implementation ColorData
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
@@ -28,9 +32,14 @@
     return self;
 }
 
-#pragma mark - Public Methods
+//--------------------------------------------------------------//
+#pragma mark -- Get Object By ForeignKey --
+//--------------------------------------------------------------//
+
+// todo 関数名替える
 
 - (NSArray *)getGradientColorList {
+    // グラデーション用のカラーリストを取得
     UIColor *color1 = [UIColor colorWithHex:[UIColor removeSharp:_color_code1]];
     UIColor *color2 = [UIColor colorWithHex:[UIColor removeSharp:_color_code2]];
     UIColor *color3 = [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
@@ -39,10 +48,12 @@
 }
 
 - (UIColor *)getCellBackGroundColor {
+    // テーブルの背景色を取得
     return [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
 }
 
 - (UIColor *)getSectionHeaderFontColor {
+    // セクション用のフォントカラーを取得
     return [UIColor colorWithHex:[UIColor removeSharp:_font_color]];
 }
 

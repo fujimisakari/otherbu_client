@@ -11,6 +11,10 @@
 
 @implementation DesignData
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
@@ -21,15 +25,22 @@
     return self;
 }
 
+//--------------------------------------------------------------//
+#pragma mark -- Public Method --
+//--------------------------------------------------------------//
+
 - (UIColor *)getTableBackGroundColor {
+    // テーブル背景色を取得
     return [UIColor colorWithHex:[UIColor removeSharp:_tableBackGroundColor]];
 }
 
 - (UIColor *)getbookmarkColor {
+    // ブックマークのフォントカラーを取得
     return [UIColor colorWithHex:[UIColor removeSharp:_bookmarkColor]];
 }
 
 - (UIColor *)getUrlColor {
+    // URLのフォントカラーを取得
     return [UIColor colorWithHex:[UIColor removeSharp:_urlColor]];
 }
 

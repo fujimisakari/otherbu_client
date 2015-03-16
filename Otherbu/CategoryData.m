@@ -12,6 +12,10 @@
 
 @implementation CategoryData
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
@@ -30,6 +34,10 @@
     return [NSString stringWithFormat:@"dataId=%ld, userId=%ld name=%@ angle=%ld, sort=%ld, colorId=%ld, isOpenSection=%d", _dataId,
                                       _userId, _name, _angle, _sort, _colorId, _isOpenSection];
 }
+
+//--------------------------------------------------------------//
+#pragma mark -- Public Method --
+//--------------------------------------------------------------//
 
 - (NSArray *)getBookmarkList {
     // ブックマークリストを生成

@@ -12,6 +12,10 @@
 
 @implementation PageData
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
@@ -31,9 +35,10 @@
                                       _name, _categoryIdsStr, _angleIdsStr, _sortIdsStr];
 }
 
-/**
- カテゴリ一覧を取得
- */
+//--------------------------------------------------------------//
+#pragma mark -- Public Method --
+//--------------------------------------------------------------//
+
 - (NSMutableArray *)getCategoryList {
     DataManager *dataManager = [DataManager sharedManager];
     NSMutableArray *resultList = [[NSMutableArray alloc] init];
@@ -49,22 +54,16 @@
     return resultList;
 }
 
-/**
- tag(angle)からカテゴリ一覧を取得
-
- @param tag TableViewのタグ名
- */
 - (NSMutableArray *)getCategoryListByTag:(NSInteger)tag {
+    // tag(angle)からカテゴリ一覧を取得
     NSMutableDictionary *categoryListOfAngle = [self getCategoryListOfAngle];
     NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tag];
     NSMutableArray *categoryList = categoryListOfAngle[angleNumber];
     return categoryList;
 }
 
-/**
- アングル別のカテゴリー一覧を取得
- */
 - (NSMutableDictionary *)getCategoryListOfAngle {
+    // アングル別のカテゴリー一覧を取得
     DataManager *dataManager = [DataManager sharedManager];
 
     // アングル別のカテゴリリストを生成
@@ -114,12 +113,8 @@
     return resultDict;
 }
 
-/**
- 引数の文字列をパースしてdictionaryリストを生成する
-
- @param strData パース対象文字列
- */
 - (NSMutableDictionary *)getMapByArg:(NSString *)strData {
+    // 引数の文字列をパースしてdictionaryリストを生成する
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
     NSArray *list_ = [strData componentsSeparatedByString:@","];
     for (id data in list_) {

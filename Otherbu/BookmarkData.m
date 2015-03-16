@@ -11,6 +11,10 @@
 
 @implementation BookmarkData
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
@@ -28,6 +32,10 @@
     return [NSString stringWithFormat:@"dataId=%ld, userId=%ld categoryId=%ld name=%@, url=%@, sort=%ld", _dataId, _userId, _categoryId,
                                       _name, _url, _sort];
 }
+
+//--------------------------------------------------------------//
+#pragma mark -- Public Method --
+//--------------------------------------------------------------//
 
 - (CategoryData *)category {
     NSNumber *number = [[NSNumber alloc] initWithInt:(int)_categoryId];

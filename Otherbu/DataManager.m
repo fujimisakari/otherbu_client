@@ -22,6 +22,10 @@
 
 @implementation DataManager
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 static DataManager *intance = nil;
 
 + (DataManager *)sharedManager {
@@ -30,8 +34,6 @@ static DataManager *intance = nil;
     }
     return intance;
 }
-
-#pragma mark - Initialization
 
 - (id)init {
     self = [super init];
@@ -45,15 +47,15 @@ static DataManager *intance = nil;
     return self;
 }
 
-#pragma mark - Public Methods
+//--------------------------------------------------------------//
+#pragma mark -- Public Method --
+//--------------------------------------------------------------//
 
 - (void)reloadDataWithBlock:(void (^)(NSError *error))block {
     [[OtherbuAPIClient sharedClient]
         getBookmarksWithCompletion:^(NSDictionary *results, NSError *error) {
         if (results) {
-            [self insertData:results];
-            // NSArray *bookmarksJSON = results[@"bookmarks"];
-            // self.bookmarks = [self parseBookmarks:bookmarksJSON];
+            [self _insertData:results];
         }
         if (block) block(error);
     }
@@ -80,9 +82,11 @@ static DataManager *intance = nil;
     return _design;
 }
 
-#pragma mark - Private Methods
+//--------------------------------------------------------------//
+#pragma mark -- Private Method --
+//--------------------------------------------------------------//
 
-- (void)insertData:(NSDictionary *)jsonData {
+- (void)_insertData:(NSDictionary *)jsonData {
     NSArray *pageList = [jsonData objectForKey:@"page_list"];
     NSArray *categoryList = [jsonData objectForKey:@"category_list"];
     NSArray *bookmarkList = [jsonData objectForKey:@"bookmark_list"];
