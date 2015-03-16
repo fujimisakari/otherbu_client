@@ -99,6 +99,12 @@
     UIView *cellSelectedBackgroundView = [[UIView alloc] init];
     cellSelectedBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
 
+    // セクションの最後のセルの場合はfooterのUIViewを付ける
+    if ([self isLastCellOfSection]) {
+        UIView *footerView = [self createFooterViewOfLastCell];
+        [cellSelectedBackgroundView addSubview:footerView];
+    }
+
     // 前面の背景指定
     float width = _cellInnerWidth;
     float height = self.bounds.size.height + 1;
