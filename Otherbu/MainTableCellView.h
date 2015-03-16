@@ -1,5 +1,5 @@
 //
-//  TableCellView.h
+//  MainTableCellView.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,7 +8,7 @@
 
 @class PageData;
 
-@interface TableCellView : UITableViewCell
+@interface MainTableCellView : UITableViewCell
 
 + (id)initWithCellIdentifier:(NSString *)cellIdentifier;
 

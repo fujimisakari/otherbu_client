@@ -1,12 +1,12 @@
 //
-//  TableCellView.m
+//  MainTableCellView.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "TableCellView.h"
+#import "MainTableCellView.h"
 #import "DataManager.h"
 #import "PageData.h"
 #import "CategoryData.h"
@@ -14,7 +14,7 @@
 #import "DesignData.h"
 #import "ColorData.h"
 
-@implementation TableCellView {
+@implementation MainTableCellView {
     NSIndexPath *_indexPath;
     UITableView *_tableView;
     CategoryData *_category;
@@ -30,7 +30,7 @@
 //--------------------------------------------------------------//
 
 + (id)initWithCellIdentifier:(NSString *)cellIdentifier {
-    TableCellView *cell = [[TableCellView alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    MainTableCellView *cell = [[MainTableCellView alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     return cell;
 }
 

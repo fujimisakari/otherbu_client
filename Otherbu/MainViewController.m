@@ -11,7 +11,7 @@
 #import "MainScrollView.h"
 #import "NavigationBar.h"
 #import "InnerTableView.h"
-#import "TableCellView.h"
+#import "MainTableCellView.h"
 #import "DataManager.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
@@ -105,9 +105,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 指定された箇所のセルを作成する
     NSString *cellIdentifier = @"Cell";
-    TableCellView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    MainTableCellView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [TableCellView initWithCellIdentifier:cellIdentifier];
+        cell = [MainTableCellView initWithCellIdentifier:cellIdentifier];
     }
 
     if (_currentPage) {
