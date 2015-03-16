@@ -12,8 +12,7 @@
 
 @interface ScrollView : UIScrollView
 
-@property(nonatomic) CGFloat beginScrollOffsetY;
-
 - (void)setupWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController;
+- (void)reloadTableData;
 
 @end

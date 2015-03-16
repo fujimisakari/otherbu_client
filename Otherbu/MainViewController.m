@@ -52,24 +52,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)refreshBookmarks:(id)sender {
-    // サーバからデータ取得
-    // [self.refreshControl beginRefreshing];
-
-    [[DataManager sharedManager] reloadDataWithBlock:^(NSError *error) {
-        if (error) {
-            NSLog(@"error = %@", error);
-        }
-
-        NSNumber *number = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
-        _currentPage = [[DataManager sharedManager] getPage:number];
-
-        [self reloadTableData];
-        [self createPageTabViews];
-        // [self.refreshControl endRefreshing];
-    }];
-}
-
 //--------------------------------------------------------------//
 #pragma mark -- UIScrollViewDelegate --
 //--------------------------------------------------------------//
@@ -194,7 +176,7 @@
 
     // pageを入れ替え、tableのリロード
     _currentPage = selectPage;
-    [self reloadTableData];
+    [_scrollView reloadTableData];
 
     // switch PageTabView
     [tappedPageTabView switchTabStatus];
@@ -209,12 +191,22 @@
 #pragma mark -- Private Method --
 //--------------------------------------------------------------//
 
--(void)reloadTableData {
-    // Tableデータの再読み込み
-    for (int i = 1; i < LastAngle; ++i) {
-        UITableView *tableView = (UITableView *)[_scrollView viewWithTag:i];
-        [tableView reloadData];
-    }
+- (void)refreshBookmarks:(id)sender {
+    // サーバからデータ取得
+    // [self.refreshControl beginRefreshing];
+
+    [[DataManager sharedManager] reloadDataWithBlock:^(NSError *error) {
+        if (error) {
+            NSLog(@"error = %@", error);
+        }
+
+        NSNumber *number = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
+        _currentPage = [[DataManager sharedManager] getPage:number];
+
+        [_scrollView reloadTableData];
+        [self createPageTabViews];
+        // [self.refreshControl endRefreshing];
+    }];
 }
 
 - (void)openSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {

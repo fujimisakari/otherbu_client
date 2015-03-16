@@ -37,4 +37,12 @@
     }
 }
 
+-(void)reloadTableData {
+    // Tableデータの再読み込み
+    for (int i = 1; i < LastAngle; ++i) {
+        UITableView *tableView = (UITableView *)[self viewWithTag:i];
+        [tableView reloadData];
+    }
+}
+
 @end
