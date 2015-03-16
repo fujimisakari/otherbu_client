@@ -13,6 +13,10 @@
 
 @implementation ScrollView
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 - (void)setupWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController {
     self.delegate = (id)viewController;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

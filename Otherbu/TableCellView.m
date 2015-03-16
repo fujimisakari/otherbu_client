@@ -26,6 +26,9 @@
     float _cellInnerWidth;
 };
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
 
 + (id)initWithCellIdentifier:(NSString *)cellIdentifier {
     TableCellView *cell = [[TableCellView alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
@@ -61,12 +64,15 @@
 }
 
 - (void)setFrame:(CGRect)frame {
+    // cellのframeを変更するため、setFrameをOverWrideする
     frame.origin.x += kHorizontalOffsetOfTableCell;
     frame.size.width = _cellWidth;
     [super setFrame:frame];
 }
 
-#pragma mark - Private Methods
+//--------------------------------------------------------------//
+#pragma mark -- Private Method --
+//--------------------------------------------------------------//
 
 - (void)setupBackground {
     // 後面の背景指定
@@ -90,7 +96,6 @@
 }
 
 - (void)setupCellSelectBackground {
-
     // 後面の背景指定
     UIView *cellSelectedBackgroundView = [[UIView alloc] init];
     cellSelectedBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
@@ -108,6 +113,7 @@
 }
 
 - (UIView *)createFooterViewOfLastCell {
+    // セクションの最後のセルに付けるfooterのUIViewを生成
     int x = self.bounds.origin.x;
     int y = self.bounds.origin.y + self.bounds.size.height;
     float width = _cellWidth;
@@ -132,6 +138,7 @@
 }
 
 - (void)setupText {
+    // ブックマーク名、URLを設定
     self.textLabel.text = _bookmark.name;
     self.textLabel.textColor = [_design getbookmarkColor];
     self.textLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfBookmark];
@@ -151,16 +158,20 @@
 }
 
 - (BOOL)isFirstCellOfSection {
+    // 先頭のセルか判定
     return (_indexPath.row == 0) ? YES : NO;
 }
 
 - (BOOL)isLastCellOfSection {
+    // 末尾のセルか判定
     NSArray *bookmarkList = [_category getBookmarkList];
     int lastCellIndex = (int)_indexPath.row + 1;
     return (lastCellIndex == bookmarkList.count) ? YES : NO;
 }
 
 - (UIColor *)getCellSelectBackgroundColor:(UIColor *)baseColor {
+    // セルをタップされた時の背景色を取得
+    // 現在、設定されている背景色から目立つカラーを自動選定する
     CGFloat red;
     CGFloat green;
     CGFloat blue;

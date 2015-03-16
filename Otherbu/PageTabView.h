@@ -12,12 +12,6 @@
 
 @protocol PageTabDelegate
 
-/**
- シングルタップ
-
- @param section セクションのインデックス；
- @param tag TableViewのtag名
- */
 - (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)pageTabView;
 
 @end

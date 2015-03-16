@@ -12,12 +12,6 @@
 
 @protocol SectionHeaderViewDelegate
 
-/**
- シングルタップ
-
- @param section セクションのインデックス；
- @param tag TableViewのtag名
- */
 - (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag;
 
 @end
@@ -26,13 +20,6 @@
 
 @property (nonatomic, weak) id<SectionHeaderViewDelegate> delegate;
 
-/**
- セクションのタイトルを指定して初期化
-
- @parms frame セクションのframe
- @param section セクションのインデックス
- @param tag TableViewのtag名
- */
 - (id)initWithCategory:(CategoryData *)categoryData frame:(CGRect)frame  section:(NSInteger)section tag:(NSInteger)tag;
 
 @end

@@ -25,7 +25,10 @@
     NSInteger _tag;
 }
 
-// デフォルト設定で初期化
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 - (id)initWithCategory:(CategoryData *)categoryData frame:(CGRect)frame section:(NSInteger)section tag:(NSInteger)tag {
     self = [super initWithFrame:frame];
     if (self) {
@@ -41,16 +44,17 @@
 }
 
 - (void)setFrame:(CGRect)frame {
+    // セクションヘッダーのframeを変更するため、setFrameをOverWrideする
     frame.origin.x += kHorizontalOffsetOfTableCell;
     frame.size.width -= kHorizontalAdaptSizeOfTableCell;
     [super setFrame:frame];
 }
 
-#pragma mark - Private Methods
 
-/**
- セクションのスタイル設定
- */
+//--------------------------------------------------------------//
+#pragma mark -- Private Methods --
+//--------------------------------------------------------------//
+
 - (void)setDefaultStyle {
     // 開閉画像作成
     _downImg = [UIImage imageNamed:kDownArrowImageName];
@@ -71,10 +75,8 @@
     [self setMaskLayerWithSectionType:NO];
 }
 
-/**
- 角丸のmaskLayerを設定する
- */
 - (void)setMaskLayerWithSectionType:(BOOL)isOpenSection {
+    // 角丸のmaskLayerを設定する
     UIBezierPath *maskPath;
     if (isOpenSection) {
         maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
@@ -97,10 +99,8 @@
     }
 }
 
-/**
- セクションのタイトルを設定する
- */
 - (void)setTitle {
+    // セクションのタイトルを設定する
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = _categoryData.name;
     titleLbl.textColor = [[_categoryData color] getSectionHeaderFontColor];
@@ -112,26 +112,20 @@
     [self addSubview:titleLbl];
 }
 
-/**
- タップジェスチャを追加
- */
 - (void)addTapGesture {
+    // タップジェスチャを追加
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sigleTapped)];
     [self addGestureRecognizer:singleTap];
 }
 
-/**
- シングルタップイベント
- */
 - (void)sigleTapped {
+    // シングルタップイベント
     [self.delegate didSectionHeaderSingleTap:_section tag:_tag];
     [self switchDataByTapped];
 }
 
-/**
- タップ時のデータ切り替え
- */
 - (void)switchDataByTapped {
+    // タップ時のデータ切り替え
     if (_categoryData.isOpenSection) {
         _arrowImgView.image = _downImg;
         _arrowImgView.frame = CGRectMake(kHorizontalOffsetOfDownArrow, kVerticalOffsetOfDownArrow, _downImgSize.width, _downImgSize.height);

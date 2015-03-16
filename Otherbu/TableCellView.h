@@ -12,13 +12,6 @@
 
 @interface TableCellView : UITableViewCell
 
-/**
- セクションのタイトルを指定して初期化
-
- @parms frame セクションのframe
- @param section セクションのインデックス
- @param tag TableViewのtag名
- */
 + (id)initWithCellIdentifier:(NSString *)cellIdentifier;
 
 - (id)setupWithPageData:(PageData *)page tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath;

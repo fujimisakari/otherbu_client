@@ -12,6 +12,10 @@
 
 @implementation InnerTableView
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 + (id)initWithTag:(int)tag frame:(CGRect)rect {
     InnerTableView *innerTableView = [[InnerTableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
     innerTableView.tag = tag;
@@ -25,7 +29,7 @@
     // 自前で区切り線は用意するので利用しない
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-    // テーブルの上部に余白を空ける
+    // テーブルの上部、下部に余白を空ける
     self.contentInset = UIEdgeInsetsMake(kMarginTopOfTableFrame, 0, kMarginBottomOfTableFrame, 0);
 
     // 背景は透過させる

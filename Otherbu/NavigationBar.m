@@ -11,6 +11,10 @@
 
 @implementation NavigationBar
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 - (void)setup {
     // タイトル名設定
     self.topItem.title = kTitle;

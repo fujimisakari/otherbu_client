@@ -53,6 +53,7 @@
 }
 
 - (void)refreshBookmarks:(id)sender {
+    // サーバからデータ取得
     // [self.refreshControl beginRefreshing];
 
     [[DataManager sharedManager] reloadDataWithBlock:^(NSError *error) {
@@ -69,23 +70,28 @@
     }];
 }
 
-#pragma mark - UIScrollViewDelegate
+//--------------------------------------------------------------//
+#pragma mark -- UIScrollViewDelegate --
+//--------------------------------------------------------------//
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // スクロール時の処理
     if (scrollView == _scrollView) {
+        // 横スクロールのみ可能にする
         CGPoint currentPoint = [scrollView contentOffset];
         [scrollView setContentOffset:CGPointMake(currentPoint.x, 0.0)];
 
-        // UIScrollViewのページ切替時イベント:UIPageControlの現在ページを切り替える処理
+        // UIScrollViewのページ切替時にUIPageControlの現在ページを切り替える
         _pageControl.currentPage = _scrollView.contentOffset.x / _viewWidth;
     }
 }
 
-#pragma mark - Table View
-/**
- * テーブル全体のセクションの数を返す
- */
+//--------------------------------------------------------------//
+#pragma mark -- UITableViewDataSource --
+//--------------------------------------------------------------//
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // テーブル全体のセクションの数を返す
     if (_currentPage) {
         NSArray *categoryList = [_currentPage getCategoryListByTag:tableView.tag];
         return categoryList.count;
@@ -94,10 +100,8 @@
     }
 }
 
-/**
- * 指定されたセクションのセクション名を返す
- */
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    // 指定されたセクションのセクション名を返す
     if (_currentPage) {
         CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
         return categoryData.name;
@@ -106,10 +110,8 @@
     }
 }
 
-/**
- * 指定されたセクションの項目数を返す
- */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // 指定されたセクションの項目数を返す
     if (_currentPage) {
         CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
         NSArray *bookmarkList = [categoryData getBookmarkList];
@@ -119,13 +121,10 @@
     }
 }
 
-/**
- * 指定された箇所のセルを作成する
- */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 指定された箇所のセルを作成する
     NSString *cellIdentifier = @"Cell";
     TableCellView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-
     if (cell == nil) {
         cell = [TableCellView initWithCellIdentifier:cellIdentifier];
     }
@@ -136,19 +135,17 @@
     return cell;
 }
 
-#pragma mark - UITableViewDelegate
+//--------------------------------------------------------------//
+#pragma mark -- UITableViewDelegate --
+//--------------------------------------------------------------//
 
-/**
- セクションヘッダーの高さを返す
- */
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    // セクションヘッダーの高さを返す
     return kHeightOfSectionHeader;
 }
 
-/**
- セクションヘッダーのコンテンツを設定する
- */
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    // セクションヘッダーのコンテンツを設定する
     if (_currentPage) {
         CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
         CGRect frame = CGRectMake(0, 0, _viewWidth, kHeightOfSectionHeader);
@@ -161,22 +158,17 @@
     }
 }
 
-/**
- セルタップ時に実行される処理
- */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // セルタップ時に実行される処理
     // まだ何もしない
 }
 
-#pragma mark - SectionHeaderViewDelegate
+//--------------------------------------------------------------//
+#pragma mark -- SectionHeaderViewDelegate --
+//--------------------------------------------------------------//
 
-/**
- シングルタップ時に実行される処理
-
- @param section セクションのインデックス
- @param tag TableViewのタグ名
- */
 - (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag {
+    // セクションヘッダーのシングルタップ時の実行処理
     CategoryData *categoryData = [_currentPage getCategoryListByTag:tag][section];
     UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tag];
 
@@ -193,11 +185,15 @@
     [tableView endUpdates];
 }
 
-#pragma mark - PageTabViewDelegate
+//--------------------------------------------------------------//
+#pragma mark -- PageTabViewDelegate --
+//--------------------------------------------------------------//
 
 - (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
-    _currentPage = selectPage;
+    // PageTabのシングルタップ時の実行処理
 
+    // pageを入れ替え、tableのリロード
+    _currentPage = selectPage;
     [self reloadTableData];
 
     // switch PageTabView
@@ -209,26 +205,20 @@
     _tabFrameView.backgroundColor = [[selectPage color] getColorWithNumber:3];
 }
 
-#pragma mark - Private Methods
+//--------------------------------------------------------------//
+#pragma mark -- Private Method --
+//--------------------------------------------------------------//
 
-/**
- Tableデータの再読み込み
- */
 -(void)reloadTableData {
+    // Tableデータの再読み込み
     for (int i = 1; i < LastAngle; ++i) {
         UITableView *tableView = (UITableView *)[_scrollView viewWithTag:i];
         [tableView reloadData];
     }
 }
 
-/**
- 指定セクション配下のコンテンツを開く
-
- @param section セクションのインデックス
- @param tableView TableViewオジェクト
- @param categoryData CategoryDataオジェクト
- */
 - (void)openSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {
+    // 指定セクション配下のコンテンツを開く
     NSArray *bookmarkList = [categoryData getBookmarkList];
     NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
     for (int i = 0; i < bookmarkList.count; i++) {
@@ -237,14 +227,8 @@
     [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 }
 
-/**
- 指定セクション配下のコンテンツを閉じる
-
- @param section セクションのインデックス
- @param tableView TableViewオジェクト
- @param categoryData CategoryDataオジェクト
- */
 - (void)closeSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {
+    // 指定セクション配下のコンテンツを閉じる
     NSArray *bookmarkList = [categoryData getBookmarkList];
     NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
     for (int i = 0; i < bookmarkList.count; i++) {
@@ -253,10 +237,8 @@
     [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
 }
 
-/**
- 背景を設定する
- */
 - (void)setupBackgroundImage {
+    // UIViewContollerに背景画像を設定する
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
     [[UIImage imageNamed:kDefaultImageName] drawInRect:self.view.bounds];
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -269,10 +251,8 @@
     [self.view.layer addSublayer:layer];
 }
 
-/**
- PageTabViewを生成する
- */
 - (void)createPageTabViews {
+    // PageTabViewを生成する
     DataManager *dataManager = [DataManager sharedManager];
 
     // set PageTabView

@@ -19,17 +19,17 @@
     BOOL _isActive;
 }
 
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
+
 + (id)initWithFrame:(CGRect)rect {
     PageTabView *pageTab = [[PageTabView alloc] initWithFrame:rect];
     return pageTab;
 }
 
-#pragma mark - Public Methods
-
-/**
- 初期設定
-*/
 - (void)setUpWithPage:(PageData *)page {
+    // タップされている、されていない場合のTabVeiwを切り換え用に用意しておく
     CGFloat offsetX = 0;
     CGFloat offsetY = self.frame.origin.y;
     CGFloat width = self.frame.size.width;
@@ -42,7 +42,6 @@
     _stanbyTab.hidden = NO;
     _isActive = NO;
     _page = page;
-
     self.backgroundColor = [UIColor clearColor];
     [self addSubview:_activeTab];
     [self addSubview:_stanbyTab];
@@ -63,10 +62,12 @@
     [self addTapGesture];
 }
 
-/**
- Tabの状態の切り換え
- */
+//--------------------------------------------------------------//
+#pragma mark -- Public Method --
+//--------------------------------------------------------------//
+
 - (void)switchTabStatus {
+    // Tabの状態の切り換え
     if (_isActive) {
         _activeTab.hidden = YES;
         _stanbyTab.hidden = NO;
@@ -78,12 +79,12 @@
     }
 }
 
-#pragma mark - Private Methods
+//--------------------------------------------------------------//
+#pragma mark -- Private Method --
+//--------------------------------------------------------------//
 
-/**
- ラベルのタイトルを設定する
- */
 - (void)setTitle:(UIView *)view {
+    // ラベルのタイトルを設定する
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = _page.name;
     titleLbl.textColor = [[_page color] getSectionHeaderFontColor];
@@ -95,20 +96,16 @@
     [view addSubview:titleLbl];
 }
 
-/**
- 背景色(グラデーション)を設定する
- */
 - (void)setBackground:(UIView *)view {
+    // 背景色(グラデーション)を設定する
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = view.bounds;
     gradient.colors = [[_page color] getGradientColorList];
     [view.layer insertSublayer:gradient atIndex:0];
 }
 
-/**
- 角丸のmaskLayerを設定する
- */
 - (void)setMaskLayerWithSectionType:(UIView *)view {
+    // 角丸のmaskLayerを設定する
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
                                                    byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
                                                          cornerRadii:CGSizeMake(6.0, 6.0)];
@@ -119,18 +116,14 @@
     view.layer.mask = maskLayer;
 }
 
-/**
- タップジェスチャを追加
- */
 - (void)addTapGesture {
+    // タップジェスチャを追加
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sigleTapped)];
     [self addGestureRecognizer:singleTap];
 }
 
-/**
- シングルタップイベント
- */
 - (void)sigleTapped {
+    // シングルタップイベント
     [self.delegate didPageTabSingleTap:_page pageTabView:self];
 }
 
