@@ -43,8 +43,8 @@
 
 - (void)setFrame:(CGRect)frame {
     // セクションヘッダーのframeを変更するため、setFrameをOverWrideする
-    frame.origin.x += kHorizontalOffsetOfTableCell;
-    frame.size.width -= kHorizontalAdaptSizeOfTableCell;
+    frame.origin.x += kOffsetXOfTableCell;
+    frame.size.width -= kAdaptWidthOfTableCell;
     [super setFrame:frame];
 }
 
@@ -106,7 +106,7 @@
     titleLbl.backgroundColor = [UIColor clearColor];
     [titleLbl sizeToFit];
     CGSize cgSize = titleLbl.frame.size;
-    titleLbl.frame = CGRectMake(kHorizontalOffsetOfSectionTitle, kVerticalOffsetOfSectionTitle, cgSize.width, cgSize.height);
+    titleLbl.frame = CGRectMake(kOffsetXOfSectionTitle, kOffsetYOfSectionTitle, cgSize.width, cgSize.height);
     [self addSubview:titleLbl];
 }
 
@@ -126,11 +126,11 @@
     // タップ時のデータ切り替え
     if (_categoryData.isOpenSection) {
         _arrowImgView.image = _downImg;
-        _arrowImgView.frame = CGRectMake(kHorizontalOffsetOfDownArrow, kVerticalOffsetOfDownArrow, _downImgSize.width, _downImgSize.height);
+        _arrowImgView.frame = CGRectMake(kOffsetXOfDownArrow, kOffsetYOfDownArrow, _downImgSize.width, _downImgSize.height);
         self.layer.mask = _maskLayerOfSectionOpen;
     } else {
         _arrowImgView.image = _rightImg;
-        _arrowImgView.frame = CGRectMake(kHorizontalOffsetOfRightArrow, kVerticalOffsetOfRightArrow, _rightImgSize.width, _rightImgSize.height);
+        _arrowImgView.frame = CGRectMake(kOffsetXOfRightArrow, kOffsetYOfRightArrow, _rightImgSize.width, _rightImgSize.height);
         self.layer.mask = _maskLayerOfSectionClose;
     }
 }

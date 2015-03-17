@@ -40,8 +40,8 @@
     _category = [page getCategoryListByTag:_tableView.tag][indexPath.section];
     _bookmark = [_category getBookmarkList][indexPath.row];
     _cellBackgroundView = [[UIView alloc] init];
-    _cellWidth = _tableView.contentSize.width - kHorizontalAdaptSizeOfTableCell;
-    _cellInnerWidth = _tableView.contentSize.width - (kHorizontalAdaptSizeOfTableCell + kHorizontalOffsetOfTableCell);
+    _cellWidth = _tableView.contentSize.width - kAdaptWidthOfTableCell;
+    _cellInnerWidth = _tableView.contentSize.width - (kAdaptWidthOfTableCell + kOffsetXOfTableCell);
     _design = [[DataManager sharedManager] getDesign];
 
     // 背景設定
@@ -64,7 +64,7 @@
 
 - (void)setFrame:(CGRect)frame {
     // cellのframeを変更するため、setFrameをOverWrideする
-    frame.origin.x += kHorizontalOffsetOfTableCell;
+    frame.origin.x += kOffsetXOfTableCell;
     frame.size.width = _cellWidth;
     [super setFrame:frame];
 }

@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, AngleType) {
 
 extern NSString * const kTitle;
 extern const int kFontSizeOfTitle;
-extern const float kVerticalOffsetOfTitle;
+extern const float kOffsetYOfTitle;
 
 extern NSString * const kDefaultFont;
 extern NSString * const kDefaultImageName;
@@ -25,8 +25,8 @@ extern const int kNumberOfPages;
 
 extern const float kMarginTopOfTableFrame;
 extern const float kMarginBottomOfTableFrame;
-extern const float kHorizontalAdaptSizeOfTableCell;
-extern const float kHorizontalOffsetOfTableCell;
+extern const float kAdaptWidthOfTableCell;
+extern const float kOffsetXOfTableCell;
 extern const float kSizeOfTableFrame;
 extern const float kHeightOfBorderLine;
 extern const int kFontSizeOfBookmark;
@@ -34,14 +34,14 @@ extern const int kFontSizeOfUrl;
 
 extern const float kHeightOfSectionHeader;
 extern const int kFontSizeOfSectionTitle;
-extern const int kVerticalOffsetOfSectionTitle;
-extern const int kHorizontalOffsetOfSectionTitle;
+extern const int kOffsetXOfSectionTitle;
+extern const int kOffsetYOfSectionTitle;
 extern NSString * const kRightArrowImageName;
 extern NSString * const kDownArrowImageName;
-extern const int kHorizontalOffsetOfDownArrow;
-extern const int kVerticalOffsetOfDownArrow;
-extern const int kHorizontalOffsetOfRightArrow;
-extern const int kVerticalOffsetOfRightArrow;
+extern const int kOffsetXOfDownArrow;
+extern const int kOffsetYOfDownArrow;
+extern const int kOffsetXOfRightArrow;
+extern const int kOffsetYOfRightArrow;
 
 extern const int kFontSizeOfPageTab;
 extern const float kHeightOfPageTab;

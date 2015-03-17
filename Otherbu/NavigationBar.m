@@ -26,7 +26,7 @@
     [self setTitleTextAttributes:attributes];
 
     // タイトル名の位置設定
-    [self setTitleVerticalPositionAdjustment:kVerticalOffsetOfTitle forBarMetrics:UIBarMetricsDefault];
+    [self setTitleVerticalPositionAdjustment:kOffsetYOfTitle forBarMetrics:UIBarMetricsDefault];
 }
 
 @end
