@@ -22,6 +22,6 @@
 - (NSArray *)getGradientColorList;
 - (UIColor *)getBackGroundColor;
 - (UIColor *)getSectionHeaderFontColor;
-- (UIColor *)getColorWithNumber:(int)number;
+- (UIColor *)getFooterColorOfGradient;
 
 @end

@@ -35,8 +35,6 @@
 #pragma mark -- Get Object By ForeignKey --
 //--------------------------------------------------------------//
 
-// todo 関数名替える
-
 - (NSArray *)getGradientColorList {
     // グラデーション用のカラーリストを取得
     UIColor *color1 = [UIColor colorWithHex:[UIColor removeSharp:_color_code1]];
@@ -56,22 +54,9 @@
     return [UIColor colorWithHex:[UIColor removeSharp:_font_color]];
 }
 
-- (UIColor *)getColorWithNumber:(int)number {
-    UIColor *color;
-    switch (number) {
-        case 0:
-            color = [UIColor colorWithHex:[UIColor removeSharp:_font_color]];
-        case 1:
-            color = [UIColor colorWithHex:[UIColor removeSharp:_color_code1]];
-            break;
-        case 2:
-            color = [UIColor colorWithHex:[UIColor removeSharp:_color_code2]];
-            break;
-        case 3:
-            color = [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
-            break;
-    }
-    return color;
+- (UIColor *)getFooterColorOfGradient {
+    // グラデーションの末尾のカラーを取得
+    return [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
 }
 
 @end

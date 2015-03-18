@@ -189,7 +189,7 @@
     _currentPageTabView = tappedPageTabView;
 
     // set TabFrameView
-    _tabFrameView.backgroundColor = [[selectPage color] getColorWithNumber:3];
+    _tabFrameView.backgroundColor = [[selectPage color] getFooterColorOfGradient];
 }
 
 //--------------------------------------------------------------//
@@ -274,7 +274,7 @@
     _tabScrollView.contentSize = cgSize;
 
     // set TabFrameView
-    _tabFrameView.backgroundColor = [[_currentPage color] getColorWithNumber:3];
+    _tabFrameView.backgroundColor = [[_currentPage color] getFooterColorOfGradient];
 }
 
 @end
