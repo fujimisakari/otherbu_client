@@ -7,7 +7,6 @@
 //
 
 #import "InnerTableView.h"
-#import "MainViewController.h"
 
 @implementation InnerTableView
 
@@ -21,10 +20,7 @@
     return innerTableView;
 }
 
-- (id)setUpWithViewController:(MainViewController *)viewController {
-    self.delegate = viewController;
-    self.dataSource = viewController;
-
+- (id)setUp {
     // 自前で区切り線は用意するので利用しない
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
 

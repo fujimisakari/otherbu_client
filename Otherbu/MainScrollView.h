@@ -6,11 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@class MainViewController;
-
 @interface MainScrollView : UIScrollView
 
-- (void)setupWithCGSize:(CGSize)cgSize viewController:(MainViewController *)viewController;
+- (void)setupWithCGSize:(CGSize)cgSize;
 - (void)reloadTableData;
 
 @end
