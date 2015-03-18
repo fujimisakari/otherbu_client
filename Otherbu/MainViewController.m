@@ -255,9 +255,12 @@
     // set PageTabView
     float x = 0;
     for (PageData *pageData in [dataManager.pageDict objectEnumerator]) {
-        CGSize textSize = [pageData.name sizeWithFont:[UIFont fontWithName:kDefaultFont size:kFontSizeOfPageTab]
-                                    constrainedToSize:CGSizeMake(200, 2000)
-                                        lineBreakMode:NSLineBreakByWordWrapping];
+        CGSize textSize = [pageData.name
+            boundingRectWithSize:CGSizeMake(200, 2000)
+                         options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                      attributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:kDefaultFont size:kFontSizeOfPageTab]
+                                                             forKey:NSFontAttributeName]
+                         context:nil].size;
 
         CGRect rect = CGRectMake(x, 0, textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
         PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:(CGRect)rect];
