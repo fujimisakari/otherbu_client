@@ -14,16 +14,32 @@
 
 #endif
 
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-    #import <UIKit/UIKit.h>
     #import "UIColor+Hex.h"
     #import "UIView+ViewFrame.h"
     #import "Constants.h"
 
-    #define LOG(A, ...) NSLog(@"LOG: %s:%d:%@", __PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:A, ## __VA_ARGS__]);
+    #ifdef DEBUG
+        // #define LOG(...) NSLog(__VA_ARGS__)
+        #define LOG(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+        // #define LOG(A, ...) NSLog(@"LOG: %s:%d:%@", __PRETTY_FUNCTION__,__LINE__,[NSString stringWithFormat:A, ## __VA_ARGS__]);
+        #define LOG_METHOD NSLog(@"%s", __func__)
+        #define LOG_METHOD_AND_ABORT LOG_METHOD; abort()
 
-    #ifndef DEBUG
-        #define LOGRect(RECT) NSLog(@"%@",NSStringFromCGRect(RECT));
+        #define LOG_POINT(p) NSLog(@"%f, %f", p.x, p.y)
+        #define LOG_SIZE(p) NSLog(@"%f, %f", p.width, p.height)
+        #define LOG_RECT(p) NSLog(@"%f, %f - %f, %f", p.origin.x, p.origin.y, p.size.width, p.size.height)
+        // #define LOGRect(RECT) NSLog(@"%@",NSStringFromCGRect(RECT));
+    #else
+        #define LOG(...)
+        // #define LOG_PRINTF(FORMAT, ...)
+        #define LOG_METHOD
+        #define LOG_METHOD_AND_ABORT
+        #define LOG_POINT(p)
+        #define LOG_SIZE(p)
+        #define LOG_RECT(p)
     #endif
 #endif

@@ -75,7 +75,7 @@
 
 - (void)setupBackground {
     // 後面の背景指定
-    _cellBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
+    _cellBackgroundView.backgroundColor = [[_category color] getBackGroundColor];
 
     // セクションの最後のセルの場合はfooterのUIViewを付ける
     if ([self isLastCellOfSection]) {
@@ -97,7 +97,7 @@
 - (void)setupCellSelectBackground {
     // 後面の背景指定
     UIView *cellSelectedBackgroundView = [[UIView alloc] init];
-    cellSelectedBackgroundView.backgroundColor = [[_category color] getCellBackGroundColor];
+    cellSelectedBackgroundView.backgroundColor = [[_category color] getBackGroundColor];
 
     // セクションの最後のセルの場合はfooterのUIViewを付ける
     if ([self isLastCellOfSection]) {
@@ -126,7 +126,7 @@
     CGRect rect = CGRectMake(x, y, width, height);
 
     UIView *footerView = [[UIView alloc] initWithFrame:rect];
-    footerView.backgroundColor = [[_category color] getCellBackGroundColor];
+    footerView.backgroundColor = [[_category color] getBackGroundColor];
 
     // 角丸にする
     UIBezierPath *maskPath;

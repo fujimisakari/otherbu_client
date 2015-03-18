@@ -46,7 +46,7 @@
     return gradientColorList;
 }
 
-- (UIColor *)getCellBackGroundColor {
+- (UIColor *)getBackGroundColor {
     // テーブルの背景色を取得
     return [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
 }

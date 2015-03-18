@@ -20,7 +20,7 @@
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 - (NSArray *)getGradientColorList;
-- (UIColor *)getCellBackGroundColor;
+- (UIColor *)getBackGroundColor;
 - (UIColor *)getSectionHeaderFontColor;
 - (UIColor *)getColorWithNumber:(int)number;
 
