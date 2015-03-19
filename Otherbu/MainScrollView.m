@@ -15,7 +15,8 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-- (void)setupWithCGSize:(CGSize)cgSize {
+- (void)setupWithCGSize:(CGSize)cgSize delegate:(id<UIScrollViewDelegate>)delegate {
+    self.delegate = delegate;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.pagingEnabled = YES;                  // ページごとのスクロールにする
     self.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
@@ -30,6 +31,8 @@
         CGRect rect = CGRectMake(_viewWidth * (i - 1), self.bounds.origin.y, _viewWidth, _viewHeight);
         InnerTableView *innerTableView = [InnerTableView initWithTag:i frame:rect];
         [innerTableView setUp];
+        innerTableView.delegate = (id<UITableViewDelegate>)delegate;
+        innerTableView.dataSource = (id<UITableViewDataSource>)delegate;
         [self addSubview:innerTableView];
     }
 }

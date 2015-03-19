@@ -8,7 +8,7 @@
 
 @interface MainScrollView : UIScrollView
 
-- (void)setupWithCGSize:(CGSize)cgSize;
+- (void)setupWithCGSize:(CGSize)cgSize delegate:(id<UIScrollViewDelegate>)delegate;
 - (void)reloadTableData;
 
 @end

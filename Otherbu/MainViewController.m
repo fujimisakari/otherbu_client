@@ -44,13 +44,7 @@
 
     // setup ScrollView
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
-    _scrollView.delegate = self;
-    [_scrollView setupWithCGSize:cgSize];
-    for (int i = 1; i < LastAngle; ++i) {
-        UITableView *tableView = (UITableView *)[_scrollView viewWithTag:i];
-        tableView.delegate = self;
-        tableView.dataSource = self;
-    }
+    [_scrollView setupWithCGSize:cgSize delegate:self];
 }
 
 - (void)didReceiveMemoryWarning {
