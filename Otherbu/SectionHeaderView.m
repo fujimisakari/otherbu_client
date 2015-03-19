@@ -27,12 +27,17 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-- (id)initWithCategory:(CategoryData *)categoryData frame:(CGRect)frame section:(NSInteger)section tag:(NSInteger)tag {
+- (id)initWithCategory:(CategoryData *)categoryData
+                 frame:(CGRect)frame
+               section:(NSInteger)section
+              delegate:(id<SectionHeaderViewDelegate>)delegate
+                   tag:(NSInteger)tag {
     self = [super initWithFrame:frame];
     if (self) {
         _categoryData = categoryData;
         _section = section;
         _tag = tag;
+        self.delegate = delegate;
         [self setDefaultStyle];
         [self setTitle];
         [self switchDataByTapped];

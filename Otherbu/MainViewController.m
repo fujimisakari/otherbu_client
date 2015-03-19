@@ -131,8 +131,7 @@
         CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
         CGRect frame = CGRectMake(0, 0, _viewWidth, kHeightOfSectionHeader);
         SectionHeaderView *containerView =
-            [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section tag:tableView.tag];
-        containerView.delegate = self;
+            [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section delegate:self tag:tableView.tag];
         return containerView;
     } else {
         return nil;
@@ -261,8 +260,7 @@
 
         CGRect rect = CGRectMake(offsetX, kOffsetYOfPageTab, textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
         PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:(CGRect)rect];
-        [pageTabView setUpWithPage:pageData];
-        pageTabView.delegate = self;
+        [pageTabView setUpWithPage:pageData delegate:self];
         if ((int)pageData.dataId == (int)_currentPage.dataId) {
             _currentPageTabView = pageTabView;
             [pageTabView switchTabStatus];

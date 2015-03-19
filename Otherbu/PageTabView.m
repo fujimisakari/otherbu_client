@@ -27,7 +27,7 @@
     return pageTab;
 }
 
-- (void)setUpWithPage:(PageData *)page {
+- (void)setUpWithPage:(PageData *)page delegate:(id<PageTabDelegate>)delegate {
     // タップされている、されていない場合のTabVeiwを切り換え用に用意しておく
     CGFloat offsetX = 0;
     CGFloat offsetY = self.frame.origin.y;
@@ -42,6 +42,7 @@
     _isActive = NO;
     _page = page;
     self.backgroundColor = [UIColor clearColor];
+    self.delegate = delegate;
     [self addSubview:_activeTab];
     [self addSubview:_stanbyTab];
 

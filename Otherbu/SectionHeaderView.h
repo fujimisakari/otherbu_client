@@ -16,8 +16,12 @@
 
 @interface SectionHeaderView : UIView
 
-@property (nonatomic, weak) id<SectionHeaderViewDelegate> delegate;
+@property(nonatomic, weak) id<SectionHeaderViewDelegate> delegate;
 
-- (id)initWithCategory:(CategoryData *)categoryData frame:(CGRect)frame  section:(NSInteger)section tag:(NSInteger)tag;
+- (id)initWithCategory:(CategoryData *)categoryData
+                 frame:(CGRect)frame
+               section:(NSInteger)section
+              delegate:(id<SectionHeaderViewDelegate>)delegate
+                   tag:(NSInteger)tag;
 
 @end

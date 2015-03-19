@@ -16,11 +16,11 @@
 
 @interface PageTabView : UIView
 
-@property (nonatomic, weak) id<PageTabDelegate> delegate;
+@property(nonatomic, weak) id<PageTabDelegate> delegate;
 
 + (id)initWithFrame:(CGRect)rect;
 
-- (void)setUpWithPage:(PageData *)page;
+- (void)setUpWithPage:(PageData *)page delegate:(id<PageTabDelegate>)delegate;
 - (void)switchTabStatus;
 
 @end
