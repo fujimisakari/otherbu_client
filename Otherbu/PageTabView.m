@@ -107,7 +107,7 @@
     // 角丸のmaskLayerを設定する
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
                                                    byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
-                                                         cornerRadii:CGSizeMake(6.0, 6.0)];
+                                                         cornerRadii:CGSizeMake(5.0, 5.0)];
 
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
     maskLayer.frame = view.bounds;

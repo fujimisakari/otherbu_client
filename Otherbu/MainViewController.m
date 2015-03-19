@@ -188,6 +188,9 @@
     [_currentPageTabView switchTabStatus];
     _currentPageTabView = tappedPageTabView;
 
+    // move sclollbar
+    [self moveTabScroll:tappedPageTabView];
+
     // set TabFrameView
     _tabFrameView.backgroundColor = [[selectPage color] getFooterColorOfGradient];
 }
@@ -253,7 +256,7 @@
     DataManager *dataManager = [DataManager sharedManager];
 
     // set PageTabView
-    float x = 0;
+    float offsetX = 0;
     for (PageData *pageData in [dataManager.pageDict objectEnumerator]) {
         CGSize textSize = [pageData.name
             boundingRectWithSize:CGSizeMake(200, 2000)
@@ -262,7 +265,7 @@
                                                              forKey:NSFontAttributeName]
                          context:nil].size;
 
-        CGRect rect = CGRectMake(x, 0, textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
+        CGRect rect = CGRectMake(offsetX, kOffsetYOfPageTab, textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
         PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:(CGRect)rect];
         [pageTabView setUpWithPage:pageData];
         pageTabView.delegate = self;
@@ -271,13 +274,36 @@
             [pageTabView switchTabStatus];
         }
         [_tabScrollView addSubview:pageTabView];
-        x += pageTabView.bounds.size.width + 1;
+        offsetX += pageTabView.bounds.size.width + 1;
     }
-    CGSize cgSize = CGSizeMake(x, kHeightOfPageTab);
+    CGSize cgSize = CGSizeMake(offsetX, kHeightOfPageTab);
     _tabScrollView.contentSize = cgSize;
 
     // set TabFrameView
     _tabFrameView.backgroundColor = [[_currentPage color] getFooterColorOfGradient];
+}
+
+- (void)moveTabScroll:(PageTabView *)tappedPageTabView {
+    // タップされたタブViewを適切な場所へ移動させる
+
+    float halfPageWidth = _viewWidth / 2;
+    if (tappedPageTabView.center.x > halfPageWidth) {
+        float subWidth;
+        float restContentWidth = _tabScrollView.contentSize.width - tappedPageTabView.center.x;
+        if (restContentWidth > halfPageWidth) {
+            // 画面半分以上を満たしてるtabの場合は中央寄せ
+            subWidth = halfPageWidth;
+        } else {
+            // 画面半分以上を満たしてるけど中央寄せした場合、contentSize以上になる場合は微調整
+            subWidth = halfPageWidth + (halfPageWidth - restContentWidth);
+        }
+        CGPoint point = CGPointMake(tappedPageTabView.center.x - subWidth, 0.0);
+        [_tabScrollView setContentOffset:point animated:YES];
+    } else {
+        // 画面半分以上に満たないltabの場合は左寄せ
+        CGPoint point = CGPointMake(tappedPageTabView.frame.origin.x, 0.0);
+        [_tabScrollView setContentOffset:point animated:YES];
+    }
 }
 
 @end

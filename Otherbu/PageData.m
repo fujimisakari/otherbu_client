@@ -25,7 +25,23 @@
         self.categoryIdsStr = dataDict[@"category_ids_str"];
         self.angleIdsStr = dataDict[@"angle_ids_str"];
         self.sortIdsStr = dataDict[@"sort_ids_str"];
-        self.colorId = 11;
+        if ([dataDict[@"id"] integerValue] == 16) {
+            self.colorId = 9;
+         } else if ([dataDict[@"id"] integerValue] == 18) {
+            self.colorId = 13;
+         } else if ([dataDict[@"id"] integerValue] == 19) {
+            self.colorId = 3;
+         } else if ([dataDict[@"id"] integerValue] == 1) {
+            self.colorId = 14;
+         } else if ([dataDict[@"id"] integerValue] == 20) {
+            self.colorId = 8;
+        } else if ([dataDict[@"id"] integerValue] == 17) {
+            self.colorId = 6;
+        } else if ([dataDict[@"id"] integerValue] == 16) {
+            self.colorId = 5;
+         } else {
+            self.colorId = 7;
+        }
     }
     return self;
 }

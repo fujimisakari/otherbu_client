@@ -59,8 +59,9 @@ const int kOffsetYOfRightArrow = 12;                         // 開閉画像(→
 //--------------------------------------------------------------//
 
 const int kFontSizeOfPageTab = 16;                           // PageTabのフォントサイズ
-const float kHeightOfPageTab = 40.0f;                        // PageTabの高さ
+const int kOffsetYOfPageTab = 3;                             // PageTabのY位置調整
+const float kHeightOfPageTab = 37.0f;                        // PageTabの高さ
 const float kAdaptWidthOfPageTab = 30.0f;                    // PageTabのサイズ調整(width)
-const float kAdaptHeightOfPageTab = 10.0f;                   // PageTabのサイズ調整(height)
+const float kAdaptHeightOfPageTab = 5.0f;                    // PageTabのサイズ調整(height)
 
 @end
