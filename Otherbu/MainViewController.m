@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "WebViewController.h"
 #import "SectionHeaderView.h"
 #import "MainScrollView.h"
 #import "NavigationBar.h"
@@ -24,6 +25,7 @@
     float _viewHeight;
     PageData *_currentPage;
     PageTabView *_currentPageTabView;
+    BookmarkData *_selectBookmark;
 }
 
 - (void)viewDidLoad {
@@ -140,7 +142,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // セルタップ時に実行される処理
-    // まだ何もしない
+    CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][indexPath.section];
+    _selectBookmark = [categoryData getBookmarkList][indexPath.row];
+
+    // toViewController
+    [self performSegueWithIdentifier:@"toWebViewController" sender:self];
 }
 
 //--------------------------------------------------------------//
@@ -186,6 +192,18 @@
 
     // set TabFrameView
     _tabFrameView.backgroundColor = [[selectPage color] getFooterColorOfGradient];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- segue --
+//--------------------------------------------------------------//
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([[segue identifier] isEqualToString:@"toWebViewController"]) {
+        WebViewController *webViewController = (WebViewController*)[segue destinationViewController];
+        [webViewController setBookmark:_selectBookmark];
+    }
 }
 
 //--------------------------------------------------------------//

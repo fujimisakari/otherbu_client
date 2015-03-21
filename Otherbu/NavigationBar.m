@@ -15,8 +15,9 @@
 //--------------------------------------------------------------//
 
 - (void)setup {
-    // タイトル名設定
-    self.topItem.title = kTitle;
+    self.topItem.title = kTitle;               // タイトル名
+    self.tintColor = [UIColor whiteColor];     // バーアイテムカラー
+    self.barTintColor = [UIColor blackColor];  // 背景色
 
     // タイトル名のフォントカラー設定
     NSDictionary *attributes = @{

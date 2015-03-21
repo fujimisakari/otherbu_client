@@ -24,23 +24,18 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="dLg-go-bRP"/>
                                 </constraints>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </textAttributes>
                                 <items>
                                     <navigationItem title="Title" id="65H-Lh-BlT"/>
                                 </items>
                             </navigationBar>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="89Z-XC-jgZ">
-                                <rect key="frame" x="0.0" y="43" width="600" height="20"/>
+                                <rect key="frame" x="0.0" y="45" width="600" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="b7v-4X-NPM"/>
                                 </constraints>
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBD-cR-rnL" userLabel="Tab View">
                                 <rect key="frame" x="0.0" y="596" width="600" height="4"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="4" id="Gls-Fn-xdw"/>
                                 </constraints>
@@ -67,7 +62,7 @@
                             <constraint firstAttribute="trailing" secondItem="GBD-cR-rnL" secondAttribute="trailing" id="hcp-Vz-Tfp"/>
                             <constraint firstAttribute="trailing" secondItem="7FL-Uu-96L" secondAttribute="trailing" id="iYU-kJ-ClG"/>
                             <constraint firstAttribute="trailing" secondItem="89Z-XC-jgZ" secondAttribute="trailing" id="jJh-Gv-5dg"/>
-                            <constraint firstItem="89Z-XC-jgZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="23" id="p3d-Rv-pS3"/>
+                            <constraint firstItem="89Z-XC-jgZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="25" id="p3d-Rv-pS3"/>
                             <constraint firstItem="jbB-Aw-uiu" firstAttribute="top" secondItem="7FL-Uu-96L" secondAttribute="bottom" id="qI5-HU-pMy"/>
                             <constraint firstAttribute="trailing" secondItem="r7q-bE-bwn" secondAttribute="trailing" id="qlr-zC-W8O"/>
                             <constraint firstItem="7FL-Uu-96L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qr4-Lk-weH"/>
@@ -80,11 +75,59 @@
                         <outlet property="scrollView" destination="7FL-Uu-96L" id="SFR-P8-eS7"/>
                         <outlet property="tabFrameView" destination="GBD-cR-rnL" id="qhc-8w-Mju"/>
                         <outlet property="tabScrollView" destination="jbB-Aw-uiu" id="lAa-uv-ryC"/>
+                        <segue destination="66c-Jd-vhB" kind="modal" identifier="toWebViewController" modalTransitionStyle="crossDissolve" id="Tad-Ax-6EV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="440" y="372"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="cJG-97-A1A">
+            <objects>
+                <viewController id="66c-Jd-vhB" userLabel="Web View Controller" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="opr-5u-9Xv"/>
+                        <viewControllerLayoutGuide type="bottom" id="XXb-aV-QCu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bdg-mN-SBT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2FP-bd-1Rb">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVm-nz-hEo" customClass="NavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Fmi-eO-diS"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="33e-OK-Whd"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XXb-aV-QCu" firstAttribute="top" secondItem="2FP-bd-1Rb" secondAttribute="bottom" id="2NF-26-Xbw"/>
+                            <constraint firstItem="2FP-bd-1Rb" firstAttribute="leading" secondItem="bdg-mN-SBT" secondAttribute="leading" id="6FH-JB-D78"/>
+                            <constraint firstItem="2FP-bd-1Rb" firstAttribute="top" secondItem="cVm-nz-hEo" secondAttribute="bottom" id="DQh-rE-ego"/>
+                            <constraint firstAttribute="trailing" secondItem="2FP-bd-1Rb" secondAttribute="trailing" id="O65-dg-MKF"/>
+                            <constraint firstItem="cVm-nz-hEo" firstAttribute="top" secondItem="bdg-mN-SBT" secondAttribute="top" id="Tsb-a3-BKy"/>
+                            <constraint firstItem="cVm-nz-hEo" firstAttribute="leading" secondItem="bdg-mN-SBT" secondAttribute="leading" id="iz3-sX-ZuW"/>
+                            <constraint firstAttribute="trailing" secondItem="cVm-nz-hEo" secondAttribute="trailing" id="o4p-5Y-HUe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="un5-uJ-Meq"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="cVm-nz-hEo" id="gL1-0e-PTa"/>
+                        <outlet property="webView" destination="2FP-bd-1Rb" id="MiJ-aH-5Ic"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bv9-UU-H4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230" y="372"/>
         </scene>
     </scenes>
 </document>

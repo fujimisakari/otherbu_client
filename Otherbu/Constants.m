@@ -16,7 +16,7 @@
 
 NSString * const kTitle = @"Otherbu";                        // タイトル名
 const int kFontSizeOfTitle = 18;                             // タイトル名のフォントサイズ
-const float kOffsetYOfTitle = -7;                            // タイトル名の縦位置調整
+const float kOffsetYOfTitle = -5;                            // タイトル名の縦位置調整
 
 //--------------------------------------------------------------//
 #pragma mark -- Default Value --
