@@ -26,7 +26,7 @@
 		7B565F241A9249FA00D6A420 /* PageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F201A9249FA00D6A420 /* PageData.m */; };
 		7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F681A96565500D6A420 /* OtherbuAPIClient.m */; };
 		7B91E5F61ABC7D27003A36F1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E5F51ABC7D27003A36F1 /* WebViewController.m */; };
-		7B91E5FA1ABC8505003A36F1 /* WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E5F91ABC8505003A36F1 /* WebView.m */; };
+		7B91E5FA1ABC8505003A36F1 /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E5F91ABC8505003A36F1 /* CustomWebView.m */; };
 		7BA1E85D1AB5B0EA00FD879E /* UIView+ViewFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA1E85C1AB5B0EA00FD879E /* UIView+ViewFrame.m */; };
 		7BF6979D1AAF4ADA008C1BAE /* MainScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979C1AAF4ADA008C1BAE /* MainScrollView.m */; };
 		7BF697A01AAF657E008C1BAE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979F1AAF657E008C1BAE /* Constants.m */; };
@@ -83,8 +83,8 @@
 		7B565F681A96565500D6A420 /* OtherbuAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherbuAPIClient.m; sourceTree = "<group>"; };
 		7B91E5F41ABC7D27003A36F1 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		7B91E5F51ABC7D27003A36F1 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		7B91E5F81ABC8505003A36F1 /* WebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebView.h; sourceTree = "<group>"; };
-		7B91E5F91ABC8505003A36F1 /* WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebView.m; sourceTree = "<group>"; };
+		7B91E5F81ABC8505003A36F1 /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWebView.h; sourceTree = "<group>"; };
+		7B91E5F91ABC8505003A36F1 /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWebView.m; sourceTree = "<group>"; };
 		7BA1E85B1AB5B0EA00FD879E /* UIView+ViewFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewFrame.h"; sourceTree = "<group>"; };
 		7BA1E85C1AB5B0EA00FD879E /* UIView+ViewFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewFrame.m"; sourceTree = "<group>"; };
 		7BF6979B1AAF4ADA008C1BAE /* MainScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScrollView.h; sourceTree = "<group>"; };
@@ -261,8 +261,8 @@
 		7B91E5F71ABC7D30003A36F1 /* WebViewPage */ = {
 			isa = PBXGroup;
 			children = (
-				7B91E5F51ABC7D27003A36F1 /* WebViewController.m */,
 				7B91E5F41ABC7D27003A36F1 /* WebViewController.h */,
+				7B91E5F51ABC7D27003A36F1 /* WebViewController.m */,
 				7B91E5FB1ABC850A003A36F1 /* CustomView */,
 			);
 			name = WebViewPage;
@@ -271,8 +271,8 @@
 		7B91E5FB1ABC850A003A36F1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				7B91E5F81ABC8505003A36F1 /* WebView.h */,
-				7B91E5F91ABC8505003A36F1 /* WebView.m */,
+				7B91E5F81ABC8505003A36F1 /* CustomWebView.h */,
+				7B91E5F91ABC8505003A36F1 /* CustomWebView.m */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B91E5FA1ABC8505003A36F1 /* WebView.m in Sources */,
+				7B91E5FA1ABC8505003A36F1 /* CustomWebView.m in Sources */,
 				7B11FCFE1AA7044F0093E63A /* InnerTableView.m in Sources */,
 				7BF697A61AB09AD8008C1BAE /* DesignData.m in Sources */,
 				7B39F52E1A9CEE860036CB69 /* SectionHeaderView.m in Sources */,

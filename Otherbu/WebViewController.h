@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@class NavigationBar, WebView, BookmarkData;
+@class NavigationBar, CustomWebView, BookmarkData;
 
-@interface WebViewController : UIViewController
+@interface WebViewController : UIViewController<UIScrollViewDelegate>
 
 @property(weak, nonatomic) IBOutlet NavigationBar *navigationBar;
-@property(weak, nonatomic) IBOutlet UIWebView *webView;
+@property(weak, nonatomic) IBOutlet CustomWebView *webView;
 @property(nonatomic) BookmarkData *bookmark;
 
 - (void)setBookmark:(BookmarkData *)bookmark;

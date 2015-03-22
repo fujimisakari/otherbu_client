@@ -16,13 +16,13 @@
 
 NSString * const kTitle = @"Otherbu";                        // タイトル名
 const int kFontSizeOfTitle = 18;                             // タイトル名のフォントサイズ
-const float kOffsetYOfTitle = -5;                            // タイトル名の縦位置調整
+const float kOffsetYOfTitle = -2;                            // タイトル名の縦位置調整
 
 //--------------------------------------------------------------//
 #pragma mark -- Default Value --
 //--------------------------------------------------------------//
 
-NSString * const kDefaultFont = @"Futura-Medium";            // デフォルトフォント名
+NSString * const kDefaultFont = @"Helvetica";                // デフォルトフォント名
 NSString * const kDefaultImageName = @"wood-wallpeper.jpg";  // デフォルト背景
 const int kNumberOfPages = 3;                                // ページ数
 
@@ -46,7 +46,7 @@ const int kFontSizeOfUrl = 12;                               // URLのフォン�
 const float kHeightOfSectionHeader = 40.0f;                  // セクションヘッダーの高さ
 const int kFontSizeOfSectionTitle = 18;                      // セクションタイトル名のフォントサイズ
 const int kOffsetXOfSectionTitle = 50;                       // セクションタイトル名のX位置調整
-const int kOffsetYOfSectionTitle = 7;                        // セクションタイトル名のY位置調整
+const int kOffsetYOfSectionTitle = 9;                        // セクションタイトル名のY位置調整
 NSString * const kDownArrowImageName = @"downArrow";         // 開閉画像名(↓)
 NSString * const kRightArrowImageName = @"rightArrow";       // 開閉画像名(→)
 const int kOffsetXOfDownArrow = 20;                          // 開閉画像名(↓)のX位置調整
@@ -63,5 +63,13 @@ const int kOffsetYOfPageTab = 3;                             // PageTabのY位�
 const float kHeightOfPageTab = 37.0f;                        // PageTabの高さ
 const float kAdaptWidthOfPageTab = 30.0f;                    // PageTabのサイズ調整(width)
 const float kAdaptHeightOfPageTab = 5.0f;                    // PageTabのサイズ調整(height)
+
+//--------------------------------------------------------------//
+#pragma mark -- Toolbar Value --
+//--------------------------------------------------------------//
+
+const float kHeightOfToolbar = 44.0f;                        // Toolbarの高さ
+const float kLabelWidthOfToolbar = 50.0f;                    // Toolbarのラベル幅
+const int kFontSizeOfToolbar = 30;                           // Toolbarのフォントサイズ
 
 @end

@@ -9,12 +9,15 @@
 #import "WebViewController.h"
 #import "NavigationBar.h"
 #import "BookmarkData.h"
+#import "CustomWebView.h"
 
 @interface WebViewController ()
 
 @end
 
-@implementation WebViewController
+@implementation WebViewController {
+    UIToolbar *_toolbar;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +25,9 @@
 
     // setup NavigationBar
     [_navigationBar setup];
+
+    // set Webview
+    [_webView setupWithView:self.view];
 
     [self closeButtontoLeft];
 
@@ -36,7 +42,6 @@
 - (void)setBookmark:(BookmarkData *)bookmark {
     if (bookmark != _bookmark) {
         _bookmark = bookmark;
-        [self configureView];
     }
 }
 

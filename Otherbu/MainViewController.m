@@ -160,12 +160,15 @@
 
     [tableView beginUpdates];
 
+    NSMutableArray *indexPaths;
     if (categoryData.isOpenSection) {
         categoryData.isOpenSection = NO;
-        [self closeSectionContents:section TableView:tableView CategoryData:categoryData];
+        indexPaths = [self getIndexPathsOfSectionContents:section categoryData:categoryData];
+        [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     } else {
         categoryData.isOpenSection = YES;
-        [self openSectionContents:section TableView:tableView CategoryData:categoryData];
+        indexPaths = [self getIndexPathsOfSectionContents:section categoryData:categoryData];
+        [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     }
 
     [tableView endUpdates];
@@ -199,7 +202,6 @@
 //--------------------------------------------------------------//
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
     if ([[segue identifier] isEqualToString:@"toWebViewController"]) {
         WebViewController *webViewController = (WebViewController*)[segue destinationViewController];
         [webViewController setBookmark:_selectBookmark];
@@ -228,26 +230,6 @@
     }];
 }
 
-- (void)openSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {
-    // 指定セクション配下のコンテンツを開く
-    NSArray *bookmarkList = [categoryData getBookmarkList];
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
-    for (int i = 0; i < bookmarkList.count; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:section]];
-    }
-    [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-}
-
-- (void)closeSectionContents:(NSInteger)section TableView:(UITableView *)tableView CategoryData:(CategoryData *)categoryData {
-    // 指定セクション配下のコンテンツを閉じる
-    NSArray *bookmarkList = [categoryData getBookmarkList];
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
-    for (int i = 0; i < bookmarkList.count; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:section]];
-    }
-    [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
-}
-
 - (void)setupBackgroundImage {
     // UIViewContollerに背景画像を設定する
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
@@ -260,6 +242,16 @@
                              self.view.frame.size.width, self.view.frame.size.height);
     layer.zPosition = -1.0;
     [self.view.layer addSublayer:layer];
+}
+
+- (NSMutableArray *)getIndexPathsOfSectionContents:(NSInteger)section categoryData:(CategoryData *)categoryData {
+    // セクションのコンテンツ情報をindexPath形式で取得
+    NSArray *bookmarkList = [categoryData getBookmarkList];
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
+    for (int i = 0; i < bookmarkList.count; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:section]];
+    }
+    return indexPaths;
 }
 
 - (void)createPageTabViews {
