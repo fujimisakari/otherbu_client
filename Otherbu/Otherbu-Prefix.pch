@@ -19,7 +19,6 @@
 
 #ifdef __OBJC__
     #import "UIColor+Hex.h"
-    #import "UIView+ViewFrame.h"
     #import "Constants.h"
 
     #ifdef DEBUG
