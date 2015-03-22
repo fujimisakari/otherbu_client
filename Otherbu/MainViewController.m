@@ -287,7 +287,6 @@
 
 - (void)moveTabScroll:(PageTabView *)tappedPageTabView {
     // タップされたタブViewを適切な場所へ移動させる
-
     float halfPageWidth = _viewWidth / 2;
     if (tappedPageTabView.center.x > halfPageWidth) {
         float subWidth;
@@ -302,8 +301,8 @@
         CGPoint point = CGPointMake(tappedPageTabView.center.x - subWidth, 0.0);
         [_tabScrollView setContentOffset:point animated:YES];
     } else {
-        // 画面半分以上に満たないltabの場合は左寄せ
-        CGPoint point = CGPointMake(tappedPageTabView.frame.origin.x, 0.0);
+        // 画面半分以上に満たないtabの場合は左寄せ
+        CGPoint point = CGPointMake(0.0, 0.0);
         [_tabScrollView setContentOffset:point animated:YES];
     }
 }
