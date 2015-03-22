@@ -70,6 +70,7 @@ const float kAdaptHeightOfPageTab = 5.0f;                    // PageTabのサイ
 
 const float kHeightOfToolbar = 44.0f;                        // Toolbarの高さ
 const float kLabelWidthOfToolbar = 50.0f;                    // Toolbarのラベル幅
+const float kArrowWidthOfToolbar = 50.0f;                    // Toolbarの矢印の幅
 const int kFontSizeOfToolbar = 30;                           // Toolbarのフォントサイズ
 
 @end

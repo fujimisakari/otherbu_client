@@ -51,6 +51,7 @@ extern const float kAdaptHeightOfPageTab;
 
 extern const float kHeightOfToolbar;
 extern const float kLabelWidthOfToolbar;
+extern const float kArrowWidthOfToolbar;
 extern const int kFontSizeOfToolbar;
 
 @end

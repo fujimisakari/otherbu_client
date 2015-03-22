@@ -21,28 +21,11 @@
     self.delegate = self;
     _baseRectOfToolbar = CGRectMake(0, view.bounds.size.height, view.frame.size.width, kHeightOfToolbar);
 
-    // setup LeftArrow
-    // UIButton *leftButton = [self createButtonWithString:@"〈"];
-    // [leftButton addTarget:self action:@selector(backDidPush:) forControlEvents:UIControlEventTouchUpInside];
-    // _leftArrow = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    // setup forword, back button
     _leftArrow = [[UIBarButtonItem alloc] initWithTitle:@"〈" style:UIBarButtonItemStylePlain target:self action:@selector(backDidPush)];
-    [_leftArrow setTitleTextAttributes:@{
-                                           NSFontAttributeName : [UIFont systemFontOfSize:kFontSizeOfToolbar]
-                                       }
-                              forState:UIControlStateNormal];
-    _leftArrow.width = 50.0f;
-
-    // setup RightArrow
-    // UIButton *rightButton = [self createButtonWithString:@"〉"];
-    // [rightButton addTarget:self action:@selector(fowardDidPush:) forControlEvents:UIControlEventTouchUpInside];
-    // _rightArrow = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    _leftArrow.width = kArrowWidthOfToolbar;
     _rightArrow = [[UIBarButtonItem alloc] initWithTitle:@"〉" style:UIBarButtonItemStylePlain target:self action:@selector(fowardDidPush)];
-    [_rightArrow setTitleTextAttributes:@{
-                                           NSFontAttributeName : [UIFont systemFontOfSize:kFontSizeOfToolbar]
-                                       }
-                              forState:UIControlStateNormal];
-
-    _rightArrow.width = 50.0f;
+    _rightArrow.width = kArrowWidthOfToolbar;
 
     // setup Toolbar
     NSArray *items = [NSArray arrayWithObjects:_leftArrow, _rightArrow, nil, nil];
@@ -165,7 +148,7 @@
 
 - (UIButton *)createButtonWithString:(NSString *)string {
     // Toolbar用のボタン生成
-    UIButton *button = [UIButton buttonWithType:101];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:string forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:kFontSizeOfToolbar];
     return button;
