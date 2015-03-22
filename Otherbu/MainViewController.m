@@ -202,6 +202,7 @@
 //--------------------------------------------------------------//
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // WebViewへページ遷移
     if ([[segue identifier] isEqualToString:@"toWebViewController"]) {
         WebViewController *webViewController = (WebViewController*)[segue destinationViewController];
         [webViewController setBookmark:_selectBookmark];
@@ -261,15 +262,9 @@
     // set PageTabView
     float offsetX = 0;
     for (PageData *pageData in [dataManager.pageDict objectEnumerator]) {
-        CGSize textSize = [pageData.name
-            boundingRectWithSize:CGSizeMake(200, 2000)
-                         options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
-                      attributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:kDefaultFont size:kFontSizeOfPageTab]
-                                                             forKey:NSFontAttributeName]
-                         context:nil].size;
-
-        CGRect rect = CGRectMake(offsetX, kOffsetYOfPageTab, textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
-        PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:(CGRect)rect];
+        CGSize textSize = [PageTabView getTextSizeOfPageViewWithString:pageData.name];
+        CGRect rect = CGRectMake(offsetX, kOffsetYOfPageTab, textSize.width, textSize.height);
+        PageTabView *pageTabView = [PageTabView initWithFrame:rect];
         [pageTabView setUpWithPage:pageData delegate:self];
         if ((int)pageData.dataId == (int)_currentPage.dataId) {
             _currentPageTabView = pageTabView;

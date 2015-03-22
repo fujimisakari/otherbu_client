@@ -27,6 +27,18 @@
     return pageTab;
 }
 
++ (CGSize)getTextSizeOfPageViewWithString:(NSString *)string {
+    // PageView用のtextSizeを取得
+    CGSize textSize =
+        [string boundingRectWithSize:CGSizeMake(200, 400)
+                             options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                          attributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:kDefaultFont size:kFontSizeOfPageTab]
+                                                                 forKey:NSFontAttributeName]
+                             context:nil].size;
+    CGSize text = CGSizeMake(textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
+    return text;
+}
+
 - (void)setUpWithPage:(PageData *)page delegate:(id<PageTabDelegate>)delegate {
     // タップされている、されていない場合のTabVeiwを切り換え用に用意しておく
     CGFloat offsetX = 0;

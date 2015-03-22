@@ -25,13 +25,13 @@
 
     // setup NavigationBar
     [_navigationBar setup];
+    [self closeButtontoLeft];
 
     // set Webview
     [_webView setupWithView:self.view];
 
-    [self closeButtontoLeft];
-
-    [self configureView];
+    // open Web Page
+    [self openWebPage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,28 +39,38 @@
     // Dispose of any resources that can be recreated.
 }
 
+//--------------------------------------------------------------//
+#pragma mark -- Public Method --
+//--------------------------------------------------------------//
+
 - (void)setBookmark:(BookmarkData *)bookmark {
     if (bookmark != _bookmark) {
         _bookmark = bookmark;
     }
 }
 
-- (void)configureView {
+//--------------------------------------------------------------//
+#pragma mark -- Private Method --
+//--------------------------------------------------------------//
+
+- (void)openWebPage {
     // Webを表示する
     NSURL *url = [NSURL URLWithString:_bookmark.url];
     NSURLRequest *urlReq = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:urlReq];
 }
 
-- (void)closeWebViewController:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (void)closeButtontoLeft {
+    // NavigationBarにXボタンを設置する
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                          target:self
-                                                                         action:@selector(closeWebViewController:)];
+                                                                         action:@selector(closeWebView:)];
     _navigationBar.topItem.leftBarButtonItem = btn;
+}
+
+- (void)closeWebView:(UIButton *)sender {
+    // WebViewのクローズ
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

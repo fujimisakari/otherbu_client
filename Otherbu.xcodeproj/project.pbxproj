@@ -146,17 +146,6 @@
 			name = CustomView;
 			sourceTree = "<group>";
 		};
-		7B39F5351AA31F7A0036CB69 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				7B39F5321AA31DA20036CB69 /* UIColor+Hex.h */,
-				7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */,
-				7BF6979E1AAF657E008C1BAE /* Constants.h */,
-				7BF6979F1AAF657E008C1BAE /* Constants.m */,
-			);
-			name = Utility;
-			sourceTree = "<group>";
-		};
 		7B565EE71A92486F00D6A420 = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +175,6 @@
 				7B565F2B1A938A9600D6A420 /* MainViewPage */,
 				7B91E5F71ABC7D30003A36F1 /* WebViewPage */,
 				7B565F251A924A1000D6A420 /* Model */,
-				7B39F5351AA31F7A0036CB69 /* Utility */,
 				7B565F001A92486F00D6A420 /* Images.xcassets */,
 				590F230E1AA81F4900589E7C /* wood-wallpeper.jpg */,
 				7B565F021A92486F00D6A420 /* LaunchScreen.xib */,
@@ -198,6 +186,10 @@
 		7B565EF31A92486F00D6A420 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B39F5321AA31DA20036CB69 /* UIColor+Hex.h */,
+				7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */,
+				7BF6979E1AAF657E008C1BAE /* Constants.h */,
+				7BF6979F1AAF657E008C1BAE /* Constants.m */,
 				7BF697AB1AB3FDB1008C1BAE /* Otherbu-Prefix.pch */,
 				7B565EF41A92486F00D6A420 /* Info.plist */,
 				7B565EF51A92486F00D6A420 /* main.m */,
