@@ -37,12 +37,18 @@
     }
 }
 
--(void)reloadTableData {
+- (void)reloadTableData {
     // Tableデータの再読み込み
-    for (int i = 1; i < LastAngle; ++i) {
-        InnerTableView *tableView = (InnerTableView *)[self viewWithTag:i];
-        [tableView reloadData];
-    }
+    [UIView transitionWithView: self duration: 0.35f options: UIViewAnimationOptionTransitionFlipFromLeft
+        animations: ^(void) {
+            for (int i = 1; i < LastAngle; ++i) {
+                InnerTableView *tableView = (InnerTableView *)[self viewWithTag:i];
+                [tableView reloadData];
+            }
+        }
+        completion: ^(BOOL isFinished) {
+        }
+    ];
 }
 
 @end

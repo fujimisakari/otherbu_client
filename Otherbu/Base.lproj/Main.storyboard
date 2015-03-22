@@ -36,6 +36,7 @@
                             </pageControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBD-cR-rnL" userLabel="Tab View">
                                 <rect key="frame" x="0.0" y="596" width="600" height="4"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="4" id="Gls-Fn-xdw"/>
                                 </constraints>

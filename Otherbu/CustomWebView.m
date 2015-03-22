@@ -19,7 +19,7 @@
 
 - (void)setupWithView:(UIView *)view {
     self.delegate = self;
-    _baseRectOfToolbar = CGRectMake(0, view.bounds.size.height - kHeightOfToolbar, view.frame.size.width, kHeightOfToolbar);
+    _baseRectOfToolbar = CGRectMake(0, view.bounds.size.height, view.frame.size.width, kHeightOfToolbar);
 
     // setup LeftArrow
     // UIButton *leftButton = [self createButtonWithString:@"〈"];
@@ -93,7 +93,7 @@
             _isScrollingToolbar = YES;
             CGRect rect = _baseRectOfToolbar;
             _toolbar.frame = CGRectMake(rect.origin.x,
-                                        rect.origin.y + rect.size.height,
+                                        rect.origin.y,
                                         rect.size.width,
                                         rect.size.height);
         } completion:^(BOOL finished) {
@@ -107,7 +107,7 @@
             _isScrollingToolbar = YES;
             CGRect rect = _baseRectOfToolbar;
             _toolbar.frame = CGRectMake(rect.origin.x,
-                                        rect.origin.y,
+                                        rect.origin.y - rect.size.height,
                                         rect.size.width,
                                         rect.size.height);
         } completion:^(BOOL finished) {
@@ -154,13 +154,13 @@
 
 - (void)didStanbyToolbar {
     // Toolbarを非表示にする
-    CGRect rect = _baseRectOfToolbar;
-    _toolbar.frame = CGRectMake(rect.origin.x, rect.origin.y + rect.size.height, rect.size.width, rect.size.height);
+    _toolbar.frame = _baseRectOfToolbar;
 }
 
 - (void)didActiveToolbar {
     // Toolbarを表示にする
-    _toolbar.frame = _baseRectOfToolbar;
+    CGRect rect = _baseRectOfToolbar;
+    _toolbar.frame = CGRectMake(rect.origin.x, rect.origin.y - rect.size.height, rect.size.width, rect.size.height);
 }
 
 - (UIButton *)createButtonWithString:(NSString *)string {
