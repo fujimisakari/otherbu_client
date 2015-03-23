@@ -13,30 +13,43 @@
 
 @interface WebViewController ()
 
+@property UIToolbar *toolbar;
+
 @end
 
-@implementation WebViewController {
-    UIToolbar *_toolbar;
-}
+@implementation WebViewController
+
+//--------------------------------------------------------------//
+#pragma mark -- Controller Method --
+//--------------------------------------------------------------//
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
     // setup NavigationBar
     [_navigationBar setup];
-    [self closeButtontoLeft];
+    [self _closeButtontoLeft];
 
     // set Webview
     [_webView setupWithView:self.view];
-
-    // open Web Page
-    [self openWebPage];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    // 画面が表示され終ったらWebPageの読み込み
+    [super viewDidAppear:animated];
+    NSURL *url = [NSURL URLWithString:_bookmark.url];
+    NSURLRequest *urlReq = [NSURLRequest requestWithURL:url];
+    [_webView loadRequest:urlReq];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    // 画面を閉じるときにステータスバーのインジケータ確実にOFFにする
+    [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 //--------------------------------------------------------------//
@@ -50,25 +63,18 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Private Method --
+#pragma mark -- Close Button --
 //--------------------------------------------------------------//
 
-- (void)openWebPage {
-    // Webを表示する
-    NSURL *url = [NSURL URLWithString:_bookmark.url];
-    NSURLRequest *urlReq = [NSURLRequest requestWithURL:url];
-    [_webView loadRequest:urlReq];
-}
-
-- (void)closeButtontoLeft {
+- (void)_closeButtontoLeft {
     // NavigationBarにXボタンを設置する
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                          target:self
-                                                                         action:@selector(closeWebView:)];
+                                                                         action:@selector(_closeWebView:)];
     _navigationBar.topItem.leftBarButtonItem = btn;
 }
 
-- (void)closeWebView:(UIButton *)sender {
+- (void)_closeWebView:(UIButton *)sender {
     // WebViewのクローズ
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -8,23 +8,33 @@
 
 #import "CustomWebView.h"
 
-@implementation CustomWebView {
-    UIToolbar *_toolbar;
-    float _beginScrollOffsetY;
-    BOOL _isScrollingToolbar;
-    CGRect _baseRectOfToolbar;
-    UIBarButtonItem *_rightArrow;
-    UIBarButtonItem *_leftArrow;
-}
+@interface CustomWebView ()
+
+@property UIToolbar       *toolbar;
+@property UIBarButtonItem *rightArrow;
+@property UIBarButtonItem *leftArrow;
+@property float           beginScrollOffsetY;
+@property CGRect          baseRectOfToolbar;
+@property BOOL            isScrollingToolbar;
+
+@end
+
+@implementation CustomWebView
+
+//--------------------------------------------------------------//
+#pragma mark -- initialize --
+//--------------------------------------------------------------//
 
 - (void)setupWithView:(UIView *)view {
+    // setup initialize value
     self.delegate = self;
+    self.scalesPageToFit = YES;  // Webページの大きさを自動的に画面にフィットさせる
     _baseRectOfToolbar = CGRectMake(0, view.bounds.size.height, view.frame.size.width, kHeightOfToolbar);
 
     // setup forword, back button
-    _leftArrow = [[UIBarButtonItem alloc] initWithTitle:@"〈" style:UIBarButtonItemStylePlain target:self action:@selector(backDidPush)];
+    _leftArrow = [[UIBarButtonItem alloc] initWithTitle:@"〈" style:UIBarButtonItemStylePlain target:self action:@selector(_backDidPush)];
     _leftArrow.width = kArrowWidthOfToolbar;
-    _rightArrow = [[UIBarButtonItem alloc] initWithTitle:@"〉" style:UIBarButtonItemStylePlain target:self action:@selector(fowardDidPush)];
+    _rightArrow = [[UIBarButtonItem alloc] initWithTitle:@"〉" style:UIBarButtonItemStylePlain target:self action:@selector(_fowardDidPush)];
     _rightArrow.width = kArrowWidthOfToolbar;
 
     // setup Toolbar
@@ -38,21 +48,36 @@
 #pragma mark -- UIWebViewDelegate --
 //--------------------------------------------------------------//
 
--(void)webViewDidStartLoad:(UIWebView *)webview {
+- (void)webViewDidStartLoad:(UIWebView *)webview {
     // 読み込みが開始した直後に呼ばれる
-    [self updateToolbar];
+    [self _updateToolbar];
 }
 
--(void)webViewDidFinishLoad:(UIWebView *)webview {
+- (void)webViewDidFinishLoad:(UIWebView *)webview {
     // 読み込みが完了した直後に呼ばれる
-    [self updateToolbar];
+    [self _updateToolbar];
 }
 
--(void)webView:(UIWebView *)webview didFailLoadWithError:(NSError *)error {
+- (void)webView:(UIWebView *)webview didFailLoadWithError:(NSError *)error {
     // 読み込み中にエラーが発生したタイミングで呼ばれる
-    [self updateToolbar];
+    [self _updateToolbar];
 }
 
+- (void)_updateToolbar {
+    // ツールバーを表示、非表示
+    if ([self _isStanbyToolbar]) {
+        [self _didStanbyToolbar];
+    } else {
+        [self _didActiveToolbar];
+    }
+
+    // ツールバーボタンの有効、無効
+    _rightArrow.enabled = self.canGoForward;
+    _leftArrow.enabled = self.canGoBack;
+
+    // ステータスバーのインジケータの更新
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = self.loading;
+}
 
 //--------------------------------------------------------------//
 #pragma mark -- UIScrollViewDelegate --
@@ -66,7 +91,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // ツールバーの表示、非表示のアニメーション対応
-    if (_isScrollingToolbar == YES || [self isStanbyToolbar]) {
+    if (_isScrollingToolbar == YES || [self _isStanbyToolbar]) {
         return;
     }
 
@@ -100,53 +125,44 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Private Method --
+#pragma mark -- Button Action --
 //--------------------------------------------------------------//
 
-- (void)fowardDidPush {
+- (void)_fowardDidPush {
     // 次のページへ進む
     if (self.canGoForward) {
         [self goForward];
     }
 }
 
-- (void)backDidPush {
+- (void)_backDidPush {
     // 前のページへ戻る
     if (self.canGoBack) {
         [self goBack];
     }
 }
 
-- (void)updateToolbar {
-    // ツールバーを表示、非表示
-    if ([self isStanbyToolbar]) {
-        [self didStanbyToolbar];
-    } else {
-        [self didActiveToolbar];
-    }
+//--------------------------------------------------------------//
+#pragma mark -- Toolbar --
+//--------------------------------------------------------------//
 
-    // ツールバーボタンの有効、無効
-    _rightArrow.enabled = self.canGoForward;
-    _leftArrow.enabled = self.canGoBack;
-}
-
-- (BOOL) isStanbyToolbar {
+- (BOOL)_isStanbyToolbar {
     // Toolbarが非表示か
     return (!self.canGoForward && !self.canGoBack) ? YES : NO;
 }
 
-- (void)didStanbyToolbar {
+- (void)_didStanbyToolbar {
     // Toolbarを非表示にする
     _toolbar.frame = _baseRectOfToolbar;
 }
 
-- (void)didActiveToolbar {
+- (void)_didActiveToolbar {
     // Toolbarを表示にする
     CGRect rect = _baseRectOfToolbar;
     _toolbar.frame = CGRectMake(rect.origin.x, rect.origin.y - rect.size.height, rect.size.width, rect.size.height);
 }
 
-- (UIButton *)createButtonWithString:(NSString *)string {
+- (UIButton *)_createButtonWithString:(NSString *)string {
     // Toolbar用のボタン生成
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:string forState:UIControlStateNormal];
