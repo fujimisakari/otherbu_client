@@ -17,7 +17,6 @@
 
 - (void)setupWithCGSize:(CGSize)cgSize delegate:(id<UIScrollViewDelegate>)delegate {
     self.delegate = delegate;
-    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.pagingEnabled = YES;                  // ページごとのスクロールにする
     self.showsHorizontalScrollIndicator = NO;  // 横スクロールバーを非表示にする
     self.showsVerticalScrollIndicator = NO;    // 縦スクロールバーを非表示にする
@@ -36,6 +35,10 @@
         [self addSubview:innerTableView];
     }
 }
+
+//--------------------------------------------------------------//
+#pragma mark -- Public Method --
+//--------------------------------------------------------------//
 
 - (void)reloadTableData {
     // Tableデータの再読み込み

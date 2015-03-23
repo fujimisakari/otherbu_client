@@ -20,26 +20,35 @@
 #import "PageData.h"
 #import "PageTabView.h"
 
+@interface MainViewController ()
+
+@property float        viewWidth;
+@property float        viewHeight;
+@property PageData     *currentPage;
+@property PageTabView  *currentPageTabView;
+@property BookmarkData *selectBookmark;
+
+@end
+
 @implementation MainViewController {
-    float _viewWidth;
-    float _viewHeight;
-    PageData *_currentPage;
-    PageTabView *_currentPageTabView;
-    BookmarkData *_selectBookmark;
 }
+
+//--------------------------------------------------------------//
+#pragma mark -- Controller Method --
+//--------------------------------------------------------------//
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     [self refreshBookmarks:self];
 
-    // setup view init
+    // setup init value
     float marginOfHeight = _navigationBar.frame.size.height + _tabScrollView.frame.size.height + _tabFrameView.frame.size.height;
     _viewWidth = self.view.frame.size.width;
     _viewHeight = self.view.frame.size.height - marginOfHeight;
 
     // setup BackgroundImage
-    [self setupBackgroundImage];
+    [self _setupBackgroundImage];
 
     // setup NavigationBar
     [_navigationBar setup];
@@ -51,6 +60,20 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)_setupBackgroundImage {
+    // UIViewContollerに背景画像を設定する
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
+    [[UIImage imageNamed:kDefaultImageName] drawInRect:self.view.bounds];
+    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CALayer *layer = [CALayer layer];
+    layer.contents = (id)backgroundImage.CGImage;
+    layer.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
+                             self.view.frame.size.width, self.view.frame.size.height);
+    layer.zPosition = -1.0;
+    [self.view.layer addSublayer:layer];
 }
 
 //--------------------------------------------------------------//
@@ -163,15 +186,25 @@
     NSMutableArray *indexPaths;
     if (categoryData.isOpenSection) {
         categoryData.isOpenSection = NO;
-        indexPaths = [self getIndexPathsOfSectionContents:section categoryData:categoryData];
+        indexPaths = [self _getIndexPathsOfSectionContents:section categoryData:categoryData];
         [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     } else {
         categoryData.isOpenSection = YES;
-        indexPaths = [self getIndexPathsOfSectionContents:section categoryData:categoryData];
+        indexPaths = [self _getIndexPathsOfSectionContents:section categoryData:categoryData];
         [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
     }
 
     [tableView endUpdates];
+}
+
+- (NSMutableArray *)_getIndexPathsOfSectionContents:(NSInteger)section categoryData:(CategoryData *)categoryData {
+    // セクションのコンテンツ情報をindexPath形式で取得
+    NSArray *bookmarkList = [categoryData getBookmarkList];
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
+    for (int i = 0; i < bookmarkList.count; i++) {
+        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:section]];
+    }
+    return indexPaths;
 }
 
 //--------------------------------------------------------------//
@@ -191,10 +224,32 @@
     _currentPageTabView = tappedPageTabView;
 
     // move sclollbar
-    [self moveTabScroll:tappedPageTabView];
+    [self _moveTabScroll:tappedPageTabView];
 
     // set TabFrameView
     _tabFrameView.backgroundColor = [[selectPage color] getFooterColorOfGradient];
+}
+
+- (void)_moveTabScroll:(PageTabView *)tappedPageTabView {
+    // タップされたタブViewを適切な場所へ移動させる
+    float halfPageWidth = _viewWidth / 2;
+    if (tappedPageTabView.center.x > halfPageWidth) {
+        float subWidth;
+        float restContentWidth = _tabScrollView.contentSize.width - tappedPageTabView.center.x;
+        if (restContentWidth > halfPageWidth) {
+            // 画面半分以上を満たしてるtabの場合は中央寄せ
+            subWidth = halfPageWidth;
+        } else {
+            // 画面半分以上を満たしてるけど中央寄せした場合、contentSize以上になる場合は微調整
+            subWidth = halfPageWidth + (halfPageWidth - restContentWidth);
+        }
+        CGPoint point = CGPointMake(tappedPageTabView.center.x - subWidth, 0.0);
+        [_tabScrollView setContentOffset:point animated:YES];
+    } else {
+        // 画面半分以上に満たないtabの場合は左寄せ
+        CGPoint point = CGPointMake(0.0, 0.0);
+        [_tabScrollView setContentOffset:point animated:YES];
+    }
 }
 
 //--------------------------------------------------------------//
@@ -210,13 +265,13 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Private Method --
+#pragma mark -- Update Data By Connect Network --
 //--------------------------------------------------------------//
 
 - (void)refreshBookmarks:(id)sender {
+    // todo コントローラではない場所におく
     // サーバからデータ取得
     // [self.refreshControl beginRefreshing];
-
     [[DataManager sharedManager] reloadDataWithBlock:^(NSError *error) {
         if (error) {
             NSLog(@"error = %@", error);
@@ -226,36 +281,12 @@
         _currentPage = [[DataManager sharedManager] getPage:number];
 
         [_scrollView reloadTableData];
-        [self createPageTabViews];
+        [self _createPageTabViews];
         // [self.refreshControl endRefreshing];
     }];
 }
 
-- (void)setupBackgroundImage {
-    // UIViewContollerに背景画像を設定する
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
-    [[UIImage imageNamed:kDefaultImageName] drawInRect:self.view.bounds];
-    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    CALayer *layer = [CALayer layer];
-    layer.contents = (id)backgroundImage.CGImage;
-    layer.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
-                             self.view.frame.size.width, self.view.frame.size.height);
-    layer.zPosition = -1.0;
-    [self.view.layer addSublayer:layer];
-}
-
-- (NSMutableArray *)getIndexPathsOfSectionContents:(NSInteger)section categoryData:(CategoryData *)categoryData {
-    // セクションのコンテンツ情報をindexPath形式で取得
-    NSArray *bookmarkList = [categoryData getBookmarkList];
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:bookmarkList.count];
-    for (int i = 0; i < bookmarkList.count; i++) {
-        [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:section]];
-    }
-    return indexPaths;
-}
-
-- (void)createPageTabViews {
+- (void)_createPageTabViews {
     // PageTabViewを生成する
     DataManager *dataManager = [DataManager sharedManager];
 
@@ -278,28 +309,6 @@
 
     // set TabFrameView
     _tabFrameView.backgroundColor = [[_currentPage color] getFooterColorOfGradient];
-}
-
-- (void)moveTabScroll:(PageTabView *)tappedPageTabView {
-    // タップされたタブViewを適切な場所へ移動させる
-    float halfPageWidth = _viewWidth / 2;
-    if (tappedPageTabView.center.x > halfPageWidth) {
-        float subWidth;
-        float restContentWidth = _tabScrollView.contentSize.width - tappedPageTabView.center.x;
-        if (restContentWidth > halfPageWidth) {
-            // 画面半分以上を満たしてるtabの場合は中央寄せ
-            subWidth = halfPageWidth;
-        } else {
-            // 画面半分以上を満たしてるけど中央寄せした場合、contentSize以上になる場合は微調整
-            subWidth = halfPageWidth + (halfPageWidth - restContentWidth);
-        }
-        CGPoint point = CGPointMake(tappedPageTabView.center.x - subWidth, 0.0);
-        [_tabScrollView setContentOffset:point animated:YES];
-    } else {
-        // 画面半分以上に満たないtabの場合は左寄せ
-        CGPoint point = CGPointMake(0.0, 0.0);
-        [_tabScrollView setContentOffset:point animated:YES];
-    }
 }
 
 @end

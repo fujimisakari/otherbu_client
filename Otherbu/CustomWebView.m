@@ -10,12 +10,12 @@
 
 @interface CustomWebView ()
 
-@property UIToolbar       *toolbar;
-@property UIBarButtonItem *rightArrow;
-@property UIBarButtonItem *leftArrow;
-@property float           beginScrollOffsetY;
-@property CGRect          baseRectOfToolbar;
-@property BOOL            isScrollingToolbar;
+@property(nonatomic) UIToolbar       *toolbar;
+@property(nonatomic) UIBarButtonItem *rightArrow;
+@property(nonatomic) UIBarButtonItem *leftArrow;
+@property(nonatomic) float           beginScrollOffsetY;
+@property(nonatomic) CGRect          baseRectOfToolbar;
+@property(nonatomic) BOOL            isScrollingToolbar;
 
 @end
 

@@ -83,7 +83,7 @@
     DataManager *dataManager = [DataManager sharedManager];
 
     // アングル別のカテゴリリストを生成
-    NSMutableDictionary *angleDict = [self getMapByArg:_angleIdsStr];
+    NSMutableDictionary *angleDict = [self _getMapByArg:_angleIdsStr];
     NSMutableDictionary *tmpResultDict = [@{[NSNumber numberWithInt : LEFT] : [[NSMutableArray alloc] init],
                                             [NSNumber numberWithInt:CENTER] : [[NSMutableArray alloc] init],
                                             [NSNumber numberWithInt:RIGHT] : [[NSMutableArray alloc] init]
@@ -98,7 +98,7 @@
 
     // アングル別のカテゴリリストをソートする
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *sortDict = [self getMapByArg:_sortIdsStr];
+    NSMutableDictionary *sortDict = [self _getMapByArg:_sortIdsStr];
     for (NSNumber *angleId in tmpResultDict) {
         //sortIdが0 or 1 始まりのため、 firstCategoryDataは0始まりだった時の先頭categoryを保持してる
         CategoryData *firstCategoryData = nil;
@@ -129,7 +129,7 @@
     return resultDict;
 }
 
-- (NSMutableDictionary *)getMapByArg:(NSString *)strData {
+- (NSMutableDictionary *)_getMapByArg:(NSString *)strData {
     // 引数の文字列をパースしてdictionaryリストを生成する
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
     NSArray *list_ = [strData componentsSeparatedByString:@","];

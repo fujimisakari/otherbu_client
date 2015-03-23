@@ -14,16 +14,20 @@
 #import "DesignData.h"
 #import "ColorData.h"
 
-@implementation MainTableCellView {
-    NSIndexPath *_indexPath;
-    UITableView *_tableView;
-    CategoryData *_category;
-    BookmarkData *_bookmark;
-    DesignData *_design;
-    UIView *_cellBackgroundView;
-    float _cellWidth;
-    float _cellInnerWidth;
-};
+@interface MainTableCellView ()
+
+@property(nonatomic) NSIndexPath  *indexPath;
+@property(nonatomic) UITableView  *tableView;
+@property(nonatomic) CategoryData *category;
+@property(nonatomic) BookmarkData *bookmark;
+@property(nonatomic) DesignData   *design;
+@property(nonatomic) UIView       *cellBackgroundView;
+@property(nonatomic) float        cellWidth;
+@property(nonatomic) float        cellInnerWidth;
+
+@end
+
+@implementation MainTableCellView
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --
@@ -45,19 +49,19 @@
     _design = [[DataManager sharedManager] getDesign];
 
     // 背景設定
-    [self setupBackground];
+    [self _setupBackground];
 
     // セルの選択時の背景指定
-    [self setupCellSelectBackground];
+    [self _setupCellSelectBackground];
 
     // セルの右側に矢印アイコンを表示
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     // ボーダーライン設定
-    [self setupBorder];
+    [self _setupBorder];
 
     // 文言設定
-    [self setupText];
+    [self _setupText];
 
     return self;
 }
@@ -70,15 +74,15 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Private Method --
+#pragma mark -- SetUP Method --
 //--------------------------------------------------------------//
 
-- (void)setupBackground {
+- (void)_setupBackground {
     // 後面の背景指定
     _cellBackgroundView.backgroundColor = [[_category color] getBackGroundColor];
 
     // セクションの最後のセルの場合はfooterのUIViewを付ける
-    if ([self isLastCellOfSection]) {
+    if ([self _isLastCellOfSection]) {
         UIView *footerView = [self createFooterViewOfLastCell];
         [_cellBackgroundView addSubview:footerView];
     }
@@ -94,13 +98,13 @@
     self.backgroundView = _cellBackgroundView;
 }
 
-- (void)setupCellSelectBackground {
+- (void)_setupCellSelectBackground {
     // 後面の背景指定
     UIView *cellSelectedBackgroundView = [[UIView alloc] init];
     cellSelectedBackgroundView.backgroundColor = [[_category color] getBackGroundColor];
 
     // セクションの最後のセルの場合はfooterのUIViewを付ける
-    if ([self isLastCellOfSection]) {
+    if ([self _isLastCellOfSection]) {
         UIView *footerView = [self createFooterViewOfLastCell];
         [cellSelectedBackgroundView addSubview:footerView];
     }
@@ -110,11 +114,68 @@
     float height = self.bounds.size.height + 1;
     CALayer *layer = [CALayer layer];
     layer.frame = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, width, height);
-    UIColor *backGroundColor = [self getCellSelectBackgroundColor:[_design getTableBackGroundColor]];
+    UIColor *backGroundColor = [self _getCellSelectBackgroundColor:[_design getTableBackGroundColor]];
     layer.backgroundColor = backGroundColor.CGColor;
     [cellSelectedBackgroundView.layer addSublayer:layer];
 
     self.selectedBackgroundView = cellSelectedBackgroundView;
+}
+
+- (void)_setupBorder {
+    // セルのボーダーライン配置（既定のだと後面の背景まで線が越えてしまうため）
+    if (![self _isFirstCellOfSection]) {
+        CGRect rect = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, _cellInnerWidth, kHeightOfBorderLine);
+        UIView *borderline = [[UIView alloc] initWithFrame:rect];
+        borderline.backgroundColor = [UIColor lightGrayColor];;
+        [_cellBackgroundView addSubview:borderline];
+    }
+}
+
+- (void)_setupText {
+    // ブックマーク名、URLを設定
+    self.textLabel.text = _bookmark.name;
+    self.textLabel.textColor = [_design getbookmarkColor];
+    self.textLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfBookmark];
+    self.detailTextLabel.text = _bookmark.url;
+    self.detailTextLabel.textColor = [_design getUrlColor];
+    self.detailTextLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfUrl];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Cell Helper Method --
+//--------------------------------------------------------------//
+
+- (BOOL)_isFirstCellOfSection {
+    // 先頭のセルか判定
+    return (_indexPath.row == 0) ? YES : NO;
+}
+
+- (BOOL)_isLastCellOfSection {
+    // 末尾のセルか判定
+    NSArray *bookmarkList = [_category getBookmarkList];
+    int lastCellIndex = (int)_indexPath.row + 1;
+    return (lastCellIndex == bookmarkList.count) ? YES : NO;
+}
+
+- (UIColor *)_getCellSelectBackgroundColor:(UIColor *)baseColor {
+    // セルをタップされた時の背景色を取得
+    // 現在、設定されている背景色から目立つカラーを自動選定する
+    CGFloat red;
+    CGFloat green;
+    CGFloat blue;
+    CGFloat alpha;
+    [baseColor getRed:&red green:&green blue:&blue alpha:&alpha];
+
+    if (red < 0.5f) {
+        red += 0.1;
+        green += 0.1;
+        blue += 0.1;
+    } else {
+        red -= 0.1;
+        green -= 0.1;
+        blue -= 0.1;
+    }
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 - (UIView *)createFooterViewOfLastCell {
@@ -140,59 +201,6 @@
     footerView.layer.mask = maskLayer;
 
     return footerView;
-}
-
-- (void)setupText {
-    // ブックマーク名、URLを設定
-    self.textLabel.text = _bookmark.name;
-    self.textLabel.textColor = [_design getbookmarkColor];
-    self.textLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfBookmark];
-    self.detailTextLabel.text = _bookmark.url;
-    self.detailTextLabel.textColor = [_design getUrlColor];
-    self.detailTextLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfUrl];
-}
-
-- (void)setupBorder {
-    // セルのボーダーライン配置（既定のだと後面の背景まで線が越えてしまうため）
-    if (![self isFirstCellOfSection]) {
-        CGRect rect = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, _cellInnerWidth, kHeightOfBorderLine);
-        UIView *borderline = [[UIView alloc] initWithFrame:rect];
-        borderline.backgroundColor = [UIColor lightGrayColor];;
-        [_cellBackgroundView addSubview:borderline];
-    }
-}
-
-- (BOOL)isFirstCellOfSection {
-    // 先頭のセルか判定
-    return (_indexPath.row == 0) ? YES : NO;
-}
-
-- (BOOL)isLastCellOfSection {
-    // 末尾のセルか判定
-    NSArray *bookmarkList = [_category getBookmarkList];
-    int lastCellIndex = (int)_indexPath.row + 1;
-    return (lastCellIndex == bookmarkList.count) ? YES : NO;
-}
-
-- (UIColor *)getCellSelectBackgroundColor:(UIColor *)baseColor {
-    // セルをタップされた時の背景色を取得
-    // 現在、設定されている背景色から目立つカラーを自動選定する
-    CGFloat red;
-    CGFloat green;
-    CGFloat blue;
-    CGFloat alpha;
-    [baseColor getRed:&red green:&green blue:&blue alpha:&alpha];
-
-    if (red < 0.5f) {
-        red += 0.1;
-        green += 0.1;
-        blue += 0.1;
-    } else {
-        red -= 0.1;
-        green -= 0.1;
-        blue -= 0.1;
-    }
-    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 @end

@@ -32,7 +32,7 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Get Object By ForeignKey --
+#pragma mark -- Public Method --
 //--------------------------------------------------------------//
 
 - (NSArray *)getGradientColorList {
@@ -40,7 +40,7 @@
     UIColor *color1 = [UIColor colorWithHex:[UIColor removeSharp:_color_code1]];
     UIColor *color2 = [UIColor colorWithHex:[UIColor removeSharp:_color_code2]];
     UIColor *color3 = [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
-    NSArray *gradientColorList = @[ (id)color1.CGColor, (id)color2.CGColor, (id)color3.CGColor ];
+    NSArray *gradientColorList = @[(id)color1.CGColor, (id)color2.CGColor, (id)color3.CGColor];
     return gradientColorList;
 }
 
