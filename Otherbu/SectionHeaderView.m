@@ -10,18 +10,22 @@
 #import "CategoryData.h"
 #import "ColorData.h"
 
-@implementation SectionHeaderView {
-    UIImageView *_arrowImgView;
-    UIImage *_downImg;
-    UIImage *_rightImg;
-    CGSize _downImgSize;
-    CGSize _rightImgSize;
-    CAShapeLayer *_maskLayerOfSectionOpen;
-    CAShapeLayer *_maskLayerOfSectionClose;
-    CategoryData *_categoryData;
-    NSInteger _section;
-    NSInteger _tag;
-}
+@interface SectionHeaderView ()
+
+@property(nonatomic) UIImageView  *arrowImgView;
+@property(nonatomic) UIImage      *downImg;
+@property(nonatomic) UIImage      *rightImg;
+@property(nonatomic) CAShapeLayer *maskLayerOfSectionOpen;
+@property(nonatomic) CAShapeLayer *maskLayerOfSectionClose;
+@property(nonatomic) CGSize       downImgSize;
+@property(nonatomic) CGSize       rightImgSize;
+@property(nonatomic) CategoryData *categoryData;
+@property(nonatomic) NSInteger    section;
+@property(nonatomic) NSInteger    tagNumber;
+
+@end
+
+@implementation SectionHeaderView
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --
@@ -31,17 +35,17 @@
                  frame:(CGRect)frame
                section:(NSInteger)section
               delegate:(id<SectionHeaderViewDelegate>)delegate
-                   tag:(NSInteger)tag {
+             tagNumber:(NSInteger)tagNumber {
     self = [super initWithFrame:frame];
     if (self) {
         _categoryData = categoryData;
         _section = section;
-        _tag = tag;
+        _tagNumber = tagNumber;
         self.delegate = delegate;
-        [self setDefaultStyle];
-        [self setTitle];
-        [self switchDataByTapped];
-        [self addTapGesture];
+        [self _setDefaultStyle];
+        [self _setTitle];
+        [self _didSwitchDataByTapped];
+        [self _setTapGesture];
     }
     return self;
 }
@@ -55,10 +59,10 @@
 
 
 //--------------------------------------------------------------//
-#pragma mark -- Private Methods --
+#pragma mark -- Set Methods --
 //--------------------------------------------------------------//
 
-- (void)setDefaultStyle {
+- (void)_setDefaultStyle {
     // 開閉画像作成
     _downImg = [UIImage imageNamed:kDownArrowImageName];
     _rightImg = [UIImage imageNamed:kRightArrowImageName];
@@ -74,11 +78,11 @@
     [self.layer insertSublayer:gradient atIndex:0];
 
     // 角丸
-    [self setMaskLayerWithSectionType:YES];
-    [self setMaskLayerWithSectionType:NO];
+    [self _setMaskLayerWithSectionType:YES];
+    [self _setMaskLayerWithSectionType:NO];
 }
 
-- (void)setMaskLayerWithSectionType:(BOOL)isOpenSection {
+- (void)_setMaskLayerWithSectionType:(BOOL)isOpenSection {
     // 角丸のmaskLayerを設定する
     UIBezierPath *maskPath;
     if (isOpenSection) {
@@ -102,7 +106,7 @@
     }
 }
 
-- (void)setTitle {
+- (void)_setTitle {
     // セクションのタイトルを設定する
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = _categoryData.name;
@@ -115,19 +119,23 @@
     [self addSubview:titleLbl];
 }
 
-- (void)addTapGesture {
+- (void)_setTapGesture {
     // タップジェスチャを追加
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sigleTapped)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_didSigleTapped)];
     [self addGestureRecognizer:singleTap];
 }
 
-- (void)sigleTapped {
+//--------------------------------------------------------------//
+#pragma mark -- Tapped Action Methods --
+//--------------------------------------------------------------//
+
+- (void)_didSigleTapped {
     // シングルタップイベント
-    [self.delegate didSectionHeaderSingleTap:_section tag:_tag];
-    [self switchDataByTapped];
+    [self.delegate didSectionHeaderSingleTap:_section tagNumber:_tagNumber];
+    [self _didSwitchDataByTapped];
 }
 
-- (void)switchDataByTapped {
+- (void)_didSwitchDataByTapped {
     // タップ時のデータ切り替え
     if (_categoryData.isOpenSection) {
         _arrowImgView.image = _downImg;

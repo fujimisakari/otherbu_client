@@ -10,7 +10,7 @@
 
 @protocol SectionHeaderViewDelegate
 
-- (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag;
+- (void)didSectionHeaderSingleTap:(NSInteger)section tagNumber:(NSInteger)tagNumber;
 
 @end
 
@@ -22,6 +22,6 @@
                  frame:(CGRect)frame
                section:(NSInteger)section
               delegate:(id<SectionHeaderViewDelegate>)delegate
-                   tag:(NSInteger)tag;
+             tagNumber:(NSInteger)tagNumber;
 
 @end

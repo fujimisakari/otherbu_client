@@ -49,19 +49,19 @@
     _design = [[DataManager sharedManager] getDesign];
 
     // 背景設定
-    [self _setupBackground];
+    [self _setBackground];
 
     // セルの選択時の背景指定
-    [self _setupCellSelectBackground];
+    [self _setCellSelectBackground];
 
     // セルの右側に矢印アイコンを表示
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     // ボーダーライン設定
-    [self _setupBorder];
+    [self _setBorder];
 
     // 文言設定
-    [self _setupText];
+    [self _setText];
 
     return self;
 }
@@ -74,10 +74,10 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- SetUP Method --
+#pragma mark -- Set Method --
 //--------------------------------------------------------------//
 
-- (void)_setupBackground {
+- (void)_setBackground {
     // 後面の背景指定
     _cellBackgroundView.backgroundColor = [[_category color] getBackGroundColor];
 
@@ -98,7 +98,7 @@
     self.backgroundView = _cellBackgroundView;
 }
 
-- (void)_setupCellSelectBackground {
+- (void)_setCellSelectBackground {
     // 後面の背景指定
     UIView *cellSelectedBackgroundView = [[UIView alloc] init];
     cellSelectedBackgroundView.backgroundColor = [[_category color] getBackGroundColor];
@@ -121,7 +121,7 @@
     self.selectedBackgroundView = cellSelectedBackgroundView;
 }
 
-- (void)_setupBorder {
+- (void)_setBorder {
     // セルのボーダーライン配置（既定のだと後面の背景まで線が越えてしまうため）
     if (![self _isFirstCellOfSection]) {
         CGRect rect = CGRectMake(self.bounds.origin.x + kSizeOfTableFrame, self.bounds.origin.y, _cellInnerWidth, kHeightOfBorderLine);
@@ -131,7 +131,7 @@
     }
 }
 
-- (void)_setupText {
+- (void)_setText {
     // ブックマーク名、URLを設定
     self.textLabel.text = _bookmark.name;
     self.textLabel.textColor = [_design getbookmarkColor];

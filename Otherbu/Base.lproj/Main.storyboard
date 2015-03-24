@@ -76,7 +76,7 @@
                         <outlet property="scrollView" destination="7FL-Uu-96L" id="SFR-P8-eS7"/>
                         <outlet property="tabFrameView" destination="GBD-cR-rnL" id="qhc-8w-Mju"/>
                         <outlet property="tabScrollView" destination="jbB-Aw-uiu" id="lAa-uv-ryC"/>
-                        <segue destination="66c-Jd-vhB" kind="modal" identifier="toWebViewController" modalTransitionStyle="crossDissolve" id="Tad-Ax-6EV"/>
+                        <segue destination="66c-Jd-vhB" kind="presentation" identifier="toWebViewController" modalTransitionStyle="crossDissolve" id="Tad-Ax-6EV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

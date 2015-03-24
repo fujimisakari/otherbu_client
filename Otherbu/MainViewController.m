@@ -22,16 +22,15 @@
 
 @interface MainViewController ()
 
-@property float        viewWidth;
-@property float        viewHeight;
-@property PageData     *currentPage;
-@property PageTabView  *currentPageTabView;
-@property BookmarkData *selectBookmark;
+@property(nonatomic) float        viewWidth;
+@property(nonatomic) float        viewHeight;
+@property(nonatomic) PageData     *currentPage;
+@property(nonatomic) PageTabView  *currentPageTabView;
+@property(nonatomic) BookmarkData *selectBookmark;
 
 @end
 
-@implementation MainViewController {
-}
+@implementation MainViewController
 
 //--------------------------------------------------------------//
 #pragma mark -- Controller Method --
@@ -156,7 +155,7 @@
         CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
         CGRect frame = CGRectMake(0, 0, _viewWidth, kHeightOfSectionHeader);
         SectionHeaderView *containerView =
-            [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section delegate:self tag:tableView.tag];
+            [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section delegate:self tagNumber:tableView.tag];
         return containerView;
     } else {
         return nil;
@@ -176,10 +175,10 @@
 #pragma mark -- SectionHeaderViewDelegate --
 //--------------------------------------------------------------//
 
-- (void)didSectionHeaderSingleTap:(NSInteger)section tag:(NSInteger)tag {
+- (void)didSectionHeaderSingleTap:(NSInteger)section tagNumber:(NSInteger)tagNumber {
     // セクションヘッダーのシングルタップ時の実行処理
-    CategoryData *categoryData = [_currentPage getCategoryListByTag:tag][section];
-    UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tag];
+    CategoryData *categoryData = [_currentPage getCategoryListByTag:tagNumber][section];
+    UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tagNumber];
 
     [tableView beginUpdates];
 

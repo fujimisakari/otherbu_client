@@ -11,12 +11,16 @@
 #import "DataManager.h"
 #import "ColorData.h"
 
-@implementation PageTabView {
-    PageData *_page;
-    UIView *_activeTab;
-    UIView *_stanbyTab;
-    BOOL _isActive;
-}
+@interface PageTabView ()
+
+@property(nonatomic) PageData *page;
+@property(nonatomic) UIView   *activeTab;
+@property(nonatomic) UIView   *stanbyTab;
+@property(nonatomic) BOOL     isActive;
+
+@end
+
+@implementation PageTabView
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --
@@ -25,18 +29,6 @@
 + (id)initWithFrame:(CGRect)rect {
     PageTabView *pageTab = [[PageTabView alloc] initWithFrame:rect];
     return pageTab;
-}
-
-+ (CGSize)getTextSizeOfPageViewWithString:(NSString *)string {
-    // PageView用のtextSizeを取得
-    CGSize textSize =
-        [string boundingRectWithSize:CGSizeMake(200, 400)
-                             options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
-                          attributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:kDefaultFont size:kFontSizeOfPageTab]
-                                                                 forKey:NSFontAttributeName]
-                             context:nil].size;
-    CGSize text = CGSizeMake(textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
-    return text;
 }
 
 - (void)setUpWithPage:(PageData *)page delegate:(id<PageTabDelegate>)delegate {
@@ -59,19 +51,19 @@
     [self addSubview:_stanbyTab];
 
     // タイトル生成
-    [self setTitle:_activeTab];
-    [self setTitle:_stanbyTab];
+    [self _setTitle:_activeTab];
+    [self _setTitle:_stanbyTab];
 
     // 背景色の設定
-    [self setBackground:_activeTab];
-    [self setBackground:_stanbyTab];
+    [self _setBackground:_activeTab];
+    [self _setBackground:_stanbyTab];
 
     // 角丸にする
-    [self setMaskLayerWithSectionType:_activeTab];
-    [self setMaskLayerWithSectionType:_stanbyTab];
+    [self _setMaskLayerWithSectionType:_activeTab];
+    [self _setMaskLayerWithSectionType:_stanbyTab];
 
     // タップジェスチャーを設定
-    [self addTapGesture];
+    [self _setTapGesture];
 }
 
 //--------------------------------------------------------------//
@@ -91,11 +83,23 @@
     }
 }
 
++ (CGSize)getTextSizeOfPageViewWithString:(NSString *)string {
+    // PageView用のtextSizeを取得
+    CGSize textSize =
+        [string boundingRectWithSize:CGSizeMake(200, 400)
+                             options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                          attributes:[NSDictionary dictionaryWithObject:[UIFont fontWithName:kDefaultFont size:kFontSizeOfPageTab]
+                                                                 forKey:NSFontAttributeName]
+                             context:nil].size;
+    CGSize text = CGSizeMake(textSize.width + kAdaptWidthOfPageTab, kHeightOfPageTab);
+    return text;
+}
+
 //--------------------------------------------------------------//
-#pragma mark -- Private Method --
+#pragma mark -- Set Method --
 //--------------------------------------------------------------//
 
-- (void)setTitle:(UIView *)view {
+- (void)_setTitle:(UIView *)view {
     // ラベルのタイトルを設定する
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = _page.name;
@@ -108,7 +112,7 @@
     [view addSubview:titleLbl];
 }
 
-- (void)setBackground:(UIView *)view {
+- (void)_setBackground:(UIView *)view {
     // 背景色(グラデーション)を設定する
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = view.bounds;
@@ -116,7 +120,7 @@
     [view.layer insertSublayer:gradient atIndex:0];
 }
 
-- (void)setMaskLayerWithSectionType:(UIView *)view {
+- (void)_setMaskLayerWithSectionType:(UIView *)view {
     // 角丸のmaskLayerを設定する
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view.bounds
                                                    byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
@@ -128,13 +132,17 @@
     view.layer.mask = maskLayer;
 }
 
-- (void)addTapGesture {
+- (void)_setTapGesture {
     // タップジェスチャを追加
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sigleTapped)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_didSigleTapped)];
     [self addGestureRecognizer:singleTap];
 }
 
-- (void)sigleTapped {
+//--------------------------------------------------------------//
+#pragma mark -- Tapped Action Methods --
+//--------------------------------------------------------------//
+
+- (void)_didSigleTapped {
     // シングルタップイベント
     [self.delegate didPageTabSingleTap:_page pageTabView:self];
 }
