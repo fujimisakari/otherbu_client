@@ -271,10 +271,12 @@
     // todo コントローラではない場所におく
     // サーバからデータ取得
     // [self.refreshControl beginRefreshing];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[DataManager sharedManager] reloadDataWithBlock:^(NSError *error) {
         if (error) {
             NSLog(@"error = %@", error);
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
 
         NSNumber *number = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
         _currentPage = [[DataManager sharedManager] getPage:number];
