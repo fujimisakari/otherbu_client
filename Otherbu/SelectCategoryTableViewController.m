@@ -1,26 +1,31 @@
 //
-//  BookmarkTableViewController.m
+//  SelectCategoryTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
+#import "SelectCategoryTableViewController.h"
+#import "CategoryData.h"
 #import "BookmarkTableViewController.h"
-#import "BookmarkData.h"
 
-@interface BookmarkTableViewController () {
-    NSArray *itemList;
+
+@interface SelectCategoryTableViewController ()  {
+    NSMutableArray *itemList;
+    NSArray *_bookmarkList;
 }
 
 @end
 
-@implementation BookmarkTableViewController
+@implementation SelectCategoryTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+
+    itemList = [[DataManager sharedManager] getCategoryList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,19 +50,28 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    BookmarkData *item = (BookmarkData *)itemList[indexPath.row];
+    CategoryData *item = (CategoryData *)itemList[indexPath.row];
     cell.textLabel.text = item.name;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    CategoryData *item = (CategoryData *)itemList[indexPath.row];
+    _bookmarkList = [item getBookmarkList];
+    [self performSegueWithIdentifier:@"toBookmarkTableViewController" sender:self];
+}
 
 //--------------------------------------------------------------//
-#pragma mark -- Public Method --
+#pragma mark -- segue --
 //--------------------------------------------------------------//
 
-- (void)setBookmarkList:(NSArray *)bookmarkList {
-    itemList = bookmarkList;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"toBookmarkTableViewController"]) {
+        NSLog(@"%@", _bookmarkList);
+        BookmarkTableViewController *bookmarkTableViewController = (BookmarkTableViewController*)[segue destinationViewController];
+        [bookmarkTableViewController setBookmarkList:_bookmarkList];
+    }
 }
 
 

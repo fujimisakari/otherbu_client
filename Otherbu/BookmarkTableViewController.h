@@ -10,4 +10,6 @@
 
 @interface BookmarkTableViewController : UITableViewController
 
+- (void)setBookmarkList:(NSArray *)bookmarkList;
+
 @end

@@ -85,7 +85,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"" sender:self];
+        [self performSegueWithIdentifier:@"toSelectCategoryTableViewController" sender:self];
     } else if (indexPath.row == 1) {
         [self performSegueWithIdentifier:@"" sender:self];
     } else if (indexPath.row == 2) {

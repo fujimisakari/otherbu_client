@@ -154,11 +154,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="設定" id="h5T-Wf-ERz"/>
                     <connections>
-                        <segue destination="EI3-DB-s9H" kind="show" id="wUc-Ok-Toe"/>
                         <segue destination="ccQ-w8-6Bf" kind="show" id="xb8-Eu-ZMK"/>
                         <segue destination="zQW-1D-R4a" kind="show" identifier="toCateogoryTableViewController" id="V2x-KC-U3e"/>
                         <segue destination="l6w-hk-YAu" kind="show" identifier="toPageTableViewController" id="zSe-DA-74T"/>
                         <segue destination="6ti-4v-vbh" kind="show" id="XMa-oY-sFc"/>
+                        <segue destination="58s-BK-Ro2" kind="show" identifier="toSelectCategoryTableViewController" id="Tnn-m9-gp5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lN2-Cs-Sx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -168,7 +168,7 @@
         <!--Bookmark Table View Controller-->
         <scene sceneID="2Qj-9w-Sme">
             <objects>
-                <tableViewController id="EI3-DB-s9H" userLabel="Bookmark Table View Controller" sceneMemberID="viewController">
+                <tableViewController id="EI3-DB-s9H" userLabel="Bookmark Table View Controller" customClass="BookmarkTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ni1-RQ-9pg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -193,7 +193,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJw-3g-FJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="1075"/>
+            <point key="canvasLocation" x="3499" y="981"/>
         </scene>
         <!--Bookmark Move Table View Controller-->
         <scene sceneID="ewo-Ba-JsA">
@@ -318,7 +318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfc-1u-sPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3473" y="2581"/>
+            <point key="canvasLocation" x="3997" y="2733"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Nhw-p6-Oyn">
@@ -337,7 +337,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0R-oY-dkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4285" y="3327"/>
+            <point key="canvasLocation" x="3997" y="3599"/>
+        </scene>
+        <!--Select CategoryTable View Controller-->
+        <scene sceneID="Sjp-pb-chd">
+            <objects>
+                <tableViewController id="58s-BK-Ro2" userLabel="Select CategoryTable View Controller" customClass="SelectCategoryTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zdb-re-9gn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mFK-ks-4nV">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mFK-ks-4nV" id="5ip-dY-N3v">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="58s-BK-Ro2" id="ebK-vH-hfv"/>
+                            <outlet property="delegate" destination="58s-BK-Ro2" id="BBX-hx-NZC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="カテゴリ選択" id="X4M-wC-vhQ"/>
+                    <connections>
+                        <segue destination="EI3-DB-s9H" kind="show" identifier="toBookmarkTableViewController" id="A4B-01-i9u"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lcA-lZ-j0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2746" y="981"/>
         </scene>
         <!--Bookmark View Controller-->
         <scene sceneID="v2Y-FS-DO4">
@@ -356,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cc9-Wj-pmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3473" y="1075"/>
+            <point key="canvasLocation" x="4450" y="981"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HG3-H4-rlP">

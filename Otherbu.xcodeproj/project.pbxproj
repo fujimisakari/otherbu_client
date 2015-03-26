@@ -13,6 +13,7 @@
 		7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */; };
 		7B39F5381AA321740036CB69 /* ColorData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5371AA321740036CB69 /* ColorData.m */; };
 		7B39F53B1AA39BCA0036CB69 /* MainTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F53A1AA39BCA0036CB69 /* MainTableCellView.m */; };
+		7B502A781AC47CA100A431FB /* SelectCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A771AC47CA100A431FB /* SelectCategoryTableViewController.m */; };
 		7B565EF61A92486F00D6A420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF51A92486F00D6A420 /* main.m */; };
 		7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF81A92486F00D6A420 /* AppDelegate.m */; };
 		7B565EFC1A92486F00D6A420 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EFB1A92486F00D6A420 /* MainViewController.m */; };
@@ -66,6 +67,8 @@
 		7B39F5371AA321740036CB69 /* ColorData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorData.m; sourceTree = "<group>"; };
 		7B39F5391AA39BCA0036CB69 /* MainTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableCellView.h; sourceTree = "<group>"; };
 		7B39F53A1AA39BCA0036CB69 /* MainTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableCellView.m; sourceTree = "<group>"; };
+		7B502A761AC47CA100A431FB /* SelectCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectCategoryTableViewController.h; sourceTree = "<group>"; };
+		7B502A771AC47CA100A431FB /* SelectCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectCategoryTableViewController.m; sourceTree = "<group>"; };
 		7B565EF01A92486F00D6A420 /* Otherbu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Otherbu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565EF41A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565EF51A92486F00D6A420 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -321,6 +324,8 @@
 				7B91E64B1AC331BB003A36F1 /* CategoryViewController.m */,
 				7B91E64D1AC3321E003A36F1 /* DesiginViewController.h */,
 				7B91E64E1AC3321E003A36F1 /* DesiginViewController.m */,
+				7B502A761AC47CA100A431FB /* SelectCategoryTableViewController.h */,
+				7B502A771AC47CA100A431FB /* SelectCategoryTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				7B91E6401AC330AC003A36F1 /* CategoryTableViewController.m in Sources */,
 				7B91E6461AC33175003A36F1 /* BookmarkViewController.m in Sources */,
 				7B565F211A9249FA00D6A420 /* BookmarkData.m in Sources */,
+				7B502A781AC47CA100A431FB /* SelectCategoryTableViewController.m in Sources */,
 				7B91E63A1AC3307D003A36F1 /* BookmarkTableViewController.m in Sources */,
 				7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */,
 				7B565EF61A92486F00D6A420 /* main.m in Sources */,
