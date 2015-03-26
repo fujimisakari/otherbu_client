@@ -13,12 +13,12 @@
 #import "NavigationBar.h"
 #import "InnerTableView.h"
 #import "MainTableCellView.h"
-#import "DataManager.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
 #import "ColorData.h"
 #import "PageData.h"
 #import "PageTabView.h"
+#import "MBProgressHUD.h"
 
 @interface MainViewController ()
 
@@ -51,6 +51,8 @@
 
     // setup NavigationBar
     [_navigationBar setup];
+    _navigationBar.topItem.leftBarButtonItem.target = self;
+    _navigationBar.topItem.leftBarButtonItem.action = @selector(_openSettingView:);
 
     // setup ScrollView
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
@@ -261,6 +263,14 @@
         WebViewController *webViewController = (WebViewController*)[segue destinationViewController];
         [webViewController setBookmark:_selectBookmark];
     }
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Taupped Action --
+//--------------------------------------------------------------//
+
+- (void)_openSettingView:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"toSettingTableViewController" sender:self];
 }
 
 //--------------------------------------------------------------//

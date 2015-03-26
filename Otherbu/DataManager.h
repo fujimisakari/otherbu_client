@@ -23,5 +23,7 @@
 - (BookmarkData *)getBookmark:(NSNumber *)dataId;
 - (ColorData *)getColor:(NSNumber *)dataId;
 - (DesignData *)getDesign;
+- (NSMutableArray *)getCategoryList;
+- (NSMutableArray *)getPageList;
 
 @end

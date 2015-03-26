@@ -82,6 +82,22 @@ static DataManager *intance = nil;
     return _design;
 }
 
+- (NSMutableArray *)getCategoryList {
+    NSMutableArray *itemList = [NSMutableArray array];
+    for (NSNumber *key in self.categoryDict) {
+        [itemList addObject:[self getCategory:key]];
+    }
+    return itemList;
+}
+
+- (NSMutableArray *)getPageList {
+    NSMutableArray *itemList = [NSMutableArray array];
+    for (NSNumber *key in self.pageDict) {
+        [itemList addObject:[self getPage:key]];
+    }
+    return itemList;
+}
+
 //--------------------------------------------------------------//
 #pragma mark -- Private Method --
 //--------------------------------------------------------------//

@@ -20,7 +20,7 @@
 #ifdef __OBJC__
     #import "UIColor+Hex.h"
     #import "Constants.h"
-    #import "MBProgressHUD.h"
+    #import "DataManager.h"
 
     #ifdef DEBUG
         // #define LOG(...) NSLog(__VA_ARGS__)

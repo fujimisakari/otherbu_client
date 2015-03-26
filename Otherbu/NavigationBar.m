@@ -28,6 +28,22 @@
 
     // タイトル名の位置設定
     [self setTitleVerticalPositionAdjustment:kOffsetYOfTitle forBarMetrics:UIBarMetricsDefault];
+
+    // 設定ボタンを追加
+    [self _setSettingButtontoLeft];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Setting Button --
+//--------------------------------------------------------------//
+
+- (void)_setSettingButtontoLeft {
+    // NavigationBarにXボタンを設置する
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                                         target:nil
+                                                                         action:nil];
+    self.topItem.leftBarButtonItem = btn;
+    // ☼☼☼☼☼☼
 }
 
 @end
