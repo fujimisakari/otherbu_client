@@ -23,6 +23,7 @@
 - (NSMutableArray *)getCategoryList;
 - (NSMutableArray *)getCategoryListByTag:(NSInteger)tag;
 - (NSMutableDictionary *)getCategoryListOfAngle;
+- (void)updatePageData:(CategoryData *)category isCheckMark:(BOOL)isCheckMark;
 - (ColorData *)color;
 
 @end

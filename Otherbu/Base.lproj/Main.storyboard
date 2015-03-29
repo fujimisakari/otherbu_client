@@ -76,8 +76,8 @@
                         <outlet property="scrollView" destination="7FL-Uu-96L" id="SFR-P8-eS7"/>
                         <outlet property="tabFrameView" destination="GBD-cR-rnL" id="qhc-8w-Mju"/>
                         <outlet property="tabScrollView" destination="jbB-Aw-uiu" id="lAa-uv-ryC"/>
-                        <segue destination="66c-Jd-vhB" kind="presentation" identifier="toWebViewController" modalTransitionStyle="crossDissolve" id="Tad-Ax-6EV"/>
-                        <segue destination="Eiy-at-6ve" kind="show" identifier="toSettingTableViewController" id="8B2-3a-uUi"/>
+                        <segue destination="66c-Jd-vhB" kind="presentation" identifier="toWebView" modalTransitionStyle="crossDissolve" id="Tad-Ax-6EV"/>
+                        <segue destination="Eiy-at-6ve" kind="show" identifier="toSetting" id="8B2-3a-uUi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -155,10 +155,10 @@
                     <navigationItem key="navigationItem" title="設定" id="h5T-Wf-ERz"/>
                     <connections>
                         <segue destination="ccQ-w8-6Bf" kind="show" id="xb8-Eu-ZMK"/>
-                        <segue destination="zQW-1D-R4a" kind="show" identifier="toCateogoryTableViewController" id="V2x-KC-U3e"/>
-                        <segue destination="l6w-hk-YAu" kind="show" identifier="toPageTableViewController" id="zSe-DA-74T"/>
+                        <segue destination="zQW-1D-R4a" kind="show" identifier="toCateogoryList" id="V2x-KC-U3e"/>
+                        <segue destination="l6w-hk-YAu" kind="show" identifier="toPageList" id="zSe-DA-74T"/>
                         <segue destination="6ti-4v-vbh" kind="show" id="XMa-oY-sFc"/>
-                        <segue destination="58s-BK-Ro2" kind="show" identifier="toSelectCategoryTableViewController" id="Tnn-m9-gp5"/>
+                        <segue destination="58s-BK-Ro2" kind="show" identifier="toCategoryListOfBookmark" id="Tnn-m9-gp5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lN2-Cs-Sx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -243,7 +243,7 @@
                             <outlet property="delegate" destination="zQW-1D-R4a" id="UlQ-au-CgR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="カテゴリ" id="yj8-tK-0Mf"/>
+                    <navigationItem key="navigationItem" title="カテゴリ設定" id="yj8-tK-0Mf"/>
                     <connections>
                         <segue destination="dWs-Mc-snv" kind="show" identifier="toCateogryViewController" id="mpJ-7n-b65"/>
                     </connections>
@@ -255,7 +255,7 @@
         <!--Page Table View Controller-->
         <scene sceneID="j5d-IZ-Bm4">
             <objects>
-                <tableViewController id="l6w-hk-YAu" userLabel="Page Table View Controller" customClass="PageTableViewController" sceneMemberID="viewController">
+                <tableViewController id="l6w-hk-YAu" userLabel="Page Table View Controller" customClass="SettingPageListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GPt-bf-SJN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,9 +273,9 @@
                             <outlet property="delegate" destination="l6w-hk-YAu" id="pRl-Og-yFe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ページ" id="1tR-ok-0n7"/>
+                    <navigationItem key="navigationItem" title="ページ設定" id="1tR-ok-0n7" userLabel="ページ設定"/>
                     <connections>
-                        <segue destination="S4O-SP-cDX" kind="show" id="aMy-Iq-qV0"/>
+                        <segue destination="7fI-Kp-mvY" kind="show" identifier="toEditPage" id="9JW-74-aJv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4E3-QB-fCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,7 +295,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="デザイン" id="jo3-cz-fvE"/>
+                    <navigationItem key="navigationItem" title="デザイン設定" id="jo3-cz-fvE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ea-Hq-hoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -320,24 +320,32 @@
             </objects>
             <point key="canvasLocation" x="3997" y="2733"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="Nhw-p6-Oyn">
+        <!--Page Detail Table View Controller-->
+        <scene sceneID="zMT-dY-xWM">
             <objects>
-                <viewController id="S4O-SP-cDX" userLabel="Page View Controller" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="M8S-JM-aWO"/>
-                        <viewControllerLayoutGuide type="bottom" id="UiK-EL-ElJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5Qs-NZ-RVH">
+                <tableViewController id="7fI-Kp-mvY" userLabel="Page Detail Table View Controller" customClass="SettingEditPageTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TKm-MJ-y3B">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="ページ" id="aEL-uk-9ss"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V0R-oY-dkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="S7u-VN-aLo">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S7u-VN-aLo" id="KU9-ZJ-tE9">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7fI-Kp-mvY" id="WV8-Mp-VwQ"/>
+                            <outlet property="delegate" destination="7fI-Kp-mvY" id="day-NZ-W3K"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="ページ設定" id="lKt-YD-D09"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Okk-wo-pHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3997" y="3599"/>
+            <point key="canvasLocation" x="4024" y="3599"/>
         </scene>
         <!--Select CategoryTable View Controller-->
         <scene sceneID="Sjp-pb-chd">
@@ -360,7 +368,7 @@
                             <outlet property="delegate" destination="58s-BK-Ro2" id="BBX-hx-NZC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="カテゴリ選択" id="X4M-wC-vhQ"/>
+                    <navigationItem key="navigationItem" title="ブックマーク設定" id="X4M-wC-vhQ" userLabel="ブックマーク設定"/>
                     <connections>
                         <segue destination="EI3-DB-s9H" kind="show" identifier="toBookmarkTableViewController" id="A4B-01-i9u"/>
                     </connections>

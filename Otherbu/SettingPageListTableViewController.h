@@ -1,5 +1,5 @@
 //
-//  PageTableViewController.h
+//  SettingPageListTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PageTableViewController : UITableViewController
+@interface SettingPageListTableViewController : UITableViewController
 
 @end

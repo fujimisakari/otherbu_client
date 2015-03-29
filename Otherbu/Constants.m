@@ -24,10 +24,11 @@ const float kOffsetYOfTitle = -2;                            // タイトル名�
 
 NSString * const kDefaultFont = @"Helvetica";                // デフォルトフォント名
 NSString * const kDefaultImageName = @"wood-wallpeper.jpg";  // デフォルト背景
+NSString * const kCellIdentifier = @"Cell";                  // セルの識別子
 const int kNumberOfPages = 3;                                // ページ数
 
 //--------------------------------------------------------------//
-#pragma mark -- Table Value --
+#pragma mark -- Table Value Of Main View--
 //--------------------------------------------------------------//
 
 const float kMarginTopOfTableFrame = 20.0f;                  // テーブルの上部に余白
@@ -40,7 +41,7 @@ const int kFontSizeOfBookmark = 16;                          // ブックマー�
 const int kFontSizeOfUrl = 12;                               // URLのフォントサイズ
 
 //--------------------------------------------------------------//
-#pragma mark -- Table Section Value --
+#pragma mark -- Table Section Value Of Main View --
 //--------------------------------------------------------------//
 
 const float kHeightOfSectionHeader = 40.0f;                  // セクションヘッダーの高さ
@@ -55,7 +56,7 @@ const int kOffsetXOfRightArrow = 25;                         // 開閉画像(→
 const int kOffsetYOfRightArrow = 12;                         // 開閉画像(→)のY位置調整
 
 //--------------------------------------------------------------//
-#pragma mark -- PageTab Value --
+#pragma mark -- PageTab Value Of Main View --
 //--------------------------------------------------------------//
 
 const int kFontSizeOfPageTab = 16;                           // PageTabのフォントサイズ
@@ -65,12 +66,34 @@ const float kAdaptWidthOfPageTab = 30.0f;                    // PageTabのサイ
 const float kAdaptHeightOfPageTab = 5.0f;                    // PageTabのサイズ調整(height)
 
 //--------------------------------------------------------------//
-#pragma mark -- Toolbar Value --
+#pragma mark -- Toolbar Value Of Main View --
 //--------------------------------------------------------------//
 
 const float kHeightOfToolbar = 44.0f;                        // Toolbarの高さ
 const float kLabelWidthOfToolbar = 50.0f;                    // Toolbarのラベル幅
 const float kArrowWidthOfToolbar = 50.0f;                    // Toolbarの矢印の幅
 const int kFontSizeOfToolbar = 30;                           // Toolbarのフォントサイズ
+
+//--------------------------------------------------------------//
+#pragma mark -- Menu Of Setting View --
+//--------------------------------------------------------------//
+
+// 設定メニュー名
+NSString * const kMenuBookmarkName = @"ブックマーク";
+NSString * const kMenuBokkmarkMoveName = @"ブックマーク移動";
+NSString * const kMenuCategoryName = @"カテゴリ";
+NSString * const kMenuPageName = @"ページ";
+NSString * const kMenuDesignName = @"デザイン";
+
+//--------------------------------------------------------------//
+#pragma mark -- segue --
+//--------------------------------------------------------------//
+
+NSString * const kToWebViewBySegue = @"toWebView";                            // WebViewページへ
+NSString * const kToSettingBySegue = @"toSetting";                            // 設定ページへ
+NSString * const kToCategoryListBySegue = @"toCateogoryList";                 // 設定ページ → カテゴリへ
+NSString * const kToCategoryOfBookmarkBySegue = @"toCategoryListOfBookmark";  // 設定ページ → ブックマークのカテゴリ選択へ
+NSString * const kToPageListBySegue = @"toPageList";                          // 設定ページ → ページ一覧へ
+NSString * const kToEditPageBySegue = @"toEditPage";                          // 設定ページ → ページ一覧 → ページ設定
 
 @end

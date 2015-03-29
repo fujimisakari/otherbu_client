@@ -88,6 +88,7 @@
                                             [NSNumber numberWithInt:CENTER] : [[NSMutableArray alloc] init],
                                             [NSNumber numberWithInt:RIGHT] : [[NSMutableArray alloc] init]
                                           } mutableCopy];
+    // NSLog(@"angleDict %@", angleDict);
     for (NSNumber *categoryId in angleDict) {
         CategoryData *data = [dataManager getCategory:categoryId];
         if (data) {
@@ -95,6 +96,7 @@
             [tmpResultDict[angleId] addObject:data];
         }
     }
+    // NSLog(@"iiii%@", tmpResultDict);
 
     // アングル別のカテゴリリストをソートする
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
@@ -103,16 +105,20 @@
         //sortIdが0 or 1 始まりのため、 firstCategoryDataは0始まりだった時の先頭categoryを保持してる
         CategoryData *firstCategoryData = nil;
         NSMutableArray *array = [NSMutableArray arrayWithArray:tmpResultDict[angleId]];
+        // NSLog(@"middarray  %@", array);
         for (CategoryData *category in tmpResultDict[angleId]) {
             NSNumber *categoryId = [[NSNumber alloc] initWithInt:(int)category.dataId];
             NSNumber *sortId = sortDict[categoryId];
             int idx = (int)[sortId integerValue] - 1;
             if (idx >= 0) {
+                // NSLog(@"category.name, %@", category.name);
                 array[idx] = category;
             } else {
                 firstCategoryData = category;
             }
         }
+
+        // NSLog(@"array, %@", array);
 
         // firstCategoryDataを先頭に置き替える
         if (firstCategoryData) {
@@ -124,6 +130,7 @@
             array = tmpArray;
         }
 
+        // NSLog(@"array %ld", array.count);
         resultDict[angleId] = array;
     }
     return resultDict;
@@ -140,6 +147,48 @@
         [resultDict setObject:argId forKey:categoryId];
     }
     return resultDict;
+}
+
+- (void)updatePageData:(CategoryData *)category isCheckMark:(BOOL)isCheckMark {
+    // ページ情報を編集時の処理
+    NSNumber *categoryId = [[NSNumber alloc] initWithInt:category.dataId];
+    NSMutableArray *categoryIdList = (NSMutableArray *)[_categoryIdsStr componentsSeparatedByString:@","];
+    NSMutableDictionary *angleDict = [self _getMapByArg:_angleIdsStr];
+    NSMutableDictionary *sortDict = [self _getMapByArg:_sortIdsStr];
+    BOOL isExistCategory = [categoryIdList containsObject:[categoryId stringValue]];
+
+    if (isCheckMark) {
+        // チェックした時
+        if (!isExistCategory) {
+            NSNumber *angleLeft = [[NSNumber alloc] initWithInt:LEFT];
+            [categoryIdList addObject:[categoryId stringValue]];
+            angleDict[categoryId] = angleLeft;
+            int count = [Helper getSameCountByDict:angleDict TargetValue:angleLeft];
+            sortDict[categoryId] = [NSString stringWithFormat:@"%d", count];
+        }
+    } else {
+        // チェックを外した時
+        if (isExistCategory) {
+            [categoryIdList removeObject:[categoryId stringValue]];
+            [angleDict removeObjectForKey:categoryId];
+            [sortDict removeObjectForKey:categoryId];
+        }
+    }
+
+    // PageDataの更新
+    NSMutableArray *sortList = [[NSMutableArray alloc] init];
+    NSMutableArray *angleList = [[NSMutableArray alloc] init];
+    NSArray *updateData = @[@{@"dict": sortDict,  @"array": sortList},
+                            @{@"dict": angleDict, @"array": angleList}];
+    for (NSDictionary *data in updateData) {
+        for (id cateogryId in data[@"dict"]) {
+            NSString *insertData = [NSString stringWithFormat:@"%@:%@", cateogryId, data[@"dict"][cateogryId]];
+            [data[@"array"] addObject:insertData];
+        }
+    }
+    self.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
+    self.sortIdsStr = [sortList componentsJoinedByString:@","];
+    self.angleIdsStr = [angleList componentsJoinedByString:@","];
 }
 
 - (ColorData *)color {

@@ -9,7 +9,7 @@
 #import "SettingTableViewController.h"
 
 @interface SettingTableViewController () {
-    NSArray *menuList;
+    NSArray *_menuNameList;
 }
 
 @end
@@ -19,27 +19,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 
-    NSString *bookmark = @"ブックマーク";
-    NSString *bookmarkMove = @"ブックマーク移動";
-    NSString *category = @"カテゴリ";
-    NSString *page = @"ページ";
-    NSString *design = @"デザイン";
-    menuList = @[bookmark, bookmarkMove, category, page, design];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
+    _menuNameList = [self _createMenuNameList];
     [self _closeButtontoLeft];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- UITableViewDataSource --
+//--------------------------------------------------------------//
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _menuNameList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    cell.textLabel.text = _menuNameList[indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case MENU_BOOKMARK:
+            [self performSegueWithIdentifier:kToCategoryOfBookmarkBySegue sender:self];
+            break;
+        case MENU_BOOKMARKMOVE:
+            [self performSegueWithIdentifier:@"" sender:self];
+            break;
+        case MENU_CATEGORY:
+            [self performSegueWithIdentifier:kToCategoryListBySegue sender:self];
+            break;
+        case MENU_PAGE:
+            [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+            break;
+        case MENU_DESIGN:
+            break;
+    }
 }
 
 //--------------------------------------------------------------//
@@ -50,57 +75,47 @@
     // NavigationBarにXボタンを設置する
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                          target:self
-                                                                         action:@selector(_closeWebView:)];
+                                                                         action:@selector(_closeSettingView:)];
     self.navigationItem.leftBarButtonItem = btn;
-    // self.navigationController.navigationItem.leftBarButtonItem = btn;
-    // _navigationBar.topItem.leftBarButtonItem = btn;
 }
 
-- (void)_closeWebView:(UIButton *)sender {
-    // WebViewのクローズ
+- (void)_closeSettingView:(UIButton *)sender {
+    // 設定ページを閉じる
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Table view data source
+//--------------------------------------------------------------//
+#pragma mark -- Private Method --
+//--------------------------------------------------------------//
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
+- (NSMutableArray *)_createMenuNameList {
+    // 設定メニュー名リストを生成
+    NSMutableArray *menuNameList = [[NSMutableArray alloc] init];
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return menuList.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-
-    cell.textLabel.text = menuList[indexPath.row];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        [self performSegueWithIdentifier:@"toSelectCategoryTableViewController" sender:self];
-    } else if (indexPath.row == 1) {
-        [self performSegueWithIdentifier:@"" sender:self];
-    } else if (indexPath.row == 2) {
-        [self performSegueWithIdentifier:@"toCateogoryTableViewController" sender:self];
-    } else if (indexPath.row == 3) {
-        [self performSegueWithIdentifier:@"toPageTableViewController" sender:self];
+    for (int idx = 0; idx < LastMenu; ++idx) {
+        NSString *menuName = nil;
+        switch (idx) {
+            case MENU_BOOKMARK:
+                menuName = kMenuBookmarkName;
+                break;
+            case MENU_BOOKMARKMOVE:
+                menuName = kMenuBokkmarkMoveName;
+                break;
+            case MENU_CATEGORY:
+                menuName = kMenuCategoryName;
+                break;
+            case MENU_PAGE:
+                menuName = kMenuPageName;
+                break;
+            case MENU_DESIGN:
+                menuName = kMenuDesignName;
+                break;
+        }
+        if (menuName) {
+            [menuNameList addObject:menuName];
+        }
     }
-}
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    return menuNameList;
 }
 
 @end

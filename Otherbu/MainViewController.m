@@ -63,6 +63,11 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    // 画面が表示され終ったらWebPageの読み込み
+    [super viewDidAppear:animated];
+}
+
 - (void)_setupBackgroundImage {
     // UIViewContollerに背景画像を設定する
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
@@ -170,7 +175,7 @@
     _selectBookmark = [categoryData getBookmarkList][indexPath.row];
 
     // toViewController
-    [self performSegueWithIdentifier:@"toWebViewController" sender:self];
+    [self performSegueWithIdentifier:kToWebViewBySegue sender:self];
 }
 
 //--------------------------------------------------------------//
@@ -259,7 +264,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // WebViewへページ遷移
-    if ([[segue identifier] isEqualToString:@"toWebViewController"]) {
+    if ([[segue identifier] isEqualToString:kToWebViewBySegue]) {
         WebViewController *webViewController = (WebViewController*)[segue destinationViewController];
         [webViewController setBookmark:_selectBookmark];
     }
@@ -270,7 +275,7 @@
 //--------------------------------------------------------------//
 
 - (void)_openSettingView:(UIButton *)sender {
-    [self performSegueWithIdentifier:@"toSettingTableViewController" sender:self];
+    [self performSegueWithIdentifier:kToSettingBySegue sender:self];
 }
 
 //--------------------------------------------------------------//
