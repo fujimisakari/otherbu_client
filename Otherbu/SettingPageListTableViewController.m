@@ -22,8 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     _categoryList = [[DataManager sharedManager] getPageList];
 }
 
@@ -44,8 +43,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
 
     PageData *page = (PageData *)_categoryList[indexPath.row];
     cell.textLabel.text = page.name;

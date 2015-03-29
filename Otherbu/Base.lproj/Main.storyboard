@@ -341,7 +341,7 @@
                             <outlet property="delegate" destination="7fI-Kp-mvY" id="day-NZ-W3K"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ページ設定" id="lKt-YD-D09"/>
+                    <navigationItem key="navigationItem" id="lKt-YD-D09"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okk-wo-pHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -396,10 +396,10 @@
             </objects>
             <point key="canvasLocation" x="4450" y="981"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Setting Navigation View Controller-->
         <scene sceneID="HG3-H4-rlP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eiy-at-6ve" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Eiy-at-6ve" customClass="SettingNavigationViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="r62-qb-q4s"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0xJ-Mw-G0c">

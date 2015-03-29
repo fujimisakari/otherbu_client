@@ -43,7 +43,6 @@
                                                                          target:nil
                                                                          action:nil];
     self.topItem.leftBarButtonItem = btn;
-    // ☼☼☼☼☼☼
 }
 
 @end

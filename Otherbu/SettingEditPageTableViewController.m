@@ -23,13 +23,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 
     _categoryList = [[DataManager sharedManager] getCategoryList];
     _categoryListOfPage = [_page getCategoryList];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.topItem.title = _page.name;
     // UIBarButtonItem *barButtonItem1 = [[UIBarButtonItem alloc]
     //                                    initWithBarButtonSystemItem:UIBarButtonSystemItemSave
     //                                    target:self action:@selector(_openSettingView:)];
@@ -58,8 +59,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
 
     CategoryData *category = (CategoryData *)_categoryList[indexPath.row];
     NSUInteger isExistCategory = [_categoryListOfPage indexOfObject:category];
