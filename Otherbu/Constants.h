@@ -65,10 +65,17 @@ extern const float kArrowWidthOfToolbar;
 extern const int kFontSizeOfToolbar;
 
 extern NSString * const kMenuBookmarkName;
-extern NSString * const kMenuBokkmarkMoveName;
+extern NSString * const kMenuBookmarkMoveName;
 extern NSString * const kMenuCategoryName;
 extern NSString * const kMenuPageName;
 extern NSString * const kMenuDesignName;
+
+extern NSString * const kSettingIcon;
+extern NSString * const kBookmarkIcon;
+extern NSString * const kBookmarkMoveIcon;
+extern NSString * const kCategoryIcon;
+extern NSString * const kPageIcon;
+extern NSString * const kDesignIcon;
 
 extern NSString * const kToWebViewBySegue;
 extern NSString * const kToSettingBySegue;

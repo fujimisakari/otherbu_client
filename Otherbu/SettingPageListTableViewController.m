@@ -48,6 +48,7 @@
     PageData *page = (PageData *)_categoryList[indexPath.row];
     cell.textLabel.text = page.name;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.imageView.image = [UIImage imageNamed:kPageIcon];
     return cell;
 }
 

@@ -10,6 +10,7 @@
 
 @interface SettingTableViewController () {
     NSArray *_menuNameList;
+    NSArray *_menuIconList;
 }
 
 @end
@@ -21,7 +22,7 @@
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 
-    _menuNameList = [self _createMenuNameList];
+    [self _setupMenuData];
     [self _closeButtontoLeft];
 }
 
@@ -44,6 +45,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = _menuNameList[indexPath.row];
+    cell.imageView.image = _menuIconList[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -88,34 +90,41 @@
 #pragma mark -- Private Method --
 //--------------------------------------------------------------//
 
-- (NSMutableArray *)_createMenuNameList {
-    // 設定メニュー名リストを生成
+- (void)_setupMenuData {
+    // 設定メニュー名とアイコンのセットを生成
     NSMutableArray *menuNameList = [[NSMutableArray alloc] init];
+    NSMutableArray *menuIconList = [[NSMutableArray alloc] init];
 
     for (int idx = 0; idx < LastMenu; ++idx) {
         NSString *menuName = nil;
+        UIImage *iconImage = nil;
         switch (idx) {
             case MENU_BOOKMARK:
                 menuName = kMenuBookmarkName;
+                iconImage = [UIImage imageNamed:kBookmarkIcon];
                 break;
             case MENU_BOOKMARKMOVE:
-                menuName = kMenuBokkmarkMoveName;
+                menuName = kMenuBookmarkMoveName;
+                iconImage = [UIImage imageNamed:kBookmarkMoveIcon];
                 break;
             case MENU_CATEGORY:
                 menuName = kMenuCategoryName;
+                iconImage = [UIImage imageNamed:kCategoryIcon];
                 break;
             case MENU_PAGE:
                 menuName = kMenuPageName;
+                iconImage = [UIImage imageNamed:kPageIcon];
                 break;
             case MENU_DESIGN:
                 menuName = kMenuDesignName;
+                iconImage = [UIImage imageNamed:kDesignIcon];
                 break;
         }
-        if (menuName) {
-            [menuNameList addObject:menuName];
-        }
+        [menuNameList addObject:menuName];
+        [menuIconList addObject:iconImage];
     }
-    return menuNameList;
+    _menuNameList = menuNameList;
+    _menuIconList = menuIconList;
 }
 
 @end

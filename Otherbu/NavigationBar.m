@@ -38,10 +38,12 @@
 //--------------------------------------------------------------//
 
 - (void)_setSettingButtontoLeft {
+
     // NavigationBarにXボタンを設置する
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
-                                                                         target:nil
-                                                                         action:nil];
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kSettingIcon]
+                                                            style:UIBarButtonItemStylePlain
+                                                           target:nil
+                                                           action:nil];
     self.topItem.leftBarButtonItem = btn;
 }
 

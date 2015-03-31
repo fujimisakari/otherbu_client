@@ -69,6 +69,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     cell.textLabel.text = category.name;
+    cell.imageView.image = [UIImage imageNamed:kCategoryIcon];
     return cell;
 }
 

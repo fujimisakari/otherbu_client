@@ -78,12 +78,22 @@ const int kFontSizeOfToolbar = 30;                           // Toolbarのフォ
 #pragma mark -- Menu Of Setting View --
 //--------------------------------------------------------------//
 
-// 設定メニュー名
-NSString * const kMenuBookmarkName = @"ブックマーク";
-NSString * const kMenuBokkmarkMoveName = @"ブックマーク移動";
-NSString * const kMenuCategoryName = @"カテゴリ";
-NSString * const kMenuPageName = @"ページ";
-NSString * const kMenuDesignName = @"デザイン";
+NSString * const kMenuBookmarkName = @"ブックマーク設定";
+NSString * const kMenuBookmarkMoveName = @"ブックマーク移動";
+NSString * const kMenuCategoryName = @"カテゴリ設定";
+NSString * const kMenuPageName = @"ページ設定";
+NSString * const kMenuDesignName = @"デザイン設定";
+
+//--------------------------------------------------------------//
+#pragma mark -- IconName --
+//--------------------------------------------------------------//
+
+NSString * const kSettingIcon = @"settingIcon.png";
+NSString * const kBookmarkIcon = @"bookmarkIcon.png";
+NSString * const kBookmarkMoveIcon = @"bookmarkMoveIcon.png";
+NSString * const kCategoryIcon = @"categoryIcon.png";
+NSString * const kPageIcon = @"pageIcon.png";
+NSString * const kDesignIcon = @"designIcon.png";
 
 //--------------------------------------------------------------//
 #pragma mark -- segue --
