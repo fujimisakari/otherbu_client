@@ -1,5 +1,5 @@
 //
-//  BookmarkTableViewController.h
+//  SettingBookmarkTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BookmarkTableViewController : UITableViewController
+@interface SettingBookmarkTableViewController : UITableViewController
 
+- (void)setCategory:(CategoryData *)category;
 - (void)setBookmarkList:(NSArray *)bookmarkList;
 
 @end

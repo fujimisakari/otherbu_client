@@ -1,5 +1,5 @@
 //
-//  CategoryTableViewController.h
+//  SettingSelectCategoryTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CategoryTableViewController : UITableViewController
+@interface SettingSelectCategoryTableViewController : UITableViewController
 
 @end

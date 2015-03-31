@@ -160,7 +160,7 @@
         <!--Bookmark Table View Controller-->
         <scene sceneID="2Qj-9w-Sme">
             <objects>
-                <tableViewController id="EI3-DB-s9H" userLabel="Bookmark Table View Controller" customClass="BookmarkTableViewController" sceneMemberID="viewController">
+                <tableViewController id="EI3-DB-s9H" userLabel="Bookmark Table View Controller" customClass="SettingBookmarkTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ni1-RQ-9pg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +178,7 @@
                             <outlet property="delegate" destination="EI3-DB-s9H" id="sCR-J4-BBF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ブックマーク" id="WjT-fz-Yna"/>
+                    <navigationItem key="navigationItem" id="WjT-fz-Yna"/>
                     <connections>
                         <segue destination="LgJ-R7-3oO" kind="show" id="FLJ-AP-zif"/>
                     </connections>
@@ -217,7 +217,7 @@
         <!--Category Table View Controller-->
         <scene sceneID="HFf-c2-N3H">
             <objects>
-                <tableViewController id="zQW-1D-R4a" userLabel="Category Table View Controller" customClass="CategoryTableViewController" sceneMemberID="viewController">
+                <tableViewController id="zQW-1D-R4a" userLabel="Category Table View Controller" customClass="SettingCategoryListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="e81-1p-iXP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -342,7 +342,7 @@
         <!--Select CategoryTable View Controller-->
         <scene sceneID="Sjp-pb-chd">
             <objects>
-                <tableViewController id="58s-BK-Ro2" userLabel="Select CategoryTable View Controller" customClass="SelectCategoryTableViewController" sceneMemberID="viewController">
+                <tableViewController id="58s-BK-Ro2" userLabel="Select CategoryTable View Controller" customClass="SettingSelectCategoryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zdb-re-9gn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +362,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="ブックマーク設定" id="X4M-wC-vhQ" userLabel="ブックマーク設定"/>
                     <connections>
-                        <segue destination="EI3-DB-s9H" kind="show" identifier="toBookmarkTableViewController" id="A4B-01-i9u"/>
+                        <segue destination="EI3-DB-s9H" kind="show" identifier="toBookmarkList" id="A4B-01-i9u"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcA-lZ-j0L" userLabel="First Responder" sceneMemberID="firstResponder"/>

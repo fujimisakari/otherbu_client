@@ -103,6 +103,7 @@ NSString * const kToWebViewBySegue = @"toWebView";                            //
 NSString * const kToSettingBySegue = @"toSetting";                            // 設定ページへ
 NSString * const kToCategoryListBySegue = @"toCateogoryList";                 // 設定ページ → カテゴリへ
 NSString * const kToCategoryOfBookmarkBySegue = @"toCategoryListOfBookmark";  // 設定ページ → ブックマークのカテゴリ選択へ
+NSString * const kToBookmarkListBySegue = @"toBookmarkList";                  // 設定ページ → ブックマークのカテゴリ選択へ → ブックマーク一覧
 NSString * const kToPageListBySegue = @"toPageList";                          // 設定ページ → ページ一覧へ
 NSString * const kToEditPageBySegue = @"toEditPage";                          // 設定ページ → ページ一覧 → ページ設定
 
