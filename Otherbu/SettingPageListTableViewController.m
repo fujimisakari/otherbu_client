@@ -65,6 +65,29 @@
     [self performSegueWithIdentifier:kToEditPageBySegue sender:self];
 }
 
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+     forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    // 削除時
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [_pageList removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+        NSMutableDictionary *newPageDict = [[NSMutableDictionary alloc] init];
+        for (int i = 0; i < _pageList.count; i++) {
+            PageData *page = _pageList[i];
+            page.sortId = i;
+            [newPageDict setObject:page forKey:[[NSNumber alloc] initWithInt:page.dataId]];
+        }
+        [DataManager sharedManager].pageDict = newPageDict;
+
+        // todo
+        // datamanageに削除済みを登録する
+        // userが保持してるpage_idをどうにかする
+    }
+}
+
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
