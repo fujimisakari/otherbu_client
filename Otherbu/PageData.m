@@ -25,6 +25,9 @@
         self.categoryIdsStr = dataDict[@"category_ids_str"];
         self.angleIdsStr = dataDict[@"angle_ids_str"];
         self.sortIdsStr = dataDict[@"sort_ids_str"];
+
+        self.sortId = [DataManager sharedManager].pageDict.count;
+
         if ([dataDict[@"id"] integerValue] == 16) {
             self.colorId = 9;
          } else if ([dataDict[@"id"] integerValue] == 18) {

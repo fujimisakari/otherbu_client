@@ -59,13 +59,15 @@
     [_scrollView setupWithCGSize:cgSize delegate:self];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self _createPageTabViews];
+    [self _moveTabScroll:_currentPageTabView];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    // 画面が表示され終ったらWebPageの読み込み
-    [super viewDidAppear:animated];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self _removePageTabViews];
 }
 
 - (void)_setupBackgroundImage {
@@ -80,6 +82,10 @@
                              self.view.frame.size.width, self.view.frame.size.height);
     layer.zPosition = -1.0;
     [self.view.layer addSublayer:layer];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 //--------------------------------------------------------------//
@@ -303,12 +309,9 @@
 }
 
 - (void)_createPageTabViews {
-    // PageTabViewを生成する
-    DataManager *dataManager = [DataManager sharedManager];
-
     // set PageTabView
     float offsetX = 0;
-    for (PageData *pageData in [dataManager.pageDict objectEnumerator]) {
+    for (PageData *pageData in [[DataManager sharedManager] getPageList]) {
         CGSize textSize = [PageTabView getTextSizeOfPageViewWithString:pageData.name];
         CGRect rect = CGRectMake(offsetX, kOffsetYOfPageTab, textSize.width, textSize.height);
         PageTabView *pageTabView = [PageTabView initWithFrame:rect];
@@ -325,6 +328,12 @@
 
     // set TabFrameView
     _tabFrameView.backgroundColor = [[_currentPage color] getFooterColorOfGradient];
+}
+
+- (void)_removePageTabViews {
+    for (UIView *view in [_tabScrollView subviews]) {
+        [view removeFromSuperview];
+    }
 }
 
 @end

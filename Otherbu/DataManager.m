@@ -95,6 +95,11 @@ static DataManager *intance = nil;
     for (NSNumber *key in self.pageDict) {
         [itemList addObject:[self getPage:key]];
     }
+
+    for (NSNumber *key in self.pageDict) {
+        PageData *page = [self getPage:key];
+        itemList[page.sortId] = page;
+    }
     return itemList;
 }
 
