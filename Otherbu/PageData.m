@@ -91,7 +91,6 @@
                                             [NSNumber numberWithInt:CENTER] : [[NSMutableArray alloc] init],
                                             [NSNumber numberWithInt:RIGHT] : [[NSMutableArray alloc] init]
                                           } mutableCopy];
-    // NSLog(@"angleDict %@", angleDict);
     for (NSNumber *categoryId in angleDict) {
         CategoryData *data = [dataManager getCategory:categoryId];
         if (data) {
@@ -99,8 +98,6 @@
             [tmpResultDict[angleId] addObject:data];
         }
     }
-    // NSLog(@"iiii%@", tmpResultDict);
-
     // アングル別のカテゴリリストをソートする
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *sortDict = [self _getMapByArg:_sortIdsStr];
@@ -120,9 +117,6 @@
                 firstCategoryData = category;
             }
         }
-
-        // NSLog(@"array, %@", array);
-
         // firstCategoryDataを先頭に置き替える
         if (firstCategoryData) {
             NSMutableArray *tmpArray = [NSMutableArray arrayWithObject:firstCategoryData];
@@ -132,7 +126,6 @@
             }
             array = tmpArray;
         }
-
         // NSLog(@"array %ld", array.count);
         resultDict[angleId] = array;
     }
