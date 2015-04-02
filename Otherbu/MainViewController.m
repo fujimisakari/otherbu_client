@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "WebViewController.h"
+#import "EditModalViewController.h"
 #import "SectionHeaderView.h"
 #import "MainScrollView.h"
 #import "NavigationBar.h"
@@ -244,7 +245,8 @@
 
 - (void)didLongPressPageTab:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
     // PageTabの長押し時の実行処理
-    NSLog(@"%@", selectPage.name);
+    EditModalViewController *memoViewController = [[EditModalViewController alloc] init];
+    [self presentViewController:memoViewController animated:YES completion:nil];
 }
 
 - (void)_moveTabScroll:(PageTabView *)tappedPageTabView {
@@ -276,7 +278,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // WebViewへページ遷移
     if ([[segue identifier] isEqualToString:kToWebViewBySegue]) {
-        WebViewController *webViewController = (WebViewController*)[segue destinationViewController];
+        WebViewController *webViewController = (WebViewController *)[segue destinationViewController];
         [webViewController setBookmark:_selectBookmark];
     }
 }
@@ -305,6 +307,7 @@
 
         [_scrollView reloadTableData];
         [self _createPageTabViews];
+        [self _moveTabScroll:_currentPageTabView];
         // [self.refreshControl endRefreshing];
     }];
 }

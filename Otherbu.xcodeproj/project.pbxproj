@@ -17,6 +17,9 @@
 		7B502A7B1AC5BCC200A431FB /* SettingEditPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A7A1AC5BCC200A431FB /* SettingEditPageTableViewController.m */; };
 		7B502A7E1AC84FB000A431FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A7D1AC84FB000A431FB /* Helper.m */; };
 		7B502A811AC8789F00A431FB /* SettingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A801AC8789F00A431FB /* SettingNavigationViewController.m */; };
+		7B502A901ACD519100A431FB /* EditModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A8E1ACD519100A431FB /* EditModalViewController.m */; };
+		7B502A911ACD519100A431FB /* EditModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B502A8F1ACD519100A431FB /* EditModalViewController.xib */; };
+		7B502A941ACDA13E00A431FB /* EditModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A931ACDA13E00A431FB /* EditModalView.m */; };
 		7B565EF61A92486F00D6A420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF51A92486F00D6A420 /* main.m */; };
 		7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF81A92486F00D6A420 /* AppDelegate.m */; };
 		7B565EFC1A92486F00D6A420 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EFB1A92486F00D6A420 /* MainViewController.m */; };
@@ -78,6 +81,11 @@
 		7B502A7D1AC84FB000A431FB /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		7B502A7F1AC8789F00A431FB /* SettingNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingNavigationViewController.h; sourceTree = "<group>"; };
 		7B502A801AC8789F00A431FB /* SettingNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingNavigationViewController.m; sourceTree = "<group>"; };
+		7B502A8D1ACD519100A431FB /* EditModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditModalViewController.h; sourceTree = "<group>"; };
+		7B502A8E1ACD519100A431FB /* EditModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditModalViewController.m; sourceTree = "<group>"; };
+		7B502A8F1ACD519100A431FB /* EditModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditModalViewController.xib; sourceTree = "<group>"; };
+		7B502A921ACDA13E00A431FB /* EditModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditModalView.h; sourceTree = "<group>"; };
+		7B502A931ACDA13E00A431FB /* EditModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditModalView.m; sourceTree = "<group>"; };
 		7B565EF01A92486F00D6A420 /* Otherbu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Otherbu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565EF41A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565EF51A92486F00D6A420 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -181,6 +189,8 @@
 				7BF697A21AB08B3C008C1BAE /* NavigationBar.m */,
 				7BF697AF1AB42A94008C1BAE /* PageTabView.h */,
 				7BF697B01AB42A94008C1BAE /* PageTabView.m */,
+				7B502A921ACDA13E00A431FB /* EditModalView.h */,
+				7B502A931ACDA13E00A431FB /* EditModalView.m */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -282,6 +292,9 @@
 			children = (
 				7B565EFA1A92486F00D6A420 /* MainViewController.h */,
 				7B565EFB1A92486F00D6A420 /* MainViewController.m */,
+				7B502A8D1ACD519100A431FB /* EditModalViewController.h */,
+				7B502A8E1ACD519100A431FB /* EditModalViewController.m */,
+				7B502A8F1ACD519100A431FB /* EditModalViewController.xib */,
 				7B39F52F1A9CEEA70036CB69 /* CustomView */,
 			);
 			name = MainScene;
@@ -439,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B565EFF1A92486F00D6A420 /* Main.storyboard in Resources */,
+				7B502A911ACD519100A431FB /* EditModalViewController.xib in Resources */,
 				590F230F1AA81F4900589E7C /* wood-wallpeper.jpg in Resources */,
 				7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */,
 				7B565F011A92486F00D6A420 /* Images.xcassets in Resources */,
@@ -512,6 +526,7 @@
 				7B91E5F61ABC7D27003A36F1 /* WebViewController.m in Sources */,
 				7B91E6401AC330AC003A36F1 /* SettingCategoryListTableViewController.m in Sources */,
 				7B91E6461AC33175003A36F1 /* BookmarkViewController.m in Sources */,
+				7B502A901ACD519100A431FB /* EditModalViewController.m in Sources */,
 				7B565F211A9249FA00D6A420 /* BookmarkData.m in Sources */,
 				7B502A781AC47CA100A431FB /* SettingSelectCategoryTableViewController.m in Sources */,
 				7B91E63A1AC3307D003A36F1 /* SettingBookmarkTableViewController.m in Sources */,
@@ -519,6 +534,7 @@
 				7B565EF61A92486F00D6A420 /* main.m in Sources */,
 				7BF6979D1AAF4ADA008C1BAE /* MainScrollView.m in Sources */,
 				7B502A811AC8789F00A431FB /* SettingNavigationViewController.m in Sources */,
+				7B502A941ACDA13E00A431FB /* EditModalView.m in Sources */,
 				7B91E6351AC32F40003A36F1 /* SettingTableViewController.m in Sources */,
 				7B39F53B1AA39BCA0036CB69 /* MainTableCellView.m in Sources */,
 				7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */,
