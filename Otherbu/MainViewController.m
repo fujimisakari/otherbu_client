@@ -223,7 +223,7 @@
 #pragma mark -- PageTabViewDelegate --
 //--------------------------------------------------------------//
 
-- (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
+- (void)didSingleTapPageTab:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
     // PageTabのシングルタップ時の実行処理
 
     // pageを入れ替え、tableのリロード
@@ -240,6 +240,11 @@
 
     // set TabFrameView
     _tabFrameView.backgroundColor = [[selectPage color] getFooterColorOfGradient];
+}
+
+- (void)didLongPressPageTab:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
+    // PageTabの長押し時の実行処理
+    NSLog(@"%@", selectPage.name);
 }
 
 - (void)_moveTabScroll:(PageTabView *)tappedPageTabView {
@@ -275,10 +280,6 @@
         [webViewController setBookmark:_selectBookmark];
     }
 }
-
-//--------------------------------------------------------------//
-#pragma mark -- Taupped Action --
-//--------------------------------------------------------------//
 
 - (void)_openSettingView:(UIButton *)sender {
     [self performSegueWithIdentifier:kToSettingBySegue sender:self];

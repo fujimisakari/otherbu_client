@@ -10,7 +10,8 @@
 
 @protocol PageTabDelegate
 
-- (void)didPageTabSingleTap:(PageData *)selectPage pageTabView:(PageTabView *)pageTabView;
+- (void)didSingleTapPageTab:(PageData *)selectPage pageTabView:(PageTabView *)pageTabView;
+- (void)didLongPressPageTab:(PageData *)selectPage pageTabView:(PageTabView *)pageTabView;
 
 @end
 

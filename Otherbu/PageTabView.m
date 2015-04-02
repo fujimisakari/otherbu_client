@@ -136,6 +136,11 @@
     // タップジェスチャを追加
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_didSigleTapped)];
     [self addGestureRecognizer:singleTap];
+
+    // 長押しジェスチャを追加
+    UILongPressGestureRecognizer *longPress =
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_didLongPress)];
+    [self addGestureRecognizer:longPress];
 }
 
 //--------------------------------------------------------------//
@@ -144,7 +149,13 @@
 
 - (void)_didSigleTapped {
     // シングルタップイベント
-    [self.delegate didPageTabSingleTap:_page pageTabView:self];
+    [self.delegate didSingleTapPageTab:_page pageTabView:self];
 }
+
+- (void)_didLongPress {
+    // 長押しイベント
+    [self.delegate didLongPressPageTab:_page pageTabView:self];
+}
+
 
 @end
