@@ -4,6 +4,36 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
+        <!--Edit View Controller-->
+        <scene sceneID="eE5-Pr-3Pd">
+            <objects>
+                <viewController id="923-Gb-755" userLabel="Edit View Controller" customClass="EditModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vWM-Ie-oT4"/>
+                        <viewControllerLayoutGuide type="bottom" id="1cE-tm-320"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Hb-WO-5uQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccW-dE-wzt" customClass="EditModalView">
+                                <rect key="frame" x="20" y="120" width="560" height="360"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1cE-tm-320" firstAttribute="top" secondItem="ccW-dE-wzt" secondAttribute="bottom" constant="120" id="QWf-5t-Ssm"/>
+                            <constraint firstAttribute="trailing" secondItem="ccW-dE-wzt" secondAttribute="trailing" constant="20" id="UmT-wt-GQK"/>
+                            <constraint firstItem="ccW-dE-wzt" firstAttribute="leading" secondItem="2Hb-WO-5uQ" secondAttribute="leading" constant="20" id="VdR-7O-jMr"/>
+                            <constraint firstItem="ccW-dE-wzt" firstAttribute="top" secondItem="2Hb-WO-5uQ" secondAttribute="top" constant="120" id="oKF-6d-FTK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TzD-BI-4Jb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1334" y="307"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -78,6 +108,7 @@
                         <outlet property="tabScrollView" destination="jbB-Aw-uiu" id="lAa-uv-ryC"/>
                         <segue destination="66c-Jd-vhB" kind="presentation" identifier="toWebView" modalTransitionStyle="crossDissolve" id="Tad-Ax-6EV"/>
                         <segue destination="Eiy-at-6ve" kind="show" identifier="toSetting" id="8B2-3a-uUi"/>
+                        <segue destination="923-Gb-755" kind="presentation" identifier="toEditModalView" modalTransitionStyle="coverVertical" id="hdg-i3-DKj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

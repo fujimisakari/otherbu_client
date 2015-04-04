@@ -18,7 +18,6 @@
 		7B502A7E1AC84FB000A431FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A7D1AC84FB000A431FB /* Helper.m */; };
 		7B502A811AC8789F00A431FB /* SettingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A801AC8789F00A431FB /* SettingNavigationViewController.m */; };
 		7B502A901ACD519100A431FB /* EditModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A8E1ACD519100A431FB /* EditModalViewController.m */; };
-		7B502A911ACD519100A431FB /* EditModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B502A8F1ACD519100A431FB /* EditModalViewController.xib */; };
 		7B502A941ACDA13E00A431FB /* EditModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A931ACDA13E00A431FB /* EditModalView.m */; };
 		7B565EF61A92486F00D6A420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF51A92486F00D6A420 /* main.m */; };
 		7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF81A92486F00D6A420 /* AppDelegate.m */; };
@@ -83,7 +82,6 @@
 		7B502A801AC8789F00A431FB /* SettingNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingNavigationViewController.m; sourceTree = "<group>"; };
 		7B502A8D1ACD519100A431FB /* EditModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditModalViewController.h; sourceTree = "<group>"; };
 		7B502A8E1ACD519100A431FB /* EditModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditModalViewController.m; sourceTree = "<group>"; };
-		7B502A8F1ACD519100A431FB /* EditModalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditModalViewController.xib; sourceTree = "<group>"; };
 		7B502A921ACDA13E00A431FB /* EditModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditModalView.h; sourceTree = "<group>"; };
 		7B502A931ACDA13E00A431FB /* EditModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditModalView.m; sourceTree = "<group>"; };
 		7B565EF01A92486F00D6A420 /* Otherbu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Otherbu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,8 +187,25 @@
 				7BF697A21AB08B3C008C1BAE /* NavigationBar.m */,
 				7BF697AF1AB42A94008C1BAE /* PageTabView.h */,
 				7BF697B01AB42A94008C1BAE /* PageTabView.m */,
-				7B502A921ACDA13E00A431FB /* EditModalView.h */,
+			);
+			name = CustomView;
+			sourceTree = "<group>";
+		};
+		7B502A951ACF90BC00A431FB /* EditModalScene */ = {
+			isa = PBXGroup;
+			children = (
+				7B502A8E1ACD519100A431FB /* EditModalViewController.m */,
+				7B502A8D1ACD519100A431FB /* EditModalViewController.h */,
+				7B502A961ACF911900A431FB /* CustomView */,
+			);
+			name = EditModalScene;
+			sourceTree = "<group>";
+		};
+		7B502A961ACF911900A431FB /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
 				7B502A931ACDA13E00A431FB /* EditModalView.m */,
+				7B502A921ACDA13E00A431FB /* EditModalView.h */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -222,6 +237,7 @@
 				7B565EF71A92486F00D6A420 /* AppDelegate.h */,
 				7B565EF81A92486F00D6A420 /* AppDelegate.m */,
 				7B565F2B1A938A9600D6A420 /* MainScene */,
+				7B502A951ACF90BC00A431FB /* EditModalScene */,
 				7B91E5F71ABC7D30003A36F1 /* WebViewScene */,
 				7B91E6361AC32F5A003A36F1 /* SettingScene */,
 				7B565F251A924A1000D6A420 /* Model */,
@@ -292,9 +308,6 @@
 			children = (
 				7B565EFA1A92486F00D6A420 /* MainViewController.h */,
 				7B565EFB1A92486F00D6A420 /* MainViewController.m */,
-				7B502A8D1ACD519100A431FB /* EditModalViewController.h */,
-				7B502A8E1ACD519100A431FB /* EditModalViewController.m */,
-				7B502A8F1ACD519100A431FB /* EditModalViewController.xib */,
 				7B39F52F1A9CEEA70036CB69 /* CustomView */,
 			);
 			name = MainScene;
@@ -452,7 +465,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B565EFF1A92486F00D6A420 /* Main.storyboard in Resources */,
-				7B502A911ACD519100A431FB /* EditModalViewController.xib in Resources */,
 				590F230F1AA81F4900589E7C /* wood-wallpeper.jpg in Resources */,
 				7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */,
 				7B565F011A92486F00D6A420 /* Images.xcassets in Resources */,

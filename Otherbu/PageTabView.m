@@ -139,7 +139,7 @@
 
     // 長押しジェスチャを追加
     UILongPressGestureRecognizer *longPress =
-        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_didLongPress)];
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_didLongPress:)];
     [self addGestureRecognizer:longPress];
 }
 
@@ -152,10 +152,11 @@
     [self.delegate didSingleTapPageTab:_page pageTabView:self];
 }
 
-- (void)_didLongPress {
+- (void)_didLongPress:(UILongPressGestureRecognizer*)sender {
     // 長押しイベント
-    [self.delegate didLongPressPageTab:_page pageTabView:self];
+    if (sender.state == UIGestureRecognizerStateBegan){
+        [self.delegate didLongPressPageTab:_page pageTabView:self];
+    }
 }
-
 
 @end

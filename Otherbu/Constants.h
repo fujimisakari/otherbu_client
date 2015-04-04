@@ -78,6 +78,7 @@ extern NSString * const kPageIcon;
 extern NSString * const kDesignIcon;
 
 extern NSString * const kToWebViewBySegue;
+extern NSString * const kToEditViewBySegue;
 extern NSString * const kToSettingBySegue;
 extern NSString * const kToCategoryListBySegue;
 extern NSString * const kToCategoryOfBookmarkBySegue;

@@ -17,9 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    LOG_SIZE(self.view.frame.size);
+
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0.1 alpha:0.4];
 
-    [_editModalView setup];
+    // [_editModalView setup];
 
     // self.view.layer.shouldRasterize = YES;  //レイヤーをラスタライズする
     // self.view.layer.rasterizationScale = 0.2;  //ラスタライズ時の縮小率
