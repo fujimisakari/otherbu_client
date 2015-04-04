@@ -91,11 +91,11 @@ NSString * const kUpdateButtonOfEditModal = @"更新";
 #pragma mark -- Menu Of Setting View --
 //--------------------------------------------------------------//
 
-NSString * const kMenuBookmarkName = @"ブックマーク設定";
+NSString * const kMenuBookmarkName = @"ブックマーク";
 NSString * const kMenuBookmarkMoveName = @"ブックマーク移動";
-NSString * const kMenuCategoryName = @"カテゴリ設定";
-NSString * const kMenuPageName = @"ページ設定";
-NSString * const kMenuDesignName = @"デザイン設定";
+NSString * const kMenuCategoryName = @"カテゴリ";
+NSString * const kMenuPageName = @"ページ";
+NSString * const kMenuDesignName = @"デザイン";
 
 //--------------------------------------------------------------//
 #pragma mark -- IconName --

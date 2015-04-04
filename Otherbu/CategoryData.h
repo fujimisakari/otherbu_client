@@ -12,7 +12,7 @@
 
 @property(nonatomic) NSInteger dataId;   // ID
 @property(nonatomic) NSInteger userId;   // ユーザーID
-@property(nonatomic) NSString *name;     // Bookmark名
+@property(nonatomic) NSString *name;     // カテゴリ名
 @property(nonatomic) NSInteger angle;    // 位置
 @property(nonatomic) NSInteger sort;     // Sort番号
 @property(nonatomic) NSInteger colorId;  // カテゴリカラーID

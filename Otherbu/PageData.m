@@ -192,4 +192,26 @@
     return [[DataManager sharedManager] getColor:number];
 }
 
+//--------------------------------------------------------------//
+#pragma mark -- Data Intaface --
+//--------------------------------------------------------------//
+
+- (NSString *)iGetTitleName {
+    return kMenuPageName;
+}
+
+- (NSString *)iGetName {
+    return self.name;
+}
+
+- (void)iSetName:(NSString *)name {
+}
+
+- (NSInteger)iGetColorId {
+    return self.colorId;
+}
+
+- (void)iSetColorId:(NSInteger)colorId {
+}
+
 @end

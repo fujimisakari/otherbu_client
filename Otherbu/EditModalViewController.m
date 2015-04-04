@@ -21,6 +21,7 @@
     [super viewDidLoad];
 
     _editModalView = [EditModalView initWithFrame:(CGRect)self.view.frame];
+    _editModalView.editItem = _editItem;
     _editModalView.delegate = self;
     [self.view addSubview:_editModalView];
 }
@@ -39,6 +40,10 @@
 
 - (UIModalPresentationStyle)modalPresentationStyle {
     return UIModalPresentationOverCurrentContext;
+}
+
+- (void)setEditItem:(id<DataInterface>)editItem {
+    _editItem = editItem;
 }
 
 //--------------------------------------------------------------//

@@ -21,7 +21,9 @@
 #import "PageTabView.h"
 #import "MBProgressHUD.h"
 
-@interface MainViewController ()
+@interface MainViewController () {
+    id<DataInterface> _editItem;
+}
 
 @property(nonatomic) float        viewWidth;
 @property(nonatomic) float        viewHeight;
@@ -245,7 +247,7 @@
 
 - (void)didLongPressPageTab:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
     // PageTabの長押し時の実行処理
-
+    _editItem = selectPage;
     [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
 }
 
@@ -280,6 +282,9 @@
     if ([[segue identifier] isEqualToString:kToWebViewBySegue]) {
         WebViewController *webViewController = (WebViewController *)[segue destinationViewController];
         [webViewController setBookmark:_selectBookmark];
+    } else if ([[segue identifier] isEqualToString:kToEditViewBySegue]) {
+        EditModalViewController *editModalViewController = (EditModalViewController *)[segue destinationViewController];
+        [editModalViewController setEditItem:_editItem];
     }
 }
 

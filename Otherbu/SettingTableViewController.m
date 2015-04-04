@@ -120,6 +120,7 @@
                 iconImage = [UIImage imageNamed:kDesignIcon];
                 break;
         }
+        menuName = [NSString stringWithFormat:@"%@%@", menuName, @"設定"];
         [menuNameList addObject:menuName];
         [menuIconList addObject:iconImage];
     }

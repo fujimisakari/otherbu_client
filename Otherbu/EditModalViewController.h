@@ -7,8 +7,12 @@
 //
 
 #import "EditModalView.h"
-
+#import "DataInterface.h"
 
 @interface EditModalViewController : UIViewController<EditModalDelegate>
+
+@property(nonatomic, weak) id<DataInterface> editItem;
+
+- (void)setEditItem:(id<DataInterface>)editItem;
 
 @end

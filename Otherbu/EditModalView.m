@@ -67,11 +67,11 @@
 
 - (void)setTitleLabel {
     UILabel *titleLabel = [[UILabel alloc] init];
-    CGRect rect = CGRectMake(28, 20, 70.0f, 30.0f);
+    CGRect rect = CGRectMake(28, 20, 150.0f, 30.0f);
     titleLabel.frame = rect;
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"編集";
+    titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = [NSString stringWithFormat:@"%@ %@", [_editItem iGetTitleName], @"編集"];
     [self addSubview:titleLabel];
 }
 
