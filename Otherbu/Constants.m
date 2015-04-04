@@ -75,6 +75,19 @@ const float kArrowWidthOfToolbar = 50.0f;                    // Toolbarの矢印
 const int kFontSizeOfToolbar = 30;                           // Toolbarのフォントサイズ
 
 //--------------------------------------------------------------//
+#pragma mark -- Value Of Edit Modal View --
+//--------------------------------------------------------------//
+
+const float kAdaptWidthOfEditModal = 20.0f;                  // EditModalの画面サイズ調整(width)
+const float kAdaptHeightOfEditModal = 120.0f;                // EditModalの画面サイズ調整(height)
+const float kButtonWidthOfEditModal = 130.0f;                // EditModalのボタンサイズ(width)
+const float kButtonHeightOfEditModal = 30.0f;                // EditModalのボタンサイズ(height)
+const float kAdaptButtonWidthOfEditModal = 20.0f;            // EditModalのボタン位置調整(width)
+const float kAdaptButtonHeightOfEditModal = 20.0f;           // EditModalのボタン位置調整(height)
+NSString * const kCancelButtonOfEditModal = @"キャンセル";
+NSString * const kUpdateButtonOfEditModal = @"更新";
+
+//--------------------------------------------------------------//
 #pragma mark -- Menu Of Setting View --
 //--------------------------------------------------------------//
 

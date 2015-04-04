@@ -19,6 +19,7 @@
 		7B502A811AC8789F00A431FB /* SettingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A801AC8789F00A431FB /* SettingNavigationViewController.m */; };
 		7B502A901ACD519100A431FB /* EditModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A8E1ACD519100A431FB /* EditModalViewController.m */; };
 		7B502A941ACDA13E00A431FB /* EditModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A931ACDA13E00A431FB /* EditModalView.m */; };
+		7B502A991ACFCDE900A431FB /* EditBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B502A981ACFCDE900A431FB /* EditBase.m */; };
 		7B565EF61A92486F00D6A420 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF51A92486F00D6A420 /* main.m */; };
 		7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EF81A92486F00D6A420 /* AppDelegate.m */; };
 		7B565EFC1A92486F00D6A420 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565EFB1A92486F00D6A420 /* MainViewController.m */; };
@@ -84,6 +85,8 @@
 		7B502A8E1ACD519100A431FB /* EditModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditModalViewController.m; sourceTree = "<group>"; };
 		7B502A921ACDA13E00A431FB /* EditModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditModalView.h; sourceTree = "<group>"; };
 		7B502A931ACDA13E00A431FB /* EditModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditModalView.m; sourceTree = "<group>"; };
+		7B502A971ACFCDE900A431FB /* EditBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBase.h; sourceTree = "<group>"; };
+		7B502A981ACFCDE900A431FB /* EditBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBase.m; sourceTree = "<group>"; };
 		7B565EF01A92486F00D6A420 /* Otherbu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Otherbu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565EF41A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565EF51A92486F00D6A420 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -299,6 +302,8 @@
 				7B39F5371AA321740036CB69 /* ColorData.m */,
 				7BF697A41AB09AD8008C1BAE /* DesignData.h */,
 				7BF697A51AB09AD8008C1BAE /* DesignData.m */,
+				7B502A971ACFCDE900A431FB /* EditBase.h */,
+				7B502A981ACFCDE900A431FB /* EditBase.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 				7B91E64F1AC3321E003A36F1 /* DesiginViewController.m in Sources */,
 				7B565F221A9249FA00D6A420 /* CategoryData.m in Sources */,
 				7B91E5F61ABC7D27003A36F1 /* WebViewController.m in Sources */,
+				7B502A991ACFCDE900A431FB /* EditBase.m in Sources */,
 				7B91E6401AC330AC003A36F1 /* SettingCategoryListTableViewController.m in Sources */,
 				7B91E6461AC33175003A36F1 /* BookmarkViewController.m in Sources */,
 				7B502A901ACD519100A431FB /* EditModalViewController.m in Sources */,

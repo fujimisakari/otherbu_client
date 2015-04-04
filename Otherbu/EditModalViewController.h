@@ -6,10 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@class EditModalView;
+#import "EditModalView.h"
 
-@interface EditModalViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet EditModalView *editModalView;
+@interface EditModalViewController : UIViewController<EditModalDelegate>
 
 @end

@@ -246,14 +246,7 @@
 - (void)didLongPressPageTab:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
     // PageTabの長押し時の実行処理
 
-    // toViewController
-    // dispatch_async(dispatch_get_main_queue(), ^ {
-    //     [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
-    // });
-    LOG(@"hgoe");
     [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
-    // EditModalViewController *memoViewController = [[EditModalViewController alloc] init];
-    // [self presentViewController:memoViewController animated:YES completion:nil];
 }
 
 - (void)_moveTabScroll:(PageTabView *)tappedPageTabView {
