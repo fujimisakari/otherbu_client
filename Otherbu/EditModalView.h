@@ -23,5 +23,6 @@
 + (id)initWithFrame:(CGRect)rect;
 
 - (void)setup;
+- (UICollectionView *)getCollectionView;
 
 @end

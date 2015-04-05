@@ -12,11 +12,10 @@
 
 @interface EditModalViewController () {
     EditModalView *_editModalView;
-    UICollectionView *_collectionView;
-    UICollectionViewCell *_colorSelectCell;
     NSMutableArray *_colorList;
     NSString *_name;
     NSInteger _colorId;
+    UICollectionViewCell *_colorSelectCell;
 }
 
 @end
@@ -33,14 +32,11 @@
     // カラーパレット用のカラーリスト
     _colorList = [[DataManager sharedManager] getColorList];
 
-    // 編集Viewを生成
+    // EditViewを生成
     _editModalView = [EditModalView initWithFrame:(CGRect)self.view.frame];
     _editModalView.editItem = _editItem;
     _editModalView.delegate = self;
     [self.view addSubview:_editModalView];
-
-    // カラーパレットを生成
-    [self _createColorPalette];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,7 +44,12 @@
 
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0.1 alpha:0.4];
 
+    // EditViewの各パーツの生成
     [_editModalView setup];
+
+    UICollectionView *collectionView = [_editModalView getCollectionView];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,23 +123,6 @@
     float restViewWidth = viewWidth - totalCellWidth - (kCellMarginOfColorPalette * 5);
     float marginWidth = restViewWidth / 2;
     return UIEdgeInsetsMake(5, marginWidth, 0, marginWidth);
-}
-
-- (void) _createColorPalette {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    float cellSize = kCellSizeOfColorPalette;
-    layout.itemSize = CGSizeMake(cellSize, cellSize);            //表示するアイテムのサイズ
-    layout.minimumLineSpacing = kCellMarginOfColorPalette;       //セクションとアイテムの間隔
-    layout.minimumInteritemSpacing = kCellMarginOfColorPalette;  //アイテム同士の間隔
-
-    float width = _editModalView.frame.size.width - (kAdaptWidthOfEditModal * 2);
-    float height = kViewHeightOfColorPalette;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
-    _collectionView.frame = CGRectMake(kAdaptWidthOfEditModal, 180, width, height);
-    _collectionView.delegate = self;
-    _collectionView.dataSource = self;
-    [_editModalView addSubview:_collectionView];
 }
 
 //--------------------------------------------------------------//
