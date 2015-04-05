@@ -292,7 +292,7 @@
             [self _moveTabScroll:_currentPageTabView];
             break;
         case MENU_CATEGORY :
-            angleId = _pageControl.currentPage + 1;
+            angleId = (int)_pageControl.currentPage + 1;
             [_scrollView reloadTableDataWithAngleID:angleId];
             break;
     }

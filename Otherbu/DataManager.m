@@ -109,11 +109,11 @@ static DataManager *intance = nil;
         [itemList addObject:[self getColor:key]];
     }
 
-    // for (NSNumber *key in self.pageDict) {
-    //     PageData *page = [self getPage:key];
-    //     itemList[page.sortId] = page;
-    // }
-    return itemList;
+    // リストをソート
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
+    NSArray *sortArray = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *resultList = [itemList sortedArrayUsingDescriptors:sortArray];
+    return resultList;
 }
 
 //--------------------------------------------------------------//
