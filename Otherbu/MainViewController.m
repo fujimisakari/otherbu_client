@@ -212,6 +212,12 @@
     [tableView endUpdates];
 }
 
+- (void)didLongPressPageTab:(CategoryData *)category {
+    // セクションタブの長押し時の実行処理
+    _editItem = category;
+    [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
+}
+
 - (NSMutableArray *)_getIndexPathsOfSectionContents:(NSInteger)section categoryData:(CategoryData *)categoryData {
     // セクションのコンテンツ情報をindexPath形式で取得
     NSArray *bookmarkList = [categoryData getBookmarkList];
@@ -278,7 +284,7 @@
 //--------------------------------------------------------------//
 
 - (void)retrunActionOfEditModal:(NSInteger)menuId {
-    LOG(@"hgoe")
+    int angleId;
     switch (menuId) {
         case MENU_PAGE :
             [self _removePageTabViews];
@@ -286,6 +292,8 @@
             [self _moveTabScroll:_currentPageTabView];
             break;
         case MENU_CATEGORY :
+            angleId = _pageControl.currentPage + 1;
+            [_scrollView reloadTableDataWithAngleID:angleId];
             break;
     }
 }

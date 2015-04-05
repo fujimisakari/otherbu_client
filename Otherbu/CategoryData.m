@@ -61,4 +61,32 @@
     return [[DataManager sharedManager] getColor:number];
 }
 
+//--------------------------------------------------------------//
+#pragma mark -- Data Intaface --
+//--------------------------------------------------------------//
+
+- (NSInteger)iGetMenuId {
+    return MENU_CATEGORY;
+}
+
+- (NSString *)iGetTitleName {
+    return kMenuCategoryName;
+}
+
+- (NSString *)iGetName {
+    return self.name;
+}
+
+- (void)iSetName:(NSString *)name {
+    self.name = name;
+}
+
+- (NSInteger)iGetColorId {
+    return self.colorId;
+}
+
+- (void)iSetColorId:(NSInteger)colorId {
+    self.colorId = colorId;
+}
+
 @end

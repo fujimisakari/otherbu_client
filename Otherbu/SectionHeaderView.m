@@ -123,6 +123,11 @@
     // タップジェスチャを追加
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_didSigleTapped)];
     [self addGestureRecognizer:singleTap];
+
+    // 長押しジェスチャを追加
+    UILongPressGestureRecognizer *longPress =
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_didLongPress:)];
+    [self addGestureRecognizer:longPress];
 }
 
 //--------------------------------------------------------------//
@@ -145,6 +150,13 @@
         _arrowImgView.image = _rightImg;
         _arrowImgView.frame = CGRectMake(kOffsetXOfRightArrow, kOffsetYOfRightArrow, _rightImgSize.width, _rightImgSize.height);
         self.layer.mask = _maskLayerOfSectionClose;
+    }
+}
+
+- (void)_didLongPress:(UILongPressGestureRecognizer*)sender {
+    // 長押しイベント
+    if (sender.state == UIGestureRecognizerStateBegan){
+        [self.delegate didLongPressPageTab:_categoryData];
     }
 }
 

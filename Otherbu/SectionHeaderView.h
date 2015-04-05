@@ -11,6 +11,7 @@
 @protocol SectionHeaderViewDelegate
 
 - (void)didSectionHeaderSingleTap:(NSInteger)section tagNumber:(NSInteger)tagNumber;
+- (void)didLongPressPageTab:(CategoryData *)category;
 
 @end
 
