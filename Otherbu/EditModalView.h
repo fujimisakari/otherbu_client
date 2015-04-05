@@ -20,8 +20,7 @@
 @property(nonatomic, weak) id<EditModalDelegate> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;
 
-+ (id)initWithFrame:(CGRect)rect;
-
+- (id)initWithFrame:(CGRect)rect;
 - (void)setup;
 - (UICollectionView *)getCollectionView;
 

@@ -26,11 +26,6 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-+ (id)initWithFrame:(CGRect)rect {
-    PageTabView *pageTab = [[PageTabView alloc] initWithFrame:rect];
-    return pageTab;
-}
-
 - (void)setUpWithPage:(PageData *)page delegate:(id<PageTabDelegate>)delegate {
     // タップされている、されていない場合のTabVeiwを切り換え用に用意しておく
     CGFloat offsetX = 0;

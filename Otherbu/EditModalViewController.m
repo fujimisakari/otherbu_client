@@ -33,7 +33,7 @@
     _colorList = [[DataManager sharedManager] getColorList];
 
     // EditViewを生成
-    _editModalView = [EditModalView initWithFrame:(CGRect)self.view.frame];
+    _editModalView = [[EditModalView alloc] initWithFrame:(CGRect)self.view.frame];
     _editModalView.editItem = _editItem;
     _editModalView.delegate = self;
     [self.view addSubview:_editModalView];
@@ -82,7 +82,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     // cellオブジェクトを生成
-    int idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * indexPath.section);
+    NSInteger idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * (int)indexPath.section);
     ColorData *colorData = _colorList[idx];
 
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
@@ -104,7 +104,7 @@
     _colorSelectCell.layer.borderColor = [UIColor grayColor].CGColor;
 
     // タッチしたカラーIDをキャッシュ
-    int idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * indexPath.section);
+    NSInteger idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * indexPath.section);
     ColorData *colorData = _colorList[idx];
     _colorId = colorData.dataId;
 

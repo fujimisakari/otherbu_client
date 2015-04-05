@@ -20,14 +20,15 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-+ (id)initWithFrame:(CGRect)rect {
-
-    float width = rect.size.width - (kAdaptWidthOfEditModal * 2);
-    float height = rect.size.height - (kAdaptHeightOfEditModal * 2);
-    CGRect _rect = CGRectMake(0, 0, width, height);
-    EditModalView *editModal = [[EditModalView alloc] initWithFrame:_rect];
-
-    return editModal;
+- (id)initWithFrame:(CGRect)rect {
+    self = [super initWithFrame:rect];
+    if (self) {
+        float width = rect.size.width - (kAdaptWidthOfEditModal * 2);
+        float height = rect.size.height - (kAdaptHeightOfEditModal * 2);
+        CGRect _rect = CGRectMake(0, 0, width, height);
+        self.frame = _rect;
+    }
+    return self;
 }
 
 - (UICollectionView *)getCollectionView {

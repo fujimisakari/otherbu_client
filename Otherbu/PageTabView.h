@@ -19,7 +19,6 @@
 
 @property(nonatomic, weak) id<PageTabDelegate> delegate;
 
-+ (id)initWithFrame:(CGRect)rect;
 + (CGSize)getTextSizeOfPageViewWithString:(NSString *)string;
 
 - (void)setUpWithPage:(PageData *)page delegate:(id<PageTabDelegate>)delegate;

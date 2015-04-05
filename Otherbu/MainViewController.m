@@ -341,7 +341,7 @@
     for (PageData *pageData in [[DataManager sharedManager] getPageList]) {
         CGSize textSize = [PageTabView getTextSizeOfPageViewWithString:pageData.name];
         CGRect rect = CGRectMake(offsetX, kOffsetYOfPageTab, textSize.width, textSize.height);
-        PageTabView *pageTabView = [PageTabView initWithFrame:rect];
+        PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:rect];
         [pageTabView setUpWithPage:pageData delegate:self];
         if ((int)pageData.dataId == (int)_currentPage.dataId) {
             _currentPageTabView = pageTabView;

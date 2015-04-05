@@ -147,7 +147,7 @@
 
 - (void)updatePageData:(CategoryData *)category isCheckMark:(BOOL)isCheckMark {
     // ページ情報を編集時の処理
-    NSNumber *categoryId = [[NSNumber alloc] initWithInt:category.dataId];
+    NSNumber *categoryId = [[NSNumber alloc] initWithInt:(int)category.dataId];
     NSMutableArray *categoryIdList = (NSMutableArray *)[_categoryIdsStr componentsSeparatedByString:@","];
     NSMutableDictionary *angleDict = [self _getMapByArg:_angleIdsStr];
     NSMutableDictionary *sortDict = [self _getMapByArg:_sortIdsStr];

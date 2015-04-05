@@ -78,7 +78,7 @@
         for (int i = 0; i < _pageList.count; i++) {
             PageData *page = _pageList[i];
             page.sortId = i;
-            [newPageDict setObject:page forKey:[[NSNumber alloc] initWithInt:page.dataId]];
+            [newPageDict setObject:page forKey:[[NSNumber alloc] initWithInt:(int)page.dataId]];
         }
         [DataManager sharedManager].pageDict = newPageDict;
 
