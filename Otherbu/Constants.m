@@ -78,24 +78,36 @@ const int kFontSizeOfToolbar = 30;                           // Toolbarのフォ
 #pragma mark -- Value Of Edit Modal View --
 //--------------------------------------------------------------//
 
+const float kBorderWidthOfEditModal = 2.0f;                  // EditModalの画面の枠線
 const float kAdaptWidthOfEditModal = 20.0f;                  // EditModalの画面サイズ調整(width)
-const float kAdaptHeightOfEditModal = 120.0f;                // EditModalの画面サイズ調整(height)
-const float kButtonWidthOfEditModal = 130.0f;                // EditModalのボタンサイズ(width)
+const float kAdaptHeightOfEditModal = 100.0f;                // EditModalの画面サイズ調整(height)
+const float kButtonWidthOfEditModal = 100.0f;                // EditModalのボタンサイズ(width)
 const float kButtonHeightOfEditModal = 30.0f;                // EditModalのボタンサイズ(height)
 const float kAdaptButtonWidthOfEditModal = 20.0f;            // EditModalのボタン位置調整(width)
 const float kAdaptButtonHeightOfEditModal = 20.0f;           // EditModalのボタン位置調整(height)
-NSString * const kCancelButtonOfEditModal = @"キャンセル";
-NSString * const kUpdateButtonOfEditModal = @"更新";
+NSString * const kCancelButtonOfEditModal = @"Cancel";
+NSString * const kUpdateButtonOfEditModal = @"Update";
+
+//--------------------------------------------------------------//
+#pragma mark -- Color Palette --
+//--------------------------------------------------------------//
+
+const int kRowOfColorPalette = 3;                            // カラーパレットの行数
+const int kColumnOfColorPalette = 6;                         // カラーパレットの列数
+const float kViewHeightOfColorPalette = 140.0f;              // カラーパレットの高さ
+const float kCellSizeOfColorPalette = 35.0f;                 // カラーパレットのセルサイズ
+const float kCellMarginOfColorPalette = 5.0f;                // カラーパレットのセル同士の余白
+const float kBorderWidthOfColorPalette = 2.0f;               // カラーパレットのセル枠線
 
 //--------------------------------------------------------------//
 #pragma mark -- Menu Of Setting View --
 //--------------------------------------------------------------//
 
-NSString * const kMenuBookmarkName = @"ブックマーク";
-NSString * const kMenuBookmarkMoveName = @"ブックマーク移動";
-NSString * const kMenuCategoryName = @"カテゴリ";
-NSString * const kMenuPageName = @"ページ";
-NSString * const kMenuDesignName = @"デザイン";
+NSString * const kMenuBookmarkName = @"Bookmark";
+NSString * const kMenuBookmarkMoveName = @"Bookmark Move";
+NSString * const kMenuCategoryName = @"Category";
+NSString * const kMenuPageName = @"Page";
+NSString * const kMenuDesignName = @"Design";
 
 //--------------------------------------------------------------//
 #pragma mark -- IconName --

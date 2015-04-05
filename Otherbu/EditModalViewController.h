@@ -9,8 +9,15 @@
 #import "EditModalView.h"
 #import "DataInterface.h"
 
-@interface EditModalViewController : UIViewController<EditModalDelegate>
+@protocol EditModalViewDelegate
 
+- (void)retrunActionOfEditModal:(NSInteger)menuId;
+
+@end
+
+@interface EditModalViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate,  UICollectionViewDelegateFlowLayout, EditModalDelegate>
+
+@property(nonatomic, weak) id<EditModalViewDelegate> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;
 
 - (void)setEditItem:(id<DataInterface>)editItem;

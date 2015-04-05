@@ -8,6 +8,13 @@
 
 #import "EditModalView.h"
 
+@interface EditModalView () {
+    NSString *_name;
+    NSInteger _colorId;
+}
+
+@end
+
 @implementation EditModalView
 
 //--------------------------------------------------------------//
@@ -26,6 +33,8 @@
 
 - (void)setup {
     // setup initialize value
+    _name = [_editItem iGetName];
+    _colorId = [_editItem iGetColorId];
 
     // 画面の中心に表示されるようにする
     self.center = self.superview.center;
@@ -45,18 +54,22 @@
     [self setTitleLabel];
 
     // Name編集フィールド生成
+    CGRect textFieldRect = CGRectMake(20, 65, 150.0f, 30.0f);
+    [self setFieldLabel:textFieldRect label:@"Name :"];
+    [self setTextField];
 
     // Color選択View生成
-
-    int y = self.frame.size.height - (kButtonHeightOfEditModal + kAdaptButtonHeightOfEditModal);
+    CGRect ColorRect = CGRectMake(20, 150, 150.0f, 30.0f);
+    [self setFieldLabel:ColorRect label:@"Set Color :"];
 
     // キャンセルボタン
-    int cancel_x = kAdaptButtonWidthOfEditModal;
+    int cancel_x = self.superview.center.x - (kButtonWidthOfEditModal + 20 + 20);
+    int y = self.frame.size.height - (kButtonHeightOfEditModal + kAdaptButtonHeightOfEditModal);
     CGRect cancel_rect = CGRectMake(cancel_x, y, kButtonWidthOfEditModal, kButtonHeightOfEditModal);
     [self setButton:cancel_rect label:kCancelButtonOfEditModal action:@selector(_didPressCancelButton:)];
 
     // 更新ボタン
-    int update_x = self.frame.size.width - (kButtonWidthOfEditModal + kAdaptButtonWidthOfEditModal);
+    int update_x = self.superview.center.x + 20 - 20;
     CGRect update_rect = CGRectMake(update_x, y, kButtonWidthOfEditModal, kButtonHeightOfEditModal);
     [self setButton:update_rect label:kUpdateButtonOfEditModal action:@selector(_didPressUpdateButton:)];
 }
@@ -71,8 +84,34 @@
     titleLabel.frame = rect;
     titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.text = [NSString stringWithFormat:@"%@ %@", [_editItem iGetTitleName], @"編集"];
+    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfSectionTitle];
+    titleLabel.shadowColor = [UIColor grayColor];
+    titleLabel.shadowOffset = CGSizeMake(1, 1);
+    titleLabel.text = [NSString stringWithFormat:@"%@ %@", [_editItem iGetTitleName], @"Edit"];
     [self addSubview:titleLabel];
+}
+
+- (void)setFieldLabel:(CGRect)rect label:(NSString *)labelName {
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.frame = rect;
+    titleLabel.textAlignment = NSTextAlignmentLeft;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfSectionTitle];
+    titleLabel.shadowColor = [UIColor grayColor];
+    titleLabel.shadowOffset = CGSizeMake(1, 1);
+    titleLabel.text = labelName;
+    [self addSubview:titleLabel];
+}
+
+- (void)setTextField {
+    UITextField *textField = [[UITextField alloc] init];
+    float fwidth = self.frame.size.width - (kAdaptButtonWidthOfEditModal * 2);
+    textField.frame = CGRectMake(20, 100, fwidth, 30);
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.backgroundColor = [UIColor grayColor];
+    textField.textColor = [UIColor whiteColor];
+    textField.text = [_editItem iGetName];
+    [self addSubview:textField];
 }
 
 - (void)setButton:(CGRect)rect label:(NSString *)title action:(SEL)action {

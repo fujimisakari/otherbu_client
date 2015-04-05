@@ -8,10 +8,11 @@
 
 #import "SectionHeaderView.h"
 #import "PageTabView.h"
+#import "EditModalViewController.h"
 
 @class MainScrollView, NavigationBar;
 
-@interface MainViewController : UIViewController<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate, PageTabDelegate>
+@interface MainViewController : UIViewController<UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SectionHeaderViewDelegate, PageTabDelegate, EditModalViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet MainScrollView *scrollView;

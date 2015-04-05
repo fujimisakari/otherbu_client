@@ -59,4 +59,26 @@
     return [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
 }
 
+- (UIColor *)getThumbnailColor {
+    // サムネ用のカラーを取得
+    return [UIColor colorWithHex:[UIColor removeSharp:_thumbnail_color_code]];
+}
+
+
+//--------------------------------------------------------------//
+#pragma mark -- Data Intaface --
+//--------------------------------------------------------------//
+
+- (NSString *)iGetTitleName {
+    return nil;
+}
+
+- (NSString *)iGetName {
+    return self.name;
+}
+
+- (NSInteger)iGetSortId {
+    return self.sort;
+}
+
 @end

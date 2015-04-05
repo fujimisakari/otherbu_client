@@ -12,11 +12,17 @@
 
 - (NSString *)iGetTitleName;
 - (NSString *)iGetName;
-- (void)iSetName:(NSString *)name;
 
 @optional
 
+- (NSInteger)iGetMenuId;
+
+- (void)iSetName:(NSString *)name;
+
 - (NSInteger)iGetColorId;
 - (void)iSetColorId:(NSInteger)colorId;
+
+- (void)iGetSortIdOfInt;
+- (void)iGetSortIdOfString;
 
 @end

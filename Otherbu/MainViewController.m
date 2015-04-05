@@ -274,6 +274,23 @@
 }
 
 //--------------------------------------------------------------//
+#pragma mark -- EditModalViewDelegate --
+//--------------------------------------------------------------//
+
+- (void)retrunActionOfEditModal:(NSInteger)menuId {
+    LOG(@"hgoe")
+    switch (menuId) {
+        case MENU_PAGE :
+            [self _removePageTabViews];
+            [self _createPageTabViews];
+            [self _moveTabScroll:_currentPageTabView];
+            break;
+        case MENU_CATEGORY :
+            break;
+    }
+}
+
+//--------------------------------------------------------------//
 #pragma mark -- segue --
 //--------------------------------------------------------------//
 
@@ -284,6 +301,7 @@
         [webViewController setBookmark:_selectBookmark];
     } else if ([[segue identifier] isEqualToString:kToEditViewBySegue]) {
         EditModalViewController *editModalViewController = (EditModalViewController *)[segue destinationViewController];
+        editModalViewController.delegate = self;
         [editModalViewController setEditItem:_editItem];
     }
 }

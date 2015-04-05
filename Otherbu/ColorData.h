@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@interface ColorData : NSObject
+# import "DataInterface.h"
+
+@interface ColorData : NSObject<DataInterface>
 
 @property(nonatomic) NSInteger dataId;               // ID
 @property(nonatomic) NSString *name;                 // カラー名
@@ -23,5 +25,6 @@
 - (UIColor *)getBackGroundColor;
 - (UIColor *)getSectionHeaderFontColor;
 - (UIColor *)getFooterColorOfGradient;
+- (UIColor *)getThumbnailColor;
 
 @end

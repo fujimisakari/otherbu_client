@@ -196,6 +196,10 @@
 #pragma mark -- Data Intaface --
 //--------------------------------------------------------------//
 
+- (NSInteger)iGetMenuId {
+    return MENU_PAGE;
+}
+
 - (NSString *)iGetTitleName {
     return kMenuPageName;
 }
@@ -205,6 +209,7 @@
 }
 
 - (void)iSetName:(NSString *)name {
+    self.name = name;
 }
 
 - (NSInteger)iGetColorId {
@@ -212,6 +217,7 @@
 }
 
 - (void)iSetColorId:(NSInteger)colorId {
+    self.colorId = colorId;
 }
 
 @end

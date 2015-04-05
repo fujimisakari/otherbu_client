@@ -64,6 +64,7 @@ extern const float kLabelWidthOfToolbar;
 extern const float kArrowWidthOfToolbar;
 extern const int kFontSizeOfToolbar;
 
+extern const float kBorderWidthOfEditModal;
 extern const float kAdaptWidthOfEditModal;
 extern const float kAdaptHeightOfEditModal;
 extern const float kButtonWidthOfEditModal;
@@ -72,6 +73,13 @@ extern const float kAdaptButtonWidthOfEditModal;
 extern const float kAdaptButtonHeightOfEditModal;
 extern NSString * const kCancelButtonOfEditModal;
 extern NSString * const kUpdateButtonOfEditModal;
+
+extern const int kRowOfColorPalette;
+extern const int kColumnOfColorPalette;
+extern const float kViewHeightOfColorPalette;
+extern const float kCellSizeOfColorPalette;
+extern const float kCellMarginOfColorPalette;
+extern const float kBorderWidthOfColorPalette;
 
 extern NSString * const kMenuBookmarkName;
 extern NSString * const kMenuBookmarkMoveName;

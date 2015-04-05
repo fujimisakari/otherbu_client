@@ -103,6 +103,19 @@ static DataManager *intance = nil;
     return itemList;
 }
 
+- (NSMutableArray *)getColorList {
+    NSMutableArray *itemList = [NSMutableArray array];
+    for (NSNumber *key in self.colorDict) {
+        [itemList addObject:[self getColor:key]];
+    }
+
+    // for (NSNumber *key in self.pageDict) {
+    //     PageData *page = [self getPage:key];
+    //     itemList[page.sortId] = page;
+    // }
+    return itemList;
+}
+
 //--------------------------------------------------------------//
 #pragma mark -- Private Method --
 //--------------------------------------------------------------//
