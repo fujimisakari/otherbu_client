@@ -47,30 +47,61 @@
     self.layer.masksToBounds = YES;
 
     // 枠線
-    self.layer.borderWidth = 2.0f;
-    self.layer.borderColor = [[UIColor blueColor] CGColor];
+    self.layer.borderWidth = kBorderWidthOfEditModal;
+    self.layer.borderColor = [[UIColor colorWithHex:kBorderColorOfInEditModal] CGColor];
+
+    // ラベル、フィールド、カラーパレッド生成
+    [self _bulkCreate];
+
+    // ボタン生成
+    [self _createButton];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Create Methods --
+//--------------------------------------------------------------//
+
+- (void)_bulkCreate {
+    int space = 10;
+    int startY = 10;
+    int totalTitleHeight = startY + kCommonHeightOfEditModal + space;
+    int totalButtonHeight = space + kCommonHeightOfEditModal + space;
+    int availableHeight = self.frame.size.height - (totalTitleHeight + totalButtonHeight);
+    int restHeight = availableHeight - (kViewHeightOfColorPalette + kCommonHeightOfEditModal + kCommonHeightOfEditModal);
+    int margin = restHeight / 2;
 
     // TitleLabel生成
-    [self setTitleLabel];
+    CGRect titleRect = CGRectMake(0, startY + 10, self.frame.size.width, kCommonHeightOfEditModal);
+    [self setTitleLabel:titleRect];
 
-    // Name編集フィールド生成
-    CGRect textFieldRect = CGRectMake(20, 65, 150.0f, 30.0f);
-    [self setFieldLabel:textFieldRect label:@"Name :"];
-    [self setTextField];
+    // NameLabel生成
+    int textFieldLabelY = totalTitleHeight + margin / 3;
+    CGRect textFieldLabelRect = CGRectMake(kCommonAdaptWidthOfEditModal, textFieldLabelY, kLabelWidthOfEditModal, kCommonHeightOfEditModal);
+    [self setFieldLabel:textFieldLabelRect label:@"Name :"];
+
+    // TextField生成
+    int textFieldY = textFieldLabelY + kCommonHeightOfEditModal + space;
+    float fwidth = self.frame.size.width - (kAdaptButtonWidthOfEditModal * 2);
+    CGRect textFieldRect = CGRectMake(kAdaptWidthOfEditModal, textFieldY, fwidth, kCommonHeightOfEditModal);
+    [self setTextField:textFieldRect];
 
     // Color選択View生成
-    CGRect ColorRect = CGRectMake(20, 150, 150.0f, 30.0f);
-    [self setFieldLabel:ColorRect label:@"Set Color :"];
+    int colorLabelY = textFieldY + margin + space;
+    CGRect colorLabelRect = CGRectMake(kCommonAdaptWidthOfEditModal, colorLabelY, kLabelWidthOfEditModal, kCommonHeightOfEditModal);
+    [self setFieldLabel:colorLabelRect label:@"Set Color :"];
+}
+
+- (void)_createButton {
+    int y = self.frame.size.height - (kCommonHeightOfEditModal + kAdaptButtonHeightOfEditModal);
 
     // キャンセルボタン
-    int cancel_x = self.superview.center.x - (kButtonWidthOfEditModal + 20 + 20);
-    int y = self.frame.size.height - (kButtonHeightOfEditModal + kAdaptButtonHeightOfEditModal);
-    CGRect cancel_rect = CGRectMake(cancel_x, y, kButtonWidthOfEditModal, kButtonHeightOfEditModal);
+    int cancel_x = self.superview.center.x - (kButtonWidthOfEditModal + kCommonAdaptWidthOfEditModal + kAdaptWidthOfEditModal);
+    CGRect cancel_rect = CGRectMake(cancel_x, y, kButtonWidthOfEditModal, kCommonHeightOfEditModal);
     [self setButton:cancel_rect label:kCancelButtonOfEditModal action:@selector(_didPressCancelButton:)];
 
     // 更新ボタン
-    int update_x = self.superview.center.x + 20 - 20;
-    CGRect update_rect = CGRectMake(update_x, y, kButtonWidthOfEditModal, kButtonHeightOfEditModal);
+    int update_x = self.superview.center.x + kCommonAdaptWidthOfEditModal - kAdaptWidthOfEditModal;
+    CGRect update_rect = CGRectMake(update_x, y, kButtonWidthOfEditModal, kCommonHeightOfEditModal);
     [self setButton:update_rect label:kUpdateButtonOfEditModal action:@selector(_didPressUpdateButton:)];
 }
 
@@ -78,15 +109,12 @@
 #pragma mark -- Set Method --
 //--------------------------------------------------------------//
 
-- (void)setTitleLabel {
+- (void)setTitleLabel:(CGRect)rect {
     UILabel *titleLabel = [[UILabel alloc] init];
-    CGRect rect = CGRectMake(28, 20, 150.0f, 30.0f);
     titleLabel.frame = rect;
-    titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfSectionTitle];
-    titleLabel.shadowColor = [UIColor grayColor];
-    titleLabel.shadowOffset = CGSizeMake(1, 1);
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor lightGrayColor];
+    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kTitleFontSizeOfEditModal];
     titleLabel.text = [NSString stringWithFormat:@"%@ %@", [_editItem iGetTitleName], @"Edit"];
     [self addSubview:titleLabel];
 }
@@ -95,20 +123,17 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.frame = rect;
     titleLabel.textAlignment = NSTextAlignmentLeft;
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfSectionTitle];
-    titleLabel.shadowColor = [UIColor grayColor];
-    titleLabel.shadowOffset = CGSizeMake(1, 1);
+    titleLabel.textColor = [UIColor lightGrayColor];
+    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kLabelFontSizeOfEditModal];
     titleLabel.text = labelName;
     [self addSubview:titleLabel];
 }
 
-- (void)setTextField {
+- (void)setTextField:(CGRect)rect {
     UITextField *textField = [[UITextField alloc] init];
-    float fwidth = self.frame.size.width - (kAdaptButtonWidthOfEditModal * 2);
-    textField.frame = CGRectMake(20, 100, fwidth, 30);
+    textField.frame = rect;
     textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.backgroundColor = [UIColor grayColor];
+    textField.backgroundColor = [UIColor colorWithHex:kTextFieldColorOfEditModal];
     textField.textColor = [UIColor whiteColor];
     textField.text = [_editItem iGetName];
     [self addSubview:textField];
@@ -118,15 +143,11 @@
     UIButton *button = [[UIButton alloc] initWithFrame:rect];
     button.backgroundColor = [UIColor clearColor];
     [button setTitle:title forState:UIControlStateNormal];
-    // ボタンの色
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    // ボタン押下時
-    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
-    // 枠線
+    [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];      // ボタンの色
+    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];  // ボタン押下時
     [button.layer setCornerRadius:10.0];
     [button.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     [button.layer setBorderWidth:1.0];
-    // イベントセット
     [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
 }

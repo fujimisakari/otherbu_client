@@ -33,6 +33,9 @@ extern NSString * const kDefaultImageName;
 extern NSString * const kCellIdentifier;
 extern const int kNumberOfPages;
 
+extern NSString * const kTextFieldColorOfEditModal;
+extern NSString * const kBorderColorOfInEditModal;
+
 extern const float kMarginTopOfTableFrame;
 extern const float kMarginBottomOfTableFrame;
 extern const float kAdaptWidthOfTableCell;
@@ -68,9 +71,13 @@ extern const float kBorderWidthOfEditModal;
 extern const float kAdaptWidthOfEditModal;
 extern const float kAdaptHeightOfEditModal;
 extern const float kButtonWidthOfEditModal;
-extern const float kButtonHeightOfEditModal;
+extern const float kLabelWidthOfEditModal;
 extern const float kAdaptButtonWidthOfEditModal;
 extern const float kAdaptButtonHeightOfEditModal;
+extern const float kCommonAdaptWidthOfEditModal;
+extern const float kCommonHeightOfEditModal;
+extern const int kTitleFontSizeOfEditModal;
+extern const int kLabelFontSizeOfEditModal;
 extern NSString * const kCancelButtonOfEditModal;
 extern NSString * const kUpdateButtonOfEditModal;
 

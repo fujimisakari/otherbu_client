@@ -28,6 +28,13 @@ NSString * const kCellIdentifier = @"Cell";                  // セルの識別�
 const int kNumberOfPages = 3;                                // ページ数
 
 //--------------------------------------------------------------//
+#pragma mark -- Color Hex --
+//--------------------------------------------------------------//
+
+NSString * const kTextFieldColorOfEditModal = @"555555";    // EditModalのテキトフィールドの背景色
+NSString * const kBorderColorOfInEditModal = @"555555";     // EditModalのViewの枠線
+
+//--------------------------------------------------------------//
 #pragma mark -- Table Value Of Main View--
 //--------------------------------------------------------------//
 
@@ -82,9 +89,13 @@ const float kBorderWidthOfEditModal = 2.0f;                  // EditModalの画�
 const float kAdaptWidthOfEditModal = 20.0f;                  // EditModalの画面サイズ調整(width)
 const float kAdaptHeightOfEditModal = 100.0f;                // EditModalの画面サイズ調整(height)
 const float kButtonWidthOfEditModal = 100.0f;                // EditModalのボタンサイズ(width)
-const float kButtonHeightOfEditModal = 30.0f;                // EditModalのボタンサイズ(height)
+const float kLabelWidthOfEditModal = 150.0f;                 // EditModalのラベルサイズ(width)
 const float kAdaptButtonWidthOfEditModal = 20.0f;            // EditModalのボタン位置調整(width)
 const float kAdaptButtonHeightOfEditModal = 20.0f;           // EditModalのボタン位置調整(height)
+const float kCommonAdaptWidthOfEditModal = 20.0f;            // EditModalのボタンやラベルの位置調整(width)
+const float kCommonHeightOfEditModal = 30.0f;                // EditModalのボタンやラベルのサイズ(height)
+const int kTitleFontSizeOfEditModal = 20;                    // EditModalのタイトルラベルのフォントサイズ
+const int kLabelFontSizeOfEditModal = 15;                    // EditModalの項目ラベルのフォントサイズ
 NSString * const kCancelButtonOfEditModal = @"Cancel";
 NSString * const kUpdateButtonOfEditModal = @"Update";
 
