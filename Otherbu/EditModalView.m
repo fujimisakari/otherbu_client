@@ -8,9 +8,7 @@
 
 #import "EditModalView.h"
 
-@interface EditModalView () {
-    UICollectionView *_collectionView;
-}
+@interface EditModalView ()
 
 @end
 
@@ -29,10 +27,6 @@
         self.frame = _rect;
     }
     return self;
-}
-
-- (UICollectionView *)getCollectionView {
-    return _collectionView;
 }
 
 - (void)setup {
@@ -137,13 +131,13 @@
 }
 
 - (void)_setTextField:(CGRect)rect {
-    UITextField *textField = [[UITextField alloc] init];
-    textField.frame = rect;
-    textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.backgroundColor = [UIColor colorWithHex:kTextFieldColorOfEditModal];
-    textField.textColor = [UIColor whiteColor];
-    textField.text = [_editItem iGetName];
-    [self addSubview:textField];
+    _textField = [[UITextField alloc] init];
+    _textField.frame = rect;
+    _textField.borderStyle = UITextBorderStyleRoundedRect;
+    _textField.backgroundColor = [UIColor colorWithHex:kTextFieldColorOfEditModal];
+    _textField.textColor = [UIColor whiteColor];
+    _textField.text = [_editItem iGetName];
+    [self addSubview:_textField];
 }
 
 - (void)_setButton:(CGRect)rect label:(NSString *)title action:(SEL)action {

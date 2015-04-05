@@ -15,7 +15,8 @@
 
 @end
 
-@interface EditModalViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate,  UICollectionViewDelegateFlowLayout, EditModalDelegate>
+@interface EditModalViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate,
+                                                      UICollectionViewDelegateFlowLayout, UITextFieldDelegate, EditModalDelegate>
 
 @property(nonatomic, weak) id<EditModalViewDelegate> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;

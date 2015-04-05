@@ -19,9 +19,10 @@
 
 @property(nonatomic, weak) id<EditModalDelegate> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;
+@property(nonatomic) UICollectionView *collectionView;;
+@property(nonatomic) UITextField *textField;
 
 - (id)initWithFrame:(CGRect)rect;
 - (void)setup;
-- (UICollectionView *)getCollectionView;
 
 @end
