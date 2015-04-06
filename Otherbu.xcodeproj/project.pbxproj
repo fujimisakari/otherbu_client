@@ -42,6 +42,7 @@
 		7B91E6491AC331A9003A36F1 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E6481AC331A9003A36F1 /* PageViewController.m */; };
 		7B91E64C1AC331BB003A36F1 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E64B1AC331BB003A36F1 /* CategoryViewController.m */; };
 		7B91E64F1AC3321E003A36F1 /* DesiginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E64E1AC3321E003A36F1 /* DesiginViewController.m */; };
+		7BCED0CE1AD2D18F0012FACE /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCED0CD1AD2D18F0012FACE /* SettingTableViewCell.m */; };
 		7BF6979D1AAF4ADA008C1BAE /* MainScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979C1AAF4ADA008C1BAE /* MainScrollView.m */; };
 		7BF697A01AAF657E008C1BAE /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6979F1AAF657E008C1BAE /* Constants.m */; };
 		7BF697A31AB08B3C008C1BAE /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF697A21AB08B3C008C1BAE /* NavigationBar.m */; };
@@ -130,6 +131,8 @@
 		7B91E64B1AC331BB003A36F1 /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
 		7B91E64D1AC3321E003A36F1 /* DesiginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesiginViewController.h; sourceTree = "<group>"; };
 		7B91E64E1AC3321E003A36F1 /* DesiginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesiginViewController.m; sourceTree = "<group>"; };
+		7BCED0CC1AD2D18F0012FACE /* SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
+		7BCED0CD1AD2D18F0012FACE /* SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
 		7BF6979B1AAF4ADA008C1BAE /* MainScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScrollView.h; sourceTree = "<group>"; };
 		7BF6979C1AAF4ADA008C1BAE /* MainScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScrollView.m; sourceTree = "<group>"; };
 		7BF6979E1AAF657E008C1BAE /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				7B91E6331AC32F40003A36F1 /* SettingTableViewController.h */,
 				7B502A7F1AC8789F00A431FB /* SettingNavigationViewController.h */,
 				7B502A801AC8789F00A431FB /* SettingNavigationViewController.m */,
+				7BCED0CC1AD2D18F0012FACE /* SettingTableViewCell.h */,
+				7BCED0CD1AD2D18F0012FACE /* SettingTableViewCell.m */,
 				7B91E6371AC32F7E003A36F1 /* Controller */,
 			);
 			name = SettingScene;
@@ -546,6 +551,7 @@
 				7B91E63A1AC3307D003A36F1 /* SettingBookmarkTableViewController.m in Sources */,
 				7B565EF91A92486F00D6A420 /* AppDelegate.m in Sources */,
 				7B565EF61A92486F00D6A420 /* main.m in Sources */,
+				7BCED0CE1AD2D18F0012FACE /* SettingTableViewCell.m in Sources */,
 				7BF6979D1AAF4ADA008C1BAE /* MainScrollView.m in Sources */,
 				7B502A811AC8789F00A431FB /* SettingNavigationViewController.m in Sources */,
 				7B502A941ACDA13E00A431FB /* EditModalView.m in Sources */,
