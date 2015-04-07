@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		590F230F1AA81F4900589E7C /* wood-wallpeper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 590F230E1AA81F4900589E7C /* wood-wallpeper.jpg */; };
 		7B11FCFE1AA7044F0093E63A /* InnerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B11FCFD1AA7044F0093E63A /* InnerTableView.m */; };
+		7B37DEB21AD2FBED000FE913 /* SettingBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B37DEB11AD2FBED000FE913 /* SettingBaseTableViewController.m */; };
 		7B39F52E1A9CEE860036CB69 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */; };
 		7B39F5341AA31DA20036CB69 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5331AA31DA20036CB69 /* UIColor+Hex.m */; };
 		7B39F5381AA321740036CB69 /* ColorData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B39F5371AA321740036CB69 /* ColorData.m */; };
@@ -65,6 +66,8 @@
 		590F230E1AA81F4900589E7C /* wood-wallpeper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wood-wallpeper.jpg"; sourceTree = "<group>"; };
 		7B11FCFC1AA7044F0093E63A /* InnerTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerTableView.h; sourceTree = "<group>"; };
 		7B11FCFD1AA7044F0093E63A /* InnerTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerTableView.m; sourceTree = "<group>"; };
+		7B37DEB01AD2FBED000FE913 /* SettingBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBaseTableViewController.h; sourceTree = "<group>"; };
+		7B37DEB11AD2FBED000FE913 /* SettingBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBaseTableViewController.m; sourceTree = "<group>"; };
 		7B39F52C1A9CEE860036CB69 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionHeaderView.h; sourceTree = "<group>"; };
 		7B39F52D1A9CEE860036CB69 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionHeaderView.m; sourceTree = "<group>"; };
 		7B39F5321AA31DA20036CB69 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
@@ -340,6 +343,8 @@
 		7B91E6361AC32F5A003A36F1 /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
+				7B37DEB01AD2FBED000FE913 /* SettingBaseTableViewController.h */,
+				7B37DEB11AD2FBED000FE913 /* SettingBaseTableViewController.m */,
 				7B91E6341AC32F40003A36F1 /* SettingTableViewController.m */,
 				7B91E6331AC32F40003A36F1 /* SettingTableViewController.h */,
 				7B502A7F1AC8789F00A431FB /* SettingNavigationViewController.h */,
@@ -557,6 +562,7 @@
 				7B502A941ACDA13E00A431FB /* EditModalView.m in Sources */,
 				7B91E6351AC32F40003A36F1 /* SettingTableViewController.m in Sources */,
 				7B39F53B1AA39BCA0036CB69 /* MainTableCellView.m in Sources */,
+				7B37DEB21AD2FBED000FE913 /* SettingBaseTableViewController.m in Sources */,
 				7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */,
 				7B39F5381AA321740036CB69 /* ColorData.m in Sources */,
 				7BF697A31AB08B3C008C1BAE /* NavigationBar.m in Sources */,

@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     _categoryList = [[DataManager sharedManager] getCategoryList];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -48,20 +47,15 @@
 #pragma mark -- UITableViewDataSource --
 //--------------------------------------------------------------//
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _categoryList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 
     CategoryData *category = (CategoryData *)_categoryList[indexPath.row];
     cell.textLabel.text = category.name;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:kCategoryIcon];
     return cell;
 }

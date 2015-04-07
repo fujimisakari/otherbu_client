@@ -44,20 +44,22 @@
 
     [self refreshBookmarks:self];
 
-    // setup init value
+    // 初期値設定
     float marginOfHeight = _navigationBar.frame.size.height + _tabScrollView.frame.size.height + _tabFrameView.frame.size.height;
     _viewWidth = self.view.frame.size.width;
     _viewHeight = self.view.frame.size.height - marginOfHeight;
 
-    // setup BackgroundImage
-    [self _setupBackgroundImage];
+    // 背景画像設定
+    CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
+                             self.view.frame.size.width, self.view.frame.size.height);
+    [Helper setupBackgroundImage:rect TargetView:self.view];
 
-    // setup NavigationBar
+    // NavigationBar設定
     [_navigationBar setup];
     _navigationBar.topItem.leftBarButtonItem.target = self;
     _navigationBar.topItem.leftBarButtonItem.action = @selector(_openSettingView:);
 
-    // setup ScrollView
+    // ScrollView設定
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
     [_scrollView setupWithCGSize:cgSize delegate:self];
 }
@@ -71,20 +73,6 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self _removePageTabViews];
-}
-
-- (void)_setupBackgroundImage {
-    // UIViewContollerに背景画像を設定する
-    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, NO, 0.0);
-    [[UIImage imageNamed:kDefaultImageName] drawInRect:self.view.bounds];
-    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    CALayer *layer = [CALayer layer];
-    layer.contents = (id)backgroundImage.CGImage;
-    layer.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
-                             self.view.frame.size.width, self.view.frame.size.height);
-    layer.zPosition = -1.0;
-    [self.view.layer addSublayer:layer];
 }
 
 - (void)didReceiveMemoryWarning {

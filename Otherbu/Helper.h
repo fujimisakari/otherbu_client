@@ -9,5 +9,6 @@
 @interface Helper : NSObject
 
 + (int) getSameCountByDict:(NSDictionary *)dict TargetValue:(NSNumber *)value;
++ (void)setupBackgroundImage:(CGRect)rect TargetView:(UIView *)view;
 
 @end

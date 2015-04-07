@@ -21,8 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,10 +35,6 @@
 #pragma mark -- UITableViewDataSource --
 //--------------------------------------------------------------//
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _bookmarkList.count;
 }
@@ -50,7 +44,6 @@
 
     BookmarkData *bookmark = (BookmarkData *)_bookmarkList[indexPath.row];
     cell.textLabel.text = bookmark.name;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:kBookmarkIcon];
     return cell;
 }

@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SettingBaseTableViewController.h"
 
-@interface SettingBookmarkTableViewController : UITableViewController
+@interface SettingBookmarkTableViewController : SettingBaseTableViewController
 
 - (void)setCategory:(CategoryData *)category;
 - (void)setBookmarkList:(NSArray *)bookmarkList;

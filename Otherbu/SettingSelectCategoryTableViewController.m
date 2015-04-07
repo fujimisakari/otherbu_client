@@ -10,7 +10,6 @@
 #import "CategoryData.h"
 #import "SettingBookmarkTableViewController.h"
 
-
 @interface SettingSelectCategoryTableViewController ()  {
     CategoryData *_category;
     NSArray *_categoryList;
@@ -24,7 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     _categoryList = [[DataManager sharedManager] getCategoryList];
 }
 
@@ -36,10 +34,6 @@
 #pragma mark -- UITableViewDataSource --
 //--------------------------------------------------------------//
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _categoryList.count;
 }
@@ -49,7 +43,6 @@
 
     CategoryData *category = (CategoryData *)_categoryList[indexPath.row];
     cell.textLabel.text = category.name;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:kCategoryIcon];
     return cell;
 }
@@ -71,6 +64,5 @@
         [bookmarkTableViewController setBookmarkList:_bookmarkList];
     }
 }
-
 
 @end

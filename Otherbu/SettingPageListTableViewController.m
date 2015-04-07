@@ -23,14 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     _pageList = [[DataManager sharedManager] getPageList];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [super viewDidAppear:animated];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,20 +39,15 @@
 #pragma mark -- UITableViewDataSource --
 //--------------------------------------------------------------//
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _pageList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 
     PageData *page = (PageData *)_pageList[indexPath.row];
     cell.textLabel.text = page.name;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:kPageIcon];
     return cell;
 }

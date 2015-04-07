@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SettingBaseTableViewController.h"
 
-@interface SettingSelectCategoryTableViewController : UITableViewController
+@interface SettingSelectCategoryTableViewController : SettingBaseTableViewController
 
 @end

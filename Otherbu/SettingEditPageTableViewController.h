@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SettingBaseTableViewController.h"
 
-@interface SettingEditPageTableViewController : UITableViewController
+@interface SettingEditPageTableViewController : SettingBaseTableViewController
 
 - (void)setPage:(PageData *)page;
 
