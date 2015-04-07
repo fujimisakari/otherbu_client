@@ -25,7 +25,8 @@
     self.tableView.separatorColor = [UIColor clearColor];
 
     // 背景画像を設定
-    CGRect rect = CGRectMake(self.tableView.frame.origin.x,   self.tableView.frame.origin.y + 64,
+    float height = self.navigationController.navigationBar.frame.size.height + 20;  // 20はステータスバーの高さ
+    CGRect rect = CGRectMake(self.tableView.frame.origin.x,   self.tableView.frame.origin.y + height,
                              self.tableView.frame.size.width, self.tableView.frame.size.height);
     UIView *bgView = [[UIView alloc] initWithFrame:self.tableView.frame];
     [Helper setupBackgroundImage:rect TargetView:bgView];
@@ -51,22 +52,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.0;
+    return kCellHeightOfSetting;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     // 半透明で間隔が空いたセルを生成
-    cell.backgroundColor = [UIColor clearColor];
-    cell.contentView.backgroundColor = [UIColor clearColor];
-
-    UIView *whiteRoundedCornerView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, 40)];
-    whiteRoundedCornerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.6];
-    whiteRoundedCornerView.layer.masksToBounds = NO;
-    whiteRoundedCornerView.layer.cornerRadius = 3.0;
-    whiteRoundedCornerView.layer.shadowOffset = CGSizeMake(-1, 1);
-    whiteRoundedCornerView.layer.shadowOpacity = 0.5;
-    [cell.contentView addSubview:whiteRoundedCornerView];
-    [cell.contentView sendSubviewToBack:whiteRoundedCornerView];
+    SettingTableViewCell *settingCell = (SettingTableViewCell *)cell;
+    float width = self.view.frame.size.width - (kCellMarginOfSetting * 2);
+    float height = kCellHeightOfSetting - kCellMarginOfSetting;
+    CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
+    [settingCell setupBackground:rect];
 }
 
 @end

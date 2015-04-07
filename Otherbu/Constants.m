@@ -110,6 +110,15 @@ const float kCellSizeOfColorPalette = 35.0f;                 // カラーパレ�
 const float kCellMarginOfColorPalette = 5.0f;                // カラーパレットのセル同士の余白
 const float kBorderWidthOfColorPalette = 2.0f;               // カラーパレットのセル枠線
 
+
+//--------------------------------------------------------------//
+#pragma mark -- Value Of Setting View --
+//--------------------------------------------------------------//
+
+const int kCellMarginOfSetting = 10;                         // Setting画面のCellの余白
+const int kCellItemMarginOfSetting = 5;                      // Setting画面のCell内のItemの余白
+const float kCellHeightOfSetting = 50.0f;                    // Setting画面のCellの高さ
+
 //--------------------------------------------------------------//
 #pragma mark -- Menu Of Setting View --
 //--------------------------------------------------------------//

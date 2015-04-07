@@ -8,4 +8,6 @@
 
 @interface SettingTableViewCell : UITableViewCell
 
+- (void)setupBackground:(CGRect)rect;
+
 @end

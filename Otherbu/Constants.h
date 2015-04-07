@@ -88,6 +88,10 @@ extern const float kCellSizeOfColorPalette;
 extern const float kCellMarginOfColorPalette;
 extern const float kBorderWidthOfColorPalette;
 
+extern const int kCellMarginOfSetting;
+extern const int kCellItemMarginOfSetting;
+extern const float kCellHeightOfSetting;
+
 extern NSString * const kMenuBookmarkName;
 extern NSString * const kMenuBookmarkMoveName;
 extern NSString * const kMenuCategoryName;

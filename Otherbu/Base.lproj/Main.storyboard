@@ -163,7 +163,7 @@
                             <outlet property="delegate" destination="2NY-Ks-tfR" id="RRt-oR-b9X"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="設定" id="h5T-Wf-ERz"/>
+                    <navigationItem key="navigationItem" title="Setting" id="h5T-Wf-ERz"/>
                     <connections>
                         <segue destination="ccQ-w8-6Bf" kind="show" id="xb8-Eu-ZMK"/>
                         <segue destination="zQW-1D-R4a" kind="show" identifier="toCateogoryList" id="V2x-KC-U3e"/>
@@ -254,7 +254,7 @@
                             <outlet property="delegate" destination="zQW-1D-R4a" id="UlQ-au-CgR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="カテゴリ設定" id="yj8-tK-0Mf"/>
+                    <navigationItem key="navigationItem" title="Category設定" id="yj8-tK-0Mf"/>
                     <connections>
                         <segue destination="dWs-Mc-snv" kind="show" identifier="toCateogryViewController" id="mpJ-7n-b65"/>
                     </connections>
@@ -284,7 +284,7 @@
                             <outlet property="delegate" destination="l6w-hk-YAu" id="pRl-Og-yFe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ページ設定" id="1tR-ok-0n7" userLabel="ページ設定"/>
+                    <navigationItem key="navigationItem" title="Page設定" id="1tR-ok-0n7" userLabel="ページ設定"/>
                     <connections>
                         <segue destination="7fI-Kp-mvY" kind="show" identifier="toEditPage" id="9JW-74-aJv"/>
                     </connections>
@@ -306,7 +306,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="デザイン設定" id="jo3-cz-fvE"/>
+                    <navigationItem key="navigationItem" title="Design設定" id="jo3-cz-fvE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ea-Hq-hoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -379,7 +379,7 @@
                             <outlet property="delegate" destination="58s-BK-Ro2" id="BBX-hx-NZC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="ブックマーク設定" id="X4M-wC-vhQ" userLabel="ブックマーク設定"/>
+                    <navigationItem key="navigationItem" title="Category選択" id="X4M-wC-vhQ" userLabel="ブックマーク設定"/>
                     <connections>
                         <segue destination="EI3-DB-s9H" kind="show" identifier="toBookmarkList" id="A4B-01-i9u"/>
                     </connections>
