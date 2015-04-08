@@ -25,6 +25,16 @@
     [self _closeButtontoLeft];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    // [self _removePageTabViews];
+}
+
+
 //--------------------------------------------------------------//
 #pragma mark -- UITableViewDataSource --
 //--------------------------------------------------------------//
