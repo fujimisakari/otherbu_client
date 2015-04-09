@@ -54,7 +54,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryView = nil;
     CategoryData *category = (CategoryData *)_categoryList[indexPath.row];
     NSUInteger isExistCategory = [_categoryListOfPage indexOfObject:category];
     if (isExistCategory == NSNotFound) {

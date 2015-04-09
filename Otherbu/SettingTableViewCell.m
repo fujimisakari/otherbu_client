@@ -40,6 +40,19 @@
     }
 }
 
+- (void)setup {
+    // Cellの矢印アクセサリーへはカスタム画像を設定する
+    UIImageView *righttArrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kRighttArrowIcon]];
+    self.accessoryView = righttArrowImageView;
+
+    // Cellが用意しているUIViewは使用せず、willDisplayCellでCustomUIVeiwを挿入する
+    for (UIView *view in self.contentView.subviews) {
+        if ([[[view class] description] isEqualToString:@"UIView"]) {
+            [view removeFromSuperview];
+        }
+    }
+}
+
 - (void)setupBackground:(CGRect)rect {
     // セルの背景設定(半透明で間隔が空いたセル成)
 
