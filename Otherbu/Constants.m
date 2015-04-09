@@ -139,6 +139,8 @@ NSString * const kBookmarkMoveIcon = @"bookmarkMoveIcon.png";
 NSString * const kCategoryIcon = @"categoryIcon.png";
 NSString * const kPageIcon = @"pageIcon.png";
 NSString * const kDesignIcon = @"designIcon.png";
+NSString * const kRighttArrowIcon = @"righttArrowIcon.png";
+NSString * const kCheckMarkIcon = @"checkMarkIcon.png";
 
 //--------------------------------------------------------------//
 #pragma mark -- segue --

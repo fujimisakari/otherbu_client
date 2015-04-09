@@ -19,6 +19,25 @@
 
     self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y + kCellItemMarginOfSetting,
                                       self.imageView.frame.size.width, self.imageView.frame.size.height);
+
+    self.accessoryView.frame = CGRectMake(self.accessoryView.frame.origin.x, self.accessoryView.frame.origin.y + kCellItemMarginOfSetting,
+                                          self.accessoryView.frame.size.width, self.accessoryView.frame.size.height);
+}
+
+- (void)setAccessoryType:(UITableViewCellAccessoryType)newAccessoryType {
+    // チェックマークはカスタム画像を利用する
+    [super setAccessoryType:newAccessoryType];
+
+    switch (newAccessoryType) {
+        case UITableViewCellAccessoryCheckmark:
+            self.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kCheckMarkIcon]];
+            break;
+        case UITableViewCellAccessoryNone:
+            self.accessoryView = nil;
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)setupBackground:(CGRect)rect {
@@ -54,5 +73,6 @@
     // whiteRoundedCornerView.layer.shadowOpacity = 0.5;
     return whiteRoundedCornerView;
 }
+
 
 @end

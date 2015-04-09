@@ -104,6 +104,8 @@ extern NSString * const kBookmarkMoveIcon;
 extern NSString * const kCategoryIcon;
 extern NSString * const kPageIcon;
 extern NSString * const kDesignIcon;
+extern NSString * const kRighttArrowIcon;
+extern NSString * const kCheckMarkIcon;
 
 extern NSString * const kToWebViewBySegue;
 extern NSString * const kToEditViewBySegue;

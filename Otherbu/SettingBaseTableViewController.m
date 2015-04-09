@@ -47,9 +47,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
-    // キャッシュCellが用意しているUIView削除して、willDisplayCellでUIVeiwを挿入する
+    // Cellの矢印アクセサリーへはカスタム画像を設定する
+    UIImageView *righttArrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kRighttArrowIcon]];
+    cell.accessoryView = righttArrowImageView;
+
+    // Cellが用意しているUIViewは使用せず、willDisplayCellでCustomUIVeiwを挿入する
     for (UIView *view in cell.contentView.subviews) {
         if ([[[view class] description] isEqualToString:@"UIView"]) {
             [view removeFromSuperview];
