@@ -21,14 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = _category.name;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    self.navigationController.navigationBar.topItem.title = _category.name;
 }
 
 //--------------------------------------------------------------//

@@ -12,7 +12,7 @@
 
 @interface EditModalViewController () {
     EditModalView *_editModalView;
-    NSMutableArray *_colorList;
+    NSArray *_colorList;
     NSInteger _colorId;
     UICollectionViewCell *_colorSelectCell;
 }

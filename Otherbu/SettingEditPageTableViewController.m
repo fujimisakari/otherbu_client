@@ -25,10 +25,10 @@
 
     _categoryList = [[DataManager sharedManager] getCategoryList];
     _categoryListOfPage = [_page getCategoryList];
+    self.navigationItem.title = _page.name;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.navigationController.navigationBar.topItem.title = _page.name;
     // UIBarButtonItem *barButtonItem1 = [[UIBarButtonItem alloc]
     //                                    initWithBarButtonSystemItem:UIBarButtonSystemItemSave
     //                                    target:self action:@selector(_openSettingView:)];

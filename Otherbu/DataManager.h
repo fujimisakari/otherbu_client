@@ -25,6 +25,6 @@
 - (DesignData *)getDesign;
 - (NSMutableArray *)getCategoryList;
 - (NSMutableArray *)getPageList;
-- (NSMutableArray *)getColorList;
+- (NSArray *)getColorList;
 
 @end
