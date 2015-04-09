@@ -26,6 +26,30 @@
 
     self.accessoryView.frame = CGRectMake(self.accessoryView.frame.origin.x, self.accessoryView.frame.origin.y + kCellItemMarginOfSetting,
                                           self.accessoryView.frame.size.width, self.accessoryView.frame.size.height);
+
+    // Cell削除ボタンを差し替える
+    CGRect (^subviewFomatter)(UIView *) = ^CGRect(UIView * subview) {
+        int addMargin = 5;  // 位置調整
+        return CGRectMake(subview.frame.origin.x, subview.frame.origin.y + kCellItemMarginOfSetting + addMargin, subview.frame.size.width,
+                          subview.frame.size.height - kCellItemMarginOfSetting - addMargin);
+    };
+    for (UIView *subview in self.subviews) {
+        // for ios8
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellDeleteConfirmationView"]) {
+            subview.frame = subviewFomatter(subview);
+            [self bringSubviewToFront:subview];
+            return;
+        }
+
+        // for ios7
+        for (UIView *_subview in subview.subviews) {
+            if ([NSStringFromClass([_subview class]) isEqualToString:@"UITableViewCellDeleteConfirmationView"]) {
+                _subview.frame = subviewFomatter(_subview);
+                [subview bringSubviewToFront:_subview];
+                return;
+            }
+        }
+    }
 }
 
 - (void)setAccessoryType:(UITableViewCellAccessoryType)newAccessoryType {
