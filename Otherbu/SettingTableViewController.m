@@ -55,9 +55,6 @@
         case MENU_BOOKMARK:
             [self performSegueWithIdentifier:kToCategoryOfBookmarkBySegue sender:self];
             break;
-        case MENU_BOOKMARKMOVE:
-            [self performSegueWithIdentifier:@"" sender:self];
-            break;
         case MENU_CATEGORY:
             [self performSegueWithIdentifier:kToCategoryListBySegue sender:self];
             break;
@@ -102,10 +99,6 @@
             case MENU_BOOKMARK:
                 menuName = kMenuBookmarkName;
                 iconImage = [UIImage imageNamed:kBookmarkIcon];
-                break;
-            case MENU_BOOKMARKMOVE:
-                menuName = kMenuBookmarkMoveName;
-                iconImage = [UIImage imageNamed:kBookmarkMoveIcon];
                 break;
             case MENU_CATEGORY:
                 menuName = kMenuCategoryName;

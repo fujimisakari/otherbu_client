@@ -17,7 +17,6 @@ typedef NS_ENUM(NSUInteger, AngleType) {
 
 typedef NS_ENUM(NSUInteger, MenuList) {
     MENU_BOOKMARK = 0,
-    MENU_BOOKMARKMOVE,
     MENU_CATEGORY,
     MENU_PAGE,
     MENU_DESIGN,

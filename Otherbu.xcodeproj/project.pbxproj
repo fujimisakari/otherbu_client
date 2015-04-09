@@ -38,7 +38,6 @@
 		7B91E63A1AC3307D003A36F1 /* SettingBookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E6391AC3307D003A36F1 /* SettingBookmarkTableViewController.m */; };
 		7B91E63D1AC33090003A36F1 /* SettingPageListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E63C1AC33090003A36F1 /* SettingPageListTableViewController.m */; };
 		7B91E6401AC330AC003A36F1 /* SettingCategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E63F1AC330AC003A36F1 /* SettingCategoryListTableViewController.m */; };
-		7B91E6431AC330E4003A36F1 /* BookmarkMoveTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E6421AC330E4003A36F1 /* BookmarkMoveTableViewController.m */; };
 		7B91E6461AC33175003A36F1 /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E6451AC33175003A36F1 /* BookmarkViewController.m */; };
 		7B91E6491AC331A9003A36F1 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E6481AC331A9003A36F1 /* PageViewController.m */; };
 		7B91E64C1AC331BB003A36F1 /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B91E64B1AC331BB003A36F1 /* CategoryViewController.m */; };
@@ -124,8 +123,6 @@
 		7B91E63C1AC33090003A36F1 /* SettingPageListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPageListTableViewController.m; sourceTree = "<group>"; };
 		7B91E63E1AC330AC003A36F1 /* SettingCategoryListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCategoryListTableViewController.h; sourceTree = "<group>"; };
 		7B91E63F1AC330AC003A36F1 /* SettingCategoryListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingCategoryListTableViewController.m; sourceTree = "<group>"; };
-		7B91E6411AC330E4003A36F1 /* BookmarkMoveTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkMoveTableViewController.h; sourceTree = "<group>"; };
-		7B91E6421AC330E4003A36F1 /* BookmarkMoveTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkMoveTableViewController.m; sourceTree = "<group>"; };
 		7B91E6441AC33175003A36F1 /* BookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkViewController.h; sourceTree = "<group>"; };
 		7B91E6451AC33175003A36F1 /* BookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkViewController.m; sourceTree = "<group>"; };
 		7B91E6471AC331A9003A36F1 /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
@@ -365,8 +362,6 @@
 				7B91E63C1AC33090003A36F1 /* SettingPageListTableViewController.m */,
 				7B91E63E1AC330AC003A36F1 /* SettingCategoryListTableViewController.h */,
 				7B91E63F1AC330AC003A36F1 /* SettingCategoryListTableViewController.m */,
-				7B91E6411AC330E4003A36F1 /* BookmarkMoveTableViewController.h */,
-				7B91E6421AC330E4003A36F1 /* BookmarkMoveTableViewController.m */,
 				7B91E6441AC33175003A36F1 /* BookmarkViewController.h */,
 				7B91E6451AC33175003A36F1 /* BookmarkViewController.m */,
 				7B91E6471AC331A9003A36F1 /* PageViewController.h */,
@@ -566,7 +561,6 @@
 				7B565F691A96565500D6A420 /* OtherbuAPIClient.m in Sources */,
 				7B39F5381AA321740036CB69 /* ColorData.m in Sources */,
 				7BF697A31AB08B3C008C1BAE /* NavigationBar.m in Sources */,
-				7B91E6431AC330E4003A36F1 /* BookmarkMoveTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

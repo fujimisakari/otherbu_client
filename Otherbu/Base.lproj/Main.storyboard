@@ -165,7 +165,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Setting" id="h5T-Wf-ERz"/>
                     <connections>
-                        <segue destination="ccQ-w8-6Bf" kind="show" id="xb8-Eu-ZMK"/>
                         <segue destination="zQW-1D-R4a" kind="show" identifier="toCateogoryList" id="V2x-KC-U3e"/>
                         <segue destination="l6w-hk-YAu" kind="show" identifier="toPageList" id="zSe-DA-74T"/>
                         <segue destination="6ti-4v-vbh" kind="show" id="XMa-oY-sFc"/>
@@ -204,34 +203,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJw-3g-FJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3499" y="981"/>
-        </scene>
-        <!--Bookmark Move Table View Controller-->
-        <scene sceneID="ewo-Ba-JsA">
-            <objects>
-                <tableViewController id="ccQ-w8-6Bf" userLabel="Bookmark Move Table View Controller" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cKT-ws-klp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kui-Sh-usq">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kui-Sh-usq" id="Efb-mW-yO1">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ccQ-w8-6Bf" id="Yda-Ug-OID"/>
-                            <outlet property="delegate" destination="ccQ-w8-6Bf" id="CPB-uU-UxL"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="ブックマーク移動" id="Hlu-x7-mWg"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u0Q-SV-sLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2761" y="1951"/>
+            <point key="canvasLocation" x="3545" y="1837"/>
         </scene>
         <!--Category Table View Controller-->
         <scene sceneID="HFf-c2-N3H">
@@ -386,7 +358,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcA-lZ-j0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2746" y="981"/>
+            <point key="canvasLocation" x="2777" y="1837"/>
         </scene>
         <!--Bookmark View Controller-->
         <scene sceneID="v2Y-FS-DO4">
@@ -405,7 +377,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cc9-Wj-pmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4450" y="981"/>
+            <point key="canvasLocation" x="4308" y="1837"/>
         </scene>
         <!--Setting Navigation View Controller-->
         <scene sceneID="HG3-H4-rlP">
