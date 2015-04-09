@@ -61,7 +61,7 @@
     float width = self.view.frame.size.width - (kCellMarginOfSetting * 2);
     float height = kCellHeightOfSetting - kCellMarginOfSetting;
     CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
-    [settingCell setupBackground:rect];
+    [settingCell setBackground:rect];
 }
 
 @end

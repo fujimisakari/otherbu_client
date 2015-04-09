@@ -10,6 +10,10 @@
 
 @implementation SettingTableViewCell
 
+//--------------------------------------------------------------//
+#pragma mark -- OverRide UITableViewCell --
+//--------------------------------------------------------------//
+
 - (void)layoutSubviews {
     // セル内のアイコンやラベルのレイアウト設定
     [super layoutSubviews];
@@ -40,6 +44,19 @@
     }
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    // ナビゲーションバーから画面遷移で戻るときはアニメーションを行わない
+    if (selected) {
+        [super setSelected:selected animated:animated];
+    } else {
+        [super setSelected:selected animated:NO];
+    }
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Set Methods --
+//--------------------------------------------------------------//
+
 - (void)setup {
     // Cellの矢印アクセサリーへはカスタム画像を設定する
     UIImageView *righttArrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kRighttArrowIcon]];
@@ -53,7 +70,7 @@
     }
 }
 
-- (void)setupBackground:(CGRect)rect {
+- (void)setBackground:(CGRect)rect {
     // セルの背景設定(半透明で間隔が空いたセル成)
 
     // 既存Cellの背景は使用せず透明にする

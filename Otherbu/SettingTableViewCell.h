@@ -9,6 +9,6 @@
 @interface SettingTableViewCell : UITableViewCell
 
 - (void)setup;
-- (void)setupBackground:(CGRect)rect;
+- (void)setBackground:(CGRect)rect;
 
 @end
