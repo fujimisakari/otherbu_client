@@ -11,6 +11,8 @@
 
 @interface SettingCategoryListTableViewController () {
     NSMutableArray *_categoryList;
+    NSIndexPath *_deleteIndexPath;
+    UIAlertView *_confirmAlert;
 }
 
 @end
@@ -24,8 +26,22 @@
     _categoryList = [[DataManager sharedManager] getCategoryList];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self _createConfirmAlertView];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)_createConfirmAlertView {
+    _confirmAlert = [[UIAlertView alloc] init];
+    _confirmAlert.delegate = self;
+    _confirmAlert.title = @"カテゴリの削除";
+    [_confirmAlert addButtonWithTitle:@"Cancel"];
+    [_confirmAlert addButtonWithTitle:@"OK"];
+    _confirmAlert.cancelButtonIndex = 0;
 }
 
 //--------------------------------------------------------------//
@@ -51,18 +67,25 @@
 
     // 削除時
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_categoryList removeObjectAtIndex:indexPath.row];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        _deleteIndexPath = indexPath;
+        CategoryData *category = _categoryList[indexPath.row];
+        _confirmAlert.message = [NSString stringWithFormat:@"%@に設定されているブックマークも削除されますがよろしいですか？", category.name];
+        [_confirmAlert show];
+    }
+}
 
-        NSMutableDictionary *newCategoryDict = [[NSMutableDictionary alloc] init];
-        for (int i = 0; i < _categoryList.count; i++) {
-            CategoryData *category = _categoryList[i];
-            [newCategoryDict setObject:category forKey:[[NSNumber alloc] initWithInt:(int)category.dataId]];
-        }
-        [DataManager sharedManager].categoryDict = newCategoryDict;
+//--------------------------------------------------------------//
+#pragma mark -- UIAlertViewDelegate --
+//--------------------------------------------------------------//
 
-        // todo
-        // datamanageに削除済みを登録する
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        // MasterDataからカテゴリ、関連ブックマークを削除
+        _categoryList = [[DataManager sharedManager] deleteCategoryData:_categoryList DeleteIndex:_deleteIndexPath.row];
+
+        // cellから削除
+        [self.tableView deleteRowsAtIndexPaths:@[_deleteIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 

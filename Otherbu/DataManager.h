@@ -18,6 +18,7 @@
 + (DataManager *)sharedManager;
 
 - (void)reloadDataWithBlock:(void (^)(NSError *error))block;
+
 - (PageData *)getPage:(NSNumber *)dataId;
 - (CategoryData *)getCategory:(NSNumber *)dataId;
 - (BookmarkData *)getBookmark:(NSNumber *)dataId;
@@ -26,5 +27,8 @@
 - (NSMutableArray *)getCategoryList;
 - (NSMutableArray *)getPageList;
 - (NSArray *)getColorList;
+
+- (NSMutableArray *)deleteCategoryData:(NSMutableArray *)categoryList DeleteIndex:(NSInteger)idx;
+- (NSMutableArray *)deletePageData:(NSMutableArray *)pageList DeleteIndex:(NSInteger)idx;
 
 @end

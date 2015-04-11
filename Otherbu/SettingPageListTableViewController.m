@@ -64,20 +64,11 @@
 
     // 削除時
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_pageList removeObjectAtIndex:indexPath.row];
+        // MasterDataからPageデータを削除
+        _pageList = [[DataManager sharedManager] deletePageData:_pageList DeleteIndex:indexPath.row];
+
+        // CellからPageデータを削除
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-
-        NSMutableDictionary *newPageDict = [[NSMutableDictionary alloc] init];
-        for (int i = 0; i < _pageList.count; i++) {
-            PageData *page = _pageList[i];
-            page.sortId = i;
-            [newPageDict setObject:page forKey:[[NSNumber alloc] initWithInt:(int)page.dataId]];
-        }
-        [DataManager sharedManager].pageDict = newPageDict;
-
-        // todo
-        // datamanageに削除済みを登録する
-        // userが保持してるpage_idをどうにかする
     }
 }
 

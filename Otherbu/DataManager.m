@@ -62,6 +62,10 @@ static DataManager *intance = nil;
      ];
 }
 
+//--------------------------------------------------------------//
+#pragma mark -- get Method --
+//--------------------------------------------------------------//
+
 - (PageData *)getPage:(NSNumber *)dataId {
     return _pageDict[dataId];
 }
@@ -116,6 +120,49 @@ static DataManager *intance = nil;
     // sort番号で昇順ソート
     NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:itemList];
     return resultList;
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- delete Method --
+//--------------------------------------------------------------//
+
+- (NSMutableArray *)deleteCategoryData:(NSMutableArray *)categoryList DeleteIndex:(NSInteger)idx {
+    // カテゴリデータの削除
+
+    // カテゴリに設定されているブックマークデータを削除
+    // CategoryData *category = categoryList[idx];
+
+    // カテゴリデータを削除
+    [categoryList removeObjectAtIndex:idx];
+    NSMutableDictionary *newCategoryDict = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < categoryList.count; i++) {
+        CategoryData *category = categoryList[i];
+        [newCategoryDict setObject:category forKey:[[NSNumber alloc] initWithInt:(int)category.dataId]];
+    }
+    self.categoryDict = newCategoryDict;
+
+    // todo
+    // datamanageに削除済みを登録する
+
+    return categoryList;
+}
+
+- (NSMutableArray *)deletePageData:(NSMutableArray *)pageList DeleteIndex:(NSInteger)idx {
+    // ページデータの削除
+    [pageList removeObjectAtIndex:idx];
+
+    NSMutableDictionary *newPageDict = [[NSMutableDictionary alloc] init];
+    for (int i = 0; i < pageList.count; i++) {
+        PageData *page = pageList[i];
+        page.sortId = i;
+        [newPageDict setObject:page forKey:[[NSNumber alloc] initWithInt:(int)page.dataId]];
+    }
+    self.pageDict = newPageDict;
+
+    // todo
+    // datamanageに削除済みを登録する
+    // userが保持してるpage_idをどうにかする
+    return pageList;
 }
 
 //--------------------------------------------------------------//
