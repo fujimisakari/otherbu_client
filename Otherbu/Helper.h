@@ -9,6 +9,7 @@
 @interface Helper : NSObject
 
 + (int) getSameCountByDict:(NSDictionary *)dict TargetValue:(NSNumber *)value;
++ (NSArray *)doSortArrayWithKey:(NSString *)key Array:(NSArray *)array;
 + (void)setupBackgroundImage:(CGRect)rect TargetView:(UIView *)view;
 
 @end

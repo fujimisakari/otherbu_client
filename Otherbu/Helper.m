@@ -21,6 +21,13 @@
     return count;
 }
 
++ (NSArray *)doSortArrayWithKey:(NSString *)key Array:(NSArray *)itemList {
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:YES];
+    NSArray *sortArray = [NSArray arrayWithObject:sortDescriptor];
+    NSArray *resultList = [itemList sortedArrayUsingDescriptors:sortArray];
+    return resultList;
+}
+
 + (void)setupBackgroundImage:(CGRect)rect TargetView:(UIView *)view {
     // 背景画像を設定
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0.0);

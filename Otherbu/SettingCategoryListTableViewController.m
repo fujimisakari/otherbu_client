@@ -10,7 +10,7 @@
 #import "CategoryData.h"
 
 @interface SettingCategoryListTableViewController () {
-    NSArray *_categoryList;
+    NSMutableArray *_categoryList;
 }
 
 @end
@@ -44,5 +44,27 @@
     cell.imageView.image = [UIImage imageNamed:kCategoryIcon];
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+     forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    // 削除時
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [_categoryList removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+        NSMutableDictionary *newCategoryDict = [[NSMutableDictionary alloc] init];
+        for (int i = 0; i < _categoryList.count; i++) {
+            CategoryData *category = _categoryList[i];
+            [newCategoryDict setObject:category forKey:[[NSNumber alloc] initWithInt:(int)category.dataId]];
+        }
+        [DataManager sharedManager].categoryDict = newCategoryDict;
+
+        // todo
+        // datamanageに削除済みを登録する
+    }
+}
+
 
 @end

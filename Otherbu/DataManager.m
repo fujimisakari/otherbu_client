@@ -87,7 +87,11 @@ static DataManager *intance = nil;
     for (NSNumber *key in self.categoryDict) {
         [itemList addObject:[self getCategory:key]];
     }
-    return itemList;
+
+    // カテゴリ名で昇順ソート
+    NSArray *tmpResultList = [Helper doSortArrayWithKey:@"name" Array:itemList];
+    NSMutableArray *resultList = [tmpResultList mutableCopy];
+    return resultList;
 }
 
 - (NSMutableArray *)getPageList {
@@ -109,10 +113,8 @@ static DataManager *intance = nil;
         [itemList addObject:[self getColor:key]];
     }
 
-    // リストをソート
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
-    NSArray *sortArray = [NSArray arrayWithObject:sortDescriptor];
-    NSArray *resultList = [itemList sortedArrayUsingDescriptors:sortArray];
+    // sort番号で昇順ソート
+    NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:itemList];
     return resultList;
 }
 
