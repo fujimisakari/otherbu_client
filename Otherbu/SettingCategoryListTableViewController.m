@@ -20,24 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.editing = YES;
     _categoryList = [[DataManager sharedManager] getCategoryList];
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
-- (void)viewDidAppear:(BOOL)animated {
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    // self.navigationController.navigationBar.topItem.title = _page.name;
-    // UIBarButtonItem *barButtonItem1 = [[UIBarButtonItem alloc]
-    //                                    initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-    //                                    target:self action:@selector(_openSettingView:)];
-
-    // animated:YESでItemを設定する
-    // [self.navigationController.toolbar setItems:[NSArray arrayWithObjects:barButtonItem1, nil] animated:YES];    // (1)
-    // self.navigationItem.rightBarButtonItem = barButtonItem1;
-
-    [super viewDidAppear:animated];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

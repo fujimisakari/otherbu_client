@@ -208,6 +208,7 @@
         <!--Category Table View Controller-->
         <scene sceneID="HFf-c2-N3H">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgV-mb-3GJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="zQW-1D-R4a" userLabel="Category Table View Controller" customClass="SettingCategoryListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="e81-1p-iXP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -226,12 +227,8 @@
                             <outlet property="delegate" destination="zQW-1D-R4a" id="UlQ-au-CgR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Category設定" id="yj8-tK-0Mf"/>
-                    <connections>
-                        <segue destination="dWs-Mc-snv" kind="show" identifier="toCateogryViewController" id="mpJ-7n-b65"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Category削除" id="yj8-tK-0Mf"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bgV-mb-3GJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2777" y="2733"/>
         </scene>
@@ -283,25 +280,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ea-Hq-hoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2761" y="4678"/>
-        </scene>
-        <!--Category View Controller-->
-        <scene sceneID="oml-G6-klL">
-            <objects>
-                <viewController id="dWs-Mc-snv" userLabel="Category View Controller" customClass="CategoryViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ltL-Sw-NYr"/>
-                        <viewControllerLayoutGuide type="bottom" id="VyC-rY-UwC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8J9-Po-J6C">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="カテゴリ" id="aNx-ve-Qhd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nfc-1u-sPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3997" y="2733"/>
         </scene>
         <!--Page Detail Table View Controller-->
         <scene sceneID="zMT-dY-xWM">
