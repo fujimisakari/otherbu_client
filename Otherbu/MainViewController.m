@@ -23,13 +23,12 @@
 
 @interface MainViewController () {
     id<DataInterface> _editItem;
+    float             _viewWidth;
+    float             _viewHeight;
+    PageData          *_currentPage;
+    PageTabView       *_currentPageTabView;
+    BookmarkData      *_selectBookmark;
 }
-
-@property(nonatomic) float        viewWidth;
-@property(nonatomic) float        viewHeight;
-@property(nonatomic) PageData     *currentPage;
-@property(nonatomic) PageTabView  *currentPageTabView;
-@property(nonatomic) BookmarkData *selectBookmark;
 
 @end
 

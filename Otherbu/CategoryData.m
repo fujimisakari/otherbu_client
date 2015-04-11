@@ -49,10 +49,8 @@
         }
     }
 
-    // ブックマークリストをソート
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sort" ascending:YES];
-    NSArray *sortArray = [NSArray arrayWithObject:sortDescriptor];
-    NSArray *resultList = [tmpResultList sortedArrayUsingDescriptors:sortArray];
+    // sort番号で昇順ソート
+    NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:tmpResultList];
     return resultList;
 }
 

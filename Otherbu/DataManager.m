@@ -126,18 +126,37 @@ static DataManager *intance = nil;
 #pragma mark -- delete Method --
 //--------------------------------------------------------------//
 
+- (void)_bulkDeleteBookmarkData:(CategoryData *)category {
+    // カテゴリに設定されているブックマークデータを削除
+    NSArray *deleteBookmarkList = [category getBookmarkList];
+    NSMutableDictionary *newBookmarkDict = [[NSMutableDictionary alloc] init];
+    for (BookmarkData *bookmark in [_bookmarkDict objectEnumerator]) {
+        NSUInteger index = [deleteBookmarkList indexOfObject:bookmark];
+        if (index == NSNotFound) {
+            [newBookmarkDict setObject:bookmark forKey:[[NSNumber alloc] initWithInt:(int)bookmark.dataId]];
+        } else {
+            // todo
+            // datamanageに削除済みを登録する
+        }
+    }
+    _bookmarkDict = newBookmarkDict;
+}
+
 - (NSMutableArray *)deleteCategoryData:(NSMutableArray *)categoryList DeleteIndex:(NSInteger)idx {
     // カテゴリデータの削除
 
     // カテゴリに設定されているブックマークデータを削除
-    // CategoryData *category = categoryList[idx];
+    CategoryData *category = categoryList[idx];
+    [self _bulkDeleteBookmarkData:category];
+
+    // todo ページデータの更新
 
     // カテゴリデータを削除
     [categoryList removeObjectAtIndex:idx];
     NSMutableDictionary *newCategoryDict = [[NSMutableDictionary alloc] init];
     for (int i = 0; i < categoryList.count; i++) {
-        CategoryData *category = categoryList[i];
-        [newCategoryDict setObject:category forKey:[[NSNumber alloc] initWithInt:(int)category.dataId]];
+        CategoryData *_category = categoryList[i];
+        [newCategoryDict setObject:_category forKey:[[NSNumber alloc] initWithInt:(int)_category.dataId]];
     }
     self.categoryDict = newCategoryDict;
 
