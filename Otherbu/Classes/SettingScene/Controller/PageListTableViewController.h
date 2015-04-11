@@ -1,5 +1,5 @@
 //
-//  SettingSelectCategoryTableViewController.h
+//  PageListTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,6 +8,6 @@
 
 #import "SettingBaseTableViewController.h"
 
-@interface SettingSelectCategoryTableViewController : SettingBaseTableViewController
+@interface PageListTableViewController : SettingBaseTableViewController
 
 @end

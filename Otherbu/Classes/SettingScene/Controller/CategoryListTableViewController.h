@@ -1,5 +1,5 @@
 //
-//  SettingEditPageTableViewController.h
+//  CategoryListTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,8 +8,6 @@
 
 #import "SettingBaseTableViewController.h"
 
-@interface SettingEditPageTableViewController : SettingBaseTableViewController
-
-- (void)setPage:(PageData *)page;
+@interface CategoryListTableViewController : SettingBaseTableViewController
 
 @end

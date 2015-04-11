@@ -1,23 +1,23 @@
 //
-//  SettingBookmarkTableViewController.m
+//  BookmarkTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SettingBookmarkTableViewController.h"
+#import "BookmarkTableViewController.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
 
-@interface SettingBookmarkTableViewController () {
+@interface BookmarkTableViewController () {
     CategoryData *_category;
     NSArray *_bookmarkList;
 }
 
 @end
 
-@implementation SettingBookmarkTableViewController
+@implementation BookmarkTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,16 +1,16 @@
 //
-//  SettingEditPageTableViewController.m
+//  EditPageTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SettingEditPageTableViewController.h"
+#import "EditPageTableViewController.h"
 #import "PageData.h"
 #import "CategoryData.h"
 
-@interface SettingEditPageTableViewController () {
+@interface EditPageTableViewController () {
     NSArray *_categoryList;
     NSArray *_categoryListOfPage;
     PageData *_page;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation SettingEditPageTableViewController
+@implementation EditPageTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

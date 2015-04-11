@@ -178,7 +178,7 @@
         <!--Bookmark Table View Controller-->
         <scene sceneID="2Qj-9w-Sme">
             <objects>
-                <tableViewController id="EI3-DB-s9H" userLabel="Bookmark Table View Controller" customClass="SettingBookmarkTableViewController" sceneMemberID="viewController">
+                <tableViewController id="EI3-DB-s9H" userLabel="Bookmark Table View Controller" customClass="BookmarkTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ni1-RQ-9pg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,8 +208,7 @@
         <!--Category Table View Controller-->
         <scene sceneID="HFf-c2-N3H">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bgV-mb-3GJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="zQW-1D-R4a" userLabel="Category Table View Controller" customClass="SettingCategoryListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="zQW-1D-R4a" userLabel="Category Table View Controller" customClass="CategoryListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="e81-1p-iXP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,13 +228,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Category削除" id="yj8-tK-0Mf"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bgV-mb-3GJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2777" y="2733"/>
         </scene>
         <!--Page Table View Controller-->
         <scene sceneID="j5d-IZ-Bm4">
             <objects>
-                <tableViewController id="l6w-hk-YAu" userLabel="Page Table View Controller" customClass="SettingPageListTableViewController" sceneMemberID="viewController">
+                <tableViewController id="l6w-hk-YAu" userLabel="Page Table View Controller" customClass="PageListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GPt-bf-SJN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -284,7 +284,7 @@
         <!--Page Detail Table View Controller-->
         <scene sceneID="zMT-dY-xWM">
             <objects>
-                <tableViewController id="7fI-Kp-mvY" userLabel="Page Detail Table View Controller" customClass="SettingEditPageTableViewController" sceneMemberID="viewController">
+                <tableViewController id="7fI-Kp-mvY" userLabel="Page Detail Table View Controller" customClass="EditPageTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TKm-MJ-y3B">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -311,7 +311,7 @@
         <!--Select CategoryTable View Controller-->
         <scene sceneID="Sjp-pb-chd">
             <objects>
-                <tableViewController id="58s-BK-Ro2" userLabel="Select CategoryTable View Controller" customClass="SettingSelectCategoryTableViewController" sceneMemberID="viewController">
+                <tableViewController id="58s-BK-Ro2" userLabel="Select CategoryTable View Controller" customClass="SelectCategoryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zdb-re-9gn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

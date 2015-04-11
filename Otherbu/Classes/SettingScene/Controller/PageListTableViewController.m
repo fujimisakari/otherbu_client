@@ -1,25 +1,23 @@
 //
-//  設定 → ページ一覧
-//
-//  SettingPageListTableViewController.m
+//  PageListTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SettingPageListTableViewController.h"
-#import "SettingEditPageTableViewController.h"
+#import "PageListTableViewController.h"
+#import "EditPageTableViewController.h"
 #import "PageData.h"
 
-@interface SettingPageListTableViewController () {
+@interface PageListTableViewController () {
     NSMutableArray *_pageList;
     PageData *_selectPage;
 }
 
 @end
 
-@implementation SettingPageListTableViewController
+@implementation PageListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -97,7 +95,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:kToEditPageBySegue]) {
-        SettingEditPageTableViewController *pageDetailTableViewController = (SettingEditPageTableViewController *)[segue destinationViewController];
+        EditPageTableViewController *pageDetailTableViewController = (EditPageTableViewController *)[segue destinationViewController];
         [pageDetailTableViewController setPage:_selectPage];
     }
 }
