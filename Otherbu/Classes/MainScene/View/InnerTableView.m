@@ -14,10 +14,12 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-+ (id)initWithTag:(int)tag frame:(CGRect)rect {
-    InnerTableView *innerTableView = [[InnerTableView alloc] initWithFrame:rect style:UITableViewStyleGrouped];
-    innerTableView.tag = tag;
-    return innerTableView;
+- (id)initWithTag:(int)tag frame:(CGRect)rect {
+    self = [super initWithFrame:rect style:UITableViewStyleGrouped];
+    if (self) {
+        self.tag = tag;
+    }
+    return self;
 }
 
 - (id)setUp {

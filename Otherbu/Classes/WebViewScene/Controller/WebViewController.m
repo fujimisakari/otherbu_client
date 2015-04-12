@@ -13,8 +13,6 @@
 
 @interface WebViewController ()
 
-@property(nonatomic) UIToolbar *toolbar;
-
 @end
 
 @implementation WebViewController

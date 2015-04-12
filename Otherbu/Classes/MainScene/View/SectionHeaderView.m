@@ -10,18 +10,18 @@
 #import "CategoryData.h"
 #import "ColorData.h"
 
-@interface SectionHeaderView ()
-
-@property(nonatomic) UIImageView  *arrowImgView;
-@property(nonatomic) UIImage      *downImg;
-@property(nonatomic) UIImage      *rightImg;
-@property(nonatomic) CAShapeLayer *maskLayerOfSectionOpen;
-@property(nonatomic) CAShapeLayer *maskLayerOfSectionClose;
-@property(nonatomic) CGSize       downImgSize;
-@property(nonatomic) CGSize       rightImgSize;
-@property(nonatomic) CategoryData *categoryData;
-@property(nonatomic) NSInteger    section;
-@property(nonatomic) NSInteger    tagNumber;
+@interface SectionHeaderView () {
+    UIImageView  *_arrowImgView;
+    UIImage      *_downImg;
+    UIImage      *_rightImg;
+    CAShapeLayer *_maskLayerOfSectionOpen;
+    CAShapeLayer *_maskLayerOfSectionClose;
+    CGSize       _downImgSize;
+    CGSize       _rightImgSize;
+    CategoryData *_categoryData;
+    NSInteger    _section;
+    NSInteger    _tagNumber;
+}
 
 @end
 

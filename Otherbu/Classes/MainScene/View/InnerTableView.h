@@ -8,8 +8,7 @@
 
 @interface InnerTableView : UITableView
 
-+ (id)initWithTag:(int)tag frame:(CGRect)rect;
-
+- (id)initWithTag:(int)tag frame:(CGRect)rect;
 - (id)setUp;
 
 @end

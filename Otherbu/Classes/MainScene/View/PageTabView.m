@@ -11,12 +11,12 @@
 #import "DataManager.h"
 #import "ColorData.h"
 
-@interface PageTabView ()
-
-@property(nonatomic) PageData *page;
-@property(nonatomic) UIView   *activeTab;
-@property(nonatomic) UIView   *stanbyTab;
-@property(nonatomic) BOOL     isActive;
+@interface PageTabView () {
+    PageData *_page;
+    UIView   *_activeTab;
+    UIView   *_stanbyTab;
+    BOOL     _isActive;
+}
 
 @end
 

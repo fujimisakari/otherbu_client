@@ -28,7 +28,7 @@
     float _viewHeight = self.superview.frame.size.height - self.frame.origin.y;
     for (int i = 1; i < LastAngle; ++i) {
         CGRect rect = CGRectMake(_viewWidth * (i - 1), self.bounds.origin.y, _viewWidth, _viewHeight);
-        InnerTableView *innerTableView = [InnerTableView initWithTag:i frame:rect];
+        InnerTableView *innerTableView = [[InnerTableView alloc] initWithTag:i frame:rect];
         [innerTableView setUp];
         innerTableView.delegate = (id<UITableViewDelegate>)delegate;
         innerTableView.dataSource = (id<UITableViewDataSource>)delegate;

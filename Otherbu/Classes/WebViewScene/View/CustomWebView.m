@@ -8,14 +8,14 @@
 
 #import "CustomWebView.h"
 
-@interface CustomWebView ()
-
-@property(nonatomic) UIToolbar       *toolbar;
-@property(nonatomic) UIBarButtonItem *rightArrow;
-@property(nonatomic) UIBarButtonItem *leftArrow;
-@property(nonatomic) float           beginScrollOffsetY;
-@property(nonatomic) CGRect          baseRectOfToolbar;
-@property(nonatomic) BOOL            isScrollingToolbar;
+@interface CustomWebView () {
+    UIToolbar       *_toolbar;
+    UIBarButtonItem *_rightArrow;
+    UIBarButtonItem *_leftArrow;
+    float           _beginScrollOffsetY;
+    CGRect          _baseRectOfToolbar;
+    BOOL            _isScrollingToolbar;
+}
 
 @end
 
