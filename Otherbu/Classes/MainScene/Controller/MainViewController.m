@@ -132,14 +132,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 指定された箇所のセルを作成する
-    NSString *cellIdentifier = @"Cell";
-    MainTableCellView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    MainTableCellView *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     if (cell == nil) {
-        cell = [MainTableCellView initWithCellIdentifier:cellIdentifier];
+        cell = [[MainTableCellView alloc] initWithCellIdentifier:kCellIdentifier ContentSizeWidth:tableView.contentSize.width];
     }
 
     if (_currentPage) {
-        cell = [cell setupWithPageData:_currentPage tableView:tableView indexPath:indexPath];
+        CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][indexPath.section];
+        cell.category = categoryData;
+        cell.bookmark = [categoryData getBookmarkList][indexPath.row];
+        cell = [cell setupWithPageData:_currentPage indexPath:indexPath];
     }
     return cell;
 }

@@ -14,16 +14,13 @@
 #import "DesignData.h"
 #import "ColorData.h"
 
-@interface MainTableCellView ()
-
-@property(nonatomic) NSIndexPath  *indexPath;
-@property(nonatomic) UITableView  *tableView;
-@property(nonatomic) CategoryData *category;
-@property(nonatomic) BookmarkData *bookmark;
-@property(nonatomic) DesignData   *design;
-@property(nonatomic) UIView       *cellBackgroundView;
-@property(nonatomic) float        cellWidth;
-@property(nonatomic) float        cellInnerWidth;
+@interface MainTableCellView () {
+    NSIndexPath  *_indexPath;
+    DesignData   *_design;
+    UIView       *_cellBackgroundView;
+    float        _cellWidth;
+    float        _cellInnerWidth;
+}
 
 @end
 
@@ -33,19 +30,18 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-+ (id)initWithCellIdentifier:(NSString *)cellIdentifier {
-    MainTableCellView *cell = [[MainTableCellView alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
-    return cell;
+- (id)initWithCellIdentifier:(NSString *)cellIdentifier ContentSizeWidth:(float)contentSizeWidth {
+    self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    if (self) {
+        _cellWidth = contentSizeWidth - kAdaptWidthOfTableCell;
+        _cellInnerWidth = contentSizeWidth - (kAdaptWidthOfTableCell + kOffsetXOfTableCell);
+    }
+    return self;
 }
 
-- (id)setupWithPageData:(PageData *)page tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+- (id)setupWithPageData:(PageData *)page indexPath:(NSIndexPath *)indexPath {
     _indexPath = indexPath;
-    _tableView = tableView;
-    _category = [page getCategoryListByTag:_tableView.tag][indexPath.section];
-    _bookmark = [_category getBookmarkList][indexPath.row];
     _cellBackgroundView = [[UIView alloc] init];
-    _cellWidth = _tableView.contentSize.width - kAdaptWidthOfTableCell;
-    _cellInnerWidth = _tableView.contentSize.width - (kAdaptWidthOfTableCell + kOffsetXOfTableCell);
     _design = [[DataManager sharedManager] getDesign];
 
     // 背景設定

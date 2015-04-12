@@ -10,8 +10,10 @@
 
 @interface MainTableCellView : UITableViewCell
 
-+ (id)initWithCellIdentifier:(NSString *)cellIdentifier;
+@property(nonatomic) CategoryData *category;
+@property(nonatomic) BookmarkData *bookmark;
 
-- (id)setupWithPageData:(PageData *)page tableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath;
+- (id)initWithCellIdentifier:(NSString *)cellIdentifier ContentSizeWidth:(float)contentSizeWidth;
+- (id)setupWithPageData:(PageData *)page indexPath:(NSIndexPath *)indexPath;
 
 @end

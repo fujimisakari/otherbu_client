@@ -160,7 +160,10 @@ static DataManager *intance = nil;
     CategoryData *category = categoryList[idx];
     [self _bulkDeleteBookmarkData:category];
 
-    // todo ページデータの更新
+    // ページデータの更新
+    for (PageData *page in [_pageDict objectEnumerator]) {
+        [page updatePageData:category isCheckMark:NO];
+    }
 
     // カテゴリデータを削除
     [categoryList removeObjectAtIndex:idx];
