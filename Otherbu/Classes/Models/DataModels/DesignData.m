@@ -14,14 +14,26 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-- (id)initWithDictionary:(NSDictionary *)dataDict {
+static DesignData *intance = nil;
+
++ (DesignData *)shared {
+    if (!intance) {
+        intance = [[DesignData alloc] init];
+    }
+    return intance;
+}
+
+- (id)init {
     self = [super init];
     if (self) {
-        self.tableBackGroundColor = dataDict[@"category_back_color"];
-        self.bookmarkColor = dataDict[@"link_color"];
         self.urlColor = @"#808080";
     }
     return self;
+}
+
+- (void)updateWithDictionary:(NSDictionary *)dataDict {
+    self.tableBackGroundColor = dataDict[@"category_back_color"];
+    self.bookmarkColor = dataDict[@"link_color"];
 }
 
 //--------------------------------------------------------------//

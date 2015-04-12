@@ -12,7 +12,9 @@
 @property(nonatomic) NSString *bookmarkColor;         // Bookmarkカラー
 @property(nonatomic) NSString *urlColor;              // URLカラー
 
-- (id)initWithDictionary:(NSDictionary *)dataDict;
++ (DesignData *)shared;
+
+- (void)updateWithDictionary:(NSDictionary *)dataDict;
 
 - (UIColor *)getTableBackGroundColor;
 - (UIColor *)getbookmarkColor;

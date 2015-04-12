@@ -40,12 +40,12 @@ static DataManager *intance = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        self.user = [[UserData alloc] init];
+        self.user = [UserData shared];
         self.pageDict = [@{} mutableCopy];
         self.categoryDict = [@{} mutableCopy];
         self.bookmarkDict = [@{} mutableCopy];
         self.colorDict = [@{} mutableCopy];
-        self.design = nil;
+        self.design = [DesignData shared];
     }
     return self;
 }
@@ -200,11 +200,14 @@ static DataManager *intance = nil;
 //--------------------------------------------------------------//
 
 - (void)_insertData:(NSDictionary *)jsonData {
+    NSDictionary *user = [jsonData objectForKey:@"user"];
     NSArray *pageList = [jsonData objectForKey:@"page_list"];
     NSArray *categoryList = [jsonData objectForKey:@"category_list"];
     NSArray *bookmarkList = [jsonData objectForKey:@"bookmark_list"];
     NSArray *colorList = [jsonData objectForKey:@"color_list"];
     NSDictionary *design = [jsonData objectForKey:@"design"];
+
+    [_user updateWithDictionary:user];
 
     for (NSDictionary *pageDict in pageList) {
         PageData *data = [[PageData alloc] initWithDictionary:pageDict];
@@ -226,7 +229,7 @@ static DataManager *intance = nil;
         [_colorDict setObject:data forKey:colorDict[@"id"]];
     }
 
-    _design = [[DesignData alloc] initWithDictionary:design];
+    [_design updateWithDictionary:design];
 }
 
 @end

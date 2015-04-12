@@ -18,6 +18,7 @@
 #import "CategoryData.h"
 #import "ColorData.h"
 #import "PageData.h"
+#import "UserData.h"
 #import "PageTabView.h"
 #import "MBProgressHUD.h"
 
@@ -222,6 +223,9 @@
 - (void)didSingleTapPageTab:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
     // PageTabのシングルタップ時の実行処理
 
+    UserData *user = [[DataManager sharedManager] getUser];
+    [user updatePage:selectPage.dataId];
+
     // pageを入れ替え、tableのリロード
     _currentPage = selectPage;
     [_scrollView reloadTableData];
@@ -320,8 +324,8 @@
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
 
-        NSNumber *number = [[NSNumber alloc] initWithInt:16];  // とりあえず、仮でPageId:16をセット
-        _currentPage = [[DataManager sharedManager] getPage:number];
+        UserData *user = [[DataManager sharedManager] getUser];
+        _currentPage = [user page];
 
         [_scrollView reloadTableData];
         [self _createPageTabViews];

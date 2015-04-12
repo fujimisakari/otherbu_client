@@ -13,9 +13,12 @@
 @property(nonatomic) NSString *typeId;  // type ID
 @property(nonatomic) NSInteger pageId;  // page ID
 
++ (UserData *)shared;
+
 - (id)init;
-- (id)initWithDictionary:(NSDictionary *)dataDict;
+- (void)updateWithDictionary:(NSDictionary *)dataDict;
 
 - (PageData *)page;
+- (void)updatePage:(NSInteger)pageId;
 
 @end

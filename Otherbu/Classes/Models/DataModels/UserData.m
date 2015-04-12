@@ -14,6 +14,15 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
+static UserData *intance = nil;
+
++ (UserData *)shared {
+    if (!intance) {
+        intance = [[UserData alloc] init];
+    }
+    return intance;
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -23,15 +32,11 @@
     return self;
 }
 
-- (id)initWithDictionary:(NSDictionary *)dataDict {
-    self = [super init];
-    if (self) {
-        self.dataId = dataDict[@"id"];
-        self.type = dataDict[@"type"];
-        self.typeId = dataDict[@"typeId"];
-        self.pageId = [dataDict[@"pageId"] integerValue];
-    }
-    return self;
+- (void)updateWithDictionary:(NSDictionary *)dataDict {
+    self.dataId = dataDict[@"id"];
+    self.type = dataDict[@"type"];
+    self.typeId = dataDict[@"type_id"];
+    self.pageId = [dataDict[@"page_id"] integerValue];
 }
 
 - (NSString *)description {
@@ -46,5 +51,10 @@
     NSNumber *number = [[NSNumber alloc] initWithInt:(int)_pageId];
     return [[DataManager sharedManager] getPage:number];
 }
+
+- (void)updatePage:(NSInteger)pageId {
+    self.pageId = pageId;
+}
+
 
 @end

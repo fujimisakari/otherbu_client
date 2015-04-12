@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@class PageData, CategoryData, BookmarkData, ColorData, DesignData;
+@class UserData, PageData, CategoryData, BookmarkData, ColorData, DesignData;
 
 @interface DataManager : NSObject
 
@@ -19,6 +19,7 @@
 
 - (void)reloadDataWithBlock:(void (^)(NSError *error))block;
 
+- (UserData *)getUser;
 - (PageData *)getPage:(NSNumber *)dataId;
 - (CategoryData *)getCategory:(NSNumber *)dataId;
 - (BookmarkData *)getBookmark:(NSNumber *)dataId;
