@@ -8,12 +8,12 @@
 
 #import "DataManager.h"
 #import "OtherbuAPIClient.h"
-#import "DataModels/UserData.h"
-#import "DataModels/BookmarkData.h"
-#import "DataModels/CategoryData.h"
-#import "DataModels/PageData.h"
-#import "DataModels/ColorData.h"
-#import "DataModels/DesignData.h"
+#import "UserData.h"
+#import "BookmarkData.h"
+#import "CategoryData.h"
+#import "PageData.h"
+#import "ColorData.h"
+#import "DesignData.h"
 
 @interface DataManager ()
 

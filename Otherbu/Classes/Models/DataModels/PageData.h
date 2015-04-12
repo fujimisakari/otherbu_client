@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "../DataInterface.h"
+#import "DataInterface.h"
 
 @class ColorData;
 
