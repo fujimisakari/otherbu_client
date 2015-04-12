@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "AFHTTPSessionManager.h"
-
 @interface OtherbuAPIClient : NSObject
 
 + (instancetype)sharedClient;

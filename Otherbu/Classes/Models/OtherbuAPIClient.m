@@ -7,6 +7,7 @@
 //
 
 #import "OtherbuAPIClient.h"
+#import "AFHTTPSessionManager.h"
 
 static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
 

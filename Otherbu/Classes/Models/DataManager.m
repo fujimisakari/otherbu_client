@@ -7,15 +7,17 @@
 //
 
 #import "DataManager.h"
-#import "BookmarkData.h"
-#import "CategoryData.h"
-#import "PageData.h"
-#import "ColorData.h"
-#import "DesignData.h"
 #import "OtherbuAPIClient.h"
+#import "DataModels/UserData.h"
+#import "DataModels/BookmarkData.h"
+#import "DataModels/CategoryData.h"
+#import "DataModels/PageData.h"
+#import "DataModels/ColorData.h"
+#import "DataModels/DesignData.h"
 
 @interface DataManager ()
 
+@property(nonatomic) UserData *user;
 @property(nonatomic) DesignData *design;
 
 @end
@@ -38,6 +40,7 @@ static DataManager *intance = nil;
 - (id)init {
     self = [super init];
     if (self) {
+        self.user = [[UserData alloc] init];
         self.pageDict = [@{} mutableCopy];
         self.categoryDict = [@{} mutableCopy];
         self.bookmarkDict = [@{} mutableCopy];
@@ -66,6 +69,10 @@ static DataManager *intance = nil;
 #pragma mark -- get Method --
 //--------------------------------------------------------------//
 
+- (UserData *)getUser {
+    return _user;
+}
+
 - (PageData *)getPage:(NSNumber *)dataId {
     return _pageDict[dataId];
 }
@@ -85,6 +92,10 @@ static DataManager *intance = nil;
 - (DesignData *)getDesign {
     return _design;
 }
+
+//--------------------------------------------------------------//
+#pragma mark -- get List Method --
+//--------------------------------------------------------------//
 
 - (NSMutableArray *)getCategoryList {
     NSMutableArray *itemList = [NSMutableArray array];

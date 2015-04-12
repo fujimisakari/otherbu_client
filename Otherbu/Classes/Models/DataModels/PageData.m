@@ -7,7 +7,6 @@
 //
 
 #import "PageData.h"
-#import "DataManager.h"
 #import "CategoryData.h"
 
 @implementation PageData

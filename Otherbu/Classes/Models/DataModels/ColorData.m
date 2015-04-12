@@ -7,7 +7,6 @@
 //
 
 #import "ColorData.h"
-#import "DataManager.h"
 
 @implementation ColorData
 

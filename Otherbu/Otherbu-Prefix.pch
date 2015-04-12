@@ -18,10 +18,10 @@
 #import <UIKit/UIKit.h>
 
 #ifdef __OBJC__
-    #import "UIColor+Hex.h"
-    #import "Constants.h"
-    #import "helper.h"
-    #import "DataManager.h"
+    #import "Classes/SupportingFiles/UIColor+Hex.h"
+    #import "Classes/SupportingFiles/Constants.h"
+    #import "Classes/SupportingFiles/helper.h"
+    #import "Classes/Models/DataManager.h"
 
     #ifdef DEBUG
         // #define LOG(...) NSLog(__VA_ARGS__)
