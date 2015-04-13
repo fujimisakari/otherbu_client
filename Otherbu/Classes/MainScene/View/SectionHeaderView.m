@@ -63,7 +63,7 @@
 //--------------------------------------------------------------//
 
 - (void)_setDefaultStyle {
-    // 開閉画像作成
+    // 開閉時の矢印画像作成
     _downImg = [UIImage imageNamed:kDownArrowImageName];
     _rightImg = [UIImage imageNamed:kRightArrowImageName];
     _downImgSize = _downImg.size;

@@ -58,8 +58,8 @@
 - (void)_bulkCreate {
     int space = 10;
     int startY = 10;
-    int totalTitleHeight = startY + kCommonHeightOfEditModal + space;
-    int totalButtonHeight = space + kCommonHeightOfEditModal + space;
+    int totalTitleHeight = startY + kCommonHeightOfEditModal + space;  // 画面上部からメニュータイトル名までの高さ
+    int totalButtonHeight = space + kCommonHeightOfEditModal + space;  // 画面下部から編集ボタンまでの高さ
     int availableHeight = self.frame.size.height - (totalTitleHeight + totalButtonHeight);
     int restHeight = availableHeight - (kViewHeightOfColorPalette + kCommonHeightOfEditModal + kCommonHeightOfEditModal);
     int margin = restHeight / 2;

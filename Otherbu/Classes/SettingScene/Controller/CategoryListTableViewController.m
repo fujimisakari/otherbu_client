@@ -28,6 +28,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+
+    // 削除確認Viewの生成
     [self _createConfirmAlertView];
 }
 
@@ -79,6 +81,7 @@
 //--------------------------------------------------------------//
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // 削除確認Viewのボタンタップした場合
 
     if (buttonIndex != alertView.cancelButtonIndex) {
         // MasterDataからカテゴリ、関連ブックマークを削除
@@ -88,6 +91,5 @@
         [self.tableView deleteRowsAtIndexPaths:@[_deleteIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
-
 
 @end

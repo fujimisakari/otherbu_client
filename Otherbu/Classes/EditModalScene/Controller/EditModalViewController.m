@@ -54,6 +54,7 @@
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
+    // modalView以外の背景が黒になってしまう問題の対応
     return UIModalPresentationOverCurrentContext;
 }
 
@@ -62,9 +63,8 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Set Method --
+#pragma mark -- UICollectionViewDataSource --
 //--------------------------------------------------------------//
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     // 行数
@@ -93,6 +93,10 @@
     }
     return cell;
 }
+
+//--------------------------------------------------------------//
+#pragma mark -- UICollectionViewDelegate --
+//--------------------------------------------------------------//
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     // cellをタッチした場合
@@ -127,6 +131,7 @@
 //--------------------------------------------------------------//
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // キーボードのreturn or 改行でキーボードを閉じる
     [_editModalView.textField resignFirstResponder];
     return YES;
 }

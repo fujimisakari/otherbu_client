@@ -20,7 +20,7 @@
     self.navigationBar.barTintColor = [UIColor blackColor];  // 背景色
     self.navigationBar.tintColor = [UIColor whiteColor];     // バーアイテムカラー
 
-    // タイトル名のフォントカラー設定
+    // タイトル名のフォント設定
     NSDictionary *attributes = @{
         NSFontAttributeName : [UIFont fontWithName:kDefaultFont size:kFontSizeOfTitle],
         NSForegroundColorAttributeName : [UIColor whiteColor],

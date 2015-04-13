@@ -29,12 +29,6 @@
     [super viewWillAppear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    // [self _removePageTabViews];
-}
-
-
 //--------------------------------------------------------------//
 #pragma mark -- UITableViewDataSource --
 //--------------------------------------------------------------//
@@ -51,6 +45,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // todo ブロック文にする
     switch (indexPath.row) {
         case MENU_BOOKMARK:
             [self performSegueWithIdentifier:kToCategoryOfBookmarkBySegue sender:self];

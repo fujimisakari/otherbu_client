@@ -26,18 +26,18 @@
 //--------------------------------------------------------------//
 
 - (void)setupWithView:(UIView *)view {
-    // setup initialize value
+    // 初期値設定
     self.delegate = self;
     self.scalesPageToFit = YES;  // Webページの大きさを自動的に画面にフィットさせる
     _baseRectOfToolbar = CGRectMake(0, view.bounds.size.height, view.frame.size.width, kHeightOfToolbar);
 
-    // setup forword, back button
+    // <(戻る)、>(進む)のボタン生成
     _leftArrow = [[UIBarButtonItem alloc] initWithTitle:@"〈" style:UIBarButtonItemStylePlain target:self action:@selector(_backDidPush)];
     _leftArrow.width = kArrowWidthOfToolbar;
     _rightArrow = [[UIBarButtonItem alloc] initWithTitle:@"〉" style:UIBarButtonItemStylePlain target:self action:@selector(_fowardDidPush)];
     _rightArrow.width = kArrowWidthOfToolbar;
 
-    // setup Toolbar
+    // 画面下部のツールバー生成
     NSArray *items = [NSArray arrayWithObjects:_leftArrow, _rightArrow, nil, nil];
     _toolbar = [[UIToolbar alloc] initWithFrame:_baseRectOfToolbar];
     [view addSubview:_toolbar];

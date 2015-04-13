@@ -27,7 +27,7 @@
 //--------------------------------------------------------------//
 
 - (void)setUpWithPage:(PageData *)page delegate:(id<PageTabDelegate>)delegate {
-    // タップされている、されていない場合のTabVeiwを切り換え用に用意しておく
+    // タップされている(activeTab)、されていない(stanbyTab)場合のTabVeiwを切り換え用に用意しておく
     CGFloat offsetX = 0;
     CGFloat offsetY = self.frame.origin.y;
     CGFloat width = self.frame.size.width;

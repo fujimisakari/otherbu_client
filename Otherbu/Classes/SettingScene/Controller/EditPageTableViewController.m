@@ -28,18 +28,6 @@
     self.navigationItem.title = _page.name;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    // UIBarButtonItem *barButtonItem1 = [[UIBarButtonItem alloc]
-    //                                    initWithBarButtonSystemItem:UIBarButtonSystemItemSave
-    //                                    target:self action:@selector(_openSettingView:)];
-
-    // animated:YESでItemを設定する
-    // [self.navigationController.toolbar setItems:[NSArray arrayWithObjects:barButtonItem1, nil] animated:YES];    // (1)
-    // self.navigationItem.rightBarButtonItem = barButtonItem1;
-
-    [super viewDidAppear:animated];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -53,6 +41,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // セルの生成。ページに設定しているカテゴリはチェックマーク画像が表示させる
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     CategoryData *category = (CategoryData *)_categoryList[indexPath.row];
     NSUInteger isExistCategory = [_categoryListOfPage indexOfObject:category];

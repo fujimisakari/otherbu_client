@@ -17,10 +17,6 @@
 
 @implementation WebViewController
 
-//--------------------------------------------------------------//
-#pragma mark -- Controller Method --
-//--------------------------------------------------------------//
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 

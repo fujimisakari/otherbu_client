@@ -76,7 +76,7 @@
     // tag(angle)からカテゴリ一覧を取得
     NSMutableDictionary *categoryListOfAngle = [self getCategoryListOfAngle];
     NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tag];
-    NSMutableArray *categoryList = categoryListOfAngle[angleNumber];
+    NSMutableArray *categoryList = categoryListOfAngle[angleNumber];  // todo ここはメンバー編集で持っておいたほうがいい
     return categoryList;
 }
 

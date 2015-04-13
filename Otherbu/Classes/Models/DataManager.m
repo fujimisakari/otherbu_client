@@ -203,6 +203,7 @@ static DataManager *intance = nil;
 //--------------------------------------------------------------//
 
 - (void)_insertData:(NSDictionary *)jsonData {
+    // webから取得したjsonDataを格納
     NSDictionary *user = [jsonData objectForKey:@"user"];
     NSArray *pageList = [jsonData objectForKey:@"page_list"];
     NSArray *categoryList = [jsonData objectForKey:@"category_list"];
