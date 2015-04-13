@@ -26,7 +26,6 @@
 		7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */; };
 		7BFDDF4E1AD9AC3500DD60EF /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF391AD9AC3500DD60EF /* BookmarkViewController.m */; };
 		7BFDDF4F1AD9AC3500DD60EF /* DesiginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */; };
-		7BFDDF501AD9AC3500DD60EF /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3D1AD9AC3500DD60EF /* PageViewController.m */; };
 		7BFDDF511AD9AC3500DD60EF /* SettingBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3F1AD9AC3500DD60EF /* SettingBaseTableViewController.m */; };
 		7BFDDF521AD9AC3500DD60EF /* BookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF411AD9AC3500DD60EF /* BookmarkTableViewController.m */; };
 		7BFDDF531AD9AC3500DD60EF /* CategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF431AD9AC3500DD60EF /* CategoryListTableViewController.m */; };
@@ -99,8 +98,6 @@
 		7BFDDF391AD9AC3500DD60EF /* BookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookmarkViewController.m; path = Classes/SettingScene/Controller/BookmarkViewController.m; sourceTree = "<group>"; };
 		7BFDDF3A1AD9AC3500DD60EF /* DesiginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DesiginViewController.h; path = Classes/SettingScene/Controller/DesiginViewController.h; sourceTree = "<group>"; };
 		7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DesiginViewController.m; path = Classes/SettingScene/Controller/DesiginViewController.m; sourceTree = "<group>"; };
-		7BFDDF3C1AD9AC3500DD60EF /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageViewController.h; path = Classes/SettingScene/Controller/PageViewController.h; sourceTree = "<group>"; };
-		7BFDDF3D1AD9AC3500DD60EF /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageViewController.m; path = Classes/SettingScene/Controller/PageViewController.m; sourceTree = "<group>"; };
 		7BFDDF3E1AD9AC3500DD60EF /* SettingBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingBaseTableViewController.h; path = Classes/SettingScene/Controller/SettingBaseTableViewController.h; sourceTree = "<group>"; };
 		7BFDDF3F1AD9AC3500DD60EF /* SettingBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingBaseTableViewController.m; path = Classes/SettingScene/Controller/SettingBaseTableViewController.m; sourceTree = "<group>"; };
 		7BFDDF401AD9AC3500DD60EF /* BookmarkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookmarkTableViewController.h; path = Classes/SettingScene/Controller/BookmarkTableViewController.h; sourceTree = "<group>"; };
@@ -341,8 +338,6 @@
 				7BFDDF391AD9AC3500DD60EF /* BookmarkViewController.m */,
 				7BFDDF3A1AD9AC3500DD60EF /* DesiginViewController.h */,
 				7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */,
-				7BFDDF3C1AD9AC3500DD60EF /* PageViewController.h */,
-				7BFDDF3D1AD9AC3500DD60EF /* PageViewController.m */,
 				7BFDDF3E1AD9AC3500DD60EF /* SettingBaseTableViewController.h */,
 				7BFDDF3F1AD9AC3500DD60EF /* SettingBaseTableViewController.m */,
 				7BFDDF401AD9AC3500DD60EF /* BookmarkTableViewController.h */,
@@ -581,7 +576,6 @@
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
 				7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */,
 				7BFDDF511AD9AC3500DD60EF /* SettingBaseTableViewController.m in Sources */,
-				7BFDDF501AD9AC3500DD60EF /* PageViewController.m in Sources */,
 				7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */,
 				7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */,
 				7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */,
