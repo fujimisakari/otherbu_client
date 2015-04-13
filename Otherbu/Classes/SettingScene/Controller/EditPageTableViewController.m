@@ -13,7 +13,6 @@
 @interface EditPageTableViewController () {
     NSArray *_categoryList;
     NSArray *_categoryListOfPage;
-    PageData *_page;
 }
 
 @end
@@ -67,14 +66,6 @@
         [_page updatePageData:(CategoryData *)category isCheckMark:YES];
     }
     _categoryListOfPage = [_page getCategoryList];
-}
-
-//--------------------------------------------------------------//
-#pragma mark -- Public Method --
-//--------------------------------------------------------------//
-
-- (void)setPage:(PageData *)page {
-    _page = page;
 }
 
 @end

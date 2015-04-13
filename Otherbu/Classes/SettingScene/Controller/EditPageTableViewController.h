@@ -10,6 +10,6 @@
 
 @interface EditPageTableViewController : SettingBaseTableViewController
 
-- (void)setPage:(PageData *)page;
+@property(nonatomic) PageData *page;
 
 @end

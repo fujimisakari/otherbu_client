@@ -96,7 +96,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:kToEditPageBySegue]) {
         EditPageTableViewController *pageDetailTableViewController = (EditPageTableViewController *)[segue destinationViewController];
-        [pageDetailTableViewController setPage:_selectPage];
+        pageDetailTableViewController.page = _selectPage;
     }
 }
 
