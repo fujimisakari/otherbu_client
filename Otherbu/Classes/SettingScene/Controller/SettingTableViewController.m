@@ -12,6 +12,7 @@
 @interface SettingTableViewController () {
     NSArray *_menuNameList;
     NSArray *_menuIconList;
+    NSArray *_menSegueActionList;
 }
 
 @end
@@ -45,20 +46,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // todo ブロック文にする
-    switch (indexPath.row) {
-        case MENU_BOOKMARK:
-            [self performSegueWithIdentifier:kToCategoryOfBookmarkBySegue sender:self];
-            break;
-        case MENU_CATEGORY:
-            [self performSegueWithIdentifier:kToCategoryListBySegue sender:self];
-            break;
-        case MENU_PAGE:
-            [self performSegueWithIdentifier:kToPageListBySegue sender:self];
-            break;
-        case MENU_DESIGN:
-            break;
-    }
+    // 画面遷移
+    void (^block)(void) = _menSegueActionList[indexPath.row];
+    block();
 }
 
 //--------------------------------------------------------------//
@@ -83,37 +73,57 @@
 //--------------------------------------------------------------//
 
 - (void)_setupMenuData {
-    // 設定メニュー名とアイコンのセットを生成
+    // 設定メニュー名とアイコン、画面遷移blockのセットを生成
     NSMutableArray *menuNameList = [[NSMutableArray alloc] init];
     NSMutableArray *menuIconList = [[NSMutableArray alloc] init];
+    NSMutableArray *menuSegueActionList = [[NSMutableArray alloc] init];
 
     for (int idx = 0; idx < LastMenu; ++idx) {
-        NSString *menuName = nil;
-        UIImage *iconImage = nil;
-        switch (idx) {
-            case MENU_BOOKMARK:
-                menuName = kMenuBookmarkName;
-                iconImage = [UIImage imageNamed:kBookmarkIcon];
-                break;
-            case MENU_CATEGORY:
-                menuName = kMenuCategoryName;
-                iconImage = [UIImage imageNamed:kCategoryIcon];
-                break;
-            case MENU_PAGE:
-                menuName = kMenuPageName;
-                iconImage = [UIImage imageNamed:kPageIcon];
-                break;
-            case MENU_DESIGN:
-                menuName = kMenuDesignName;
-                iconImage = [UIImage imageNamed:kDesignIcon];
-                break;
-        }
-        menuName = [NSString stringWithFormat:@"%@%@", menuName, @"設定"];
-        [menuNameList addObject:menuName];
-        [menuIconList addObject:iconImage];
+        NSMutableDictionary *menuItem = [self _getMenuItem:idx];
+        [menuNameList addObject:menuItem[@"menuName"]];
+        [menuIconList addObject:menuItem[@"iconImage"]];
+        [menuSegueActionList addObject:menuItem[@"block"]];
     }
     _menuNameList = menuNameList;
     _menuIconList = menuIconList;
+    _menSegueActionList = menuSegueActionList;
+}
+
+- (NSMutableDictionary *)_getMenuItem:(int)menuKey {
+    // 設定メニューデータを取得
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    switch (menuKey) {
+        case MENU_BOOKMARK: {
+            dict[@"menuName"] = kMenuBookmarkName;
+            dict[@"iconImage"] = [UIImage imageNamed:kBookmarkIcon];
+            dict[@"block"] = ^() {
+                [self performSegueWithIdentifier:kToCategoryOfBookmarkBySegue sender:self];
+            };
+        } break;
+        case MENU_CATEGORY: {
+            dict[@"menuName"] = kMenuCategoryName;
+            dict[@"iconImage"] = [UIImage imageNamed:kCategoryIcon];
+            dict[@"block"] = ^() {
+                [self performSegueWithIdentifier:kToCategoryListBySegue sender:self];
+            };
+        } break;
+        case MENU_PAGE: {
+            dict[@"menuName"] = kMenuPageName;
+            dict[@"iconImage"] = [UIImage imageNamed:kPageIcon];
+            dict[@"block"] = ^() {
+                [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+            };
+        } break;
+        case MENU_DESIGN: {
+            dict[@"menuName"] = kMenuDesignName;
+            dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
+            dict[@"block"] = ^() {
+                [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+            };
+        } break;
+    }
+    dict[@"menuName"] = [NSString stringWithFormat:@"%@%@", dict[@"menuName"], @"設定"];
+    return dict;
 }
 
 @end
