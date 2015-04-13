@@ -88,7 +88,9 @@
         _categoryList = [[DataManager sharedManager] deleteCategoryData:_categoryList DeleteIndex:_deleteIndexPath.row];
 
         // cellから削除
+        [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[_deleteIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
     }
 }
 

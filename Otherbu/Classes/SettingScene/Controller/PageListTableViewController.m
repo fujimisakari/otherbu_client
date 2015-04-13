@@ -66,7 +66,9 @@
         _pageList = [[DataManager sharedManager] deletePageData:_pageList DeleteIndex:indexPath.row];
 
         // CellからPageデータを削除
+        [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
     }
 }
 
