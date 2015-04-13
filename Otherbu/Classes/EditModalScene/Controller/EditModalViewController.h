@@ -21,6 +21,4 @@
 @property(nonatomic, weak) id<EditModalViewDelegate> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;
 
-- (void)setEditItem:(id<DataInterface>)editItem;
-
 @end

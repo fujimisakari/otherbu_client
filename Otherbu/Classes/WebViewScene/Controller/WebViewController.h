@@ -14,6 +14,4 @@
 @property(weak, nonatomic) IBOutlet CustomWebView *webView;
 @property(nonatomic) BookmarkData *bookmark;
 
-- (void)setBookmark:(BookmarkData *)bookmark;
-
 @end

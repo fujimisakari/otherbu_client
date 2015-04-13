@@ -298,11 +298,11 @@
     // WebViewへページ遷移
     if ([[segue identifier] isEqualToString:kToWebViewBySegue]) {
         WebViewController *webViewController = (WebViewController *)[segue destinationViewController];
-        [webViewController setBookmark:_selectBookmark];
+        webViewController.bookmark = _selectBookmark;
     } else if ([[segue identifier] isEqualToString:kToEditViewBySegue]) {
         EditModalViewController *editModalViewController = (EditModalViewController *)[segue destinationViewController];
         editModalViewController.delegate = self;
-        [editModalViewController setEditItem:_editItem];
+        editModalViewController.editItem = _editItem;
     }
 }
 

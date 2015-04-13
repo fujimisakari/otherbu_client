@@ -58,10 +58,6 @@
     return UIModalPresentationOverCurrentContext;
 }
 
-- (void)setEditItem:(id<DataInterface>)editItem {
-    _editItem = editItem;
-}
-
 //--------------------------------------------------------------//
 #pragma mark -- UICollectionViewDataSource --
 //--------------------------------------------------------------//
