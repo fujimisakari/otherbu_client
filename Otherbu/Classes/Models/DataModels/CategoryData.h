@@ -22,7 +22,7 @@
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 
-- (NSArray *)getBookmarkList;
+- (NSMutableArray *)getBookmarkList;
 - (ColorData *)color;
 
 @end

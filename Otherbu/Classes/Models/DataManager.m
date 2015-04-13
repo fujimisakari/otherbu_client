@@ -137,6 +137,25 @@ static DataManager *intance = nil;
 #pragma mark -- delete Method --
 //--------------------------------------------------------------//
 
+- (NSMutableArray *)deleteBookmarkData:(NSMutableArray *)bookmarkList DeleteIndex:(NSInteger)idx {
+    // ブックマークデータの削除
+    BookmarkData *deleteBookmark = (BookmarkData *)bookmarkList[idx];
+    NSMutableDictionary *newBookmarkDict = [[NSMutableDictionary alloc] init];
+    for (BookmarkData *bookmark in [_bookmarkDict objectEnumerator]) {
+        if ([bookmark isEqual:deleteBookmark]) {
+            // todo
+            // datamanageに削除済みを登録する
+        } else {
+            [newBookmarkDict setObject:bookmark forKey:[[NSNumber alloc] initWithInt:(int)bookmark.dataId]];
+        }
+    }
+    self.bookmarkDict = newBookmarkDict;
+
+    [bookmarkList removeObjectAtIndex:idx];
+
+    return bookmarkList;
+}
+
 - (void)_bulkDeleteBookmarkData:(CategoryData *)category {
     // カテゴリに設定されているブックマークデータを削除
     NSArray *deleteBookmarkList = [category getBookmarkList];

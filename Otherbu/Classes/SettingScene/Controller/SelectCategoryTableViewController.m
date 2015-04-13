@@ -11,9 +11,8 @@
 #import "BookmarkTableViewController.h"
 
 @interface SelectCategoryTableViewController ()  {
-    CategoryData *_category;
+    CategoryData *_selectCategory;
     NSArray *_categoryList;
-    NSArray *_bookmarkList;
 }
 
 @end
@@ -48,8 +47,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _category = (CategoryData *)_categoryList[indexPath.row];
-    _bookmarkList = [_category getBookmarkList];
+    _selectCategory = (CategoryData *)_categoryList[indexPath.row];
     [self performSegueWithIdentifier:kToBookmarkListBySegue sender:self];
 }
 
@@ -60,8 +58,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:kToBookmarkListBySegue]) {
         BookmarkTableViewController *bookmarkTableViewController = (BookmarkTableViewController*)[segue destinationViewController];
-        [bookmarkTableViewController setCategory:_category];
-        [bookmarkTableViewController setBookmarkList:_bookmarkList];
+        bookmarkTableViewController.category = _selectCategory;
+        bookmarkTableViewController.bookmarkList = [_selectCategory getBookmarkList];
     }
 }
 

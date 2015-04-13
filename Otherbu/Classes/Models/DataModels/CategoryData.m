@@ -38,18 +38,18 @@
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
 
-- (NSArray *)getBookmarkList {
+- (NSMutableArray *)getBookmarkList {
     // ブックマークリストを生成
-    NSMutableArray *tmpResultList = [[NSMutableArray alloc] init];
+    NSMutableArray *itemList = [[NSMutableArray alloc] init];
     DataManager *dataManager = [DataManager sharedManager];
     for (BookmarkData *bookmarkObj in [dataManager.bookmarkDict objectEnumerator]) {
         if (bookmarkObj.categoryId == (int)_dataId) {
-            [tmpResultList addObject:bookmarkObj];
+            [itemList addObject:bookmarkObj];
         }
     }
-
     // sort番号で昇順ソート
-    NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:tmpResultList];
+    NSArray *tmpResultList = [Helper doSortArrayWithKey:@"sort" Array:itemList];
+    NSMutableArray *resultList = [tmpResultList mutableCopy];
     return resultList;
 }
 

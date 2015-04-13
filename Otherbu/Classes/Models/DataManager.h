@@ -29,6 +29,7 @@
 - (NSMutableArray *)getPageList;
 - (NSArray *)getColorList;
 
+- (NSMutableArray *)deleteBookmarkData:(NSMutableArray *)bookmarkList DeleteIndex:(NSInteger)idx;
 - (NSMutableArray *)deleteCategoryData:(NSMutableArray *)categoryList DeleteIndex:(NSInteger)idx;
 - (NSMutableArray *)deletePageData:(NSMutableArray *)pageList DeleteIndex:(NSInteger)idx;
 

@@ -10,10 +10,7 @@
 #import "BookmarkData.h"
 #import "CategoryData.h"
 
-@interface BookmarkTableViewController () {
-    CategoryData *_category;
-    NSArray *_bookmarkList;
-}
+@interface BookmarkTableViewController ()
 
 @end
 
@@ -24,8 +21,9 @@
     self.navigationItem.title = _category.name;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 //--------------------------------------------------------------//
@@ -45,17 +43,37 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+     forRowAtIndexPath:(NSIndexPath *)indexPath {
 
-//--------------------------------------------------------------//
-#pragma mark -- Public Method --
-//--------------------------------------------------------------//
+    // 削除時
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // MasterDataからBookmarkデータを削除
+        _bookmarkList = [[DataManager sharedManager] deleteBookmarkData:_bookmarkList DeleteIndex:indexPath.row];
 
-- (void)setCategory:(CategoryData *)category {
-    _category = category;
+        // CellからPageデータを削除
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
-- (void)setBookmarkList:(NSArray *)bookmarkList {
-    _bookmarkList = bookmarkList;
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    // 表示順(sort)の編集
+    // BookmarkDataのsortを更新を行っている
+    if (toIndexPath.row < _bookmarkList.count) {
+        BookmarkData *bookmark = [_bookmarkList objectAtIndex:fromIndexPath.row];
+        [_bookmarkList removeObjectAtIndex:fromIndexPath.row];
+        [_bookmarkList insertObject:bookmark atIndex:toIndexPath.row];
+
+        for (int i=0 ; i < _bookmarkList.count; i++) {
+            BookmarkData *bookmark = _bookmarkList[i];
+            bookmark.sort = i;
+        }
+    }
 }
 
 @end

@@ -68,6 +68,7 @@
     [super viewWillAppear:animated];
     [self _createPageTabViews];
     [self _moveTabScroll:_currentPageTabView];
+    [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -277,7 +278,6 @@
 //--------------------------------------------------------------//
 
 - (void)retrunActionOfEditModal:(NSInteger)menuId {
-    int angleId;
     switch (menuId) {
         case MENU_PAGE :
             [self _removePageTabViews];
@@ -285,8 +285,7 @@
             [self _moveTabScroll:_currentPageTabView];
             break;
         case MENU_CATEGORY :
-            angleId = (int)_pageControl.currentPage + 1;
-            [_scrollView reloadTableDataWithAngleID:angleId];
+            [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
             break;
     }
 }
@@ -362,6 +361,10 @@
     for (UIView *view in [_tabScrollView subviews]) {
         [view removeFromSuperview];
     }
+}
+
+- (int)_getCurrentAngleId {
+    return (int)_pageControl.currentPage + 1;
 }
 
 @end

@@ -10,7 +10,7 @@
 
 @interface BookmarkTableViewController : SettingBaseTableViewController
 
-- (void)setCategory:(CategoryData *)category;
-- (void)setBookmarkList:(NSArray *)bookmarkList;
+@property(nonatomic) CategoryData *category;
+@property(nonatomic) NSMutableArray *bookmarkList;
 
 @end
