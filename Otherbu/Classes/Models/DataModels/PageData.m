@@ -72,14 +72,6 @@
     return resultList;
 }
 
-- (NSMutableArray *)getCategoryListByTag:(NSInteger)tag {
-    // tag(angle)からカテゴリ一覧を取得
-    NSMutableDictionary *categoryListOfAngle = [self getCategoryListOfAngle];
-    NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tag];
-    NSMutableArray *categoryList = categoryListOfAngle[angleNumber];  // todo ここはメンバー編集で持っておいたほうがいい
-    return categoryList;
-}
-
 - (NSMutableDictionary *)getCategoryListOfAngle {
     // アングル別のカテゴリー一覧を取得
     DataManager *dataManager = [DataManager sharedManager];

@@ -23,12 +23,13 @@
 #import "MBProgressHUD.h"
 
 @interface MainViewController () {
-    id<DataInterface> _editItem;
-    float             _viewWidth;
-    float             _viewHeight;
-    PageData          *_currentPage;
-    PageTabView       *_currentPageTabView;
-    BookmarkData      *_selectBookmark;
+    id<DataInterface>   _editItem;
+    float               _viewWidth;
+    float               _viewHeight;
+    PageData            *_currentPage;
+    PageTabView         *_currentPageTabView;
+    BookmarkData        *_selectBookmark;
+    NSMutableDictionary *_categoryListOfAngle;
 }
 
 @end
@@ -68,7 +69,10 @@
     [super viewWillAppear:animated];
     [self _createPageTabViews];
     [self _moveTabScroll:_currentPageTabView];
-    [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
+    if (_currentPage) {
+        _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
+        [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -103,7 +107,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // テーブル全体のセクションの数を返す
     if (_currentPage) {
-        NSArray *categoryList = [_currentPage getCategoryListByTag:tableView.tag];
+        NSArray *categoryList = [self _getCategoryListByTag:tableView.tag];
         return categoryList.count;
     } else {
         return 0;
@@ -113,7 +117,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     // 指定されたセクションのセクション名を返す
     if (_currentPage) {
-        CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
+        CategoryData *categoryData = [self _getCategoryListByTag:tableView.tag][section];
         return categoryData.name;
     } else {
         return @"";
@@ -123,7 +127,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // 指定されたセクションの項目数を返す
     if (_currentPage) {
-        CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
+        CategoryData *categoryData = [self _getCategoryListByTag:tableView.tag][section];
         NSArray *bookmarkList = [categoryData getBookmarkList];
         return categoryData.isOpenSection ? bookmarkList.count : 0;
     } else {
@@ -139,7 +143,7 @@
     }
 
     if (_currentPage) {
-        CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][indexPath.section];
+        CategoryData *categoryData = [self _getCategoryListByTag:tableView.tag][indexPath.section];
         cell.category = categoryData;
         cell.bookmark = [categoryData getBookmarkList][indexPath.row];
         cell = [cell setupWithPageData:_currentPage indexPath:indexPath];
@@ -159,7 +163,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     // セクションヘッダーのコンテンツを設定する
     if (_currentPage) {
-        CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][section];
+        CategoryData *categoryData = [self _getCategoryListByTag:tableView.tag][section];
         CGRect frame = CGRectMake(0, 0, _viewWidth, kHeightOfSectionHeader);
         SectionHeaderView *containerView =
             [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section delegate:self tagNumber:tableView.tag];
@@ -171,7 +175,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // セルタップ時に実行される処理
-    CategoryData *categoryData = [_currentPage getCategoryListByTag:tableView.tag][indexPath.section];
+    CategoryData *categoryData = [self _getCategoryListByTag:tableView.tag][indexPath.section];
     _selectBookmark = [categoryData getBookmarkList][indexPath.row];
 
     // toViewController
@@ -184,7 +188,7 @@
 
 - (void)didSectionHeaderSingleTap:(NSInteger)section tagNumber:(NSInteger)tagNumber {
     // セクションヘッダーのシングルタップ時の実行処理
-    CategoryData *categoryData = [_currentPage getCategoryListByTag:tagNumber][section];
+    CategoryData *categoryData = [self _getCategoryListByTag:tagNumber][section];
     UITableView *tableView = (UITableView *)[_scrollView viewWithTag:tagNumber];
 
     [tableView beginUpdates];
@@ -328,6 +332,8 @@
         UserData *user = [[DataManager sharedManager] getUser];
         _currentPage = [user page];
 
+        _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
+
         [_scrollView reloadTableData];
         [self _createPageTabViews];
         [self _moveTabScroll:_currentPageTabView];
@@ -365,6 +371,13 @@
 
 - (int)_getCurrentAngleId {
     return (int)_pageControl.currentPage + 1;
+}
+
+- (NSMutableArray *)_getCategoryListByTag:(NSInteger)tag {
+    // tag(angle)からカテゴリ一覧を取得
+    NSNumber *angleNumber = [[NSNumber alloc] initWithInt:(int)tag];
+    NSMutableArray *categoryList = _categoryListOfAngle[angleNumber];
+    return categoryList;
 }
 
 @end
