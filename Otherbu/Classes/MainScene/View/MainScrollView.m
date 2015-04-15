@@ -40,6 +40,13 @@
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
 
+- (void)scrollToTop {
+    for (int i = 1; i < LastAngle; ++i) {
+        InnerTableView *tableView = (InnerTableView *)[self viewWithTag:i];
+        [tableView setContentOffset:CGPointMake(0.0, 0 - (int)kMarginTopOfTableFrame)];
+    }
+}
+
 - (void)reloadTableData {
     // 全アングルのTableデータの再読み込み
     for (int i = 1; i < LastAngle; ++i) {

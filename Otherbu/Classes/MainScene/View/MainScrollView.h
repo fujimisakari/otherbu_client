@@ -9,6 +9,7 @@
 @interface MainScrollView : UIScrollView
 
 - (void)setupWithCGSize:(CGSize)cgSize delegate:(id<UIScrollViewDelegate>)delegate;
+- (void)scrollToTop;
 - (void)reloadTableData;
 - (void)reloadTableDataByAnimation;
 - (void)reloadTableDataWithAngleID:(int)angleId;

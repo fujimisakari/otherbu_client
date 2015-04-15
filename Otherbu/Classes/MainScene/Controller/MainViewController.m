@@ -244,6 +244,7 @@
     _currentPageTabView = tappedPageTabView;
 
     // move sclollbar
+    [_scrollView scrollToTop];
     [self _moveTabScroll:tappedPageTabView];
 
     // set TabFrameView
