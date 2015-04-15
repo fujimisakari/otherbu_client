@@ -71,7 +71,7 @@
     [self _moveTabScroll:_currentPageTabView];
     if (_currentPage) {
         _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
-        [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
+        [_scrollView reloadTableData];
     }
 }
 
@@ -235,7 +235,8 @@
 
     // pageを入れ替え、tableのリロード
     _currentPage = selectPage;
-    [_scrollView reloadTableData];
+    _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
+    [_scrollView reloadTableDataByAnimation];
 
     // switch PageTabView
     [tappedPageTabView switchTabStatus];
@@ -334,7 +335,7 @@
 
         _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
 
-        [_scrollView reloadTableData];
+        [_scrollView reloadTableDataByAnimation];
         [self _createPageTabViews];
         [self _moveTabScroll:_currentPageTabView];
         // [self.refreshControl endRefreshing];

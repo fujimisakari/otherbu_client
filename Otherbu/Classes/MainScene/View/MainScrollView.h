@@ -10,6 +10,7 @@
 
 - (void)setupWithCGSize:(CGSize)cgSize delegate:(id<UIScrollViewDelegate>)delegate;
 - (void)reloadTableData;
+- (void)reloadTableDataByAnimation;
 - (void)reloadTableDataWithAngleID:(int)angleId;
 
 @end

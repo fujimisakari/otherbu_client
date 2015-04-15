@@ -10,6 +10,10 @@
 
 @implementation Helper
 
++ (NSNumber *)getNumberByInt:(int)value {
+    return [[NSNumber alloc] initWithInt:value];
+}
+
 + (int)getSameCountByDict:(NSDictionary *)dict TargetValue:(NSNumber *)value {
     // DictからValueが同じ数を取得
     int count = 0;

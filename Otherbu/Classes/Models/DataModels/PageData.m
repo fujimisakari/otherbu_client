@@ -39,6 +39,7 @@
             self.colorId = 8;
         } else if ([dataDict[@"id"] integerValue] == 17) {
             self.colorId = 6;
+
         } else if ([dataDict[@"id"] integerValue] == 16) {
             self.colorId = 5;
          } else {
@@ -63,8 +64,7 @@
 
     NSArray *categoryIdList = [_categoryIdsStr componentsSeparatedByString:@","];
     for (id categoryId in categoryIdList) {
-        NSNumber *number = [[NSNumber alloc] initWithInt:[categoryId intValue]];
-        CategoryData *data = [dataManager getCategory:number];
+        CategoryData *data = [dataManager getCategory:[Helper getNumberByInt:(int)[categoryId intValue]]];
         if (data) {
             [resultList addObject:data];
         }
@@ -89,36 +89,13 @@
             [tmpResultDict[angleId] addObject:data];
         }
     }
-    // アングル別のカテゴリリストをソートする
+    // アングル別のカテゴリリストをソートする(バブルソート)
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *sortDict = [self _getMapByArg:_sortIdsStr];
     for (NSNumber *angleId in tmpResultDict) {
-        //sortIdが0 or 1 始まりのため、 firstCategoryDataは0始まりだった時の先頭categoryを保持してる
-        CategoryData *firstCategoryData = nil;
         NSMutableArray *array = [NSMutableArray arrayWithArray:tmpResultDict[angleId]];
-        // NSLog(@"middarray  %@", array);
-        for (CategoryData *category in tmpResultDict[angleId]) {
-            NSNumber *categoryId = [[NSNumber alloc] initWithInt:(int)category.dataId];
-            NSNumber *sortId = sortDict[categoryId];
-            int idx = (int)[sortId integerValue] - 1;
-            if (idx >= 0) {
-                // NSLog(@"category.name, %@", category.name);
-                array[idx] = category;
-            } else {
-                firstCategoryData = category;
-            }
-        }
-        // firstCategoryDataを先頭に置き替える
-        if (firstCategoryData) {
-            NSMutableArray *tmpArray = [NSMutableArray arrayWithObject:firstCategoryData];
-            [array removeLastObject];
-            for (CategoryData *category in array) {
-                [tmpArray addObject:(id)category];
-            }
-            array = tmpArray;
-        }
-        // NSLog(@"array %ld", array.count);
-        resultDict[angleId] = array;
+        NSMutableArray *sortArray = [self _doCategorySort:array SortDict:sortDict];
+        resultDict[angleId] = sortArray;
     }
     return resultDict;
 }
@@ -129,16 +106,39 @@
     NSArray *list_ = [strData componentsSeparatedByString:@","];
     for (id data in list_) {
         NSArray *aList = [(NSString *)data componentsSeparatedByString:@":"];
-        NSNumber *categoryId = [[NSNumber alloc] initWithInt:[aList[0] intValue]];
-        NSNumber *argId = [[NSNumber alloc] initWithInt:[aList[1] intValue]];
+        NSNumber *categoryId = [Helper getNumberByInt:[aList[0] intValue]];
+        NSNumber *argId = [Helper getNumberByInt:[aList[1] intValue]];
         [resultDict setObject:argId forKey:categoryId];
     }
     return resultDict;
 }
 
+- (NSMutableArray *)_doCategorySort:(NSMutableArray *)array SortDict:(NSMutableDictionary *)sortDict {
+    // sortIdsStrは、歯抜けの連番になってる場合があるので、0〜の連番になるようにする
+
+    // 最後の要素を除いて、すべての要素を並べ替えます
+    for (int i = 0; i < (int)array.count - 1; i++) {
+        // 下から上に順番に比較します
+        for (int j = (int)array.count - 1; j > i; j--) {
+            CategoryData *currentCategory = array[j];
+            NSNumber *currentSortId = sortDict[[Helper getNumberByInt:(int)currentCategory.dataId]];
+
+            CategoryData *nextCategory = array[(int)j - 1];
+            NSNumber *nextSortId = sortDict[[Helper getNumberByInt:(int)nextCategory.dataId]];
+
+            // 上の方が大きいときは互いに入れ替えます
+            if (currentSortId < nextSortId) {
+                array[j] = nextCategory;
+                array[(int)j - 1] = currentCategory;
+            }
+        }
+    }
+    return array;
+}
+
 - (void)updatePageData:(CategoryData *)category isCheckMark:(BOOL)isCheckMark {
     // ページ情報を編集時の処理
-    NSNumber *categoryId = [[NSNumber alloc] initWithInt:(int)category.dataId];
+    NSNumber *categoryId = [Helper getNumberByInt:(int)category.dataId];
     NSMutableArray *categoryIdList = (NSMutableArray *)[_categoryIdsStr componentsSeparatedByString:@","];
     NSMutableDictionary *angleDict = [self _getMapByArg:_angleIdsStr];
     NSMutableDictionary *sortDict = [self _getMapByArg:_sortIdsStr];
@@ -179,8 +179,7 @@
 }
 
 - (ColorData *)color {
-    NSNumber *number = [[NSNumber alloc] initWithInt:(int)_colorId];
-    return [[DataManager sharedManager] getColor:number];
+    return [[DataManager sharedManager] getColor:[Helper getNumberByInt:(int)_colorId]];
 }
 
 //--------------------------------------------------------------//

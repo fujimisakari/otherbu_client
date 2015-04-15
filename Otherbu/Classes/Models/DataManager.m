@@ -176,25 +176,27 @@ static DataManager *intance = nil;
     // カテゴリデータの削除
 
     // カテゴリに設定されているブックマークデータを削除
-    CategoryData *category = categoryList[idx];
-    [self _bulkDeleteBookmarkData:category];
+    CategoryData *deleteCategory = categoryList[idx];
+    [self _bulkDeleteBookmarkData:deleteCategory];
 
     // ページデータの更新
     for (PageData *page in [_pageDict objectEnumerator]) {
-        [page updatePageData:category isCheckMark:NO];
+        [page updatePageData:deleteCategory isCheckMark:NO];
     }
 
     // カテゴリデータを削除
-    [categoryList removeObjectAtIndex:idx];
     NSMutableDictionary *newCategoryDict = [[NSMutableDictionary alloc] init];
-    for (int i = 0; i < categoryList.count; i++) {
-        CategoryData *_category = categoryList[i];
-        [newCategoryDict setObject:_category forKey:[[NSNumber alloc] initWithInt:(int)_category.dataId]];
+    for (CategoryData *category in [_categoryDict objectEnumerator]) {
+        if ([category isEqual:deleteCategory]) {
+            // todo
+            // datamanageに削除済みを登録する
+        } else {
+            [newCategoryDict setObject:category forKey:[[NSNumber alloc] initWithInt:(int)category.dataId]];
+        }
     }
     self.categoryDict = newCategoryDict;
 
-    // todo
-    // datamanageに削除済みを登録する
+    [categoryList removeObjectAtIndex:idx];
 
     return categoryList;
 }

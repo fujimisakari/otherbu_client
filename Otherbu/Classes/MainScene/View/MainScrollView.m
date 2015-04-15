@@ -42,6 +42,14 @@
 
 - (void)reloadTableData {
     // 全アングルのTableデータの再読み込み
+    for (int i = 1; i < LastAngle; ++i) {
+        InnerTableView *tableView = (InnerTableView *)[self viewWithTag:i];
+        [tableView reloadData];
+    }
+}
+
+- (void)reloadTableDataByAnimation {
+    // アニメーション付きで全アングルのTableデータの再読み込み
     [UIView transitionWithView: self duration: 0.35f options: UIViewAnimationOptionTransitionFlipFromLeft
         animations: ^(void) {
             for (int i = 1; i < LastAngle; ++i) {
