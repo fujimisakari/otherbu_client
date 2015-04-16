@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Edit View Controller-->
@@ -20,7 +20,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TzD-BI-4Jb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1334" y="307"/>
+            <point key="canvasLocation" x="1872" y="195"/>
+        </scene>
+        <!--Bookmark Edit View Controller-->
+        <scene sceneID="4Vk-5d-Qlo">
+            <objects>
+                <viewController id="2vA-Rt-dli" userLabel="Bookmark Edit View Controller" customClass="BookmarkEditModalViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3sH-7E-QJO"/>
+                        <viewControllerLayoutGuide type="bottom" id="csN-jB-3qs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gZM-ur-Wk0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gWt-Zp-BR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1154" y="195"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -97,6 +115,7 @@
                         <segue destination="66c-Jd-vhB" kind="presentation" identifier="toWebView" modalTransitionStyle="crossDissolve" id="Tad-Ax-6EV"/>
                         <segue destination="Eiy-at-6ve" kind="show" identifier="toSetting" id="8B2-3a-uUi"/>
                         <segue destination="923-Gb-755" kind="presentation" identifier="toEditModalView" modalTransitionStyle="coverVertical" id="hdg-i3-DKj"/>
+                        <segue destination="2vA-Rt-dli" kind="presentation" identifier="toBookmarkEditModalView" id="MFd-VT-rt4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -148,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bv9-UU-H4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1334" y="1075"/>
+            <point key="canvasLocation" x="1574" y="1075"/>
         </scene>
         <!--Setting Table View Controller-->
         <scene sceneID="bY7-mn-KcB">
@@ -157,7 +176,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RUb-Jm-jMq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
                             <outlet property="dataSource" destination="2NY-Ks-tfR" id="XlI-n8-X3a"/>
                             <outlet property="delegate" destination="2NY-Ks-tfR" id="RRt-oR-b9X"/>
@@ -306,7 +325,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Okk-wo-pHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4024" y="3599"/>
+            <point key="canvasLocation" x="3778" y="3599"/>
         </scene>
         <!--Select CategoryTable View Controller-->
         <scene sceneID="Sjp-pb-chd">

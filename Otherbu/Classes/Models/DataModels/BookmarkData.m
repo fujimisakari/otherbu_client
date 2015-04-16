@@ -41,4 +41,40 @@
     return [[DataManager sharedManager] getCategory:number];
 }
 
+//--------------------------------------------------------------//
+#pragma mark -- Data Intaface --
+//--------------------------------------------------------------//
+
+- (NSInteger)iGetMenuId {
+    return MENU_BOOKMARK;
+}
+
+- (NSString *)iGetTitleName {
+    return kMenuBookmarkName;
+}
+
+- (NSString *)iGetName {
+    return self.name;
+}
+
+- (void)iSetName:(NSString *)name {
+    self.name = name;
+}
+
+- (NSString *)iGetUrl {
+    return self.url;
+}
+
+- (void)iSetUrl:(NSString *)url {
+    self.url = url;
+}
+
+- (NSInteger)iGetCategoryId {
+    return self.categoryId;
+}
+
+- (void)iSetCategoryId:(NSInteger)categoryId {
+    self.categoryId = categoryId;
+}
+
 @end

@@ -46,11 +46,7 @@
     [_editModalView setup];
     _editModalView.collectionView.delegate = self;
     _editModalView.collectionView.dataSource = self;
-    _editModalView.textField.delegate = self;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    _editModalView.nameTextField.delegate = self;
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
@@ -128,7 +124,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // キーボードのreturn or 改行でキーボードを閉じる
-    [_editModalView.textField resignFirstResponder];
+    [_editModalView.nameTextField resignFirstResponder];
     return YES;
 }
 
@@ -143,7 +139,7 @@
 
 - (void)didPressUpdateButton {
     // 更新時
-    [_editItem iSetName:_editModalView.textField.text];
+    [_editItem iSetName:_editModalView.nameTextField.text];
     [_editItem iSetColorId:_colorId];
     [self.delegate retrunActionOfEditModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];

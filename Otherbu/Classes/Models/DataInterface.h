@@ -19,6 +19,12 @@
 
 - (void)iSetName:(NSString *)name;
 
+- (NSInteger)iGetUrl;
+- (void)iSetUrl:(NSString *)url;
+
+- (NSInteger)iGetCategoryId;
+- (void)iSetCategoryId:(NSInteger)categoryId;
+
 - (NSInteger)iGetColorId;
 - (void)iSetColorId:(NSInteger)colorId;
 

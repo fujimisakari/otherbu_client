@@ -6,9 +6,11 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
+# import "DataInterface.h"
+
 @class CategoryData;
 
-@interface BookmarkData : NSObject
+@interface BookmarkData : NSObject<DataInterface>
 
 @property(nonatomic) NSInteger dataId;      // ID
 @property(nonatomic) NSInteger userId;      // ユーザーID

@@ -9,6 +9,8 @@
 #import "MainViewController.h"
 #import "WebViewController.h"
 #import "EditModalViewController.h"
+#import "BookmarkEditModalViewController.h"
+#import "EditModalInterface.h"
 #import "SectionHeaderView.h"
 #import "MainScrollView.h"
 #import "NavigationBar.h"
@@ -141,6 +143,7 @@
     if (cell == nil) {
         cell = [[MainTableCellView alloc] initWithCellIdentifier:kCellIdentifier ContentSizeWidth:tableView.contentSize.width];
     }
+    cell.delegate = self;
 
     if (_currentPage) {
         CategoryData *categoryData = [self _getCategoryListByTag:tableView.tag][indexPath.section];
@@ -149,6 +152,16 @@
         cell = [cell setupWithPageData:_currentPage indexPath:indexPath];
     }
     return cell;
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- MainTableCellViewDelegate --
+//--------------------------------------------------------------//
+
+- (void)didLongPressBookmark:(BookmarkData *)selectBookmark {
+    // PageTabの長押し時の実行処理
+    _editItem = selectBookmark;
+    [self performSegueWithIdentifier:kToBookmarkEditViewBySegue sender:self];
 }
 
 //--------------------------------------------------------------//
@@ -207,7 +220,7 @@
     [tableView endUpdates];
 }
 
-- (void)didLongPressPageTab:(CategoryData *)category {
+- (void)didLongPressCategory:(CategoryData *)category {
     // セクションタブの長押し時の実行処理
     _editItem = category;
     [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
@@ -284,11 +297,15 @@
 //--------------------------------------------------------------//
 
 - (void)retrunActionOfEditModal:(NSInteger)menuId {
+    // モーダル編集画面で更新した場合の処理
     switch (menuId) {
         case MENU_PAGE :
             [self _removePageTabViews];
             [self _createPageTabViews];
             [self _moveTabScroll:_currentPageTabView];
+            break;
+        case MENU_BOOKMARK :
+            [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
             break;
         case MENU_CATEGORY :
             [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
@@ -309,6 +326,10 @@
         EditModalViewController *editModalViewController = (EditModalViewController *)[segue destinationViewController];
         editModalViewController.delegate = self;
         editModalViewController.editItem = _editItem;
+    } else if ([[segue identifier] isEqualToString:kToBookmarkEditViewBySegue]) {
+        BookmarkEditModalViewController *bookmarkEditModalViewController = (BookmarkEditModalViewController *)[segue destinationViewController];
+        bookmarkEditModalViewController.delegate = self;
+        bookmarkEditModalViewController.editItem = _editItem;
     }
 }
 

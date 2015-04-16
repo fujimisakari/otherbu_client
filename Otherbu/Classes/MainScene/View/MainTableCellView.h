@@ -8,7 +8,15 @@
 
 @class PageData;
 
+@protocol MainTableCellViewDelegate
+
+- (void)didLongPressBookmark:(BookmarkData *)selectBookmark;
+
+@end
+
 @interface MainTableCellView : UITableViewCell
+
+@property(nonatomic, weak) id<MainTableCellViewDelegate> delegate;
 
 @property(nonatomic) CategoryData *category;
 @property(nonatomic) BookmarkData *bookmark;

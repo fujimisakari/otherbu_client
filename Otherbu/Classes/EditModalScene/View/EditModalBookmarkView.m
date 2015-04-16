@@ -1,18 +1,14 @@
 //
-//  EditModalView.m
+//  EditModalBookmarkView.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalView.h"
+#import "EditModalBookmarkView.h"
 
-@interface EditModalView ()
-
-@end
-
-@implementation EditModalView
+@implementation EditModalBookmarkView
 
 //--------------------------------------------------------------//
 #pragma mark -- Create Methods --
@@ -40,37 +36,17 @@
     int textFieldY = textFieldLabelY + kCommonHeightOfEditModal + space;
     float fwidth = self.frame.size.width - (kAdaptButtonWidthOfEditModal * 2);
     CGRect textFieldRect = CGRectMake(kAdaptWidthOfEditModal, textFieldY, fwidth, kCommonHeightOfEditModal);
-    _nameTextField = [[UITextField alloc] init];
-    [self setTextField:textFieldRect TextField:_nameTextField Text:[super.editItem iGetName]];
+    // [self setTextField:textFieldRect];
 
     // ColorLabel生成
     int colorLabelY = textFieldY + margin + space;
     CGRect colorLabelRect = CGRectMake(kCommonAdaptWidthOfEditModal, colorLabelY, kLabelWidthOfEditModal, kCommonHeightOfEditModal);
     [self setFieldLabel:colorLabelRect label:@"Set Color :"];
 
-    // ColorPalette生成
-    float width = self.frame.size.width - (kAdaptWidthOfEditModal * 2);
-    float height = kViewHeightOfColorPalette;
-    int colorPaletteY = colorLabelY + kCommonHeightOfEditModal;
-    CGRect colorPaletteRect = CGRectMake(kCommonAdaptWidthOfEditModal, colorPaletteY, width, height);
-    [self _setColorPalette:colorPaletteRect];
 }
 
 //--------------------------------------------------------------//
 #pragma mark-- Set Method--
 //--------------------------------------------------------------//
-
-- (void)_setColorPalette:(CGRect)rect {
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    float cellSize = kCellSizeOfColorPalette;
-    layout.itemSize = CGSizeMake(cellSize, cellSize);            //表示するアイテムのサイズ
-    layout.minimumLineSpacing = kCellMarginOfColorPalette;       //セクションとアイテムの間隔
-    layout.minimumInteritemSpacing = kCellMarginOfColorPalette;  //アイテム同士の間隔
-
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    _collectionView.frame = rect;
-    [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
-    [self addSubview:_collectionView];
-}
 
 @end

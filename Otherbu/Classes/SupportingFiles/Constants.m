@@ -124,7 +124,6 @@ const float kCellHeightOfSetting = 50.0f;                    // Setting画面の
 //--------------------------------------------------------------//
 
 NSString * const kMenuBookmarkName = @"Bookmark";
-NSString * const kMenuBookmarkMoveName = @"Bookmark Move";
 NSString * const kMenuCategoryName = @"Category";
 NSString * const kMenuPageName = @"Page";
 NSString * const kMenuDesignName = @"Design";
@@ -148,6 +147,7 @@ NSString * const kCheckMarkIcon = @"checkMarkIcon.png";
 
 NSString * const kToWebViewBySegue = @"toWebView";                            // WebViewページへ
 NSString * const kToEditViewBySegue = @"toEditModalView";                     // 編集Modalへ
+NSString * const kToBookmarkEditViewBySegue = @"toBookmarkEditModalView";     // ブックマーク編集Modalへ
 NSString * const kToSettingBySegue = @"toSetting";                            // 設定ページへ
 NSString * const kToCategoryListBySegue = @"toCateogoryList";                 // 設定ページ → カテゴリへ
 NSString * const kToCategoryOfBookmarkBySegue = @"toCategoryListOfBookmark";  // 設定ページ → ブックマークのカテゴリ選択へ

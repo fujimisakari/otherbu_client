@@ -7,18 +7,13 @@
 //
 
 #import "EditModalView.h"
+#import "EditModalInterface.h"
 #import "DataInterface.h"
-
-@protocol EditModalViewDelegate
-
-- (void)retrunActionOfEditModal:(NSInteger)menuId;
-
-@end
 
 @interface EditModalViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate,
                                                       UICollectionViewDelegateFlowLayout, UITextFieldDelegate, EditModalDelegate>
 
-@property(nonatomic, weak) id<EditModalViewDelegate> delegate;
+@property(nonatomic, weak) id<EditModalInterface> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;
 
 @end

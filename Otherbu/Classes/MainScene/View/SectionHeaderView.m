@@ -156,7 +156,7 @@
 - (void)_didLongPress:(UILongPressGestureRecognizer*)sender {
     // 長押しイベント
     if (sender.state == UIGestureRecognizerStateBegan){
-        [self.delegate didLongPressPageTab:_categoryData];
+        [self.delegate didLongPressCategory:_categoryData];
     }
 }
 

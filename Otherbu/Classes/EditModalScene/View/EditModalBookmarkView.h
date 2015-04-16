@@ -1,11 +1,13 @@
 //
-//  BookmarkViewController.h
+//  EditModalBookmarkView.h
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@interface BookmarkViewController : UIViewController
+#import "EditModalBaseView.h"
+
+@interface EditModalBookmarkView : EditModalBaseView
 
 @end

@@ -92,7 +92,6 @@ extern const int kCellItemMarginOfSetting;
 extern const float kCellHeightOfSetting;
 
 extern NSString * const kMenuBookmarkName;
-extern NSString * const kMenuBookmarkMoveName;
 extern NSString * const kMenuCategoryName;
 extern NSString * const kMenuPageName;
 extern NSString * const kMenuDesignName;
@@ -108,6 +107,7 @@ extern NSString * const kCheckMarkIcon;
 
 extern NSString * const kToWebViewBySegue;
 extern NSString * const kToEditViewBySegue;
+extern NSString * const kToBookmarkEditViewBySegue;
 extern NSString * const kToSettingBySegue;
 extern NSString * const kToCategoryListBySegue;
 extern NSString * const kToCategoryOfBookmarkBySegue;

@@ -59,6 +59,9 @@
     // 文言設定
     [self _setText];
 
+    // 長押しイベント設定
+    [self _setTapGesture];
+
     return self;
 }
 
@@ -137,6 +140,13 @@
     self.detailTextLabel.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfUrl];
 }
 
+- (void)_setTapGesture {
+    // 長押しジェスチャを追加
+    UILongPressGestureRecognizer *longPress =
+        [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_didLongPress:)];
+    [self addGestureRecognizer:longPress];
+}
+
 //--------------------------------------------------------------//
 #pragma mark -- Cell Helper Method --
 //--------------------------------------------------------------//
@@ -197,6 +207,13 @@
     footerView.layer.mask = maskLayer;
 
     return footerView;
+}
+
+- (void)_didLongPress:(UILongPressGestureRecognizer*)sender {
+    // 長押しイベント
+    if (sender.state == UIGestureRecognizerStateBegan){
+        [self.delegate didLongPressBookmark:_bookmark];
+    }
 }
 
 @end

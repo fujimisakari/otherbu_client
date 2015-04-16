@@ -11,6 +11,9 @@
 		7B565EFF1A92486F00D6A420 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B565EFD1A92486F00D6A420 /* Main.storyboard */; };
 		7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B565F021A92486F00D6A420 /* LaunchScreen.xib */; };
 		7B565F101A92486F00D6A420 /* OtherbuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F0F1A92486F00D6A420 /* OtherbuTests.m */; };
+		7B9085A01ADED87A00456102 /* BookmarkEditModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B90859F1ADED87A00456102 /* BookmarkEditModalViewController.m */; };
+		7B9085A61ADEE04F00456102 /* EditModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A51ADEE04F00456102 /* EditModalBaseView.m */; };
+		7B9085A91ADEE57300456102 /* EditModalBookmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */; };
 		7BFDDF191AD9AB5C00DD60EF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF181AD9AB5C00DD60EF /* MainViewController.m */; };
@@ -24,7 +27,6 @@
 		7BFDDF311AD9ABD000DD60EF /* EditModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF301AD9ABD000DD60EF /* EditModalView.m */; };
 		7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF331AD9ABF200DD60EF /* WebViewController.m */; };
 		7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */; };
-		7BFDDF4E1AD9AC3500DD60EF /* BookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF391AD9AC3500DD60EF /* BookmarkViewController.m */; };
 		7BFDDF4F1AD9AC3500DD60EF /* DesiginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */; };
 		7BFDDF511AD9AC3500DD60EF /* SettingBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3F1AD9AC3500DD60EF /* SettingBaseTableViewController.m */; };
 		7BFDDF521AD9AC3500DD60EF /* BookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF411AD9AC3500DD60EF /* BookmarkTableViewController.m */; };
@@ -68,6 +70,13 @@
 		7B565F091A92486F00D6A420 /* OtherbuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OtherbuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565F0E1A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565F0F1A92486F00D6A420 /* OtherbuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherbuTests.m; sourceTree = "<group>"; };
+		7B90859E1ADED87A00456102 /* BookmarkEditModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookmarkEditModalViewController.h; path = Classes/EditModalScene/Controller/BookmarkEditModalViewController.h; sourceTree = "<group>"; };
+		7B90859F1ADED87A00456102 /* BookmarkEditModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookmarkEditModalViewController.m; path = Classes/EditModalScene/Controller/BookmarkEditModalViewController.m; sourceTree = "<group>"; };
+		7B9085A41ADEE04F00456102 /* EditModalBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalBaseView.h; path = Classes/EditModalScene/View/EditModalBaseView.h; sourceTree = "<group>"; };
+		7B9085A51ADEE04F00456102 /* EditModalBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModalBaseView.m; path = Classes/EditModalScene/View/EditModalBaseView.m; sourceTree = "<group>"; };
+		7B9085A71ADEE57300456102 /* EditModalBookmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalBookmarkView.h; path = Classes/EditModalScene/View/EditModalBookmarkView.h; sourceTree = "<group>"; };
+		7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModalBookmarkView.m; path = Classes/EditModalScene/View/EditModalBookmarkView.m; sourceTree = "<group>"; };
+		7B9085AC1ADFFDFE00456102 /* EditModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalInterface.h; path = Classes/EditModalScene/Controller/EditModalInterface.h; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BFDDEE91AD9A50100DD60EF /* Otherbu-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Otherbu-Prefix.pch"; sourceTree = "<group>"; };
 		7BFDDF141AD9AB3200DD60EF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
@@ -94,8 +103,6 @@
 		7BFDDF331AD9ABF200DD60EF /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = Classes/WebViewScene/Controller/WebViewController.m; sourceTree = "<group>"; };
 		7BFDDF351AD9AC0400DD60EF /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWebView.h; path = Classes/WebViewScene/View/CustomWebView.h; sourceTree = "<group>"; };
 		7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWebView.m; path = Classes/WebViewScene/View/CustomWebView.m; sourceTree = "<group>"; };
-		7BFDDF381AD9AC3500DD60EF /* BookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookmarkViewController.h; path = Classes/SettingScene/Controller/BookmarkViewController.h; sourceTree = "<group>"; };
-		7BFDDF391AD9AC3500DD60EF /* BookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookmarkViewController.m; path = Classes/SettingScene/Controller/BookmarkViewController.m; sourceTree = "<group>"; };
 		7BFDDF3A1AD9AC3500DD60EF /* DesiginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DesiginViewController.h; path = Classes/SettingScene/Controller/DesiginViewController.h; sourceTree = "<group>"; };
 		7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DesiginViewController.m; path = Classes/SettingScene/Controller/DesiginViewController.m; sourceTree = "<group>"; };
 		7BFDDF3E1AD9AC3500DD60EF /* SettingBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingBaseTableViewController.h; path = Classes/SettingScene/Controller/SettingBaseTableViewController.h; sourceTree = "<group>"; };
@@ -206,6 +213,10 @@
 			children = (
 				7BFDDF2F1AD9ABD000DD60EF /* EditModalView.h */,
 				7BFDDF301AD9ABD000DD60EF /* EditModalView.m */,
+				7B9085A41ADEE04F00456102 /* EditModalBaseView.h */,
+				7B9085A51ADEE04F00456102 /* EditModalBaseView.m */,
+				7B9085A71ADEE57300456102 /* EditModalBookmarkView.h */,
+				7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -334,8 +345,6 @@
 		7B91E6371AC32F7E003A36F1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7BFDDF381AD9AC3500DD60EF /* BookmarkViewController.h */,
-				7BFDDF391AD9AC3500DD60EF /* BookmarkViewController.m */,
 				7BFDDF3A1AD9AC3500DD60EF /* DesiginViewController.h */,
 				7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */,
 				7BFDDF3E1AD9AC3500DD60EF /* SettingBaseTableViewController.h */,
@@ -400,6 +409,9 @@
 			children = (
 				7BFDDF2C1AD9ABC000DD60EF /* EditModalViewController.h */,
 				7BFDDF2D1AD9ABC000DD60EF /* EditModalViewController.m */,
+				7B90859E1ADED87A00456102 /* BookmarkEditModalViewController.h */,
+				7B90859F1ADED87A00456102 /* BookmarkEditModalViewController.m */,
+				7B9085AC1ADFFDFE00456102 /* EditModalInterface.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -564,13 +576,14 @@
 				7BFDDF721AD9AC8400DD60EF /* DesignData.m in Sources */,
 				7BFDDF701AD9AC8400DD60EF /* CategoryData.m in Sources */,
 				7BFDDF711AD9AC8400DD60EF /* ColorData.m in Sources */,
-				7BFDDF4E1AD9AC3500DD60EF /* BookmarkViewController.m in Sources */,
+				7B9085A01ADED87A00456102 /* BookmarkEditModalViewController.m in Sources */,
 				7BFDDF7C1AD9ACD300DD60EF /* Helper.m in Sources */,
 				7BFDDF281AD9AB8100DD60EF /* MainTableCellView.m in Sources */,
 				7BFDDF531AD9AC3500DD60EF /* CategoryListTableViewController.m in Sources */,
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
 				7BFDDF571AD9AC3500DD60EF /* SelectCategoryTableViewController.m in Sources */,
 				7BFDDF581AD9AC3500DD60EF /* SettingTableViewController.m in Sources */,
+				7B9085A91ADEE57300456102 /* EditModalBookmarkView.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
@@ -578,6 +591,7 @@
 				7BFDDF511AD9AC3500DD60EF /* SettingBaseTableViewController.m in Sources */,
 				7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */,
 				7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */,
+				7B9085A61ADEE04F00456102 /* EditModalBaseView.m in Sources */,
 				7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */,
 				7BFDDF541AD9AC3500DD60EF /* EditPageTableViewController.m in Sources */,
 				7BFDDF741AD9AC8400DD60EF /* UserData.m in Sources */,
