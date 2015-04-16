@@ -19,11 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = _category.name;
+    self.editing = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 //--------------------------------------------------------------//

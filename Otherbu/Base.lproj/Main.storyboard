@@ -216,9 +216,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="WjT-fz-Yna"/>
-                    <connections>
-                        <segue destination="LgJ-R7-3oO" kind="show" id="FLJ-AP-zif"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJw-3g-FJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -356,25 +353,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcA-lZ-j0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2777" y="1837"/>
-        </scene>
-        <!--Bookmark View Controller-->
-        <scene sceneID="v2Y-FS-DO4">
-            <objects>
-                <viewController id="LgJ-R7-3oO" userLabel="Bookmark View Controller" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dNX-lV-yRF"/>
-                        <viewControllerLayoutGuide type="bottom" id="wWg-eP-6RH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2pw-4O-0tZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="ブックマーク" id="5IC-8W-2AG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cc9-Wj-pmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4308" y="1837"/>
         </scene>
         <!--Setting Navigation View Controller-->
         <scene sceneID="HG3-H4-rlP">
