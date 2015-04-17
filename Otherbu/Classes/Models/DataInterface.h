@@ -19,7 +19,7 @@
 
 - (void)iSetName:(NSString *)name;
 
-- (NSInteger)iGetUrl;
+- (NSString *)iGetUrl;
 - (void)iSetUrl:(NSString *)url;
 
 - (NSInteger)iGetCategoryId;

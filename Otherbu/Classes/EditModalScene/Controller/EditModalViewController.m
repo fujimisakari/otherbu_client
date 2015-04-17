@@ -124,7 +124,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // キーボードのreturn or 改行でキーボードを閉じる
-    [_editModalView.nameTextField resignFirstResponder];
+    [textField resignFirstResponder];
     return YES;
 }
 

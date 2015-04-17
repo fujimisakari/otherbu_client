@@ -34,7 +34,8 @@
 
     // EditViewの各パーツの生成
     [_editModalView setup];
-    // _editModalView.textField.delegate = self;
+    _editModalView.nameTextField.delegate = self;
+    _editModalView.urlTextField.delegate = self;
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
@@ -48,7 +49,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // キーボードのreturn or 改行でキーボードを閉じる
-    // [_editModalView.textField resignFirstResponder];
+    [textField resignFirstResponder];
     return YES;
 }
 

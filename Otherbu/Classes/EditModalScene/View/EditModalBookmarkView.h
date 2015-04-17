@@ -10,4 +10,7 @@
 
 @interface EditModalBookmarkView : EditModalBaseView
 
+@property(nonatomic) UITextField *nameTextField;
+@property(nonatomic) UITextField *urlTextField;
+
 @end
