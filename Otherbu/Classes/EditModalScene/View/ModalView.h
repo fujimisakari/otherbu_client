@@ -8,7 +8,7 @@
 
 #import "EditModalBaseView.h"
 
-@interface EditModalView : EditModalBaseView
+@interface ModalView : EditModalBaseView
 
 @property(nonatomic) UICollectionView *collectionView;;
 @property(nonatomic) UITextField *nameTextField;

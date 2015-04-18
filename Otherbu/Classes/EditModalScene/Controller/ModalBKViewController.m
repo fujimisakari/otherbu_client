@@ -1,5 +1,5 @@
 //
-//  BookmarkEditModalViewController.m
+//  ModalBKViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -12,7 +12,7 @@
 #import "CategoryData.h"
 
 @interface ModalBKViewController () {
-    EditModalBookmarkView *_editModalView;
+    EditModalBookmarkView *_modalView;
     NSArray *_categoryList;
 }
 
@@ -26,10 +26,10 @@
     _categoryList = [[DataManager sharedManager] getCategoryList];
 
     // EditViewを生成
-    _editModalView = [[EditModalBookmarkView alloc] initWithFrame:(CGRect)self.view.frame];
-    _editModalView.editItem = _editItem;
-    _editModalView.delegate = self;
-    [self.view addSubview:_editModalView];
+    _modalView = [[EditModalBookmarkView alloc] initWithFrame:(CGRect)self.view.frame];
+    _modalView.editItem = _editItem;
+    _modalView.delegate = self;
+    [self.view addSubview:_modalView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -38,11 +38,11 @@
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0.1 alpha:0.4];
 
     // EditViewの各パーツの生成
-    [_editModalView setup];
-    _editModalView.nameTextField.delegate = self;
-    _editModalView.urlTextField.delegate = self;
-    _editModalView.categoryPicker.delegate = self;
-    _editModalView.categoryPicker.dataSource = self;
+    [_modalView setup];
+    _modalView.nameTextField.delegate = self;
+    _modalView.urlTextField.delegate = self;
+    _modalView.categoryPicker.delegate = self;
+    _modalView.categoryPicker.dataSource = self;
     [self _pickerSelectRow];
 }
 
@@ -101,11 +101,11 @@
         
     }
     // 名前
-    [_editItem iSetName:_editModalView.nameTextField.text];
+    [_editItem iSetName:_modalView.nameTextField.text];
     // URL
-    [_editItem iSetUrl:_editModalView.urlTextField.text];
+    [_editItem iSetUrl:_modalView.urlTextField.text];
     // カテゴリ
-    NSInteger row = [_editModalView.categoryPicker selectedRowInComponent:0];
+    NSInteger row = [_modalView.categoryPicker selectedRowInComponent:0];
     CategoryData *category = _categoryList[row];
     [_editItem iSetCategoryId:category.dataId];
 
@@ -121,7 +121,7 @@
     BookmarkData *bookmark = (BookmarkData *)_editItem;
     CategoryData *category = [bookmark category];
     int row = [_categoryList indexOfObject:category];
-    [_editModalView.categoryPicker selectRow:row inComponent:0 animated:YES];
+    [_modalView.categoryPicker selectRow:row inComponent:0 animated:YES];
 }
 
 @end

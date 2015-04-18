@@ -1,5 +1,5 @@
 //
-//  EditModalViewController.m
+//  ModalViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -7,11 +7,11 @@
 //
 
 #import "ModalViewController.h"
-#import "EditModalView.h"
+#import "ModalView.h"
 #import "ColorData.h"
 
 @interface ModalViewController () {
-    EditModalView *_editModalView;
+    ModalView *_modalView;
     NSArray *_colorList;
     NSInteger _colorId;
     UICollectionViewCell *_colorSelectCell;
@@ -31,10 +31,10 @@
     _colorList = [[DataManager sharedManager] getColorList];
 
     // EditViewを生成
-    _editModalView = [[EditModalView alloc] initWithFrame:(CGRect)self.view.frame];
-    _editModalView.editItem = _editItem;
-    _editModalView.delegate = self;
-    [self.view addSubview:_editModalView];
+    _modalView = [[ModalView alloc] initWithFrame:(CGRect)self.view.frame];
+    _modalView.editItem = _editItem;
+    _modalView.delegate = self;
+    [self.view addSubview:_modalView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -43,10 +43,10 @@
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0.1 alpha:0.4];
 
     // EditViewの各パーツの生成
-    [_editModalView setup];
-    _editModalView.collectionView.delegate = self;
-    _editModalView.collectionView.dataSource = self;
-    _editModalView.nameTextField.delegate = self;
+    [_modalView setup];
+    _modalView.collectionView.delegate = self;
+    _modalView.collectionView.dataSource = self;
+    _modalView.nameTextField.delegate = self;
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
@@ -111,7 +111,7 @@
                         layout:(UICollectionViewLayout *)collectionViewLayout
         insetForSectionAtIndex:(NSInteger)section {
     // セクションの上左下右のマージン
-    float viewWidth = _editModalView.frame.size.width - kAdaptWidthOfEditModal;
+    float viewWidth = _modalView.frame.size.width - kAdaptWidthOfEditModal;
     float totalCellWidth = (kCellSizeOfColorPalette + kBorderWidthOfColorPalette * 2) * kColumnOfColorPalette;
     float restViewWidth = viewWidth - totalCellWidth - (kCellMarginOfColorPalette * 5);
     float marginWidth = restViewWidth / 2;
@@ -139,7 +139,7 @@
 
 - (void)didPressUpdateButton {
     // 更新時
-    [_editItem iSetName:_editModalView.nameTextField.text];
+    [_editItem iSetName:_modalView.nameTextField.text];
     [_editItem iSetColorId:_colorId];
     [self.delegate retrunActionOfEditModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];

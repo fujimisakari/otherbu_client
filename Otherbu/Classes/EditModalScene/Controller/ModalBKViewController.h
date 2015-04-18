@@ -1,12 +1,12 @@
 //
-//  BookmarkEditModalViewController.h
+//  ModalBKViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalView.h"
+#import "ModalView.h"
 #import "DataInterface.h"
 #import "ModalInterface.h"
 

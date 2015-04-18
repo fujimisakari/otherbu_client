@@ -1,12 +1,12 @@
 //
-//  EditModalViewController.h
+//  ModalViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalView.h"
+#import "ModalView.h"
 #import "ModalInterface.h"
 #import "DataInterface.h"
 

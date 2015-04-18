@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalView.h"
+#import "ModalView.h"
 
-@interface EditModalView ()
+@interface ModalView ()
 
 @end
 
-@implementation EditModalView
+@implementation ModalView
 
 //--------------------------------------------------------------//
 #pragma mark -- Create Methods --

@@ -1,5 +1,5 @@
 //
-//  EditModalInterface.h
+//  ModalInterface.h
 //  Otherbu
 //
 //  Created by fujimisakari
