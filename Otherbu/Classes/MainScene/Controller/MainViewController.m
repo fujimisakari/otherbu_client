@@ -356,9 +356,9 @@
         editModalViewController.delegate = self;
         editModalViewController.editItem = _editItem;
     } else if ([[segue identifier] isEqualToString:kToBookmarkEditViewBySegue]) {
-        ModalBKViewController *bookmarkEditModalViewController = (ModalBKViewController *)[segue destinationViewController];
-        bookmarkEditModalViewController.delegate = self;
-        bookmarkEditModalViewController.editItem = _editItem;
+        ModalBKViewController *modalBKViewController = (ModalBKViewController *)[segue destinationViewController];
+        modalBKViewController.delegate = self;
+        modalBKViewController.editItem = _editItem;
     }
 }
 
