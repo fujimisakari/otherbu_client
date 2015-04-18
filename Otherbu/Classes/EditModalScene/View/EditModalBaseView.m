@@ -72,10 +72,14 @@
     CGRect cancel_rect = CGRectMake(cancel_x, y, kButtonWidthOfEditModal, kCommonHeightOfEditModal);
     [self setButton:cancel_rect label:kCancelButtonOfEditModal action:@selector(_didPressCancelButton:)];
 
-    // 更新ボタン
+    // 新規追加、更新ボタン
     int update_x = self.superview.center.x + kCommonAdaptWidthOfEditModal - kAdaptWidthOfEditModal;
     CGRect update_rect = CGRectMake(update_x, y, kButtonWidthOfEditModal, kCommonHeightOfEditModal);
-    [self setButton:update_rect label:kUpdateButtonOfEditModal action:@selector(_didPressUpdateButton:)];
+    if ([_editItem isCreateMode]) {
+        [self setButton:update_rect label:kCreateButtonOfEditModal action:@selector(_didPressUpdateButton:)];
+    } else {
+        [self setButton:update_rect label:kUpdateButtonOfEditModal action:@selector(_didPressUpdateButton:)];
+    }
 }
 
 //--------------------------------------------------------------//
@@ -88,7 +92,11 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor lightGrayColor];
     titleLabel.font = [UIFont fontWithName:kDefaultFont size:kTitleFontSizeOfEditModal];
-    titleLabel.text = [NSString stringWithFormat:@"%@ %@", [_editItem iGetTitleName], @"Edit"];
+    if ([_editItem isCreateMode]) {
+        titleLabel.text = [NSString stringWithFormat:@"%@ %@", @"Create", [_editItem iGetTitleName]];
+    } else {
+        titleLabel.text = [NSString stringWithFormat:@"%@ %@", @"Edit", [_editItem iGetTitleName]];
+    }
     [self addSubview:titleLabel];
 }
 

@@ -98,6 +98,7 @@ const float kCommonHeightOfEditModal = 30.0f;                // EditModalのボ�
 const int kTitleFontSizeOfEditModal = 20;                    // EditModalのタイトルラベルのフォントサイズ
 const int kLabelFontSizeOfEditModal = 15;                    // EditModalの項目ラベルのフォントサイズ
 NSString * const kCancelButtonOfEditModal = @"Cancel";
+NSString * const kCreateButtonOfEditModal = @"Create";
 NSString * const kUpdateButtonOfEditModal = @"Update";
 
 //--------------------------------------------------------------//

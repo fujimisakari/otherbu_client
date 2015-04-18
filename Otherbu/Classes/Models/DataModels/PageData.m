@@ -186,6 +186,10 @@
 #pragma mark -- Data Intaface --
 //--------------------------------------------------------------//
 
+- (BOOL)isCreateMode {
+    return self.dataId == 0;
+}
+
 - (NSInteger)iGetMenuId {
     return MENU_PAGE;
 }

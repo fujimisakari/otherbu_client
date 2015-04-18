@@ -96,8 +96,10 @@
 }
 
 - (void)didPressUpdateButton {
-    // 更新時
-
+    // 新規追加、更新時
+    if ([_editItem isCreateMode]) {
+        
+    }
     // 名前
     [_editItem iSetName:_editModalView.nameTextField.text];
     // URL

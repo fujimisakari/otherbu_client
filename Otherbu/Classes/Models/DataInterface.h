@@ -17,6 +17,8 @@
 
 - (NSInteger)iGetMenuId;
 
+- (BOOL)isCreateMode;
+
 - (void)iSetName:(NSString *)name;
 
 - (NSString *)iGetUrl;

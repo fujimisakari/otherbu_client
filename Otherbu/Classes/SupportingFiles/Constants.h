@@ -79,6 +79,7 @@ extern const float kCommonHeightOfEditModal;
 extern const int kTitleFontSizeOfEditModal;
 extern const int kLabelFontSizeOfEditModal;
 extern NSString * const kCancelButtonOfEditModal;
+extern NSString * const kCreateButtonOfEditModal;
 extern NSString * const kUpdateButtonOfEditModal;
 
 extern const int kRowOfColorPalette;
