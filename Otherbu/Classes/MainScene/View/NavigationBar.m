@@ -49,12 +49,8 @@
 }
 
 - (void)_setAddButtontoRight {
-
-    // NavigationBarに三ボタンを設置する
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kListIcon]
-                                                            style:UIBarButtonItemStylePlain
-                                                           target:nil
-                                                           action:nil];
+    // NavigationBarに項目追加ボタンを設置する
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
     self.topItem.rightBarButtonItem = btn;
 }
 
