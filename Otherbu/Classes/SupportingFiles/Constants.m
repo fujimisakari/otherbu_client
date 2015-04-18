@@ -87,7 +87,8 @@ const int kFontSizeOfToolbar = 30;                           // Toolbarのフォ
 
 const float kBorderWidthOfEditModal = 2.0f;                  // EditModalの画面の枠線
 const float kAdaptWidthOfEditModal = 20.0f;                  // EditModalの画面サイズ調整(width)
-const float kAdaptHeightOfEditModal = 100.0f;                // EditModalの画面サイズ調整(height)
+const float kAdaptHeightOfEditModal = 50.0f;                 // EditModalの画面サイズ調整(height)
+const float kAdaptHeightOfEditModalForip6 = 100.0f;          // EditModalの画面サイズ調整(height)
 const float kButtonWidthOfEditModal = 100.0f;                // EditModalのボタンサイズ(width)
 const float kLabelWidthOfEditModal = 150.0f;                 // EditModalのラベルサイズ(width)
 const float kAdaptButtonWidthOfEditModal = 20.0f;            // EditModalのボタン位置調整(width)

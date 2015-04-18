@@ -12,5 +12,6 @@
 
 @property(nonatomic) UITextField *nameTextField;
 @property(nonatomic) UITextField *urlTextField;
+@property(nonatomic) UIPickerView *categoryPicker;
 
 @end

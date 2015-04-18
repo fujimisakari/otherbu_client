@@ -15,6 +15,7 @@
 		7B9085A61ADEE04F00456102 /* EditModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A51ADEE04F00456102 /* EditModalBaseView.m */; };
 		7B9085A91ADEE57300456102 /* EditModalBookmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
+		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */; };
 		7BFDDF191AD9AB5C00DD60EF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF181AD9AB5C00DD60EF /* MainViewController.m */; };
 		7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1B1AD9AB8100DD60EF /* InnerTableView.m */; };
@@ -78,6 +79,8 @@
 		7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModalBookmarkView.m; path = Classes/EditModalScene/View/EditModalBookmarkView.m; sourceTree = "<group>"; };
 		7B9085AC1ADFFDFE00456102 /* EditModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalInterface.h; path = Classes/EditModalScene/Controller/EditModalInterface.h; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
+		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
 		7BFDDEE91AD9A50100DD60EF /* Otherbu-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Otherbu-Prefix.pch"; sourceTree = "<group>"; };
 		7BFDDF141AD9AB3200DD60EF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				7BFDDF781AD9ACD300DD60EF /* Helper.m */,
 				7BFDDF791AD9ACD300DD60EF /* UIColor+Hex.h */,
 				7BFDDF7A1AD9ACD300DD60EF /* UIColor+Hex.m */,
+				7BB320F71AE1FAB3005267EC /* Device.h */,
+				7BB320F81AE1FAB3005267EC /* Device.m */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -607,6 +612,7 @@
 				7BFDDF551AD9AC3500DD60EF /* SettingNavigationViewController.m in Sources */,
 				7BFDDF311AD9ABD000DD60EF /* EditModalView.m in Sources */,
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
+				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,
 				7BFDDF811AD9AD1800DD60EF /* main.m in Sources */,
 				7BFDDF621AD9AC6F00DD60EF /* OtherbuAPIClient.m in Sources */,
 			);

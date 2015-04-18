@@ -69,6 +69,7 @@ extern const int kFontSizeOfToolbar;
 extern const float kBorderWidthOfEditModal;
 extern const float kAdaptWidthOfEditModal;
 extern const float kAdaptHeightOfEditModal;
+extern const float kAdaptHeightOfEditModalForip6;
 extern const float kButtonWidthOfEditModal;
 extern const float kLabelWidthOfEditModal;
 extern const float kAdaptButtonWidthOfEditModal;

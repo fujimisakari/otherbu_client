@@ -17,11 +17,12 @@
 - (void)_bulkCreate {
     int space = 10;
     int startTitleY = 10;
-    int startLabelY = 20;
+    int startLabelY = 10;
+    int categoryPickerHeight = 120;
     int totalTitleHeight = startTitleY + kCommonHeightOfEditModal + space;  // 画面上部からメニュータイトル名までの高さ
     int totalButtonHeight = space + kCommonHeightOfEditModal + space;       // 画面下部から編集ボタンまでの高さ
     int availableHeight = self.frame.size.height - (totalTitleHeight + totalButtonHeight + startLabelY);
-    int availableMargin = availableHeight - (int)((kCommonHeightOfEditModal + space) * 6);  // 高さ x 項目数
+    int availableMargin = availableHeight - categoryPickerHeight - (int)((kCommonHeightOfEditModal + space) * 5);  // 利用できる高さ - (項目高さ x 項目数)
     int margin = availableMargin / 3;  // 利用できる余白 / 項目ブロック
     float textFieldWidth = self.frame.size.width - (kAdaptButtonWidthOfEditModal * 2);
 
@@ -56,10 +57,26 @@
     CGRect categoryFieldLabelRect = CGRectMake(kCommonAdaptWidthOfEditModal, categoryFieldLabelY, kLabelWidthOfEditModal, kCommonHeightOfEditModal);
     [self setFieldLabel:categoryFieldLabelRect label:@"Set Category :"];
 
-    // CategoryTextField生成
-    int categoryTextFieldY = categoryFieldLabelY + kCommonHeightOfEditModal + space;
-    CGRect categoryTextFieldRect = CGRectMake(kAdaptWidthOfEditModal, categoryTextFieldY, textFieldWidth, kCommonHeightOfEditModal);
-    // [self setTextField:textFieldRect];
+    // CategoryPicker生成
+    int categoryTextFieldY = categoryFieldLabelY + kCommonHeightOfEditModal + space + space;
+    CGRect categoryTextFieldRect = CGRectMake(kAdaptWidthOfEditModal, categoryTextFieldY, textFieldWidth, categoryPickerHeight);
+    [self _setPickerView:categoryTextFieldRect];
+}
+
+//--------------------------------------------------------------//
+#pragma mark-- Set Method--
+//--------------------------------------------------------------//
+
+- (void)_setPickerView:(CGRect)rect {
+    _categoryPicker = [[UIPickerView alloc] initWithFrame:rect];
+    _categoryPicker.backgroundColor = [UIColor colorWithHex:kTextFieldColorOfEditModal];
+    [_categoryPicker.layer setCornerRadius:10.0];
+    // PickerViewの高さを調整
+    CGAffineTransform t0 = CGAffineTransformMakeTranslation(0, _categoryPicker.bounds.size.height / 1.5);
+    CGAffineTransform s0 = CGAffineTransformMakeScale(1.0, 0.75);
+    CGAffineTransform t1 = CGAffineTransformMakeTranslation(0, -_categoryPicker.bounds.size.height / 1.5);
+    _categoryPicker.transform = CGAffineTransformConcat(t0, CGAffineTransformConcat(s0, t1));
+    [self addSubview:_categoryPicker];
 }
 
 @end

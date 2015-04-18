@@ -21,8 +21,14 @@
 - (id)initWithFrame:(CGRect)rect {
     self = [super initWithFrame:rect];
     if (self) {
+        int adaptWidth;
+        if ([Device isiPhone5] || [Device isiPhone4]) {
+            adaptWidth = kAdaptHeightOfEditModal;
+        } else {
+            adaptWidth = kAdaptHeightOfEditModalForip6;
+        }
         float width = rect.size.width - (kAdaptWidthOfEditModal * 2);
-        float height = rect.size.height - (kAdaptHeightOfEditModal * 2);
+        float height = rect.size.height - (adaptWidth * 2);
         CGRect _rect = CGRectMake(0, 0, width, height);
         self.frame = _rect;
     }

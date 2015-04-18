@@ -20,6 +20,7 @@
 #ifdef __OBJC__
     #import "Classes/SupportingFiles/UIColor+Hex.h"
     #import "Classes/SupportingFiles/Constants.h"
+    #import "Classes/SupportingFiles/Device.h"
     #import "Classes/SupportingFiles/helper.h"
     #import "Classes/Models/DataManager.h"
 
