@@ -98,6 +98,7 @@ extern NSString * const kMenuPageName;
 extern NSString * const kMenuDesignName;
 
 extern NSString * const kSettingIcon;
+extern NSString * const kListIcon;
 extern NSString * const kBookmarkIcon;
 extern NSString * const kBookmarkMoveIcon;
 extern NSString * const kCategoryIcon;

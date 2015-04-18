@@ -31,6 +31,7 @@
 
     // 設定ボタンを追加
     [self _setSettingButtontoLeft];
+    [self _setAddButtontoRight];
 }
 
 //--------------------------------------------------------------//
@@ -45,6 +46,16 @@
                                                            target:nil
                                                            action:nil];
     self.topItem.leftBarButtonItem = btn;
+}
+
+- (void)_setAddButtontoRight {
+
+    // NavigationBarに三ボタンを設置する
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kListIcon]
+                                                            style:UIBarButtonItemStylePlain
+                                                           target:nil
+                                                           action:nil];
+    self.topItem.rightBarButtonItem = btn;
 }
 
 @end

@@ -134,6 +134,7 @@ NSString * const kMenuDesignName = @"Design";
 //--------------------------------------------------------------//
 
 NSString * const kSettingIcon = @"settingIcon.png";
+NSString * const kListIcon = @"listIcon.png";
 NSString * const kBookmarkIcon = @"bookmarkIcon.png";
 NSString * const kBookmarkMoveIcon = @"bookmarkMoveIcon.png";
 NSString * const kCategoryIcon = @"categoryIcon.png";

@@ -10,6 +10,7 @@
 #import "WebViewController.h"
 #import "EditModalViewController.h"
 #import "BookmarkEditModalViewController.h"
+#import "MainAlertController.h"
 #import "EditModalInterface.h"
 #import "SectionHeaderView.h"
 #import "MainScrollView.h"
@@ -32,6 +33,7 @@
     PageTabView         *_currentPageTabView;
     BookmarkData        *_selectBookmark;
     NSMutableDictionary *_categoryListOfAngle;
+    MainAlertController *_alertController;
 }
 
 @end
@@ -52,15 +54,12 @@
     _viewWidth = self.view.frame.size.width;
     _viewHeight = self.view.frame.size.height - marginOfHeight;
 
-    // 背景画像設定
-    CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
-                             self.view.frame.size.width, self.view.frame.size.height);
-    [Helper setupBackgroundImage:rect TargetView:self.view];
-
     // NavigationBar設定
     [_navigationBar setup];
     _navigationBar.topItem.leftBarButtonItem.target = self;
     _navigationBar.topItem.leftBarButtonItem.action = @selector(_openSettingView:);
+    _navigationBar.topItem.rightBarButtonItem.target = self;
+    _navigationBar.topItem.rightBarButtonItem.action = @selector(_actionListAlertView:);
 
     // ScrollView設定
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
@@ -69,12 +68,42 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    // 背景画像設定
+    CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
+                             self.view.frame.size.width, self.view.frame.size.height);
+    [Helper setupBackgroundImage:rect TargetView:self.view];
+
+    // pageTabViewを配置
     [self _createPageTabViews];
     [self _moveTabScroll:_currentPageTabView];
+
+    // tableを最新に更新
     if (_currentPage) {
         _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
         [_scrollView reloadTableData];
     }
+
+    // 項目追加用のActionSheetを準備
+    NSMutableDictionary *actionDict = [[NSMutableDictionary alloc] init];
+    actionDict[@"page"] = ^(UIAlertAction * action) {
+        _editItem = [PageData alloc];
+        [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
+    };
+    actionDict[@"category"] = ^(UIAlertAction * action) {
+        _editItem = [CategoryData alloc];
+        [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
+    };
+    actionDict[@"bookmark"] = ^(UIAlertAction * action) {
+        _editItem = [BookmarkData alloc];
+        [self performSegueWithIdentifier:kToBookmarkEditViewBySegue sender:self];
+    };
+
+    _alertController = [MainAlertController alertControllerWithTitle:@"新規追加"
+                                                             message:@"追加する項目を選んでください"
+                                                      preferredStyle:UIAlertControllerStyleActionSheet];
+    [_alertController setActionDict:actionDict];
+    [_alertController setup];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -335,6 +364,10 @@
 
 - (void)_openSettingView:(UIButton *)sender {
     [self performSegueWithIdentifier:kToSettingBySegue sender:self];
+}
+
+- (void)_actionListAlertView:(UIButton *)sender {
+    [self presentViewController:_alertController animated:YES completion:nil];
 }
 
 //--------------------------------------------------------------//
