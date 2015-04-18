@@ -11,7 +11,7 @@
 		7B565EFF1A92486F00D6A420 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B565EFD1A92486F00D6A420 /* Main.storyboard */; };
 		7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B565F021A92486F00D6A420 /* LaunchScreen.xib */; };
 		7B565F101A92486F00D6A420 /* OtherbuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F0F1A92486F00D6A420 /* OtherbuTests.m */; };
-		7B9085A01ADED87A00456102 /* BookmarkEditModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B90859F1ADED87A00456102 /* BookmarkEditModalViewController.m */; };
+		7B9085A01ADED87A00456102 /* ModalBKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B90859F1ADED87A00456102 /* ModalBKViewController.m */; };
 		7B9085A61ADEE04F00456102 /* EditModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A51ADEE04F00456102 /* EditModalBaseView.m */; };
 		7B9085A91ADEE57300456102 /* EditModalBookmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
@@ -72,8 +72,8 @@
 		7B565F091A92486F00D6A420 /* OtherbuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OtherbuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565F0E1A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565F0F1A92486F00D6A420 /* OtherbuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherbuTests.m; sourceTree = "<group>"; };
-		7B90859E1ADED87A00456102 /* BookmarkEditModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookmarkEditModalViewController.h; path = Classes/EditModalScene/Controller/BookmarkEditModalViewController.h; sourceTree = "<group>"; };
-		7B90859F1ADED87A00456102 /* BookmarkEditModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookmarkEditModalViewController.m; path = Classes/EditModalScene/Controller/BookmarkEditModalViewController.m; sourceTree = "<group>"; };
+		7B90859E1ADED87A00456102 /* ModalBKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKViewController.h; path = Classes/EditModalScene/Controller/ModalBKViewController.h; sourceTree = "<group>"; };
+		7B90859F1ADED87A00456102 /* ModalBKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKViewController.m; path = Classes/EditModalScene/Controller/ModalBKViewController.m; sourceTree = "<group>"; };
 		7B9085A41ADEE04F00456102 /* EditModalBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalBaseView.h; path = Classes/EditModalScene/View/EditModalBaseView.h; sourceTree = "<group>"; };
 		7B9085A51ADEE04F00456102 /* EditModalBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModalBaseView.m; path = Classes/EditModalScene/View/EditModalBaseView.m; sourceTree = "<group>"; };
 		7B9085A71ADEE57300456102 /* EditModalBookmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalBookmarkView.h; path = Classes/EditModalScene/View/EditModalBookmarkView.h; sourceTree = "<group>"; };
@@ -419,8 +419,8 @@
 			children = (
 				7BFDDF2C1AD9ABC000DD60EF /* EditModalViewController.h */,
 				7BFDDF2D1AD9ABC000DD60EF /* EditModalViewController.m */,
-				7B90859E1ADED87A00456102 /* BookmarkEditModalViewController.h */,
-				7B90859F1ADED87A00456102 /* BookmarkEditModalViewController.m */,
+				7B90859E1ADED87A00456102 /* ModalBKViewController.h */,
+				7B90859F1ADED87A00456102 /* ModalBKViewController.m */,
 				7B9085AC1ADFFDFE00456102 /* ModalInterface.h */,
 			);
 			name = Controller;
@@ -587,7 +587,7 @@
 				7BFDDF721AD9AC8400DD60EF /* DesignData.m in Sources */,
 				7BFDDF701AD9AC8400DD60EF /* CategoryData.m in Sources */,
 				7BFDDF711AD9AC8400DD60EF /* ColorData.m in Sources */,
-				7B9085A01ADED87A00456102 /* BookmarkEditModalViewController.m in Sources */,
+				7B9085A01ADED87A00456102 /* ModalBKViewController.m in Sources */,
 				7BFDDF7C1AD9ACD300DD60EF /* Helper.m in Sources */,
 				7BFDDF281AD9AB8100DD60EF /* MainTableCellView.m in Sources */,
 				7BFDDF531AD9AC3500DD60EF /* CategoryListTableViewController.m in Sources */,

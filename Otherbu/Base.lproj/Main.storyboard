@@ -25,7 +25,7 @@
         <!--Bookmark Edit View Controller-->
         <scene sceneID="4Vk-5d-Qlo">
             <objects>
-                <viewController id="2vA-Rt-dli" userLabel="Bookmark Edit View Controller" customClass="BookmarkEditModalViewController" sceneMemberID="viewController">
+                <viewController id="2vA-Rt-dli" userLabel="Bookmark Edit View Controller" customClass="ModalBKViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3sH-7E-QJO"/>
                         <viewControllerLayoutGuide type="bottom" id="csN-jB-3qs"/>

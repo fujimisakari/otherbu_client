@@ -10,7 +10,7 @@
 #import "DataInterface.h"
 #import "ModalInterface.h"
 
-@interface BookmarkEditModalViewController
+@interface ModalBKViewController
     : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, EditModalDelegate>
 
 @property(nonatomic, weak) id<ModalInterface> delegate;

@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 #import "WebViewController.h"
 #import "EditModalViewController.h"
-#import "BookmarkEditModalViewController.h"
+#import "ModalBKViewController.h"
 #import "MainAlertController.h"
 #import "ModalInterface.h"
 #import "SectionHeaderView.h"
@@ -356,7 +356,7 @@
         editModalViewController.delegate = self;
         editModalViewController.editItem = _editItem;
     } else if ([[segue identifier] isEqualToString:kToBookmarkEditViewBySegue]) {
-        BookmarkEditModalViewController *bookmarkEditModalViewController = (BookmarkEditModalViewController *)[segue destinationViewController];
+        ModalBKViewController *bookmarkEditModalViewController = (ModalBKViewController *)[segue destinationViewController];
         bookmarkEditModalViewController.delegate = self;
         bookmarkEditModalViewController.editItem = _editItem;
     }

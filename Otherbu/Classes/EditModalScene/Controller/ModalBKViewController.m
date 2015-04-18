@@ -6,19 +6,19 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "BookmarkEditModalViewController.h"
+#import "ModalBKViewController.h"
 #import "EditModalBookmarkView.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
 
-@interface BookmarkEditModalViewController () {
+@interface ModalBKViewController () {
     EditModalBookmarkView *_editModalView;
     NSArray *_categoryList;
 }
 
 @end
 
-@implementation BookmarkEditModalViewController
+@implementation ModalBKViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
