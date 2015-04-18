@@ -305,7 +305,7 @@
             [self _moveTabScroll:_currentPageTabView];
             break;
         case MENU_BOOKMARK :
-            [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
+            [_scrollView reloadTableData];
             break;
         case MENU_CATEGORY :
             [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];

@@ -37,8 +37,7 @@
 //--------------------------------------------------------------//
 
 - (CategoryData *)category {
-    NSNumber *number = [[NSNumber alloc] initWithInt:(int)_categoryId];
-    return [[DataManager sharedManager] getCategory:number];
+    return [[DataManager sharedManager] getCategory:[Helper getNumberByInt:_categoryId]];
 }
 
 //--------------------------------------------------------------//
