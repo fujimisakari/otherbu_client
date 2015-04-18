@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "WebViewController.h"
-#import "EditModalViewController.h"
+#import "ModalViewController.h"
 #import "ModalBKViewController.h"
 #import "MainAlertController.h"
 #import "ModalInterface.h"
@@ -352,9 +352,9 @@
         WebViewController *webViewController = (WebViewController *)[segue destinationViewController];
         webViewController.bookmark = _selectBookmark;
     } else if ([[segue identifier] isEqualToString:kToEditViewBySegue]) {
-        EditModalViewController *editModalViewController = (EditModalViewController *)[segue destinationViewController];
-        editModalViewController.delegate = self;
-        editModalViewController.editItem = _editItem;
+        ModalViewController *modalViewController = (ModalViewController *)[segue destinationViewController];
+        modalViewController.delegate = self;
+        modalViewController.editItem = _editItem;
     } else if ([[segue identifier] isEqualToString:kToBookmarkEditViewBySegue]) {
         ModalBKViewController *modalBKViewController = (ModalBKViewController *)[segue destinationViewController];
         modalBKViewController.delegate = self;

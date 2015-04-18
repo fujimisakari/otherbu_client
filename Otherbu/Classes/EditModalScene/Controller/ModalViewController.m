@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalViewController.h"
+#import "ModalViewController.h"
 #import "EditModalView.h"
 #import "ColorData.h"
 
-@interface EditModalViewController () {
+@interface ModalViewController () {
     EditModalView *_editModalView;
     NSArray *_colorList;
     NSInteger _colorId;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation EditModalViewController
+@implementation ModalViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

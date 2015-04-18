@@ -7,7 +7,7 @@
         <!--Edit View Controller-->
         <scene sceneID="eE5-Pr-3Pd">
             <objects>
-                <viewController id="923-Gb-755" userLabel="Edit View Controller" customClass="EditModalViewController" sceneMemberID="viewController">
+                <viewController id="923-Gb-755" userLabel="Edit View Controller" customClass="ModalViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vWM-Ie-oT4"/>
                         <viewControllerLayoutGuide type="bottom" id="1cE-tm-320"/>
