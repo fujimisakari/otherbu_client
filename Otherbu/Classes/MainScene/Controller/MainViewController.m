@@ -11,7 +11,7 @@
 #import "EditModalViewController.h"
 #import "BookmarkEditModalViewController.h"
 #import "MainAlertController.h"
-#import "EditModalInterface.h"
+#import "ModalInterface.h"
 #import "SectionHeaderView.h"
 #import "MainScrollView.h"
 #import "NavigationBar.h"

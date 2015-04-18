@@ -78,7 +78,7 @@
 		7B9085A51ADEE04F00456102 /* EditModalBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModalBaseView.m; path = Classes/EditModalScene/View/EditModalBaseView.m; sourceTree = "<group>"; };
 		7B9085A71ADEE57300456102 /* EditModalBookmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalBookmarkView.h; path = Classes/EditModalScene/View/EditModalBookmarkView.h; sourceTree = "<group>"; };
 		7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModalBookmarkView.m; path = Classes/EditModalScene/View/EditModalBookmarkView.m; sourceTree = "<group>"; };
-		7B9085AC1ADFFDFE00456102 /* EditModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalInterface.h; path = Classes/EditModalScene/Controller/EditModalInterface.h; sourceTree = "<group>"; };
+		7B9085AC1ADFFDFE00456102 /* ModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalInterface.h; path = Classes/EditModalScene/Controller/ModalInterface.h; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
@@ -421,7 +421,7 @@
 				7BFDDF2D1AD9ABC000DD60EF /* EditModalViewController.m */,
 				7B90859E1ADED87A00456102 /* BookmarkEditModalViewController.h */,
 				7B90859F1ADED87A00456102 /* BookmarkEditModalViewController.m */,
-				7B9085AC1ADFFDFE00456102 /* EditModalInterface.h */,
+				7B9085AC1ADFFDFE00456102 /* ModalInterface.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

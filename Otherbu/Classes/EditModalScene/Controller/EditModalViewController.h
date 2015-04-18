@@ -7,13 +7,13 @@
 //
 
 #import "EditModalView.h"
-#import "EditModalInterface.h"
+#import "ModalInterface.h"
 #import "DataInterface.h"
 
 @interface EditModalViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate,
                                                       UICollectionViewDelegateFlowLayout, UITextFieldDelegate, EditModalDelegate>
 
-@property(nonatomic, weak) id<EditModalInterface> delegate;
+@property(nonatomic, weak) id<ModalInterface> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;
 
 @end
