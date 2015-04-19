@@ -1,5 +1,5 @@
 //
-//  EditModalView.m
+//  ModalView.m
 //  Otherbu
 //
 //  Created by fujimisakari

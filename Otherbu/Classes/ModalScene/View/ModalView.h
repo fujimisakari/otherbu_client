@@ -1,5 +1,5 @@
 //
-//  EditModalView.h
+//  ModalView.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,7 +8,7 @@
 
 #import "ModalBaseView.h"
 
-@interface ModalView : EditModalBaseView
+@interface ModalView : ModalBaseView
 
 @property(nonatomic) UICollectionView *collectionView;;
 @property(nonatomic) UITextField *nameTextField;

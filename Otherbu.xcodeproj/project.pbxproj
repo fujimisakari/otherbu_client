@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		590F230F1AA81F4900589E7C /* wood-wallpeper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 590F230E1AA81F4900589E7C /* wood-wallpeper.jpg */; };
+		7B5346E81AE35D11008DA1EB /* ModalBKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346E41AE35D11008DA1EB /* ModalBKViewController.m */; };
+		7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346E71AE35D11008DA1EB /* ModalViewController.m */; };
+		7B5346F01AE35D2D008DA1EB /* ModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346EB1AE35D2D008DA1EB /* ModalBaseView.m */; };
+		7B5346F11AE35D2D008DA1EB /* ModalBKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346ED1AE35D2D008DA1EB /* ModalBKView.m */; };
+		7B5346F21AE35D2D008DA1EB /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346EF1AE35D2D008DA1EB /* ModalView.m */; };
 		7B565EFF1A92486F00D6A420 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B565EFD1A92486F00D6A420 /* Main.storyboard */; };
 		7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B565F021A92486F00D6A420 /* LaunchScreen.xib */; };
 		7B565F101A92486F00D6A420 /* OtherbuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F0F1A92486F00D6A420 /* OtherbuTests.m */; };
-		7B9085A01ADED87A00456102 /* ModalBKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B90859F1ADED87A00456102 /* ModalBKViewController.m */; };
-		7B9085A61ADEE04F00456102 /* ModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A51ADEE04F00456102 /* ModalBaseView.m */; };
-		7B9085A91ADEE57300456102 /* ModalBKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A81ADEE57300456102 /* ModalBKView.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
@@ -25,8 +27,6 @@
 		7BFDDF291AD9AB8100DD60EF /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF211AD9AB8100DD60EF /* NavigationBar.m */; };
 		7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF231AD9AB8100DD60EF /* PageTabView.m */; };
 		7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF251AD9AB8100DD60EF /* SectionHeaderView.m */; };
-		7BFDDF2E1AD9ABC000DD60EF /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF2D1AD9ABC000DD60EF /* ModalViewController.m */; };
-		7BFDDF311AD9ABD000DD60EF /* ModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF301AD9ABD000DD60EF /* ModalView.m */; };
 		7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF331AD9ABF200DD60EF /* WebViewController.m */; };
 		7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */; };
 		7BFDDF4F1AD9AC3500DD60EF /* DesiginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */; };
@@ -66,19 +66,23 @@
 
 /* Begin PBXFileReference section */
 		590F230E1AA81F4900589E7C /* wood-wallpeper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wood-wallpeper.jpg"; sourceTree = "<group>"; };
+		7B5346E31AE35D11008DA1EB /* ModalBKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKViewController.h; path = Classes/ModalScene/Controller/ModalBKViewController.h; sourceTree = "<group>"; };
+		7B5346E41AE35D11008DA1EB /* ModalBKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKViewController.m; path = Classes/ModalScene/Controller/ModalBKViewController.m; sourceTree = "<group>"; };
+		7B5346E51AE35D11008DA1EB /* ModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalInterface.h; path = Classes/ModalScene/Controller/ModalInterface.h; sourceTree = "<group>"; };
+		7B5346E61AE35D11008DA1EB /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalViewController.h; path = Classes/ModalScene/Controller/ModalViewController.h; sourceTree = "<group>"; };
+		7B5346E71AE35D11008DA1EB /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalViewController.m; path = Classes/ModalScene/Controller/ModalViewController.m; sourceTree = "<group>"; };
+		7B5346EA1AE35D2D008DA1EB /* ModalBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBaseView.h; path = Classes/ModalScene/View/ModalBaseView.h; sourceTree = "<group>"; };
+		7B5346EB1AE35D2D008DA1EB /* ModalBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBaseView.m; path = Classes/ModalScene/View/ModalBaseView.m; sourceTree = "<group>"; };
+		7B5346EC1AE35D2D008DA1EB /* ModalBKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKView.h; path = Classes/ModalScene/View/ModalBKView.h; sourceTree = "<group>"; };
+		7B5346ED1AE35D2D008DA1EB /* ModalBKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKView.m; path = Classes/ModalScene/View/ModalBKView.m; sourceTree = "<group>"; };
+		7B5346EE1AE35D2D008DA1EB /* ModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalView.h; path = Classes/ModalScene/View/ModalView.h; sourceTree = "<group>"; };
+		7B5346EF1AE35D2D008DA1EB /* ModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalView.m; path = Classes/ModalScene/View/ModalView.m; sourceTree = "<group>"; };
 		7B565EF01A92486F00D6A420 /* Otherbu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Otherbu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565EFE1A92486F00D6A420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B565F031A92486F00D6A420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		7B565F091A92486F00D6A420 /* OtherbuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OtherbuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565F0E1A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565F0F1A92486F00D6A420 /* OtherbuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherbuTests.m; sourceTree = "<group>"; };
-		7B90859E1ADED87A00456102 /* ModalBKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKViewController.h; path = Classes/EditModalScene/Controller/ModalBKViewController.h; sourceTree = "<group>"; };
-		7B90859F1ADED87A00456102 /* ModalBKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKViewController.m; path = Classes/EditModalScene/Controller/ModalBKViewController.m; sourceTree = "<group>"; };
-		7B9085A41ADEE04F00456102 /* ModalBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBaseView.h; path = Classes/EditModalScene/View/ModalBaseView.h; sourceTree = "<group>"; };
-		7B9085A51ADEE04F00456102 /* ModalBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBaseView.m; path = Classes/EditModalScene/View/ModalBaseView.m; sourceTree = "<group>"; };
-		7B9085A71ADEE57300456102 /* ModalBKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKView.h; path = Classes/EditModalScene/View/ModalBKView.h; sourceTree = "<group>"; };
-		7B9085A81ADEE57300456102 /* ModalBKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKView.m; path = Classes/EditModalScene/View/ModalBKView.m; sourceTree = "<group>"; };
-		7B9085AC1ADFFDFE00456102 /* ModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalInterface.h; path = Classes/EditModalScene/Controller/ModalInterface.h; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
@@ -101,10 +105,6 @@
 		7BFDDF231AD9AB8100DD60EF /* PageTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageTabView.m; path = Classes/MainScene/View/PageTabView.m; sourceTree = "<group>"; };
 		7BFDDF241AD9AB8100DD60EF /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionHeaderView.h; path = Classes/MainScene/View/SectionHeaderView.h; sourceTree = "<group>"; };
 		7BFDDF251AD9AB8100DD60EF /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionHeaderView.m; path = Classes/MainScene/View/SectionHeaderView.m; sourceTree = "<group>"; };
-		7BFDDF2C1AD9ABC000DD60EF /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalViewController.h; path = Classes/EditModalScene/Controller/ModalViewController.h; sourceTree = "<group>"; };
-		7BFDDF2D1AD9ABC000DD60EF /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalViewController.m; path = Classes/EditModalScene/Controller/ModalViewController.m; sourceTree = "<group>"; };
-		7BFDDF2F1AD9ABD000DD60EF /* ModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalView.h; path = Classes/EditModalScene/View/ModalView.h; sourceTree = "<group>"; };
-		7BFDDF301AD9ABD000DD60EF /* ModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalView.m; path = Classes/EditModalScene/View/ModalView.m; sourceTree = "<group>"; };
 		7BFDDF321AD9ABF200DD60EF /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = Classes/WebViewScene/Controller/WebViewController.h; sourceTree = "<group>"; };
 		7BFDDF331AD9ABF200DD60EF /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = Classes/WebViewScene/Controller/WebViewController.m; sourceTree = "<group>"; };
 		7BFDDF351AD9AC0400DD60EF /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWebView.h; path = Classes/WebViewScene/View/CustomWebView.h; sourceTree = "<group>"; };
@@ -217,12 +217,12 @@
 		7B502A961ACF911900A431FB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7BFDDF2F1AD9ABD000DD60EF /* ModalView.h */,
-				7BFDDF301AD9ABD000DD60EF /* ModalView.m */,
-				7B9085A41ADEE04F00456102 /* ModalBaseView.h */,
-				7B9085A51ADEE04F00456102 /* ModalBaseView.m */,
-				7B9085A71ADEE57300456102 /* ModalBKView.h */,
-				7B9085A81ADEE57300456102 /* ModalBKView.m */,
+				7B5346EA1AE35D2D008DA1EB /* ModalBaseView.h */,
+				7B5346EB1AE35D2D008DA1EB /* ModalBaseView.m */,
+				7B5346EC1AE35D2D008DA1EB /* ModalBKView.h */,
+				7B5346ED1AE35D2D008DA1EB /* ModalBKView.m */,
+				7B5346EE1AE35D2D008DA1EB /* ModalView.h */,
+				7B5346EF1AE35D2D008DA1EB /* ModalView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -417,11 +417,11 @@
 		7BFDDF031AD9A89500DD60EF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7BFDDF2C1AD9ABC000DD60EF /* ModalViewController.h */,
-				7BFDDF2D1AD9ABC000DD60EF /* ModalViewController.m */,
-				7B90859E1ADED87A00456102 /* ModalBKViewController.h */,
-				7B90859F1ADED87A00456102 /* ModalBKViewController.m */,
-				7B9085AC1ADFFDFE00456102 /* ModalInterface.h */,
+				7B5346E31AE35D11008DA1EB /* ModalBKViewController.h */,
+				7B5346E41AE35D11008DA1EB /* ModalBKViewController.m */,
+				7B5346E51AE35D11008DA1EB /* ModalInterface.h */,
+				7B5346E61AE35D11008DA1EB /* ModalViewController.h */,
+				7B5346E71AE35D11008DA1EB /* ModalViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -587,14 +587,15 @@
 				7BFDDF721AD9AC8400DD60EF /* DesignData.m in Sources */,
 				7BFDDF701AD9AC8400DD60EF /* CategoryData.m in Sources */,
 				7BFDDF711AD9AC8400DD60EF /* ColorData.m in Sources */,
-				7B9085A01ADED87A00456102 /* ModalBKViewController.m in Sources */,
+				7B5346F01AE35D2D008DA1EB /* ModalBaseView.m in Sources */,
 				7BFDDF7C1AD9ACD300DD60EF /* Helper.m in Sources */,
+				7B5346F11AE35D2D008DA1EB /* ModalBKView.m in Sources */,
 				7BFDDF281AD9AB8100DD60EF /* MainTableCellView.m in Sources */,
 				7BFDDF531AD9AC3500DD60EF /* CategoryListTableViewController.m in Sources */,
+				7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */,
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
 				7BFDDF571AD9AC3500DD60EF /* SelectCategoryTableViewController.m in Sources */,
 				7BFDDF581AD9AC3500DD60EF /* SettingTableViewController.m in Sources */,
-				7B9085A91ADEE57300456102 /* ModalBKView.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
@@ -602,21 +603,20 @@
 				7BFDDF511AD9AC3500DD60EF /* SettingBaseTableViewController.m in Sources */,
 				7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */,
 				7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */,
-				7B9085A61ADEE04F00456102 /* ModalBaseView.m in Sources */,
 				7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */,
 				7BFDDF541AD9AC3500DD60EF /* EditPageTableViewController.m in Sources */,
 				7BFDDF741AD9AC8400DD60EF /* UserData.m in Sources */,
 				7BFDDF4F1AD9AC3500DD60EF /* DesiginViewController.m in Sources */,
 				7BFDDF561AD9AC3500DD60EF /* PageListTableViewController.m in Sources */,
 				7BFDDF521AD9AC3500DD60EF /* BookmarkTableViewController.m in Sources */,
-				7BFDDF2E1AD9ABC000DD60EF /* ModalViewController.m in Sources */,
+				7B5346E81AE35D11008DA1EB /* ModalBKViewController.m in Sources */,
 				7BFDDF291AD9AB8100DD60EF /* NavigationBar.m in Sources */,
 				7BFDDF5B1AD9AC4A00DD60EF /* SettingTableViewCell.m in Sources */,
 				7BFDDF271AD9AB8100DD60EF /* MainScrollView.m in Sources */,
 				7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */,
+				7B5346F21AE35D2D008DA1EB /* ModalView.m in Sources */,
 				7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */,
 				7BFDDF551AD9AC3500DD60EF /* SettingNavigationViewController.m in Sources */,
-				7BFDDF311AD9ABD000DD60EF /* ModalView.m in Sources */,
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
 				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,
 				7BFDDF811AD9AD1800DD60EF /* main.m in Sources */,

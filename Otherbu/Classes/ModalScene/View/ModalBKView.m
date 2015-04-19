@@ -1,5 +1,5 @@
 //
-//  EditModalBookmarkView.m
+//  ModalBKView.m
 //  Otherbu
 //
 //  Created by fujimisakari

@@ -1,5 +1,5 @@
 //
-//  EditModalBaseView.h
+//  ModalBaseView.h
 //  Otherbu
 //
 //  Created by fujimisakari
