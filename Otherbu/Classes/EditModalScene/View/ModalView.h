@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalBaseView.h"
+#import "ModalBaseView.h"
 
 @interface ModalView : EditModalBaseView
 

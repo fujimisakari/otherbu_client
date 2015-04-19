@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalBaseView.h"
+#import "ModalBaseView.h"
 
-@interface EditModalBookmarkView : EditModalBaseView
+@interface ModalBKView : ModalBaseView
 
 @property(nonatomic) UITextField *nameTextField;
 @property(nonatomic) UITextField *urlTextField;

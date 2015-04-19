@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalBookmarkView.h"
+#import "ModalBKView.h"
 
-@implementation EditModalBookmarkView
+@implementation ModalBKView
 
 //--------------------------------------------------------------//
 #pragma mark -- Create Methods --

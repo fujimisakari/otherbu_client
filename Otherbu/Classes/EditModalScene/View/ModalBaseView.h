@@ -15,7 +15,7 @@
 
 @end
 
-@interface EditModalBaseView : UIView
+@interface ModalBaseView : UIView
 
 @property(nonatomic, weak) id<EditModalDelegate> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;

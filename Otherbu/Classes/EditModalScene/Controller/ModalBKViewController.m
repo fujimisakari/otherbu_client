@@ -7,12 +7,12 @@
 //
 
 #import "ModalBKViewController.h"
-#import "EditModalBookmarkView.h"
+#import "ModalBKView.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
 
 @interface ModalBKViewController () {
-    EditModalBookmarkView *_modalView;
+    ModalBKView *_modalView;
     NSArray *_categoryList;
 }
 
@@ -26,7 +26,7 @@
     _categoryList = [[DataManager sharedManager] getCategoryList];
 
     // EditViewを生成
-    _modalView = [[EditModalBookmarkView alloc] initWithFrame:(CGRect)self.view.frame];
+    _modalView = [[ModalBKView alloc] initWithFrame:(CGRect)self.view.frame];
     _modalView.editItem = _editItem;
     _modalView.delegate = self;
     [self.view addSubview:_modalView];

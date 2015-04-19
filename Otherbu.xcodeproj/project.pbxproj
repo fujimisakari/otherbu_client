@@ -12,8 +12,8 @@
 		7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B565F021A92486F00D6A420 /* LaunchScreen.xib */; };
 		7B565F101A92486F00D6A420 /* OtherbuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F0F1A92486F00D6A420 /* OtherbuTests.m */; };
 		7B9085A01ADED87A00456102 /* ModalBKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B90859F1ADED87A00456102 /* ModalBKViewController.m */; };
-		7B9085A61ADEE04F00456102 /* EditModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A51ADEE04F00456102 /* EditModalBaseView.m */; };
-		7B9085A91ADEE57300456102 /* EditModalBookmarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */; };
+		7B9085A61ADEE04F00456102 /* ModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A51ADEE04F00456102 /* ModalBaseView.m */; };
+		7B9085A91ADEE57300456102 /* ModalBKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9085A81ADEE57300456102 /* ModalBKView.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
@@ -74,10 +74,10 @@
 		7B565F0F1A92486F00D6A420 /* OtherbuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherbuTests.m; sourceTree = "<group>"; };
 		7B90859E1ADED87A00456102 /* ModalBKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKViewController.h; path = Classes/EditModalScene/Controller/ModalBKViewController.h; sourceTree = "<group>"; };
 		7B90859F1ADED87A00456102 /* ModalBKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKViewController.m; path = Classes/EditModalScene/Controller/ModalBKViewController.m; sourceTree = "<group>"; };
-		7B9085A41ADEE04F00456102 /* EditModalBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalBaseView.h; path = Classes/EditModalScene/View/EditModalBaseView.h; sourceTree = "<group>"; };
-		7B9085A51ADEE04F00456102 /* EditModalBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModalBaseView.m; path = Classes/EditModalScene/View/EditModalBaseView.m; sourceTree = "<group>"; };
-		7B9085A71ADEE57300456102 /* EditModalBookmarkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditModalBookmarkView.h; path = Classes/EditModalScene/View/EditModalBookmarkView.h; sourceTree = "<group>"; };
-		7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditModalBookmarkView.m; path = Classes/EditModalScene/View/EditModalBookmarkView.m; sourceTree = "<group>"; };
+		7B9085A41ADEE04F00456102 /* ModalBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBaseView.h; path = Classes/EditModalScene/View/ModalBaseView.h; sourceTree = "<group>"; };
+		7B9085A51ADEE04F00456102 /* ModalBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBaseView.m; path = Classes/EditModalScene/View/ModalBaseView.m; sourceTree = "<group>"; };
+		7B9085A71ADEE57300456102 /* ModalBKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKView.h; path = Classes/EditModalScene/View/ModalBKView.h; sourceTree = "<group>"; };
+		7B9085A81ADEE57300456102 /* ModalBKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKView.m; path = Classes/EditModalScene/View/ModalBKView.m; sourceTree = "<group>"; };
 		7B9085AC1ADFFDFE00456102 /* ModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalInterface.h; path = Classes/EditModalScene/Controller/ModalInterface.h; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
@@ -219,10 +219,10 @@
 			children = (
 				7BFDDF2F1AD9ABD000DD60EF /* ModalView.h */,
 				7BFDDF301AD9ABD000DD60EF /* ModalView.m */,
-				7B9085A41ADEE04F00456102 /* EditModalBaseView.h */,
-				7B9085A51ADEE04F00456102 /* EditModalBaseView.m */,
-				7B9085A71ADEE57300456102 /* EditModalBookmarkView.h */,
-				7B9085A81ADEE57300456102 /* EditModalBookmarkView.m */,
+				7B9085A41ADEE04F00456102 /* ModalBaseView.h */,
+				7B9085A51ADEE04F00456102 /* ModalBaseView.m */,
+				7B9085A71ADEE57300456102 /* ModalBKView.h */,
+				7B9085A81ADEE57300456102 /* ModalBKView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -594,7 +594,7 @@
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
 				7BFDDF571AD9AC3500DD60EF /* SelectCategoryTableViewController.m in Sources */,
 				7BFDDF581AD9AC3500DD60EF /* SettingTableViewController.m in Sources */,
-				7B9085A91ADEE57300456102 /* EditModalBookmarkView.m in Sources */,
+				7B9085A91ADEE57300456102 /* ModalBKView.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
@@ -602,7 +602,7 @@
 				7BFDDF511AD9AC3500DD60EF /* SettingBaseTableViewController.m in Sources */,
 				7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */,
 				7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */,
-				7B9085A61ADEE04F00456102 /* EditModalBaseView.m in Sources */,
+				7B9085A61ADEE04F00456102 /* ModalBaseView.m in Sources */,
 				7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */,
 				7BFDDF541AD9AC3500DD60EF /* EditPageTableViewController.m in Sources */,
 				7BFDDF741AD9AC8400DD60EF /* UserData.m in Sources */,

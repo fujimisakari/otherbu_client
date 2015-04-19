@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditModalBaseView.h"
+#import "ModalBaseView.h"
 
-@interface EditModalBaseView ()
+@interface ModalBaseView ()
 
 @end
 
-@implementation EditModalBaseView
+@implementation ModalBaseView
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --
