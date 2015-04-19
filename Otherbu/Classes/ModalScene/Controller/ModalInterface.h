@@ -8,6 +8,6 @@
 
 @protocol ModalInterface <NSObject>
 
-- (void)retrunActionOfEditModal:(NSInteger)menuId;
+- (void)retrunActionOfModal:(NSInteger)menuId;
 
 @end

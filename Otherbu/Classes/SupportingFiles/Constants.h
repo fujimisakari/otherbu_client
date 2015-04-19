@@ -32,8 +32,8 @@ extern NSString * const kDefaultImageName;
 extern NSString * const kCellIdentifier;
 extern const int kNumberOfPages;
 
-extern NSString * const kTextFieldColorOfEditModal;
-extern NSString * const kBorderColorOfInEditModal;
+extern NSString * const kTextFieldColorOfModal;
+extern NSString * const kBorderColorOfModal;
 
 extern const float kMarginTopOfTableFrame;
 extern const float kMarginBottomOfTableFrame;
@@ -66,21 +66,21 @@ extern const float kLabelWidthOfToolbar;
 extern const float kArrowWidthOfToolbar;
 extern const int kFontSizeOfToolbar;
 
-extern const float kBorderWidthOfEditModal;
-extern const float kAdaptWidthOfEditModal;
-extern const float kAdaptHeightOfEditModal;
-extern const float kAdaptHeightOfEditModalForip6;
-extern const float kButtonWidthOfEditModal;
-extern const float kLabelWidthOfEditModal;
-extern const float kAdaptButtonWidthOfEditModal;
-extern const float kAdaptButtonHeightOfEditModal;
-extern const float kCommonAdaptWidthOfEditModal;
-extern const float kCommonHeightOfEditModal;
-extern const int kTitleFontSizeOfEditModal;
-extern const int kLabelFontSizeOfEditModal;
-extern NSString * const kCancelButtonOfEditModal;
-extern NSString * const kCreateButtonOfEditModal;
-extern NSString * const kUpdateButtonOfEditModal;
+extern const float kBorderWidthOfModal;
+extern const float kAdaptWidthOfModal;
+extern const float kAdaptHeightOfModal;
+extern const float kAdaptHeightOfModalForip6;
+extern const float kButtonWidthOfModal;
+extern const float kLabelWidthOfModal;
+extern const float kAdaptButtonWidthOfModal;
+extern const float kAdaptButtonHeightOfModal;
+extern const float kCommonAdaptWidthOfModal;
+extern const float kCommonHeightOfModal;
+extern const int kTitleFontSizeOfModal;
+extern const int kLabelFontSizeOfModal;
+extern NSString * const kCancelButtonOfModal;
+extern NSString * const kCreateButtonOfModal;
+extern NSString * const kUpdateButtonOfModal;
 
 extern const int kRowOfColorPalette;
 extern const int kColumnOfColorPalette;

@@ -31,8 +31,8 @@ const int kNumberOfPages = 3;                                // ページ数
 #pragma mark -- Color Hex --
 //--------------------------------------------------------------//
 
-NSString * const kTextFieldColorOfEditModal = @"555555";    // EditModalのテキトフィールドの背景色
-NSString * const kBorderColorOfInEditModal = @"555555";     // EditModalのViewの枠線
+NSString * const kTextFieldColorOfModal = @"555555";         // Modalのテキトフィールドの背景色
+NSString * const kBorderColorOfModal = @"555555";            // ModalのViewの枠線
 
 //--------------------------------------------------------------//
 #pragma mark -- Table Value Of Main View--
@@ -82,24 +82,24 @@ const float kArrowWidthOfToolbar = 50.0f;                    // Toolbarの矢印
 const int kFontSizeOfToolbar = 30;                           // Toolbarのフォントサイズ
 
 //--------------------------------------------------------------//
-#pragma mark -- Value Of Edit Modal View --
+#pragma mark -- Value Of Modal View --
 //--------------------------------------------------------------//
 
-const float kBorderWidthOfEditModal = 2.0f;                  // EditModalの画面の枠線
-const float kAdaptWidthOfEditModal = 20.0f;                  // EditModalの画面サイズ調整(width)
-const float kAdaptHeightOfEditModal = 50.0f;                 // EditModalの画面サイズ調整(height)
-const float kAdaptHeightOfEditModalForip6 = 100.0f;          // EditModalの画面サイズ調整(height)
-const float kButtonWidthOfEditModal = 100.0f;                // EditModalのボタンサイズ(width)
-const float kLabelWidthOfEditModal = 150.0f;                 // EditModalのラベルサイズ(width)
-const float kAdaptButtonWidthOfEditModal = 20.0f;            // EditModalのボタン位置調整(width)
-const float kAdaptButtonHeightOfEditModal = 20.0f;           // EditModalのボタン位置調整(height)
-const float kCommonAdaptWidthOfEditModal = 20.0f;            // EditModalのボタンやラベルの位置調整(width)
-const float kCommonHeightOfEditModal = 30.0f;                // EditModalのボタンやラベルのサイズ(height)
-const int kTitleFontSizeOfEditModal = 20;                    // EditModalのタイトルラベルのフォントサイズ
-const int kLabelFontSizeOfEditModal = 15;                    // EditModalの項目ラベルのフォントサイズ
-NSString * const kCancelButtonOfEditModal = @"Cancel";
-NSString * const kCreateButtonOfEditModal = @"Create";
-NSString * const kUpdateButtonOfEditModal = @"Update";
+const float kBorderWidthOfModal = 2.0f;                      // Modalの画面の枠線
+const float kAdaptWidthOfModal = 20.0f;                      // Modalの画面サイズ調整(width)
+const float kAdaptHeightOfModal = 50.0f;                     // Modalの画面サイズ調整(height)
+const float kAdaptHeightOfModalForip6 = 100.0f;              // Modalの画面サイズ調整(height)
+const float kButtonWidthOfModal = 100.0f;                    // Modalのボタンサイズ(width)
+const float kLabelWidthOfModal = 150.0f;                     // Modalのラベルサイズ(width)
+const float kAdaptButtonWidthOfModal = 20.0f;                // Modalのボタン位置調整(width)
+const float kAdaptButtonHeightOfModal = 20.0f;               // Modalのボタン位置調整(height)
+const float kCommonAdaptWidthOfModal = 20.0f;                // Modalのボタンやラベルの位置調整(width)
+const float kCommonHeightOfModal = 30.0f;                    // Modalのボタンやラベルのサイズ(height)
+const int kTitleFontSizeOfModal = 20;                        // Modalのタイトルラベルのフォントサイズ
+const int kLabelFontSizeOfModal = 15;                        // Modalの項目ラベルのフォントサイズ
+NSString * const kCancelButtonOfModal = @"Cancel";
+NSString * const kCreateButtonOfModal = @"Create";
+NSString * const kUpdateButtonOfModal = @"Update";
 
 //--------------------------------------------------------------//
 #pragma mark -- Color Palette --

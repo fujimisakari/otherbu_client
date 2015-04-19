@@ -112,7 +112,7 @@
                         layout:(UICollectionViewLayout *)collectionViewLayout
         insetForSectionAtIndex:(NSInteger)section {
     // セクションの上左下右のマージン
-    float viewWidth = _modalView.frame.size.width - kAdaptWidthOfEditModal;
+    float viewWidth = _modalView.frame.size.width - kAdaptWidthOfModal;
     float totalCellWidth = (kCellSizeOfColorPalette + kBorderWidthOfColorPalette * 2) * kColumnOfColorPalette;
     float restViewWidth = viewWidth - totalCellWidth - (kCellMarginOfColorPalette * 5);
     float marginWidth = restViewWidth / 2;
@@ -130,7 +130,7 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- EditModalViewDelegate --
+#pragma mark -- ModalViewDelegate --
 //--------------------------------------------------------------//
 
 - (void)didPressCancelButton {
@@ -148,7 +148,7 @@
         [_editItem addNewData];
     }
 
-    [self.delegate retrunActionOfEditModal:[_editItem iGetMenuId]];
+    [self.delegate retrunActionOfModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

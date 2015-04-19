@@ -89,7 +89,7 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- EditModalViewDelegate --
+#pragma mark -- ModalViewDelegate --
 //--------------------------------------------------------------//
 
 - (void)didPressCancelButton {
@@ -114,7 +114,7 @@
         [_editItem addNewData];
     }
 
-    [self.delegate retrunActionOfEditModal:[_editItem iGetMenuId]];
+    [self.delegate retrunActionOfModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

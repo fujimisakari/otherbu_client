@@ -19,47 +19,47 @@
     int startTitleY = 10;
     int startLabelY = 10;
     int categoryPickerHeight = 120;
-    int totalTitleHeight = startTitleY + kCommonHeightOfEditModal + space;  // 画面上部からメニュータイトル名までの高さ
-    int totalButtonHeight = space + kCommonHeightOfEditModal + space;       // 画面下部から編集ボタンまでの高さ
+    int totalTitleHeight = startTitleY + kCommonHeightOfModal + space;  // 画面上部からメニュータイトル名までの高さ
+    int totalButtonHeight = space + kCommonHeightOfModal + space;       // 画面下部から編集ボタンまでの高さ
     int availableHeight = self.frame.size.height - (totalTitleHeight + totalButtonHeight + startLabelY);
-    int availableMargin = availableHeight - categoryPickerHeight - (int)((kCommonHeightOfEditModal + space) * 5);  // 利用できる高さ - (項目高さ x 項目数)
+    int availableMargin = availableHeight - categoryPickerHeight - (int)((kCommonHeightOfModal + space) * 5);  // 利用できる高さ - (項目高さ x 項目数)
     int margin = availableMargin / 3;  // 利用できる余白 / 項目ブロック
-    float textFieldWidth = self.frame.size.width - (kAdaptButtonWidthOfEditModal * 2);
+    float textFieldWidth = self.frame.size.width - (kAdaptButtonWidthOfModal * 2);
 
     // TitleLabel生成
-    CGRect titleRect = CGRectMake(0, startTitleY + 10, self.frame.size.width, kCommonHeightOfEditModal);
+    CGRect titleRect = CGRectMake(0, startTitleY + 10, self.frame.size.width, kCommonHeightOfModal);
     [self setTitleLabel:titleRect];
 
     // NameLabel生成
     int nameTextFieldLabelY = totalTitleHeight + startLabelY;
-    CGRect textFieldLabelRect = CGRectMake(kCommonAdaptWidthOfEditModal, nameTextFieldLabelY, kLabelWidthOfEditModal, kCommonHeightOfEditModal);
+    CGRect textFieldLabelRect = CGRectMake(kCommonAdaptWidthOfModal, nameTextFieldLabelY, kLabelWidthOfModal, kCommonHeightOfModal);
     [self setFieldLabel:textFieldLabelRect label:@"Set Name :"];
 
     // NameTextField生成
-    int nameTextFieldY = nameTextFieldLabelY + kCommonHeightOfEditModal + space;
-    CGRect nameTextFieldRect = CGRectMake(kAdaptWidthOfEditModal, nameTextFieldY, textFieldWidth, kCommonHeightOfEditModal);
+    int nameTextFieldY = nameTextFieldLabelY + kCommonHeightOfModal + space;
+    CGRect nameTextFieldRect = CGRectMake(kAdaptWidthOfModal, nameTextFieldY, textFieldWidth, kCommonHeightOfModal);
     _nameTextField = [[UITextField alloc] init];
     [self setTextField:nameTextFieldRect TextField:_nameTextField Text:[super.editItem iGetName]];
 
     // UrlLabel生成
-    int urlFieldLabelY = nameTextFieldY + kCommonHeightOfEditModal + margin;
-    CGRect urlFieldLabelRect = CGRectMake(kCommonAdaptWidthOfEditModal, urlFieldLabelY, kLabelWidthOfEditModal, kCommonHeightOfEditModal);
+    int urlFieldLabelY = nameTextFieldY + kCommonHeightOfModal + margin;
+    CGRect urlFieldLabelRect = CGRectMake(kCommonAdaptWidthOfModal, urlFieldLabelY, kLabelWidthOfModal, kCommonHeightOfModal);
     [self setFieldLabel:urlFieldLabelRect label:@"Set URL :"];
 
     // UrlTextField生成
-    int urlTextFieldY = urlFieldLabelY + kCommonHeightOfEditModal + space;
-    CGRect urlTextFieldRect = CGRectMake(kAdaptWidthOfEditModal, urlTextFieldY, textFieldWidth, kCommonHeightOfEditModal);
+    int urlTextFieldY = urlFieldLabelY + kCommonHeightOfModal + space;
+    CGRect urlTextFieldRect = CGRectMake(kAdaptWidthOfModal, urlTextFieldY, textFieldWidth, kCommonHeightOfModal);
     _urlTextField = [[UITextField alloc] init];
     [self setTextField:urlTextFieldRect TextField:_urlTextField Text:[super.editItem iGetUrl]];
 
     // CategoryLabel生成
-    int categoryFieldLabelY = urlTextFieldY + kCommonHeightOfEditModal  + margin;
-    CGRect categoryFieldLabelRect = CGRectMake(kCommonAdaptWidthOfEditModal, categoryFieldLabelY, kLabelWidthOfEditModal, kCommonHeightOfEditModal);
+    int categoryFieldLabelY = urlTextFieldY + kCommonHeightOfModal  + margin;
+    CGRect categoryFieldLabelRect = CGRectMake(kCommonAdaptWidthOfModal, categoryFieldLabelY, kLabelWidthOfModal, kCommonHeightOfModal);
     [self setFieldLabel:categoryFieldLabelRect label:@"Set Category :"];
 
     // CategoryPicker生成
-    int categoryTextFieldY = categoryFieldLabelY + kCommonHeightOfEditModal + space + space;
-    CGRect categoryTextFieldRect = CGRectMake(kAdaptWidthOfEditModal, categoryTextFieldY, textFieldWidth, categoryPickerHeight);
+    int categoryTextFieldY = categoryFieldLabelY + kCommonHeightOfModal + space + space;
+    CGRect categoryTextFieldRect = CGRectMake(kAdaptWidthOfModal, categoryTextFieldY, textFieldWidth, categoryPickerHeight);
     [self _setPickerView:categoryTextFieldRect];
 }
 
@@ -69,7 +69,7 @@
 
 - (void)_setPickerView:(CGRect)rect {
     _categoryPicker = [[UIPickerView alloc] initWithFrame:rect];
-    _categoryPicker.backgroundColor = [UIColor colorWithHex:kTextFieldColorOfEditModal];
+    _categoryPicker.backgroundColor = [UIColor colorWithHex:kTextFieldColorOfModal];
     [_categoryPicker.layer setCornerRadius:10.0];
     // PickerViewの高さを調整
     CGAffineTransform t0 = CGAffineTransformMakeTranslation(0, _categoryPicker.bounds.size.height / 1.5);

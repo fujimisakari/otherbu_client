@@ -23,11 +23,11 @@
     if (self) {
         int adaptWidth;
         if ([Device isiPhone5] || [Device isiPhone4]) {
-            adaptWidth = kAdaptHeightOfEditModal;
+            adaptWidth = kAdaptHeightOfModal;
         } else {
-            adaptWidth = kAdaptHeightOfEditModalForip6;
+            adaptWidth = kAdaptHeightOfModalForip6;
         }
-        float width = rect.size.width - (kAdaptWidthOfEditModal * 2);
+        float width = rect.size.width - (kAdaptWidthOfModal * 2);
         float height = rect.size.height - (adaptWidth * 2);
         CGRect _rect = CGRectMake(0, 0, width, height);
         self.frame = _rect;
@@ -47,8 +47,8 @@
     self.layer.masksToBounds = YES;
 
     // 枠線
-    self.layer.borderWidth = kBorderWidthOfEditModal;
-    self.layer.borderColor = [[UIColor colorWithHex:kBorderColorOfInEditModal] CGColor];
+    self.layer.borderWidth = kBorderWidthOfModal;
+    self.layer.borderColor = [[UIColor colorWithHex:kBorderColorOfModal] CGColor];
 
     // ラベル、フィールド、カラーパレッド生成
     [self _bulkCreate];
@@ -65,20 +65,20 @@
 }
 
 - (void)_createButton {
-    int y = self.frame.size.height - (kCommonHeightOfEditModal + kAdaptButtonHeightOfEditModal);
+    int y = self.frame.size.height - (kCommonHeightOfModal + kAdaptButtonHeightOfModal);
 
     // キャンセルボタン
-    int cancel_x = self.superview.center.x - (kButtonWidthOfEditModal + kCommonAdaptWidthOfEditModal + kAdaptWidthOfEditModal);
-    CGRect cancel_rect = CGRectMake(cancel_x, y, kButtonWidthOfEditModal, kCommonHeightOfEditModal);
-    [self setButton:cancel_rect label:kCancelButtonOfEditModal action:@selector(_didPressCancelButton:)];
+    int cancel_x = self.superview.center.x - (kButtonWidthOfModal + kCommonAdaptWidthOfModal + kAdaptWidthOfModal);
+    CGRect cancel_rect = CGRectMake(cancel_x, y, kButtonWidthOfModal, kCommonHeightOfModal);
+    [self setButton:cancel_rect label:kCancelButtonOfModal action:@selector(_didPressCancelButton:)];
 
     // 新規追加、更新ボタン
-    int update_x = self.superview.center.x + kCommonAdaptWidthOfEditModal - kAdaptWidthOfEditModal;
-    CGRect update_rect = CGRectMake(update_x, y, kButtonWidthOfEditModal, kCommonHeightOfEditModal);
+    int update_x = self.superview.center.x + kCommonAdaptWidthOfModal - kAdaptWidthOfModal;
+    CGRect update_rect = CGRectMake(update_x, y, kButtonWidthOfModal, kCommonHeightOfModal);
     if ([_editItem isCreateMode]) {
-        [self setButton:update_rect label:kCreateButtonOfEditModal action:@selector(_didPressUpdateButton:)];
+        [self setButton:update_rect label:kCreateButtonOfModal action:@selector(_didPressUpdateButton:)];
     } else {
-        [self setButton:update_rect label:kUpdateButtonOfEditModal action:@selector(_didPressUpdateButton:)];
+        [self setButton:update_rect label:kUpdateButtonOfModal action:@selector(_didPressUpdateButton:)];
     }
 }
 
@@ -91,7 +91,7 @@
     titleLabel.frame = rect;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor lightGrayColor];
-    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kTitleFontSizeOfEditModal];
+    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kTitleFontSizeOfModal];
     if ([_editItem isCreateMode]) {
         titleLabel.text = [NSString stringWithFormat:@"%@ %@", @"Create", [_editItem iGetTitleName]];
     } else {
@@ -105,7 +105,7 @@
     titleLabel.frame = rect;
     titleLabel.textAlignment = NSTextAlignmentLeft;
     titleLabel.textColor = [UIColor lightGrayColor];
-    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kLabelFontSizeOfEditModal];
+    titleLabel.font = [UIFont fontWithName:kDefaultFont size:kLabelFontSizeOfModal];
     titleLabel.text = labelName;
     [self addSubview:titleLabel];
 }
@@ -113,7 +113,7 @@
 - (void)setTextField:(CGRect)rect TextField:(UITextField *)textField Text:(NSString *)text {
     textField.frame = rect;
     textField.borderStyle = UITextBorderStyleRoundedRect;
-    textField.backgroundColor = [UIColor colorWithHex:kTextFieldColorOfEditModal];
+    textField.backgroundColor = [UIColor colorWithHex:kTextFieldColorOfModal];
     textField.textColor = [UIColor whiteColor];
     textField.text = text;
     [self addSubview:textField];
