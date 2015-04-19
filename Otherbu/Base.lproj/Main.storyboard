@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
-        <!--Edit View Controller-->
+        <!--Modal View Controller-->
         <scene sceneID="eE5-Pr-3Pd">
             <objects>
-                <viewController id="923-Gb-755" userLabel="Edit View Controller" customClass="ModalViewController" sceneMemberID="viewController">
+                <viewController id="923-Gb-755" customClass="ModalViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vWM-Ie-oT4"/>
                         <viewControllerLayoutGuide type="bottom" id="1cE-tm-320"/>
@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="1872" y="195"/>
         </scene>
-        <!--Bookmark Edit View Controller-->
+        <!--Modal Bookmark View Controller-->
         <scene sceneID="4Vk-5d-Qlo">
             <objects>
-                <viewController id="2vA-Rt-dli" userLabel="Bookmark Edit View Controller" customClass="ModalBKViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ModalBKViewController" id="2vA-Rt-dli" userLabel="Modal Bookmark View Controller" customClass="ModalBKViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3sH-7E-QJO"/>
                         <viewControllerLayoutGuide type="bottom" id="csN-jB-3qs"/>

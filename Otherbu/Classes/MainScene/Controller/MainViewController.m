@@ -111,10 +111,6 @@
     [self _removePageTabViews];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 //--------------------------------------------------------------//
 #pragma mark -- UIScrollViewDelegate --
 //--------------------------------------------------------------//
@@ -322,10 +318,10 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- EditModalViewDelegate --
+#pragma mark -- ModalViewDelegate --
 //--------------------------------------------------------------//
 
-- (void)retrunActionOflModal:(NSInteger)menuId {
+- (void)returnActionOfModal:(NSInteger)menuId {
     // モーダル編集画面で更新した場合の処理
     switch (menuId) {
         case MENU_PAGE :

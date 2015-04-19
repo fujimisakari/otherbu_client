@@ -114,7 +114,7 @@
         [_editItem addNewData];
     }
 
-    [self.delegate retrunActionOfModal:[_editItem iGetMenuId]];
+    [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

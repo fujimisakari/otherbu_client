@@ -7,11 +7,14 @@
 //
 
 #import "WebViewController.h"
+#import "ModalBKViewController.h"
 #import "NavigationBar.h"
 #import "BookmarkData.h"
 #import "CustomWebView.h"
 
-@interface WebViewController ()
+@interface WebViewController () {
+    id<DataInterface> currentWebPage;
+}
 
 @end
 
@@ -22,14 +25,11 @@
 
     // setup NavigationBar
     [_navigationBar setup];
-    [self _closeButtontoLeft];
+    [self _closeButtonToLeft];
+    [self _addButtonToRight];
 
     // set Webview
     [_webView setupWithView:self.view];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -47,20 +47,47 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Close Button --
+#pragma mark-- Setting Button--
 //--------------------------------------------------------------//
 
-- (void)_closeButtontoLeft {
+- (void)_closeButtonToLeft {
     // NavigationBarにXボタンを設置する
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
-                                                                         target:self
-                                                                         action:@selector(_closeWebView:)];
+    UIBarButtonItem *btn =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(_closeWebView:)];
     _navigationBar.topItem.leftBarButtonItem = btn;
 }
 
+- (void)_addButtonToRight {
+    // NavigationBarに項目追加ボタンを設置する
+    UIBarButtonItem *btn =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(_addBookmark:)];
+    _navigationBar.topItem.rightBarButtonItem = btn;
+}
+
+//--------------------------------------------------------------//
+#pragma mark-- Navi Button Event--
+//--------------------------------------------------------------//
+
 - (void)_closeWebView:(UIButton *)sender {
-    // WebViewのクローズ
+    // WebViewを閉じる
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)_addBookmark:(UIButton *)sender {
+    // 現在表示しているページの名前とURLを入れてBookmark追加画面へ遷移する
+    NSString *name = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    NSString *url = [_webView stringByEvaluatingJavaScriptFromString:@"document.URL"];
+
+    currentWebPage = [BookmarkData alloc];
+    [currentWebPage iSetName:name];
+    [currentWebPage iSetUrl:url];
+
+    ModalBKViewController *modalBKViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ModalBKViewController"];
+    modalBKViewController.delegate = self;
+    modalBKViewController.editItem = currentWebPage;
+    [self presentViewController:modalBKViewController animated:YES completion:nil];
+}
+
+- (void)returnActionOfModal:(NSInteger)menuId{};
 
 @end
