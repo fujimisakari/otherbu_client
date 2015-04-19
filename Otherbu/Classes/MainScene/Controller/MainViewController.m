@@ -387,7 +387,6 @@
 
         UserData *user = [[DataManager sharedManager] getUser];
         _currentPage = [user page];
-
         _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
 
         [_scrollView reloadTableDataByAnimation];
@@ -405,7 +404,7 @@
         CGRect rect = CGRectMake(offsetX, kOffsetYOfPageTab, textSize.width, textSize.height);
         PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:rect];
         [pageTabView setUpWithPage:pageData delegate:self];
-        if ((int)pageData.dataId == (int)_currentPage.dataId) {
+        if ([pageData.dataId isEqualToString:_currentPage.dataId]) {
             _currentPageTabView = pageTabView;
             [pageTabView switchTabStatus];
         }

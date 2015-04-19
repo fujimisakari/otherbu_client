@@ -18,20 +18,20 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = [dataDict[@"id"] integerValue];
+        self.dataId = [dataDict[@"id"] stringValue];
         self.userId = [dataDict[@"user_id"] integerValue];
         self.name = dataDict[@"name"];
         self.angle = [dataDict[@"angle"] integerValue];
         self.sort = [dataDict[@"sort"] integerValue];
-        self.colorId = [dataDict[@"color_id"] integerValue];
+        self.colorId = [dataDict[@"color_id"] stringValue];
         self.isOpenSection = [dataDict[@"tag_open"] boolValue];
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%ld, userId=%ld name=%@ angle=%ld, sort=%ld, colorId=%ld, isOpenSection=%d", _dataId,
-                                      _userId, _name, _angle, _sort, _colorId, _isOpenSection];
+    return [NSString stringWithFormat:@"dataId=%@, userId=%ld name=%@ angle=%ld, sort=%ld, colorId=%@, isOpenSection=%d", _dataId, _userId,
+                                      _name, _angle, _sort, _colorId, _isOpenSection];
 }
 
 //--------------------------------------------------------------//
@@ -42,9 +42,9 @@
     // ブックマークリストを生成
     NSMutableArray *itemList = [[NSMutableArray alloc] init];
     DataManager *dataManager = [DataManager sharedManager];
-    for (BookmarkData *bookmarkObj in [dataManager.bookmarkDict objectEnumerator]) {
-        if (bookmarkObj.categoryId == (int)_dataId) {
-            [itemList addObject:bookmarkObj];
+    for (BookmarkData *bookmark in [dataManager.bookmarkDict objectEnumerator]) {
+        if ([bookmark.categoryId isEqualToString:_dataId]) {
+            [itemList addObject:bookmark];
         }
     }
     // sort番号で昇順ソート
@@ -54,8 +54,7 @@
 }
 
 - (ColorData *)color {
-    NSNumber *number = [[NSNumber alloc] initWithInt:(int)_colorId];
-    return [[DataManager sharedManager] getColor:number];
+    return [[DataManager sharedManager] getColor:_colorId];
 }
 
 //--------------------------------------------------------------//
@@ -63,7 +62,7 @@
 //--------------------------------------------------------------//
 
 - (BOOL)isCreateMode {
-    return self.dataId == 0;
+    return (self.dataId) ? YES : NO;
 }
 
 - (NSInteger)iGetMenuId {
@@ -82,11 +81,11 @@
     self.name = name;
 }
 
-- (NSInteger)iGetColorId {
+- (NSString *)iGetColorId {
     return self.colorId;
 }
 
-- (void)iSetColorId:(NSInteger)colorId {
+- (void)iSetColorId:(NSString *)colorId {
     self.colorId = colorId;
 }
 

@@ -18,39 +18,37 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = [dataDict[@"id"] integerValue];
+        self.dataId = [dataDict[@"id"] stringValue];
         self.userId = [dataDict[@"user_id"] integerValue];
         self.name = dataDict[@"name"];
         self.categoryIdsStr = dataDict[@"category_ids_str"];
         self.angleIdsStr = dataDict[@"angle_ids_str"];
         self.sortIdsStr = dataDict[@"sort_ids_str"];
-
         self.sortId = [DataManager sharedManager].pageDict.count;
 
-        if ([dataDict[@"id"] integerValue] == 16) {
-            self.colorId = 9;
-         } else if ([dataDict[@"id"] integerValue] == 18) {
-            self.colorId = 13;
-         } else if ([dataDict[@"id"] integerValue] == 19) {
-            self.colorId = 3;
-         } else if ([dataDict[@"id"] integerValue] == 1) {
-            self.colorId = 14;
-         } else if ([dataDict[@"id"] integerValue] == 20) {
-            self.colorId = 8;
-        } else if ([dataDict[@"id"] integerValue] == 17) {
-            self.colorId = 6;
-
-        } else if ([dataDict[@"id"] integerValue] == 16) {
-            self.colorId = 5;
-         } else {
-            self.colorId = 7;
+        if ([self.dataId isEqualToString:@"16"]) {
+            self.colorId = @"9";
+        } else if ([self.dataId isEqualToString:@"18"]) {
+            self.colorId = @"13";
+        } else if ([self.dataId isEqualToString:@"19"]) {
+            self.colorId = @"3";
+        } else if ([self.dataId isEqualToString:@"1"]) {
+            self.colorId = @"14";
+        } else if ([self.dataId isEqualToString:@"20"]) {
+            self.colorId = @"8";
+        } else if ([self.dataId isEqualToString:@"17"]) {
+            self.colorId = @"6";
+        } else if ([self.dataId isEqualToString:@"17"]) {
+            self.colorId = @"5";
+        } else {
+            self.colorId = @"7";
         }
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%ld, userId=%ld name=%@ categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@", _dataId, _userId,
+    return [NSString stringWithFormat:@"dataId=%@, userId=%ld name=%@ categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@", _dataId, _userId,
                                       _name, _categoryIdsStr, _angleIdsStr, _sortIdsStr];
 }
 
@@ -63,8 +61,8 @@
     NSMutableArray *resultList = [[NSMutableArray alloc] init];
 
     NSArray *categoryIdList = [_categoryIdsStr componentsSeparatedByString:@","];
-    for (id categoryId in categoryIdList) {
-        CategoryData *data = [dataManager getCategory:[Helper getNumberByInt:(int)[categoryId intValue]]];
+    for (NSString *categoryId in categoryIdList) {
+        CategoryData *data = [dataManager getCategory:categoryId];
         if (data) {
             [resultList addObject:data];
         }
@@ -82,7 +80,7 @@
                                             [NSNumber numberWithInt:CENTER] : [[NSMutableArray alloc] init],
                                             [NSNumber numberWithInt:RIGHT] : [[NSMutableArray alloc] init]
                                           } mutableCopy];
-    for (NSNumber *categoryId in angleDict) {
+    for (NSString *categoryId in angleDict) {
         CategoryData *data = [dataManager getCategory:categoryId];
         if (data) {
             NSNumber *angleId = angleDict[categoryId];
@@ -103,10 +101,10 @@
 - (NSMutableDictionary *)_getMapByArg:(NSString *)strData {
     // 引数の文字列をパースしてdictionaryリストを生成する
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
-    NSArray *list_ = [strData componentsSeparatedByString:@","];
-    for (id data in list_) {
-        NSArray *aList = [(NSString *)data componentsSeparatedByString:@":"];
-        NSNumber *categoryId = [Helper getNumberByInt:[aList[0] intValue]];
+    NSArray *_list = [strData componentsSeparatedByString:@","];
+    for (NSString *data in _list) {
+        NSArray *aList = [data componentsSeparatedByString:@":"];
+        NSString *categoryId = aList[0];
         NSNumber *argId = [Helper getNumberByInt:[aList[1] intValue]];
         [resultDict setObject:argId forKey:categoryId];
     }
@@ -121,10 +119,10 @@
         // 下から上に順番に比較します
         for (int j = (int)array.count - 1; j > i; j--) {
             CategoryData *currentCategory = array[j];
-            NSNumber *currentSortId = sortDict[[Helper getNumberByInt:(int)currentCategory.dataId]];
+            int currentSortId = [(NSString *)sortDict[currentCategory.dataId] intValue];
 
             CategoryData *nextCategory = array[(int)j - 1];
-            NSNumber *nextSortId = sortDict[[Helper getNumberByInt:(int)nextCategory.dataId]];
+            int nextSortId = [(NSString *)sortDict[nextCategory.dataId] intValue];
 
             // 上の方が大きいときは互いに入れ替えます
             if (currentSortId < nextSortId) {
@@ -138,17 +136,17 @@
 
 - (void)updatePageData:(CategoryData *)category isCheckMark:(BOOL)isCheckMark {
     // ページ情報を編集時の処理
-    NSNumber *categoryId = [Helper getNumberByInt:(int)category.dataId];
+    NSString *categoryId = category.dataId;
     NSMutableArray *categoryIdList = (NSMutableArray *)[_categoryIdsStr componentsSeparatedByString:@","];
     NSMutableDictionary *angleDict = [self _getMapByArg:_angleIdsStr];
     NSMutableDictionary *sortDict = [self _getMapByArg:_sortIdsStr];
-    BOOL isExistCategory = [categoryIdList containsObject:[categoryId stringValue]];
+    BOOL isExistCategory = [categoryIdList containsObject:categoryId];
 
     if (isCheckMark) {
         // チェックした時
         if (!isExistCategory) {
             NSNumber *angleLeft = [[NSNumber alloc] initWithInt:LEFT];
-            [categoryIdList addObject:[categoryId stringValue]];
+            [categoryIdList addObject:categoryId];
             angleDict[categoryId] = angleLeft;
             int count = [Helper getSameCountByDict:angleDict TargetValue:angleLeft];
             sortDict[categoryId] = [NSString stringWithFormat:@"%d", count];
@@ -156,7 +154,7 @@
     } else {
         // チェックを外した時
         if (isExistCategory) {
-            [categoryIdList removeObject:[categoryId stringValue]];
+            [categoryIdList removeObject:categoryId];
             [angleDict removeObjectForKey:categoryId];
             [sortDict removeObjectForKey:categoryId];
         }
@@ -168,7 +166,7 @@
     NSArray *updateData = @[@{@"dict": sortDict,  @"array": sortList},
                             @{@"dict": angleDict, @"array": angleList}];
     for (NSDictionary *data in updateData) {
-        for (id cateogryId in data[@"dict"]) {
+        for (NSString *cateogryId in data[@"dict"]) {
             NSString *insertData = [NSString stringWithFormat:@"%@:%@", cateogryId, data[@"dict"][cateogryId]];
             [data[@"array"] addObject:insertData];
         }
@@ -179,7 +177,7 @@
 }
 
 - (ColorData *)color {
-    return [[DataManager sharedManager] getColor:[Helper getNumberByInt:(int)_colorId]];
+    return [[DataManager sharedManager] getColor:_colorId];
 }
 
 //--------------------------------------------------------------//
@@ -187,7 +185,7 @@
 //--------------------------------------------------------------//
 
 - (BOOL)isCreateMode {
-    return self.dataId == 0;
+    return (self.dataId) ? YES : NO;
 }
 
 - (NSInteger)iGetMenuId {
@@ -206,11 +204,11 @@
     self.name = name;
 }
 
-- (NSInteger)iGetColorId {
+- (NSString *)iGetColorId {
     return self.colorId;
 }
 
-- (void)iSetColorId:(NSInteger)colorId {
+- (void)iSetColorId:(NSString *)colorId {
     self.colorId = colorId;
 }
 

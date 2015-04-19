@@ -12,12 +12,12 @@
 
 @interface BookmarkData : NSObject<DataInterface>
 
-@property(nonatomic) NSInteger dataId;      // ID
-@property(nonatomic) NSInteger userId;      // ユーザーID
-@property(nonatomic) NSInteger categoryId;  // カテゴリID
-@property(nonatomic) NSString *name;        // Bookmark名
-@property(nonatomic) NSString *url;         // URL
-@property(nonatomic) NSInteger sort;        // Sort番号
+@property(nonatomic) NSString  *dataId;      // ID
+@property(nonatomic) NSInteger userId;       // ユーザーID
+@property(nonatomic) NSString  *categoryId;  // カテゴリID
+@property(nonatomic) NSString  *name;        // Bookmark名
+@property(nonatomic) NSString  *url;         // URL
+@property(nonatomic) NSInteger sort;         // Sort番号
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 

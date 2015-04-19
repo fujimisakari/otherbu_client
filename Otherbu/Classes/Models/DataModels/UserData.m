@@ -27,20 +27,20 @@ static UserData *intance = nil;
     self = [super init];
     if (self) {
         self.dataId = [[NSUUID UUID] UUIDString];
-        self.pageId = 0;
+        self.pageId = @"0";
     }
     return self;
 }
 
 - (void)updateWithDictionary:(NSDictionary *)dataDict {
-    self.dataId = dataDict[@"id"];
+    self.dataId = [dataDict[@"id"] stringValue];
     self.type = dataDict[@"type"];
     self.typeId = dataDict[@"type_id"];
-    self.pageId = [dataDict[@"page_id"] integerValue];
+    self.pageId = [dataDict[@"page_id"] stringValue];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, type=%@ typeId=%@ page=%ld", _dataId, _type, _typeId, _pageId];
+    return [NSString stringWithFormat:@"dataId=%@, type=%@ typeId=%@ page=%@", _dataId, _type, _typeId, _pageId];
 }
 
 //--------------------------------------------------------------//
@@ -48,11 +48,10 @@ static UserData *intance = nil;
 //--------------------------------------------------------------//
 
 - (PageData *)page {
-    NSNumber *number = [[NSNumber alloc] initWithInt:(int)_pageId];
-    return [[DataManager sharedManager] getPage:number];
+    return [[DataManager sharedManager] getPage:_pageId];
 }
 
-- (void)updatePage:(NSInteger)pageId {
+- (void)updatePage:(NSString *)pageId {
     self.pageId = pageId;
 }
 

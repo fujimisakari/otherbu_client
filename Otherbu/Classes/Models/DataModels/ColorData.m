@@ -17,7 +17,7 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = [dataDict[@"id"] integerValue];
+        self.dataId = [dataDict[@"id"] stringValue];
         self.name = dataDict[@"name"];
         self.font_color = dataDict[@"font_color"];
         self.icon_color = dataDict[@"icon_color"];

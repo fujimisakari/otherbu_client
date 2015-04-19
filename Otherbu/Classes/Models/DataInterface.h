@@ -24,11 +24,11 @@
 - (NSString *)iGetUrl;
 - (void)iSetUrl:(NSString *)url;
 
-- (NSInteger)iGetCategoryId;
-- (void)iSetCategoryId:(NSInteger)categoryId;
+- (NSString *)iGetCategoryId;
+- (void)iSetCategoryId:(NSString *)categoryId;
 
-- (NSInteger)iGetColorId;
-- (void)iSetColorId:(NSInteger)colorId;
+- (NSString *)iGetColorId;
+- (void)iSetColorId:(NSString *)colorId;
 
 - (void)iGetSortIdOfInt;
 - (void)iGetSortIdOfString;

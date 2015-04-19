@@ -13,7 +13,7 @@
 @interface ModalViewController () {
     ModalView *_modalView;
     NSArray *_colorList;
-    NSInteger _colorId;
+    NSString *_colorId;
     UICollectionViewCell *_colorSelectCell;
 }
 
@@ -77,7 +77,7 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [colorData getThumbnailColor];
     cell.layer.borderWidth = kBorderWidthOfColorPalette;
-    if (_colorId == colorData.dataId) {
+    if ([_colorId isEqualToString:colorData.dataId]) {
         cell.layer.borderColor = [UIColor cyanColor].CGColor;
         _colorSelectCell = cell;
     } else {

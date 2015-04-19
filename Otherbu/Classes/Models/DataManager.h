@@ -20,10 +20,10 @@
 - (void)reloadDataWithBlock:(void (^)(NSError *error))block;
 
 - (UserData *)getUser;
-- (PageData *)getPage:(NSNumber *)dataId;
-- (CategoryData *)getCategory:(NSNumber *)dataId;
-- (BookmarkData *)getBookmark:(NSNumber *)dataId;
-- (ColorData *)getColor:(NSNumber *)dataId;
+- (PageData *)getPage:(NSString *)dataId;
+- (CategoryData *)getCategory:(NSString *)dataId;
+- (BookmarkData *)getBookmark:(NSString *)dataId;
+- (ColorData *)getColor:(NSString *)dataId;
 - (DesignData *)getDesign;
 - (NSMutableArray *)getCategoryList;
 - (NSMutableArray *)getPageList;

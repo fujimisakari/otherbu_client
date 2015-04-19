@@ -17,9 +17,9 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = [dataDict[@"id"] integerValue];
+        self.dataId = [dataDict[@"id"] stringValue];
         self.userId = [dataDict[@"user_id"] integerValue];
-        self.categoryId = [dataDict[@"category_id"] integerValue];
+        self.categoryId = [dataDict[@"category_id"] stringValue];
         self.name = dataDict[@"name"];
         self.url = dataDict[@"url"];
         self.sort = [dataDict[@"sort"] integerValue];
@@ -28,7 +28,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%ld, userId=%ld categoryId=%ld name=%@, url=%@, sort=%ld", _dataId, _userId, _categoryId,
+    return [NSString stringWithFormat:@"dataId=%@, userId=%ld categoryId=%@ name=%@, url=%@, sort=%ld", _dataId, _userId, _categoryId,
                                       _name, _url, _sort];
 }
 
@@ -37,7 +37,7 @@
 //--------------------------------------------------------------//
 
 - (CategoryData *)category {
-    return [[DataManager sharedManager] getCategory:[Helper getNumberByInt:_categoryId]];
+    return [[DataManager sharedManager] getCategory:_categoryId];
 }
 
 //--------------------------------------------------------------//
@@ -45,7 +45,7 @@
 //--------------------------------------------------------------//
 
 - (BOOL)isCreateMode {
-    return self.dataId == 0;
+    return (self.dataId) ? YES : NO;
 }
 
 
@@ -73,11 +73,11 @@
     self.url = url;
 }
 
-- (NSInteger)iGetCategoryId {
+- (NSString *)iGetCategoryId {
     return self.categoryId;
 }
 
-- (void)iSetCategoryId:(NSInteger)categoryId {
+- (void)iSetCategoryId:(NSString *)categoryId {
     self.categoryId = categoryId;
 }
 

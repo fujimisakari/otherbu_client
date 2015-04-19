@@ -120,7 +120,7 @@
 - (void)_pickerSelectRow {
     BookmarkData *bookmark = (BookmarkData *)_editItem;
     CategoryData *category = [bookmark category];
-    int row = [_categoryList indexOfObject:category];
+    NSInteger row = [_categoryList indexOfObject:category];
     [_modalView.categoryPicker selectRow:row inComponent:0 animated:YES];
 }
 

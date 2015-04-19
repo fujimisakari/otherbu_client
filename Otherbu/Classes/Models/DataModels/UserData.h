@@ -11,7 +11,7 @@
 @property(nonatomic) NSString *dataId;  // ID
 @property(nonatomic) NSString *type;    // FaceBook or Twitter
 @property(nonatomic) NSString *typeId;  // type ID
-@property(nonatomic) NSInteger pageId;  // page ID
+@property(nonatomic) NSString *pageId;  // page ID
 
 + (UserData *)shared;
 
@@ -19,6 +19,6 @@
 - (void)updateWithDictionary:(NSDictionary *)dataDict;
 
 - (PageData *)page;
-- (void)updatePage:(NSInteger)pageId;
+- (void)updatePage:(NSString *)pageId;
 
 @end

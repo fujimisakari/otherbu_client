@@ -73,19 +73,19 @@ static DataManager *intance = nil;
     return _user;
 }
 
-- (PageData *)getPage:(NSNumber *)dataId {
+- (PageData *)getPage:(NSString *)dataId {
     return _pageDict[dataId];
 }
 
-- (CategoryData *)getCategory:(NSNumber *)dataId {
+- (CategoryData *)getCategory:(NSString *)dataId {
     return _categoryDict[dataId];
 }
 
-- (BookmarkData *)getBookmark:(NSNumber *)dataId {
+- (BookmarkData *)getBookmark:(NSString *)dataId {
     return _bookmarkDict[dataId];
 }
 
-- (ColorData *)getColor:(NSNumber *)dataId {
+- (ColorData *)getColor:(NSString *)dataId {
     return _colorDict[dataId];
 }
 
@@ -99,7 +99,7 @@ static DataManager *intance = nil;
 
 - (NSMutableArray *)getCategoryList {
     NSMutableArray *itemList = [NSMutableArray array];
-    for (NSNumber *key in self.categoryDict) {
+    for (NSString *key in self.categoryDict) {
         [itemList addObject:[self getCategory:key]];
     }
 
@@ -111,11 +111,11 @@ static DataManager *intance = nil;
 
 - (NSMutableArray *)getPageList {
     NSMutableArray *itemList = [NSMutableArray array];
-    for (NSNumber *key in self.pageDict) {
+    for (NSString *key in self.pageDict) {
         [itemList addObject:[self getPage:key]];
     }
 
-    for (NSNumber *key in self.pageDict) {
+    for (NSString *key in self.pageDict) {
         PageData *page = [self getPage:key];
         itemList[page.sortId] = page;
     }
@@ -124,7 +124,7 @@ static DataManager *intance = nil;
 
 - (NSArray *)getColorList {
     NSMutableArray *itemList = [NSMutableArray array];
-    for (NSNumber *key in self.colorDict) {
+    for (NSString *key in self.colorDict) {
         [itemList addObject:[self getColor:key]];
     }
 
@@ -146,7 +146,7 @@ static DataManager *intance = nil;
             // todo
             // datamanageに削除済みを登録する
         } else {
-            [newBookmarkDict setObject:bookmark forKey:[[NSNumber alloc] initWithInt:(int)bookmark.dataId]];
+            [newBookmarkDict setObject:bookmark forKey:bookmark.dataId];
         }
     }
     self.bookmarkDict = newBookmarkDict;
@@ -163,7 +163,7 @@ static DataManager *intance = nil;
     for (BookmarkData *bookmark in [_bookmarkDict objectEnumerator]) {
         NSUInteger index = [deleteBookmarkList indexOfObject:bookmark];
         if (index == NSNotFound) {
-            [newBookmarkDict setObject:bookmark forKey:[[NSNumber alloc] initWithInt:(int)bookmark.dataId]];
+            [newBookmarkDict setObject:bookmark forKey:bookmark.dataId];
         } else {
             // todo
             // datamanageに削除済みを登録する
@@ -191,7 +191,7 @@ static DataManager *intance = nil;
             // todo
             // datamanageに削除済みを登録する
         } else {
-            [newCategoryDict setObject:category forKey:[[NSNumber alloc] initWithInt:(int)category.dataId]];
+            [newCategoryDict setObject:category forKey:category.dataId];
         }
     }
     self.categoryDict = newCategoryDict;
@@ -236,22 +236,22 @@ static DataManager *intance = nil;
 
     for (NSDictionary *pageDict in pageList) {
         PageData *data = [[PageData alloc] initWithDictionary:pageDict];
-        [_pageDict setObject:data forKey:pageDict[@"id"]];
+        [_pageDict setObject:data forKey:[pageDict[@"id"] stringValue]];
     }
 
     for (NSDictionary *categoryDict in categoryList) {
         CategoryData *data = [[CategoryData alloc] initWithDictionary:categoryDict];
-        [_categoryDict setObject:data forKey:categoryDict[@"id"]];
+        [_categoryDict setObject:data forKey:[categoryDict[@"id"] stringValue]];
     }
 
     for (NSDictionary *bookmarkDict in bookmarkList) {
         BookmarkData *data = [[BookmarkData alloc] initWithDictionary:bookmarkDict];
-        [_bookmarkDict setObject:data forKey:bookmarkDict[@"id"]];
+        [_bookmarkDict setObject:data forKey:[bookmarkDict[@"id"] stringValue]];
     }
 
     for (NSDictionary *colorDict in colorList) {
         ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
-        [_colorDict setObject:data forKey:colorDict[@"id"]];
+        [_colorDict setObject:data forKey:[colorDict[@"id"] stringValue]];
     }
 
     [_design updateWithDictionary:design];
