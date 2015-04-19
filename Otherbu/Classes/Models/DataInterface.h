@@ -19,6 +19,8 @@
 
 - (BOOL)isCreateMode;
 
+- (void)addNewData;
+
 - (void)iSetName:(NSString *)name;
 
 - (NSString *)iGetUrl;

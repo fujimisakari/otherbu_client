@@ -26,7 +26,7 @@ static UserData *intance = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        self.dataId = [[NSUUID UUID] UUIDString];
+        self.dataId = [Helper generateId];
         self.pageId = @"0";
     }
     return self;

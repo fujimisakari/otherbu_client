@@ -24,12 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // 編集前のデータ
-    _colorId = [_editItem iGetColorId];
-
-    // カラーパレット用のカラーリスト
-    _colorList = [[DataManager sharedManager] getColorList];
-
     // EditViewを生成
     _modalView = [[ModalView alloc] initWithFrame:(CGRect)self.view.frame];
     _modalView.editItem = _editItem;
@@ -40,6 +34,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    // 編集前のデータ
+    _colorId = [_editItem iGetColorId];
+
+    // カラーパレット用のカラーリスト
+    _colorList = [[DataManager sharedManager] getColorList];
+
+    // 背景設定
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0.1 alpha:0.4];
 
     // EditViewの各パーツの生成
@@ -138,9 +139,15 @@
 }
 
 - (void)didPressUpdateButton {
-    // 更新時
+    // 新規追加、更新時
+
     [_editItem iSetName:_modalView.nameTextField.text];
     [_editItem iSetColorId:_colorId];
+
+    if ([_editItem isCreateMode]) {
+        [_editItem addNewData];
+    }
+
     [self.delegate retrunActionOfEditModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

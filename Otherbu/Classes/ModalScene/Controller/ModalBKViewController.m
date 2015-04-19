@@ -23,8 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _categoryList = [[DataManager sharedManager] getCategoryList];
-
     // EditViewを生成
     _modalView = [[ModalBKView alloc] initWithFrame:(CGRect)self.view.frame];
     _modalView.editItem = _editItem;
@@ -35,6 +33,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    _categoryList = [[DataManager sharedManager] getCategoryList];
+
     self.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0.1 alpha:0.4];
 
     // EditViewの各パーツの生成
@@ -43,7 +43,9 @@
     _modalView.urlTextField.delegate = self;
     _modalView.categoryPicker.delegate = self;
     _modalView.categoryPicker.dataSource = self;
-    [self _pickerSelectRow];
+    if (![_editItem isCreateMode]) {
+        [self _pickerSelectRow];
+    }
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
@@ -97,9 +99,7 @@
 
 - (void)didPressUpdateButton {
     // 新規追加、更新時
-    if ([_editItem isCreateMode]) {
-        
-    }
+
     // 名前
     [_editItem iSetName:_modalView.nameTextField.text];
     // URL
@@ -108,6 +108,11 @@
     NSInteger row = [_modalView.categoryPicker selectedRowInComponent:0];
     CategoryData *category = _categoryList[row];
     [_editItem iSetCategoryId:category.dataId];
+
+    // 新規追加
+    if ([_editItem isCreateMode]) {
+        [_editItem addNewData];
+    }
 
     [self.delegate retrunActionOfEditModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -118,6 +123,7 @@
 //--------------------------------------------------------------//
 
 - (void)_pickerSelectRow {
+    // セレクトボックスのデフォルト値をブックマークのカテゴリにする
     BookmarkData *bookmark = (BookmarkData *)_editItem;
     CategoryData *category = [bookmark category];
     NSInteger row = [_categoryList indexOfObject:category];

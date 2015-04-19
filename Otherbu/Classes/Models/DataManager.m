@@ -134,6 +134,23 @@ static DataManager *intance = nil;
 }
 
 //--------------------------------------------------------------//
+#pragma mark -- Add Method --
+//--------------------------------------------------------------//
+
+- (void)addCategory:(CategoryData *)data {
+    [_categoryDict setObject:data forKey:data.dataId];
+}
+
+- (void)addBookmark:(BookmarkData *)data {
+    [_bookmarkDict setObject:data forKey:data.dataId];
+}
+
+- (void)addPage:(PageData *)data {
+    [_pageDict setObject:data forKey:data.dataId];
+}
+
+
+//--------------------------------------------------------------//
 #pragma mark -- delete Method --
 //--------------------------------------------------------------//
 

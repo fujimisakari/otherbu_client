@@ -62,7 +62,12 @@
 //--------------------------------------------------------------//
 
 - (BOOL)isCreateMode {
-    return (self.dataId) ? YES : NO;
+    return (self.dataId == nil) ? YES : NO;
+}
+
+- (void)addNewData {
+    self.dataId = [Helper generateId];
+    [[DataManager sharedManager] addCategory:self];
 }
 
 - (NSInteger)iGetMenuId {

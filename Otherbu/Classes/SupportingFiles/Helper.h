@@ -8,6 +8,7 @@
 
 @interface Helper : NSObject
 
++ (NSString *)generateId;
 + (NSNumber *)getNumberByInt:(int)value;
 + (int) getSameCountByDict:(NSDictionary *)dict TargetValue:(NSNumber *)value;
 + (NSArray *)doSortArrayWithKey:(NSString *)key Array:(NSArray *)array;

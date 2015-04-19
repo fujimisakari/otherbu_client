@@ -10,6 +10,10 @@
 
 @implementation Helper
 
++ (NSString *)generateId {
+    return [[NSUUID UUID] UUIDString];
+}
+
 + (NSNumber *)getNumberByInt:(int)value {
     return [[NSNumber alloc] initWithInt:value];
 }
