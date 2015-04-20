@@ -268,6 +268,11 @@
 - (void)didSingleTapPageTab:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
     // PageTabのシングルタップ時の実行処理
 
+    // 選択中のPageTabをタップした場合は動作させない
+    if ([_currentPage.dataId isEqualToString:selectPage.dataId]) {
+            return;
+    }
+
     UserData *user = [[DataManager sharedManager] getUser];
     [user updatePage:selectPage.dataId];
 
@@ -291,6 +296,12 @@
 
 - (void)didLongPressPageTab:(PageData *)selectPage pageTabView:(PageTabView *)tappedPageTabView {
     // PageTabの長押し時の実行処理
+
+    // ALLのPageTabを長押しした場合は動作させない
+    if ([selectPage.dataId isEqualToString:@"AllCategory"]) {
+            return;
+    }
+
     _editItem = selectPage;
     [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
 }
@@ -395,7 +406,7 @@
 - (void)_createPageTabViews {
     // set PageTabView
     float offsetX = 0;
-    for (PageData *pageData in [[DataManager sharedManager] getPageList]) {
+    for (PageData *pageData in [[DataManager sharedManager] getPageListForMainScene]) {
         CGSize textSize = [PageTabView getTextSizeOfPageViewWithString:pageData.name];
         CGRect rect = CGRectMake(offsetX, kOffsetYOfPageTab, textSize.width, textSize.height);
         PageTabView *pageTabView = [[PageTabView alloc] initWithFrame:rect];

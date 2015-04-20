@@ -93,6 +93,29 @@ static DataManager *intance = nil;
     return _design;
 }
 
+- (PageData *)_getPageOfAllCategory {
+    NSMutableArray *categoryIdList = [[NSMutableArray alloc] init];
+    NSMutableArray *angleIdList = [[NSMutableArray alloc] init];
+    NSMutableArray *sortIdList = [[NSMutableArray alloc] init];
+
+    for (CategoryData *category in [_categoryDict objectEnumerator]) {
+        [categoryIdList addObject:category.dataId];
+        [angleIdList addObject:[NSString stringWithFormat:@"%@:%ld", category.dataId, category.angle]];
+        [sortIdList addObject:[NSString stringWithFormat:@"%@:%ld", category.dataId, category.sort]];
+    }
+
+    PageData *page = [[PageData alloc] init];
+    page.dataId = @"AllCategory";
+    page.name = @"ALL";
+    page.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
+    page.angleIdsStr = [angleIdList componentsJoinedByString:@","];
+    page.sortIdsStr = [sortIdList componentsJoinedByString:@","];
+    page.sortId = _pageDict.count;
+    page.colorId = @"1";
+
+    return page;
+}
+
 //--------------------------------------------------------------//
 #pragma mark -- get List Method --
 //--------------------------------------------------------------//
@@ -120,6 +143,12 @@ static DataManager *intance = nil;
         itemList[page.sortId] = page;
     }
     return itemList;
+}
+
+- (NSMutableArray *)getPageListForMainScene {
+    NSMutableArray *pageList = [self getPageList];
+    [pageList addObject:[self _getPageOfAllCategory]];
+    return pageList;
 }
 
 - (NSArray *)getColorList {
