@@ -99,6 +99,7 @@ extern NSString * const kMenuPageName;
 extern NSString * const kMenuDesignName;
 
 extern NSString * const kSettingIcon;
+extern NSString * const kSwapIcon;
 extern NSString * const kListIcon;
 extern NSString * const kBookmarkIcon;
 extern NSString * const kBookmarkMoveIcon;
@@ -109,8 +110,9 @@ extern NSString * const kRighttArrowIcon;
 extern NSString * const kCheckMarkIcon;
 
 extern NSString * const kToWebViewBySegue;
-extern NSString * const kToEditViewBySegue;
-extern NSString * const kToBookmarkEditViewBySegue;
+extern NSString * const kToSwapViewBySegue;
+extern NSString * const kToModalViewBySegue;
+extern NSString * const kToModalBKViewBySegue;
 extern NSString * const kToSettingBySegue;
 extern NSString * const kToCategoryListBySegue;
 extern NSString * const kToCategoryOfBookmarkBySegue;

@@ -19,6 +19,7 @@
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
+		7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F31AE552BD00D5B733 /* SwapViewController.m */; };
 		7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */; };
 		7BFDDF191AD9AB5C00DD60EF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF181AD9AB5C00DD60EF /* MainViewController.m */; };
 		7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1B1AD9AB8100DD60EF /* InnerTableView.m */; };
@@ -88,6 +89,8 @@
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
 		7BB320FA1AE29A35005267EC /* MainAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAlertController.h; path = Classes/MainScene/Controller/MainAlertController.h; sourceTree = "<group>"; };
 		7BB320FB1AE29A35005267EC /* MainAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAlertController.m; path = Classes/MainScene/Controller/MainAlertController.m; sourceTree = "<group>"; };
+		7BC347F21AE552BD00D5B733 /* SwapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwapViewController.h; path = Classes/SwapScene/Controller/SwapViewController.h; sourceTree = "<group>"; };
+		7BC347F31AE552BD00D5B733 /* SwapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapViewController.m; path = Classes/SwapScene/Controller/SwapViewController.m; sourceTree = "<group>"; };
 		7BFDDEE91AD9A50100DD60EF /* Otherbu-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Otherbu-Prefix.pch"; sourceTree = "<group>"; };
 		7BFDDF141AD9AB3200DD60EF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
@@ -260,6 +263,7 @@
 				7B565F2B1A938A9600D6A420 /* MainScene */,
 				7B502A951ACF90BC00A431FB /* ModalScene */,
 				7B91E5F71ABC7D30003A36F1 /* WebViewScene */,
+				7BC347EF1AE5518000D5B733 /* SwapScene */,
 				7B91E6361AC32F5A003A36F1 /* SettingScene */,
 				7B565F251A924A1000D6A420 /* Models */,
 				7B565EF31A92486F00D6A420 /* SupportingFiles */,
@@ -371,6 +375,31 @@
 				7BFDDF4B1AD9AC3500DD60EF /* SelectCategoryTableViewController.m */,
 				7BFDDF4C1AD9AC3500DD60EF /* SettingTableViewController.h */,
 				7BFDDF4D1AD9AC3500DD60EF /* SettingTableViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		7BC347EF1AE5518000D5B733 /* SwapScene */ = {
+			isa = PBXGroup;
+			children = (
+				7BC347F11AE5526700D5B733 /* Controller */,
+				7BC347F01AE5526200D5B733 /* View */,
+			);
+			name = SwapScene;
+			sourceTree = "<group>";
+		};
+		7BC347F01AE5526200D5B733 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7BC347F11AE5526700D5B733 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7BC347F21AE552BD00D5B733 /* SwapViewController.h */,
+				7BC347F31AE552BD00D5B733 /* SwapViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -620,6 +649,7 @@
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
 				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,
 				7BFDDF811AD9AD1800DD60EF /* main.m in Sources */,
+				7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */,
 				7BFDDF621AD9AC6F00DD60EF /* OtherbuAPIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

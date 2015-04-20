@@ -20,7 +20,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TzD-BI-4Jb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1872" y="195"/>
+            <point key="canvasLocation" x="2777" y="-1093"/>
         </scene>
         <!--Modal Bookmark View Controller-->
         <scene sceneID="4Vk-5d-Qlo">
@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWt-Zp-BR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="195"/>
+            <point key="canvasLocation" x="2777" y="-333"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -114,13 +114,59 @@
                         <outlet property="tabScrollView" destination="jbB-Aw-uiu" id="lAa-uv-ryC"/>
                         <segue destination="66c-Jd-vhB" kind="presentation" identifier="toWebView" modalTransitionStyle="crossDissolve" id="Tad-Ax-6EV"/>
                         <segue destination="Eiy-at-6ve" kind="show" identifier="toSetting" id="8B2-3a-uUi"/>
-                        <segue destination="923-Gb-755" kind="presentation" identifier="toEditModalView" modalTransitionStyle="coverVertical" id="hdg-i3-DKj"/>
-                        <segue destination="2vA-Rt-dli" kind="presentation" identifier="toBookmarkEditModalView" id="MFd-VT-rt4"/>
+                        <segue destination="923-Gb-755" kind="presentation" identifier="toModalView" modalTransitionStyle="coverVertical" id="hdg-i3-DKj"/>
+                        <segue destination="2vA-Rt-dli" kind="presentation" identifier="toModalBKView" id="MFd-VT-rt4"/>
+                        <segue destination="P0Q-uz-1Pj" kind="presentation" identifier="toSwapView" id="EjC-PW-nsi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="440" y="1075"/>
+            <point key="canvasLocation" x="440" y="11"/>
+        </scene>
+        <!--Swap View Controller-->
+        <scene sceneID="zEi-g3-FDj">
+            <objects>
+                <viewController id="P0Q-uz-1Pj" userLabel="Swap View Controller" customClass="SwapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zjO-sN-El1"/>
+                        <viewControllerLayoutGuide type="bottom" id="UPN-EK-Rwh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yds-1g-bap">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P97-bW-FBd" customClass="NavigationBar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="1ir-6h-w7s"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="nNf-qU-3zh"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hdj-jC-zXr">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P97-bW-FBd" firstAttribute="leading" secondItem="yds-1g-bap" secondAttribute="leading" id="5Yh-3Q-B2y"/>
+                            <constraint firstAttribute="trailing" secondItem="P97-bW-FBd" secondAttribute="trailing" id="68t-bx-0jM"/>
+                            <constraint firstItem="UPN-EK-Rwh" firstAttribute="top" secondItem="hdj-jC-zXr" secondAttribute="bottom" id="Lwj-lv-Y8q"/>
+                            <constraint firstItem="hdj-jC-zXr" firstAttribute="top" secondItem="P97-bW-FBd" secondAttribute="bottom" id="dY3-nu-W3s"/>
+                            <constraint firstItem="hdj-jC-zXr" firstAttribute="leading" secondItem="yds-1g-bap" secondAttribute="leading" id="eiR-PO-HvK"/>
+                            <constraint firstItem="P97-bW-FBd" firstAttribute="top" secondItem="yds-1g-bap" secondAttribute="top" id="jKi-Hv-Xtq"/>
+                            <constraint firstAttribute="trailing" secondItem="hdj-jC-zXr" secondAttribute="trailing" id="woS-1Q-ikT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="P97-bW-FBd" id="9WO-Ea-sqg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kwb-YH-eDw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2777" y="357"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="cJG-97-A1A">
@@ -167,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bv9-UU-H4O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="1075"/>
+            <point key="canvasLocation" x="2777" y="1099"/>
         </scene>
         <!--Setting Table View Controller-->
         <scene sceneID="bY7-mn-KcB">

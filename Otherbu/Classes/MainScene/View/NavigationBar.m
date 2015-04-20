@@ -49,9 +49,11 @@
 }
 
 - (void)_setAddButtontoRight {
-    // NavigationBarに項目追加ボタンを設置する
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
-    self.topItem.rightBarButtonItem = btn;
+    // NavigationBarに項目追加、入れ替えボタンを設置する
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
+    UIBarButtonItem *swapButton =
+        [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kSwapIcon] style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.topItem.rightBarButtonItems = @[ addButton, swapButton ];
 }
 
 @end

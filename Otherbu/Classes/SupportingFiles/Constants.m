@@ -112,7 +112,6 @@ const float kCellSizeOfColorPalette = 35.0f;                 // カラーパレ�
 const float kCellMarginOfColorPalette = 5.0f;                // カラーパレットのセル同士の余白
 const float kBorderWidthOfColorPalette = 2.0f;               // カラーパレットのセル枠線
 
-
 //--------------------------------------------------------------//
 #pragma mark -- Value Of Setting View --
 //--------------------------------------------------------------//
@@ -135,6 +134,7 @@ NSString * const kMenuDesignName = @"Design";
 //--------------------------------------------------------------//
 
 NSString * const kSettingIcon = @"settingIcon.png";
+NSString * const kSwapIcon = @"swapIcon.png";
 NSString * const kListIcon = @"listIcon.png";
 NSString * const kBookmarkIcon = @"bookmarkIcon.png";
 NSString * const kBookmarkMoveIcon = @"bookmarkMoveIcon.png";
@@ -149,8 +149,9 @@ NSString * const kCheckMarkIcon = @"checkMarkIcon.png";
 //--------------------------------------------------------------//
 
 NSString * const kToWebViewBySegue = @"toWebView";                            // WebViewページへ
-NSString * const kToEditViewBySegue = @"toEditModalView";                     // 編集Modalへ
-NSString * const kToBookmarkEditViewBySegue = @"toBookmarkEditModalView";     // ブックマーク編集Modalへ
+NSString * const kToSwapViewBySegue = @"toSwapView";                          // Swapページへ
+NSString * const kToModalViewBySegue = @"toModalView";                        // 編集Modalへ
+NSString * const kToModalBKViewBySegue = @"toModalBKView";                    // ブックマーク編集Modalへ
 NSString * const kToSettingBySegue = @"toSetting";                            // 設定ページへ
 NSString * const kToCategoryListBySegue = @"toCateogoryList";                 // 設定ページ → カテゴリへ
 NSString * const kToCategoryOfBookmarkBySegue = @"toCategoryListOfBookmark";  // 設定ページ → ブックマークのカテゴリ選択へ

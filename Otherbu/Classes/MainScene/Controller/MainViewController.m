@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "WebViewController.h"
+#import "SwapViewController.h"
 #import "ModalViewController.h"
 #import "ModalBKViewController.h"
 #import "MainAlertController.h"
@@ -58,8 +59,12 @@
     [_navigationBar setup];
     _navigationBar.topItem.leftBarButtonItem.target = self;
     _navigationBar.topItem.leftBarButtonItem.action = @selector(_openSettingView:);
-    _navigationBar.topItem.rightBarButtonItem.target = self;
-    _navigationBar.topItem.rightBarButtonItem.action = @selector(_actionListAlertView:);
+    UIBarButtonItem *addButton = _navigationBar.topItem.rightBarButtonItems[0];
+    addButton.target = self;
+    addButton.action = @selector(_actionListAlertView:);
+    UIBarButtonItem *swapButton = _navigationBar.topItem.rightBarButtonItems[1];
+    swapButton.target = self;
+    swapButton.action = @selector(_openSwapView:);
 
     // ScrollView設定
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
@@ -88,15 +93,15 @@
     NSMutableDictionary *actionDict = [[NSMutableDictionary alloc] init];
     actionDict[@"page"] = ^(UIAlertAction * action) {
         _editItem = [PageData alloc];
-        [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
+        [self performSegueWithIdentifier:kToModalViewBySegue sender:self];
     };
     actionDict[@"category"] = ^(UIAlertAction * action) {
         _editItem = [CategoryData alloc];
-        [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
+        [self performSegueWithIdentifier:kToModalViewBySegue sender:self];
     };
     actionDict[@"bookmark"] = ^(UIAlertAction * action) {
         _editItem = [BookmarkData alloc];
-        [self performSegueWithIdentifier:kToBookmarkEditViewBySegue sender:self];
+        [self performSegueWithIdentifier:kToModalBKViewBySegue sender:self];
     };
 
     _alertController = [MainAlertController alertControllerWithTitle:@"新規追加"
@@ -186,7 +191,7 @@
 - (void)didLongPressBookmark:(BookmarkData *)selectBookmark {
     // PageTabの長押し時の実行処理
     _editItem = selectBookmark;
-    [self performSegueWithIdentifier:kToBookmarkEditViewBySegue sender:self];
+    [self performSegueWithIdentifier:kToModalBKViewBySegue sender:self];
 }
 
 //--------------------------------------------------------------//
@@ -248,7 +253,7 @@
 - (void)didLongPressCategory:(CategoryData *)category {
     // セクションタブの長押し時の実行処理
     _editItem = category;
-    [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
+    [self performSegueWithIdentifier:kToModalViewBySegue sender:self];
 }
 
 - (NSMutableArray *)_getIndexPathsOfSectionContents:(NSInteger)section categoryData:(CategoryData *)categoryData {
@@ -303,7 +308,7 @@
     }
 
     _editItem = selectPage;
-    [self performSegueWithIdentifier:kToEditViewBySegue sender:self];
+    [self performSegueWithIdentifier:kToModalViewBySegue sender:self];
 }
 
 - (void)_moveTabScroll:(PageTabView *)tappedPageTabView {
@@ -358,11 +363,14 @@
     if ([[segue identifier] isEqualToString:kToWebViewBySegue]) {
         WebViewController *webViewController = (WebViewController *)[segue destinationViewController];
         webViewController.bookmark = _selectBookmark;
-    } else if ([[segue identifier] isEqualToString:kToEditViewBySegue]) {
+    } else if ([[segue identifier] isEqualToString:kToSwapViewBySegue]) {
+        SwapViewController *swapViewController = (SwapViewController *)[segue destinationViewController];
+        swapViewController.page = _currentPage;
+    } else if ([[segue identifier] isEqualToString:kToModalViewBySegue]) {
         ModalViewController *modalViewController = (ModalViewController *)[segue destinationViewController];
         modalViewController.delegate = self;
         modalViewController.editItem = _editItem;
-    } else if ([[segue identifier] isEqualToString:kToBookmarkEditViewBySegue]) {
+    } else if ([[segue identifier] isEqualToString:kToModalBKViewBySegue]) {
         ModalBKViewController *modalBKViewController = (ModalBKViewController *)[segue destinationViewController];
         modalBKViewController.delegate = self;
         modalBKViewController.editItem = _editItem;
@@ -371,6 +379,10 @@
 
 - (void)_openSettingView:(UIButton *)sender {
     [self performSegueWithIdentifier:kToSettingBySegue sender:self];
+}
+
+- (void)_openSwapView:(UIButton *)sender {
+    [self performSegueWithIdentifier:kToSwapViewBySegue sender:self];
 }
 
 - (void)_actionListAlertView:(UIButton *)sender {
