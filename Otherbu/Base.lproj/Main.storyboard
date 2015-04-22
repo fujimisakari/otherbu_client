@@ -162,6 +162,7 @@
                     </view>
                     <connections>
                         <outlet property="navigationBar" destination="P97-bW-FBd" id="9WO-Ea-sqg"/>
+                        <outlet property="tableView" destination="hdj-jC-zXr" id="pcs-zC-Zcw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kwb-YH-eDw" userLabel="First Responder" sceneMemberID="firstResponder"/>

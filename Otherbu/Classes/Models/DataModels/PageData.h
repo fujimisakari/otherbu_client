@@ -26,6 +26,7 @@
 - (NSMutableArray *)getCategoryList;
 - (NSMutableDictionary *)getCategoryListOfAngle;
 - (void)updatePageData:(CategoryData *)category isCheckMark:(BOOL)isCheckMark;
+- (void)updatePageDataBySwap:(NSMutableDictionary *)categoryListOfAngle;
 - (ColorData *)color;
 
 @end

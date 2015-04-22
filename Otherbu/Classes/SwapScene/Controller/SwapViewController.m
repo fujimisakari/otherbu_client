@@ -8,8 +8,12 @@
 
 #import "SwapViewController.h"
 #import "NavigationBar.h"
+#import "CategoryData.h"
+#import "PageData.h"
 
-@interface SwapViewController ()
+@interface SwapViewController () {
+    NSMutableDictionary *_categoryListOfAngle;
+}
 
 @end
 
@@ -18,85 +22,92 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [_navigationBar setup];
-    [self _closeButtonToRight];
+    _tableView.editing = YES;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 }
 
-#pragma mark - Table view data source
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    _categoryListOfAngle = [_page getCategoryListOfAngle];
+
+    // 背景画像設定
+    CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
+                             self.view.frame.size.width, self.view.frame.size.height);
+    [Helper setupBackgroundImage:rect TargetView:self.view];
+
+    // NavigationBar設定
+    [_navigationBar setup];
+    [_navigationBar setButtonInSwapScene];
+    _navigationBar.topItem.leftBarButtonItem.target = self;
+    _navigationBar.topItem.rightBarButtonItem.action = @selector(_closeSwapView:);
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [_navigationBar deleteButtonInSwapScene];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- UITableViewDataSource --
+//--------------------------------------------------------------//
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 0;
+    return _categoryListOfAngle.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 0;
+    NSNumber *angleId = [Helper getNumberByInt:section + 1];
+    NSMutableArray *categoryList = _categoryListOfAngle[angleId];
+    return categoryList.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+
+    NSNumber *angleId = [Helper getNumberByInt:indexPath.section + 1];
+    NSMutableArray *categoryList = _categoryListOfAngle[angleId];
+    CategoryData *categoryData = categoryList[indexPath.row];
+    cell.textLabel.text = categoryData.name;
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    // 指定されたセクションのセクション名を返す
+    int idx = section + 1;
+    NSString *sectionName;
+    switch (idx) {
+        case LEFT:
+            sectionName = @"LEFT";
+            break;
+        case CENTER:
+            sectionName = @"CENTER";
+            break;
+        case RIGHT:
+            sectionName = @"RIGHT";
+            break;
+    }
+    return sectionName;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleNone;
 }
-*/
 
-//--------------------------------------------------------------//
-#pragma mark-- Setting Button--
-//--------------------------------------------------------------//
-
-- (void)_closeButtonToRight {
-    // NavigationBarにXボタンを設置する
-    UIBarButtonItem *btn =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(_closeSwapView:)];
-    _navigationBar.topItem.rightBarButtonItem = btn;
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    // 表示順(Page)の編集
+    NSNumber *fromAngleId = [Helper getNumberByInt:fromIndexPath.section + 1];
+    NSNumber *toAngleId = [Helper getNumberByInt:toIndexPath.section + 1];
+    CategoryData *category = [_categoryListOfAngle[fromAngleId] objectAtIndex:fromIndexPath.row];
+    [_categoryListOfAngle[fromAngleId] removeObjectAtIndex:fromIndexPath.row];
+    [_categoryListOfAngle[toAngleId] insertObject:category atIndex:toIndexPath.row];
+    [_page updatePageDataBySwap:_categoryListOfAngle];
 }
 
 //--------------------------------------------------------------//

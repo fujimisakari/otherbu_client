@@ -23,7 +23,7 @@
     [super viewDidLoad];
 
     [self _setupMenuData];
-    [self _closeButtontoLeft];
+    [self _setCloseButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -55,12 +55,12 @@
 #pragma mark -- Close Button --
 //--------------------------------------------------------------//
 
-- (void)_closeButtontoLeft {
+- (void)_setCloseButton {
     // NavigationBarにXボタンを設置する
     UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
                                                                          target:self
                                                                          action:@selector(_closeSettingView:)];
-    self.navigationItem.leftBarButtonItem = btn;
+    self.navigationItem.rightBarButtonItem = btn;
 }
 
 - (void)_closeSettingView:(UIButton *)sender {

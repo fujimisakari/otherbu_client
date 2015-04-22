@@ -11,6 +11,7 @@
 @interface SwapViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 
 @property(weak, nonatomic) IBOutlet NavigationBar *navigationBar;
+@property(weak, nonatomic) IBOutlet UITableView *tableView;
 @property(nonatomic) PageData *page;
 
 @end

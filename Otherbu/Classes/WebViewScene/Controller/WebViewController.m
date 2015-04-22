@@ -25,8 +25,8 @@
 
     // setup NavigationBar
     [_navigationBar setup];
-    [self _closeButtonToLeft];
-    [self _addButtonToRight];
+    [self _closeButtonToRight];
+    [self _addButtonToLeft];
 
     // set Webview
     [_webView setupWithView:self.view];
@@ -50,18 +50,18 @@
 #pragma mark-- Setting Button--
 //--------------------------------------------------------------//
 
-- (void)_closeButtonToLeft {
+- (void)_closeButtonToRight {
     // NavigationBarにXボタンを設置する
     UIBarButtonItem *btn =
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(_closeWebView:)];
-    _navigationBar.topItem.leftBarButtonItem = btn;
+    _navigationBar.topItem.rightBarButtonItem = btn;
 }
 
-- (void)_addButtonToRight {
+- (void)_addButtonToLeft {
     // NavigationBarに項目追加ボタンを設置する
     UIBarButtonItem *btn =
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(_addBookmark:)];
-    _navigationBar.topItem.rightBarButtonItem = btn;
+    _navigationBar.topItem.leftBarButtonItem = btn;
 }
 
 //--------------------------------------------------------------//

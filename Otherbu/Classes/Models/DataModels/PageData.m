@@ -176,6 +176,29 @@
     self.angleIdsStr = [angleList componentsJoinedByString:@","];
 }
 
+- (void)updatePageDataBySwap:(NSMutableDictionary *)categoryListOfAngle {
+    // カテゴリの入れ替えでページ情報更新
+    NSMutableArray *categoryIdList = [[NSMutableArray alloc] init];
+    NSMutableArray *sortList = [[NSMutableArray alloc] init];
+    NSMutableArray *angleList = [[NSMutableArray alloc] init];
+
+    for (int i = 1; i < LastAngle; ++i) {
+        NSNumber *angleId = [Helper getNumberByInt:i];
+        NSMutableArray *categoryArray = categoryListOfAngle[angleId];
+        for (int idx = 0; idx < categoryArray.count; ++idx) {
+            CategoryData *category = categoryArray[idx];
+            int sortId = idx + 1;
+            [categoryIdList addObject:category.dataId];
+            [sortList addObject:[NSString stringWithFormat:@"%@:%d", category.dataId, sortId]];
+            [angleList addObject:[NSString stringWithFormat:@"%@:%@", category.dataId, angleId]];
+        }
+    }
+
+    self.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
+    self.sortIdsStr = [sortList componentsJoinedByString:@","];
+    self.angleIdsStr = [angleList componentsJoinedByString:@","];
+}
+
 - (ColorData *)color {
     return [[DataManager sharedManager] getColor:_colorId];
 }

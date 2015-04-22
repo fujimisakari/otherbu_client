@@ -28,32 +28,64 @@
 
     // タイトル名の位置設定
     [self setTitleVerticalPositionAdjustment:kOffsetYOfTitle forBarMetrics:UIBarMetricsDefault];
-
-    // 設定ボタンを追加
-    [self _setSettingButtontoLeft];
-    [self _setAddButtontoRight];
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Setting Button --
+#pragma mark -- Set Delete Button --
 //--------------------------------------------------------------//
 
-- (void)_setSettingButtontoLeft {
+- (void)setButtonInMainScene {
+    UIBarButtonItem *addButton = [self _getAddButton];
+    self.topItem.leftBarButtonItem = addButton;
 
-    // NavigationBarにXボタンを設置する
-    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kSettingIcon]
-                                                            style:UIBarButtonItemStylePlain
-                                                           target:nil
-                                                           action:nil];
-    self.topItem.leftBarButtonItem = btn;
+    UIBarButtonItem *settingBtn = [self _getSettingButton];
+    UIBarButtonItem *swapButton = [self _getSwapButton];
+    self.topItem.rightBarButtonItems = @[ settingBtn, swapButton ];
 }
 
-- (void)_setAddButtontoRight {
-    // NavigationBarに項目追加、入れ替えボタンを設置する
+- (void)deleteButtonInMainScene {
+    self.topItem.leftBarButtonItem = nil;
+    self.topItem.rightBarButtonItems = nil;
+}
+
+- (void)setButtonInSwapScene {
+    UIBarButtonItem *closeButon = [self _getCloseButton];
+    self.topItem.rightBarButtonItem = closeButon;
+}
+
+- (void)deleteButtonInSwapScene {
+    self.topItem.rightBarButtonItem = nil;
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Get Button --
+//--------------------------------------------------------------//
+
+- (UIBarButtonItem *)_getSettingButton {
+    // Settingボタンを設置する
+    UIBarButtonItem *settingButton =
+        [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kSettingIcon] style:UIBarButtonItemStylePlain target:nil action:nil];
+    return settingButton;
+}
+
+- (UIBarButtonItem *)_getAddButton {
+    // 項目追加ボタンを設置する
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
+    return addButton;
+}
+
+- (UIBarButtonItem *)_getSwapButton {
+    // 入れ替えボタンを設置する
     UIBarButtonItem *swapButton =
         [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kSwapIcon] style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.topItem.rightBarButtonItems = @[ addButton, swapButton ];
+    return swapButton;
+}
+
+- (UIBarButtonItem *)_getCloseButton {
+    // Xボタンを設置する
+    UIBarButtonItem *closeButton =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:nil action:nil];
+    return closeButton;
 }
 
 @end

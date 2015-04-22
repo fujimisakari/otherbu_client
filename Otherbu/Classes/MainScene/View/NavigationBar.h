@@ -10,4 +10,9 @@
 
 - (void)setup;
 
+- (void)setButtonInMainScene;
+- (void)setButtonInSwapScene;
+- (void)deleteButtonInMainScene;
+- (void)deleteButtonInSwapScene;
+
 @end

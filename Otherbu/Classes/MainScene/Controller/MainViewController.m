@@ -55,17 +55,6 @@
     _viewWidth = self.view.frame.size.width;
     _viewHeight = self.view.frame.size.height - marginOfHeight;
 
-    // NavigationBar設定
-    [_navigationBar setup];
-    _navigationBar.topItem.leftBarButtonItem.target = self;
-    _navigationBar.topItem.leftBarButtonItem.action = @selector(_openSettingView:);
-    UIBarButtonItem *addButton = _navigationBar.topItem.rightBarButtonItems[0];
-    addButton.target = self;
-    addButton.action = @selector(_actionListAlertView:);
-    UIBarButtonItem *swapButton = _navigationBar.topItem.rightBarButtonItems[1];
-    swapButton.target = self;
-    swapButton.action = @selector(_openSwapView:);
-
     // ScrollView設定
     CGSize cgSize = CGSizeMake(_viewWidth * kNumberOfPages, _viewHeight);
     [_scrollView setupWithCGSize:cgSize delegate:self];
@@ -73,6 +62,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+
+    // NavigationBar設定
+    [_navigationBar setup];
+    [_navigationBar setButtonInMainScene];
+    _navigationBar.topItem.leftBarButtonItem.target = self;
+    _navigationBar.topItem.leftBarButtonItem.action = @selector(_actionListAlertView:);
+    UIBarButtonItem *addButton = _navigationBar.topItem.rightBarButtonItems[0];
+    addButton.target = self;
+    addButton.action = @selector(_openSettingView:);
+    UIBarButtonItem *swapButton = _navigationBar.topItem.rightBarButtonItems[1];
+    swapButton.target = self;
+    swapButton.action = @selector(_openSwapView:);
 
     // 背景画像設定
     CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
@@ -114,6 +115,12 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self _removePageTabViews];
+
+    [_navigationBar deleteButtonInMainScene];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 //--------------------------------------------------------------//
