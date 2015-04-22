@@ -23,16 +23,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // setup NavigationBar
-    [_navigationBar setup];
-    [self _closeButtonToRight];
-    [self _addButtonToLeft];
-
     // set Webview
     [_webView setupWithView:self.view];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    // NavigationBar設定
+    [_navigationBar setup];
+    [_navigationBar setButtonInWebViewScene];
+    _navigationBar.topItem.leftBarButtonItem.target = self;
+    _navigationBar.topItem.leftBarButtonItem.action = @selector(_addBookmark:);
+    _navigationBar.topItem.rightBarButtonItem.target = self;
+    _navigationBar.topItem.rightBarButtonItem.action = @selector(_closeWebView:);
+
     // 画面が表示され終ったらWebPageの読み込み
     [super viewDidAppear:animated];
     NSURL *url = [NSURL URLWithString:_bookmark.url];
@@ -41,27 +44,12 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    // 画面を閉じるときにステータスバーのインジケータ確実にOFFにする
     [super viewWillDisappear:animated];
+
+    [_navigationBar deleteButtonInWebViewScene];
+
+    // 画面を閉じるときにステータスバーのインジケータ確実にOFFにする
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-}
-
-//--------------------------------------------------------------//
-#pragma mark-- Setting Button--
-//--------------------------------------------------------------//
-
-- (void)_closeButtonToRight {
-    // NavigationBarにXボタンを設置する
-    UIBarButtonItem *btn =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(_closeWebView:)];
-    _navigationBar.topItem.rightBarButtonItem = btn;
-}
-
-- (void)_addButtonToLeft {
-    // NavigationBarに項目追加ボタンを設置する
-    UIBarButtonItem *btn =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(_addBookmark:)];
-    _navigationBar.topItem.leftBarButtonItem = btn;
 }
 
 //--------------------------------------------------------------//

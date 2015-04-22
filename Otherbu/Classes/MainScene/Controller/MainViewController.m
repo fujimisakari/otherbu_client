@@ -64,16 +64,7 @@
     [super viewWillAppear:animated];
 
     // NavigationBar設定
-    [_navigationBar setup];
-    [_navigationBar setButtonInMainScene];
-    _navigationBar.topItem.leftBarButtonItem.target = self;
-    _navigationBar.topItem.leftBarButtonItem.action = @selector(_actionListAlertView:);
-    UIBarButtonItem *addButton = _navigationBar.topItem.rightBarButtonItems[0];
-    addButton.target = self;
-    addButton.action = @selector(_openSettingView:);
-    UIBarButtonItem *swapButton = _navigationBar.topItem.rightBarButtonItems[1];
-    swapButton.target = self;
-    swapButton.action = @selector(_openSwapView:);
+    [self _setupNavigationBar];
 
     // 背景画像設定
     CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
@@ -91,6 +82,30 @@
     }
 
     // 項目追加用のActionSheetを準備
+    [self _setupActionSheet];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self _removePageTabViews];
+
+    [_navigationBar deleteButtonInMainScene];
+}
+
+- (void)_setupNavigationBar {
+    [_navigationBar setup];
+    [_navigationBar setButtonInMainScene];
+    _navigationBar.topItem.leftBarButtonItem.target = self;
+    _navigationBar.topItem.leftBarButtonItem.action = @selector(_actionListAlertView:);
+    UIBarButtonItem *addButton = _navigationBar.topItem.rightBarButtonItems[0];
+    addButton.target = self;
+    addButton.action = @selector(_openSettingView:);
+    UIBarButtonItem *swapButton = _navigationBar.topItem.rightBarButtonItems[1];
+    swapButton.target = self;
+    swapButton.action = @selector(_openSwapView:);
+}
+
+- (void)_setupActionSheet {
     NSMutableDictionary *actionDict = [[NSMutableDictionary alloc] init];
     actionDict[@"page"] = ^(UIAlertAction * action) {
         _editItem = [PageData alloc];
@@ -110,17 +125,6 @@
                                                       preferredStyle:UIAlertControllerStyleActionSheet];
     [_alertController setActionDict:actionDict];
     [_alertController setup];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [self _removePageTabViews];
-
-    [_navigationBar deleteButtonInMainScene];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
 }
 
 //--------------------------------------------------------------//

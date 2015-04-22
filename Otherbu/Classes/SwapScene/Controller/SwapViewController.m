@@ -45,8 +45,8 @@
     _navigationBar.topItem.rightBarButtonItem.action = @selector(_closeSwapView:);
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [_navigationBar deleteButtonInSwapScene];
 }
 

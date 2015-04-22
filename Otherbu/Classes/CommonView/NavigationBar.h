@@ -11,8 +11,10 @@
 - (void)setup;
 
 - (void)setButtonInMainScene;
+- (void)setButtonInWebViewScene;
 - (void)setButtonInSwapScene;
 - (void)deleteButtonInMainScene;
+- (void)deleteButtonInWebViewScene;
 - (void)deleteButtonInSwapScene;
 
 @end

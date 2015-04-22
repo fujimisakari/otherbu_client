@@ -20,12 +20,12 @@
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
 		7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F31AE552BD00D5B733 /* SwapViewController.m */; };
+		7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F61AE81AD600D5B733 /* NavigationBar.m */; };
 		7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */; };
 		7BFDDF191AD9AB5C00DD60EF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF181AD9AB5C00DD60EF /* MainViewController.m */; };
 		7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1B1AD9AB8100DD60EF /* InnerTableView.m */; };
 		7BFDDF271AD9AB8100DD60EF /* MainScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1D1AD9AB8100DD60EF /* MainScrollView.m */; };
 		7BFDDF281AD9AB8100DD60EF /* MainTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1F1AD9AB8100DD60EF /* MainTableCellView.m */; };
-		7BFDDF291AD9AB8100DD60EF /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF211AD9AB8100DD60EF /* NavigationBar.m */; };
 		7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF231AD9AB8100DD60EF /* PageTabView.m */; };
 		7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF251AD9AB8100DD60EF /* SectionHeaderView.m */; };
 		7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF331AD9ABF200DD60EF /* WebViewController.m */; };
@@ -91,6 +91,8 @@
 		7BB320FB1AE29A35005267EC /* MainAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAlertController.m; path = Classes/MainScene/Controller/MainAlertController.m; sourceTree = "<group>"; };
 		7BC347F21AE552BD00D5B733 /* SwapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwapViewController.h; path = Classes/SwapScene/Controller/SwapViewController.h; sourceTree = "<group>"; };
 		7BC347F31AE552BD00D5B733 /* SwapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapViewController.m; path = Classes/SwapScene/Controller/SwapViewController.m; sourceTree = "<group>"; };
+		7BC347F51AE81AD600D5B733 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = Classes/CommonView/NavigationBar.h; sourceTree = "<group>"; };
+		7BC347F61AE81AD600D5B733 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = Classes/CommonView/NavigationBar.m; sourceTree = "<group>"; };
 		7BFDDEE91AD9A50100DD60EF /* Otherbu-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Otherbu-Prefix.pch"; sourceTree = "<group>"; };
 		7BFDDF141AD9AB3200DD60EF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
@@ -102,8 +104,6 @@
 		7BFDDF1D1AD9AB8100DD60EF /* MainScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainScrollView.m; path = Classes/MainScene/View/MainScrollView.m; sourceTree = "<group>"; };
 		7BFDDF1E1AD9AB8100DD60EF /* MainTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTableCellView.h; path = Classes/MainScene/View/MainTableCellView.h; sourceTree = "<group>"; };
 		7BFDDF1F1AD9AB8100DD60EF /* MainTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTableCellView.m; path = Classes/MainScene/View/MainTableCellView.m; sourceTree = "<group>"; };
-		7BFDDF201AD9AB8100DD60EF /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = Classes/MainScene/View/NavigationBar.h; sourceTree = "<group>"; };
-		7BFDDF211AD9AB8100DD60EF /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = Classes/MainScene/View/NavigationBar.m; sourceTree = "<group>"; };
 		7BFDDF221AD9AB8100DD60EF /* PageTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageTabView.h; path = Classes/MainScene/View/PageTabView.h; sourceTree = "<group>"; };
 		7BFDDF231AD9AB8100DD60EF /* PageTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageTabView.m; path = Classes/MainScene/View/PageTabView.m; sourceTree = "<group>"; };
 		7BFDDF241AD9AB8100DD60EF /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionHeaderView.h; path = Classes/MainScene/View/SectionHeaderView.h; sourceTree = "<group>"; };
@@ -198,8 +198,6 @@
 				7BFDDF1D1AD9AB8100DD60EF /* MainScrollView.m */,
 				7BFDDF1E1AD9AB8100DD60EF /* MainTableCellView.h */,
 				7BFDDF1F1AD9AB8100DD60EF /* MainTableCellView.m */,
-				7BFDDF201AD9AB8100DD60EF /* NavigationBar.h */,
-				7BFDDF211AD9AB8100DD60EF /* NavigationBar.m */,
 				7BFDDF221AD9AB8100DD60EF /* PageTabView.h */,
 				7BFDDF231AD9AB8100DD60EF /* PageTabView.m */,
 				7BFDDF241AD9AB8100DD60EF /* SectionHeaderView.h */,
@@ -260,6 +258,7 @@
 				7BFDDEE91AD9A50100DD60EF /* Otherbu-Prefix.pch */,
 				7B565EFD1A92486F00D6A420 /* Main.storyboard */,
 				7B565F021A92486F00D6A420 /* LaunchScreen.xib */,
+				7BC347F81AE81AE700D5B733 /* CommonView */,
 				7B565F2B1A938A9600D6A420 /* MainScene */,
 				7B502A951ACF90BC00A431FB /* ModalScene */,
 				7B91E5F71ABC7D30003A36F1 /* WebViewScene */,
@@ -402,6 +401,15 @@
 				7BC347F31AE552BD00D5B733 /* SwapViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		7BC347F81AE81AE700D5B733 /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				7BC347F51AE81AD600D5B733 /* NavigationBar.h */,
+				7BC347F61AE81AD600D5B733 /* NavigationBar.m */,
+			);
+			name = CommonView;
 			sourceTree = "<group>";
 		};
 		7BFDDEA01AD99EE900DD60EF /* DataModels */ = {
@@ -639,8 +647,8 @@
 				7BFDDF561AD9AC3500DD60EF /* PageListTableViewController.m in Sources */,
 				7BFDDF521AD9AC3500DD60EF /* BookmarkTableViewController.m in Sources */,
 				7B5346E81AE35D11008DA1EB /* ModalBKViewController.m in Sources */,
-				7BFDDF291AD9AB8100DD60EF /* NavigationBar.m in Sources */,
 				7BFDDF5B1AD9AC4A00DD60EF /* SettingTableViewCell.m in Sources */,
+				7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */,
 				7BFDDF271AD9AB8100DD60EF /* MainScrollView.m in Sources */,
 				7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */,
 				7B5346F21AE35D2D008DA1EB /* ModalView.m in Sources */,

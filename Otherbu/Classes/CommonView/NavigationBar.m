@@ -43,14 +43,27 @@
     self.topItem.rightBarButtonItems = @[ settingBtn, swapButton ];
 }
 
-- (void)deleteButtonInMainScene {
-    self.topItem.leftBarButtonItem = nil;
-    self.topItem.rightBarButtonItems = nil;
+- (void)setButtonInWebViewScene {
+    UIBarButtonItem *addButton = [self _getAddButton];
+    self.topItem.leftBarButtonItem = addButton;
+
+    UIBarButtonItem *closeButon = [self _getCloseButton];
+    self.topItem.rightBarButtonItem = closeButon;
 }
 
 - (void)setButtonInSwapScene {
     UIBarButtonItem *closeButon = [self _getCloseButton];
     self.topItem.rightBarButtonItem = closeButon;
+}
+
+- (void)deleteButtonInMainScene {
+    self.topItem.leftBarButtonItem = nil;
+    self.topItem.rightBarButtonItems = nil;
+}
+
+- (void)deleteButtonInWebViewScene {
+    self.topItem.leftBarButtonItem = nil;
+    self.topItem.rightBarButtonItem = nil;
 }
 
 - (void)deleteButtonInSwapScene {
