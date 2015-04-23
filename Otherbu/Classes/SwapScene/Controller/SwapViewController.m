@@ -9,6 +9,7 @@
 #import "SwapViewController.h"
 #import "NavigationBar.h"
 #import "CategoryData.h"
+#import "SwapSectionHeaderView.h"
 #import "SettingTableViewCell.h"
 #import "PageData.h"
 
@@ -27,6 +28,9 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView registerClass:[SettingTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+
+    // UITableViewの一番上に隙間が出来てしまう問題の対応
+    [_tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0.1, 20)]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,6 +81,7 @@
     NSMutableArray *categoryList = _categoryListOfAngle[angleId];
     CategoryData *categoryData = categoryList[indexPath.row];
     cell.textLabel.text = categoryData.name;
+    cell.imageView.image = [UIImage imageNamed:kCategoryIcon];
     return cell;
 }
 
@@ -91,25 +96,6 @@
     float height = kCellHeightOfSetting - kCellMarginOfSetting;
     CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
     [settingCell setBackground:rect];
-}
-
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    // 指定されたセクションのセクション名を返す
-    int idx = (int)section + 1;
-    NSString *sectionName;
-    switch (idx) {
-        case LEFT:
-            sectionName = @"LEFT";
-            break;
-        case CENTER:
-            sectionName = @"CENTER";
-            break;
-        case RIGHT:
-            sectionName = @"RIGHT";
-            break;
-    }
-    return sectionName;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,6 +114,42 @@
     [_categoryListOfAngle[fromAngleId] removeObjectAtIndex:fromIndexPath.row];
     [_categoryListOfAngle[toAngleId] insertObject:category atIndex:toIndexPath.row];
     [_page updatePageDataBySwap:_categoryListOfAngle];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- UITableViewDelegate --
+//--------------------------------------------------------------//
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    // セクションヘッダーの高さを返す
+    return kHeightOfSectionHeader;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    // セクションヘッダーのコンテンツを設定する
+    NSString *sectionName = [self _getSectionName:section];
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, kHeightOfSectionHeader);
+    SwapSectionHeaderView *sectionView = [[SwapSectionHeaderView alloc] initWithFrame:frame];
+    [sectionView setup:sectionName];
+    return sectionView;
+}
+
+- (NSString *)_getSectionName:(NSInteger)section {
+    // 指定されたセクションのセクション名を返す
+    int idx = (int)section + 1;
+    NSString *sectionName;
+    switch (idx) {
+        case LEFT:
+            sectionName = @"LEFT";
+            break;
+        case CENTER:
+            sectionName = @"CENTER";
+            break;
+        case RIGHT:
+            sectionName = @"RIGHT";
+            break;
+    }
+    return sectionName;
 }
 
 //--------------------------------------------------------------//

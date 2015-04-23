@@ -21,6 +21,7 @@
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
 		7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F31AE552BD00D5B733 /* SwapViewController.m */; };
 		7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F61AE81AD600D5B733 /* NavigationBar.m */; };
+		7BC347FB1AE9378600D5B733 /* SwapSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347FA1AE9378600D5B733 /* SwapSectionHeaderView.m */; };
 		7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */; };
 		7BFDDF191AD9AB5C00DD60EF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF181AD9AB5C00DD60EF /* MainViewController.m */; };
 		7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1B1AD9AB8100DD60EF /* InnerTableView.m */; };
@@ -93,6 +94,8 @@
 		7BC347F31AE552BD00D5B733 /* SwapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapViewController.m; path = Classes/SwapScene/Controller/SwapViewController.m; sourceTree = "<group>"; };
 		7BC347F51AE81AD600D5B733 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = Classes/CommonView/NavigationBar.h; sourceTree = "<group>"; };
 		7BC347F61AE81AD600D5B733 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = Classes/CommonView/NavigationBar.m; sourceTree = "<group>"; };
+		7BC347F91AE9378600D5B733 /* SwapSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwapSectionHeaderView.h; path = Classes/SwapScene/View/SwapSectionHeaderView.h; sourceTree = "<group>"; };
+		7BC347FA1AE9378600D5B733 /* SwapSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapSectionHeaderView.m; path = Classes/SwapScene/View/SwapSectionHeaderView.m; sourceTree = "<group>"; };
 		7BFDDEE91AD9A50100DD60EF /* Otherbu-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Otherbu-Prefix.pch"; sourceTree = "<group>"; };
 		7BFDDF141AD9AB3200DD60EF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
@@ -390,6 +393,8 @@
 		7BC347F01AE5526200D5B733 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7BC347F91AE9378600D5B733 /* SwapSectionHeaderView.h */,
+				7BC347FA1AE9378600D5B733 /* SwapSectionHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -632,6 +637,7 @@
 				7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */,
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
 				7BFDDF571AD9AC3500DD60EF /* SelectCategoryTableViewController.m in Sources */,
+				7BC347FB1AE9378600D5B733 /* SwapSectionHeaderView.m in Sources */,
 				7BFDDF581AD9AC3500DD60EF /* SettingTableViewController.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
