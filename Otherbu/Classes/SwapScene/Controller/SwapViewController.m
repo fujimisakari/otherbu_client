@@ -38,9 +38,10 @@
     self.tableView.separatorColor = [UIColor clearColor];
 
     // 背景画像設定
-    CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
-                             self.view.frame.size.width, self.view.frame.size.height);
-    [Helper setupBackgroundImage:rect TargetView:self.view];
+    CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+    UIView *bgView = [[UIView alloc] initWithFrame:self.view.frame];
+    [Helper setupBackgroundImage:rect TargetView:bgView];
+    self.tableView.backgroundView = bgView;
 
     // NavigationBar設定
     [_navigationBar setup];

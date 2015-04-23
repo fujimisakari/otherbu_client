@@ -27,7 +27,9 @@
     [_webView setupWithView:self.view];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
     // NavigationBar設定
     [_navigationBar setup];
     [_navigationBar setButtonInWebViewScene];
@@ -35,7 +37,9 @@
     _navigationBar.topItem.leftBarButtonItem.action = @selector(_addBookmark:);
     _navigationBar.topItem.rightBarButtonItem.target = self;
     _navigationBar.topItem.rightBarButtonItem.action = @selector(_closeWebView:);
+}
 
+- (void)viewDidAppear:(BOOL)animated {
     // 画面が表示され終ったらWebPageの読み込み
     [super viewDidAppear:animated];
     NSURL *url = [NSURL URLWithString:_bookmark.url];
