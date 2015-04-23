@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // todo 意味を調べる
     [self.tableView registerClass:[SettingTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 
     // セルの区切り線を非表示

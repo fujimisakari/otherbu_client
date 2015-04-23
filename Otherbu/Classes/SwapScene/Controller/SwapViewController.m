@@ -9,6 +9,7 @@
 #import "SwapViewController.h"
 #import "NavigationBar.h"
 #import "CategoryData.h"
+#import "SettingTableViewCell.h"
 #import "PageData.h"
 
 @interface SwapViewController () {
@@ -25,13 +26,16 @@
     _tableView.editing = YES;
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+    [_tableView registerClass:[SettingTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     _categoryListOfAngle = [_page getCategoryListOfAngle];
+
+    // セルの区切り線を非表示
+    self.tableView.separatorColor = [UIColor clearColor];
 
     // 背景画像設定
     CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
@@ -59,24 +63,39 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSNumber *angleId = [Helper getNumberByInt:section + 1];
+    NSNumber *angleId = [Helper getNumberByInt:(int)section + 1];
     NSMutableArray *categoryList = _categoryListOfAngle[angleId];
     return categoryList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    [cell setup];
 
-    NSNumber *angleId = [Helper getNumberByInt:indexPath.section + 1];
+    NSNumber *angleId = [Helper getNumberByInt:(int)indexPath.section + 1];
     NSMutableArray *categoryList = _categoryListOfAngle[angleId];
     CategoryData *categoryData = categoryList[indexPath.row];
     cell.textLabel.text = categoryData.name;
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return kCellHeightOfSetting;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 半透明で間隔が空いたセルを生成
+    SettingTableViewCell *settingCell = (SettingTableViewCell *)cell;
+    float width = self.view.frame.size.width - (kCellMarginOfSetting * 2);
+    float height = kCellHeightOfSetting - kCellMarginOfSetting;
+    CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
+    [settingCell setBackground:rect];
+}
+
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     // 指定されたセクションのセクション名を返す
-    int idx = section + 1;
+    int idx = (int)section + 1;
     NSString *sectionName;
     switch (idx) {
         case LEFT:
@@ -102,8 +121,8 @@
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
     // 表示順(Page)の編集
-    NSNumber *fromAngleId = [Helper getNumberByInt:fromIndexPath.section + 1];
-    NSNumber *toAngleId = [Helper getNumberByInt:toIndexPath.section + 1];
+    NSNumber *fromAngleId = [Helper getNumberByInt:(int)fromIndexPath.section + 1];
+    NSNumber *toAngleId = [Helper getNumberByInt:(int)toIndexPath.section + 1];
     CategoryData *category = [_categoryListOfAngle[fromAngleId] objectAtIndex:fromIndexPath.row];
     [_categoryListOfAngle[fromAngleId] removeObjectAtIndex:fromIndexPath.row];
     [_categoryListOfAngle[toAngleId] insertObject:category atIndex:toIndexPath.row];
