@@ -50,6 +50,7 @@
     // NavigationBar設定
     [_navigationBar setup];
     [_navigationBar setButtonInSwapScene];
+    _navigationBar.topItem.title = @"Move Category";
     _navigationBar.topItem.leftBarButtonItem.target = self;
     _navigationBar.topItem.rightBarButtonItem.action = @selector(_closeSwapView:);
 }
@@ -85,20 +86,6 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kCellHeightOfSetting;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 半透明で間隔が空いたセルを生成
-    SettingTableViewCell *settingCell = (SettingTableViewCell *)cell;
-    float width = self.view.frame.size.width - (kCellMarginOfSetting * 2);
-    float height = kCellHeightOfSetting - kCellMarginOfSetting;
-    CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
-    [settingCell setBackground:rect];
-    [settingCell createMoveIconImage];
-}
-
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -120,6 +107,26 @@
 //--------------------------------------------------------------//
 #pragma mark -- UITableViewDelegate --
 //--------------------------------------------------------------//
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 編集モード時のインデントを無効にする
+    return NO;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // セルの高さ
+    return kCellHeightOfSetting;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 半透明で間隔が空いたセルを生成
+    SettingTableViewCell *settingCell = (SettingTableViewCell *)cell;
+    float width = self.view.frame.size.width - (kCellMarginOfSetting * 2);
+    float height = kCellHeightOfSetting - kCellMarginOfSetting;
+    CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
+    [settingCell setBackground:rect];
+    [settingCell createMoveIconImage];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     // セクションヘッダーの高さを返す

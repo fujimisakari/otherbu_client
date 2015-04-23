@@ -37,7 +37,7 @@
     // セルの背景Viewを生成
     UIView *whiteRoundedCornerView = [[UIView alloc] init];
     whiteRoundedCornerView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    whiteRoundedCornerView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.75];
+    whiteRoundedCornerView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.85];
     whiteRoundedCornerView.layer.masksToBounds = NO;
     whiteRoundedCornerView.layer.cornerRadius = 3.0;
     // whiteRoundedCornerView.layer.shadowOffset = CGSizeMake(-1, 1);
@@ -49,14 +49,14 @@
     // セクションのタイトルを設定する
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = sectionName;
-    titleLbl.textColor = [UIColor blackColor];
+    titleLbl.textColor = [UIColor whiteColor];
     titleLbl.backgroundColor = [UIColor clearColor];
     titleLbl.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfSectionTitle];
     titleLbl.textAlignment = NSTextAlignmentCenter;
     [titleLbl sizeToFit];
     CGSize cgSize = titleLbl.frame.size;
     titleLbl.frame = CGRectMake(0, 0, cgSize.width, cgSize.height);
-    titleLbl.center = CGPointMake(self.center.x, self.center.y);
+    titleLbl.center = CGPointMake(self.center.x - kOffsetXOfTableCell, self.center.y);
     [self addSubview:titleLbl];
 }
 
