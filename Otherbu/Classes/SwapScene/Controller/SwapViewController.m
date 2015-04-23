@@ -96,6 +96,7 @@
     float height = kCellHeightOfSetting - kCellMarginOfSetting;
     CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
     [settingCell setBackground:rect];
+    [settingCell createMoveIconImage];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

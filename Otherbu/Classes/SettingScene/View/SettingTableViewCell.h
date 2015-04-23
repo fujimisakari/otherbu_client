@@ -10,5 +10,6 @@
 
 - (void)setup;
 - (void)setBackground:(CGRect)rect;
+- (void)createMoveIconImage;
 
 @end

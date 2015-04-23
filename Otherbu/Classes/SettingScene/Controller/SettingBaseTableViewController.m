@@ -61,6 +61,7 @@
     float height = kCellHeightOfSetting - kCellMarginOfSetting;
     CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
     [settingCell setBackground:rect];
+    [settingCell createMoveIconImage];
 }
 
 @end

@@ -81,6 +81,28 @@
 #pragma mark -- Set Methods --
 //--------------------------------------------------------------//
 
+- (void)createMoveIconImage {
+    // ドラッグ移動アイコン画像の生成
+    for (UIView *subview in self.subviews) {
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellReorderControl"]) {
+            for (UIImageView *imageView in subview.subviews) {
+                if ([imageView isKindOfClass:[UIImageView class]]) {
+                    UIImage *image = [UIImage imageNamed:kMoveListIcon];
+                    [imageView setImage:image];
+                    int addMargin = 5;  // 位置調整
+                    imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y + addMargin, imageView.frame.size.width,
+                                                 imageView.frame.size.height);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Set Methods --
+//--------------------------------------------------------------//
+
 - (void)setup {
     // Cellの矢印アクセサリーへはカスタム画像を設定する
     UIImageView *righttArrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kRighttArrowIcon]];
