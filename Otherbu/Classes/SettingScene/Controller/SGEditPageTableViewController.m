@@ -1,23 +1,23 @@
 //
-//  EditPageTableViewController.m
+//  SGEditPageTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "EditPageTableViewController.h"
+#import "SGEditPageTableViewController.h"
 #import "PageData.h"
 #import "CategoryData.h"
 
-@interface EditPageTableViewController () {
+@interface SGEditPageTableViewController () {
     NSArray *_categoryList;
     NSArray *_categoryListOfPage;
 }
 
 @end
 
-@implementation EditPageTableViewController
+@implementation SGEditPageTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

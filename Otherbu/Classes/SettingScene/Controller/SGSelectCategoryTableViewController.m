@@ -1,23 +1,23 @@
 //
-//  SelectCategoryTableViewController.m
+//  SGSelectCategoryTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SelectCategoryTableViewController.h"
+#import "SGSelectCategoryTableViewController.h"
 #import "CategoryData.h"
-#import "BookmarkTableViewController.h"
+#import "SGBookmarkTableViewController.h"
 
-@interface SelectCategoryTableViewController ()  {
+@interface SGSelectCategoryTableViewController ()  {
     CategoryData *_selectCategory;
     NSArray *_categoryList;
 }
 
 @end
 
-@implementation SelectCategoryTableViewController
+@implementation SGSelectCategoryTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -53,7 +53,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:kToBookmarkListBySegue]) {
-        BookmarkTableViewController *bookmarkTableViewController = (BookmarkTableViewController*)[segue destinationViewController];
+        SGBookmarkTableViewController *bookmarkTableViewController = (SGBookmarkTableViewController*)[segue destinationViewController];
         bookmarkTableViewController.category = _selectCategory;
         bookmarkTableViewController.bookmarkList = [_selectCategory getBookmarkList];
     }

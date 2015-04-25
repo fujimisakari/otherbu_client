@@ -1,18 +1,18 @@
 //
-//  DesiginViewController.m
+//  SGDesiginViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "DesiginViewController.h"
+#import "SGDesiginViewController.h"
 
-@interface DesiginViewController ()
+@interface SGDesiginViewController ()
 
 @end
 
-@implementation DesiginViewController
+@implementation SGDesiginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -1,15 +1,15 @@
 //
-//  SettingTableViewController.m
+//  SGSettingTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SettingTableViewController.h"
+#import "SGTableViewController.h"
 #import "SettingTableViewCell.h"
 
-@interface SettingTableViewController () {
+@interface SGTableViewController () {
     NSArray *_menuNameList;
     NSArray *_menuIconList;
     NSArray *_menSegueActionList;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation SettingTableViewController
+@implementation SGTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

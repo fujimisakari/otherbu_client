@@ -31,15 +31,15 @@
 		7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF251AD9AB8100DD60EF /* SectionHeaderView.m */; };
 		7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF331AD9ABF200DD60EF /* WebViewController.m */; };
 		7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */; };
-		7BFDDF4F1AD9AC3500DD60EF /* DesiginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */; };
-		7BFDDF511AD9AC3500DD60EF /* SettingBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3F1AD9AC3500DD60EF /* SettingBaseTableViewController.m */; };
-		7BFDDF521AD9AC3500DD60EF /* BookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF411AD9AC3500DD60EF /* BookmarkTableViewController.m */; };
-		7BFDDF531AD9AC3500DD60EF /* CategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF431AD9AC3500DD60EF /* CategoryListTableViewController.m */; };
-		7BFDDF541AD9AC3500DD60EF /* EditPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF451AD9AC3500DD60EF /* EditPageTableViewController.m */; };
-		7BFDDF551AD9AC3500DD60EF /* SettingNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF471AD9AC3500DD60EF /* SettingNavigationViewController.m */; };
-		7BFDDF561AD9AC3500DD60EF /* PageListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF491AD9AC3500DD60EF /* PageListTableViewController.m */; };
-		7BFDDF571AD9AC3500DD60EF /* SelectCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF4B1AD9AC3500DD60EF /* SelectCategoryTableViewController.m */; };
-		7BFDDF581AD9AC3500DD60EF /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF4D1AD9AC3500DD60EF /* SettingTableViewController.m */; };
+		7BFDDF4F1AD9AC3500DD60EF /* SGDesiginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3B1AD9AC3500DD60EF /* SGDesiginViewController.m */; };
+		7BFDDF511AD9AC3500DD60EF /* SGBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3F1AD9AC3500DD60EF /* SGBaseTableViewController.m */; };
+		7BFDDF521AD9AC3500DD60EF /* SGBookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF411AD9AC3500DD60EF /* SGBookmarkTableViewController.m */; };
+		7BFDDF531AD9AC3500DD60EF /* SGCategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF431AD9AC3500DD60EF /* SGCategoryListTableViewController.m */; };
+		7BFDDF541AD9AC3500DD60EF /* SGEditPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF451AD9AC3500DD60EF /* SGEditPageTableViewController.m */; };
+		7BFDDF551AD9AC3500DD60EF /* SGNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF471AD9AC3500DD60EF /* SGNavigationViewController.m */; };
+		7BFDDF561AD9AC3500DD60EF /* SGPageListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF491AD9AC3500DD60EF /* SGPageListTableViewController.m */; };
+		7BFDDF571AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF4B1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m */; };
+		7BFDDF581AD9AC3500DD60EF /* SGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF4D1AD9AC3500DD60EF /* SGTableViewController.m */; };
 		7BFDDF5B1AD9AC4A00DD60EF /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF5A1AD9AC4A00DD60EF /* SettingTableViewCell.m */; };
 		7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF5E1AD9AC6F00DD60EF /* DataManager.m */; };
 		7BFDDF621AD9AC6F00DD60EF /* OtherbuAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF601AD9AC6F00DD60EF /* OtherbuAPIClient.m */; };
@@ -115,24 +115,24 @@
 		7BFDDF331AD9ABF200DD60EF /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = Classes/WebViewScene/Controller/WebViewController.m; sourceTree = "<group>"; };
 		7BFDDF351AD9AC0400DD60EF /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWebView.h; path = Classes/WebViewScene/View/CustomWebView.h; sourceTree = "<group>"; };
 		7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWebView.m; path = Classes/WebViewScene/View/CustomWebView.m; sourceTree = "<group>"; };
-		7BFDDF3A1AD9AC3500DD60EF /* DesiginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DesiginViewController.h; path = Classes/SettingScene/Controller/DesiginViewController.h; sourceTree = "<group>"; };
-		7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DesiginViewController.m; path = Classes/SettingScene/Controller/DesiginViewController.m; sourceTree = "<group>"; };
-		7BFDDF3E1AD9AC3500DD60EF /* SettingBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingBaseTableViewController.h; path = Classes/SettingScene/Controller/SettingBaseTableViewController.h; sourceTree = "<group>"; };
-		7BFDDF3F1AD9AC3500DD60EF /* SettingBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingBaseTableViewController.m; path = Classes/SettingScene/Controller/SettingBaseTableViewController.m; sourceTree = "<group>"; };
-		7BFDDF401AD9AC3500DD60EF /* BookmarkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookmarkTableViewController.h; path = Classes/SettingScene/Controller/BookmarkTableViewController.h; sourceTree = "<group>"; };
-		7BFDDF411AD9AC3500DD60EF /* BookmarkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookmarkTableViewController.m; path = Classes/SettingScene/Controller/BookmarkTableViewController.m; sourceTree = "<group>"; };
-		7BFDDF421AD9AC3500DD60EF /* CategoryListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CategoryListTableViewController.h; path = Classes/SettingScene/Controller/CategoryListTableViewController.h; sourceTree = "<group>"; };
-		7BFDDF431AD9AC3500DD60EF /* CategoryListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CategoryListTableViewController.m; path = Classes/SettingScene/Controller/CategoryListTableViewController.m; sourceTree = "<group>"; };
-		7BFDDF441AD9AC3500DD60EF /* EditPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditPageTableViewController.h; path = Classes/SettingScene/Controller/EditPageTableViewController.h; sourceTree = "<group>"; };
-		7BFDDF451AD9AC3500DD60EF /* EditPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditPageTableViewController.m; path = Classes/SettingScene/Controller/EditPageTableViewController.m; sourceTree = "<group>"; };
-		7BFDDF461AD9AC3500DD60EF /* SettingNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingNavigationViewController.h; path = Classes/SettingScene/Controller/SettingNavigationViewController.h; sourceTree = "<group>"; };
-		7BFDDF471AD9AC3500DD60EF /* SettingNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingNavigationViewController.m; path = Classes/SettingScene/Controller/SettingNavigationViewController.m; sourceTree = "<group>"; };
-		7BFDDF481AD9AC3500DD60EF /* PageListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageListTableViewController.h; path = Classes/SettingScene/Controller/PageListTableViewController.h; sourceTree = "<group>"; };
-		7BFDDF491AD9AC3500DD60EF /* PageListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageListTableViewController.m; path = Classes/SettingScene/Controller/PageListTableViewController.m; sourceTree = "<group>"; };
-		7BFDDF4A1AD9AC3500DD60EF /* SelectCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectCategoryTableViewController.h; path = Classes/SettingScene/Controller/SelectCategoryTableViewController.h; sourceTree = "<group>"; };
-		7BFDDF4B1AD9AC3500DD60EF /* SelectCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectCategoryTableViewController.m; path = Classes/SettingScene/Controller/SelectCategoryTableViewController.m; sourceTree = "<group>"; };
-		7BFDDF4C1AD9AC3500DD60EF /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingTableViewController.h; path = Classes/SettingScene/Controller/SettingTableViewController.h; sourceTree = "<group>"; };
-		7BFDDF4D1AD9AC3500DD60EF /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingTableViewController.m; path = Classes/SettingScene/Controller/SettingTableViewController.m; sourceTree = "<group>"; };
+		7BFDDF3A1AD9AC3500DD60EF /* SGDesiginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGDesiginViewController.h; path = Classes/SettingScene/Controller/SGDesiginViewController.h; sourceTree = "<group>"; };
+		7BFDDF3B1AD9AC3500DD60EF /* SGDesiginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGDesiginViewController.m; path = Classes/SettingScene/Controller/SGDesiginViewController.m; sourceTree = "<group>"; };
+		7BFDDF3E1AD9AC3500DD60EF /* SGBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGBaseTableViewController.h; path = Classes/SettingScene/Controller/SGBaseTableViewController.h; sourceTree = "<group>"; };
+		7BFDDF3F1AD9AC3500DD60EF /* SGBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGBaseTableViewController.m; path = Classes/SettingScene/Controller/SGBaseTableViewController.m; sourceTree = "<group>"; };
+		7BFDDF401AD9AC3500DD60EF /* SGBookmarkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGBookmarkTableViewController.h; path = Classes/SettingScene/Controller/SGBookmarkTableViewController.h; sourceTree = "<group>"; };
+		7BFDDF411AD9AC3500DD60EF /* SGBookmarkTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGBookmarkTableViewController.m; path = Classes/SettingScene/Controller/SGBookmarkTableViewController.m; sourceTree = "<group>"; };
+		7BFDDF421AD9AC3500DD60EF /* SGCategoryListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGCategoryListTableViewController.h; path = Classes/SettingScene/Controller/SGCategoryListTableViewController.h; sourceTree = "<group>"; };
+		7BFDDF431AD9AC3500DD60EF /* SGCategoryListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGCategoryListTableViewController.m; path = Classes/SettingScene/Controller/SGCategoryListTableViewController.m; sourceTree = "<group>"; };
+		7BFDDF441AD9AC3500DD60EF /* SGEditPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGEditPageTableViewController.h; path = Classes/SettingScene/Controller/SGEditPageTableViewController.h; sourceTree = "<group>"; };
+		7BFDDF451AD9AC3500DD60EF /* SGEditPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGEditPageTableViewController.m; path = Classes/SettingScene/Controller/SGEditPageTableViewController.m; sourceTree = "<group>"; };
+		7BFDDF461AD9AC3500DD60EF /* SGNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGNavigationViewController.h; path = Classes/SettingScene/Controller/SGNavigationViewController.h; sourceTree = "<group>"; };
+		7BFDDF471AD9AC3500DD60EF /* SGNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGNavigationViewController.m; path = Classes/SettingScene/Controller/SGNavigationViewController.m; sourceTree = "<group>"; };
+		7BFDDF481AD9AC3500DD60EF /* SGPageListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGPageListTableViewController.h; path = Classes/SettingScene/Controller/SGPageListTableViewController.h; sourceTree = "<group>"; };
+		7BFDDF491AD9AC3500DD60EF /* SGPageListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGPageListTableViewController.m; path = Classes/SettingScene/Controller/SGPageListTableViewController.m; sourceTree = "<group>"; };
+		7BFDDF4A1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGSelectCategoryTableViewController.h; path = Classes/SettingScene/Controller/SGSelectCategoryTableViewController.h; sourceTree = "<group>"; };
+		7BFDDF4B1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGSelectCategoryTableViewController.m; path = Classes/SettingScene/Controller/SGSelectCategoryTableViewController.m; sourceTree = "<group>"; };
+		7BFDDF4C1AD9AC3500DD60EF /* SGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGTableViewController.h; path = Classes/SettingScene/Controller/SGTableViewController.h; sourceTree = "<group>"; };
+		7BFDDF4D1AD9AC3500DD60EF /* SGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGTableViewController.m; path = Classes/SettingScene/Controller/SGTableViewController.m; sourceTree = "<group>"; };
 		7BFDDF591AD9AC4A00DD60EF /* SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingTableViewCell.h; path = Classes/SettingScene/View/SettingTableViewCell.h; sourceTree = "<group>"; };
 		7BFDDF5A1AD9AC4A00DD60EF /* SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingTableViewCell.m; path = Classes/SettingScene/View/SettingTableViewCell.m; sourceTree = "<group>"; };
 		7BFDDF5C1AD9AC6F00DD60EF /* DataInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataInterface.h; path = Classes/Models/DataInterface.h; sourceTree = "<group>"; };
@@ -359,24 +359,24 @@
 		7B91E6371AC32F7E003A36F1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7BFDDF3A1AD9AC3500DD60EF /* DesiginViewController.h */,
-				7BFDDF3B1AD9AC3500DD60EF /* DesiginViewController.m */,
-				7BFDDF3E1AD9AC3500DD60EF /* SettingBaseTableViewController.h */,
-				7BFDDF3F1AD9AC3500DD60EF /* SettingBaseTableViewController.m */,
-				7BFDDF401AD9AC3500DD60EF /* BookmarkTableViewController.h */,
-				7BFDDF411AD9AC3500DD60EF /* BookmarkTableViewController.m */,
-				7BFDDF421AD9AC3500DD60EF /* CategoryListTableViewController.h */,
-				7BFDDF431AD9AC3500DD60EF /* CategoryListTableViewController.m */,
-				7BFDDF441AD9AC3500DD60EF /* EditPageTableViewController.h */,
-				7BFDDF451AD9AC3500DD60EF /* EditPageTableViewController.m */,
-				7BFDDF461AD9AC3500DD60EF /* SettingNavigationViewController.h */,
-				7BFDDF471AD9AC3500DD60EF /* SettingNavigationViewController.m */,
-				7BFDDF481AD9AC3500DD60EF /* PageListTableViewController.h */,
-				7BFDDF491AD9AC3500DD60EF /* PageListTableViewController.m */,
-				7BFDDF4A1AD9AC3500DD60EF /* SelectCategoryTableViewController.h */,
-				7BFDDF4B1AD9AC3500DD60EF /* SelectCategoryTableViewController.m */,
-				7BFDDF4C1AD9AC3500DD60EF /* SettingTableViewController.h */,
-				7BFDDF4D1AD9AC3500DD60EF /* SettingTableViewController.m */,
+				7BFDDF3A1AD9AC3500DD60EF /* SGDesiginViewController.h */,
+				7BFDDF3B1AD9AC3500DD60EF /* SGDesiginViewController.m */,
+				7BFDDF3E1AD9AC3500DD60EF /* SGBaseTableViewController.h */,
+				7BFDDF3F1AD9AC3500DD60EF /* SGBaseTableViewController.m */,
+				7BFDDF401AD9AC3500DD60EF /* SGBookmarkTableViewController.h */,
+				7BFDDF411AD9AC3500DD60EF /* SGBookmarkTableViewController.m */,
+				7BFDDF421AD9AC3500DD60EF /* SGCategoryListTableViewController.h */,
+				7BFDDF431AD9AC3500DD60EF /* SGCategoryListTableViewController.m */,
+				7BFDDF441AD9AC3500DD60EF /* SGEditPageTableViewController.h */,
+				7BFDDF451AD9AC3500DD60EF /* SGEditPageTableViewController.m */,
+				7BFDDF461AD9AC3500DD60EF /* SGNavigationViewController.h */,
+				7BFDDF471AD9AC3500DD60EF /* SGNavigationViewController.m */,
+				7BFDDF481AD9AC3500DD60EF /* SGPageListTableViewController.h */,
+				7BFDDF491AD9AC3500DD60EF /* SGPageListTableViewController.m */,
+				7BFDDF4A1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.h */,
+				7BFDDF4B1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m */,
+				7BFDDF4C1AD9AC3500DD60EF /* SGTableViewController.h */,
+				7BFDDF4D1AD9AC3500DD60EF /* SGTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -633,25 +633,25 @@
 				7BFDDF7C1AD9ACD300DD60EF /* Helper.m in Sources */,
 				7B5346F11AE35D2D008DA1EB /* ModalBKView.m in Sources */,
 				7BFDDF281AD9AB8100DD60EF /* MainTableCellView.m in Sources */,
-				7BFDDF531AD9AC3500DD60EF /* CategoryListTableViewController.m in Sources */,
+				7BFDDF531AD9AC3500DD60EF /* SGCategoryListTableViewController.m in Sources */,
 				7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */,
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
-				7BFDDF571AD9AC3500DD60EF /* SelectCategoryTableViewController.m in Sources */,
+				7BFDDF571AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m in Sources */,
 				7BC347FB1AE9378600D5B733 /* SwapSectionHeaderView.m in Sources */,
-				7BFDDF581AD9AC3500DD60EF /* SettingTableViewController.m in Sources */,
+				7BFDDF581AD9AC3500DD60EF /* SGTableViewController.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
 				7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */,
-				7BFDDF511AD9AC3500DD60EF /* SettingBaseTableViewController.m in Sources */,
+				7BFDDF511AD9AC3500DD60EF /* SGBaseTableViewController.m in Sources */,
 				7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */,
 				7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */,
 				7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */,
-				7BFDDF541AD9AC3500DD60EF /* EditPageTableViewController.m in Sources */,
+				7BFDDF541AD9AC3500DD60EF /* SGEditPageTableViewController.m in Sources */,
 				7BFDDF741AD9AC8400DD60EF /* UserData.m in Sources */,
-				7BFDDF4F1AD9AC3500DD60EF /* DesiginViewController.m in Sources */,
-				7BFDDF561AD9AC3500DD60EF /* PageListTableViewController.m in Sources */,
-				7BFDDF521AD9AC3500DD60EF /* BookmarkTableViewController.m in Sources */,
+				7BFDDF4F1AD9AC3500DD60EF /* SGDesiginViewController.m in Sources */,
+				7BFDDF561AD9AC3500DD60EF /* SGPageListTableViewController.m in Sources */,
+				7BFDDF521AD9AC3500DD60EF /* SGBookmarkTableViewController.m in Sources */,
 				7B5346E81AE35D11008DA1EB /* ModalBKViewController.m in Sources */,
 				7BFDDF5B1AD9AC4A00DD60EF /* SettingTableViewCell.m in Sources */,
 				7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */,
@@ -659,7 +659,7 @@
 				7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */,
 				7B5346F21AE35D2D008DA1EB /* ModalView.m in Sources */,
 				7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */,
-				7BFDDF551AD9AC3500DD60EF /* SettingNavigationViewController.m in Sources */,
+				7BFDDF551AD9AC3500DD60EF /* SGNavigationViewController.m in Sources */,
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
 				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,
 				7BFDDF811AD9AD1800DD60EF /* main.m in Sources */,

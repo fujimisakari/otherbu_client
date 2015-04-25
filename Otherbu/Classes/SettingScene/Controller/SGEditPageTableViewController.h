@@ -1,14 +1,14 @@
 //
-//  EditPageTableViewController.h
+//  SGEditPageTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SettingBaseTableViewController.h"
+#import "SGBaseTableViewController.h"
 
-@interface EditPageTableViewController : SettingBaseTableViewController
+@interface SGEditPageTableViewController : SGBaseTableViewController
 
 @property(nonatomic) PageData *page;
 

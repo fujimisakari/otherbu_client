@@ -1,24 +1,24 @@
 //
-//  PageListTableViewController.m
+//  SGPageListTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "PageListTableViewController.h"
-#import "EditPageTableViewController.h"
+#import "SGPageListTableViewController.h"
+#import "SGEditPageTableViewController.h"
 #import "SettingTableViewCell.h"
 #import "PageData.h"
 
-@interface PageListTableViewController () {
+@interface SGPageListTableViewController () {
     NSMutableArray *_pageList;
     PageData *_selectPage;
 }
 
 @end
 
-@implementation PageListTableViewController
+@implementation SGPageListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -110,7 +110,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:kToEditPageBySegue]) {
-        EditPageTableViewController *pageDetailTableViewController = (EditPageTableViewController *)[segue destinationViewController];
+        SGEditPageTableViewController *pageDetailTableViewController = (SGEditPageTableViewController *)[segue destinationViewController];
         pageDetailTableViewController.page = _selectPage;
     }
 }

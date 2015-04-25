@@ -1,18 +1,18 @@
 //
-//  SettingNavigationViewController.m
+//  SGSettingNavigationViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SettingNavigationViewController.h"
+#import "SGNavigationViewController.h"
 
-@interface SettingNavigationViewController ()
+@interface SGNavigationViewController ()
 
 @end
 
-@implementation SettingNavigationViewController
+@implementation SGNavigationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

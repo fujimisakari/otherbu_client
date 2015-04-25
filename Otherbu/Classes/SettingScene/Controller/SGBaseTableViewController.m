@@ -1,19 +1,19 @@
 //
-//  SettingBaseTableViewController.m
+//  SGSettingBaseTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SettingBaseTableViewController.h"
+#import "SGBaseTableViewController.h"
 #import "SettingTableViewCell.h"
 
-@interface SettingBaseTableViewController ()
+@interface SGBaseTableViewController ()
 
 @end
 
-@implementation SettingBaseTableViewController
+@implementation SGBaseTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

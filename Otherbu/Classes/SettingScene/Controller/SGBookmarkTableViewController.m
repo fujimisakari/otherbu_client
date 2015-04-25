@@ -1,20 +1,20 @@
 //
-//  BookmarkTableViewController.m
+//  SGBookmarkTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "BookmarkTableViewController.h"
+#import "SGBookmarkTableViewController.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
 
-@interface BookmarkTableViewController ()
+@interface SGBookmarkTableViewController ()
 
 @end
 
-@implementation BookmarkTableViewController
+@implementation SGBookmarkTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

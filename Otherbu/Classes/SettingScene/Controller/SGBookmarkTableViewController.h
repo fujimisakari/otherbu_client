@@ -1,14 +1,14 @@
 //
-//  BookmarkTableViewController.h
+//  SGBookmarkTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SettingBaseTableViewController.h"
+#import "SGBaseTableViewController.h"
 
-@interface BookmarkTableViewController : SettingBaseTableViewController
+@interface SGBookmarkTableViewController : SGBaseTableViewController
 
 @property(nonatomic) CategoryData *category;
 @property(nonatomic) NSMutableArray *bookmarkList;

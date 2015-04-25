@@ -1,15 +1,15 @@
 //
-//  CategoryListTableViewController.m
+//  SGCategoryListTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "CategoryListTableViewController.h"
+#import "SGCategoryListTableViewController.h"
 #import "CategoryData.h"
 
-@interface CategoryListTableViewController () {
+@interface SGCategoryListTableViewController () {
     NSMutableArray *_categoryList;
     NSIndexPath *_deleteIndexPath;
     UIAlertView *_confirmAlert;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation CategoryListTableViewController
+@implementation SGCategoryListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
