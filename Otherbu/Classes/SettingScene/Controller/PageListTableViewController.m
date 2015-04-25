@@ -8,6 +8,7 @@
 
 #import "PageListTableViewController.h"
 #import "EditPageTableViewController.h"
+#import "SettingTableViewCell.h"
 #import "PageData.h"
 
 @interface PageListTableViewController () {
@@ -87,6 +88,18 @@
         for (int i=0 ; i < _pageList.count; i++) {
             PageData *page = _pageList[i];
             page.sortId = i;
+        }
+    }
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animate {
+    [super setEditing:editing animated:animate];
+    if (editing) {
+        // Editボタン押下時に移動アイコンを生成する
+        for (int i = 0; i < _pageList.count; i++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+            SettingTableViewCell *settingCell = (SettingTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+            [settingCell createMoveIconImage];
         }
     }
 }
