@@ -76,6 +76,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // セルの生成。ページに設定しているカテゴリはチェックマーク画像が表示させる
     SettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
+    [cell setup];
 
     CategoryData *category = (CategoryData *)_categoryList[indexPath.row];
     NSUInteger isExistCategory = [_categoryListOfPage indexOfObject:category];
@@ -92,6 +93,20 @@
 //--------------------------------------------------------------//
 #pragma mark -- UITableViewDelegate --
 //--------------------------------------------------------------//
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // セルの高さ
+    return kCellHeightOfSetting;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 半透明で間隔が空いたセルを生成
+    SettingTableViewCell *settingCell = (SettingTableViewCell *)cell;
+    float width = self.view.frame.size.width - (kCellMarginOfSetting * 2);
+    float height = kCellHeightOfSetting - kCellMarginOfSetting;
+    CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
+    [settingCell setBackground:rect];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // セルタップ時にPageDataの情報を更新する
