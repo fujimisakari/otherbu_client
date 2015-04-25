@@ -23,6 +23,7 @@
     [super viewDidLoad];
 
     [self _setupMenuData];
+    [self _setCloseButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,6 +49,23 @@
     // 画面遷移
     void (^block)(void) = _menSegueActionList[indexPath.row];
     block();
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Close Button --
+//--------------------------------------------------------------//
+
+- (void)_setCloseButton {
+    // NavigationBarにXボタンを設置する
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                                         target:self
+                                                                         action:@selector(_closeSettingView:)];
+    self.navigationItem.rightBarButtonItem = btn;
+}
+
+- (void)_closeSettingView:(UIButton *)sender {
+    // 設定ページを閉じる
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //--------------------------------------------------------------//

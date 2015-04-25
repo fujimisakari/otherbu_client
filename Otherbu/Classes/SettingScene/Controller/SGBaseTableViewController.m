@@ -1,5 +1,5 @@
 //
-//  SGSettingBaseTableViewController.m
+//  SGBaseTableViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -30,6 +30,9 @@
     UIView *bgView = [[UIView alloc] initWithFrame:self.tableView.frame];
     [Helper setupBackgroundImage:rect TargetView:bgView];
     self.tableView.backgroundView = bgView;
+
+    // NavigationBarにXボタンを設置する
+    [self _setCloseButton];
 }
 
 //--------------------------------------------------------------//
@@ -62,6 +65,23 @@
     CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
     [settingCell setBackground:rect];
     [settingCell createMoveIconImage];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Close Button --
+//--------------------------------------------------------------//
+
+- (void)_setCloseButton {
+    // NavigationBarにXボタンを設置する
+    UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                                         target:self
+                                                                         action:@selector(_closeSettingView:)];
+    self.navigationItem.rightBarButtonItem = btn;
+}
+
+- (void)_closeSettingView:(UIButton *)sender {
+    // 設定ページを閉じる
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
