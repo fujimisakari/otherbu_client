@@ -33,10 +33,6 @@
     [self _createConfirmAlertView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (void)_createConfirmAlertView {
     _confirmAlert = [[UIAlertView alloc] init];
     _confirmAlert.delegate = self;

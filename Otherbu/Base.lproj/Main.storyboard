@@ -289,7 +289,7 @@
                             <outlet property="delegate" destination="zQW-1D-R4a" id="UlQ-au-CgR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Category削除" id="yj8-tK-0Mf"/>
+                    <navigationItem key="navigationItem" title="Delete Category" id="yj8-tK-0Mf" userLabel="Title"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgV-mb-3GJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -316,7 +316,7 @@
                             <outlet property="delegate" destination="l6w-hk-YAu" id="pRl-Og-yFe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Page設定" id="1tR-ok-0n7" userLabel="ページ設定"/>
+                    <navigationItem key="navigationItem" title="Edit Page" id="1tR-ok-0n7" userLabel="Title"/>
                     <connections>
                         <segue destination="7fI-Kp-mvY" kind="show" identifier="toEditPage" id="9JW-74-aJv"/>
                     </connections>
@@ -338,7 +338,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Design設定" id="jo3-cz-fvE"/>
+                    <navigationItem key="navigationItem" title="Edit Design" id="jo3-cz-fvE" userLabel="Title"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ea-Hq-hoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -392,7 +392,7 @@
                             <outlet property="delegate" destination="58s-BK-Ro2" id="BBX-hx-NZC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Category選択" id="X4M-wC-vhQ" userLabel="ブックマーク設定"/>
+                    <navigationItem key="navigationItem" title="Select Category" id="X4M-wC-vhQ" userLabel="Title"/>
                     <connections>
                         <segue destination="EI3-DB-s9H" kind="show" identifier="toBookmarkList" id="A4B-01-i9u"/>
                     </connections>
