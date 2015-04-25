@@ -37,7 +37,7 @@
     // セルの背景Viewを生成
     UIView *whiteRoundedCornerView = [[UIView alloc] init];
     whiteRoundedCornerView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    whiteRoundedCornerView.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.85];
+    whiteRoundedCornerView.backgroundColor = [UIColor colorWithWhite:0.65 alpha:0.7];
     whiteRoundedCornerView.layer.masksToBounds = NO;
     whiteRoundedCornerView.layer.cornerRadius = 3.0;
     // whiteRoundedCornerView.layer.shadowOffset = CGSizeMake(-1, 1);
