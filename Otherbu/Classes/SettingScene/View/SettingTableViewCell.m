@@ -27,26 +27,38 @@
     self.accessoryView.frame = CGRectMake(self.accessoryView.frame.origin.x, self.accessoryView.frame.origin.y + kCellItemMarginOfSetting,
                                           self.accessoryView.frame.size.width, self.accessoryView.frame.size.height);
 
-    // Cell削除ボタンを差し替える
+    // レイアウト調整Block
     CGRect (^subviewFomatter)(UIView *) = ^CGRect(UIView * subview) {
         int addMargin = 5;  // 位置調整
         return CGRectMake(subview.frame.origin.x, subview.frame.origin.y + kCellItemMarginOfSetting + addMargin, subview.frame.size.width,
                           subview.frame.size.height - kCellItemMarginOfSetting - addMargin);
     };
     for (UIView *subview in self.subviews) {
-        // for ios8
+        // テーブルの削除アイコンが中心からズレる問題の対応
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellEditControl"]) {
+            subview.frame = subviewFomatter(subview);
+            [self bringSubviewToFront:subview];
+        }
+
+        // テーブルの移動アイコンが中心からズレる問題の対応
+        if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellReorderControl"]) {
+            subview.frame = subviewFomatter(subview);
+            [self bringSubviewToFront:subview];
+        }
+
+        // テーブルの削除Viewのサイズ調整 for ios8
         if ([NSStringFromClass([subview class]) isEqualToString:@"UITableViewCellDeleteConfirmationView"]) {
             subview.frame = subviewFomatter(subview);
             [self bringSubviewToFront:subview];
-            return;
+            // return;
         }
 
-        // for ios7
+        // テーブルの削除Viewのサイズ調整 for ios7
         for (UIView *_subview in subview.subviews) {
             if ([NSStringFromClass([_subview class]) isEqualToString:@"UITableViewCellDeleteConfirmationView"]) {
                 _subview.frame = subviewFomatter(_subview);
                 [subview bringSubviewToFront:_subview];
-                return;
+                // return;
             }
         }
     }
@@ -78,7 +90,7 @@
 }
 
 //--------------------------------------------------------------//
-#pragma mark -- Set Methods --
+#pragma mark -- Public Methods --
 //--------------------------------------------------------------//
 
 - (void)createMoveIconImage {
@@ -88,10 +100,7 @@
             for (UIImageView *imageView in subview.subviews) {
                 if ([imageView isKindOfClass:[UIImageView class]]) {
                     UIImage *image = [UIImage imageNamed:kMoveListIcon];
-                    [imageView setImage:image];
-                    int addMargin = 5;  // 位置調整
-                    imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y + addMargin, imageView.frame.size.width,
-                                                 imageView.frame.size.height);
+                    imageView.image = image;
                     break;
                 }
             }
