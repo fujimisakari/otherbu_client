@@ -8,6 +8,8 @@
 
 #import "ModalViewController.h"
 #import "ModalView.h"
+#import "ModalPageViewController.h"
+#import "PageData.h"
 #import "ColorData.h"
 
 @interface ModalViewController () {
@@ -48,6 +50,12 @@
     _modalView.collectionView.delegate = self;
     _modalView.collectionView.dataSource = self;
     _modalView.nameTextField.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [_modalView deleteSubviews];
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
@@ -144,10 +152,29 @@
     [_editItem iSetName:_modalView.nameTextField.text];
     [_editItem iSetColorId:_colorId];
 
-    if ([_editItem isCreateMode]) {
+    if ([_editItem isCreateMode] && [_editItem iGetMenuId] == MENU_PAGE) {
         [_editItem addNewData];
+        [self performSegueWithIdentifier:kToModalPageViewBySegue sender:self];
+    } else {
+        [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
+}
 
+//--------------------------------------------------------------//
+#pragma mark -- segue --
+//--------------------------------------------------------------//
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:kToModalPageViewBySegue]) {
+        ModalPageViewController *modalPageViewController = (ModalPageViewController *)[segue destinationViewController];
+        modalPageViewController.page = (PageData *)_editItem;
+        modalPageViewController.delegate = self;
+    }
+}
+
+- (void)closeModalView {
+    // 画面を閉じる
     [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

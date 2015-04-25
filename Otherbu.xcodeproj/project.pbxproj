@@ -22,6 +22,7 @@
 		7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F31AE552BD00D5B733 /* SwapViewController.m */; };
 		7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F61AE81AD600D5B733 /* NavigationBar.m */; };
 		7BC347FB1AE9378600D5B733 /* SwapSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347FA1AE9378600D5B733 /* SwapSectionHeaderView.m */; };
+		7BE2B4521AEBEE5900A30F67 /* ModalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */; };
 		7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */; };
 		7BFDDF191AD9AB5C00DD60EF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF181AD9AB5C00DD60EF /* MainViewController.m */; };
 		7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1B1AD9AB8100DD60EF /* InnerTableView.m */; };
@@ -96,6 +97,8 @@
 		7BC347F61AE81AD600D5B733 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = Classes/CommonView/NavigationBar.m; sourceTree = "<group>"; };
 		7BC347F91AE9378600D5B733 /* SwapSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwapSectionHeaderView.h; path = Classes/SwapScene/View/SwapSectionHeaderView.h; sourceTree = "<group>"; };
 		7BC347FA1AE9378600D5B733 /* SwapSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapSectionHeaderView.m; path = Classes/SwapScene/View/SwapSectionHeaderView.m; sourceTree = "<group>"; };
+		7BE2B4501AEBEE5900A30F67 /* ModalPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalPageViewController.h; path = Classes/ModalScene/Controller/ModalPageViewController.h; sourceTree = "<group>"; };
+		7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalPageViewController.m; path = Classes/ModalScene/Controller/ModalPageViewController.m; sourceTree = "<group>"; };
 		7BFDDEE91AD9A50100DD60EF /* Otherbu-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Otherbu-Prefix.pch"; sourceTree = "<group>"; };
 		7BFDDF141AD9AB3200DD60EF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
@@ -464,6 +467,8 @@
 				7B5346E51AE35D11008DA1EB /* ModalInterface.h */,
 				7B5346E61AE35D11008DA1EB /* ModalViewController.h */,
 				7B5346E71AE35D11008DA1EB /* ModalViewController.m */,
+				7BE2B4501AEBEE5900A30F67 /* ModalPageViewController.h */,
+				7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
 				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,
 				7BFDDF811AD9AD1800DD60EF /* main.m in Sources */,
+				7BE2B4521AEBEE5900A30F67 /* ModalPageViewController.m in Sources */,
 				7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */,
 				7BFDDF621AD9AC6F00DD60EF /* OtherbuAPIClient.m in Sources */,
 			);

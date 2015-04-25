@@ -10,8 +10,8 @@
 #import "ModalInterface.h"
 #import "DataInterface.h"
 
-@interface ModalViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate,
-                                                      UICollectionViewDelegateFlowLayout, UITextFieldDelegate, EditModalDelegate>
+@interface ModalViewController : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,
+                                                  UITextFieldDelegate, ModalInterface, EditModalDelegate>
 
 @property(nonatomic, weak) id<ModalInterface> delegate;
 @property(nonatomic, weak) id<DataInterface> editItem;

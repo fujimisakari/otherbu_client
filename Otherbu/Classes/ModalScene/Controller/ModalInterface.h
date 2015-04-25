@@ -8,6 +8,9 @@
 
 @protocol ModalInterface <NSObject>
 
+@optional
+
 - (void)returnActionOfModal:(NSInteger)menuId;
+- (void)closeModalView;
 
 @end

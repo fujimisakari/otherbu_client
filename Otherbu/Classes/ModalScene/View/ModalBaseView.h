@@ -22,6 +22,7 @@
 
 - (id)initWithFrame:(CGRect)rect;
 - (void)setup;
+- (void)deleteSubviews;
 
 - (void)setTitleLabel:(CGRect)rect;
 - (void)setFieldLabel:(CGRect)rect label:(NSString *)labelName;

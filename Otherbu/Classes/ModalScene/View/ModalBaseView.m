@@ -57,6 +57,12 @@
     [self _createButton];
 }
 
+- (void)deleteSubviews {
+    for (UIView *view in self.subviews) {
+        [view removeFromSuperview];
+    }
+}
+
 //--------------------------------------------------------------//
 #pragma mark -- Create Methods --
 //--------------------------------------------------------------//

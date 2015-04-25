@@ -112,6 +112,7 @@ extern NSString * const kToWebViewBySegue;
 extern NSString * const kToSwapViewBySegue;
 extern NSString * const kToModalViewBySegue;
 extern NSString * const kToModalBKViewBySegue;
+extern NSString * const kToModalPageViewBySegue;
 extern NSString * const kToSettingBySegue;
 extern NSString * const kToCategoryListBySegue;
 extern NSString * const kToCategoryOfBookmarkBySegue;

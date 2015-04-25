@@ -7,6 +7,7 @@
 //
 
 #import "BookmarkData.h"
+#import "CategoryData.h"
 
 @implementation BookmarkData
 
@@ -50,6 +51,7 @@
 
 - (void)addNewData {
     self.dataId = [Helper generateId];
+    self.sort = [[self category] getBookmarkList].count + 1;
     [[DataManager sharedManager] addBookmark:self];
 }
 

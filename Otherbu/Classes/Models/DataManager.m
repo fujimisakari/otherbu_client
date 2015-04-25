@@ -167,14 +167,17 @@ static DataManager *intance = nil;
 //--------------------------------------------------------------//
 
 - (void)addCategory:(CategoryData *)data {
+    NSLog(@"add Category: %@", data);
     [_categoryDict setObject:data forKey:data.dataId];
 }
 
 - (void)addBookmark:(BookmarkData *)data {
+    NSLog(@"add Bookmark: %@", data);
     [_bookmarkDict setObject:data forKey:data.dataId];
 }
 
 - (void)addPage:(PageData *)data {
+    NSLog(@"add Page: %@", data);
     [_pageDict setObject:data forKey:data.dataId];
 }
 

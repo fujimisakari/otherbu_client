@@ -151,6 +151,7 @@ NSString * const kToWebViewBySegue = @"toWebView";                            //
 NSString * const kToSwapViewBySegue = @"toSwapView";                          // Swapページへ
 NSString * const kToModalViewBySegue = @"toModalView";                        // 編集Modalへ
 NSString * const kToModalBKViewBySegue = @"toModalBKView";                    // ブックマーク編集Modalへ
+NSString * const kToModalPageViewBySegue = @"toModalPageView";                // ページ編集Modalへ
 NSString * const kToSettingBySegue = @"toSetting";                            // 設定ページへ
 NSString * const kToCategoryListBySegue = @"toCateogoryList";                 // 設定ページ → カテゴリへ
 NSString * const kToCategoryOfBookmarkBySegue = @"toCategoryListOfBookmark";  // 設定ページ → ブックマークのカテゴリ選択へ

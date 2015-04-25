@@ -67,6 +67,9 @@
 
 - (void)addNewData {
     self.dataId = [Helper generateId];
+    self.angle = LEFT;
+    self.sort = [DataManager sharedManager].categoryDict.count + 1;
+    self.isOpenSection = NO;
     [[DataManager sharedManager] addCategory:self];
 }
 

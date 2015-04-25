@@ -48,8 +48,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, userId=%ld name=%@ categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@", _dataId, _userId,
-                                      _name, _categoryIdsStr, _angleIdsStr, _sortIdsStr];
+    return [NSString stringWithFormat:@"dataId=%@, userId=%ld name=%@ categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@, sortId=%ld",
+                                      _dataId, _userId, _name, _categoryIdsStr, _angleIdsStr, _sortIdsStr, _sortId];
 }
 
 //--------------------------------------------------------------//
@@ -135,6 +135,7 @@
 }
 
 - (void)updatePageData:(CategoryData *)category isCheckMark:(BOOL)isCheckMark {
+    NSLog(@"updatePageData(befor): %@", self);
     // ページ情報を編集時の処理
     NSString *categoryId = category.dataId;
     NSMutableArray *categoryIdList = (NSMutableArray *)[_categoryIdsStr componentsSeparatedByString:@","];
@@ -174,9 +175,11 @@
     self.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
     self.sortIdsStr = [sortList componentsJoinedByString:@","];
     self.angleIdsStr = [angleList componentsJoinedByString:@","];
+    NSLog(@"updatePageData(after): %@", self);
 }
 
 - (void)updatePageDataBySwap:(NSMutableDictionary *)categoryListOfAngle {
+    NSLog(@"updatePageDataBySwap(befor): %@", self);
     // カテゴリの入れ替えでページ情報更新
     NSMutableArray *categoryIdList = [[NSMutableArray alloc] init];
     NSMutableArray *sortList = [[NSMutableArray alloc] init];
@@ -197,6 +200,7 @@
     self.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
     self.sortIdsStr = [sortList componentsJoinedByString:@","];
     self.angleIdsStr = [angleList componentsJoinedByString:@","];
+    NSLog(@"updatePageDataBySwap(after): %@", self);
 }
 
 - (ColorData *)color {
@@ -213,6 +217,7 @@
 
 - (void)addNewData {
     self.dataId = [Helper generateId];
+    self.sortId = [DataManager sharedManager].pageDict.count + 1;
     [[DataManager sharedManager] addPage:self];
 }
 
