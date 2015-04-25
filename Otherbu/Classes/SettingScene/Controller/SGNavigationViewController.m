@@ -1,5 +1,5 @@
 //
-//  SGSettingNavigationViewController.m
+//  SGNavigationViewController.m
 //  Otherbu
 //
 //  Created by fujimisakari

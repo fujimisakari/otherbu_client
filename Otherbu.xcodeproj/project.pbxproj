@@ -39,7 +39,7 @@
 		7BFDDF551AD9AC3500DD60EF /* SGNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF471AD9AC3500DD60EF /* SGNavigationViewController.m */; };
 		7BFDDF561AD9AC3500DD60EF /* SGPageListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF491AD9AC3500DD60EF /* SGPageListTableViewController.m */; };
 		7BFDDF571AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF4B1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m */; };
-		7BFDDF581AD9AC3500DD60EF /* SGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF4D1AD9AC3500DD60EF /* SGTableViewController.m */; };
+		7BFDDF581AD9AC3500DD60EF /* SGIndexTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF4D1AD9AC3500DD60EF /* SGIndexTableViewController.m */; };
 		7BFDDF5B1AD9AC4A00DD60EF /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF5A1AD9AC4A00DD60EF /* SettingTableViewCell.m */; };
 		7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF5E1AD9AC6F00DD60EF /* DataManager.m */; };
 		7BFDDF621AD9AC6F00DD60EF /* OtherbuAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF601AD9AC6F00DD60EF /* OtherbuAPIClient.m */; };
@@ -131,8 +131,8 @@
 		7BFDDF491AD9AC3500DD60EF /* SGPageListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGPageListTableViewController.m; path = Classes/SettingScene/Controller/SGPageListTableViewController.m; sourceTree = "<group>"; };
 		7BFDDF4A1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGSelectCategoryTableViewController.h; path = Classes/SettingScene/Controller/SGSelectCategoryTableViewController.h; sourceTree = "<group>"; };
 		7BFDDF4B1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGSelectCategoryTableViewController.m; path = Classes/SettingScene/Controller/SGSelectCategoryTableViewController.m; sourceTree = "<group>"; };
-		7BFDDF4C1AD9AC3500DD60EF /* SGTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGTableViewController.h; path = Classes/SettingScene/Controller/SGTableViewController.h; sourceTree = "<group>"; };
-		7BFDDF4D1AD9AC3500DD60EF /* SGTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGTableViewController.m; path = Classes/SettingScene/Controller/SGTableViewController.m; sourceTree = "<group>"; };
+		7BFDDF4C1AD9AC3500DD60EF /* SGIndexTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGIndexTableViewController.h; path = Classes/SettingScene/Controller/SGIndexTableViewController.h; sourceTree = "<group>"; };
+		7BFDDF4D1AD9AC3500DD60EF /* SGIndexTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGIndexTableViewController.m; path = Classes/SettingScene/Controller/SGIndexTableViewController.m; sourceTree = "<group>"; };
 		7BFDDF591AD9AC4A00DD60EF /* SettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingTableViewCell.h; path = Classes/SettingScene/View/SettingTableViewCell.h; sourceTree = "<group>"; };
 		7BFDDF5A1AD9AC4A00DD60EF /* SettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingTableViewCell.m; path = Classes/SettingScene/View/SettingTableViewCell.m; sourceTree = "<group>"; };
 		7BFDDF5C1AD9AC6F00DD60EF /* DataInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataInterface.h; path = Classes/Models/DataInterface.h; sourceTree = "<group>"; };
@@ -375,8 +375,8 @@
 				7BFDDF491AD9AC3500DD60EF /* SGPageListTableViewController.m */,
 				7BFDDF4A1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.h */,
 				7BFDDF4B1AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m */,
-				7BFDDF4C1AD9AC3500DD60EF /* SGTableViewController.h */,
-				7BFDDF4D1AD9AC3500DD60EF /* SGTableViewController.m */,
+				7BFDDF4C1AD9AC3500DD60EF /* SGIndexTableViewController.h */,
+				7BFDDF4D1AD9AC3500DD60EF /* SGIndexTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -638,7 +638,7 @@
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
 				7BFDDF571AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m in Sources */,
 				7BC347FB1AE9378600D5B733 /* SwapSectionHeaderView.m in Sources */,
-				7BFDDF581AD9AC3500DD60EF /* SGTableViewController.m in Sources */,
+				7BFDDF581AD9AC3500DD60EF /* SGIndexTableViewController.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  SGSettingBaseTableViewController.h
+//  SGBaseTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari

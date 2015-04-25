@@ -1,5 +1,5 @@
 //
-//  SGSettingTableViewController.h
+//  SGIndexTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,6 +8,6 @@
 
 #import "SGBaseTableViewController.h"
 
-@interface SGTableViewController : SGBaseTableViewController
+@interface SGIndexTableViewController : SGBaseTableViewController
 
 @end
