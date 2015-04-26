@@ -9,6 +9,7 @@
 #import "ModalViewController.h"
 #import "ModalView.h"
 #import "ModalPageViewController.h"
+#import "ModalValidatedAlertView.h"
 #import "PageData.h"
 #import "ColorData.h"
 
@@ -17,6 +18,7 @@
     NSArray *_colorList;
     NSString *_colorId;
     UICollectionViewCell *_colorSelectCell;
+    ModalValidatedAlertView *_validatedAlert;
 }
 
 @end
@@ -50,6 +52,10 @@
     _modalView.collectionView.delegate = self;
     _modalView.collectionView.dataSource = self;
     _modalView.nameTextField.delegate = self;
+
+    // バリデートの警告View生成
+    _validatedAlert = [[ModalValidatedAlertView alloc] init];
+    [_validatedAlert setup];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -148,6 +154,12 @@
 
 - (void)didPressUpdateButton {
     // 新規追加、更新時
+
+    // バリデートチェック
+    if ([_modalView.nameTextField.text isEqualToString:@""] || !_colorId) {
+        [_validatedAlert show];
+        return;
+    }
 
     [_editItem iSetName:_modalView.nameTextField.text];
     [_editItem iSetColorId:_colorId];

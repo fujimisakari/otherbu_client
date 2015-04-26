@@ -8,12 +8,14 @@
 
 #import "ModalBKViewController.h"
 #import "ModalBKView.h"
+#import "ModalValidatedAlertView.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
 
 @interface ModalBKViewController () {
     ModalBKView *_modalView;
     NSArray *_categoryList;
+    ModalValidatedAlertView *_validatedAlert;
 }
 
 @end
@@ -46,6 +48,10 @@
     if (![_editItem isCreateMode]) {
         [self _pickerSelectRow];
     }
+
+    // バリデートの警告View生成
+    _validatedAlert = [[ModalValidatedAlertView alloc] init];
+    [_validatedAlert setup];
 }
 
 - (UIModalPresentationStyle)modalPresentationStyle {
@@ -99,6 +105,13 @@
 
 - (void)didPressUpdateButton {
     // 新規追加、更新時
+
+    // バリデートチェック
+    if ([_modalView.nameTextField.text isEqualToString:@""] || [_modalView.nameTextField.text isEqualToString:@""] ||
+        _categoryList.count == 0) {
+        [_validatedAlert show];
+        return;
+    }
 
     // 名前
     [_editItem iSetName:_modalView.nameTextField.text];

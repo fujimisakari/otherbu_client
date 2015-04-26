@@ -43,7 +43,7 @@
 - (void)_createConfirmAlertView {
     _confirmAlert = [[UIAlertView alloc] init];
     _confirmAlert.delegate = self;
-    _confirmAlert.title = @"カテゴリの削除";
+    _confirmAlert.title = @"Categoryの削除";
     [_confirmAlert addButtonWithTitle:@"Cancel"];
     [_confirmAlert addButtonWithTitle:@"OK"];
     _confirmAlert.cancelButtonIndex = 0;
@@ -74,7 +74,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         _deleteIndexPath = indexPath;
         CategoryData *category = _categoryList[indexPath.row];
-        _confirmAlert.message = [NSString stringWithFormat:@"%@に設定されているブックマークも削除されますがよろしいですか？", category.name];
+        _confirmAlert.message = [NSString stringWithFormat:@"%@に設定されているBookmarkも削除されますがよろしいですか？", category.name];
         [_confirmAlert show];
     }
 }

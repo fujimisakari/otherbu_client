@@ -48,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self refreshBookmarks:self];
+    // [self refreshBookmarks:self];
 
     // 初期値設定
     float marginOfHeight = _navigationBar.frame.size.height + _tabScrollView.frame.size.height + _tabFrameView.frame.size.height;
@@ -124,7 +124,7 @@
         [self performSegueWithIdentifier:kToModalBKViewBySegue sender:self];
     };
 
-    _alertController = [MainAlertController alertControllerWithTitle:@"新規追加"
+    _alertController = [MainAlertController alertControllerWithTitle:@""
                                                              message:@"追加する項目を選んでください"
                                                       preferredStyle:UIAlertControllerStyleActionSheet];
     [_alertController setActionDict:actionDict];
