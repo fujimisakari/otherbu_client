@@ -7,6 +7,7 @@
 //
 
 #import "SGEditPageTableViewController.h"
+#import "DescHeaderView.h"
 #import "PageData.h"
 #import "CategoryData.h"
 
@@ -21,6 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // 説明Headerを追加
+    DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
+    CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
+    [descHeaderView setupWithCGSize:size descMessage:@"Pageに入れるCategoryの選択ができます"];
+    [self.tableView setTableHeaderView:descHeaderView];
 
     _categoryList = [[DataManager sharedManager] getCategoryList];
     _categoryListOfPage = [_page getCategoryList];

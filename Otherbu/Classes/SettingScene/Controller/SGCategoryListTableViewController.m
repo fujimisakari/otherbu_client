@@ -7,6 +7,7 @@
 //
 
 #import "SGCategoryListTableViewController.h"
+#import "DescHeaderView.h"
 #import "CategoryData.h"
 
 @interface SGCategoryListTableViewController () {
@@ -21,6 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // 説明Headerを追加
+    DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
+    CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
+    [descHeaderView setupWithCGSize:size descMessage:@"Categoryの削除ができます"];
+    [self.tableView setTableHeaderView:descHeaderView];
 
     self.editing = YES;
     _categoryList = [[DataManager sharedManager] getCategoryList];

@@ -7,6 +7,7 @@
 //
 
 #import "SGBookmarkTableViewController.h"
+#import "DescHeaderView.h"
 #import "BookmarkData.h"
 #import "CategoryData.h"
 
@@ -20,6 +21,12 @@
     [super viewDidLoad];
     self.navigationItem.title = _category.name;
     self.editing = YES;
+
+    // 説明Headerを追加
+    DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
+    CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
+    [descHeaderView setupWithCGSize:size descMessage:@"Bookmarkの並び替え、削除ができます"];
+    [self.tableView setTableHeaderView:descHeaderView];
 }
 
 //--------------------------------------------------------------//

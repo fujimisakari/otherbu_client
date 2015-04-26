@@ -8,6 +8,7 @@
 
 #import "ModalPageViewController.h"
 #import "NavigationBar.h"
+#import "DescHeaderView.h"
 #import "CategoryData.h"
 #import "SettingTableViewCell.h"
 #import "PageData.h"
@@ -29,8 +30,11 @@
 
     [_tableView registerClass:[SettingTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
 
-    // UITableViewの一番上に隙間が出来てしまう問題の対応
-    // [_tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0.1, 20)]];
+    // 説明Headerを追加
+    DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
+    CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
+    [descHeaderView setupWithCGSize:size descMessage:@"Pageに入れるCategoryの選択ができます"];
+    [self.tableView setTableHeaderView:descHeaderView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

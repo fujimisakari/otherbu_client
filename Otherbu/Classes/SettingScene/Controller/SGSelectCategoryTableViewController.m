@@ -8,6 +8,7 @@
 
 #import "SGSelectCategoryTableViewController.h"
 #import "CategoryData.h"
+#import "DescHeaderView.h"
 #import "SGBookmarkTableViewController.h"
 
 @interface SGSelectCategoryTableViewController ()  {
@@ -21,6 +22,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    // 説明Headerを追加
+    DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
+    CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
+    [descHeaderView setupWithCGSize:size descMessage:@"BookmarkのCategoryを選択ください"];
+    [self.tableView setTableHeaderView:descHeaderView];
 
     _categoryList = [[DataManager sharedManager] getCategoryList];
 }

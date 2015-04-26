@@ -9,6 +9,7 @@
 #import "SGPageListTableViewController.h"
 #import "SGEditPageTableViewController.h"
 #import "SettingTableViewCell.h"
+#import "DescHeaderView.h"
 #import "PageData.h"
 
 @interface SGPageListTableViewController () {
@@ -23,6 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _pageList = [[DataManager sharedManager] getPageList];
+
+    // 説明Headerを追加
+    DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
+    CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
+    [descHeaderView setupWithCGSize:size descMessage:@"Pageの並び替え、削除ができます"];
+    [self.tableView setTableHeaderView:descHeaderView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
