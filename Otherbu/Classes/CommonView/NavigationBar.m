@@ -36,7 +36,8 @@
 
 - (void)setButtonInMainScene {
     UIBarButtonItem *addButton = [self _getAddButton];
-    self.topItem.leftBarButtonItem = addButton;
+    UIBarButtonItem *searchButton = [self _getSearchButton];
+    self.topItem.leftBarButtonItems = @[ addButton, searchButton ];
 
     UIBarButtonItem *settingBtn = [self _getSettingButton];
     UIBarButtonItem *swapButton = [self _getSwapButton];
@@ -57,7 +58,7 @@
 }
 
 - (void)deleteButtonInMainScene {
-    self.topItem.leftBarButtonItem = nil;
+    self.topItem.leftBarButtonItems = nil;
     self.topItem.rightBarButtonItems = nil;
 }
 
@@ -76,29 +77,35 @@
 
 - (UIBarButtonItem *)_getSettingButton {
     // Settingボタンを設置する
-    UIBarButtonItem *settingButton =
+    UIBarButtonItem *button =
         [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kSettingIcon] style:UIBarButtonItemStylePlain target:nil action:nil];
-    return settingButton;
+    return button;
+}
+
+- (UIBarButtonItem *)_getSearchButton {
+    // 検索ボタンを設置する
+    UIBarButtonItem *button =
+        [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kSearchIcon] style:UIBarButtonItemStylePlain target:nil action:nil];
+    return button;
 }
 
 - (UIBarButtonItem *)_getAddButton {
     // 項目追加ボタンを設置する
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
-    return addButton;
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:nil action:nil];
+    return button;
 }
 
 - (UIBarButtonItem *)_getSwapButton {
     // 入れ替えボタンを設置する
-    UIBarButtonItem *swapButton =
+    UIBarButtonItem *button =
         [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:kSwapIcon] style:UIBarButtonItemStylePlain target:nil action:nil];
-    return swapButton;
+    return button;
 }
 
 - (UIBarButtonItem *)_getCloseButton {
     // Xボタンを設置する
-    UIBarButtonItem *closeButton =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:nil action:nil];
-    return closeButton;
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:nil action:nil];
+    return button;
 }
 
 @end

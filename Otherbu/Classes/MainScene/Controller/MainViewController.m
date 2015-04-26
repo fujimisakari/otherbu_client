@@ -95,11 +95,15 @@
 - (void)_setupNavigationBar {
     [_navigationBar setup];
     [_navigationBar setButtonInMainScene];
-    _navigationBar.topItem.leftBarButtonItem.target = self;
-    _navigationBar.topItem.leftBarButtonItem.action = @selector(_actionListAlertView:);
-    UIBarButtonItem *addButton = _navigationBar.topItem.rightBarButtonItems[0];
+    UIBarButtonItem *addButton = _navigationBar.topItem.leftBarButtonItems[0];
     addButton.target = self;
-    addButton.action = @selector(_openSettingView:);
+    addButton.action = @selector(_actionListAlertView:);
+    UIBarButtonItem *searchButton = _navigationBar.topItem.leftBarButtonItems[1];
+    searchButton.target = self;
+    searchButton.action = @selector(_openWebView:);
+    UIBarButtonItem *settingButton = _navigationBar.topItem.rightBarButtonItems[0];
+    settingButton.target = self;
+    settingButton.action = @selector(_openSettingView:);
     UIBarButtonItem *swapButton = _navigationBar.topItem.rightBarButtonItems[1];
     swapButton.target = self;
     swapButton.action = @selector(_openSwapView:);
@@ -390,6 +394,13 @@
 
 - (void)_openSettingView:(UIButton *)sender {
     [self performSegueWithIdentifier:kToSettingBySegue sender:self];
+}
+
+- (void)_openWebView:(UIButton *)sender {
+    BookmarkData *bookmark = [[BookmarkData alloc] init];
+    bookmark.url = @"https://www.google.co.jp/";
+    _selectBookmark = bookmark;
+    [self performSegueWithIdentifier:kToWebViewBySegue sender:self];
 }
 
 - (void)_openSwapView:(UIButton *)sender {
