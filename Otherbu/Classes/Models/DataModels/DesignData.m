@@ -26,6 +26,8 @@ static DesignData *intance = nil;
 - (id)init {
     self = [super init];
     if (self) {
+        self.tableBackGroundColor = @"#1e1e1e";
+        self.bookmarkColor = @"#ffffff";
         self.urlColor = @"#808080";
     }
     return self;
