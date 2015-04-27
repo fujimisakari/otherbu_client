@@ -50,6 +50,9 @@
 
     // [self refreshBookmarks:self];
 
+    UserData *user = [[DataManager sharedManager] getUser];
+    _currentPage = [user page];
+
     // 初期値設定
     float marginOfHeight = _navigationBar.frame.size.height + _tabScrollView.frame.size.height + _tabFrameView.frame.size.height;
     _viewWidth = self.view.frame.size.width;
@@ -71,15 +74,15 @@
                              self.view.frame.size.width, self.view.frame.size.height);
     [Helper setupBackgroundImage:rect TargetView:self.view];
 
-    // pageTabViewを配置
-    [self _createPageTabViews];
-    [self _moveTabScroll:_currentPageTabView];
-
     // tableを最新に更新
     if (_currentPage) {
         _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
         [_scrollView reloadTableData];
     }
+
+    // pageTabViewを配置
+    [self _createPageTabViews];
+    [self _moveTabScroll:_currentPageTabView];
 
     // 項目追加用のActionSheetを準備
     [self _setupActionSheet];
@@ -354,6 +357,13 @@
 
 - (void)returnActionOfModal:(NSInteger)menuId {
     // モーダル編集画面で更新した場合の処理
+
+    //
+    if ([_currentPage.dataId isEqualToString:kDefaultPageDataId]) {
+        _currentPage = [[DataManager sharedManager] getPage:_currentPage.dataId];
+        _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
+    }
+
     switch (menuId) {
         case MENU_PAGE :
             [self _removePageTabViews];
@@ -364,7 +374,7 @@
             [_scrollView reloadTableData];
             break;
         case MENU_CATEGORY :
-            [_scrollView reloadTableDataWithAngleID:[self _getCurrentAngleId]];
+            [_scrollView reloadTableData];
             break;
     }
 }

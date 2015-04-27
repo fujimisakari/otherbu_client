@@ -103,10 +103,12 @@
     NSMutableDictionary *resultDict = [[NSMutableDictionary alloc] init];
     NSArray *_list = [strData componentsSeparatedByString:@","];
     for (NSString *data in _list) {
-        NSArray *aList = [data componentsSeparatedByString:@":"];
-        NSString *categoryId = aList[0];
-        NSNumber *argId = [Helper getNumberByInt:[aList[1] intValue]];
-        [resultDict setObject:argId forKey:categoryId];
+        if (data.length) {
+            NSArray *aList = [data componentsSeparatedByString:@":"];
+            NSString *categoryId = aList[0];
+            NSNumber *argId = [Helper getNumberByInt:[aList[1] intValue]];
+            [resultDict setObject:argId forKey:categoryId];
+        }
     }
     return resultDict;
 }
@@ -135,7 +137,7 @@
 }
 
 - (void)updatePageData:(CategoryData *)category isCheckMark:(BOOL)isCheckMark {
-    NSLog(@"updatePageData(befor): %@", self);
+    LOG(@"== updatePageData(befor) ==\n%@\n", self);
     // ページ情報を編集時の処理
     NSString *categoryId = category.dataId;
     NSMutableArray *categoryIdList = (NSMutableArray *)[_categoryIdsStr componentsSeparatedByString:@","];
@@ -175,11 +177,11 @@
     self.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
     self.sortIdsStr = [sortList componentsJoinedByString:@","];
     self.angleIdsStr = [angleList componentsJoinedByString:@","];
-    NSLog(@"updatePageData(after): %@", self);
+    LOG(@"== updatePageData(after) ==\n%@\n", self);
 }
 
 - (void)updatePageDataBySwap:(NSMutableDictionary *)categoryListOfAngle {
-    NSLog(@"updatePageDataBySwap(befor): %@", self);
+    LOG(@"== updatePageDataBySwap(befor) ==\n%@\n", self);
     // カテゴリの入れ替えでページ情報更新
     NSMutableArray *categoryIdList = [[NSMutableArray alloc] init];
     NSMutableArray *sortList = [[NSMutableArray alloc] init];
@@ -200,7 +202,7 @@
     self.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
     self.sortIdsStr = [sortList componentsJoinedByString:@","];
     self.angleIdsStr = [angleList componentsJoinedByString:@","];
-    NSLog(@"updatePageDataBySwap(after): %@", self);
+    LOG(@"== updatePageDataBySwap(after) ==\n%@\n", self);
 }
 
 - (ColorData *)color {

@@ -164,10 +164,18 @@
     [_editItem iSetName:_modalView.nameTextField.text];
     [_editItem iSetColorId:_colorId];
 
-    if ([_editItem isCreateMode] && [_editItem iGetMenuId] == MENU_PAGE) {
-        [_editItem addNewData];
-        [self performSegueWithIdentifier:kToModalPageViewBySegue sender:self];
+    if ([_editItem iGetMenuId] == MENU_PAGE) {
+        if ([_editItem isCreateMode]) {
+            [_editItem addNewData];
+            [self performSegueWithIdentifier:kToModalPageViewBySegue sender:self];
+        } else {
+            [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
     } else {
+        if ([_editItem isCreateMode]) {
+            [_editItem addNewData];
+        }
         [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
         [self dismissViewControllerAnimated:YES completion:nil];
     }

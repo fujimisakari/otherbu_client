@@ -46,6 +46,11 @@ static DataManager *intance = nil;
         self.bookmarkDict = [@{} mutableCopy];
         self.colorDict = [@{} mutableCopy];
         self.design = [DesignData shared];
+
+        for (NSDictionary *colorDict in [LocalMasterData initColorData]) {
+            ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
+            [_colorDict setObject:data forKey:data.dataId];
+        }
     }
     return self;
 }
@@ -74,7 +79,8 @@ static DataManager *intance = nil;
 }
 
 - (PageData *)getPage:(NSString *)dataId {
-    return _pageDict[dataId];
+    PageData *data = ([dataId isEqualToString:kDefaultPageDataId]) ? [self _getPageOfAllCategory] : _pageDict[dataId];
+    return data;
 }
 
 - (CategoryData *)getCategory:(NSString *)dataId {
@@ -137,12 +143,10 @@ static DataManager *intance = nil;
     for (NSString *key in self.pageDict) {
         [itemList addObject:[self getPage:key]];
     }
-
-    for (NSString *key in self.pageDict) {
-        PageData *page = [self getPage:key];
-        itemList[page.sortId] = page;
-    }
-    return itemList;
+    // sort番号で昇順ソート
+    NSArray *_resultList = [Helper doSortArrayWithKey:@"sortId" Array:itemList];
+    NSMutableArray *resultList = [_resultList mutableCopy];
+    return resultList;
 }
 
 - (NSMutableArray *)getPageListForMainScene {
@@ -167,17 +171,17 @@ static DataManager *intance = nil;
 //--------------------------------------------------------------//
 
 - (void)addCategory:(CategoryData *)data {
-    NSLog(@"add Category: %@", data);
+    LOG(@"== add Category ==\n%@\n", data);
     [_categoryDict setObject:data forKey:data.dataId];
 }
 
 - (void)addBookmark:(BookmarkData *)data {
-    NSLog(@"add Bookmark: %@", data);
+    LOG(@"== add Bookmark ==\n%@\n", data);
     [_bookmarkDict setObject:data forKey:data.dataId];
 }
 
 - (void)addPage:(PageData *)data {
-    NSLog(@"add Page: %@", data);
+    LOG(@"== add Page ==\n%@\n", data);
     [_pageDict setObject:data forKey:data.dataId];
 }
 

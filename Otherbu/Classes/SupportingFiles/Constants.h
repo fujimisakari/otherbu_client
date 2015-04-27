@@ -30,6 +30,7 @@ extern const float kOffsetYOfTitle;
 extern NSString * const kDefaultFont;
 extern NSString * const kDefaultImageName;
 extern NSString * const kCellIdentifier;
+extern NSString * const kDefaultPageDataId;
 extern const int kNumberOfPages;
 
 extern NSString * const kTextFieldColorOfModal;

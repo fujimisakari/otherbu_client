@@ -16,6 +16,7 @@
 		7B565EFF1A92486F00D6A420 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B565EFD1A92486F00D6A420 /* Main.storyboard */; };
 		7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B565F021A92486F00D6A420 /* LaunchScreen.xib */; };
 		7B565F101A92486F00D6A420 /* OtherbuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F0F1A92486F00D6A420 /* OtherbuTests.m */; };
+		7B5F37221AEEBA3F00CF48F9 /* LocalMasterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37211AEEBA3F00CF48F9 /* LocalMasterData.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
@@ -88,6 +89,8 @@
 		7B565F091A92486F00D6A420 /* OtherbuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OtherbuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B565F0E1A92486F00D6A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B565F0F1A92486F00D6A420 /* OtherbuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherbuTests.m; sourceTree = "<group>"; };
+		7B5F37201AEEBA3F00CF48F9 /* LocalMasterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalMasterData.h; path = Classes/Models/LocalMasterData.h; sourceTree = "<group>"; };
+		7B5F37211AEEBA3F00CF48F9 /* LocalMasterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalMasterData.m; path = Classes/Models/LocalMasterData.m; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
@@ -326,6 +329,8 @@
 				7BFDDF5E1AD9AC6F00DD60EF /* DataManager.m */,
 				7BFDDF5F1AD9AC6F00DD60EF /* OtherbuAPIClient.h */,
 				7BFDDF601AD9AC6F00DD60EF /* OtherbuAPIClient.m */,
+				7B5F37201AEEBA3F00CF48F9 /* LocalMasterData.h */,
+				7B5F37211AEEBA3F00CF48F9 /* LocalMasterData.m */,
 				7BFDDEA01AD99EE900DD60EF /* DataModels */,
 			);
 			name = Models;
@@ -643,6 +648,7 @@
 				7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */,
 				7BFDDF721AD9AC8400DD60EF /* DesignData.m in Sources */,
 				7BFDDF701AD9AC8400DD60EF /* CategoryData.m in Sources */,
+				7B5F37221AEEBA3F00CF48F9 /* LocalMasterData.m in Sources */,
 				7BFDDF711AD9AC8400DD60EF /* ColorData.m in Sources */,
 				7B5346F01AE35D2D008DA1EB /* ModalBaseView.m in Sources */,
 				7BE2B4551AECC58B00A30F67 /* DescHeaderView.m in Sources */,

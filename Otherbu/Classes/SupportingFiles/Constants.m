@@ -25,6 +25,7 @@ const float kOffsetYOfTitle = -2;                            // タイトル名�
 NSString * const kDefaultFont = @"Helvetica";                // デフォルトフォント名
 NSString * const kDefaultImageName = @"wood-wallpeper.jpg";  // デフォルト背景
 NSString * const kCellIdentifier = @"Cell";                  // セルの識別子
+NSString * const kDefaultPageDataId = @"AllCategory";        // デフォルトのPageの識別子
 const int kNumberOfPages = 3;                                // ページ数
 
 //--------------------------------------------------------------//

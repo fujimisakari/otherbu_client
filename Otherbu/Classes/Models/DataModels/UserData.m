@@ -27,7 +27,7 @@ static UserData *intance = nil;
     self = [super init];
     if (self) {
         self.dataId = [Helper generateId];
-        self.pageId = @"0";
+        self.pageId = kDefaultPageDataId;
     }
     return self;
 }

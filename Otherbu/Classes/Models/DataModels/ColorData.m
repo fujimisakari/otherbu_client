@@ -30,6 +30,13 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"dataId=%@, name=%@ font_color=%@, icon_color=%@, sort=%ld, color_code1=%@, color_code2=%@, "
+                                       "color_code3=%@, thumbnail_color_code=%@",
+                                      _dataId, _name, _font_color, _icon_color, _sort, _color_code1, _color_code2, _color_code3,
+                                      _thumbnail_color_code];
+}
+
 //--------------------------------------------------------------//
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
