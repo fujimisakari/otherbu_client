@@ -128,10 +128,22 @@ const int kHeightOfSettingDesc = 30;                         // Setting画面の
 #pragma mark -- Menu Of Setting View --
 //--------------------------------------------------------------//
 
+NSString * const kMenuSectionName1 = @"各種設定";
+NSString * const kMenuSectionName2 = @"Webと連携";
+NSString * const kMenuSectionName3 = @"このアプリについて";
+
 NSString * const kMenuBookmarkName = @"Bookmark";
 NSString * const kMenuCategoryName = @"Category";
 NSString * const kMenuPageName = @"Page";
 NSString * const kMenuDesignName = @"Design";
+NSString * const kMenuSearchName = @"検索サイト";
+NSString * const kMenuSyncName = @"同期";
+NSString * const kMenuSigninName = @"サインイン";
+NSString * const kMenuSignOutName = @"サインアウト";
+NSString * const kMenuHelpName = @"ヘルプ";
+NSString * const kMenuReviewName = @"レビューを書く";
+NSString * const kMenuWebSiteName = @"アプリのWebサイト";
+NSString * const kMenuVersionName = @"バージョン";
 
 //--------------------------------------------------------------//
 #pragma mark -- IconName --

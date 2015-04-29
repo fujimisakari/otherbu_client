@@ -17,6 +17,7 @@
 		7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B565F021A92486F00D6A420 /* LaunchScreen.xib */; };
 		7B565F101A92486F00D6A420 /* OtherbuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F0F1A92486F00D6A420 /* OtherbuTests.m */; };
 		7B5F37221AEEBA3F00CF48F9 /* LocalMasterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37211AEEBA3F00CF48F9 /* LocalMasterData.m */; };
+		7B5F37281AF131A100CF48F9 /* SGSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37271AF131A100CF48F9 /* SGSectionHeaderView.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
@@ -91,6 +92,8 @@
 		7B565F0F1A92486F00D6A420 /* OtherbuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherbuTests.m; sourceTree = "<group>"; };
 		7B5F37201AEEBA3F00CF48F9 /* LocalMasterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalMasterData.h; path = Classes/Models/LocalMasterData.h; sourceTree = "<group>"; };
 		7B5F37211AEEBA3F00CF48F9 /* LocalMasterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalMasterData.m; path = Classes/Models/LocalMasterData.m; sourceTree = "<group>"; };
+		7B5F37261AF131A100CF48F9 /* SGSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGSectionHeaderView.h; path = Classes/SettingScene/View/SGSectionHeaderView.h; sourceTree = "<group>"; };
+		7B5F37271AF131A100CF48F9 /* SGSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGSectionHeaderView.m; path = Classes/SettingScene/View/SGSectionHeaderView.m; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
@@ -459,6 +462,8 @@
 				7BFDDF5A1AD9AC4A00DD60EF /* SettingTableViewCell.m */,
 				7BE2B4531AECC58B00A30F67 /* DescHeaderView.h */,
 				7BE2B4541AECC58B00A30F67 /* DescHeaderView.m */,
+				7B5F37261AF131A100CF48F9 /* SGSectionHeaderView.h */,
+				7B5F37271AF131A100CF48F9 /* SGSectionHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -683,6 +688,7 @@
 				7B5346F21AE35D2D008DA1EB /* ModalView.m in Sources */,
 				7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */,
 				7BFDDF551AD9AC3500DD60EF /* SGNavigationViewController.m in Sources */,
+				7B5F37281AF131A100CF48F9 /* SGSectionHeaderView.m in Sources */,
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
 				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,
 				7BFDDF811AD9AD1800DD60EF /* main.m in Sources */,

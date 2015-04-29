@@ -20,6 +20,13 @@ typedef NS_ENUM(NSUInteger, MenuList) {
     MENU_CATEGORY,
     MENU_PAGE,
     MENU_DESIGN,
+    MENU_SEARCH,
+    MENU_SYNC,
+    MENU_SIGN,
+    MENU_HELP,
+    MENU_REVIEW,
+    MENU_WEBSITE,
+    MENU_VERSION,
     LastMenu,
 };
 
@@ -97,10 +104,22 @@ extern const int kFontSizeOfSettingDesc;
 extern const int kMarginOfSettingDesc;
 extern const int kHeightOfSettingDesc;
 
+extern NSString * const kMenuSectionName1;
+extern NSString * const kMenuSectionName2;
+extern NSString * const kMenuSectionName3;
+
 extern NSString * const kMenuBookmarkName;
 extern NSString * const kMenuCategoryName;
 extern NSString * const kMenuPageName;
 extern NSString * const kMenuDesignName;
+extern NSString * const kMenuSearchName;
+extern NSString * const kMenuSyncName;
+extern NSString * const kMenuSigninName;
+extern NSString * const kMenuSignOutName;
+extern NSString * const kMenuHelpName;
+extern NSString * const kMenuReviewName;
+extern NSString * const kMenuWebSiteName;
+extern NSString * const kMenuVersionName;
 
 extern NSString * const kSettingIcon;
 extern NSString * const kSwapIcon;
