@@ -250,10 +250,9 @@
 - (void)_setVersionItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:2];
     dict[@"menuName"] = kMenuVersionName;
-    dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
-    dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToPageListBySegue sender:self];
-    };
+    dict[@"menuName"] = [NSString stringWithFormat:@"%@         %@", kMenuVersionName, kAppVersion];
+    dict[@"iconImage"] = [UIImage imageNamed:kVersionIcon];
+    dict[@"block"] = ^() {};
 }
 
 @end

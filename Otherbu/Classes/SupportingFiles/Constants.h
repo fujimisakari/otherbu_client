@@ -34,6 +34,7 @@ extern NSString * const kTitle;
 extern const int kFontSizeOfTitle;
 extern const float kOffsetYOfTitle;
 
+extern NSString * const kAppVersion;
 extern NSString * const kDefaultFont;
 extern NSString * const kDefaultImageName;
 extern NSString * const kCellIdentifier;
@@ -136,6 +137,7 @@ extern NSString * const kSignOutIcon;
 extern NSString * const kHelpIcon;
 extern NSString * const kWebSiteIcon;
 extern NSString * const kReviewIcon;
+extern NSString * const kVersionIcon;
 extern NSString * const kRighttArrowIcon;
 extern NSString * const kCheckMarkIcon;
 

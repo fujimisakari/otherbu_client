@@ -22,11 +22,13 @@ const float kOffsetYOfTitle = -2;                            // タイトル名�
 #pragma mark -- Default Value --
 //--------------------------------------------------------------//
 
+NSString * const kAppVersion = @"1.0.0";                     // アプリのバージョン
 NSString * const kDefaultFont = @"Helvetica";                // デフォルトフォント名
 NSString * const kDefaultImageName = @"wood-wallpeper.jpg";  // デフォルト背景
 NSString * const kCellIdentifier = @"Cell";                  // セルの識別子
 NSString * const kDefaultPageDataId = @"AllCategory";        // デフォルトのPageの識別子
 const int kNumberOfPages = 3;                                // ページ数
+
 
 //--------------------------------------------------------------//
 #pragma mark -- Color Hex --
@@ -164,6 +166,7 @@ NSString * const kSyncIcon = @"syncIcon.png";
 NSString * const kHelpIcon = @"helpIcon.png";
 NSString * const kWebSiteIcon = @"webSiteIcon.png";
 NSString * const kReviewIcon = @"reviewIcon.png";
+NSString * const kVersionIcon = @"versionIcon.png";
 NSString * const kRighttArrowIcon = @"righttArrowIcon.png";
 NSString * const kCheckMarkIcon = @"checkMarkIcon.png";
 
