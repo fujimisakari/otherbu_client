@@ -129,6 +129,13 @@ extern NSString * const kBookmarkIcon;
 extern NSString * const kCategoryIcon;
 extern NSString * const kPageIcon;
 extern NSString * const kDesignIcon;
+extern NSString * const kBlackSearchIcon;
+extern NSString * const kSyncIcon;
+extern NSString * const kSignInIcon;
+extern NSString * const kSignOutIcon;
+extern NSString * const kHelpIcon;
+extern NSString * const kWebSiteIcon;
+extern NSString * const kReviewIcon;
 extern NSString * const kRighttArrowIcon;
 extern NSString * const kCheckMarkIcon;
 

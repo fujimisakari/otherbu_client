@@ -157,6 +157,13 @@ NSString * const kBookmarkIcon = @"bookmarkIcon.png";
 NSString * const kCategoryIcon = @"categoryIcon.png";
 NSString * const kPageIcon = @"pageIcon.png";
 NSString * const kDesignIcon = @"designIcon.png";
+NSString * const kSignInIcon = @"signInIcon.png";
+NSString * const kSignOutIcon = @"signOutIcon.png";
+NSString * const kBlackSearchIcon = @"blackSearchIcon.png";
+NSString * const kSyncIcon = @"syncIcon.png";
+NSString * const kHelpIcon = @"helpIcon.png";
+NSString * const kWebSiteIcon = @"webSiteIcon.png";
+NSString * const kReviewIcon = @"reviewIcon.png";
 NSString * const kRighttArrowIcon = @"righttArrowIcon.png";
 NSString * const kCheckMarkIcon = @"checkMarkIcon.png";
 

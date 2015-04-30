@@ -196,7 +196,7 @@
 - (void)_setSearchItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:0];
     dict[@"menuName"] = [NSString stringWithFormat:@"%@%@", kMenuSearchName, @"設定"];
-    dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
+    dict[@"iconImage"] = [UIImage imageNamed:kBlackSearchIcon];
     dict[@"block"] = ^() {
         [self performSegueWithIdentifier:kToPageListBySegue sender:self];
     };
@@ -205,7 +205,7 @@
 - (void)_setSyncItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:1];
     dict[@"menuName"] = kMenuSyncName;
-    dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
+    dict[@"iconImage"] = [UIImage imageNamed:kSyncIcon];
     dict[@"block"] = ^() {
         [self performSegueWithIdentifier:kToPageListBySegue sender:self];
     };
@@ -214,7 +214,7 @@
 - (void)_setSignItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:1];
     dict[@"menuName"] = kMenuSigninName;
-    dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
+    dict[@"iconImage"] = [UIImage imageNamed:kSignInIcon];
     dict[@"block"] = ^() {
         [self performSegueWithIdentifier:kToPageListBySegue sender:self];
     };
@@ -223,7 +223,7 @@
 - (void)_setHelpItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:2];
     dict[@"menuName"] = kMenuHelpName;
-    dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
+    dict[@"iconImage"] = [UIImage imageNamed:kHelpIcon];
     dict[@"block"] = ^() {
         [self performSegueWithIdentifier:kToPageListBySegue sender:self];
     };
@@ -232,7 +232,7 @@
 - (void)_setReviewItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:2];
     dict[@"menuName"] = kMenuReviewName;
-    dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
+    dict[@"iconImage"] = [UIImage imageNamed:kReviewIcon];
     dict[@"block"] = ^() {
         [self performSegueWithIdentifier:kToPageListBySegue sender:self];
     };
@@ -241,7 +241,7 @@
 - (void)_setWebSiteItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:2];
     dict[@"menuName"] = kMenuWebSiteName;
-    dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
+    dict[@"iconImage"] = [UIImage imageNamed:kWebSiteIcon];
     dict[@"block"] = ^() {
         [self performSegueWithIdentifier:kToPageListBySegue sender:self];
     };
