@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SectionHeaderView.h"
+#import "MainSectionHeaderView.h"
 #import "PageTabView.h"
 #import "MainTableCellView.h"
 #import "ModalInterface.h"

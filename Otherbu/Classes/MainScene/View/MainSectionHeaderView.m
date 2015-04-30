@@ -1,16 +1,16 @@
 //
-//  SectionHeaderView.m
+//  MainSectionHeaderView.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SectionHeaderView.h"
+#import "MainSectionHeaderView.h"
 #import "CategoryData.h"
 #import "ColorData.h"
 
-@interface SectionHeaderView () {
+@interface MainSectionHeaderView () {
     UIImageView  *_arrowImgView;
     UIImage      *_downImg;
     UIImage      *_rightImg;
@@ -25,7 +25,7 @@
 
 @end
 
-@implementation SectionHeaderView
+@implementation MainSectionHeaderView
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --

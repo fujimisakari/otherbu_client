@@ -8,7 +8,7 @@
 
 #import "SGIndexTableViewController.h"
 #import "SettingTableViewCell.h"
-#import "SGSectionHeaderView.h"
+#import "SectionHeaderView.h"
 
 @interface SGIndexTableViewController () {
     NSArray *_menuSectionList;
@@ -77,8 +77,8 @@
     NSString *sectionName = _menuSectionList[section];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, kHeightOfSettingDesc);
 
-    SGSectionHeaderView *sectionView = [[SGSectionHeaderView alloc] initWithFrame:frame];
-    [sectionView setup:sectionName];
+    SectionHeaderView *sectionView = [[SectionHeaderView alloc] initWithFrame:frame];
+    [sectionView setup:sectionName FontSize:kFontSizeOfSettingDesc];
     return sectionView;
 }
 

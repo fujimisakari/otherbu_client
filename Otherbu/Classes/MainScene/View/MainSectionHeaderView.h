@@ -1,5 +1,5 @@
 //
-//  SectionHeaderView.h
+//  MainSectionHeaderView.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -15,7 +15,7 @@
 
 @end
 
-@interface SectionHeaderView : UIView
+@interface MainSectionHeaderView : UIView
 
 @property(nonatomic, weak) id<SectionHeaderViewDelegate> delegate;
 

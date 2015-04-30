@@ -17,13 +17,12 @@
 		7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B565F021A92486F00D6A420 /* LaunchScreen.xib */; };
 		7B565F101A92486F00D6A420 /* OtherbuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B565F0F1A92486F00D6A420 /* OtherbuTests.m */; };
 		7B5F37221AEEBA3F00CF48F9 /* LocalMasterData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37211AEEBA3F00CF48F9 /* LocalMasterData.m */; };
-		7B5F37281AF131A100CF48F9 /* SGSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37271AF131A100CF48F9 /* SGSectionHeaderView.m */; };
+		7B5F372B1AF28BFA00CF48F9 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F372A1AF28BFA00CF48F9 /* SectionHeaderView.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
 		7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F31AE552BD00D5B733 /* SwapViewController.m */; };
 		7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F61AE81AD600D5B733 /* NavigationBar.m */; };
-		7BC347FB1AE9378600D5B733 /* SwapSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347FA1AE9378600D5B733 /* SwapSectionHeaderView.m */; };
 		7BE2B4521AEBEE5900A30F67 /* ModalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */; };
 		7BE2B4551AECC58B00A30F67 /* DescHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4541AECC58B00A30F67 /* DescHeaderView.m */; };
 		7BE2B4581AED4FC400A30F67 /* ModalValidatedAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4571AED4FC400A30F67 /* ModalValidatedAlertView.m */; };
@@ -33,7 +32,7 @@
 		7BFDDF271AD9AB8100DD60EF /* MainScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1D1AD9AB8100DD60EF /* MainScrollView.m */; };
 		7BFDDF281AD9AB8100DD60EF /* MainTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1F1AD9AB8100DD60EF /* MainTableCellView.m */; };
 		7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF231AD9AB8100DD60EF /* PageTabView.m */; };
-		7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF251AD9AB8100DD60EF /* SectionHeaderView.m */; };
+		7BFDDF2B1AD9AB8100DD60EF /* MainSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF251AD9AB8100DD60EF /* MainSectionHeaderView.m */; };
 		7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF331AD9ABF200DD60EF /* WebViewController.m */; };
 		7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */; };
 		7BFDDF4F1AD9AC3500DD60EF /* SGDesiginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3B1AD9AC3500DD60EF /* SGDesiginViewController.m */; };
@@ -92,8 +91,8 @@
 		7B565F0F1A92486F00D6A420 /* OtherbuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherbuTests.m; sourceTree = "<group>"; };
 		7B5F37201AEEBA3F00CF48F9 /* LocalMasterData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalMasterData.h; path = Classes/Models/LocalMasterData.h; sourceTree = "<group>"; };
 		7B5F37211AEEBA3F00CF48F9 /* LocalMasterData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalMasterData.m; path = Classes/Models/LocalMasterData.m; sourceTree = "<group>"; };
-		7B5F37261AF131A100CF48F9 /* SGSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGSectionHeaderView.h; path = Classes/SettingScene/View/SGSectionHeaderView.h; sourceTree = "<group>"; };
-		7B5F37271AF131A100CF48F9 /* SGSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGSectionHeaderView.m; path = Classes/SettingScene/View/SGSectionHeaderView.m; sourceTree = "<group>"; };
+		7B5F37291AF28BFA00CF48F9 /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionHeaderView.h; path = Classes/CommonView/SectionHeaderView.h; sourceTree = "<group>"; };
+		7B5F372A1AF28BFA00CF48F9 /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionHeaderView.m; path = Classes/CommonView/SectionHeaderView.m; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
@@ -103,8 +102,6 @@
 		7BC347F31AE552BD00D5B733 /* SwapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapViewController.m; path = Classes/SwapScene/Controller/SwapViewController.m; sourceTree = "<group>"; };
 		7BC347F51AE81AD600D5B733 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = Classes/CommonView/NavigationBar.h; sourceTree = "<group>"; };
 		7BC347F61AE81AD600D5B733 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = Classes/CommonView/NavigationBar.m; sourceTree = "<group>"; };
-		7BC347F91AE9378600D5B733 /* SwapSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwapSectionHeaderView.h; path = Classes/SwapScene/View/SwapSectionHeaderView.h; sourceTree = "<group>"; };
-		7BC347FA1AE9378600D5B733 /* SwapSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapSectionHeaderView.m; path = Classes/SwapScene/View/SwapSectionHeaderView.m; sourceTree = "<group>"; };
 		7BE2B4501AEBEE5900A30F67 /* ModalPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalPageViewController.h; path = Classes/ModalScene/Controller/ModalPageViewController.h; sourceTree = "<group>"; };
 		7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalPageViewController.m; path = Classes/ModalScene/Controller/ModalPageViewController.m; sourceTree = "<group>"; };
 		7BE2B4531AECC58B00A30F67 /* DescHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescHeaderView.h; path = Classes/SettingScene/View/DescHeaderView.h; sourceTree = "<group>"; };
@@ -124,8 +121,8 @@
 		7BFDDF1F1AD9AB8100DD60EF /* MainTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTableCellView.m; path = Classes/MainScene/View/MainTableCellView.m; sourceTree = "<group>"; };
 		7BFDDF221AD9AB8100DD60EF /* PageTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PageTabView.h; path = Classes/MainScene/View/PageTabView.h; sourceTree = "<group>"; };
 		7BFDDF231AD9AB8100DD60EF /* PageTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PageTabView.m; path = Classes/MainScene/View/PageTabView.m; sourceTree = "<group>"; };
-		7BFDDF241AD9AB8100DD60EF /* SectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SectionHeaderView.h; path = Classes/MainScene/View/SectionHeaderView.h; sourceTree = "<group>"; };
-		7BFDDF251AD9AB8100DD60EF /* SectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SectionHeaderView.m; path = Classes/MainScene/View/SectionHeaderView.m; sourceTree = "<group>"; };
+		7BFDDF241AD9AB8100DD60EF /* MainSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainSectionHeaderView.h; path = Classes/MainScene/View/MainSectionHeaderView.h; sourceTree = "<group>"; };
+		7BFDDF251AD9AB8100DD60EF /* MainSectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainSectionHeaderView.m; path = Classes/MainScene/View/MainSectionHeaderView.m; sourceTree = "<group>"; };
 		7BFDDF321AD9ABF200DD60EF /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebViewController.h; path = Classes/WebViewScene/Controller/WebViewController.h; sourceTree = "<group>"; };
 		7BFDDF331AD9ABF200DD60EF /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = Classes/WebViewScene/Controller/WebViewController.m; sourceTree = "<group>"; };
 		7BFDDF351AD9AC0400DD60EF /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWebView.h; path = Classes/WebViewScene/View/CustomWebView.h; sourceTree = "<group>"; };
@@ -218,8 +215,8 @@
 				7BFDDF1F1AD9AB8100DD60EF /* MainTableCellView.m */,
 				7BFDDF221AD9AB8100DD60EF /* PageTabView.h */,
 				7BFDDF231AD9AB8100DD60EF /* PageTabView.m */,
-				7BFDDF241AD9AB8100DD60EF /* SectionHeaderView.h */,
-				7BFDDF251AD9AB8100DD60EF /* SectionHeaderView.m */,
+				7BFDDF241AD9AB8100DD60EF /* MainSectionHeaderView.h */,
+				7BFDDF251AD9AB8100DD60EF /* MainSectionHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -412,8 +409,6 @@
 		7BC347F01AE5526200D5B733 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7BC347F91AE9378600D5B733 /* SwapSectionHeaderView.h */,
-				7BC347FA1AE9378600D5B733 /* SwapSectionHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -432,6 +427,8 @@
 			children = (
 				7BC347F51AE81AD600D5B733 /* NavigationBar.h */,
 				7BC347F61AE81AD600D5B733 /* NavigationBar.m */,
+				7B5F37291AF28BFA00CF48F9 /* SectionHeaderView.h */,
+				7B5F372A1AF28BFA00CF48F9 /* SectionHeaderView.m */,
 			);
 			name = CommonView;
 			sourceTree = "<group>";
@@ -462,8 +459,6 @@
 				7BFDDF5A1AD9AC4A00DD60EF /* SettingTableViewCell.m */,
 				7BE2B4531AECC58B00A30F67 /* DescHeaderView.h */,
 				7BE2B4541AECC58B00A30F67 /* DescHeaderView.m */,
-				7B5F37261AF131A100CF48F9 /* SGSectionHeaderView.h */,
-				7B5F37271AF131A100CF48F9 /* SGSectionHeaderView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -665,14 +660,14 @@
 				7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */,
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
 				7BFDDF571AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m in Sources */,
-				7BC347FB1AE9378600D5B733 /* SwapSectionHeaderView.m in Sources */,
 				7BFDDF581AD9AC3500DD60EF /* SGIndexTableViewController.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
+				7B5F372B1AF28BFA00CF48F9 /* SectionHeaderView.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
 				7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */,
 				7BFDDF511AD9AC3500DD60EF /* SGBaseTableViewController.m in Sources */,
-				7BFDDF2B1AD9AB8100DD60EF /* SectionHeaderView.m in Sources */,
+				7BFDDF2B1AD9AB8100DD60EF /* MainSectionHeaderView.m in Sources */,
 				7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */,
 				7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */,
 				7BFDDF541AD9AC3500DD60EF /* SGEditPageTableViewController.m in Sources */,
@@ -688,7 +683,6 @@
 				7B5346F21AE35D2D008DA1EB /* ModalView.m in Sources */,
 				7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */,
 				7BFDDF551AD9AC3500DD60EF /* SGNavigationViewController.m in Sources */,
-				7B5F37281AF131A100CF48F9 /* SGSectionHeaderView.m in Sources */,
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
 				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,
 				7BFDDF811AD9AD1800DD60EF /* main.m in Sources */,

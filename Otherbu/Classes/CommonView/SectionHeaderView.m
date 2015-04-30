@@ -1,25 +1,25 @@
 //
-//  SGSectionHeaderView.m
+//  SectionHeaderView.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SGSectionHeaderView.h"
+#import "SectionHeaderView.h"
 
-@implementation SGSectionHeaderView
+@implementation SectionHeaderView
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-- (void)setup:(NSString *)sectionName {
+- (void)setup:(NSString *)sectionName FontSize:(int)fontsize {
     // 背景View設定
     [self _createWhiteRoundedCornerView];
 
     // タイトル設定
-    [self _setTitle:sectionName];
+    [self _setTitle:sectionName FontSize:fontsize];
 }
 
 - (void)setFrame:(CGRect)frame {
@@ -45,13 +45,13 @@
     [self addSubview:whiteRoundedCornerView];
 }
 
-- (void)_setTitle:(NSString *)sectionName {
+- (void)_setTitle:(NSString *)sectionName FontSize:(int)fontsize {
     // セクションのタイトルを設定する
     UILabel *titleLbl = [[UILabel alloc] init];
     titleLbl.text = sectionName;
     titleLbl.textColor = [UIColor whiteColor];
     titleLbl.backgroundColor = [UIColor clearColor];
-    titleLbl.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfSettingDesc];
+    titleLbl.font = [UIFont fontWithName:kDefaultFont size:fontsize];
     titleLbl.textAlignment = NSTextAlignmentCenter;
     [titleLbl sizeToFit];
     CGSize cgSize = titleLbl.frame.size;

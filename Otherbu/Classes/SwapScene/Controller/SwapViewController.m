@@ -9,7 +9,7 @@
 #import "SwapViewController.h"
 #import "NavigationBar.h"
 #import "CategoryData.h"
-#import "SwapSectionHeaderView.h"
+#import "SectionHeaderView.h"
 #import "SettingTableViewCell.h"
 #import "PageData.h"
 
@@ -137,8 +137,8 @@
     // セクションヘッダーのコンテンツを設定する
     NSString *sectionName = [self _getSectionName:section];
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, kHeightOfSectionHeader);
-    SwapSectionHeaderView *sectionView = [[SwapSectionHeaderView alloc] initWithFrame:frame];
-    [sectionView setup:sectionName];
+    SectionHeaderView *sectionView = [[SectionHeaderView alloc] initWithFrame:frame];
+    [sectionView setup:sectionName FontSize:kFontSizeOfSectionTitle];
     return sectionView;
 }
 

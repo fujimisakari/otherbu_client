@@ -13,7 +13,7 @@
 #import "ModalBKViewController.h"
 #import "MainAlertController.h"
 #import "ModalInterface.h"
-#import "SectionHeaderView.h"
+#import "MainSectionHeaderView.h"
 #import "MainScrollView.h"
 #import "NavigationBar.h"
 #import "InnerTableView.h"
@@ -226,8 +226,8 @@
     if (_currentPage) {
         CategoryData *categoryData = [self _getCategoryListByTag:tableView.tag][section];
         CGRect frame = CGRectMake(0, 0, _viewWidth, kHeightOfSectionHeader);
-        SectionHeaderView *containerView =
-            [[SectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section delegate:self tagNumber:tableView.tag];
+        MainSectionHeaderView *containerView =
+            [[MainSectionHeaderView alloc] initWithCategory:categoryData frame:frame section:section delegate:self tagNumber:tableView.tag];
         return containerView;
     } else {
         return nil;
