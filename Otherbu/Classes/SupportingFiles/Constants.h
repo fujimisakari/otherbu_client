@@ -39,6 +39,7 @@ extern NSString * const kDefaultFont;
 extern NSString * const kDefaultImageName;
 extern NSString * const kCellIdentifier;
 extern NSString * const kDefaultPageDataId;
+extern NSString * const kDefaultSearchDataId;
 extern const int kNumberOfPages;
 
 extern NSString * const kTextFieldColorOfModal;
@@ -152,5 +153,6 @@ extern NSString * const kToCategoryOfBookmarkBySegue;
 extern NSString * const kToBookmarkListBySegue;
 extern NSString * const kToPageListBySegue;
 extern NSString * const kToEditPageBySegue;
+extern NSString * const kToSearchBySegue;
 
 @end

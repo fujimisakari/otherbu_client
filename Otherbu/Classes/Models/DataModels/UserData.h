@@ -8,10 +8,11 @@
 
 @interface UserData : NSObject
 
-@property(nonatomic) NSString *dataId;  // ID
-@property(nonatomic) NSString *type;    // FaceBook or Twitter
-@property(nonatomic) NSString *typeId;  // type ID
-@property(nonatomic) NSString *pageId;  // page ID
+@property(nonatomic) NSString *dataId;   // ID
+@property(nonatomic) NSString *type;     // FaceBook or Twitter
+@property(nonatomic) NSString *typeId;   // typeのユニークID
+@property(nonatomic) NSString *pageId;   // 現在ページ
+@property(nonatomic) NSString *searchId; // 検索サイト
 
 + (UserData *)shared;
 
@@ -19,6 +20,8 @@
 - (void)updateWithDictionary:(NSDictionary *)dataDict;
 
 - (PageData *)page;
-- (void)updatePage:(NSString *)pageId;
+- (SearchData *)search;
+- (void)updatePage:(NSString *)dataId;
+- (void)updateSearch:(NSString *)dataId;
 
 @end

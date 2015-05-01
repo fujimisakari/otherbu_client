@@ -14,6 +14,7 @@
 #import "PageData.h"
 #import "ColorData.h"
 #import "DesignData.h"
+#import "SearchData.h"
 
 @interface DataManager ()
 
@@ -46,10 +47,16 @@ static DataManager *intance = nil;
         self.bookmarkDict = [@{} mutableCopy];
         self.colorDict = [@{} mutableCopy];
         self.design = [DesignData shared];
+        self.searchDict = [@{} mutableCopy];
 
-        for (NSDictionary *colorDict in [LocalMasterData initColorData]) {
+        for (NSDictionary *colorDict in [MasterData initColorData]) {
             ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
             [_colorDict setObject:data forKey:data.dataId];
+        }
+
+        for (NSDictionary *searchDict in [MasterData initSearchData]) {
+            SearchData *data = [[SearchData alloc] initWithDictionary:searchDict];
+            [_searchDict setObject:data forKey:data.dataId];
         }
     }
     return self;
@@ -97,6 +104,10 @@ static DataManager *intance = nil;
 
 - (DesignData *)getDesign {
     return _design;
+}
+
+- (SearchData *)getSearch:(NSString *)dataId {
+    return _searchDict[dataId];
 }
 
 - (PageData *)_getPageOfAllCategory {
@@ -164,6 +175,14 @@ static DataManager *intance = nil;
     // sort番号で昇順ソート
     NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:itemList];
     return resultList;
+}
+
+- (NSMutableArray *)getSearchList {
+    NSMutableArray *itemList = [NSMutableArray array];
+    for (NSString *key in self.searchDict) {
+        [itemList addObject:self.searchDict[key]];
+    }
+    return itemList;
 }
 
 //--------------------------------------------------------------//

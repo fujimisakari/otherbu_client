@@ -23,6 +23,7 @@
 #import "ColorData.h"
 #import "PageData.h"
 #import "UserData.h"
+#import "SearchData.h"
 #import "PageTabView.h"
 #import "MBProgressHUD.h"
 
@@ -414,8 +415,9 @@
 }
 
 - (void)_openWebView:(UIButton *)sender {
+    SearchData *search = [[UserData shared] search];
     BookmarkData *bookmark = [[BookmarkData alloc] init];
-    bookmark.url = @"https://www.google.co.jp/";
+    bookmark.url = search.url;
     _selectBookmark = bookmark;
     [self performSegueWithIdentifier:kToWebViewBySegue sender:self];
 }

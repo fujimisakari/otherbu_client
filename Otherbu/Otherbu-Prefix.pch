@@ -23,7 +23,7 @@
     #import "Classes/SupportingFiles/Device.h"
     #import "Classes/SupportingFiles/helper.h"
     #import "Classes/Models/DataManager.h"
-    #import "Classes/Models/LocalMasterData.h"
+    #import "Classes/Models/MasterData.h"
 
     #ifdef DEBUG
         // #define LOG(...) NSLog(__VA_ARGS__)

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -285,6 +285,7 @@
                         <segue destination="l6w-hk-YAu" kind="show" identifier="toPageList" id="zSe-DA-74T"/>
                         <segue destination="6ti-4v-vbh" kind="show" id="XMa-oY-sFc"/>
                         <segue destination="58s-BK-Ro2" kind="show" identifier="toCategoryListOfBookmark" id="Tnn-m9-gp5"/>
+                        <segue destination="aPn-SZ-Wex" kind="show" identifier="toSearchPage" id="X0K-lk-gXO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lN2-Cs-Sx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -392,7 +393,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ea-Hq-hoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="4678"/>
+            <point key="canvasLocation" x="2761" y="4526"/>
+        </scene>
+        <!--Search Table View Controller-->
+        <scene sceneID="R5Y-BU-zMY">
+            <objects>
+                <tableViewController id="aPn-SZ-Wex" userLabel="Search Table View Controller" customClass="SGSearchTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1HK-yN-qOZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bh6-95-5Wd">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bh6-95-5Wd" id="Cha-Pf-fwv">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="aPn-SZ-Wex" id="yeA-mV-l2A"/>
+                            <outlet property="delegate" destination="aPn-SZ-Wex" id="0eG-hh-eaf"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MhE-UR-kNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2761" y="5553"/>
         </scene>
         <!--Page Detail Table View Controller-->
         <scene sceneID="zMT-dY-xWM">

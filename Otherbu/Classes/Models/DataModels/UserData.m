@@ -28,6 +28,7 @@ static UserData *intance = nil;
     if (self) {
         self.dataId = [Helper generateId];
         self.pageId = kDefaultPageDataId;
+        self.searchId = kDefaultSearchDataId;
     }
     return self;
 }
@@ -40,7 +41,7 @@ static UserData *intance = nil;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, type=%@ typeId=%@ page=%@", _dataId, _type, _typeId, _pageId];
+    return [NSString stringWithFormat:@"dataId=%@, type=%@, typeId=%@, page=%@, searchId=%@", _dataId, _type, _typeId, _pageId, _searchId];
 }
 
 //--------------------------------------------------------------//
@@ -51,9 +52,16 @@ static UserData *intance = nil;
     return [[DataManager sharedManager] getPage:_pageId];
 }
 
-- (void)updatePage:(NSString *)pageId {
-    self.pageId = pageId;
+- (SearchData *)search {
+    return [[DataManager sharedManager] getSearch:_searchId];
 }
 
+- (void)updatePage:(NSString *)dataId {
+    self.pageId = dataId;
+}
+
+- (void)updateSearch:(NSString *)dataId {
+    self.searchId = dataId;
+}
 
 @end

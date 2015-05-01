@@ -198,7 +198,7 @@
     dict[@"menuName"] = [NSString stringWithFormat:@"%@%@", kMenuSearchName, @"設定"];
     dict[@"iconImage"] = [UIImage imageNamed:kBlackSearchIcon];
     dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+        [self performSegueWithIdentifier:kToSearchBySegue sender:self];
     };
 }
 

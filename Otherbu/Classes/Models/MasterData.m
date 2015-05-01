@@ -1,17 +1,26 @@
 //
-//  LocalMasterData.m
+//  MasterData.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "LocalMasterData.h"
+#import "MasterData.h"
 
-@implementation LocalMasterData
+@implementation MasterData
+
++ (NSArray *)initSearchData {
+    NSArray *dataList = @[
+        @{@"dataId" : @"1", @"name" : @"Google", @"url" : @"https://www.google.co.jp"},
+        @{@"dataId" : @"2", @"name" : @"Yahoo", @"url" : @"http://www.yahoo.co.jp"},
+        @{@"dataId" : @"3", @"name" : @"Bing", @"url" : @"https://www.bing.com"}
+    ];
+    return dataList;
+}
 
 + (NSArray *)initColorData {
-    NSArray *colorList = @[
+    NSArray *dataList = @[
         @{
             @"id" : [Helper getNumberByInt:1],
             @"name" : @"yellow",
@@ -212,7 +221,7 @@
         }
     ];
 
-    return colorList;
+    return dataList;
 }
 
 @end

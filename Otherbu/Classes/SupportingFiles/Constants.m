@@ -27,6 +27,7 @@ NSString * const kDefaultFont = @"Helvetica";                // デフォルト�
 NSString * const kDefaultImageName = @"wood-wallpeper.jpg";  // デフォルト背景
 NSString * const kCellIdentifier = @"Cell";                  // セルの識別子
 NSString * const kDefaultPageDataId = @"AllCategory";        // デフォルトのPageの識別子
+NSString * const kDefaultSearchDataId = @"1";                // デフォルトの検索サイト
 const int kNumberOfPages = 3;                                // ページ数
 
 
@@ -185,5 +186,6 @@ NSString * const kToCategoryOfBookmarkBySegue = @"toCategoryListOfBookmark";  //
 NSString * const kToBookmarkListBySegue = @"toBookmarkList";                  // 設定ページ → ブックマークのカテゴリ選択へ → ブックマーク一覧
 NSString * const kToPageListBySegue = @"toPageList";                          // 設定ページ → ページ一覧へ
 NSString * const kToEditPageBySegue = @"toEditPage";                          // 設定ページ → ページ一覧 → ページ設定
+NSString * const kToSearchBySegue = @"toSearchPage";                          // 設定ページ → 検索サイト設定
 
 @end

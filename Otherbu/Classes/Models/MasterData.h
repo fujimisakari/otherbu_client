@@ -1,13 +1,14 @@
 //
-//  LocalMasterData.h
+//  MasterData.h
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@interface LocalMasterData : NSObject
+@interface MasterData : NSObject
 
++ (NSArray *)initSearchData;
 + (NSArray *)initColorData;
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@class UserData, PageData, CategoryData, BookmarkData, ColorData, DesignData;
+@class UserData, PageData, CategoryData, BookmarkData, ColorData, DesignData, SearchData;
 
 @interface DataManager : NSObject
 
@@ -14,6 +14,7 @@
 @property(nonatomic) NSMutableDictionary *categoryDict;
 @property(nonatomic) NSMutableDictionary *bookmarkDict;
 @property(nonatomic) NSMutableDictionary *colorDict;
+@property(nonatomic) NSMutableDictionary *searchDict;
 
 + (DataManager *)sharedManager;
 
@@ -25,11 +26,13 @@
 - (BookmarkData *)getBookmark:(NSString *)dataId;
 - (ColorData *)getColor:(NSString *)dataId;
 - (DesignData *)getDesign;
+- (SearchData *)getSearch:(NSString *)dataId;
 
 - (NSMutableArray *)getCategoryList;
 - (NSMutableArray *)getPageList;
 - (NSMutableArray *)getPageListForMainScene;
 - (NSArray *)getColorList;
+- (NSMutableArray *)getSearchList;
 
 - (void)addCategory:(CategoryData *)data;
 - (void)addBookmark:(BookmarkData *)data;

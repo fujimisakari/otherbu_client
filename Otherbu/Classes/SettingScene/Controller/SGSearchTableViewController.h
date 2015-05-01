@@ -1,5 +1,5 @@
 //
-//  SGBaseTableViewController.h
+//  SGSearchTableViewController.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,6 +8,6 @@
 
 #import "SGBaseTableViewController.h"
 
-@interface SGBaseTableViewController : UITableViewController
+@interface SGSearchTableViewController : SGBaseTableViewController
 
 @end
