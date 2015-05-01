@@ -48,6 +48,10 @@
     NSMutableDictionary *menuItem = _menuItems[itemKey];
     cell.textLabel.text = menuItem[@"menuName"];
     cell.imageView.image = menuItem[@"iconImage"];
+
+    if ([cell.textLabel.text isEqualToString:kMenuVersionName]) {
+        [self _setAppVersion:cell];
+    }
     return cell;
 }
 
@@ -57,6 +61,19 @@
     NSMutableDictionary *menuItem = _menuItems[itemKey];
     void (^block)(void) = menuItem[@"block"];
     block();
+}
+
+- (void)_setAppVersion:(UITableViewCell *)cell {
+    // 右端にVersion情報を設定
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
+    label.textColor = [UIColor grayColor];
+    label.backgroundColor = [UIColor clearColor];
+    label.text = kAppVersion;
+    UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [container addSubview:label];
+    cell.accessoryView = container;
+    // タップを無効
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 //--------------------------------------------------------------//
@@ -250,7 +267,7 @@
 - (void)_setVersionItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:2];
     dict[@"menuName"] = kMenuVersionName;
-    dict[@"menuName"] = [NSString stringWithFormat:@"%@         %@", kMenuVersionName, kAppVersion];
+    dict[@"menuName"] = [NSString stringWithFormat:@"%@", kMenuVersionName];
     dict[@"iconImage"] = [UIImage imageNamed:kVersionIcon];
     dict[@"block"] = ^() {};
 }
