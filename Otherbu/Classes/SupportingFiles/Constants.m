@@ -14,7 +14,7 @@
 #pragma mark -- Title Value --
 //--------------------------------------------------------------//
 
-NSString * const kTitle = @"Otherbu";                        // タイトル名
+NSString * const kTitle = @"OtherBu";                        // タイトル名
 const int kFontSizeOfTitle = 18;                             // タイトル名のフォントサイズ
 const float kOffsetYOfTitle = -2;                            // タイトル名の縦位置調整
 

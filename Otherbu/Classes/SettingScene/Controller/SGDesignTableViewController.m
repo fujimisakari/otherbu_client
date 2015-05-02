@@ -11,6 +11,7 @@
 #import "BookmarkData.h"
 #import "CategoryData.h"
 #import "ColorData.h"
+#import "CellDesignView.h"
 
 @interface SGDesignTableViewController () {
     NSArray *_menuList;
@@ -33,18 +34,27 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
 
     self.navigationItem.title = [NSString stringWithFormat:@"%@%@", kMenuDesignName, @"設定"];
 
-    // 説明Headerを追加
-    DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
-    CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
-    [descHeaderView setupWithCGSize:size descMessage:@"Bookmarkの並び替え、削除ができます"];
-    [self.tableView setTableHeaderView:descHeaderView];
+    _menuList = @[ @"背景画像の変更", @"Bookmark背景色の変更", @"Bookmark文字色の変更" ];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    _menuList = @[ @"背景画像の変更", @"Bookmark背景色の変更", @"Bookmark文字色の変更" ];
     _menuIndexPathList = [[NSMutableArray alloc] init];
+
+    // 説明Headerを追加
+    DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
+    CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
+    [descHeaderView setupWithCGSize:size descMessage:@"背景画像変更、カラー設定ができます"];
+    CGRect reRect = CGRectMake(0, descHeaderView.frame.origin.y, descHeaderView.frame.size.width, descHeaderView.frame.size.height);
+    descHeaderView.frame = reRect;
+
+    // サンプルCellを生成
+    CGRect cellRect = CGRectMake(0, 0, size.width, size.height + 60);
+    CellDesignView *cellDesignView = [[CellDesignView alloc] initWithFrame:cellRect];
+    [cellDesignView setup];
+    [cellDesignView addSubview:descHeaderView];
+    [self.tableView setTableHeaderView:cellDesignView];
 
     // 編集前のデータ
     _colorId = @"5";
@@ -54,8 +64,8 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
 
     // カラーパレットの生成
     int y = kCellHeightOfSGColorPalette - kCellMarginOfSGColorPalette;
-    CGRect rect = CGRectMake(0, y, self.view.frame.size.width, kCellHeightOfSGColorPalette);
-    [self _setColorPalette:rect];
+    CGRect colorRect = CGRectMake(0, y, self.view.frame.size.width, kCellHeightOfSGColorPalette);
+    [self _setColorPalette:colorRect];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
 }
@@ -97,7 +107,7 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
             // すでに表示していた場合
             [self _openFlagReset];
             NSArray *indexPaths = [_menuIndexPathList copy];
-            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
             [_collectionView reloadData];
             _menuIndexPathList = [[NSMutableArray alloc] init];
         } else {
@@ -106,7 +116,7 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
             _openFlagArray[indexPath.row] = @"1";
             [_menuIndexPathList addObject:indexPath];
             NSArray *indexPaths = [_menuIndexPathList copy];
-            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
             [_collectionView reloadData];
             // すでに表示されていたindexPathが入ってる場合があるので
             // 今回表示するindexPathのみ入ってる状態にする
@@ -128,9 +138,6 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
     _openFlagArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < _menuList.count; ++i) {
         [_openFlagArray addObject:@"0"];
-        // if (i > kBackgroundChengeMenuIdx) {
-        //     [_menuIndexPathList addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-        // }
     }
 }
 

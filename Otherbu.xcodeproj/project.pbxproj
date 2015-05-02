@@ -24,6 +24,7 @@
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
+		7BB9F63E1AF516F700223284 /* CellDesignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9F63D1AF516F700223284 /* CellDesignView.m */; };
 		7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F31AE552BD00D5B733 /* SwapViewController.m */; };
 		7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F61AE81AD600D5B733 /* NavigationBar.m */; };
 		7BE2B4521AEBEE5900A30F67 /* ModalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */; };
@@ -106,6 +107,8 @@
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
 		7BB320FA1AE29A35005267EC /* MainAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAlertController.h; path = Classes/MainScene/Controller/MainAlertController.h; sourceTree = "<group>"; };
 		7BB320FB1AE29A35005267EC /* MainAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainAlertController.m; path = Classes/MainScene/Controller/MainAlertController.m; sourceTree = "<group>"; };
+		7BB9F63C1AF516F700223284 /* CellDesignView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellDesignView.h; path = Classes/SettingScene/View/CellDesignView.h; sourceTree = "<group>"; };
+		7BB9F63D1AF516F700223284 /* CellDesignView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellDesignView.m; path = Classes/SettingScene/View/CellDesignView.m; sourceTree = "<group>"; };
 		7BC347F21AE552BD00D5B733 /* SwapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwapViewController.h; path = Classes/SwapScene/Controller/SwapViewController.h; sourceTree = "<group>"; };
 		7BC347F31AE552BD00D5B733 /* SwapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapViewController.m; path = Classes/SwapScene/Controller/SwapViewController.m; sourceTree = "<group>"; };
 		7BC347F51AE81AD600D5B733 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = Classes/CommonView/NavigationBar.h; sourceTree = "<group>"; };
@@ -469,6 +472,8 @@
 				7BFDDF5A1AD9AC4A00DD60EF /* SettingTableViewCell.m */,
 				7BE2B4531AECC58B00A30F67 /* DescHeaderView.h */,
 				7BE2B4541AECC58B00A30F67 /* DescHeaderView.m */,
+				7BB9F63C1AF516F700223284 /* CellDesignView.h */,
+				7BB9F63D1AF516F700223284 /* CellDesignView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -670,6 +675,7 @@
 				7BFDDF531AD9AC3500DD60EF /* SGCategoryListTableViewController.m in Sources */,
 				7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */,
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
+				7BB9F63E1AF516F700223284 /* CellDesignView.m in Sources */,
 				7BFDDF571AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m in Sources */,
 				7BFDDF581AD9AC3500DD60EF /* SGIndexTableViewController.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
