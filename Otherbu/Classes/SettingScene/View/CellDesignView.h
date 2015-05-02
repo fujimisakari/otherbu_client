@@ -8,10 +8,9 @@
 
 @interface CellDesignView : UIView
 
-@property(nonatomic) UIColor *backgroundColor;
-@property(nonatomic) UIColor *nameColor;
-@property(nonatomic) UIColor *urlColor;
-
 - (void)setup;
+- (void)setBackgroundColor:(UIColor *)color;
+- (void)setBookmarkNameColor:(UIColor *)color;
+- (void)setBookmarkUrlColor:(UIColor *)color;
 
 @end

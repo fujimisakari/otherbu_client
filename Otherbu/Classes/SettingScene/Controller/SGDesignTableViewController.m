@@ -11,6 +11,7 @@
 #import "BookmarkData.h"
 #import "CategoryData.h"
 #import "ColorData.h"
+#import "DesignData.h"
 #import "CellDesignView.h"
 
 @interface SGDesignTableViewController () {
@@ -18,8 +19,9 @@
     NSMutableArray *_menuIndexPathList;
     NSMutableArray *_openFlagArray;
     UICollectionView *_collectionView;
+    CellDesignView *_cellDesignView;
     NSArray *_colorList;
-    NSString *_colorId;
+    NSString *_colorCode;
     UICollectionViewCell *_colorSelectCell;
 }
 
@@ -27,7 +29,10 @@
 
 @implementation SGDesignTableViewController
 
-const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューのArray番号
+// メニューのArray番号
+const int kBackgroundChengeMenuIdx = 0;
+const int kBackgroundColorChengeMenuIdx = 1;
+const int kFontColorChengeMenuIdx = 2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,13 +56,10 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
 
     // サンプルCellを生成
     CGRect cellRect = CGRectMake(0, 0, size.width, size.height + 60);
-    CellDesignView *cellDesignView = [[CellDesignView alloc] initWithFrame:cellRect];
-    [cellDesignView setup];
-    [cellDesignView addSubview:descHeaderView];
-    [self.tableView setTableHeaderView:cellDesignView];
-
-    // 編集前のデータ
-    _colorId = @"5";
+    _cellDesignView = [[CellDesignView alloc] initWithFrame:cellRect];
+    [_cellDesignView setup];
+    [_cellDesignView addSubview:descHeaderView];
+    [self.tableView setTableHeaderView:_cellDesignView];
 
     // カラーパレット用のカラーリスト
     _colorList = [[DataManager sharedManager] getColorList];
@@ -113,6 +115,11 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
         } else {
             // 表示する場合
             [self _openFlagReset];
+            if (indexPath.row == kBackgroundColorChengeMenuIdx) {
+                _colorCode = [DesignData shared].tableBackGroundColor;
+            } else {
+                _colorCode = [DesignData shared].bookmarkColor;
+            }
             _openFlagArray[indexPath.row] = @"1";
             [_menuIndexPathList addObject:indexPath];
             NSArray *indexPaths = [_menuIndexPathList copy];
@@ -195,7 +202,7 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [colorData getThumbnailColor];
     cell.layer.borderWidth = kBorderWidthOfColorPalette;
-    if ([_colorId isEqualToString:colorData.dataId]) {
+    if ([_colorCode isEqualToString:colorData.thumbnailColorCode]) {
         cell.layer.borderColor = [UIColor cyanColor].CGColor;
         _colorSelectCell = cell;
     } else {
@@ -217,12 +224,15 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
     // タッチしたカラーIDをキャッシュ
     NSInteger idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * indexPath.section);
     ColorData *colorData = _colorList[idx];
-    _colorId = colorData.dataId;
+    _colorCode = colorData.thumbnailColorCode;
 
     // 選択してたカラー枠をシアンにしてキャッシュ
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     cell.layer.borderColor = [UIColor cyanColor].CGColor;
     _colorSelectCell = cell;
+
+    // 更新処理
+    [self _updateColor:colorData];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
@@ -234,6 +244,25 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
     float restViewWidth = viewWidth - totalCellWidth - (kCellMarginOfColorPalette * 5);
     float marginWidth = restViewWidth / 2;
     return UIEdgeInsetsMake(5, marginWidth, 0, marginWidth);
+}
+
+- (void)_updateColor:(ColorData *)colorData {
+    for (int i = 0; i < _menuList.count; ++i) {
+        if ([[_openFlagArray objectAtIndex:i] boolValue]) {
+            switch (i) {
+                // ブックマーク背景が更新の場合
+                case kBackgroundColorChengeMenuIdx: {
+                    [[DesignData shared] updateTableBackGroundColor:colorData.thumbnailColorCode];
+                    [_cellDesignView setBackgroundColor:[[DesignData shared] getTableBackGroundColor]];
+                } break;
+                // ブックマークの文字色が更新の場合
+                case kFontColorChengeMenuIdx: {
+                    [[DesignData shared] updatetbookmarkColor:colorData.thumbnailColorCode];
+                    [_cellDesignView setBookmarkNameColor:[[DesignData shared] getbookmarkColor]];
+                } break;
+            }
+        }
+    }
 }
 
 @end

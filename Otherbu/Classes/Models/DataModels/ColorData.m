@@ -19,22 +19,22 @@
     if (self) {
         self.dataId = [dataDict[@"id"] stringValue];
         self.name = dataDict[@"name"];
-        self.font_color = dataDict[@"font_color"];
-        self.icon_color = dataDict[@"icon_color"];
+        self.fontColor = dataDict[@"font_color"];
+        self.iconColor = dataDict[@"icon_color"];
         self.sort = [dataDict[@"sort"] integerValue];
-        self.color_code1 = dataDict[@"color_code1"];
-        self.color_code2 = dataDict[@"color_code2"];
-        self.color_code3 = dataDict[@"color_code3"];
-        self.thumbnail_color_code = dataDict[@"thumbnail_color_code"];
+        self.colorCode1 = dataDict[@"color_code1"];
+        self.colorCode2 = dataDict[@"color_code2"];
+        self.colorCode3 = dataDict[@"color_code3"];
+        self.thumbnailColorCode = dataDict[@"thumbnail_color_code"];
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, name=%@ font_color=%@, icon_color=%@, sort=%ld, color_code1=%@, color_code2=%@, "
-                                       "color_code3=%@, thumbnail_color_code=%@",
-                                      _dataId, _name, _font_color, _icon_color, _sort, _color_code1, _color_code2, _color_code3,
-                                      _thumbnail_color_code];
+    return [NSString stringWithFormat:@"dataId=%@, name=%@ fontColor=%@, iconColor=%@, sort=%ld, colorCode1=%@, colorCode2=%@, "
+                                       "colorCode3=%@, thumbnailColorCode=%@",
+                                      _dataId, _name, _fontColor, _iconColor, _sort, _colorCode1, _colorCode2, _colorCode3,
+                                      _thumbnailColorCode];
 }
 
 //--------------------------------------------------------------//
@@ -43,31 +43,31 @@
 
 - (NSArray *)getGradientColorList {
     // グラデーション用のカラーリストを取得
-    UIColor *color1 = [UIColor colorWithHex:[UIColor removeSharp:_color_code1]];
-    UIColor *color2 = [UIColor colorWithHex:[UIColor removeSharp:_color_code2]];
-    UIColor *color3 = [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
+    UIColor *color1 = [UIColor colorWithHex:[UIColor removeSharp:_colorCode1]];
+    UIColor *color2 = [UIColor colorWithHex:[UIColor removeSharp:_colorCode2]];
+    UIColor *color3 = [UIColor colorWithHex:[UIColor removeSharp:_colorCode3]];
     NSArray *gradientColorList = @[(id)color1.CGColor, (id)color2.CGColor, (id)color3.CGColor];
     return gradientColorList;
 }
 
 - (UIColor *)getBackGroundColor {
     // テーブルの背景色を取得
-    return [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
+    return [UIColor colorWithHex:[UIColor removeSharp:_colorCode3]];
 }
 
 - (UIColor *)getSectionHeaderFontColor {
     // セクション用のフォントカラーを取得
-    return [UIColor colorWithHex:[UIColor removeSharp:_font_color]];
+    return [UIColor colorWithHex:[UIColor removeSharp:_fontColor]];
 }
 
 - (UIColor *)getFooterColorOfGradient {
     // グラデーションの末尾のカラーを取得
-    return [UIColor colorWithHex:[UIColor removeSharp:_color_code3]];
+    return [UIColor colorWithHex:[UIColor removeSharp:_colorCode3]];
 }
 
 - (UIColor *)getThumbnailColor {
     // サムネ用のカラーを取得
-    return [UIColor colorWithHex:[UIColor removeSharp:_thumbnail_color_code]];
+    return [UIColor colorWithHex:[UIColor removeSharp:_thumbnailColorCode]];
 }
 
 

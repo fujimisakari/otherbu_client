@@ -57,4 +57,14 @@ static DesignData *intance = nil;
     return [UIColor colorWithHex:[UIColor removeSharp:_urlColor]];
 }
 
+- (void)updateTableBackGroundColor:(NSString *)colorCode {
+    // テーブル背景色を取得
+    self.tableBackGroundColor = colorCode;
+}
+
+- (void)updatetbookmarkColor:(NSString *)colorCode {
+    // ブックマークのフォントカラーを取得
+    self.bookmarkColor = colorCode;
+}
+
 @end
