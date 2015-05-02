@@ -21,6 +21,7 @@
 - (UIColor *)getUrlColor;
 
 - (void)updateTableBackGroundColor:(NSString *)colorCode;
-- (void)updatetbookmarkColor:(NSString *)colorCode;
+- (void)updatetbookmarkNameColor:(NSString *)colorCode;
+- (void)updatetbookmarkUrlColor:(NSString *)colorCode;
 
 @end

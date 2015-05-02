@@ -62,9 +62,14 @@ static DesignData *intance = nil;
     self.tableBackGroundColor = colorCode;
 }
 
-- (void)updatetbookmarkColor:(NSString *)colorCode {
+- (void)updatetbookmarkNameColor:(NSString *)colorCode {
     // ブックマークのフォントカラーを取得
     self.bookmarkColor = colorCode;
+}
+
+- (void)updatetbookmarkUrlColor:(NSString *)colorCode {
+    // ブックマークURLのフォントカラーを取得
+    self.urlColor = colorCode;
 }
 
 @end

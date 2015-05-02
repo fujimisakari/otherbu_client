@@ -32,14 +32,15 @@
 // メニューのArray番号
 const int kBackgroundChengeMenuIdx = 0;
 const int kBackgroundColorChengeMenuIdx = 1;
-const int kFontColorChengeMenuIdx = 2;
+const int kNameFontColorChengeMenuIdx = 2;
+const int kUrlFontColorChengeMenuIdx = 3;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     self.navigationItem.title = [NSString stringWithFormat:@"%@%@", kMenuDesignName, @"設定"];
 
-    _menuList = @[ @"背景画像の変更", @"Bookmark背景色の変更", @"Bookmark文字色の変更" ];
+    _menuList = @[ @"背景画像の変更", @"Bookmark背景色の変更", @"Bookmark名の色の変更", @"BookmarkURLの色の変更" ];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -256,9 +257,14 @@ const int kFontColorChengeMenuIdx = 2;
                     [_cellDesignView setBackgroundColor:[[DesignData shared] getTableBackGroundColor]];
                 } break;
                 // ブックマークの文字色が更新の場合
-                case kFontColorChengeMenuIdx: {
-                    [[DesignData shared] updatetbookmarkColor:colorData.thumbnailColorCode];
+                case kNameFontColorChengeMenuIdx: {
+                    [[DesignData shared] updatetbookmarkNameColor:colorData.thumbnailColorCode];
                     [_cellDesignView setBookmarkNameColor:[[DesignData shared] getbookmarkColor]];
+                } break;
+                // ブックマークの文字色が更新の場合
+                case kUrlFontColorChengeMenuIdx: {
+                    [[DesignData shared] updatetbookmarkUrlColor:colorData.thumbnailColorCode];
+                    [_cellDesignView setBookmarkUrlColor:[[DesignData shared] getUrlColor]];
                 } break;
             }
         }
