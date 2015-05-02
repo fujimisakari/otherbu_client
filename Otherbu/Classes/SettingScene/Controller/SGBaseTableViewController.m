@@ -61,7 +61,7 @@
     // 半透明で間隔が空いたセルを生成
     SettingTableViewCell *settingCell = (SettingTableViewCell *)cell;
     float width = self.view.frame.size.width - (kCellMarginOfSetting * 2);
-    float height = kCellHeightOfSetting - kCellMarginOfSetting;
+    float height = cell.frame.size.height - kCellMarginOfSetting;
     CGRect rect = CGRectMake(kCellMarginOfSetting, kCellMarginOfSetting, width, height);
     [settingCell setBackground:rect];
     [settingCell createMoveIconImage];

@@ -105,6 +105,8 @@ extern const float kCellHeightOfSetting;
 extern const int kFontSizeOfSettingDesc;
 extern const int kMarginOfSettingDesc;
 extern const int kHeightOfSettingDesc;
+extern const float kCellHeightOfSGColorPalette;
+extern const int kCellMarginOfSGColorPalette;
 
 extern NSString * const kMenuSectionName1;
 extern NSString * const kMenuSectionName2;
@@ -153,6 +155,7 @@ extern NSString * const kToCategoryOfBookmarkBySegue;
 extern NSString * const kToBookmarkListBySegue;
 extern NSString * const kToPageListBySegue;
 extern NSString * const kToEditPageBySegue;
+extern NSString * const kToDesignBySegue;
 extern NSString * const kToSearchBySegue;
 
 @end

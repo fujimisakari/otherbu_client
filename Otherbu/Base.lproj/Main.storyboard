@@ -283,9 +283,9 @@
                     <connections>
                         <segue destination="zQW-1D-R4a" kind="show" identifier="toCateogoryList" id="V2x-KC-U3e"/>
                         <segue destination="l6w-hk-YAu" kind="show" identifier="toPageList" id="zSe-DA-74T"/>
-                        <segue destination="6ti-4v-vbh" kind="show" id="XMa-oY-sFc"/>
                         <segue destination="58s-BK-Ro2" kind="show" identifier="toCategoryListOfBookmark" id="Tnn-m9-gp5"/>
                         <segue destination="aPn-SZ-Wex" kind="show" identifier="toSearchPage" id="X0K-lk-gXO"/>
+                        <segue destination="tgD-pC-SM1" kind="show" identifier="toDesignPage" id="mNP-el-9fh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lN2-Cs-Sx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -376,24 +376,31 @@
             </objects>
             <point key="canvasLocation" x="2761" y="3599"/>
         </scene>
-        <!--Design View Controller-->
-        <scene sceneID="jUl-Nh-aOa">
+        <!--Design Table View Controller-->
+        <scene sceneID="hzr-hj-p4f">
             <objects>
-                <viewController id="6ti-4v-vbh" userLabel="Design View Controller" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="nva-GW-wOE"/>
-                        <viewControllerLayoutGuide type="bottom" id="dtP-yo-2k5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bwp-I9-rc3">
+                <tableViewController id="tgD-pC-SM1" userLabel="Design Table View Controller" customClass="SGDesignTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="709-Az-l49">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Edit Design" id="jo3-cz-fvE" userLabel="Title"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ea-Hq-hoc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FUE-xX-5tS">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FUE-xX-5tS" id="ziE-vZ-3he">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tgD-pC-SM1" id="jwb-Yy-HHg"/>
+                            <outlet property="delegate" destination="tgD-pC-SM1" id="0mu-8T-fgw"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMu-2Z-H0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="4526"/>
+            <point key="canvasLocation" x="2777" y="4589"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="R5Y-BU-zMY">
@@ -419,7 +426,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhE-UR-kNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2761" y="5553"/>
+            <point key="canvasLocation" x="2777" y="5537"/>
         </scene>
         <!--Page Detail Table View Controller-->
         <scene sceneID="zMT-dY-xWM">

@@ -126,6 +126,8 @@ const float kCellHeightOfSetting = 50.0f;                    // Setting画面の
 const int kFontSizeOfSettingDesc = 14;                       // Setting画面の説明ViewのFontサイズ
 const int kMarginOfSettingDesc = 20;                         // Setting画面の説明Viewの余白
 const int kHeightOfSettingDesc = 30;                         // Setting画面の説明Viewの高さ
+const float kCellHeightOfSGColorPalette = 210.0f;            // Setting画面のカラーパレット用のCellの高さ
+const int kCellMarginOfSGColorPalette = 140;                 // Setting画面のカラーパレット用のCellの余白
 
 //--------------------------------------------------------------//
 #pragma mark -- Menu Of Setting View --
@@ -186,6 +188,7 @@ NSString * const kToCategoryOfBookmarkBySegue = @"toCategoryListOfBookmark";  //
 NSString * const kToBookmarkListBySegue = @"toBookmarkList";                  // 設定ページ → ブックマークのカテゴリ選択へ → ブックマーク一覧
 NSString * const kToPageListBySegue = @"toPageList";                          // 設定ページ → ページ一覧へ
 NSString * const kToEditPageBySegue = @"toEditPage";                          // 設定ページ → ページ一覧 → ページ設定
+NSString * const kToDesignBySegue = @"toDesignPage";                          // 設定ページ → デザイン設定
 NSString * const kToSearchBySegue = @"toSearchPage";                          // 設定ページ → 検索サイト設定
 
 @end

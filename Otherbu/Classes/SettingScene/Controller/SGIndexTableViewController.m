@@ -206,7 +206,7 @@
     dict[@"menuName"] = [NSString stringWithFormat:@"%@%@", kMenuDesignName, @"設定"];
     dict[@"iconImage"] = [UIImage imageNamed:kDesignIcon];
     dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+        [self performSegueWithIdentifier:kToDesignBySegue sender:self];
     };
 }
 

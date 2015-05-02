@@ -20,6 +20,7 @@
 		7B5F372B1AF28BFA00CF48F9 /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F372A1AF28BFA00CF48F9 /* SectionHeaderView.m */; };
 		7B5F372E1AF290A800CF48F9 /* SGSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F372D1AF290A800CF48F9 /* SGSearchTableViewController.m */; };
 		7B5F37311AF406EF00CF48F9 /* SearchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37301AF406EF00CF48F9 /* SearchData.m */; };
+		7B5F37341AF46B4100CF48F9 /* SGDesignTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37331AF46B4100CF48F9 /* SGDesignTableViewController.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
@@ -37,7 +38,6 @@
 		7BFDDF2B1AD9AB8100DD60EF /* MainSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF251AD9AB8100DD60EF /* MainSectionHeaderView.m */; };
 		7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF331AD9ABF200DD60EF /* WebViewController.m */; };
 		7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */; };
-		7BFDDF4F1AD9AC3500DD60EF /* SGDesiginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3B1AD9AC3500DD60EF /* SGDesiginViewController.m */; };
 		7BFDDF511AD9AC3500DD60EF /* SGBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF3F1AD9AC3500DD60EF /* SGBaseTableViewController.m */; };
 		7BFDDF521AD9AC3500DD60EF /* SGBookmarkTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF411AD9AC3500DD60EF /* SGBookmarkTableViewController.m */; };
 		7BFDDF531AD9AC3500DD60EF /* SGCategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF431AD9AC3500DD60EF /* SGCategoryListTableViewController.m */; };
@@ -99,6 +99,8 @@
 		7B5F372D1AF290A800CF48F9 /* SGSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGSearchTableViewController.m; path = Classes/SettingScene/Controller/SGSearchTableViewController.m; sourceTree = "<group>"; };
 		7B5F372F1AF406EF00CF48F9 /* SearchData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchData.h; path = Classes/Models/DataModels/SearchData.h; sourceTree = "<group>"; };
 		7B5F37301AF406EF00CF48F9 /* SearchData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchData.m; path = Classes/Models/DataModels/SearchData.m; sourceTree = "<group>"; };
+		7B5F37321AF46B4100CF48F9 /* SGDesignTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGDesignTableViewController.h; path = Classes/SettingScene/Controller/SGDesignTableViewController.h; sourceTree = "<group>"; };
+		7B5F37331AF46B4100CF48F9 /* SGDesignTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGDesignTableViewController.m; path = Classes/SettingScene/Controller/SGDesignTableViewController.m; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
@@ -133,8 +135,6 @@
 		7BFDDF331AD9ABF200DD60EF /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebViewController.m; path = Classes/WebViewScene/Controller/WebViewController.m; sourceTree = "<group>"; };
 		7BFDDF351AD9AC0400DD60EF /* CustomWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomWebView.h; path = Classes/WebViewScene/View/CustomWebView.h; sourceTree = "<group>"; };
 		7BFDDF361AD9AC0400DD60EF /* CustomWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomWebView.m; path = Classes/WebViewScene/View/CustomWebView.m; sourceTree = "<group>"; };
-		7BFDDF3A1AD9AC3500DD60EF /* SGDesiginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGDesiginViewController.h; path = Classes/SettingScene/Controller/SGDesiginViewController.h; sourceTree = "<group>"; };
-		7BFDDF3B1AD9AC3500DD60EF /* SGDesiginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGDesiginViewController.m; path = Classes/SettingScene/Controller/SGDesiginViewController.m; sourceTree = "<group>"; };
 		7BFDDF3E1AD9AC3500DD60EF /* SGBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGBaseTableViewController.h; path = Classes/SettingScene/Controller/SGBaseTableViewController.h; sourceTree = "<group>"; };
 		7BFDDF3F1AD9AC3500DD60EF /* SGBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGBaseTableViewController.m; path = Classes/SettingScene/Controller/SGBaseTableViewController.m; sourceTree = "<group>"; };
 		7BFDDF401AD9AC3500DD60EF /* SGBookmarkTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGBookmarkTableViewController.h; path = Classes/SettingScene/Controller/SGBookmarkTableViewController.h; sourceTree = "<group>"; };
@@ -381,8 +381,6 @@
 		7B91E6371AC32F7E003A36F1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7BFDDF3A1AD9AC3500DD60EF /* SGDesiginViewController.h */,
-				7BFDDF3B1AD9AC3500DD60EF /* SGDesiginViewController.m */,
 				7BFDDF3E1AD9AC3500DD60EF /* SGBaseTableViewController.h */,
 				7BFDDF3F1AD9AC3500DD60EF /* SGBaseTableViewController.m */,
 				7BFDDF401AD9AC3500DD60EF /* SGBookmarkTableViewController.h */,
@@ -401,6 +399,8 @@
 				7BFDDF4D1AD9AC3500DD60EF /* SGIndexTableViewController.m */,
 				7B5F372C1AF290A800CF48F9 /* SGSearchTableViewController.h */,
 				7B5F372D1AF290A800CF48F9 /* SGSearchTableViewController.m */,
+				7B5F37321AF46B4100CF48F9 /* SGDesignTableViewController.h */,
+				7B5F37331AF46B4100CF48F9 /* SGDesignTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -683,12 +683,12 @@
 				7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */,
 				7BFDDF541AD9AC3500DD60EF /* SGEditPageTableViewController.m in Sources */,
 				7BFDDF741AD9AC8400DD60EF /* UserData.m in Sources */,
-				7BFDDF4F1AD9AC3500DD60EF /* SGDesiginViewController.m in Sources */,
 				7BFDDF561AD9AC3500DD60EF /* SGPageListTableViewController.m in Sources */,
 				7BFDDF521AD9AC3500DD60EF /* SGBookmarkTableViewController.m in Sources */,
 				7B5346E81AE35D11008DA1EB /* ModalBKViewController.m in Sources */,
 				7BFDDF5B1AD9AC4A00DD60EF /* SettingTableViewCell.m in Sources */,
 				7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */,
+				7B5F37341AF46B4100CF48F9 /* SGDesignTableViewController.m in Sources */,
 				7BFDDF271AD9AB8100DD60EF /* MainScrollView.m in Sources */,
 				7BFDDF371AD9AC0400DD60EF /* CustomWebView.m in Sources */,
 				7B5346F21AE35D2D008DA1EB /* ModalView.m in Sources */,
