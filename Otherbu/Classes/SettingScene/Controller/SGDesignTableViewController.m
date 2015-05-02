@@ -44,6 +44,7 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
     [super viewWillAppear:animated];
 
     _menuList = @[ @"背景画像の変更", @"Bookmark背景色の変更", @"Bookmark文字色の変更" ];
+    _menuIndexPathList = [[NSMutableArray alloc] init];
 
     // 編集前のデータ
     _colorId = @"5";
@@ -93,13 +94,25 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
     } else {
         // Bookmarkの色の変更の場合、セルにカラーパレット表示する
         if ([[_openFlagArray objectAtIndex:indexPath.row] boolValue]) {
+            // すでに表示していた場合
             [self _openFlagReset];
+            NSArray *indexPaths = [_menuIndexPathList copy];
+            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            [_collectionView reloadData];
+            _menuIndexPathList = [[NSMutableArray alloc] init];
         } else {
+            // 表示する場合
             [self _openFlagReset];
             _openFlagArray[indexPath.row] = @"1";
+            [_menuIndexPathList addObject:indexPath];
+            NSArray *indexPaths = [_menuIndexPathList copy];
+            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            [_collectionView reloadData];
+            // すでに表示されていたindexPathが入ってる場合があるので
+            // 今回表示するindexPathのみ入ってる状態にする
+            _menuIndexPathList = [[NSMutableArray alloc] init];
+            [_menuIndexPathList addObject:indexPath];
         }
-        NSArray *indexPaths = [_menuIndexPathList copy];
-        [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
@@ -113,12 +126,11 @@ const int kBackgroundChengeMenuIdx = 0;  // 背景画像の変更メニューの
 
 - (void)_openFlagReset {
     _openFlagArray = [[NSMutableArray alloc] init];
-    _menuIndexPathList = [[NSMutableArray alloc] init];
     for (int i = 0; i < _menuList.count; ++i) {
         [_openFlagArray addObject:@"0"];
-        if (i > kBackgroundChengeMenuIdx) {
-            [_menuIndexPathList addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-        }
+        // if (i > kBackgroundChengeMenuIdx) {
+        //     [_menuIndexPathList addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        // }
     }
 }
 
