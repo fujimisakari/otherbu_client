@@ -242,7 +242,7 @@
     dict[@"menuName"] = kMenuHelpName;
     dict[@"iconImage"] = [UIImage imageNamed:kHelpIcon];
     dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://otherbu.com/"]];
     };
 }
 
@@ -251,7 +251,7 @@
     dict[@"menuName"] = kMenuReviewName;
     dict[@"iconImage"] = [UIImage imageNamed:kReviewIcon];
     dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://otherbu.com/"]];
     };
 }
 
@@ -260,7 +260,7 @@
     dict[@"menuName"] = kMenuWebSiteName;
     dict[@"iconImage"] = [UIImage imageNamed:kWebSiteIcon];
     dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://otherbu.com/"]];
     };
 }
 
