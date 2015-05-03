@@ -57,7 +57,14 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     // 画像が選択された場合
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage* image = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    // 画像の向きが乱れるので、drawInRectを使って一度画像を作り直す
+    UIGraphicsBeginImageContext(image.size);
+    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
     NSData *data = UIImageJPEGRepresentation(image, 0.8f);
     NSString *path =
         [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], kCustomImageName];
