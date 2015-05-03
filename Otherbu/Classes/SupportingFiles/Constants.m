@@ -22,13 +22,14 @@ const float kOffsetYOfTitle = -2;                            // タイトル名�
 #pragma mark -- Default Value --
 //--------------------------------------------------------------//
 
-NSString * const kAppVersion = @"1.0.0";                     // アプリのバージョン
-NSString * const kDefaultFont = @"Helvetica";                // デフォルトフォント名
-NSString * const kDefaultImageName = @"wood-wallpeper.jpg";  // デフォルト背景
-NSString * const kCellIdentifier = @"Cell";                  // セルの識別子
-NSString * const kDefaultPageDataId = @"AllCategory";        // デフォルトのPageの識別子
-NSString * const kDefaultSearchDataId = @"1";                // デフォルトの検索サイト
-const int kNumberOfPages = 3;                                // ページ数
+NSString * const kAppVersion = @"1.0.0";                       // アプリのバージョン
+NSString * const kDefaultFont = @"Helvetica";                  // デフォルトフォント名
+NSString * const kDefaultImageName = @"default-wallpeper.jpg"; // デフォルト背景画像名
+NSString * const kCustomImageName = @"user-wallpaper.jpg";     // ユーザーのカスタム背景画像名
+NSString * const kCellIdentifier = @"Cell";                    // セルの識別子
+NSString * const kDefaultPageDataId = @"AllCategory";          // デフォルトのPageの識別子
+NSString * const kDefaultSearchDataId = @"1";                  // デフォルトの検索サイト
+const int kNumberOfPages = 3;                                  // ページ数
 
 
 //--------------------------------------------------------------//

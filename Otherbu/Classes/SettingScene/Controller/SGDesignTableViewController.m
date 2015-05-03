@@ -12,6 +12,7 @@
 #import "CategoryData.h"
 #import "ColorData.h"
 #import "DesignData.h"
+#import "SGDesignAlertController.h"
 #import "CellDesignView.h"
 
 @interface SGDesignTableViewController () {
@@ -23,6 +24,7 @@
     NSArray *_colorList;
     NSString *_colorCode;
     UICollectionViewCell *_colorSelectCell;
+    SGDesignAlertController *_alertController;
 }
 
 @end
@@ -40,13 +42,17 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
     self.navigationItem.title = [NSString stringWithFormat:@"%@%@", kMenuDesignName, @"設定"];
 
+    _menuIndexPathList = [[NSMutableArray alloc] init];
+
     _menuList = @[ @"背景画像の変更", @"Bookmark背景色の変更", @"Bookmark名の色の変更", @"BookmarkURLの色の変更" ];
+
+    // 背景画像の変更用のActionSheetを準備
+    _alertController = [SGDesignAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    [_alertController setup:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    _menuIndexPathList = [[NSMutableArray alloc] init];
 
     // 説明Headerを追加
     DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
@@ -86,6 +92,10 @@ const int kUrlFontColorChengeMenuIdx = 3;
     [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
 }
 
+- (void)updateBackgroundView {
+    [super updateBackgroundView];
+}
+
 //--------------------------------------------------------------//
 #pragma mark -- UITableViewDataSource --
 //--------------------------------------------------------------//
@@ -104,6 +114,7 @@ const int kUrlFontColorChengeMenuIdx = 3;
     // セルをタップされた場合
     if (indexPath.row == kBackgroundChengeMenuIdx) {
         // 背景画像の変更の場合、アクションシートを表示
+        [self presentViewController:_alertController animated:YES completion:nil];
     } else {
         // Bookmarkの色の変更の場合、セルにカラーパレット表示する
         if ([[_openFlagArray objectAtIndex:indexPath.row] boolValue]) {

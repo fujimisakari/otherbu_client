@@ -7,6 +7,7 @@
 //
 
 #import "Helper.h"
+#import "DesignData.h"
 
 @implementation Helper
 
@@ -39,7 +40,8 @@
 + (void)setupBackgroundImage:(CGRect)rect TargetView:(UIView *)view {
     // 背景画像を設定
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0.0);
-    [[UIImage imageNamed:kDefaultImageName] drawInRect:view.bounds];
+    NSString *imageName = [DesignData shared].backgroundPicture;
+    [[UIImage imageNamed:imageName] drawInRect:view.bounds];
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     CALayer *layer = [CALayer layer];

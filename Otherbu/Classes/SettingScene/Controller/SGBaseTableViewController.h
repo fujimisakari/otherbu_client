@@ -10,4 +10,6 @@
 
 @interface SGBaseTableViewController : UITableViewController
 
+- (void)updateBackgroundView;
+
 @end

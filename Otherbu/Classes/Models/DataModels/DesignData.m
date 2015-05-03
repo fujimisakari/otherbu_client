@@ -29,6 +29,7 @@ static DesignData *intance = nil;
         self.tableBackGroundColor = @"#1e1e1e";
         self.bookmarkColor = @"#ffffff";
         self.urlColor = @"#808080";
+        self.backgroundPicture = kDefaultImageName;
     }
     return self;
 }
@@ -63,13 +64,18 @@ static DesignData *intance = nil;
 }
 
 - (void)updatetbookmarkNameColor:(NSString *)colorCode {
-    // ブックマークのフォントカラーを取得
+    // ブックマークのフォントカラーを更新
     self.bookmarkColor = colorCode;
 }
 
 - (void)updatetbookmarkUrlColor:(NSString *)colorCode {
-    // ブックマークURLのフォントカラーを取得
+    // ブックマークURLのフォントカラーを更新
     self.urlColor = colorCode;
+}
+
+- (void)updatetBackgroundPicture:(NSString *)fileName {
+    // 背景画像のファイル名を更新
+    self.backgroundPicture = fileName;
 }
 
 @end

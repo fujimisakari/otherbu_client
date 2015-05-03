@@ -18,21 +18,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.tableView registerClass:[SettingTableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+    [self.tableView registerClass:[SettingTableViewCell class] forCellReuseIdentifier:kCellIdentifier];}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 
     // セルの区切り線を非表示
     self.tableView.separatorColor = [UIColor clearColor];
 
     // 背景画像を設定
+    [self updateBackgroundView];
+
+    // NavigationBarにXボタンを設置する
+    [self _setCloseButton];
+}
+
+- (void)updateBackgroundView {
     float height = self.navigationController.navigationBar.frame.size.height + 20;  // 20はステータスバーの高さ
     CGRect rect = CGRectMake(self.tableView.frame.origin.x,   self.tableView.frame.origin.y + height,
                              self.tableView.frame.size.width, self.tableView.frame.size.height);
     UIView *bgView = [[UIView alloc] initWithFrame:self.tableView.frame];
     [Helper setupBackgroundImage:rect TargetView:bgView];
     self.tableView.backgroundView = bgView;
-
-    // NavigationBarにXボタンを設置する
-    [self _setCloseButton];
 }
 
 //--------------------------------------------------------------//
