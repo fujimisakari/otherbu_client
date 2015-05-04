@@ -44,7 +44,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 
-    NSString *itemKey = [self _getMenuItemKey:indexPath.section row:indexPath.row];
+    NSString *itemKey = [self _getMenuItemKey:(int)indexPath.section row:(int)indexPath.row];
     NSMutableDictionary *menuItem = _menuItems[itemKey];
     cell.textLabel.text = menuItem[@"menuName"];
     cell.imageView.image = menuItem[@"iconImage"];
@@ -57,7 +57,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // 画面遷移
-    NSString *itemKey = [self _getMenuItemKey:indexPath.section row:indexPath.row];
+    NSString *itemKey = [self _getMenuItemKey:(int)indexPath.section row:(int)indexPath.row];
     NSMutableDictionary *menuItem = _menuItems[itemKey];
     void (^block)(void) = menuItem[@"block"];
     block();
