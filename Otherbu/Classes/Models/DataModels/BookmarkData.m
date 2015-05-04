@@ -100,7 +100,7 @@
     _categoryId = [decoder decodeObjectForKey:@"categoryId"];
     _name = [decoder decodeObjectForKey:@"name"];
     _url = [decoder decodeObjectForKey:@"url"];
-    // _sort = [decoder decodeObjectForKey:@"sort"];
+    _sort = [decoder decodeIntegerForKey:@"sort"];
 
     return self;
 }
@@ -111,7 +111,7 @@
     [encoder encodeObject:_categoryId forKey:@"categoryId"];
     [encoder encodeObject:_name forKey:@"name"];
     [encoder encodeObject:_url forKey:@"url"];
-    // [encoder encodeObject:_sort forKey:@"sort"];
+    [encoder encodeInteger:_sort forKey:@"sort"];
 }
 
 @end

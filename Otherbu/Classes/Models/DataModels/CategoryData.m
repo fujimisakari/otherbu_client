@@ -109,10 +109,10 @@
 
     _dataId = [decoder decodeObjectForKey:@"dataId"];
     _name = [decoder decodeObjectForKey:@"name"];
-    // _angle = [decoder decodeObjectForKey:@"angle"];
-    // _sort = [decoder decodeObjectForKey:@"sort"];
+    _angle = [decoder decodeIntegerForKey:@"angle"];
+    _sort = [decoder decodeIntegerForKey:@"sort"];
     _colorId = [decoder decodeObjectForKey:@"colorId"];
-    _isOpenSection = [decoder decodeObjectForKey:@"isOpenSection"];
+    _isOpenSection = [decoder decodeBoolForKey:@"isOpenSection"];
 
     return self;
 }
@@ -121,10 +121,10 @@
     // インスタンス変数をエンコードする
     [encoder encodeObject:_dataId forKey:@"dataId"];
     [encoder encodeObject:_name forKey:@"name"];
-    // [encoder encodeObject:_angle forKey:@"angle"];
-    // [encoder encodeObject:_sort forKey:@"sort"];
+    [encoder encodeInteger:_angle forKey:@"angle"];
+    [encoder encodeInteger:_sort forKey:@"sort"];
     [encoder encodeObject:_colorId forKey:@"colorId"];
-    // [encoder encodeObject:_isOpenSection forKey:@"isOpenSection"];
+    [encoder encodeBool:_isOpenSection forKey:@"isOpenSection"];
 }
 
 @end

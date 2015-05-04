@@ -261,7 +261,7 @@
     _categoryIdsStr = [decoder decodeObjectForKey:@"categoryIdsStr"];
     _angleIdsStr = [decoder decodeObjectForKey:@"angleIdsStr"];
     _sortIdsStr = [decoder decodeObjectForKey:@"sortIdsStr"];
-    // _sortId = [decoder decodeObjectForKey:@"sortId"];
+    _sortId = [decoder decodeIntegerForKey:@"sortId"];
     _colorId = [decoder decodeObjectForKey:@"colorId"];
 
     return self;
@@ -274,7 +274,7 @@
     [encoder encodeObject:_categoryIdsStr forKey:@"categoryIdsStr"];
     [encoder encodeObject:_angleIdsStr forKey:@"angleIdsStr"];
     [encoder encodeObject:_sortIdsStr forKey:@"sortIdsStr"];
-    // [encoder encodeObject:_sortId forKey:@"sortId"];
+    [encoder encodeInteger:_sortId forKey:@"sortId"];
     [encoder encodeObject:_colorId forKey:@"colorId"];
 }
 
