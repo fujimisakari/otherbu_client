@@ -30,7 +30,7 @@
             UIImagePickerController *picker = [[UIImagePickerController alloc] init];
             picker.delegate = self;
             picker.sourceType = sourceType;
-            [_clientViewController presentModalViewController:picker animated:YES];
+            [_clientViewController presentViewController:picker animated:YES completion:nil];
         }
     };
     actionDict[@"default"] = ^(UIAlertAction * action) {
@@ -79,12 +79,12 @@
 
     // アプリを抜けるとステータスバーの文字が黒に戻るので再度白にする
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [_clientViewController dismissModalViewControllerAnimated:YES];
+    [_clientViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     // 画像の選択がキャンセルされた場合
-    [_clientViewController dismissModalViewControllerAnimated:YES];
+    [_clientViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
