@@ -14,15 +14,6 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-static UserData *intance = nil;
-
-+ (UserData *)shared {
-    if (!intance) {
-        intance = [[UserData alloc] init];
-    }
-    return intance;
-}
-
 - (id)init {
     self = [super init];
     if (self) {

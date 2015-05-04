@@ -128,9 +128,9 @@ const int kUrlFontColorChengeMenuIdx = 3;
             // 表示する場合
             [self _openFlagReset];
             if (indexPath.row == kBackgroundColorChengeMenuIdx) {
-                _colorCode = [DesignData shared].tableBackGroundColor;
+                _colorCode = [[DataManager sharedManager] getDesign].tableBackGroundColor;
             } else {
-                _colorCode = [DesignData shared].bookmarkColor;
+                _colorCode = [[DataManager sharedManager] getDesign].bookmarkColor;
             }
             _openFlagArray[indexPath.row] = @"1";
             [_menuIndexPathList addObject:indexPath];
@@ -259,23 +259,24 @@ const int kUrlFontColorChengeMenuIdx = 3;
 }
 
 - (void)_updateColor:(ColorData *)colorData {
+    DesignData *design = [[DataManager sharedManager] getDesign];
     for (int i = 0; i < _menuList.count; ++i) {
         if ([[_openFlagArray objectAtIndex:i] boolValue]) {
             switch (i) {
                 // ブックマーク背景が更新の場合
                 case kBackgroundColorChengeMenuIdx: {
-                    [[DesignData shared] updateTableBackGroundColor:colorData.thumbnailColorCode];
-                    [_cellDesignView setBackgroundColor:[[DesignData shared] getTableBackGroundColor]];
+                    [design updateTableBackGroundColor:colorData.thumbnailColorCode];
+                    [_cellDesignView setBackgroundColor:[design getTableBackGroundColor]];
                 } break;
                 // ブックマークの文字色が更新の場合
                 case kNameFontColorChengeMenuIdx: {
-                    [[DesignData shared] updatetbookmarkNameColor:colorData.thumbnailColorCode];
-                    [_cellDesignView setBookmarkNameColor:[[DesignData shared] getbookmarkColor]];
+                    [design updatetbookmarkNameColor:colorData.thumbnailColorCode];
+                    [_cellDesignView setBookmarkNameColor:[design getbookmarkColor]];
                 } break;
                 // ブックマークの文字色が更新の場合
                 case kUrlFontColorChengeMenuIdx: {
-                    [[DesignData shared] updatetbookmarkUrlColor:colorData.thumbnailColorCode];
-                    [_cellDesignView setBookmarkUrlColor:[[DesignData shared] getUrlColor]];
+                    [design updatetbookmarkUrlColor:colorData.thumbnailColorCode];
+                    [_cellDesignView setBookmarkUrlColor:[design getUrlColor]];
                 } break;
             }
         }

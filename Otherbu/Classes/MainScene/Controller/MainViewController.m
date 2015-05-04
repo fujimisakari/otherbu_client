@@ -415,7 +415,7 @@
 }
 
 - (void)_openWebView:(UIButton *)sender {
-    SearchData *search = [[UserData shared] search];
+    SearchData *search = [[[DataManager sharedManager] getUser] search];
     BookmarkData *bookmark = [[BookmarkData alloc] init];
     bookmark.url = search.url;
     _selectBookmark = bookmark;

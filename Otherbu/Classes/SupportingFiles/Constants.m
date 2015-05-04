@@ -31,6 +31,14 @@ NSString * const kDefaultPageDataId = @"AllCategory";          // デフォル�
 NSString * const kDefaultSearchDataId = @"1";                  // デフォルトの検索サイト
 const int kNumberOfPages = 3;                                  // ページ数
 
+// データ保存時のファイル名
+NSString * const kSaveFileNameList[] = {
+    [SAVE_USER] = @"User",
+    [SAVE_DESIGN] = @"Design",
+    [SAVE_BOOKMARK] = @"Bookmark",
+    [SAVE_CATEGORY] = @"Category",
+    [SAVE_PAGE] = @"Page"
+};
 
 //--------------------------------------------------------------//
 #pragma mark -- Color Hex --

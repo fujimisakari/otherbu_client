@@ -26,7 +26,7 @@
     // 説明Headerを追加
     DescHeaderView *descHeaderView = [[DescHeaderView alloc] init];
     CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
-    [descHeaderView setupWithCGSize:size descMessage:@"Pageに入れるCategoryの選択ができます"];
+    [descHeaderView setupWithCGSize:size descMessage:@"Pageに含めるCategoryを選択ください"];
     [self.tableView setTableHeaderView:descHeaderView];
 
     _categoryList = [[DataManager sharedManager] getCategoryList];

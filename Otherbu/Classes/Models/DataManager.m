@@ -41,19 +41,19 @@ static DataManager *intance = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        self.user = [UserData shared];
-        self.pageDict = [@{} mutableCopy];
-        self.categoryDict = [@{} mutableCopy];
-        self.bookmarkDict = [@{} mutableCopy];
-        self.colorDict = [@{} mutableCopy];
-        self.design = [DesignData shared];
-        self.searchDict = [@{} mutableCopy];
+        _user = [[UserData alloc] init];
+        _design = [[DesignData alloc] init];
+        _categoryDict = [@{} mutableCopy];
+        _bookmarkDict = [@{} mutableCopy];
+        _pageDict = [@{} mutableCopy];
 
+        _colorDict = [@{} mutableCopy];
         for (NSDictionary *colorDict in [MasterData initColorData]) {
             ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
             [_colorDict setObject:data forKey:data.dataId];
         }
 
+        _searchDict = [@{} mutableCopy];
         for (NSDictionary *searchDict in [MasterData initSearchData]) {
             SearchData *data = [[SearchData alloc] initWithDictionary:searchDict];
             [_searchDict setObject:data forKey:data.dataId];
@@ -151,7 +151,7 @@ static DataManager *intance = nil;
 
 - (NSMutableArray *)getPageList {
     NSMutableArray *itemList = [NSMutableArray array];
-    for (NSString *key in self.pageDict) {
+    for (NSString *key in _pageDict) {
         [itemList addObject:[self getPage:key]];
     }
     // sort番号で昇順ソート
@@ -168,7 +168,7 @@ static DataManager *intance = nil;
 
 - (NSArray *)getColorList {
     NSMutableArray *itemList = [NSMutableArray array];
-    for (NSString *key in self.colorDict) {
+    for (NSString *key in _colorDict) {
         [itemList addObject:[self getColor:key]];
     }
 
@@ -179,8 +179,8 @@ static DataManager *intance = nil;
 
 - (NSMutableArray *)getSearchList {
     NSMutableArray *itemList = [NSMutableArray array];
-    for (NSString *key in self.searchDict) {
-        [itemList addObject:self.searchDict[key]];
+    for (NSString *key in _searchDict) {
+        [itemList addObject:_searchDict[key]];
     }
     return itemList;
 }
@@ -221,7 +221,7 @@ static DataManager *intance = nil;
             [newBookmarkDict setObject:bookmark forKey:bookmark.dataId];
         }
     }
-    self.bookmarkDict = newBookmarkDict;
+    _bookmarkDict = newBookmarkDict;
 
     [bookmarkList removeObjectAtIndex:idx];
 
@@ -266,7 +266,7 @@ static DataManager *intance = nil;
             [newCategoryDict setObject:category forKey:category.dataId];
         }
     }
-    self.categoryDict = newCategoryDict;
+    _categoryDict = newCategoryDict;
 
     [categoryList removeObjectAtIndex:idx];
 
@@ -283,7 +283,7 @@ static DataManager *intance = nil;
         page.sortId = i;
         [newPageDict setObject:page forKey:[[NSNumber alloc] initWithInt:(int)page.dataId]];
     }
-    self.pageDict = newPageDict;
+    _pageDict = newPageDict;
 
     // todo
     // datamanageに削除済みを登録する
@@ -327,6 +327,119 @@ static DataManager *intance = nil;
     // }
 
     [_design updateWithDictionary:design];
+}
+
+//--------------------------------------------------------------//
+#pragma mark-- 永続化--
+//--------------------------------------------------------------//
+
+- (NSString *)_userDirPath {
+    // ドキュメントPathを取得する
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    if ([paths count] < 1) {
+        return nil;
+    }
+    NSString *documentPath = [paths objectAtIndex:0];
+
+    // .UserDataディレクトリを作成する
+    documentPath = [documentPath stringByAppendingPathComponent:@".UserData"];
+    return documentPath;
+}
+
+- (NSString *)_datafilePath:(NSString *)fileName {
+    // データファイルまでのPathを作成する
+    NSString *fullName = [NSString stringWithFormat:@"%@.dat", fileName];
+    NSString *path = [[self _userDirPath] stringByAppendingPathComponent:fullName];
+    return path;
+}
+
+- (void)load {
+
+    for (int idx = 0; idx < LastSave; ++idx) {
+        // ファイルパスを取得する
+        NSString *filePath = [self _datafilePath:kSaveFileNameList[idx]];
+        if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+            continue;
+        }
+
+        // データを読み込む
+        id loadData = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        if (!loadData) {
+            continue;
+        }
+
+        switch (idx) {
+            case SAVE_USER: {
+                LOG(@"== load Uer Data ==\n%@\n", (UserData *)loadData);
+                _user = (UserData *)loadData;
+                break;
+            };
+            case SAVE_DESIGN: {
+                LOG(@"== load Design Data ==\n%@\n", (DesignData *)loadData);
+                _design = (DesignData *)loadData;
+                break;
+            };
+            case SAVE_BOOKMARK: {
+                LOG(@"== load Bookmark Data ==\n%@\n", (NSMutableDictionary *)loadData);
+                _bookmarkDict = (NSMutableDictionary *)loadData;
+                break;
+            };
+            case SAVE_CATEGORY: {
+                LOG(@"== load Category Data ==\n%@\n", (NSMutableDictionary *)loadData);
+                _categoryDict = (NSMutableDictionary *)loadData;
+                break;
+            };
+            case SAVE_PAGE: {
+                LOG(@"== load Page Data ==\n%@\n", (NSMutableDictionary *)loadData);
+                _pageDict = (NSMutableDictionary *)loadData;
+                break;
+            };
+        }
+    }
+}
+
+- (void)save:(int)saveIdx {
+
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+
+    // .UserDataディレクトリを作成する
+    NSString *userDirPath = [self _userDirPath];
+    if (![fileMgr fileExistsAtPath:userDirPath]) {
+        NSError *error;
+        [fileMgr createDirectoryAtPath:userDirPath withIntermediateDirectories:YES attributes:nil error:&error];
+    }
+
+    // ファイルパスを取得する
+    NSString *filePath = [self _datafilePath:kSaveFileNameList[saveIdx]];
+
+    // Dataを保存する
+    switch (saveIdx) {
+        case SAVE_USER: {
+            LOG(@"== Save Uer Data ==\n%@\n", _user);
+            [NSKeyedArchiver archiveRootObject:_user toFile:filePath];
+            break;
+        };
+        case SAVE_DESIGN: {
+            LOG(@"== Save Design Data ==\n%@\n", _design);
+            [NSKeyedArchiver archiveRootObject:_design toFile:filePath];
+            break;
+        };
+        case SAVE_BOOKMARK: {
+            LOG(@"== Save Bookmark Data ==\n%@\n", _bookmarkDict);
+            [NSKeyedArchiver archiveRootObject:_bookmarkDict toFile:filePath];
+            break;
+        };
+        case SAVE_CATEGORY: {
+            LOG(@"== Save Category Data ==\n%@\n", _categoryDict);
+            [NSKeyedArchiver archiveRootObject:_categoryDict toFile:filePath];
+            break;
+        };
+        case SAVE_PAGE: {
+            LOG(@"== Save Page Data ==\n%@\n", _pageDict);
+            [NSKeyedArchiver archiveRootObject:_pageDict toFile:filePath];
+            break;
+        };
+    }
 }
 
 @end

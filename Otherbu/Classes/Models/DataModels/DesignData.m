@@ -16,13 +16,6 @@
 
 static DesignData *intance = nil;
 
-+ (DesignData *)shared {
-    if (!intance) {
-        intance = [[DesignData alloc] init];
-    }
-    return intance;
-}
-
 - (id)init {
     self = [super init];
     if (self) {
@@ -37,6 +30,11 @@ static DesignData *intance = nil;
 - (void)updateWithDictionary:(NSDictionary *)dataDict {
     _tableBackGroundColor = dataDict[@"category_back_color"];
     _bookmarkColor = dataDict[@"link_color"];
+}
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"tableBackGroundColor=%@, bookmarkColor=%@, urlColor=%@, backgroundPicture=%@",
+                                      _tableBackGroundColor, _bookmarkColor, _urlColor, _backgroundPicture];
 }
 
 //--------------------------------------------------------------//

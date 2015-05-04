@@ -42,7 +42,7 @@ NSString *const kBookmarkUrl = @"http://otherbu.com";
     int margin = 60;
     CGRect rec = CGRectMake(kOffsetXOfTableCell, margin, self.frame.size.width, kCellHeightOfSetting);
     _cellBackgroundView = [[UIView alloc] initWithFrame:rec];
-    _cellBackgroundView.backgroundColor = [[DesignData shared] getTableBackGroundColor];
+    _cellBackgroundView.backgroundColor = [[[DataManager sharedManager] getDesign] getTableBackGroundColor];
     // 角丸にする
     _cellBackgroundView.layer.cornerRadius = 10.0f;
     _cellBackgroundView.layer.masksToBounds = YES;
@@ -55,7 +55,7 @@ NSString *const kBookmarkUrl = @"http://otherbu.com";
 - (void)_setBookmarkName {
     _bookmarkName = [[UILabel alloc] initWithFrame:CGRectMake(15, 3, self.frame.size.width, 30)];
     _bookmarkName.text = kBookmarkName;
-    _bookmarkName.textColor = [[DesignData shared] getbookmarkColor];
+    _bookmarkName.textColor = [[[DataManager sharedManager] getDesign] getbookmarkColor];
     _bookmarkName.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfBookmark];
     [_cellBackgroundView addSubview:_bookmarkName];
 }
@@ -63,7 +63,7 @@ NSString *const kBookmarkUrl = @"http://otherbu.com";
 - (void)_setBookmarkUrl {
     _bookmarkUrl = [[UILabel alloc] initWithFrame:CGRectMake(15, 28, self.frame.size.width, 15)];
     _bookmarkUrl.text = kBookmarkUrl;
-    _bookmarkUrl.textColor = [[DesignData shared] getUrlColor];
+    _bookmarkUrl.textColor = [[[DataManager sharedManager] getDesign] getUrlColor];
     _bookmarkUrl.font = [UIFont fontWithName:kDefaultFont size:kFontSizeOfUrl];
     [_cellBackgroundView addSubview:_bookmarkUrl];
 }

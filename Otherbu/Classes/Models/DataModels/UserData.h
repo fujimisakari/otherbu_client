@@ -14,8 +14,6 @@
 @property(nonatomic) NSString *pageId;   // 現在ページ
 @property(nonatomic) NSString *searchId; // 検索サイト
 
-+ (UserData *)shared;
-
 - (id)init;
 - (void)updateWithDictionary:(NSDictionary *)dataDict;
 

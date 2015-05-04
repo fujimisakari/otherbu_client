@@ -35,7 +35,7 @@
     };
     actionDict[@"default"] = ^(UIAlertAction * action) {
         // デフォルトの背景画像に戻す場合
-        [[DesignData shared] updatetBackgroundPicture:kDefaultImageName];
+        [[[DataManager sharedManager] getDesign] updatetBackgroundPicture:kDefaultImageName];
         SGDesignTableViewController *clientViewController = (SGDesignTableViewController *)_clientViewController;
         [clientViewController updateBackgroundView];
     };
@@ -70,11 +70,11 @@
         [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], kCustomImageName];
     // atomically=YESの場合、同名のファイルがあったら、まずは別名で作成して、その後、ファイルの上書きを行います
     if ([data writeToFile:path atomically:YES]) {
-        [[DesignData shared] updatetBackgroundPicture:path];
-        LOG(@"save OK");
-        LOG(@"save file: %@", [DesignData shared].backgroundPicture);
+        [[[DataManager sharedManager] getDesign] updatetBackgroundPicture:path];
+        LOG(@"Image Save OK");
+        LOG(@"Image Save File: %@", [[DataManager sharedManager] getDesign].backgroundPicture);
     } else {
-        LOG(@"save NG");
+        LOG(@"Image Save NG");
     }
 
     // アプリを抜けるとステータスバーの文字が黒に戻るので再度白にする

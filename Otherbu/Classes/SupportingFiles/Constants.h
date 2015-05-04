@@ -30,6 +30,17 @@ typedef NS_ENUM(NSUInteger, MenuList) {
     LastMenu,
 };
 
+typedef NS_ENUM(NSUInteger, SaveList) {
+    SAVE_USER = 0,
+    SAVE_DESIGN,
+    SAVE_BOOKMARK,
+    SAVE_CATEGORY,
+    SAVE_PAGE,
+    LastSave,
+};
+
+extern NSArray * const khoge;
+
 extern NSString * const kTitle;
 extern const int kFontSizeOfTitle;
 extern const float kOffsetYOfTitle;
@@ -42,6 +53,7 @@ extern NSString * const kCellIdentifier;
 extern NSString * const kDefaultPageDataId;
 extern NSString * const kDefaultSearchDataId;
 extern const int kNumberOfPages;
+extern NSString * const kSaveFileNameList[];
 
 extern NSString * const kTextFieldColorOfModal;
 extern NSString * const kBorderColorOfModal;

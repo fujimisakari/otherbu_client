@@ -13,7 +13,7 @@
 @property(nonatomic) NSString *urlColor;              // URLカラー
 @property(nonatomic) NSString *backgroundPicture;     // URLカラー
 
-+ (DesignData *)shared;
+- (id)init;
 
 - (void)updateWithDictionary:(NSDictionary *)dataDict;
 

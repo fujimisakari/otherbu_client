@@ -46,7 +46,7 @@
     // セルの生成。検索サイトの設定セルにはデフォルトでチェックマーク画像が表示させる
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     SearchData *search = (SearchData *)_searchList[indexPath.row];
-    SearchData *currentSearch = [[UserData shared] search];
+    SearchData *currentSearch = [[[DataManager sharedManager] getUser] search];
     if ([search.dataId isEqualToString:currentSearch.dataId]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         _selectCell = cell;
@@ -66,7 +66,7 @@
         _selectCell.accessoryType = UITableViewCellAccessoryNone;
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         _selectCell = cell;
-        [[UserData shared] updateSearch:search.dataId];
+        [[[DataManager sharedManager] getUser] updateSearch:search.dataId];
     }
 }
 

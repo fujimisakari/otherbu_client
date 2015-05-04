@@ -50,6 +50,7 @@
     return [NSString stringWithFormat:@"dataId=%@, name=%@, categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@, sortId=%ld", _dataId, _name,
                                       _categoryIdsStr, _angleIdsStr, _sortIdsStr, _sortId];
 }
+
 //--------------------------------------------------------------//
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
