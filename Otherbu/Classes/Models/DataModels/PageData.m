@@ -18,40 +18,38 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = [dataDict[@"id"] stringValue];
-        self.userId = [dataDict[@"user_id"] integerValue];
-        self.name = dataDict[@"name"];
-        self.categoryIdsStr = dataDict[@"category_ids_str"];
-        self.angleIdsStr = dataDict[@"angle_ids_str"];
-        self.sortIdsStr = dataDict[@"sort_ids_str"];
-        self.sortId = [DataManager sharedManager].pageDict.count;
+        _dataId = [dataDict[@"id"] stringValue];
+        _name = dataDict[@"name"];
+        _categoryIdsStr = dataDict[@"category_ids_str"];
+        _angleIdsStr = dataDict[@"angle_ids_str"];
+        _sortIdsStr = dataDict[@"sort_ids_str"];
+        _sortId = [DataManager sharedManager].pageDict.count;
 
         if ([self.dataId isEqualToString:@"16"]) {
-            self.colorId = @"9";
+            _colorId = @"9";
         } else if ([self.dataId isEqualToString:@"18"]) {
-            self.colorId = @"13";
+            _colorId = @"13";
         } else if ([self.dataId isEqualToString:@"19"]) {
-            self.colorId = @"3";
+            _colorId = @"3";
         } else if ([self.dataId isEqualToString:@"1"]) {
-            self.colorId = @"14";
+            _colorId = @"14";
         } else if ([self.dataId isEqualToString:@"20"]) {
-            self.colorId = @"8";
+            _colorId = @"8";
         } else if ([self.dataId isEqualToString:@"17"]) {
-            self.colorId = @"6";
+            _colorId = @"6";
         } else if ([self.dataId isEqualToString:@"17"]) {
-            self.colorId = @"5";
+            _colorId = @"5";
         } else {
-            self.colorId = @"7";
+            _colorId = @"7";
         }
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, userId=%ld name=%@ categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@, sortId=%ld",
-                                      _dataId, _userId, _name, _categoryIdsStr, _angleIdsStr, _sortIdsStr, _sortId];
+    return [NSString stringWithFormat:@"dataId=%@, name=%@, categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@, sortId=%ld", _dataId, _name,
+                                      _categoryIdsStr, _angleIdsStr, _sortIdsStr, _sortId];
 }
-
 //--------------------------------------------------------------//
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
@@ -174,9 +172,9 @@
             [data[@"array"] addObject:insertData];
         }
     }
-    self.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
-    self.sortIdsStr = [sortList componentsJoinedByString:@","];
-    self.angleIdsStr = [angleList componentsJoinedByString:@","];
+    _categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
+    _sortIdsStr = [sortList componentsJoinedByString:@","];
+    _angleIdsStr = [angleList componentsJoinedByString:@","];
     LOG(@"== updatePageData(after) ==\n%@\n", self);
 }
 
@@ -199,9 +197,9 @@
         }
     }
 
-    self.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
-    self.sortIdsStr = [sortList componentsJoinedByString:@","];
-    self.angleIdsStr = [angleList componentsJoinedByString:@","];
+    _categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
+    _sortIdsStr = [sortList componentsJoinedByString:@","];
+    _angleIdsStr = [angleList componentsJoinedByString:@","];
     LOG(@"== updatePageDataBySwap(after) ==\n%@\n", self);
 }
 
@@ -214,12 +212,12 @@
 //--------------------------------------------------------------//
 
 - (BOOL)isCreateMode {
-    return (self.dataId == nil) ? YES : NO;
+    return (_dataId == nil) ? YES : NO;
 }
 
 - (void)addNewData {
-    self.dataId = [Helper generateId];
-    self.sortId = [DataManager sharedManager].pageDict.count + 1;
+    _dataId = [Helper generateId];
+    _sortId = [DataManager sharedManager].pageDict.count + 1;
     [[DataManager sharedManager] addPage:self];
 }
 
@@ -232,19 +230,52 @@
 }
 
 - (NSString *)iGetName {
-    return self.name;
+    return _name;
 }
 
 - (void)iSetName:(NSString *)name {
-    self.name = name;
+    _name = name;
 }
 
 - (NSString *)iGetColorId {
-    return self.colorId;
+    return _colorId;
 }
 
 - (void)iSetColorId:(NSString *)colorId {
-    self.colorId = colorId;
+    _colorId = colorId;
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- 永続化 --
+//--------------------------------------------------------------//
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    // インスタンス変数をデコードする
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    _dataId = [decoder decodeObjectForKey:@"dataId"];
+    _name = [decoder decodeObjectForKey:@"name"];
+    _categoryIdsStr = [decoder decodeObjectForKey:@"categoryIdsStr"];
+    _angleIdsStr = [decoder decodeObjectForKey:@"angleIdsStr"];
+    _sortIdsStr = [decoder decodeObjectForKey:@"sortIdsStr"];
+    // _sortId = [decoder decodeObjectForKey:@"sortId"];
+    _colorId = [decoder decodeObjectForKey:@"colorId"];
+
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    // インスタンス変数をエンコードする
+    [encoder encodeObject:_dataId forKey:@"dataId"];
+    [encoder encodeObject:_name forKey:@"name"];
+    [encoder encodeObject:_categoryIdsStr forKey:@"categoryIdsStr"];
+    [encoder encodeObject:_angleIdsStr forKey:@"angleIdsStr"];
+    [encoder encodeObject:_sortIdsStr forKey:@"sortIdsStr"];
+    // [encoder encodeObject:_sortId forKey:@"sortId"];
+    [encoder encodeObject:_colorId forKey:@"colorId"];
 }
 
 @end

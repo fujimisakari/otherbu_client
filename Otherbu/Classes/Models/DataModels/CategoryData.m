@@ -18,20 +18,19 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = [dataDict[@"id"] stringValue];
-        self.userId = [dataDict[@"user_id"] integerValue];
-        self.name = dataDict[@"name"];
-        self.angle = [dataDict[@"angle"] integerValue];
-        self.sort = [dataDict[@"sort"] integerValue];
-        self.colorId = [dataDict[@"color_id"] stringValue];
-        self.isOpenSection = [dataDict[@"tag_open"] boolValue];
+        _dataId = [dataDict[@"id"] stringValue];
+        _name = dataDict[@"name"];
+        _angle = [dataDict[@"angle"] integerValue];
+        _sort = [dataDict[@"sort"] integerValue];
+        _colorId = [dataDict[@"color_id"] stringValue];
+        _isOpenSection = [dataDict[@"tag_open"] boolValue];
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, userId=%ld name=%@ angle=%ld, sort=%ld, colorId=%@, isOpenSection=%d", _dataId, _userId,
-                                      _name, _angle, _sort, _colorId, _isOpenSection];
+    return [NSString stringWithFormat:@"dataId=%@, name=%@, angle=%ld, sort=%ld, colorId=%@, isOpenSection=%d", _dataId, _name, _angle,
+                                      _sort, _colorId, _isOpenSection];
 }
 
 //--------------------------------------------------------------//
@@ -66,10 +65,10 @@
 }
 
 - (void)addNewData {
-    self.dataId = [Helper generateId];
-    self.angle = LEFT;
-    self.sort = [DataManager sharedManager].categoryDict.count + 1;
-    self.isOpenSection = NO;
+    _dataId = [Helper generateId];
+    _angle = LEFT;
+    _sort = [DataManager sharedManager].categoryDict.count + 1;
+    _isOpenSection = NO;
     [[DataManager sharedManager] addCategory:self];
 }
 
@@ -82,19 +81,50 @@
 }
 
 - (NSString *)iGetName {
-    return self.name;
+    return _name;
 }
 
 - (void)iSetName:(NSString *)name {
-    self.name = name;
+    _name = name;
 }
 
 - (NSString *)iGetColorId {
-    return self.colorId;
+    return _colorId;
 }
 
 - (void)iSetColorId:(NSString *)colorId {
-    self.colorId = colorId;
+    _colorId = colorId;
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- 永続化 --
+//--------------------------------------------------------------//
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    // インスタンス変数をデコードする
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    _dataId = [decoder decodeObjectForKey:@"dataId"];
+    _name = [decoder decodeObjectForKey:@"name"];
+    // _angle = [decoder decodeObjectForKey:@"angle"];
+    // _sort = [decoder decodeObjectForKey:@"sort"];
+    _colorId = [decoder decodeObjectForKey:@"colorId"];
+    _isOpenSection = [decoder decodeObjectForKey:@"isOpenSection"];
+
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    // インスタンス変数をエンコードする
+    [encoder encodeObject:_dataId forKey:@"dataId"];
+    [encoder encodeObject:_name forKey:@"name"];
+    // [encoder encodeObject:_angle forKey:@"angle"];
+    // [encoder encodeObject:_sort forKey:@"sort"];
+    [encoder encodeObject:_colorId forKey:@"colorId"];
+    // [encoder encodeObject:_isOpenSection forKey:@"isOpenSection"];
 }
 
 @end

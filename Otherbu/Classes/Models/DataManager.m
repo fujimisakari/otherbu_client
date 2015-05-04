@@ -301,7 +301,7 @@ static DataManager *intance = nil;
     NSArray *pageList = [jsonData objectForKey:@"page_list"];
     NSArray *categoryList = [jsonData objectForKey:@"category_list"];
     NSArray *bookmarkList = [jsonData objectForKey:@"bookmark_list"];
-    NSArray *colorList = [jsonData objectForKey:@"color_list"];
+    // NSArray *colorList = [jsonData objectForKey:@"color_list"];
     NSDictionary *design = [jsonData objectForKey:@"design"];
 
     [_user updateWithDictionary:user];
@@ -321,10 +321,10 @@ static DataManager *intance = nil;
         [_bookmarkDict setObject:data forKey:[bookmarkDict[@"id"] stringValue]];
     }
 
-    for (NSDictionary *colorDict in colorList) {
-        ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
-        [_colorDict setObject:data forKey:[colorDict[@"id"] stringValue]];
-    }
+    // for (NSDictionary *colorDict in colorList) {
+    //     ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
+    //     [_colorDict setObject:data forKey:[colorDict[@"id"] stringValue]];
+    // }
 
     [_design updateWithDictionary:design];
 }

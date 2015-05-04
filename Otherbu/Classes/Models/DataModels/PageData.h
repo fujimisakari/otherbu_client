@@ -10,10 +10,9 @@
 
 @class ColorData;
 
-@interface PageData : NSObject<DataInterface>
+@interface PageData : NSObject<DataInterface, NSCoding>
 
 @property(nonatomic) NSString  *dataId;         // ID
-@property(nonatomic) NSInteger userId;          // ユーザーID
 @property(nonatomic) NSString  *name;           // カテゴリ名
 @property(nonatomic) NSString  *categoryIdsStr; // ページに含むカテゴリ
 @property(nonatomic) NSString  *angleIdsStr;    // ページに含むカテゴリ位置

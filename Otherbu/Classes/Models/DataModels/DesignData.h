@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@interface DesignData : NSObject
+@interface DesignData : NSObject<NSCoding>
 
 @property(nonatomic) NSString *tableBackGroundColor;  // Tableセル背景
 @property(nonatomic) NSString *bookmarkColor;         // Bookmarkカラー

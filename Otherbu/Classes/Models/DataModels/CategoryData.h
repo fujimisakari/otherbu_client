@@ -10,10 +10,9 @@
 
 @class ColorData;
 
-@interface CategoryData : NSObject<DataInterface>
+@interface CategoryData : NSObject<DataInterface, NSCoding>
 
 @property(nonatomic) NSString  *dataId;       // ID
-@property(nonatomic) NSInteger userId;        // ユーザーID
 @property(nonatomic) NSString  *name;         // カテゴリ名
 @property(nonatomic) NSInteger angle;         // 位置
 @property(nonatomic) NSInteger sort;          // Sort番号

@@ -26,18 +26,18 @@ static UserData *intance = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        self.dataId = [Helper generateId];
-        self.pageId = kDefaultPageDataId;
-        self.searchId = kDefaultSearchDataId;
+        _dataId = [Helper generateId];
+        _pageId = kDefaultPageDataId;
+        _searchId = kDefaultSearchDataId;
     }
     return self;
 }
 
 - (void)updateWithDictionary:(NSDictionary *)dataDict {
-    self.dataId = [dataDict[@"id"] stringValue];
-    self.type = dataDict[@"type"];
-    self.typeId = dataDict[@"type_id"];
-    self.pageId = [dataDict[@"page_id"] stringValue];
+    _dataId = [dataDict[@"id"] stringValue];
+    _type = dataDict[@"type"];
+    _typeId = dataDict[@"type_id"];
+    _pageId = [dataDict[@"page_id"] stringValue];
 }
 
 - (NSString *)description {
@@ -62,6 +62,35 @@ static UserData *intance = nil;
 
 - (void)updateSearch:(NSString *)dataId {
     self.searchId = dataId;
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- 永続化 --
+//--------------------------------------------------------------//
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    // インスタンス変数をデコードする
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    _dataId = [decoder decodeObjectForKey:@"dataId"];
+    _type = [decoder decodeObjectForKey:@"type"];
+    _typeId = [decoder decodeObjectForKey:@"typeId"];
+    _pageId = [decoder decodeObjectForKey:@"pageId"];
+    _searchId = [decoder decodeObjectForKey:@"searchId"];
+
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    // インスタンス変数をエンコードする
+    [encoder encodeObject:_dataId forKey:@"dataId"];
+    [encoder encodeObject:_type forKey:@"type"];
+    [encoder encodeObject:_typeId forKey:@"typeId"];
+    [encoder encodeObject:_pageId forKey:@"pageId"];
+    [encoder encodeObject:_searchId forKey:@"searchId"];
 }
 
 @end

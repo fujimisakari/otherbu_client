@@ -18,19 +18,17 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = [dataDict[@"id"] stringValue];
-        self.userId = [dataDict[@"user_id"] integerValue];
-        self.categoryId = [dataDict[@"category_id"] stringValue];
-        self.name = dataDict[@"name"];
-        self.url = dataDict[@"url"];
-        self.sort = [dataDict[@"sort"] integerValue];
+        _dataId = [dataDict[@"id"] stringValue];
+        _categoryId = [dataDict[@"category_id"] stringValue];
+        _name = dataDict[@"name"];
+        _url = dataDict[@"url"];
+        _sort = [dataDict[@"sort"] integerValue];
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, userId=%ld categoryId=%@ name=%@, url=%@, sort=%ld", _dataId, _userId, _categoryId,
-                                      _name, _url, _sort];
+    return [NSString stringWithFormat:@"dataId=%@, categoryId=%@, name=%@, url=%@, sort=%ld", _dataId, _categoryId, _name, _url, _sort];
 }
 
 //--------------------------------------------------------------//
@@ -46,12 +44,12 @@
 //--------------------------------------------------------------//
 
 - (BOOL)isCreateMode {
-    return (self.dataId == nil) ? YES : NO;
+    return (_dataId == nil) ? YES : NO;
 }
 
 - (void)addNewData {
-    self.dataId = [Helper generateId];
-    self.sort = [[self category] getBookmarkList].count + 1;
+    _dataId = [Helper generateId];
+    _sort = [[self category] getBookmarkList].count + 1;
     [[DataManager sharedManager] addBookmark:self];
 }
 
@@ -64,27 +62,56 @@
 }
 
 - (NSString *)iGetName {
-    return self.name;
+    return _name;
 }
 
 - (void)iSetName:(NSString *)name {
-    self.name = name;
+    _name = name;
 }
 
 - (NSString *)iGetUrl {
-    return self.url;
+    return _url;
 }
 
 - (void)iSetUrl:(NSString *)url {
-    self.url = url;
+    _url = url;
 }
 
 - (NSString *)iGetCategoryId {
-    return self.categoryId;
+    return _categoryId;
 }
 
 - (void)iSetCategoryId:(NSString *)categoryId {
-    self.categoryId = categoryId;
+    _categoryId = categoryId;
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- 永続化 --
+//--------------------------------------------------------------//
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    // インスタンス変数をデコードする
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+
+    _dataId = [decoder decodeObjectForKey:@"dataId"];
+    _categoryId = [decoder decodeObjectForKey:@"categoryId"];
+    _name = [decoder decodeObjectForKey:@"name"];
+    _url = [decoder decodeObjectForKey:@"url"];
+    // _sort = [decoder decodeObjectForKey:@"sort"];
+
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    // インスタンス変数をエンコードする
+    [encoder encodeObject:_dataId forKey:@"dataId"];
+    [encoder encodeObject:_categoryId forKey:@"categoryId"];
+    [encoder encodeObject:_name forKey:@"name"];
+    [encoder encodeObject:_url forKey:@"url"];
+    // [encoder encodeObject:_sort forKey:@"sort"];
 }
 
 @end

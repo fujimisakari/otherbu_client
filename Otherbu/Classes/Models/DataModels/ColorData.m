@@ -17,24 +17,24 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = [dataDict[@"id"] stringValue];
-        self.name = dataDict[@"name"];
-        self.fontColor = dataDict[@"font_color"];
-        self.iconColor = dataDict[@"icon_color"];
-        self.sort = [dataDict[@"sort"] integerValue];
-        self.colorCode1 = dataDict[@"color_code1"];
-        self.colorCode2 = dataDict[@"color_code2"];
-        self.colorCode3 = dataDict[@"color_code3"];
-        self.thumbnailColorCode = dataDict[@"thumbnail_color_code"];
+        _dataId = [dataDict[@"id"] stringValue];
+        _name = dataDict[@"name"];
+        _fontColor = dataDict[@"font_color"];
+        _iconColor = dataDict[@"icon_color"];
+        _sort = [dataDict[@"sort"] integerValue];
+        _colorCode1 = dataDict[@"color_code1"];
+        _colorCode2 = dataDict[@"color_code2"];
+        _colorCode3 = dataDict[@"color_code3"];
+        _thumbnailColorCode = dataDict[@"thumbnail_color_code"];
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, name=%@ fontColor=%@, iconColor=%@, sort=%ld, colorCode1=%@, colorCode2=%@, "
-                                       "colorCode3=%@, thumbnailColorCode=%@",
-                                      _dataId, _name, _fontColor, _iconColor, _sort, _colorCode1, _colorCode2, _colorCode3,
-                                      _thumbnailColorCode];
+    return [NSString
+        stringWithFormat:
+            @"dataId=%@, name=%@, fontColor=%@, iconColor=%@, sort=%ld, colorCode1=%@, colorCode2=%@, colorCode3=%@, thumbnailColorCode=%@",
+            _dataId, _name, _fontColor, _iconColor, _sort, _colorCode1, _colorCode2, _colorCode3, _thumbnailColorCode];
 }
 
 //--------------------------------------------------------------//
@@ -80,11 +80,11 @@
 }
 
 - (NSString *)iGetName {
-    return self.name;
+    return _name;
 }
 
 - (NSInteger)iGetSortId {
-    return self.sort;
+    return _sort;
 }
 
 @end

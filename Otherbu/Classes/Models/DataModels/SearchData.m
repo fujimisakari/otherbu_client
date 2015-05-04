@@ -17,9 +17,9 @@
 - (id)initWithDictionary:(NSDictionary *)dataDict {
     self = [super init];
     if (self) {
-        self.dataId = dataDict[@"dataId"];
-        self.name = dataDict[@"name"];
-        self.url = dataDict[@"url"];
+        _dataId = dataDict[@"dataId"];
+        _name = dataDict[@"name"];
+        _url = dataDict[@"url"];
     }
     return self;
 }
@@ -41,11 +41,11 @@
 }
 
 - (NSString *)iGetName {
-    return self.name;
+    return _name;
 }
 
 - (NSString *)iGetUrl {
-    return self.url;
+    return _url;
 }
 
 @end

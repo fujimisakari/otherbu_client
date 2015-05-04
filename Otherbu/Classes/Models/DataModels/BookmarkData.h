@@ -10,10 +10,9 @@
 
 @class CategoryData;
 
-@interface BookmarkData : NSObject<DataInterface>
+@interface BookmarkData : NSObject<DataInterface, NSCoding>
 
 @property(nonatomic) NSString  *dataId;      // ID
-@property(nonatomic) NSInteger userId;       // ユーザーID
 @property(nonatomic) NSString  *categoryId;  // カテゴリID
 @property(nonatomic) NSString  *name;        // Bookmark名
 @property(nonatomic) NSString  *url;         // URL
