@@ -56,6 +56,14 @@ static DesignData *intance = nil;
     return [UIColor colorWithHex:[UIColor removeSharp:_urlColor]];
 }
 
+- (NSString *)getbackgroundPicturePath {
+    // 背景画像へのPathを取得
+    if ([_backgroundPicture isEqualToString:kDefaultImageName]) {
+        return _backgroundPicture;
+    }
+    return [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], _backgroundPicture];
+}
+
 - (void)updateTableBackGroundColor:(NSString *)colorCode {
     // テーブル背景色を取得
     _tableBackGroundColor = colorCode;

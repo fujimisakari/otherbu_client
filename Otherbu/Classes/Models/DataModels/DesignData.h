@@ -20,6 +20,7 @@
 - (UIColor *)getTableBackGroundColor;
 - (UIColor *)getbookmarkColor;
 - (UIColor *)getUrlColor;
+- (NSString *)getbackgroundPicturePath;
 
 - (void)updateTableBackGroundColor:(NSString *)colorCode;
 - (void)updatetbookmarkNameColor:(NSString *)colorCode;

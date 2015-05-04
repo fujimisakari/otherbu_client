@@ -40,7 +40,7 @@
 + (void)setupBackgroundImage:(CGRect)rect TargetView:(UIView *)view {
     // 背景画像を設定
     UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0.0);
-    NSString *imageName = [[DataManager sharedManager] getDesign].backgroundPicture;
+    NSString *imageName = [[[DataManager sharedManager] getDesign] getbackgroundPicturePath];
     [[UIImage imageNamed:imageName] drawInRect:view.bounds];
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

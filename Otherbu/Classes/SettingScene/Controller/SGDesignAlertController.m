@@ -70,7 +70,7 @@
         [NSString stringWithFormat:@"%@/%@", [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], kCustomImageName];
     // atomically=YESの場合、同名のファイルがあったら、まずは別名で作成して、その後、ファイルの上書きを行います
     if ([data writeToFile:path atomically:YES]) {
-        [[[DataManager sharedManager] getDesign] updatetBackgroundPicture:path];
+        [[[DataManager sharedManager] getDesign] updatetBackgroundPicture:kCustomImageName];
         LOG(@"Image Save OK");
         LOG(@"Image Save File: %@", [[DataManager sharedManager] getDesign].backgroundPicture);
     } else {
