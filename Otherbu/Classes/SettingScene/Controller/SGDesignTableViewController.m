@@ -44,10 +44,12 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
     _menuIndexPathList = [[NSMutableArray alloc] init];
 
-    _menuList = @[ @"背景画像の変更", @"Bookmark背景色の変更", @"Bookmark名の色の変更", @"BookmarkURLの色の変更" ];
+    _menuList = @[ @"画像を変更", @"Bookmark背景色の変更", @"Bookmark名の色の変更", @"BookmarkURLの色の変更" ];
 
     // 背景画像の変更用のActionSheetを準備
-    _alertController = [SGDesignAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    _alertController = [SGDesignAlertController alertControllerWithTitle:@""
+                                                                 message:@"背景画像の差し替え"
+                                                          preferredStyle:UIAlertControllerStyleActionSheet];
     [_alertController setup:self];
 }
 
