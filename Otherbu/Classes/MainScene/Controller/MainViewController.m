@@ -267,6 +267,8 @@
     }
 
     [tableView endUpdates];
+
+    [[DataManager sharedManager] save:SAVE_CATEGORY];
 }
 
 - (void)didLongPressCategory:(CategoryData *)category {
@@ -458,7 +460,7 @@
 }
 
 - (void)_createPageTabViews {
-    // set PageTabView
+    // PageTabViewの生成
     float offsetX = 0;
     for (PageData *pageData in [[DataManager sharedManager] getPageListForMainScene]) {
         CGSize textSize = [PageTabView getTextSizeOfPageViewWithString:pageData.name];
@@ -475,7 +477,7 @@
     CGSize cgSize = CGSizeMake(offsetX, kHeightOfPageTab);
     _tabScrollView.contentSize = cgSize;
 
-    // set TabFrameView
+    // PageTabViewのFooterフレームの背景をセット
     _tabFrameView.backgroundColor = [[_currentPage color] getFooterColorOfGradient];
 }
 
