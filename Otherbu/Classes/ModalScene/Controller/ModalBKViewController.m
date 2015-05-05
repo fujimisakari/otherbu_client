@@ -127,6 +127,8 @@
         [_editItem addNewData];
     }
 
+    [[DataManager sharedManager] save:SAVE_BOOKMARK];
+
     [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

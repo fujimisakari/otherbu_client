@@ -102,6 +102,7 @@
     [_categoryListOfAngle[fromAngleId] removeObjectAtIndex:fromIndexPath.row];
     [_categoryListOfAngle[toAngleId] insertObject:category atIndex:toIndexPath.row];
     [_page updatePageDataBySwap:_categoryListOfAngle];
+    [[DataManager sharedManager] save:SAVE_PAGE];
 }
 
 //--------------------------------------------------------------//

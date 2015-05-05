@@ -299,6 +299,7 @@
 
     UserData *user = [[DataManager sharedManager] getUser];
     [user updatePage:selectPage.dataId];
+    [[DataManager sharedManager] save:SAVE_USER];
 
     // pageを入れ替え、tableのリロード
     _currentPage = selectPage;

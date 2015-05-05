@@ -68,6 +68,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         [_page updatePageData:(CategoryData *)category isCheckMark:YES];
     }
+    [[DataManager sharedManager] save:SAVE_PAGE];
     _categoryListOfPage = [_page getCategoryList];
 }
 

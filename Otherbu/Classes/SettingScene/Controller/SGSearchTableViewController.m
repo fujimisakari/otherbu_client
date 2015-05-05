@@ -67,6 +67,7 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         _selectCell = cell;
         [[[DataManager sharedManager] getUser] updateSearch:search.dataId];
+        [[DataManager sharedManager] save:SAVE_USER];
     }
 }
 

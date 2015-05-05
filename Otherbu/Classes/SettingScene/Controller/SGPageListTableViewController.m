@@ -73,6 +73,10 @@
         // MasterDataからPageデータを削除
         _pageList = [[DataManager sharedManager] deletePageData:_pageList DeleteIndex:indexPath.row];
 
+        // データの保存
+        [[DataManager sharedManager] save:SAVE_PAGE];
+        [[DataManager sharedManager] save:SAVE_USER];
+
         // CellからPageデータを削除
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -96,6 +100,7 @@
             PageData *page = _pageList[i];
             page.sortId = i;
         }
+        [[DataManager sharedManager] save:SAVE_PAGE];
     }
 }
 

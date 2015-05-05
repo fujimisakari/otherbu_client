@@ -90,6 +90,11 @@
         // MasterDataからカテゴリ、関連ブックマークを削除
         _categoryList = [[DataManager sharedManager] deleteCategoryData:_categoryList DeleteIndex:_deleteIndexPath.row];
 
+        // データ保存
+        [[DataManager sharedManager] save:SAVE_BOOKMARK];
+        [[DataManager sharedManager] save:SAVE_CATEGORY];
+        [[DataManager sharedManager] save:SAVE_PAGE];
+
         // cellから削除
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[_deleteIndexPath] withRowAnimation:UITableViewRowAnimationFade];

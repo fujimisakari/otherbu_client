@@ -124,6 +124,8 @@
         [_page updatePageData:(CategoryData *)category isCheckMark:YES];
     }
     _categoryListOfPage = [_page getCategoryList];
+
+    [[DataManager sharedManager] save:SAVE_PAGE];
 }
 
 //--------------------------------------------------------------//

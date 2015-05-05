@@ -73,6 +73,7 @@
         [[[DataManager sharedManager] getDesign] updatetBackgroundPicture:kCustomImageName];
         LOG(@"Image Save OK");
         LOG(@"Image Save File: %@", [[DataManager sharedManager] getDesign].backgroundPicture);
+        [[DataManager sharedManager] save:SAVE_DESIGN];
     } else {
         LOG(@"Image Save NG");
     }

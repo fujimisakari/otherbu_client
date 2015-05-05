@@ -55,6 +55,8 @@
         // MasterDataからBookmarkデータを削除
         _bookmarkList = [[DataManager sharedManager] deleteBookmarkData:_bookmarkList DeleteIndex:indexPath.row];
 
+        [[DataManager sharedManager] save:SAVE_BOOKMARK];
+
         // CellからPageデータを削除
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -78,6 +80,8 @@
             BookmarkData *bookmark = _bookmarkList[i];
             bookmark.sort = i;
         }
+
+        [[DataManager sharedManager] save:SAVE_BOOKMARK];
     }
 }
 

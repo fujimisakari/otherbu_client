@@ -245,6 +245,7 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
     // 更新処理
     [self _updateColor:colorData];
+    [[DataManager sharedManager] save:SAVE_DESIGN];
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView

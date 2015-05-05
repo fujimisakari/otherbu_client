@@ -172,12 +172,14 @@
             [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
+        [[DataManager sharedManager] save:SAVE_PAGE];
     } else {
         if ([_editItem isCreateMode]) {
             [_editItem addNewData];
         }
         [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
         [self dismissViewControllerAnimated:YES completion:nil];
+        [[DataManager sharedManager] save:SAVE_CATEGORY];
     }
 }
 
