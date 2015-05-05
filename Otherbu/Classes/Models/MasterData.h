@@ -10,5 +10,6 @@
 
 + (NSArray *)initSearchData;
 + (NSArray *)initColorData;
++ (NSArray *)initBookmarkBGColorData;
 
 @end

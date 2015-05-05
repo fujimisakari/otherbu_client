@@ -22,6 +22,7 @@
     UICollectionView *_collectionView;
     CellDesignView *_cellDesignView;
     NSArray *_colorList;
+    NSArray *_bookmarkBGColorList;
     NSString *_colorCode;
     UICollectionViewCell *_colorSelectCell;
     SGDesignAlertController *_alertController;
@@ -46,6 +47,10 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
     _menuList = @[ @"背景画像を変更", @"Bookmark背景色の変更", @"Bookmark名の色の変更", @"BookmarkURLの色の変更" ];
 
+    // カラーパレット用のカラーリスト
+    _colorList = [[DataManager sharedManager] getColorList];
+    _bookmarkBGColorList = [[DataManager sharedManager] getBookmarkBGColorList];
+
     // 背景画像の変更用のActionSheetを準備
     _alertController = [SGDesignAlertController alertControllerWithTitle:@"背景画像を変更"
                                                                  message:@""
@@ -69,9 +74,6 @@ const int kUrlFontColorChengeMenuIdx = 3;
     [_cellDesignView setup];
     [_cellDesignView addSubview:descHeaderView];
     [self.tableView setTableHeaderView:_cellDesignView];
-
-    // カラーパレット用のカラーリスト
-    _colorList = [[DataManager sharedManager] getColorList];
 
     // カラーパレットの生成
     int y = kCellHeightOfSGColorPalette - kCellMarginOfSGColorPalette;
@@ -211,7 +213,7 @@ const int kUrlFontColorChengeMenuIdx = 3;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     // cellオブジェクトを生成
     NSInteger idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * (int)indexPath.section);
-    ColorData *colorData = _colorList[idx];
+    ColorData *colorData = [self _getColorData:idx];
 
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [colorData getThumbnailColor];
@@ -223,6 +225,16 @@ const int kUrlFontColorChengeMenuIdx = 3;
         cell.layer.borderColor = [UIColor grayColor].CGColor;
     }
     return cell;
+}
+
+- (ColorData *)_getColorData:(int)idx {
+    // ブックマック背景色だった場合
+    for (int i = 0; i < _menuList.count; ++i) {
+        if([[_openFlagArray objectAtIndex:i] boolValue] && i == kBackgroundColorChengeMenuIdx) {
+            return _bookmarkBGColorList[idx];;
+        }
+    }
+    return _colorList[idx];
 }
 
 //--------------------------------------------------------------//
@@ -237,7 +249,7 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
     // タッチしたカラーIDをキャッシュ
     NSInteger idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * indexPath.section);
-    ColorData *colorData = _colorList[idx];
+    ColorData *colorData = [self _getColorData:idx];
     _colorCode = colorData.thumbnailColorCode;
 
     // 選択してたカラー枠をシアンにしてキャッシュ

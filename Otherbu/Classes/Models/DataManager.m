@@ -53,6 +53,12 @@ static DataManager *intance = nil;
             [_colorDict setObject:data forKey:data.dataId];
         }
 
+        _colorDictOfBookmarkBG = [@{} mutableCopy];
+        for (NSDictionary *colorDict in [MasterData initBookmarkBGColorData]) {
+            ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
+            [_colorDictOfBookmarkBG setObject:data forKey:data.dataId];
+        }
+
         _searchDict = [@{} mutableCopy];
         for (NSDictionary *searchDict in [MasterData initSearchData]) {
             SearchData *data = [[SearchData alloc] initWithDictionary:searchDict];
@@ -100,6 +106,10 @@ static DataManager *intance = nil;
 
 - (ColorData *)getColor:(NSString *)dataId {
     return _colorDict[dataId];
+}
+
+- (ColorData *)getBookmarkBGColor:(NSString *)dataId {
+    return _colorDictOfBookmarkBG[dataId];
 }
 
 - (DesignData *)getDesign {
@@ -170,6 +180,17 @@ static DataManager *intance = nil;
     NSMutableArray *itemList = [NSMutableArray array];
     for (NSString *key in _colorDict) {
         [itemList addObject:[self getColor:key]];
+    }
+
+    // sort番号で昇順ソート
+    NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:itemList];
+    return resultList;
+}
+
+- (NSArray *)getBookmarkBGColorList {
+    NSMutableArray *itemList = [NSMutableArray array];
+    for (NSString *key in _colorDictOfBookmarkBG) {
+        [itemList addObject:[self getBookmarkBGColor:key]];
     }
 
     // sort番号で昇順ソート

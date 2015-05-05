@@ -11,6 +11,7 @@
 @implementation MasterData
 
 + (NSArray *)initSearchData {
+    // 検索サイトのデータ
     NSArray *dataList = @[
         @{@"dataId" : @"1", @"name" : @"Google", @"url" : @"https://www.google.co.jp"},
         @{@"dataId" : @"2", @"name" : @"Yahoo", @"url" : @"http://www.yahoo.co.jp"},
@@ -19,7 +20,124 @@
     return dataList;
 }
 
++ (NSArray *)initBookmarkBGColorData {
+    // ブックマークの背景色のデータ
+    NSArray *dataList = @[
+        @{
+            @"id" : [Helper getNumberByInt:1],
+            @"name" : @"yellow",
+            @"thumbnail_color_code" : @"#81f3fd",
+            @"sort" : @"1",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:2],
+            @"name" : @"gold",
+            @"thumbnail_color_code" : @"#ffdb4c",
+            @"sort" : @"2",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:3],
+            @"name" : @"red",
+            @"thumbnail_color_code" : @"#dd0000",
+            @"sort" : @"3",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:4],
+            @"name" : @"blue",
+            @"thumbnail_color_code" : @"#87fc70",
+            @"sort" : @"4",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:5],
+            @"name" : @"white",
+            @"thumbnail_color_code" : @"#52edc7",
+            @"sort" : @"5",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:6],
+            @"name" : @"orange",
+            @"thumbnail_color_code" : @"#5ac8fb",
+            @"sort" : @"6",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:7],
+            @"name" : @"dodger",
+            @"thumbnail_color_code" : @"#ef4db6",
+            @"sort" : @"7",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:8],
+            @"name" : @"pink",
+            @"thumbnail_color_code" : @"#c643fc",
+            @"sort" : @"8",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:9],
+            @"name" : @"forest",
+            @"thumbnail_color_code" : @"#228b22",
+            @"sort" : @"9",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:10],
+            @"name" : @"lime",
+            @"thumbnail_color_code" : @"#4a4a4a",
+            @"sort" : @"10",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:11],
+            @"name" : @"black",
+            @"thumbnail_color_code" : @"#2b2b2b",
+            @"sort" : @"11",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:12],
+            @"name" : @"sienna",
+            @"thumbnail_color_code" : @"#898c90",
+            @"sort" : @"12",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:13],
+            @"name" : @"purplered",
+            @"thumbnail_color_code" : @"#dbddde",
+            @"sort" : @"13",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:14],
+            @"name" : @"wood",
+            @"thumbnail_color_code" : @"#EEDD82",
+            @"sort" : @"14",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:15],
+            @"name" : @"olive",
+            @"thumbnail_color_code" : @"#5856d6",
+            @"sort" : @"15",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:16],
+            @"name" : @"purple",
+            @"thumbnail_color_code" : @"#7d26cd",
+            @"sort" : @"16",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:17],
+            @"name" : @"tomato",
+            @"thumbnail_color_code" : @"#ee5c42",
+            @"sort" : @"17",
+        },
+        @{
+            @"id" : [Helper getNumberByInt:18],
+            @"name" : @"grey",
+            @"thumbnail_color_code" : @"#8b7b8b",
+            @"sort" : @"18",
+        }
+    ];
+
+    return dataList;
+}
+
 + (NSArray *)initColorData {
+    // 共通のカラーデータ
     NSArray *dataList = @[
         @{
             @"id" : [Helper getNumberByInt:1],
