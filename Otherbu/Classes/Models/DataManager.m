@@ -287,7 +287,6 @@ static DataManager *intance = nil;
 
     // todo
     // datamanageに削除済みを登録する
-    // userが保持してるpage_idをどうにかする
     return pageList;
 }
 

@@ -139,7 +139,12 @@
     LOG(@"== updatePageData(befor) ==\n%@\n", self);
     // ページ情報を編集時の処理
     NSString *categoryId = category.dataId;
-    NSMutableArray *categoryIdList = (NSMutableArray *)[_categoryIdsStr componentsSeparatedByString:@","];
+    NSMutableArray *categoryIdList;
+    if ([_categoryIdsStr componentsSeparatedByString:@","]) {
+        categoryIdList = [[_categoryIdsStr componentsSeparatedByString:@","] mutableCopy];
+    } else {
+        categoryIdList = [[NSMutableArray alloc] init];
+    }
     NSMutableDictionary *angleDict = [self _getMapByArg:_angleIdsStr];
     NSMutableDictionary *sortDict = [self _getMapByArg:_sortIdsStr];
     BOOL isExistCategory = [categoryIdList containsObject:categoryId];

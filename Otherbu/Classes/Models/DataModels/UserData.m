@@ -40,7 +40,13 @@
 //--------------------------------------------------------------//
 
 - (PageData *)page {
-    return [[DataManager sharedManager] getPage:_pageId];
+    PageData *page = [[DataManager sharedManager] getPage:_pageId];
+    if (!page) {
+        page = [[DataManager sharedManager] getPage:kDefaultPageDataId];
+        _pageId = kDefaultPageDataId;
+        [[DataManager sharedManager] save:SAVE_USER];
+    }
+    return page;
 }
 
 - (SearchData *)search {
@@ -48,11 +54,11 @@
 }
 
 - (void)updatePage:(NSString *)dataId {
-    self.pageId = dataId;
+    _pageId = dataId;
 }
 
 - (void)updateSearch:(NSString *)dataId {
-    self.searchId = dataId;
+    _searchId = dataId;
 }
 
 //--------------------------------------------------------------//

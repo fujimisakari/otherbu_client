@@ -51,9 +51,6 @@
 
     // [self refreshBookmarks:self];
 
-    UserData *user = [[DataManager sharedManager] getUser];
-    _currentPage = [user page];
-
     // 初期値設定
     float marginOfHeight = _navigationBar.frame.size.height + _tabScrollView.frame.size.height + _tabFrameView.frame.size.height;
     _viewWidth = self.view.frame.size.width;
@@ -67,6 +64,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    // 現在のPage設定
+    UserData *user = [[DataManager sharedManager] getUser];
+    _currentPage = [user page];
+
     // NavigationBar設定
     [self _setupNavigationBar];
 
@@ -76,10 +77,8 @@
     [Helper setupBackgroundImage:rect TargetView:self.view];
 
     // tableを最新に更新
-    if (_currentPage) {
-        _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
-        [_scrollView reloadTableData];
-    }
+    _categoryListOfAngle = [_currentPage getCategoryListOfAngle];
+    [_scrollView reloadTableData];
 
     // pageTabViewを配置
     [self _createPageTabViews];

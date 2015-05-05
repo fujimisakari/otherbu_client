@@ -75,7 +75,6 @@
 
         // データの保存
         [[DataManager sharedManager] save:SAVE_PAGE];
-        [[DataManager sharedManager] save:SAVE_USER];
 
         // CellからPageデータを削除
         [self.tableView beginUpdates];
