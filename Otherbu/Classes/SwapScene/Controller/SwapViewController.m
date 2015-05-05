@@ -11,6 +11,7 @@
 #import "CategoryData.h"
 #import "SectionHeaderView.h"
 #import "SettingTableViewCell.h"
+#import "UserData.h"
 #import "PageData.h"
 
 @interface SwapViewController () {
@@ -99,10 +100,37 @@
     NSNumber *fromAngleId = [Helper getNumberByInt:(int)fromIndexPath.section + 1];
     NSNumber *toAngleId = [Helper getNumberByInt:(int)toIndexPath.section + 1];
     CategoryData *category = [_categoryListOfAngle[fromAngleId] objectAtIndex:fromIndexPath.row];
+
+    // cell情報の差し替え
     [_categoryListOfAngle[fromAngleId] removeObjectAtIndex:fromIndexPath.row];
     [_categoryListOfAngle[toAngleId] insertObject:category atIndex:toIndexPath.row];
-    [_page updatePageDataBySwap:_categoryListOfAngle];
-    [[DataManager sharedManager] save:SAVE_PAGE];
+
+    // データの更新
+    UserData *user = [[DataManager sharedManager] getUser];
+    if ([user.pageId isEqualToString:kDefaultPageDataId]){
+        // デフォルトのPage(ALL)の場合
+        [self _updateCategoryDataBySwap:_categoryListOfAngle];
+        [[DataManager sharedManager] save:SAVE_CATEGORY];
+    } else {
+        // 作成したPageの場合
+        [_page updatePageDataBySwap:_categoryListOfAngle];
+        [[DataManager sharedManager] save:SAVE_PAGE];
+    }
+}
+
+- (void)_updateCategoryDataBySwap:(NSMutableDictionary *)categoryListOfAngle {
+    LOG(@"== updateCategoryDataBySwap(befor) ==\n%@\n", categoryListOfAngle);
+    // ALLページのカテゴリの入れ替えのための情報更新
+    for (int i = 1; i < LastAngle; ++i) {
+        NSNumber *angleId = [Helper getNumberByInt:i];
+        NSMutableArray *categoryArray = categoryListOfAngle[angleId];
+        for (int idx = 0; idx < categoryArray.count; ++idx) {
+            CategoryData *category = categoryArray[idx];
+            category.sort = idx + 1;
+            category.angle = [angleId intValue];
+        }
+    }
+    LOG(@"== updateCategoryDataBySwap(after) ==\n%@\n", categoryListOfAngle);
 }
 
 //--------------------------------------------------------------//
