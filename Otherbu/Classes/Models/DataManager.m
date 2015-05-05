@@ -281,7 +281,7 @@ static DataManager *intance = nil;
     for (int i = 0; i < pageList.count; i++) {
         PageData *page = pageList[i];
         page.sortId = i;
-        [newPageDict setObject:page forKey:[[NSNumber alloc] initWithInt:(int)page.dataId]];
+        [newPageDict setObject:page forKey:page.dataId];
     }
     _pageDict = newPageDict;
 
