@@ -36,7 +36,7 @@
     // DescHeaderの背景Viewを生成
     UIView *background = [[UIView alloc] init];
     background.frame = CGRectMake(0, 0, _labelView.frame.size.width, _labelView.frame.size.height);
-    background.backgroundColor = [UIColor colorWithWhite:0.65 alpha:0.7];
+    background.backgroundColor = [UIColor colorWithWhite:0.5 alpha:kCellAlpha];
     background.layer.masksToBounds = NO;
     background.layer.cornerRadius = 3.0;
     [_labelView addSubview:background];

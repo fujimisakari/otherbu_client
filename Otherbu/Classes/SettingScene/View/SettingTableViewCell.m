@@ -133,13 +133,13 @@
     self.contentView.backgroundColor = [UIColor clearColor];
 
     // 通常時のセル背景
-    UIColor *color = [UIColor colorWithWhite:1.0 alpha:0.75];
+    UIColor *color = [UIColor colorWithWhite:1.0 alpha:kCellAlpha];
     UIView *whiteRoundedCornerView = [self _createWhiteRoundedCornerView:rect Color:color];
     [self.contentView addSubview:whiteRoundedCornerView];
     [self.contentView sendSubviewToBack:whiteRoundedCornerView];
 
     // タップ時のセル背景
-    UIColor *backColor = [UIColor colorWithWhite:0.9 alpha:0.75];
+    UIColor *backColor = [UIColor colorWithWhite:0.9 alpha:kCellAlpha];
     UIView *backWhiteRoundedCornerView = [self _createWhiteRoundedCornerView:rect Color:backColor];
     UIView *backgroundView = [[UIView alloc] init];
     backgroundView.backgroundColor = [UIColor clearColor];

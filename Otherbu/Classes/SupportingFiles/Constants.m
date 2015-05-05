@@ -30,6 +30,7 @@ NSString * const kCellIdentifier = @"Cell";                    // セルの識�
 NSString * const kDefaultPageDataId = @"AllCategory";          // デフォルトのPageの識別子
 NSString * const kDefaultSearchDataId = @"1";                  // デフォルトの検索サイト
 const int kNumberOfPages = 3;                                  // ページ数
+const float kCellAlpha = 0.85f;                                // セルの透明度
 
 // データ保存時のファイル名
 NSString * const kSaveFileNameList[] = {

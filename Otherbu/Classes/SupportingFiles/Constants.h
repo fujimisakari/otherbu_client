@@ -53,6 +53,7 @@ extern NSString * const kCellIdentifier;
 extern NSString * const kDefaultPageDataId;
 extern NSString * const kDefaultSearchDataId;
 extern const int kNumberOfPages;
+extern const float kCellAlpha;
 extern NSString * const kSaveFileNameList[];
 
 extern NSString * const kTextFieldColorOfModal;
