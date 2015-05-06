@@ -38,7 +38,8 @@ NSString * const kSaveFileNameList[] = {
     [SAVE_DESIGN] = @"Design",
     [SAVE_BOOKMARK] = @"Bookmark",
     [SAVE_CATEGORY] = @"Category",
-    [SAVE_PAGE] = @"Page"
+    [SAVE_PAGE] = @"Page",
+    [SAVE_SYNC] = @"Sync"
 };
 
 //--------------------------------------------------------------//

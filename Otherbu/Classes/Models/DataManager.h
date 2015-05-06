@@ -47,9 +47,10 @@
 - (void)addPage:(PageData *)data;
 
 // データの削除
-- (NSMutableArray *)deleteBookmarkData:(NSMutableArray *)bookmarkList DeleteIndex:(NSInteger)idx;
-- (NSMutableArray *)deleteCategoryData:(NSMutableArray *)categoryList DeleteIndex:(NSInteger)idx;
-- (NSMutableArray *)deletePageData:(NSMutableArray *)pageList DeleteIndex:(NSInteger)idx;
+- (void)deleteBookmarkData:(BookmarkData *)deleteBookmark;
+- (void)bulkDeleteBookmarkData:(NSArray *)deleteBookmarkList;
+- (void)deleteCategoryData:(CategoryData *)deleteCategory;
+- (void)deletePageData:(PageData *)deletePage;
 
 // データの永続化
 - (void)load;

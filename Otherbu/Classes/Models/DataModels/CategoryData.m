@@ -139,8 +139,8 @@
     NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
     syncData[@"id"] = _dataId;
     syncData[@"name"] = _name;
-    syncData[@"angle"] = [Helper getNumberByInt:_angle];
-    syncData[@"sort"] = [Helper getNumberByInt:_sort];
+    syncData[@"angle"] = [Helper getNumberByInt:(int)_angle];
+    syncData[@"sort"] = [Helper getNumberByInt:(int)_sort];
     syncData[@"color_id"] = _colorId;
     syncData[@"tag_open"] = [Helper getNumberByInt:(int)_isOpenSection];
     syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];

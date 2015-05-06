@@ -125,6 +125,9 @@
     // 新規追加
     if ([_editItem isCreateMode]) {
         [_editItem addNewData];
+        [[DataManager sharedManager] updateSyncData:_editItem DataType:SAVE_BOOKMARK Action:@"insert"];
+    } else {
+        [[DataManager sharedManager] updateSyncData:_editItem DataType:SAVE_BOOKMARK Action:@"update"];
     }
 
     [[DataManager sharedManager] save:SAVE_BOOKMARK];

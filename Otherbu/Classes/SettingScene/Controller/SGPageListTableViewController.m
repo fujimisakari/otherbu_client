@@ -70,10 +70,16 @@
 
     // 削除時
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // MasterDataからPageデータを削除
-        _pageList = [[DataManager sharedManager] deletePageData:_pageList DeleteIndex:indexPath.row];
+        PageData *deletePage = _pageList[indexPath.row];
 
-        // データの保存
+        // DataManagerからPageデータを削除
+        [[DataManager sharedManager] deletePageData:deletePage];
+
+        // tavbleViewのPageデータから削除
+        [_pageList removeObjectAtIndex:indexPath.row];
+
+        // データの同期登録、保存
+        [[DataManager sharedManager] updateSyncData:deletePage DataType:SAVE_PAGE Action:@"delete"];
         [[DataManager sharedManager] save:SAVE_PAGE];
 
         // CellからPageデータを削除
@@ -98,6 +104,7 @@
         for (int i=0 ; i < _pageList.count; i++) {
             PageData *page = _pageList[i];
             page.sortId = i;
+            // webにはpage sortは存在しないため同期登録はしなくていい
         }
         [[DataManager sharedManager] save:SAVE_PAGE];
     }

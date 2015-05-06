@@ -212,8 +212,8 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     // cellオブジェクトを生成
-    NSInteger idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * (int)indexPath.section);
-    ColorData *colorData = [self _getColorData:idx];
+    NSInteger idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * indexPath.section);
+    ColorData *colorData = [self _getColorData:(int)idx];
 
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.backgroundColor = [colorData getThumbnailColor];
@@ -231,7 +231,7 @@ const int kUrlFontColorChengeMenuIdx = 3;
     // ブックマック背景色だった場合
     for (int i = 0; i < _menuList.count; ++i) {
         if([[_openFlagArray objectAtIndex:i] boolValue] && i == kBackgroundColorChengeMenuIdx) {
-            return _bookmarkBGColorList[idx];;
+            return _bookmarkBGColorList[idx];
         }
     }
     return _colorList[idx];
@@ -249,7 +249,7 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
     // タッチしたカラーIDをキャッシュ
     NSInteger idx = indexPath.section == 0 ? indexPath.row : indexPath.row + (kColumnOfColorPalette * indexPath.section);
-    ColorData *colorData = [self _getColorData:idx];
+    ColorData *colorData = [self _getColorData:(int)idx];
     _colorCode = colorData.thumbnailColorCode;
 
     // 選択してたカラー枠をシアンにしてキャッシュ
@@ -259,6 +259,9 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
     // 更新処理
     [self _updateColor:colorData];
+
+    // データの同期登録、保存
+    [[DataManager sharedManager] updateSyncData:[[DataManager sharedManager] getDesign] DataType:SAVE_DESIGN Action:@"update"];
     [[DataManager sharedManager] save:SAVE_DESIGN];
 }
 

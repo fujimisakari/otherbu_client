@@ -102,8 +102,8 @@
 - (NSDictionary *)iSyncData {
     NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
     syncData[@"id"] = _dataId;
-    syncData[@"type"] = _type;
-    syncData[@"typeId"] = _typeId;
+    syncData[@"type"] = (_type) ? _type : @"";
+    syncData[@"typeId"] = (_typeId) ? _typeId : @"";
     syncData[@"page_id"] = _pageId;
     syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];
     return syncData;

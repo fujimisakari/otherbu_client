@@ -165,21 +165,28 @@
     [_editItem iSetColorId:_colorId];
 
     if ([_editItem iGetMenuId] == MENU_PAGE) {
+        // ページの場合
         if ([_editItem isCreateMode]) {
             [_editItem addNewData];
+            [[DataManager sharedManager] updateSyncData:_editItem DataType:SAVE_PAGE Action:@"insert"];
             [self performSegueWithIdentifier:kToModalPageViewBySegue sender:self];
         } else {
+            [[DataManager sharedManager] updateSyncData:_editItem DataType:SAVE_PAGE Action:@"update"];
             [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
         [[DataManager sharedManager] save:SAVE_PAGE];
     } else {
+        // カテゴリの場合
         if ([_editItem isCreateMode]) {
             [_editItem addNewData];
+            [[DataManager sharedManager] updateSyncData:_editItem DataType:SAVE_CATEGORY Action:@"insert"];
+        } else {
+            [[DataManager sharedManager] updateSyncData:_editItem DataType:SAVE_CATEGORY Action:@"update"];
         }
+        [[DataManager sharedManager] save:SAVE_CATEGORY];
         [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
         [self dismissViewControllerAnimated:YES completion:nil];
-        [[DataManager sharedManager] save:SAVE_CATEGORY];
     }
 }
 

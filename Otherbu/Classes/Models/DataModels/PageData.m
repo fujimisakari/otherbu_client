@@ -279,9 +279,9 @@
     NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
     syncData[@"id"] = _dataId;
     syncData[@"name"] = _name;
-    syncData[@"category_ids_str"] = _categoryIdsStr;
-    syncData[@"angle_ids_str"] = _angleIdsStr;
-    syncData[@"sort_ids_str"] = _sortIdsStr;
+    syncData[@"category_ids_str"] = (_categoryIdsStr) ? _categoryIdsStr : @"";
+    syncData[@"angle_ids_str"] = (_angleIdsStr) ? _angleIdsStr : @"";
+    syncData[@"sort_ids_str"] = (_sortIdsStr) ? _sortIdsStr : @"";
     syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];
     return syncData;
 }

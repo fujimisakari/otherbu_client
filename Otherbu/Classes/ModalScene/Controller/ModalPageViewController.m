@@ -125,6 +125,7 @@
     }
     _categoryListOfPage = [_page getCategoryList];
 
+    [[DataManager sharedManager] updateSyncData:_page DataType:SAVE_PAGE Action:@"update"];
     [[DataManager sharedManager] save:SAVE_PAGE];
 }
 

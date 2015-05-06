@@ -36,6 +36,7 @@ typedef NS_ENUM(NSUInteger, SaveList) {
     SAVE_BOOKMARK,
     SAVE_CATEGORY,
     SAVE_PAGE,
+    SAVE_SYNC,
     LastSave,
 };
 

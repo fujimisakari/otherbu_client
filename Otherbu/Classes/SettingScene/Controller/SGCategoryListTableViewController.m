@@ -8,6 +8,7 @@
 
 #import "SGCategoryListTableViewController.h"
 #import "DescHeaderView.h"
+#import "PageData.h"
 #import "CategoryData.h"
 
 @interface SGCategoryListTableViewController () {
@@ -85,15 +86,31 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     // 削除確認Viewのボタンタップした場合
-
     if (buttonIndex != alertView.cancelButtonIndex) {
-        // MasterDataからカテゴリ、関連ブックマークを削除
-        _categoryList = [[DataManager sharedManager] deleteCategoryData:_categoryList DeleteIndex:_deleteIndexPath.row];
 
-        // データ保存
+        CategoryData *deleteCategory = _categoryList[_deleteIndexPath.row];
+
+        // カテゴリに設定されているブックマークデータを削除
+        NSArray *deleteBookmarkList = [deleteCategory getBookmarkList];
+        [[DataManager sharedManager] bulkDeleteBookmarkData:deleteBookmarkList];
+        // データ保存、同期対象に追加
+        for (id<DataInterface> bookmark in deleteBookmarkList) {
+            [[DataManager sharedManager] updateSyncData:bookmark DataType:SAVE_BOOKMARK Action:@"delete"];
+        }
         [[DataManager sharedManager] save:SAVE_BOOKMARK];
-        [[DataManager sharedManager] save:SAVE_CATEGORY];
+
+        // ページデータの更新
+        for (PageData *page in [[DataManager sharedManager] getPageList]) {
+            [page updatePageData:deleteCategory isCheckMark:NO];
+            [[DataManager sharedManager] updateSyncData:page DataType:SAVE_PAGE Action:@"update"];
+        }
         [[DataManager sharedManager] save:SAVE_PAGE];
+
+        // カテゴリの削除
+        [[DataManager sharedManager] deleteCategoryData:deleteCategory];
+        [_categoryList removeObjectAtIndex:_deleteIndexPath.row];
+        [[DataManager sharedManager] updateSyncData:deleteCategory DataType:SAVE_CATEGORY Action:@"delete"];
+        [[DataManager sharedManager] save:SAVE_CATEGORY];
 
         // cellから削除
         [self.tableView beginUpdates];

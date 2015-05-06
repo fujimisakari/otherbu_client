@@ -64,6 +64,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    LOG(@"== Sync Data ==\n%@\n", [[DataManager sharedManager] getSyncData]);
+
     // 現在のPage設定
     UserData *user = [[DataManager sharedManager] getUser];
     _currentPage = [user page];
@@ -267,6 +269,8 @@
 
     [tableView endUpdates];
 
+    // データの同期登録、保存
+    [[DataManager sharedManager] updateSyncData:categoryData DataType:SAVE_CATEGORY Action:@"update"];
     [[DataManager sharedManager] save:SAVE_CATEGORY];
 }
 
@@ -300,6 +304,7 @@
 
     UserData *user = [[DataManager sharedManager] getUser];
     [user updatePage:selectPage.dataId];
+    [[DataManager sharedManager] updateSyncData:user DataType:SAVE_USER Action:@"update"];
     [[DataManager sharedManager] save:SAVE_USER];
 
     // pageを入れ替え、tableのリロード

@@ -114,6 +114,8 @@
     } else {
         // 作成したPageの場合
         [_page updatePageDataBySwap:_categoryListOfAngle];
+        // データの同期登録、保存
+        [[DataManager sharedManager] updateSyncData:_page DataType:SAVE_PAGE Action:@"update"];
         [[DataManager sharedManager] save:SAVE_PAGE];
     }
 }
@@ -128,6 +130,8 @@
             CategoryData *category = categoryArray[idx];
             category.sort = idx + 1;
             category.angle = [angleId intValue];
+            // 同期対象に追加
+            [[DataManager sharedManager] updateSyncData:category DataType:SAVE_CATEGORY Action:@"update"];
         }
     }
     LOG(@"== updateCategoryDataBySwap(after) ==\n%@\n", categoryListOfAngle);

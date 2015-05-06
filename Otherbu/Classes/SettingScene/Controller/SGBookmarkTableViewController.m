@@ -52,12 +52,22 @@
 
     // 削除時
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // MasterDataからBookmarkデータを削除
-        _bookmarkList = [[DataManager sharedManager] deleteBookmarkData:_bookmarkList DeleteIndex:indexPath.row];
 
+        BookmarkData *deleteBookmark = _bookmarkList[indexPath.row];
+
+        // DataManagerからBookmarkデータを削除
+        [[DataManager sharedManager] deleteBookmarkData:deleteBookmark];
+
+        // TableVviewが保持してるBookmarkデータを削除
+        [_bookmarkList removeObjectAtIndex:indexPath.row];
+
+        // 同期対象に追加
+        [[DataManager sharedManager] updateSyncData:deleteBookmark DataType:SAVE_BOOKMARK Action:@"delete"];
+
+        // ブックマーク削除を保存
         [[DataManager sharedManager] save:SAVE_BOOKMARK];
 
-        // CellからPageデータを削除
+        // CellからBookmarkデータを削除
         [self.tableView beginUpdates];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
@@ -76,9 +86,11 @@
         [_bookmarkList removeObjectAtIndex:fromIndexPath.row];
         [_bookmarkList insertObject:bookmark atIndex:toIndexPath.row];
 
-        for (int i=0 ; i < _bookmarkList.count; i++) {
+        for (int i = 0; i < _bookmarkList.count; i++) {
             BookmarkData *bookmark = _bookmarkList[i];
             bookmark.sort = i;
+            // 同期対象に追加
+            [[DataManager sharedManager] updateSyncData:bookmark DataType:SAVE_BOOKMARK Action:@"update"];
         }
 
         [[DataManager sharedManager] save:SAVE_BOOKMARK];

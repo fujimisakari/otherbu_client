@@ -233,85 +233,49 @@ static DataManager *intance = nil;
 #pragma mark -- delete Method --
 //--------------------------------------------------------------//
 
-- (NSMutableArray *)deleteBookmarkData:(NSMutableArray *)bookmarkList DeleteIndex:(NSInteger)idx {
+- (void)deleteBookmarkData:(BookmarkData *)deleteBookmark {
     // ブックマークデータの削除
-    BookmarkData *deleteBookmark = (BookmarkData *)bookmarkList[idx];
     NSMutableDictionary *newBookmarkDict = [[NSMutableDictionary alloc] init];
     for (BookmarkData *bookmark in [_bookmarkDict objectEnumerator]) {
-        if ([bookmark isEqual:deleteBookmark]) {
-            // todo
-            // datamanageに削除済みを登録する
-        } else {
+        if (![bookmark isEqual:deleteBookmark]) {
             [newBookmarkDict setObject:bookmark forKey:bookmark.dataId];
         }
     }
     _bookmarkDict = newBookmarkDict;
-
-    [bookmarkList removeObjectAtIndex:idx];
-
-    return bookmarkList;
 }
 
-- (void)_bulkDeleteBookmarkData:(CategoryData *)category {
-    // カテゴリに設定されているブックマークデータを削除
-    NSArray *deleteBookmarkList = [category getBookmarkList];
+- (void)bulkDeleteBookmarkData:(NSArray *)deleteBookmarkList {
+    // ブックマークデータを一括削除
     NSMutableDictionary *newBookmarkDict = [[NSMutableDictionary alloc] init];
     for (BookmarkData *bookmark in [_bookmarkDict objectEnumerator]) {
         NSUInteger index = [deleteBookmarkList indexOfObject:bookmark];
         if (index == NSNotFound) {
             [newBookmarkDict setObject:bookmark forKey:bookmark.dataId];
-        } else {
-            // todo
-            // datamanageに削除済みを登録する
         }
     }
     _bookmarkDict = newBookmarkDict;
 }
 
-- (NSMutableArray *)deleteCategoryData:(NSMutableArray *)categoryList DeleteIndex:(NSInteger)idx {
+- (void)deleteCategoryData:(CategoryData *)deleteCategory {
     // カテゴリデータの削除
-
-    // カテゴリに設定されているブックマークデータを削除
-    CategoryData *deleteCategory = categoryList[idx];
-    [self _bulkDeleteBookmarkData:deleteCategory];
-
-    // ページデータの更新
-    for (PageData *page in [_pageDict objectEnumerator]) {
-        [page updatePageData:deleteCategory isCheckMark:NO];
-    }
-
-    // カテゴリデータを削除
     NSMutableDictionary *newCategoryDict = [[NSMutableDictionary alloc] init];
     for (CategoryData *category in [_categoryDict objectEnumerator]) {
-        if ([category isEqual:deleteCategory]) {
-            // todo
-            // datamanageに削除済みを登録する
-        } else {
+        if (![category isEqual:deleteCategory]) {
             [newCategoryDict setObject:category forKey:category.dataId];
         }
     }
     _categoryDict = newCategoryDict;
-
-    [categoryList removeObjectAtIndex:idx];
-
-    return categoryList;
 }
 
-- (NSMutableArray *)deletePageData:(NSMutableArray *)pageList DeleteIndex:(NSInteger)idx {
+- (void)deletePageData:(PageData *)deletePage {
     // ページデータの削除
-    [pageList removeObjectAtIndex:idx];
-
     NSMutableDictionary *newPageDict = [[NSMutableDictionary alloc] init];
-    for (int i = 0; i < pageList.count; i++) {
-        PageData *page = pageList[i];
-        page.sortId = i;
-        [newPageDict setObject:page forKey:page.dataId];
+    for (PageData *page in [_pageDict objectEnumerator]) {
+        if (![page isEqual:deletePage]) {
+            [newPageDict setObject:page forKey:page.dataId];
+        }
     }
     _pageDict = newPageDict;
-
-    // todo
-    // datamanageに削除済みを登録する
-    return pageList;
 }
 
 //--------------------------------------------------------------//
@@ -411,6 +375,11 @@ static DataManager *intance = nil;
                 _pageDict = (NSMutableDictionary *)loadData;
                 break;
             };
+            case SAVE_SYNC: {
+                LOG(@"== load Sync Data ==\n%@\n", (NSMutableDictionary *)loadData);
+                _syncData = (NSMutableDictionary *)loadData;
+                break;
+            };
         }
     }
 }
@@ -454,6 +423,11 @@ static DataManager *intance = nil;
         case SAVE_PAGE: {
             LOG(@"== Save Page Data ==\n%@\n", _pageDict);
             [NSKeyedArchiver archiveRootObject:_pageDict toFile:filePath];
+            break;
+        };
+        case SAVE_SYNC: {
+            LOG(@"== Save Sync Data ==\n%@\n", _syncData);
+            [NSKeyedArchiver archiveRootObject:_syncData toFile:filePath];
             break;
         };
     }
@@ -514,6 +488,7 @@ static DataManager *intance = nil;
             _syncData[kSaveFileNameList[SAVE_PAGE]][action][syncData[@"id"]] = syncData;
             break;
     }
+    [self save:SAVE_SYNC];
 }
 
 @end
