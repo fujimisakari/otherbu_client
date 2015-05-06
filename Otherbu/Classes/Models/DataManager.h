@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
+#import "DataInterface.h"
+
 @class UserData, PageData, CategoryData, BookmarkData, ColorData, DesignData, SearchData;
 
 @interface DataManager : NSObject
@@ -52,5 +54,9 @@
 // データの永続化
 - (void)load;
 - (void)save:(int)saveIdx;
+
+// 同期用のデータ更新
+- (NSMutableDictionary *)getSyncData;
+- (void)updateSyncData:(id<DataInterface>)data DataType:(int)dataType Action:(NSString *)action;
 
 @end

@@ -19,6 +19,7 @@
 @property(nonatomic) NSString  *sortIdsStr;     // ページに含むカテゴリ順番
 @property(nonatomic) NSInteger sortId;          // 表示順
 @property(nonatomic) NSString  *colorId;        // カラーID
+@property(nonatomic) NSDate    *updatedAt;      // 更新時間
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 

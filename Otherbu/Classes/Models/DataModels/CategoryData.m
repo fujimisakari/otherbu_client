@@ -29,8 +29,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, name=%@, angle=%ld, sort=%ld, colorId=%@, isOpenSection=%d", _dataId, _name, _angle,
-                                      _sort, _colorId, _isOpenSection];
+    return [NSString stringWithFormat:@"dataId=%@, name=%@, angle=%ld, sort=%ld, colorId=%@, isOpenSection=%d, updatedAt=%@", _dataId,
+                                      _name, _angle, _sort, _colorId, _isOpenSection, _updatedAt];
 }
 
 //--------------------------------------------------------------//
@@ -96,8 +96,12 @@
     _colorId = colorId;
 }
 
+- (void)iUpdateAt {
+    _updatedAt = [[NSDate alloc] init];
+}
+
 //--------------------------------------------------------------//
-#pragma mark -- 永続化 --
+#pragma mark -- Serialize --
 //--------------------------------------------------------------//
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -125,6 +129,22 @@
     [encoder encodeInteger:_sort forKey:@"sort"];
     [encoder encodeObject:_colorId forKey:@"colorId"];
     [encoder encodeBool:_isOpenSection forKey:@"isOpenSection"];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Sync --
+//--------------------------------------------------------------//
+
+- (NSDictionary *)iSyncData {
+    NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
+    syncData[@"id"] = _dataId;
+    syncData[@"name"] = _name;
+    syncData[@"angle"] = [Helper getNumberByInt:_angle];
+    syncData[@"sort"] = [Helper getNumberByInt:_sort];
+    syncData[@"color_id"] = _colorId;
+    syncData[@"tag_open"] = [Helper getNumberByInt:(int)_isOpenSection];
+    syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];
+    return syncData;
 }
 
 @end

@@ -17,6 +17,7 @@
 @property(nonatomic) NSString  *name;        // Bookmark名
 @property(nonatomic) NSString  *url;         // URL
 @property(nonatomic) NSInteger sort;         // Sort番号
+@property(nonatomic) NSDate    *updatedAt;   // 更新時間
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 

@@ -32,7 +32,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, type=%@, typeId=%@, page=%@, searchId=%@", _dataId, _type, _typeId, _pageId, _searchId];
+    return [NSString stringWithFormat:@"dataId=%@, type=%@, typeId=%@, page=%@, searchId=%@, updatedAt=%@", _dataId, _type, _typeId,
+                                      _pageId, _searchId, _updatedAt];
 }
 
 //--------------------------------------------------------------//
@@ -61,8 +62,12 @@
     _searchId = dataId;
 }
 
+- (void)iUpdateAt {
+    _updatedAt = [[NSDate alloc] init];
+}
+
 //--------------------------------------------------------------//
-#pragma mark -- 永続化 --
+#pragma mark -- Serialize --
 //--------------------------------------------------------------//
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -88,6 +93,20 @@
     [encoder encodeObject:_typeId forKey:@"typeId"];
     [encoder encodeObject:_pageId forKey:@"pageId"];
     [encoder encodeObject:_searchId forKey:@"searchId"];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Sync --
+//--------------------------------------------------------------//
+
+- (NSDictionary *)iSyncData {
+    NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
+    syncData[@"id"] = _dataId;
+    syncData[@"type"] = _type;
+    syncData[@"typeId"] = _typeId;
+    syncData[@"page_id"] = _pageId;
+    syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];
+    return syncData;
 }
 
 @end

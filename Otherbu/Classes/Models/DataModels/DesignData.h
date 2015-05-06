@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-@interface DesignData : NSObject<NSCoding>
+#import "DataInterface.h"
+
+@interface DesignData : NSObject<DataInterface, NSCoding>
 
 @property(nonatomic) NSString *tableBackGroundColor;  // Tableセル背景
 @property(nonatomic) NSString *bookmarkColor;         // Bookmarkカラー
 @property(nonatomic) NSString *urlColor;              // URLカラー
-@property(nonatomic) NSString *backgroundPicture;     // URLカラー
+@property(nonatomic) NSString *backgroundPicture;     // 背景画像名
+@property(nonatomic) NSDate   *updatedAt;             // 更新時間
 
 - (id)init;
 

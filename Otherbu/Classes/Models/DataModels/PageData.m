@@ -24,31 +24,14 @@
         _angleIdsStr = dataDict[@"angle_ids_str"];
         _sortIdsStr = dataDict[@"sort_ids_str"];
         _sortId = [DataManager sharedManager].pageDict.count;
-
-        if ([self.dataId isEqualToString:@"16"]) {
-            _colorId = @"9";
-        } else if ([self.dataId isEqualToString:@"18"]) {
-            _colorId = @"13";
-        } else if ([self.dataId isEqualToString:@"19"]) {
-            _colorId = @"3";
-        } else if ([self.dataId isEqualToString:@"1"]) {
-            _colorId = @"14";
-        } else if ([self.dataId isEqualToString:@"20"]) {
-            _colorId = @"8";
-        } else if ([self.dataId isEqualToString:@"17"]) {
-            _colorId = @"6";
-        } else if ([self.dataId isEqualToString:@"17"]) {
-            _colorId = @"5";
-        } else {
-            _colorId = @"7";
-        }
+        _colorId = @"5";
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, name=%@, categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@, sortId=%ld", _dataId, _name,
-                                      _categoryIdsStr, _angleIdsStr, _sortIdsStr, _sortId];
+    return [NSString stringWithFormat:@"dataId=%@, name=%@, categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@, sortId=%ld, updatedAt=%@",
+                                      _dataId, _name, _categoryIdsStr, _angleIdsStr, _sortIdsStr, _sortId, _updatedAt];
 }
 
 //--------------------------------------------------------------//
@@ -251,8 +234,12 @@
     _colorId = colorId;
 }
 
+- (void)iUpdateAt {
+    _updatedAt = [[NSDate alloc] init];
+}
+
 //--------------------------------------------------------------//
-#pragma mark -- 永続化 --
+#pragma mark -- Serialize --
 //--------------------------------------------------------------//
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -282,6 +269,21 @@
     [encoder encodeObject:_sortIdsStr forKey:@"sortIdsStr"];
     [encoder encodeInteger:_sortId forKey:@"sortId"];
     [encoder encodeObject:_colorId forKey:@"colorId"];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Sync --
+//--------------------------------------------------------------//
+
+- (NSDictionary *)iSyncData {
+    NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
+    syncData[@"id"] = _dataId;
+    syncData[@"name"] = _name;
+    syncData[@"category_ids_str"] = _categoryIdsStr;
+    syncData[@"angle_ids_str"] = _angleIdsStr;
+    syncData[@"sort_ids_str"] = _sortIdsStr;
+    syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];
+    return syncData;
 }
 
 @end

@@ -51,4 +51,18 @@
     [view.layer addSublayer:layer];
 }
 
++ (NSString *)convertDateToString:(NSDate *)baseDate {
+    if (baseDate) {
+        // Syncで利用する日付フォーマットに変更する
+        NSString *formatString = @"yyyy,M,d,H,m,s";
+        NSDateFormatter *inputDateFormatter = [[NSDateFormatter alloc] init];
+        // 24時間表示 & iPhoneの現在の設定に合わせる
+        [inputDateFormatter setLocale:[NSLocale currentLocale]];
+        [inputDateFormatter setDateFormat:formatString];
+        return [inputDateFormatter stringFromDate:baseDate];
+    } else {
+        return @"";
+    }
+}
+
 @end

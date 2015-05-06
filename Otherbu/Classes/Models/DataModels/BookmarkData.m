@@ -28,7 +28,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, categoryId=%@, name=%@, url=%@, sort=%ld", _dataId, _categoryId, _name, _url, _sort];
+    return [NSString stringWithFormat:@"dataId=%@, categoryId=%@, name=%@, url=%@, sort=%ld, updatedAt=%@", _dataId, _categoryId, _name,
+                                      _url, _sort, _updatedAt];
 }
 
 //--------------------------------------------------------------//
@@ -85,8 +86,12 @@
     _categoryId = categoryId;
 }
 
+- (void)iUpdateAt {
+    _updatedAt = [[NSDate alloc] init];
+}
+
 //--------------------------------------------------------------//
-#pragma mark -- 永続化 --
+#pragma mark -- Serialize --
 //--------------------------------------------------------------//
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -112,6 +117,21 @@
     [encoder encodeObject:_name forKey:@"name"];
     [encoder encodeObject:_url forKey:@"url"];
     [encoder encodeInteger:_sort forKey:@"sort"];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Sync --
+//--------------------------------------------------------------//
+
+- (NSDictionary *)iSyncData {
+    NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
+    syncData[@"id"] = _dataId;
+    syncData[@"name"] = _name;
+    syncData[@"category_id"] = _categoryId;
+    syncData[@"url"] = _url;
+    syncData[@"sort"] = [Helper getNumberByInt:(int)_sort];
+    syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];
+    return syncData;
 }
 
 @end

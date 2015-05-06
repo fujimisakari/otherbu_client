@@ -16,10 +16,11 @@
 #import "DesignData.h"
 #import "SearchData.h"
 
-@interface DataManager ()
-
-@property(nonatomic) UserData *user;
-@property(nonatomic) DesignData *design;
+@interface DataManager () {
+    UserData *_user;
+    DesignData *_design;
+    NSMutableDictionary *_syncData;
+}
 
 @end
 
@@ -64,6 +65,8 @@ static DataManager *intance = nil;
             SearchData *data = [[SearchData alloc] initWithDictionary:searchDict];
             [_searchDict setObject:data forKey:data.dataId];
         }
+
+        _syncData = [self _restSyncData];
     }
     return self;
 }
@@ -321,7 +324,6 @@ static DataManager *intance = nil;
     NSArray *pageList = [jsonData objectForKey:@"page_list"];
     NSArray *categoryList = [jsonData objectForKey:@"category_list"];
     NSArray *bookmarkList = [jsonData objectForKey:@"bookmark_list"];
-    // NSArray *colorList = [jsonData objectForKey:@"color_list"];
     NSDictionary *design = [jsonData objectForKey:@"design"];
 
     [_user updateWithDictionary:user];
@@ -341,16 +343,11 @@ static DataManager *intance = nil;
         [_bookmarkDict setObject:data forKey:[bookmarkDict[@"id"] stringValue]];
     }
 
-    // for (NSDictionary *colorDict in colorList) {
-    //     ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
-    //     [_colorDict setObject:data forKey:[colorDict[@"id"] stringValue]];
-    // }
-
     [_design updateWithDictionary:design];
 }
 
 //--------------------------------------------------------------//
-#pragma mark-- 永続化--
+#pragma mark-- Serialize --
 //--------------------------------------------------------------//
 
 - (NSString *)_userDirPath {
@@ -459,6 +456,63 @@ static DataManager *intance = nil;
             [NSKeyedArchiver archiveRootObject:_pageDict toFile:filePath];
             break;
         };
+    }
+}
+
+//--------------------------------------------------------------//
+#pragma mark-- Sync --
+//--------------------------------------------------------------//
+
+- (NSMutableDictionary *)_restSyncData {
+    // 同期用のデータDictionaryを生成
+    NSMutableDictionary * (^block)(void) = ^() {
+        NSMutableDictionary *baseData = [@{
+                                             @"insert" : [[NSMutableDictionary alloc] init],
+                                             @"update" : [[NSMutableDictionary alloc] init],
+                                             @"delete" : [[NSMutableDictionary alloc] init]
+                                         } mutableCopy];
+        return baseData;
+    };
+
+    NSMutableDictionary *syncData = [@{
+                                         kSaveFileNameList[SAVE_USER] : [[NSMutableArray alloc] init],
+                                         kSaveFileNameList[SAVE_DESIGN] : [[NSMutableArray alloc] init],
+                                         kSaveFileNameList[SAVE_BOOKMARK] : block(),
+                                         kSaveFileNameList[SAVE_CATEGORY] : block(),
+                                         kSaveFileNameList[SAVE_PAGE] : block()
+                                     } mutableCopy];
+    return syncData;
+}
+
+- (NSMutableDictionary *)getSyncData {
+    return _syncData;
+}
+
+- (void)updateSyncData:(id<DataInterface>)data DataType:(int)dataType Action:(NSString *)action {
+
+    // データ更新時間をセット
+    [data iUpdateAt];
+
+    // 同期用のデータを取得
+    NSMutableDictionary *syncData = [data iSyncData];
+
+    // 同期用のデータを更新
+    switch (dataType) {
+        case SAVE_USER:
+            _syncData[kSaveFileNameList[SAVE_USER]] = syncData;
+            break;
+        case SAVE_DESIGN:
+            _syncData[kSaveFileNameList[SAVE_DESIGN]] = syncData;
+            break;
+        case SAVE_BOOKMARK:
+            _syncData[kSaveFileNameList[SAVE_BOOKMARK]][action][syncData[@"id"]] = syncData;
+            break;
+        case SAVE_CATEGORY:
+            _syncData[kSaveFileNameList[SAVE_CATEGORY]][action][syncData[@"id"]] = syncData;
+            break;
+        case SAVE_PAGE:
+            _syncData[kSaveFileNameList[SAVE_PAGE]][action][syncData[@"id"]] = syncData;
+            break;
     }
 }
 

@@ -33,8 +33,8 @@ static DesignData *intance = nil;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"tableBackGroundColor=%@, bookmarkColor=%@, urlColor=%@, backgroundPicture=%@",
-                                      _tableBackGroundColor, _bookmarkColor, _urlColor, _backgroundPicture];
+    return [NSString stringWithFormat:@"tableBackGroundColor=%@, bookmarkColor=%@, urlColor=%@, backgroundPicture=%@, updatedAt=%@",
+                                      _tableBackGroundColor, _bookmarkColor, _urlColor, _backgroundPicture, _updatedAt];
 }
 
 //--------------------------------------------------------------//
@@ -84,8 +84,12 @@ static DesignData *intance = nil;
     _backgroundPicture = fileName;
 }
 
+- (void)iUpdateAt {
+    _updatedAt = [[NSDate alloc] init];
+}
+
 //--------------------------------------------------------------//
-#pragma mark -- 永続化 --
+#pragma mark -- Serialize --
 //--------------------------------------------------------------//
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -109,6 +113,18 @@ static DesignData *intance = nil;
     [encoder encodeObject:_bookmarkColor forKey:@"bookmarkColor"];
     [encoder encodeObject:_urlColor forKey:@"urlColor"];
     [encoder encodeObject:_backgroundPicture forKey:@"backgroundPicture"];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Sync --
+//--------------------------------------------------------------//
+
+- (NSDictionary *)iSyncData {
+    NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
+    syncData[@"category_back_color"] = _tableBackGroundColor;
+    syncData[@"link_color"] = _bookmarkColor;
+    syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];
+    return syncData;
 }
 
 @end

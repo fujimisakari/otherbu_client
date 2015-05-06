@@ -18,6 +18,7 @@
 @property(nonatomic) NSInteger sort;          // Sort番号
 @property(nonatomic) NSString  *colorId;      // カテゴリカラーID
 @property(nonatomic) BOOL      isOpenSection; // 初期開放
+@property(nonatomic) NSDate    *updatedAt;    // 更新時間
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
 

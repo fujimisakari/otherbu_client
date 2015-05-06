@@ -8,12 +8,9 @@
 
 @protocol DataInterface <NSObject>
 
-@required
+@optional
 
 - (NSString *)iGetTitleName;
-- (NSString *)iGetName;
-
-@optional
 
 - (NSInteger)iGetMenuId;
 
@@ -21,6 +18,7 @@
 
 - (void)addNewData;
 
+- (NSString *)iGetName;
 - (void)iSetName:(NSString *)name;
 
 - (NSString *)iGetUrl;
@@ -34,5 +32,8 @@
 
 - (void)iGetSortIdOfInt;
 - (void)iGetSortIdOfString;
+
+- (void)iUpdateAt;
+- (NSMutableDictionary *)iSyncData;
 
 @end
