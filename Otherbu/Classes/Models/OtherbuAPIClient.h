@@ -10,5 +10,6 @@
 
 + (instancetype)sharedClient;
 - (void)getBookmarksWithCompletion:(void (^)(NSDictionary *results, NSError *error))block;
+- (void)syncWithCompletion:(void (^)(NSDictionary *results, NSError *error))block;
 
 @end

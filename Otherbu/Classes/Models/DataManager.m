@@ -75,11 +75,24 @@ static DataManager *intance = nil;
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
 
-- (void)reloadDataWithBlock:(void (^)(NSError *error))block {
+- (void)syncToWebWithBlock:(void (^)(NSError *error))block {
     [[OtherbuAPIClient sharedClient]
-        getBookmarksWithCompletion:^(NSDictionary *results, NSError *error) {
+        syncWithCompletion:^(NSDictionary *results, NSError *error) {
         if (results) {
-            [self _insertData:results];
+            // インサート処理
+            LOG(@"== hoge ==\n");
+            [self _updateResponseData:results];
+
+            // 同期したデータを保存する
+            LOG(@"== fuge ==\n");
+            for (int idx = 0; idx < LastSave; ++idx) {
+                [self save:idx];
+            }
+
+            // 同期用のデータをリセット
+            LOG(@"== koge ==\n");
+            _syncData = [self _restSyncData];
+            [self save:SAVE_SYNC];
         }
         if (block) block(error);
     }
@@ -281,6 +294,59 @@ static DataManager *intance = nil;
 //--------------------------------------------------------------//
 #pragma mark -- Private Method --
 //--------------------------------------------------------------//
+
+- (void)_updateResponseData:(NSDictionary *)jsonData {
+
+    // webから取得したjsonDataを格納
+    LOG(@"== response Data ==\n%@\n", jsonData);
+    NSDictionary *user = [jsonData objectForKey:@"user"];
+    [_user updateWithDictionary:user];
+
+    NSDictionary *design = [jsonData objectForKey:@"design"];
+    if ([design count] > 0) {
+        [_design updateWithDictionary:design];
+    }
+
+    NSDictionary *updatePageList = [jsonData objectForKey:@"update_page_list"];
+    for (NSString *key in updatePageList) {
+        PageData *data;
+        if (_pageDict[key]) {
+           [_pageDict[key] updateWithDictionary:updatePageList[key]];
+            data = _pageDict[key];
+           [_pageDict removeObjectForKey:key];
+        } else {
+            data = [[PageData alloc] initWithDictionary:updatePageList[key]];
+        }
+        [_pageDict setObject:data forKey:data.dataId];
+    }
+
+    NSDictionary *updateCategoryList = [jsonData objectForKey:@"update_category_list"];
+    for (NSString *key in updateCategoryList) {
+        CategoryData *data;
+        if (_categoryDict[key]) {
+           [_categoryDict[key] updateWithDictionary:updateCategoryList[key]];
+            data = _categoryDict[key];
+           [_categoryDict removeObjectForKey:key];
+        } else {
+            data = [[CategoryData alloc] initWithDictionary:updateCategoryList[key]];
+        }
+        [_categoryDict setObject:data forKey:data.dataId];
+    }
+
+    NSDictionary *updateBookmarkList = [jsonData objectForKey:@"update_bookmark_list"];
+    for (NSString *key in updateBookmarkList) {
+        BookmarkData *data;
+        if (_bookmarkDict[key]) {
+           [_bookmarkDict[key] updateWithDictionary:updateBookmarkList[key]];
+            data = _bookmarkDict[key];
+           [_bookmarkDict removeObjectForKey:key];
+        } else {
+            data = [[BookmarkData alloc] initWithDictionary:updateBookmarkList[key]];
+        }
+        [_bookmarkDict setObject:data forKey:data.dataId];
+    }
+}
+
 
 - (void)_insertData:(NSDictionary *)jsonData {
     // webから取得したjsonDataを格納

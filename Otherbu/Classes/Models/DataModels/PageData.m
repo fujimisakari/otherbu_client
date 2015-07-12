@@ -29,6 +29,14 @@
     return self;
 }
 
+- (void)updateWithDictionary:(NSDictionary *)dataDict {
+   _dataId = [dataDict[@"id"] stringValue];
+   _name = dataDict[@"name"];
+   _categoryIdsStr = dataDict[@"category_ids_str"];
+   _angleIdsStr = dataDict[@"angle_ids_str"];
+   _sortIdsStr = dataDict[@"sort_ids_str"];
+}
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"dataId=%@, name=%@, categoryIdsStr=%@, angleIdsStr=%@, sortIdsStr=%@, sortId=%ld, updatedAt=%@",
                                       _dataId, _name, _categoryIdsStr, _angleIdsStr, _sortIdsStr, _sortId, _updatedAt];

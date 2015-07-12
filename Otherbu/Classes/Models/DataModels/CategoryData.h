@@ -21,6 +21,7 @@
 @property(nonatomic) NSDate    *updatedAt;    // 更新時間
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
+- (void)updateWithDictionary:(NSDictionary *)dataDict;
 
 - (NSMutableArray *)getBookmarkList;
 - (ColorData *)color;

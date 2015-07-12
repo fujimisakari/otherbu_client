@@ -224,7 +224,11 @@
     dict[@"menuName"] = kMenuSyncName;
     dict[@"iconImage"] = [UIImage imageNamed:kSyncIcon];
     dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+        [[DataManager sharedManager] syncToWebWithBlock:^(NSError *error) {
+            if (error) {
+                NSLog(@"error = %@", error);
+            }
+        }];
     };
 }
 

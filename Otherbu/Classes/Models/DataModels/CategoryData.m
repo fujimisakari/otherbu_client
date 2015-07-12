@@ -28,6 +28,15 @@
     return self;
 }
 
+- (void)updateWithDictionary:(NSDictionary *)dataDict {
+    _dataId = [dataDict[@"id"] stringValue];
+    _name = dataDict[@"name"];
+    _angle = [dataDict[@"angle"] integerValue];
+    _sort = [dataDict[@"sort"] integerValue];
+    _colorId = [dataDict[@"color_id"] stringValue];
+    _isOpenSection = [dataDict[@"tag_open"] boolValue];
+}
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"dataId=%@, name=%@, angle=%ld, sort=%ld, colorId=%@, isOpenSection=%d, updatedAt=%@", _dataId,
                                       _name, _angle, _sort, _colorId, _isOpenSection, _updatedAt];

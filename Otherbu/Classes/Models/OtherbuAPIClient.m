@@ -10,6 +10,7 @@
 #import "AFHTTPSessionManager.h"
 
 static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
+// static NSString *const OtherbuAPIBaseURLString = @"http://localhost:8000/";
 
 @interface OtherbuAPIClient ()
 
@@ -54,7 +55,7 @@ static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
                 if (block) block(responseObject, nil);
              }
         failure:
-             ^(NSURLSessionDataTask * task, NSError * error) {
+             ^(NSURLSessionDataTask *task, NSError *error) {
              if (block) {
                  block(nil, error);
              }
@@ -67,6 +68,33 @@ static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
         // }
     }];
 }
+
+- (void)syncWithCompletion:(void (^)(NSDictionary *results, NSError *error))block {
+    NSMutableDictionary *param = [[DataManager sharedManager] getSyncData];
+    _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.sessionManager POST:@"/client_api/sync/"
+       parameters:param
+        success:
+             ^(NSURLSessionDataTask *task, id responseObject) {
+                LOG(@"== Success ==\n");
+                if (block) block(responseObject, nil);
+             }
+        failure:
+             ^(NSURLSessionDataTask * task, NSError * error) {
+             LOG(@"== Erro ==\n");
+             if (block) {
+                 block(nil, error);
+             }
+        // 401 が返ったときログインが必要.
+        // if (((NSHTTPURLResponse *)task.response).statusCode == 401 && [self needsLogin]) {
+        //     if (block) block(nil, nil);
+        // }
+        // else {
+        //     if (block) block(nil, error);
+        // }
+    }];
+}
+
 
 // - (BOOL)needsLogin
 // {

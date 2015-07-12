@@ -21,7 +21,6 @@
 }
 
 - (void)setup {
-
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *pageAction = [UIAlertAction actionWithTitle:@"Page" style:UIAlertActionStyleDefault handler:_actionDict[@"page"]];
     UIAlertAction *categoryAction =

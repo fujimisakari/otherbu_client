@@ -21,8 +21,6 @@
 
 + (DataManager *)sharedManager;
 
-- (void)reloadDataWithBlock:(void (^)(NSError *error))block;
-
 // 単体でデータ取得
 - (UserData *)getUser;
 - (PageData *)getPage:(NSString *)dataId;
@@ -59,5 +57,8 @@
 // 同期用のデータ更新
 - (NSMutableDictionary *)getSyncData;
 - (void)updateSyncData:(id<DataInterface>)data DataType:(int)dataType Action:(NSString *)action;
+
+// webへ同期
+- (void)syncToWebWithBlock:(void (^)(NSError *error))block;
 
 @end
