@@ -6,14 +6,17 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
+#import "MBProgressHUD.h"
 #import "SGIndexTableViewController.h"
 #import "SettingTableViewCell.h"
 #import "SectionHeaderView.h"
+#import "SettingAlertView.h"
 
 @interface SGIndexTableViewController () {
     NSArray *_menuSectionList;
     NSMutableArray *_menuSectionCountList;
     NSMutableDictionary *_menuItems;
+    SettingAlertView *_alertView;
 }
 
 @end
@@ -27,6 +30,9 @@
     _menuSectionCountList = [@[ [Helper getNumberByInt:0], [Helper getNumberByInt:0], [Helper getNumberByInt:0] ] mutableCopy];
     [self _setupMenuData];
     [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0.1, 20)]];
+
+    // 同期終了時のポップアップ
+    _alertView = [[SettingAlertView alloc] init];
 }
 
 //--------------------------------------------------------------//
@@ -56,11 +62,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 画面遷移
     NSString *itemKey = [self _getMenuItemKey:(int)indexPath.section row:(int)indexPath.row];
     NSMutableDictionary *menuItem = _menuItems[itemKey];
+
     void (^block)(void) = menuItem[@"block"];
     block();
+
+    // 同期ボタンを押して終了時にノーマル状態に戻す処理(途中)
+    // if ([menuItem[@"menuName"] isEqualToString:kMenuSyncName]) {
+    //     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    //     void (^block)(UITableViewCell *) = menuItem[@"block"];
+    //     block(cell);
+    // } else {
+    //     void (^block)(void) = menuItem[@"block"];
+    //     block();
+    // }
 }
 
 - (void)_setAppVersion:(UITableViewCell *)cell {
@@ -223,11 +239,18 @@
     dict[@"section"] = [Helper getNumberByInt:1];
     dict[@"menuName"] = kMenuSyncName;
     dict[@"iconImage"] = [UIImage imageNamed:kSyncIcon];
+    // dict[@"block"] = ^(UITableViewCell *cell) {
     dict[@"block"] = ^() {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [[DataManager sharedManager] syncToWebWithBlock:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (error) {
-                NSLog(@"error = %@", error);
+                LOG(@"error = %@", error);
+                [_alertView setup:@"error"];
+            } else {
+                [_alertView setup:@"success"];
             }
+            [_alertView show];
         }];
     };
 }

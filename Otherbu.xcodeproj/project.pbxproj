@@ -22,6 +22,7 @@
 		7B5F37311AF406EF00CF48F9 /* SearchData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37301AF406EF00CF48F9 /* SearchData.m */; };
 		7B5F37341AF46B4100CF48F9 /* SGDesignTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F37331AF46B4100CF48F9 /* SGDesignTableViewController.m */; };
 		7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BA8706C1AD9B37A00DB251D /* Images.xcassets */; };
+		7BB1DF2B1B595EFA00E382A4 /* SettingAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB1DF2A1B595EFA00E382A4 /* SettingAlertView.m */; };
 		7BB320F91AE1FAB3005267EC /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320F81AE1FAB3005267EC /* Device.m */; };
 		7BB320FC1AE29A35005267EC /* MainAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB320FB1AE29A35005267EC /* MainAlertController.m */; };
 		7BB9F63E1AF516F700223284 /* CellDesignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9F63D1AF516F700223284 /* CellDesignView.m */; };
@@ -104,6 +105,8 @@
 		7B5F37321AF46B4100CF48F9 /* SGDesignTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGDesignTableViewController.h; path = Classes/SettingScene/Controller/SGDesignTableViewController.h; sourceTree = "<group>"; };
 		7B5F37331AF46B4100CF48F9 /* SGDesignTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGDesignTableViewController.m; path = Classes/SettingScene/Controller/SGDesignTableViewController.m; sourceTree = "<group>"; };
 		7BA8706C1AD9B37A00DB251D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7BB1DF291B595EFA00E382A4 /* SettingAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingAlertView.h; path = Classes/SettingScene/View/SettingAlertView.h; sourceTree = "<group>"; };
+		7BB1DF2A1B595EFA00E382A4 /* SettingAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingAlertView.m; path = Classes/SettingScene/View/SettingAlertView.m; sourceTree = "<group>"; };
 		7BB320F71AE1FAB3005267EC /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/SupportingFiles/Device.h; sourceTree = "<group>"; };
 		7BB320F81AE1FAB3005267EC /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/SupportingFiles/Device.m; sourceTree = "<group>"; };
 		7BB320FA1AE29A35005267EC /* MainAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainAlertController.h; path = Classes/MainScene/Controller/MainAlertController.h; sourceTree = "<group>"; };
@@ -474,6 +477,8 @@
 			isa = PBXGroup;
 			children = (
 				7BFDDF591AD9AC4A00DD60EF /* SettingTableViewCell.h */,
+				7BB1DF291B595EFA00E382A4 /* SettingAlertView.h */,
+				7BB1DF2A1B595EFA00E382A4 /* SettingAlertView.m */,
 				7BFDDF5A1AD9AC4A00DD60EF /* SettingTableViewCell.m */,
 				7BE2B4531AECC58B00A30F67 /* DescHeaderView.h */,
 				7BE2B4541AECC58B00A30F67 /* DescHeaderView.m */,
@@ -706,6 +711,7 @@
 				7B5346F21AE35D2D008DA1EB /* ModalView.m in Sources */,
 				7B5F372E1AF290A800CF48F9 /* SGSearchTableViewController.m in Sources */,
 				7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */,
+				7BB1DF2B1B595EFA00E382A4 /* SettingAlertView.m in Sources */,
 				7BFDDF551AD9AC3500DD60EF /* SGNavigationViewController.m in Sources */,
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
 				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,

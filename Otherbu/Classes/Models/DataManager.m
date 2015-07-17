@@ -299,15 +299,15 @@ static DataManager *intance = nil;
 
     // webから取得したjsonDataを格納
     LOG(@"== response Data ==\n%@\n", jsonData);
-    NSDictionary *user = [jsonData objectForKey:@"user"];
+    NSDictionary *user = [[jsonData objectForKey:@"update_data"] objectForKey:@"User"];
     [_user updateWithDictionary:user];
 
-    NSDictionary *design = [jsonData objectForKey:@"design"];
+    NSDictionary *design = [[jsonData objectForKey:@"update_data"] objectForKey:@"Design"];
     if ([design count] > 0) {
         [_design updateWithDictionary:design];
     }
 
-    NSDictionary *updatePageList = [jsonData objectForKey:@"update_page_list"];
+    NSDictionary *updatePageList = [[jsonData objectForKey:@"update_data"] objectForKey:@"Page"];
     for (NSString *key in updatePageList) {
         PageData *data;
         if (_pageDict[key]) {
@@ -320,7 +320,7 @@ static DataManager *intance = nil;
         [_pageDict setObject:data forKey:data.dataId];
     }
 
-    NSDictionary *updateCategoryList = [jsonData objectForKey:@"update_category_list"];
+    NSDictionary *updateCategoryList = [[jsonData objectForKey:@"update_data"] objectForKey:@"Category"];
     for (NSString *key in updateCategoryList) {
         CategoryData *data;
         if (_categoryDict[key]) {
@@ -333,7 +333,7 @@ static DataManager *intance = nil;
         [_categoryDict setObject:data forKey:data.dataId];
     }
 
-    NSDictionary *updateBookmarkList = [jsonData objectForKey:@"update_bookmark_list"];
+    NSDictionary *updateBookmarkList = [[jsonData objectForKey:@"update_data"] objectForKey:@"Bookmark"];
     for (NSString *key in updateBookmarkList) {
         BookmarkData *data;
         if (_bookmarkDict[key]) {
