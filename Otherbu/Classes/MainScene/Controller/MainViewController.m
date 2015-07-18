@@ -329,7 +329,7 @@
     // PageTabの長押し時の実行処理
 
     // ALLのPageTabを長押しした場合は動作させない
-    if ([selectPage.dataId isEqualToString:@"AllCategory"]) {
+    if ([selectPage.dataId isEqualToString:kDefaultPageDataId]) {
             return;
     }
 

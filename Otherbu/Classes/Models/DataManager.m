@@ -80,17 +80,14 @@ static DataManager *intance = nil;
         syncWithCompletion:^(NSDictionary *results, NSError *error) {
         if (results) {
             // インサート処理
-            LOG(@"== hoge ==\n");
             [self _updateResponseData:results];
 
             // 同期したデータを保存する
-            LOG(@"== fuge ==\n");
             for (int idx = 0; idx < LastSave; ++idx) {
                 [self save:idx];
             }
 
             // 同期用のデータをリセット
-            LOG(@"== koge ==\n");
             _syncData = [self _restSyncData];
             [self save:SAVE_SYNC];
         }
@@ -148,7 +145,7 @@ static DataManager *intance = nil;
     }
 
     PageData *page = [[PageData alloc] init];
-    page.dataId = @"AllCategory";
+    page.dataId = kDefaultPageDataId;
     page.name = @"ALL";
     page.categoryIdsStr = [categoryIdList componentsJoinedByString:@","];
     page.angleIdsStr = [angleIdList componentsJoinedByString:@","];
@@ -554,6 +551,7 @@ static DataManager *intance = nil;
             _syncData[kSaveFileNameList[SAVE_PAGE]][action][syncData[@"id"]] = syncData;
             break;
     }
+
     [self save:SAVE_SYNC];
 }
 

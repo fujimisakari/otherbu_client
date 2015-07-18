@@ -101,7 +101,7 @@
 
 - (NSDictionary *)iSyncData {
     NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
-    syncData[@"id"] = _dataId;
+    syncData[@"dataId"] = (_dataId) ? _dataId : kDefaultPageDataId;
     syncData[@"type"] = (_type) ? _type : @"";
     syncData[@"typeId"] = (_typeId) ? _typeId : @"";
     syncData[@"page_id"] = _pageId;
