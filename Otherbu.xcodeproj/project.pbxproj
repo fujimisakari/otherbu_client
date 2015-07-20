@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		590F230F1AA81F4900589E7C /* default-wallpeper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 590F230E1AA81F4900589E7C /* default-wallpeper.jpg */; };
+		7B3361581B5D659400E297C6 /* SGLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3361571B5D659400E297C6 /* SGLoginWebViewController.m */; };
+		7B33615B1B5D6A7100E297C6 /* LoginWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B33615A1B5D6A7100E297C6 /* LoginWebView.m */; };
 		7B5346E81AE35D11008DA1EB /* ModalBKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346E41AE35D11008DA1EB /* ModalBKViewController.m */; };
 		7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346E71AE35D11008DA1EB /* ModalViewController.m */; };
 		7B5346F01AE35D2D008DA1EB /* ModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346EB1AE35D2D008DA1EB /* ModalBaseView.m */; };
@@ -77,6 +79,10 @@
 
 /* Begin PBXFileReference section */
 		590F230E1AA81F4900589E7C /* default-wallpeper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "default-wallpeper.jpg"; sourceTree = "<group>"; };
+		7B3361561B5D659400E297C6 /* SGLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGLoginWebViewController.h; path = Classes/SettingScene/Controller/SGLoginWebViewController.h; sourceTree = "<group>"; };
+		7B3361571B5D659400E297C6 /* SGLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGLoginWebViewController.m; path = Classes/SettingScene/Controller/SGLoginWebViewController.m; sourceTree = "<group>"; };
+		7B3361591B5D6A7100E297C6 /* LoginWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginWebView.h; path = Classes/SettingScene/View/LoginWebView.h; sourceTree = "<group>"; };
+		7B33615A1B5D6A7100E297C6 /* LoginWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginWebView.m; path = Classes/SettingScene/View/LoginWebView.m; sourceTree = "<group>"; };
 		7B5346E31AE35D11008DA1EB /* ModalBKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKViewController.h; path = Classes/ModalScene/Controller/ModalBKViewController.h; sourceTree = "<group>"; };
 		7B5346E41AE35D11008DA1EB /* ModalBKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKViewController.m; path = Classes/ModalScene/Controller/ModalBKViewController.m; sourceTree = "<group>"; };
 		7B5346E51AE35D11008DA1EB /* ModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalInterface.h; path = Classes/ModalScene/Controller/ModalInterface.h; sourceTree = "<group>"; };
@@ -390,6 +396,8 @@
 		7B91E6371AC32F7E003A36F1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7B3361561B5D659400E297C6 /* SGLoginWebViewController.h */,
+				7B3361571B5D659400E297C6 /* SGLoginWebViewController.m */,
 				7BFDDF3E1AD9AC3500DD60EF /* SGBaseTableViewController.h */,
 				7BFDDF3F1AD9AC3500DD60EF /* SGBaseTableViewController.m */,
 				7BFDDF401AD9AC3500DD60EF /* SGBookmarkTableViewController.h */,
@@ -476,6 +484,8 @@
 		7BFDDEB61AD9A24800DD60EF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B3361591B5D6A7100E297C6 /* LoginWebView.h */,
+				7B33615A1B5D6A7100E297C6 /* LoginWebView.m */,
 				7BFDDF591AD9AC4A00DD60EF /* SettingTableViewCell.h */,
 				7BB1DF291B595EFA00E382A4 /* SettingAlertView.h */,
 				7BB1DF2A1B595EFA00E382A4 /* SettingAlertView.m */,
@@ -685,12 +695,14 @@
 				7BE2B4581AED4FC400A30F67 /* ModalValidatedAlertView.m in Sources */,
 				7BFDDF531AD9AC3500DD60EF /* SGCategoryListTableViewController.m in Sources */,
 				7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */,
+				7B3361581B5D659400E297C6 /* SGLoginWebViewController.m in Sources */,
 				7BFDDF6F1AD9AC8400DD60EF /* BookmarkData.m in Sources */,
 				7BB9F63E1AF516F700223284 /* CellDesignView.m in Sources */,
 				7BFDDF571AD9AC3500DD60EF /* SGSelectCategoryTableViewController.m in Sources */,
 				7BFDDF581AD9AC3500DD60EF /* SGIndexTableViewController.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7B5F372B1AF28BFA00CF48F9 /* SectionHeaderView.m in Sources */,
+				7B33615B1B5D6A7100E297C6 /* LoginWebView.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
 				7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */,

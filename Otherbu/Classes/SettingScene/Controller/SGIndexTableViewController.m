@@ -171,8 +171,8 @@
         case MENU_SYNC: {
             [self _setSyncItem:dict];
         } break;
-        case MENU_SIGN: {
-            [self _setSignItem:dict];
+        case MENU_LOGIN: {
+            [self _setLoginItem:dict];
         } break;
         case MENU_HELP: {
             [self _setHelpItem:dict];
@@ -255,12 +255,12 @@
     };
 }
 
-- (void)_setSignItem:(NSMutableDictionary *)dict {
+- (void)_setLoginItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:1];
-    dict[@"menuName"] = kMenuSigninName;
-    dict[@"iconImage"] = [UIImage imageNamed:kSignInIcon];
+    dict[@"menuName"] = kMenuLoginName;
+    dict[@"iconImage"] = [UIImage imageNamed:kLoginIcon];
     dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToPageListBySegue sender:self];
+        [self performSegueWithIdentifier:kToLoginWebViewBySegue sender:self];
     };
 }
 

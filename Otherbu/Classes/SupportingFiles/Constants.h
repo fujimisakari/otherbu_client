@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, MenuList) {
     MENU_DESIGN,
     MENU_SEARCH,
     MENU_SYNC,
-    MENU_SIGN,
+    MENU_LOGIN,
     MENU_HELP,
     MENU_REVIEW,
     MENU_WEBSITE,
@@ -133,8 +133,8 @@ extern NSString * const kMenuPageName;
 extern NSString * const kMenuDesignName;
 extern NSString * const kMenuSearchName;
 extern NSString * const kMenuSyncName;
-extern NSString * const kMenuSigninName;
-extern NSString * const kMenuSignOutName;
+extern NSString * const kMenuLoginName;
+extern NSString * const kMenuLogoutName;
 extern NSString * const kMenuHelpName;
 extern NSString * const kMenuReviewName;
 extern NSString * const kMenuWebSiteName;
@@ -150,8 +150,8 @@ extern NSString * const kPageIcon;
 extern NSString * const kDesignIcon;
 extern NSString * const kBlackSearchIcon;
 extern NSString * const kSyncIcon;
-extern NSString * const kSignInIcon;
-extern NSString * const kSignOutIcon;
+extern NSString * const kLoginIcon;
+extern NSString * const kLogoutIcon;
 extern NSString * const kHelpIcon;
 extern NSString * const kWebSiteIcon;
 extern NSString * const kReviewIcon;
@@ -172,5 +172,6 @@ extern NSString * const kToPageListBySegue;
 extern NSString * const kToEditPageBySegue;
 extern NSString * const kToDesignBySegue;
 extern NSString * const kToSearchBySegue;
+extern NSString * const kToLoginWebViewBySegue;
 
 @end
