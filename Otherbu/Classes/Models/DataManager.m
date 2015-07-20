@@ -293,9 +293,10 @@ static DataManager *intance = nil;
 //--------------------------------------------------------------//
 
 - (void)_updateResponseData:(NSDictionary *)jsonData {
-
-    // webから取得したjsonDataを格納
+    // webから取得したjsonDataの反映
     LOG(@"== response Data ==\n%@\n", jsonData);
+
+    // 追加、更新
     NSDictionary *user = [[jsonData objectForKey:@"update_data"] objectForKey:@"User"];
     [_user updateWithDictionary:user];
 
@@ -342,8 +343,19 @@ static DataManager *intance = nil;
         }
         [_bookmarkDict setObject:data forKey:data.dataId];
     }
+
+    // 削除
+    [self _deleteData:_pageDict SyncData:[[jsonData objectForKey:@"delete_data"] objectForKey:@"Page"]];
+    [self _deleteData:_categoryDict SyncData:[[jsonData objectForKey:@"delete_data"] objectForKey:@"Category"]];
+    [self _deleteData:_bookmarkDict SyncData:[[jsonData objectForKey:@"delete_data"] objectForKey:@"Bookmark"]];
 }
 
+- (void)_deleteData:(NSMutableDictionary *)currentData SyncData:(NSArray *)deleleData {
+    // サーバー側で行った削除の反映
+    for (NSString *deleteId in deleleData) {
+        [currentData removeObjectForKey:deleteId];
+    }
+}
 
 - (void)_insertData:(NSDictionary *)jsonData {
     // webから取得したjsonDataを格納
