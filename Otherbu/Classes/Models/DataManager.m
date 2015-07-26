@@ -298,7 +298,9 @@ static DataManager *intance = nil;
 
     // 追加、更新
     NSDictionary *user = [[jsonData objectForKey:@"update_data"] objectForKey:@"User"];
-    [_user updateWithDictionary:user];
+    if ([user count] > 0) {
+        [_user updateWithDictionary:user];
+    }
 
     NSDictionary *design = [[jsonData objectForKey:@"update_data"] objectForKey:@"Design"];
     if ([design count] > 0) {
