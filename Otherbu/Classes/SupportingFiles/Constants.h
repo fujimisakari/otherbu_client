@@ -22,7 +22,7 @@ typedef NS_ENUM(NSUInteger, MenuList) {
     MENU_DESIGN,
     MENU_SEARCH,
     MENU_SYNC,
-    MENU_LOGIN,
+    // MENU_LOGIN,
     MENU_HELP,
     MENU_REVIEW,
     MENU_WEBSITE,

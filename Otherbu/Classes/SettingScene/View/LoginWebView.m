@@ -7,6 +7,7 @@
 //
 
 #import "LoginWebView.h"
+#import "UserData.h"
 
 @interface LoginWebView () {
 }
@@ -25,6 +26,18 @@
     self.scalesPageToFit = YES;  // Webページの大きさを自動的に画面にフィットさせる
 }
 
+- (void)initLoad {
+    // 初回ページ
+    NSURL *url;
+    #ifdef DEBUG
+        url = [NSURL URLWithString:@"http://dev.otherbu.com/login/client/"];
+    #else
+        url = [NSURL URLWithString:@"http://otherbu.com/login/client/"];
+    #endif
+    NSURLRequest *urlReq = [NSURLRequest requestWithURL:url];
+    [self loadRequest:urlReq];
+}
+
 //--------------------------------------------------------------//
 #pragma mark -- UIWebViewDelegate --
 //--------------------------------------------------------------//
@@ -33,14 +46,13 @@
 shouldStartLoadWithRequest:(NSURLRequest *)request
             navigationType:(UIWebViewNavigationType)navigationType {
     // Webページのロード（表示）の開始前
-    // リンクがクリックされたとき
-    if (navigationType == UIWebViewNavigationTypeLinkClicked ||
-        navigationType == UIWebViewNavigationTypeOther) {
 
-        NSString *url = [[request URL] absoluteString];
-        if ([self _isRequestCheck:url]) {
-            NSString *urlString = [NSString stringWithFormat:@"%@client/", url];
-            NSURL *loadURL = [NSURL URLWithString:urlString];
+    // リンクがクリックされたとき
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        NSURL *url = [request URL];
+        NSString *requestURL = [self _getRequestURL:url];
+        if (requestURL) {
+            NSURL *loadURL = [NSURL URLWithString:requestURL];
             NSURLRequest *urlReq = [NSURLRequest requestWithURL:loadURL];
             [self loadRequest:urlReq];
             return NO;
@@ -49,17 +61,19 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     return YES;
 }
 
-- (BOOL)_isRequestCheck:(NSString *)url {
+- (NSString *)_getRequestURL:(NSURL *)_url {
+    NSString *url = [_url absoluteString];
     NSString *facebookUrlString = @"/oauth/facebook/";
     NSString *twitterUrlString = @"/oauth/twitter/";
+    NSString *domain = [NSString stringWithFormat:@"%@://%@", [_url scheme], [_url host]];
     if ([url rangeOfString:@"client"].location != NSNotFound) {
-        return NO;
+        return nil;
     } else if ([url rangeOfString:facebookUrlString].location != NSNotFound) {
-        return YES;
+        return [NSString stringWithFormat:@"%@/oauth/client/facebook/", domain];
     } else if ([url rangeOfString:twitterUrlString].location != NSNotFound) {
-        return YES;
+        return [NSString stringWithFormat:@"%@/oauth/client/twitter/", domain];
     }
-    return NO;
+    return nil;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webview {
@@ -70,6 +84,29 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 - (void)webViewDidFinishLoad:(UIWebView *)webview {
     // 読み込みが完了した直後に呼ばれる
     [self _updateStatusbar];
+
+    // ログイン完了ページの場合
+    NSString* url = [webview stringByEvaluatingJavaScriptFromString:@"document.URL"];
+    if ([url rangeOfString:@"/oauth/completion/"].location != NSNotFound) {
+        UserData *user = [[DataManager sharedManager] getUser];
+
+        // ユーザー情報更新処理
+        NSMutableDictionary *userDict = [[NSMutableDictionary alloc] init];
+        NSString *_id = [webview stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"id\").value;"];
+        userDict[@"id"] = [NSNumber numberWithInt:[_id intValue]];
+        userDict[@"type"] = [webview stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"type\").value;"];
+        userDict[@"type_id"] = [webview stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"type_id\").value;"];
+        userDict[@"page_id"] = [NSNumber numberWithInt:[user.pageId intValue]];
+        [user updateWithDictionary:userDict];
+
+        // データ保存(レスポンスデータなので同期登録は不要)
+        [[DataManager sharedManager] save:SAVE_USER];
+
+        LOG(@"id - %@", userDict[@"id"]);
+        LOG(@"type - %@", userDict[@"type"]);
+        LOG(@"type_id - %@", userDict[@"type_id"]);
+        LOG(@"comp");
+    }
 }
 
 - (void)webView:(UIWebView *)webview didFailLoadWithError:(NSError *)error {
@@ -81,6 +118,5 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     // ステータスバーのインジケータの更新
     [UIApplication sharedApplication].networkActivityIndicatorVisible = self.loading;
 }
-
 
 @end

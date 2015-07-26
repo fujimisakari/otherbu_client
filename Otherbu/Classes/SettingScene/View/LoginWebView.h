@@ -9,5 +9,6 @@
 @interface LoginWebView : UIWebView<UIScrollViewDelegate, UIWebViewDelegate>
 
 - (void)setupWithView:(UIView *)view;
+- (void)initLoad;
 
 @end

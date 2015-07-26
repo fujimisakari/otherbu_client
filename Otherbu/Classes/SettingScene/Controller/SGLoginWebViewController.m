@@ -30,9 +30,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     // 画面が表示され終ったらWebPageの読み込み
     [super viewDidAppear:animated];
-    NSURL *url = [NSURL URLWithString:@"http://dev.otherbu.com/login/client/"];
-    NSURLRequest *urlReq = [NSURLRequest requestWithURL:url];
-    [_webView loadRequest:urlReq];
+    [_webView initLoad];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

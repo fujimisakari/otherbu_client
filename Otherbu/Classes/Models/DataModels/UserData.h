@@ -24,5 +24,6 @@
 - (SearchData *)search;
 - (void)updatePage:(NSString *)dataId;
 - (void)updateSearch:(NSString *)dataId;
+- (BOOL)isLogin;
 
 @end

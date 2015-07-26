@@ -11,6 +11,7 @@
 #import "SettingTableViewCell.h"
 #import "SectionHeaderView.h"
 #import "SettingAlertView.h"
+#import "UserData.h"
 
 @interface SGIndexTableViewController () {
     NSArray *_menuSectionList;
@@ -171,9 +172,9 @@
         case MENU_SYNC: {
             [self _setSyncItem:dict];
         } break;
-        case MENU_LOGIN: {
-            [self _setLoginItem:dict];
-        } break;
+        // case MENU_LOGIN: {
+        //     [self _setLoginItem:dict];
+        // } break;
         case MENU_HELP: {
             [self _setHelpItem:dict];
         } break;
@@ -239,20 +240,27 @@
     dict[@"section"] = [Helper getNumberByInt:1];
     dict[@"menuName"] = kMenuSyncName;
     dict[@"iconImage"] = [UIImage imageNamed:kSyncIcon];
-    // dict[@"block"] = ^(UITableViewCell *cell) {
-    dict[@"block"] = ^() {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[DataManager sharedManager] syncToWebWithBlock:^(NSError *error) {
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            if (error) {
-                LOG(@"error = %@", error);
-                [_alertView setup:@"error"];
-            } else {
-                [_alertView setup:@"success"];
-            }
-            [_alertView show];
-        }];
-    };
+
+    UserData *user = [[DataManager sharedManager] getUser];
+    if ([user isLogin]) {
+        dict[@"block"] = ^() {
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [[DataManager sharedManager] syncToWebWithBlock:^(NSError *error) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                if (error) {
+                    LOG(@"error = %@", error);
+                    [_alertView setup:@"error"];
+                } else {
+                    [_alertView setup:@"success"];
+                }
+                [_alertView show];
+            }];
+        };
+    } else {
+        dict[@"block"] = ^() {
+        [self performSegueWithIdentifier:kToLoginWebViewBySegue sender:self];
+        };
+    }
 }
 
 - (void)_setLoginItem:(NSMutableDictionary *)dict {

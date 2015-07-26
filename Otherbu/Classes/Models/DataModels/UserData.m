@@ -62,6 +62,10 @@
     _searchId = dataId;
 }
 
+- (BOOL)isLogin {
+    return (_dataId) ? YES : NO;
+}
+
 - (void)iUpdateAt {
     _updatedAt = [[NSDate alloc] init];
 }
