@@ -243,6 +243,7 @@
 
     UserData *user = [[DataManager sharedManager] getUser];
     if ([user isLogin]) {
+        [[DataManager sharedManager] updateSyncData:user DataType:SAVE_USER Action:@"update"];
         dict[@"block"] = ^() {
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [[DataManager sharedManager] syncToWebWithBlock:^(NSError *error) {
