@@ -241,10 +241,10 @@
     dict[@"menuName"] = kMenuSyncName;
     dict[@"iconImage"] = [UIImage imageNamed:kSyncIcon];
 
-    UserData *user = [[DataManager sharedManager] getUser];
-    if ([user isLogin]) {
-        [[DataManager sharedManager] updateSyncData:user DataType:SAVE_USER Action:@"update"];
-        dict[@"block"] = ^() {
+    dict[@"block"] = ^() {
+        UserData *user = [[DataManager sharedManager] getUser];
+        if ([user isLogin]) {
+            [[DataManager sharedManager] updateSyncData:user DataType:SAVE_USER Action:@"update"];
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [[DataManager sharedManager] syncToWebWithBlock:^(NSError *error) {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -256,12 +256,10 @@
                 }
                 [_alertView show];
             }];
-        };
-    } else {
-        dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToLoginWebViewBySegue sender:self];
-        };
-    }
+        } else {
+            [self performSegueWithIdentifier:kToLoginWebViewBySegue sender:self];
+        }
+    };
 }
 
 - (void)_setLoginItem:(NSMutableDictionary *)dict {
