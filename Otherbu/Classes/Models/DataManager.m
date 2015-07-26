@@ -536,6 +536,11 @@ static DataManager *intance = nil;
 }
 
 - (NSMutableDictionary *)getSyncData {
+    // userDataのIDは同期時に必ず必要なため、更新がなくても含める
+    NSDictionary *userData = _syncData[kSaveFileNameList[SAVE_USER]];
+    if ([userData count] == 0) {
+        _syncData[kSaveFileNameList[SAVE_USER]] = [_user syncData];
+    }
     return _syncData;
 }
 

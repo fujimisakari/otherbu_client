@@ -105,12 +105,20 @@
 //--------------------------------------------------------------//
 
 - (NSDictionary *)iSyncData {
+    // 通常の同期Userデータ生成
     NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
     syncData[@"id"] = (_dataId) ? _dataId : @"0";
     // syncData[@"type"] = (_type) ? _type : @"";
     // syncData[@"type_id"] = (_typeId) ? _typeId : @"";
     syncData[@"page_id"] = _pageId;
     syncData[@"updated_at"] = [Helper convertDateToString:_updatedAt];
+    return syncData;
+}
+
+- (NSDictionary *)syncData {
+    // 通常の同期Userデータが存在しない場合のデータ生成
+    NSMutableDictionary *syncData = [[NSMutableDictionary alloc] init];
+    syncData[@"id"] = (_dataId) ? _dataId : @"0";
     return syncData;
 }
 
