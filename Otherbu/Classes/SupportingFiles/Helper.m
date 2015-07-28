@@ -69,10 +69,11 @@
 + (NSString *)getCertificationString {
     // 認証トークンの生成
     NSDate *now = [NSDate date];
-    double unixtime = floor([now timeIntervalSince1970]);
+    double unixtimeDublue = floor([now timeIntervalSince1970] / 600);
+    int unixtime = (int)unixtimeDublue * 600;
 
     NSString *salt = @"oke9dfkkd03sfkssifuqdcc2";
-    NSString *input = [NSString stringWithFormat:@"%@:%d", salt, (int)unixtime];
+    NSString *input = [NSString stringWithFormat:@"%@:%d", salt, unixtime];
 
     NSData *data = [input dataUsingEncoding:NSUTF8StringEncoding];
     unsigned char digest[CC_SHA1_DIGEST_LENGTH];
