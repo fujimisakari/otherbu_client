@@ -9,8 +9,11 @@
 #import "OtherbuAPIClient.h"
 #import "AFHTTPSessionManager.h"
 
-static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
-// static NSString *const OtherbuAPIBaseURLString = @"http://localhost:8000/";
+#ifdef DEBUG
+    static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
+#else
+    static NSString *const OtherbuAPIBaseURLString = @"http://otherbu.com/";
+#endif
 
 @interface OtherbuAPIClient ()
 
@@ -32,10 +35,6 @@ static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
     self = [super init];
     if (self) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        configuration.HTTPAdditionalHeaders = @{@"Otherbu-Auth": [Helper getCertificationString],
-                                                @"Accept" : @"application/json"};
-        // self.sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString]];
-
         self.sessionManager =
             [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString] sessionConfiguration:configuration];
     }
@@ -43,67 +42,25 @@ static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
     return self;
 }
 
-// + (NSURL *)loginURL
-// {
-//     return [[NSURL URLWithString:kIBKMInternBookmarkAPIBaseURLString] URLByAppendingPathComponent:@"login"];
-// }
-
-- (void)getBookmarksWithCompletion:(void (^)(NSDictionary *results, NSError *error))block {
-    [self.sessionManager GET:@"/mock/"
-       parameters:@{}
-        success:
-             ^(NSURLSessionDataTask *task, id responseObject) {
-                if (block) block(responseObject, nil);
-             }
-        failure:
-             ^(NSURLSessionDataTask *task, NSError *error) {
-             if (block) {
-                 block(nil, error);
-             }
-        // 401 が返ったときログインが必要.
-        // if (((NSHTTPURLResponse *)task.response).statusCode == 401 && [self needsLogin]) {
-        //     if (block) block(nil, nil);
-        // }
-        // else {
-        //     if (block) block(nil, error);
-        // }
-    }];
-}
-
-- (void)syncWithCompletion:(void (^)(NSDictionary *results, NSError *error))block {
+- (void)syncWithCompletion:(void (^)(int statusCode, NSDictionary *results, NSError *error))block {
+    self.sessionManager.session.configuration.HTTPAdditionalHeaders = @{@"Otherbu-Auth": [Helper getCertificationString],
+                                                                        @"Accept" : @"application/json"};
     NSMutableDictionary *param = [[DataManager sharedManager] getSyncData];
     _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     [self.sessionManager POST:@"/client_api/sync/"
        parameters:param
         success:
              ^(NSURLSessionDataTask *task, id responseObject) {
-                LOG(@"== Success ==\n");
-                if (block) block(responseObject, nil);
+                LOG(@"\n== Success ==\n");
+                if (block) block((int)((NSHTTPURLResponse *)task.response).statusCode, responseObject, nil);
              }
         failure:
-             ^(NSURLSessionDataTask * task, NSError * error) {
-             LOG(@"== Erro ==\n");
+             ^(NSURLSessionDataTask *task, NSError *error) {
+             LOG(@"\n== Erro ==\n");
              if (block) {
-                 block(nil, error);
+                 block((int)((NSHTTPURLResponse *)task.response).statusCode, nil, error);
              }
-        // 401 が返ったときログインが必要.
-        // if (((NSHTTPURLResponse *)task.response).statusCode == 401 && [self needsLogin]) {
-        //     if (block) block(nil, nil);
-        // }
-        // else {
-        //     if (block) block(nil, error);
-        // }
     }];
 }
-
-
-// - (BOOL)needsLogin
-// {
-//     BOOL delegated = [self.delegate respondsToSelector:@selector(APIClientNeedsLogin:)];
-//     if (delegated) {
-//         [self.delegate APIClientNeedsLogin:self];
-//     }
-//     return delegated;
-// }
 
 @end

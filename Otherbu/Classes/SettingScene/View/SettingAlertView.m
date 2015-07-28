@@ -10,12 +10,18 @@
 
 @implementation SettingAlertView
 
-- (void)setup:(NSString *)result {
+- (void)setup:(int)statusCode {
     self.title = @"";
-    if ([result isEqualToString:@"success"]) {
+    if (statusCode == 503) {
+        self.message = @"現在メンテナンス中です";
+    } else if (statusCode == 405) {
+        self.message = @"リクエストに失敗しました";
+    } else if (statusCode == 401) {
+        self.message = @"認証に失敗しました";
+    } else if (statusCode == 500) {
+        self.message = @"システムエラーで同期に失敗しました";
+    } else {
         self.message = @"同期しました";
-    } else if ([result isEqualToString:@"error"]) {
-        self.message = @"同期に失敗しました";
     }
 
     [self addButtonWithTitle:@"Close"];

@@ -59,6 +59,6 @@
 - (void)updateSyncData:(id<DataInterface>)data DataType:(int)dataType Action:(NSString *)action;
 
 // webへ同期
-- (void)syncToWebWithBlock:(void (^)(NSError *error))block;
+- (void)syncToWebWithBlock:(void (^)(int statusCode, NSError *error))block;
 
 @end

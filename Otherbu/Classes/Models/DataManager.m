@@ -75,9 +75,9 @@ static DataManager *intance = nil;
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
 
-- (void)syncToWebWithBlock:(void (^)(NSError *error))block {
+- (void)syncToWebWithBlock:(void (^)(int statusCode, NSError *error))block {
     [[OtherbuAPIClient sharedClient]
-        syncWithCompletion:^(NSDictionary *results, NSError *error) {
+        syncWithCompletion:^(int statusCode, NSDictionary *results, NSError *error) {
         if (results) {
             // インサート処理
             [self _updateResponseData:results];
@@ -91,9 +91,9 @@ static DataManager *intance = nil;
             _syncData = [self _restSyncData];
             [self save:SAVE_SYNC];
         }
-        if (block) block(error);
-    }
-     ];
+        if (block) block(statusCode, error);
+        }
+    ];
 }
 
 //--------------------------------------------------------------//

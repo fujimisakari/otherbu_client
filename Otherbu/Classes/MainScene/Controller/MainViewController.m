@@ -446,7 +446,7 @@
     // サーバからデータ取得
     // [self.refreshControl beginRefreshing];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[DataManager sharedManager] syncToWebWithBlock:^(NSError *error) {
+    [[DataManager sharedManager] syncToWebWithBlock:^(int statusCode, NSError *error) {
         if (error) {
             NSLog(@"error = %@", error);
         }

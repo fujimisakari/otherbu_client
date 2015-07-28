@@ -245,13 +245,13 @@
         UserData *user = [[DataManager sharedManager] getUser];
         if ([user isLogin]) {
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            [[DataManager sharedManager] syncToWebWithBlock:^(NSError *error) {
+            [[DataManager sharedManager] syncToWebWithBlock:^(int statusCode, NSError *error) {
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 if (error) {
-                    LOG(@"error = %@", error);
-                    [_alertView setup:@"error"];
+                    LOG(@"\nerror = %@", error);
+                    [_alertView setup:statusCode];
                 } else {
-                    [_alertView setup:@"success"];
+                    [_alertView setup:statusCode];
                 }
                 [_alertView show];
             }];

@@ -8,6 +8,6 @@
 
 @interface SettingAlertView : UIAlertView
 
-- (void)setup:(NSString *)result;
+- (void)setup:(int)statusCode;
 
 @end
