@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
+#include <CommonCrypto/CommonDigest.h>
 #import "Helper.h"
 #import "DesignData.h"
 
@@ -63,6 +64,23 @@
     } else {
         return @"";
     }
+}
+
++ (NSString *)getCertificationString {
+    // 認証トークンの生成
+    NSDate *now = [NSDate date];
+    double unixtime = floor([now timeIntervalSince1970]);
+
+    NSString *salt = @"oke9dfkkd03sfkssifuqdcc2";
+    NSString *input = [NSString stringWithFormat:@"%@:%d", salt, (int)unixtime];
+
+    NSData *data = [input dataUsingEncoding:NSUTF8StringEncoding];
+    unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(data.bytes, (int)data.length, digest);
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+     for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    return (NSString *)output;
 }
 
 @end

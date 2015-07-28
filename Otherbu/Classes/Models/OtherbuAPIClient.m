@@ -32,7 +32,8 @@ static NSString *const OtherbuAPIBaseURLString = @"http://dev.otherbu.com/";
     self = [super init];
     if (self) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        configuration.HTTPAdditionalHeaders = @{@"Accept" : @"application/json", };
+        configuration.HTTPAdditionalHeaders = @{@"Otherbu-Auth": [Helper getCertificationString],
+                                                @"Accept" : @"application/json"};
         // self.sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString]];
 
         self.sessionManager =

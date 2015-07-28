@@ -14,5 +14,6 @@
 + (NSArray *)doSortArrayWithKey:(NSString *)key Array:(NSArray *)array;
 + (void)setupBackgroundImage:(CGRect)rect TargetView:(UIView *)view;
 + (NSString *)convertDateToString:(NSDate *)baseDate;
++ (NSString *)getCertificationString;
 
 @end
