@@ -540,6 +540,8 @@ static DataManager *intance = nil;
     NSDictionary *userData = _syncData[kSaveFileNameList[SAVE_USER]];
     if ([userData count] == 0) {
         _syncData[kSaveFileNameList[SAVE_USER]] = [_user syncData];
+    } else {
+        _syncData[kSaveFileNameList[SAVE_USER]][@"id"] = _user.dataId;
     }
     return _syncData;
 }
