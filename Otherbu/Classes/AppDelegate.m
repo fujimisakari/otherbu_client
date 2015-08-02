@@ -22,6 +22,9 @@
 
     [[DataManager sharedManager] load];
 
+    // 起動画面を1.5秒間見せるので、ここでスレッドを止める
+    [NSThread sleepForTimeInterval:1.5];
+
     return YES;
 }
 
