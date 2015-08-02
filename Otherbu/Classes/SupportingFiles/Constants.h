@@ -173,5 +173,6 @@ extern NSString * const kToEditPageBySegue;
 extern NSString * const kToDesignBySegue;
 extern NSString * const kToSearchBySegue;
 extern NSString * const kToLoginWebViewBySegue;
+extern NSString * const kToHelpWebViewBySegue;
 
 @end

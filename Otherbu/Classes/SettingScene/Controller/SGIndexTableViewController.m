@@ -275,7 +275,7 @@
     dict[@"menuName"] = kMenuHelpName;
     dict[@"iconImage"] = [UIImage imageNamed:kHelpIcon];
     dict[@"block"] = ^() {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://otherbu.com/"]];
+        [self performSegueWithIdentifier:kToHelpWebViewBySegue sender:self];
     };
 }
 

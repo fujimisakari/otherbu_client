@@ -31,6 +31,8 @@
 		7BB9F6411AF5485400223284 /* SGDesignAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB9F6401AF5485400223284 /* SGDesignAlertController.m */; };
 		7BC347F41AE552BD00D5B733 /* SwapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F31AE552BD00D5B733 /* SwapViewController.m */; };
 		7BC347F71AE81AD600D5B733 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC347F61AE81AD600D5B733 /* NavigationBar.m */; };
+		7BCC7FFC1B6E9BA700C348A6 /* SGHelpWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC7FF91B6E9BA700C348A6 /* SGHelpWebViewController.m */; };
+		7BCC7FFD1B6E9BA700C348A6 /* HelpWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCC7FFB1B6E9BA700C348A6 /* HelpWebView.m */; };
 		7BE2B4521AEBEE5900A30F67 /* ModalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */; };
 		7BE2B4551AECC58B00A30F67 /* DescHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4541AECC58B00A30F67 /* DescHeaderView.m */; };
 		7BE2B4581AED4FC400A30F67 /* ModalValidatedAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4571AED4FC400A30F67 /* ModalValidatedAlertView.m */; };
@@ -125,6 +127,10 @@
 		7BC347F31AE552BD00D5B733 /* SwapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwapViewController.m; path = Classes/SwapScene/Controller/SwapViewController.m; sourceTree = "<group>"; };
 		7BC347F51AE81AD600D5B733 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NavigationBar.h; path = Classes/CommonView/NavigationBar.h; sourceTree = "<group>"; };
 		7BC347F61AE81AD600D5B733 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NavigationBar.m; path = Classes/CommonView/NavigationBar.m; sourceTree = "<group>"; };
+		7BCC7FF81B6E9BA700C348A6 /* SGHelpWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGHelpWebViewController.h; path = Classes/SettingScene/Controller/SGHelpWebViewController.h; sourceTree = "<group>"; };
+		7BCC7FF91B6E9BA700C348A6 /* SGHelpWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGHelpWebViewController.m; path = Classes/SettingScene/Controller/SGHelpWebViewController.m; sourceTree = "<group>"; };
+		7BCC7FFA1B6E9BA700C348A6 /* HelpWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpWebView.h; path = Classes/SettingScene/View/HelpWebView.h; sourceTree = "<group>"; };
+		7BCC7FFB1B6E9BA700C348A6 /* HelpWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpWebView.m; path = Classes/SettingScene/View/HelpWebView.m; sourceTree = "<group>"; };
 		7BE2B4501AEBEE5900A30F67 /* ModalPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalPageViewController.h; path = Classes/ModalScene/Controller/ModalPageViewController.h; sourceTree = "<group>"; };
 		7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalPageViewController.m; path = Classes/ModalScene/Controller/ModalPageViewController.m; sourceTree = "<group>"; };
 		7BE2B4531AECC58B00A30F67 /* DescHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescHeaderView.h; path = Classes/SettingScene/View/DescHeaderView.h; sourceTree = "<group>"; };
@@ -387,6 +393,10 @@
 		7B91E6361AC32F5A003A36F1 /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
+				7BCC7FF81B6E9BA700C348A6 /* SGHelpWebViewController.h */,
+				7BCC7FF91B6E9BA700C348A6 /* SGHelpWebViewController.m */,
+				7BCC7FFA1B6E9BA700C348A6 /* HelpWebView.h */,
+				7BCC7FFB1B6E9BA700C348A6 /* HelpWebView.m */,
 				7B91E6371AC32F7E003A36F1 /* Controller */,
 				7BFDDEB61AD9A24800DD60EF /* View */,
 			);
@@ -703,6 +713,7 @@
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7B5F372B1AF28BFA00CF48F9 /* SectionHeaderView.m in Sources */,
 				7B33615B1B5D6A7100E297C6 /* LoginWebView.m in Sources */,
+				7BCC7FFD1B6E9BA700C348A6 /* HelpWebView.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
 				7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */,
@@ -724,6 +735,7 @@
 				7B5F372E1AF290A800CF48F9 /* SGSearchTableViewController.m in Sources */,
 				7BFDDF341AD9ABF200DD60EF /* WebViewController.m in Sources */,
 				7BB1DF2B1B595EFA00E382A4 /* SettingAlertView.m in Sources */,
+				7BCC7FFC1B6E9BA700C348A6 /* SGHelpWebViewController.m in Sources */,
 				7BFDDF551AD9AC3500DD60EF /* SGNavigationViewController.m in Sources */,
 				7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */,
 				7BB320F91AE1FAB3005267EC /* Device.m in Sources */,
