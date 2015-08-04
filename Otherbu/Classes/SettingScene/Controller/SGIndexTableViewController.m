@@ -178,9 +178,9 @@
         case MENU_HELP: {
             [self _setHelpItem:dict];
         } break;
-        case MENU_REVIEW: {
-            [self _setReviewItem:dict];
-        } break;
+        // case MENU_REVIEW: {
+        //     [self _setReviewItem:dict];
+        // } break;
         case MENU_WEBSITE: {
             [self _setWebSiteItem:dict];
         } break;
