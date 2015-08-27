@@ -18,8 +18,40 @@
 	<string>1.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb111857865829637</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0.2</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>1cd97c5f49664e4a84301c89d524cd56056dfb7b</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict>
+					<key>consumerKey</key>
+					<string>FvlrVbhPGy21cXj0qzguX4f3t</string>
+					<key>consumerSecret</key>
+					<string>JLQfJHzjy6dWeNbdFBTRnr0CI5QL8thTeiWUEVFhAL5AIoPROb</string>
+				</dict>
+				<key>KitName</key>
+				<string>Twitter</string>
+			</dict>
+		</array>
+	</dict>
+	<key>FacebookAppID</key>
+	<string>111857865829637</string>
+	<key>FacebookDisplayName</key>
+	<string>Otherbu-Client</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
