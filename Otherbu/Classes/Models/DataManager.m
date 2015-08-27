@@ -15,6 +15,7 @@
 #import "ColorData.h"
 #import "DesignData.h"
 #import "SearchData.h"
+#import "AccountTypeData.h"
 
 @interface DataManager () {
     UserData *_user;
@@ -64,6 +65,12 @@ static DataManager *intance = nil;
         for (NSDictionary *searchDict in [MasterData initSearchData]) {
             SearchData *data = [[SearchData alloc] initWithDictionary:searchDict];
             [_searchDict setObject:data forKey:data.dataId];
+        }
+
+        _accountTypeDict = [@{} mutableCopy];
+        for (NSDictionary *accountTypeDict in [MasterData initAccountTypeData]) {
+            AccountTypeData *data = [[AccountTypeData alloc] initWithDictionary:accountTypeDict];
+            [_accountTypeDict setObject:data forKey:data.dataId];
         }
 
         _syncData = [self _restSyncData];
@@ -131,6 +138,10 @@ static DataManager *intance = nil;
 
 - (SearchData *)getSearch:(NSString *)dataId {
     return _searchDict[dataId];
+}
+
+- (AccountTypeData *)getAccountType:(NSString *)dataId {
+    return _accountTypeDict[dataId];
 }
 
 - (PageData *)_getPageOfAllCategory {
@@ -211,12 +222,24 @@ static DataManager *intance = nil;
     return resultList;
 }
 
-- (NSMutableArray *)getSearchList {
+- (NSArray *)getSearchList {
     NSMutableArray *itemList = [NSMutableArray array];
     for (NSString *key in _searchDict) {
         [itemList addObject:_searchDict[key]];
     }
-    return itemList;
+    // sort番号で昇順ソート
+    NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:itemList];
+    return resultList;
+}
+
+- (NSArray *)getAccountTypeList {
+    NSMutableArray *itemList = [NSMutableArray array];
+    for (NSString *key in _accountTypeDict) {
+        [itemList addObject:_accountTypeDict[key]];
+    }
+    // sort番号で昇順ソート
+    NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:itemList];
+    return resultList;
 }
 
 //--------------------------------------------------------------//

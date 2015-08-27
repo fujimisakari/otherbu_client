@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SearchData.h"
+#import "AccountTypeData.h"
 
-@implementation SearchData
+@implementation AccountTypeData
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --
@@ -19,14 +19,25 @@
     if (self) {
         _dataId = dataDict[@"dataId"];
         _name = dataDict[@"name"];
-        _url = dataDict[@"url"];
         _sort = [dataDict[@"sort"] integerValue];
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, name=%@, url=%@, sort=%ld", _dataId, _name, _url, _sort];
+    return [NSString stringWithFormat:@"dataId=%@, name=%@, sort=%ld", _dataId, _name, _sort];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Login Action Methods --
+//--------------------------------------------------------------//
+
+- (void)login {
+    if ([self.name isEqualToString:@"Twitter"]) {
+        [SNSProcess loginByTwitter];
+    } else if ([self.name isEqualToString:@"Facebook"]) {
+        [SNSProcess loginByFacebook];
+    }
 }
 
 //--------------------------------------------------------------//
@@ -34,19 +45,15 @@
 //--------------------------------------------------------------//
 
 - (NSInteger)iGetMenuId {
-    return MENU_SEARCH;
+    return MENU_LOGIN;
 }
 
 - (NSString *)iGetTitleName {
-    return kMenuSearchName;
+    return kMenuLoginName;
 }
 
 - (NSString *)iGetName {
     return _name;
-}
-
-- (NSString *)iGetUrl {
-    return _url;
 }
 
 @end

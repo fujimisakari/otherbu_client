@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -288,6 +289,7 @@
                         <segue destination="tgD-pC-SM1" kind="show" identifier="toDesignPage" id="mNP-el-9fh"/>
                         <segue destination="4m9-r9-KN9" kind="show" identifier="toLoginWebView" id="y7a-ec-bah"/>
                         <segue destination="qqZ-2c-frJ" kind="show" identifier="toHelpWebView" id="y92-W7-3c2"/>
+                        <segue destination="Bll-Kn-xQB" kind="show" identifier="toLoginPage" id="08C-8m-JSH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lN2-Cs-Sx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,6 +464,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ci3-SG-WfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2777" y="6425"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="d2H-ZU-9Zh">
+            <objects>
+                <tableViewController id="Bll-Kn-xQB" userLabel="Login View Controller" customClass="SGLoginController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="odC-DF-yg5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xCh-GF-lt4">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xCh-GF-lt4" id="GyB-HI-5xk">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Bll-Kn-xQB" id="VcI-om-eZc"/>
+                            <outlet property="delegate" destination="Bll-Kn-xQB" id="lhd-rW-0DJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaF-7N-tzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3408" y="6425"/>
         </scene>
         <!--Page Detail Table View Controller-->
         <scene sceneID="zMT-dY-xWM">

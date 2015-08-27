@@ -18,6 +18,7 @@
 @property(nonatomic) NSMutableDictionary *colorDict;
 @property(nonatomic) NSMutableDictionary *colorDictOfBookmarkBG;
 @property(nonatomic) NSMutableDictionary *searchDict;
+@property(nonatomic) NSMutableDictionary *accountTypeDict;
 
 + (DataManager *)sharedManager;
 
@@ -30,6 +31,7 @@
 - (ColorData *)getBookmarkBGColor:(NSString *)dataId;
 - (DesignData *)getDesign;
 - (SearchData *)getSearch:(NSString *)dataId;
+- (SearchData *)getAccountType:(NSString *)dataId;
 
 // データ一覧を取得
 - (NSMutableArray *)getCategoryList;
@@ -37,7 +39,8 @@
 - (NSMutableArray *)getPageListForMainScene;
 - (NSArray *)getColorList;
 - (NSArray *)getBookmarkBGColorList;
-- (NSMutableArray *)getSearchList;
+- (NSArray *)getSearchList;
+- (NSArray *)getAccountTypeList;
 
 // データの追加
 - (void)addCategory:(CategoryData *)data;

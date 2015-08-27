@@ -10,12 +10,21 @@
 
 @implementation MasterData
 
++ (NSArray *)initAccountTypeData {
+    // アカウントタイプのデータ
+    NSArray *dataList = @[
+        @{@"dataId" : @"1", @"name" : @"Twitter", @"sort" : @"1"},
+        @{@"dataId" : @"2", @"name" : @"Facebook", @"sort" : @"2"},
+    ];
+    return dataList;
+}
+
 + (NSArray *)initSearchData {
     // 検索サイトのデータ
     NSArray *dataList = @[
-        @{@"dataId" : @"1", @"name" : @"Google", @"url" : @"https://www.google.co.jp"},
-        @{@"dataId" : @"2", @"name" : @"Yahoo", @"url" : @"http://www.yahoo.co.jp"},
-        @{@"dataId" : @"3", @"name" : @"Bing", @"url" : @"https://www.bing.com"}
+        @{@"dataId" : @"1", @"name" : @"Google", @"url" : @"https://www.google.co.jp", @"sort" : @"1"},
+        @{@"dataId" : @"2", @"name" : @"Yahoo", @"url" : @"http://www.yahoo.co.jp", @"sort" : @"2"},
+        @{@"dataId" : @"3", @"name" : @"Bing", @"url" : @"https://www.bing.com", @"sort" : @"3"}
     ];
     return dataList;
 }

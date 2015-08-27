@@ -6,6 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
+#import "FBSDKCoreKit.h"
+#import "FBSDKLoginKit.h"
+
 #import "MBProgressHUD.h"
 #import "SGIndexTableViewController.h"
 #import "SettingTableViewCell.h"
@@ -34,6 +37,17 @@
 
     // 同期終了時のポップアップ
     _alertView = [[SettingAlertView alloc] init];
+
+    // FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
+    // loginButton.center = self.view.center;
+    // [self.view addSubview:loginButton];
+
+    TWTRLogInButton *logInButton = [TWTRLogInButton buttonWithLogInCompletion:^(TWTRSession *session, NSError *error) {
+        // play with Twitter session
+    }];
+    logInButton.center = self.view.center;
+    [self.view addSubview:logInButton];
+
 }
 
 //--------------------------------------------------------------//
@@ -172,9 +186,9 @@
         case MENU_SYNC: {
             [self _setSyncItem:dict];
         } break;
-        // case MENU_LOGIN: {
-        //     [self _setLoginItem:dict];
-        // } break;
+        case MENU_LOGIN: {
+            [self _setLoginItem:dict];
+        } break;
         case MENU_HELP: {
             [self _setHelpItem:dict];
         } break;
@@ -266,7 +280,7 @@
     dict[@"menuName"] = kMenuLoginName;
     dict[@"iconImage"] = [UIImage imageNamed:kLoginIcon];
     dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToLoginWebViewBySegue sender:self];
+        [self performSegueWithIdentifier:kToLoginBySegue sender:self];
     };
 }
 

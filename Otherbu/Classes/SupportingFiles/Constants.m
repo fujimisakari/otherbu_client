@@ -201,6 +201,7 @@ NSString * const kToPageListBySegue = @"toPageList";                          //
 NSString * const kToEditPageBySegue = @"toEditPage";                          // 設定ページ → ページ一覧 → ページ設定
 NSString * const kToDesignBySegue = @"toDesignPage";                          // 設定ページ → デザイン設定
 NSString * const kToSearchBySegue = @"toSearchPage";                          // 設定ページ → 検索サイト設定
+NSString * const kToLoginBySegue = @"toLoginPage";                            // 設定ページ → ログイン
 NSString * const kToLoginWebViewBySegue = @"toLoginWebView";                  // 設定ページ → ログイン
 NSString * const kToHelpWebViewBySegue = @"toHelpWebView";                  // 設定ページ → ログイン
 

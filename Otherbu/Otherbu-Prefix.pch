@@ -16,6 +16,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <TwitterKit/TwitterKit.h>
 
 #ifdef __OBJC__
     #import "Classes/SupportingFiles/UIColor+Hex.h"
@@ -24,6 +25,7 @@
     #import "Classes/SupportingFiles/helper.h"
     #import "Classes/Models/DataManager.h"
     #import "Classes/Models/MasterData.h"
+    #import "Classes/Models/SNSProcess.h"
 
     #ifdef DEBUG
         // #define LOG(...) NSLog(__VA_ARGS__)

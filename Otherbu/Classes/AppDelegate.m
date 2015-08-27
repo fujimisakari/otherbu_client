@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "FBSDKCoreKit.h"
+#import <Fabric/Fabric.h>
 
 @interface AppDelegate ()
 
@@ -24,6 +26,12 @@
 
     // 起動画面を1.5秒間見せるので、ここでスレッドを止める
     [NSThread sleepForTimeInterval:1.5];
+
+    // facebook SDK
+    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+
+    // Twitter(fabric) SDK
+    [Fabric with:@[[Twitter class]]];
 
     return YES;
 }
@@ -48,10 +56,21 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application
+              openURL:(NSURL *)url
+    sourceApplication:(NSString *)sourceApplication
+           annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                          openURL:url
+                                                sourceApplication:sourceApplication
+                                                       annotation:annotation];
 }
 
 @end

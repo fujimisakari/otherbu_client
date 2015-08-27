@@ -36,6 +36,13 @@
 		7BE2B4521AEBEE5900A30F67 /* ModalPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4511AEBEE5900A30F67 /* ModalPageViewController.m */; };
 		7BE2B4551AECC58B00A30F67 /* DescHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4541AECC58B00A30F67 /* DescHeaderView.m */; };
 		7BE2B4581AED4FC400A30F67 /* ModalValidatedAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE2B4571AED4FC400A30F67 /* ModalValidatedAlertView.m */; };
+		7BF9EA501B8F6DC9008DCE22 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF9EA4C1B8F6DC9008DCE22 /* Fabric.framework */; };
+		7BF9EA511B8F6DC9008DCE22 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF9EA4D1B8F6DC9008DCE22 /* TwitterKit.framework */; };
+		7BF9EA521B8F6DC9008DCE22 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BF9EA4E1B8F6DC9008DCE22 /* TwitterKitResources.bundle */; };
+		7BF9EA531B8F6DC9008DCE22 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF9EA4F1B8F6DC9008DCE22 /* TwitterCore.framework */; };
+		7BF9EA571B8F939C008DCE22 /* AccountTypeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9EA561B8F939C008DCE22 /* AccountTypeData.m */; };
+		7BF9EA5A1B8F940E008DCE22 /* SGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9EA591B8F940E008DCE22 /* SGLoginController.m */; };
+		7BF9EA5D1B8FA2D3008DCE22 /* SNSProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9EA5C1B8FA2D3008DCE22 /* SNSProcess.m */; };
 		7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */; };
 		7BFDDF191AD9AB5C00DD60EF /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF181AD9AB5C00DD60EF /* MainViewController.m */; };
 		7BFDDF261AD9AB8100DD60EF /* InnerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF1B1AD9AB8100DD60EF /* InnerTableView.m */; };
@@ -137,6 +144,16 @@
 		7BE2B4541AECC58B00A30F67 /* DescHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DescHeaderView.m; path = Classes/SettingScene/View/DescHeaderView.m; sourceTree = "<group>"; };
 		7BE2B4561AED4FC400A30F67 /* ModalValidatedAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalValidatedAlertView.h; path = Classes/ModalScene/View/ModalValidatedAlertView.h; sourceTree = "<group>"; };
 		7BE2B4571AED4FC400A30F67 /* ModalValidatedAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalValidatedAlertView.m; path = Classes/ModalScene/View/ModalValidatedAlertView.m; sourceTree = "<group>"; };
+		7BF9EA4C1B8F6DC9008DCE22 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		7BF9EA4D1B8F6DC9008DCE22 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		7BF9EA4E1B8F6DC9008DCE22 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		7BF9EA4F1B8F6DC9008DCE22 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		7BF9EA551B8F939C008DCE22 /* AccountTypeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountTypeData.h; path = Classes/Models/DataModels/AccountTypeData.h; sourceTree = "<group>"; };
+		7BF9EA561B8F939C008DCE22 /* AccountTypeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountTypeData.m; path = Classes/Models/DataModels/AccountTypeData.m; sourceTree = "<group>"; };
+		7BF9EA581B8F940E008DCE22 /* SGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGLoginController.h; path = Classes/SettingScene/Controller/SGLoginController.h; sourceTree = "<group>"; };
+		7BF9EA591B8F940E008DCE22 /* SGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGLoginController.m; path = Classes/SettingScene/Controller/SGLoginController.m; sourceTree = "<group>"; };
+		7BF9EA5B1B8FA2D3008DCE22 /* SNSProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNSProcess.h; path = Classes/Models/SNSProcess.h; sourceTree = "<group>"; };
+		7BF9EA5C1B8FA2D3008DCE22 /* SNSProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNSProcess.m; path = Classes/Models/SNSProcess.m; sourceTree = "<group>"; };
 		7BFDDEE91AD9A50100DD60EF /* Otherbu-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Otherbu-Prefix.pch"; sourceTree = "<group>"; };
 		7BFDDF141AD9AB3200DD60EF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
@@ -210,6 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C598670734C75CA12CEEA2B7 /* libPods.a in Frameworks */,
+				7BF9EA531B8F6DC9008DCE22 /* TwitterCore.framework in Frameworks */,
+				7BF9EA501B8F6DC9008DCE22 /* Fabric.framework in Frameworks */,
+				7BF9EA511B8F6DC9008DCE22 /* TwitterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +246,10 @@
 		6463D537B3A71CEC50C4C6BC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BF9EA4C1B8F6DC9008DCE22 /* Fabric.framework */,
+				7BF9EA4D1B8F6DC9008DCE22 /* TwitterKit.framework */,
+				7BF9EA4E1B8F6DC9008DCE22 /* TwitterKitResources.bundle */,
+				7BF9EA4F1B8F6DC9008DCE22 /* TwitterCore.framework */,
 				7EAE3DF2804B4E2305DACDCD /* libPods.a */,
 			);
 			name = Frameworks;
@@ -351,6 +375,8 @@
 		7B565F251A924A1000D6A420 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7BF9EA5B1B8FA2D3008DCE22 /* SNSProcess.h */,
+				7BF9EA5C1B8FA2D3008DCE22 /* SNSProcess.m */,
 				7BFDDF5C1AD9AC6F00DD60EF /* DataInterface.h */,
 				7BFDDF5D1AD9AC6F00DD60EF /* DataManager.h */,
 				7BFDDF5E1AD9AC6F00DD60EF /* DataManager.m */,
@@ -406,6 +432,8 @@
 		7B91E6371AC32F7E003A36F1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7BF9EA581B8F940E008DCE22 /* SGLoginController.h */,
+				7BF9EA591B8F940E008DCE22 /* SGLoginController.m */,
 				7B3361561B5D659400E297C6 /* SGLoginWebViewController.h */,
 				7B3361571B5D659400E297C6 /* SGLoginWebViewController.m */,
 				7BFDDF3E1AD9AC3500DD60EF /* SGBaseTableViewController.h */,
@@ -473,6 +501,8 @@
 		7BFDDEA01AD99EE900DD60EF /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
+				7BF9EA551B8F939C008DCE22 /* AccountTypeData.h */,
+				7BF9EA561B8F939C008DCE22 /* AccountTypeData.m */,
 				7BFDDF631AD9AC8400DD60EF /* BookmarkData.h */,
 				7BFDDF641AD9AC8400DD60EF /* BookmarkData.m */,
 				7BFDDF651AD9AC8400DD60EF /* CategoryData.h */,
@@ -563,6 +593,7 @@
 				7B565EED1A92486F00D6A420 /* Frameworks */,
 				7B565EEE1A92486F00D6A420 /* Resources */,
 				EAB315C93C5A66A553FAC016 /* Copy Pods Resources */,
+				7BF9EA4B1B8F6D48008DCE22 /* Twitter Fabric Run */,
 			);
 			buildRules = (
 			);
@@ -639,6 +670,7 @@
 				7BA8706D1AD9B37A00DB251D /* Images.xcassets in Resources */,
 				590F230F1AA81F4900589E7C /* default-wallpeper.jpg in Resources */,
 				7B565F041A92486F00D6A420 /* LaunchScreen.xib in Resources */,
+				7BF9EA521B8F6DC9008DCE22 /* TwitterKitResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +698,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		7BF9EA4B1B8F6D48008DCE22 /* Twitter Fabric Run */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Twitter Fabric Run";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 1cd97c5f49664e4a84301c89d524cd56056dfb7b 3e726f48f6b96ec7d8038143e55bc9114e79501fdccf7d2314ab965a3fad8cb3";
 		};
 		EAB315C93C5A66A553FAC016 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -699,6 +745,7 @@
 				7B5F37311AF406EF00CF48F9 /* SearchData.m in Sources */,
 				7B5346F01AE35D2D008DA1EB /* ModalBaseView.m in Sources */,
 				7BE2B4551AECC58B00A30F67 /* DescHeaderView.m in Sources */,
+				7BF9EA571B8F939C008DCE22 /* AccountTypeData.m in Sources */,
 				7BFDDF7C1AD9ACD300DD60EF /* Helper.m in Sources */,
 				7B5346F11AE35D2D008DA1EB /* ModalBKView.m in Sources */,
 				7BFDDF281AD9AB8100DD60EF /* MainTableCellView.m in Sources */,
@@ -714,9 +761,11 @@
 				7B5F372B1AF28BFA00CF48F9 /* SectionHeaderView.m in Sources */,
 				7B33615B1B5D6A7100E297C6 /* LoginWebView.m in Sources */,
 				7BCC7FFD1B6E9BA700C348A6 /* HelpWebView.m in Sources */,
+				7BF9EA5D1B8FA2D3008DCE22 /* SNSProcess.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,
 				7BFDDF7B1AD9ACD300DD60EF /* Constants.m in Sources */,
 				7BFDDF2A1AD9AB8100DD60EF /* PageTabView.m in Sources */,
+				7BF9EA5A1B8F940E008DCE22 /* SGLoginController.m in Sources */,
 				7BFDDF511AD9AC3500DD60EF /* SGBaseTableViewController.m in Sources */,
 				7BFDDF2B1AD9AB8100DD60EF /* MainSectionHeaderView.m in Sources */,
 				7BFDDF611AD9AC6F00DD60EF /* DataManager.m in Sources */,
@@ -870,6 +919,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "Otherbu/Otherbu-Prefix.pch";
 				INFOPLIST_FILE = Otherbu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -887,6 +940,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "Otherbu/Otherbu-Prefix.pch";
 				INFOPLIST_FILE = Otherbu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
