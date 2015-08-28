@@ -6,9 +6,6 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "FBSDKCoreKit.h"
-#import "FBSDKLoginKit.h"
-
 #import "MBProgressHUD.h"
 #import "SGIndexTableViewController.h"
 #import "SettingTableViewCell.h"
@@ -37,17 +34,6 @@
 
     // 同期終了時のポップアップ
     _alertView = [[SettingAlertView alloc] init];
-
-    // FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    // loginButton.center = self.view.center;
-    // [self.view addSubview:loginButton];
-
-    TWTRLogInButton *logInButton = [TWTRLogInButton buttonWithLogInCompletion:^(TWTRSession *session, NSError *error) {
-        // play with Twitter session
-    }];
-    logInButton.center = self.view.center;
-    [self.view addSubview:logInButton];
-
 }
 
 //--------------------------------------------------------------//
@@ -142,6 +128,9 @@
     int offset = 0;
     for (int idx = 0; idx < LastMenu; ++idx) {
         NSMutableDictionary *menuItem = [self _getMenuItem:idx];
+        if (menuItem[@"ignore"] && [(NSNumber *)menuItem[@"ignore"] boolValue]) {
+            continue;
+        }
         if ([menuItem[@"section"] intValue] != currentSection) {
             offset = 0;
             currentSection = [menuItem[@"section"] intValue];
@@ -254,34 +243,42 @@
     dict[@"section"] = [Helper getNumberByInt:1];
     dict[@"menuName"] = kMenuSyncName;
     dict[@"iconImage"] = [UIImage imageNamed:kSyncIcon];
-
     dict[@"block"] = ^() {
-        UserData *user = [[DataManager sharedManager] getUser];
-        if ([user isLogin]) {
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            [[DataManager sharedManager] syncToWebWithBlock:^(int statusCode, NSError *error) {
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                if (error) {
-                    LOG(@"\nerror = %@", error);
-                    [_alertView setup:statusCode];
-                } else {
-                    [_alertView setup:statusCode];
-                }
-                [_alertView show];
-            }];
-        } else {
-            [self performSegueWithIdentifier:kToLoginWebViewBySegue sender:self];
-        }
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[DataManager sharedManager] syncToWebWithBlock:^(int statusCode, NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if (error) {
+                LOG(@"\nerror = %@", error);
+                [_alertView setup:statusCode];
+            } else {
+                [_alertView setup:statusCode];
+            }
+            [_alertView show];
+        }];
     };
+
+    UserData *user = [[DataManager sharedManager] getUser];
+    if (![user isLogin]) {
+        dict[@"ignore"] = [Helper getNumberByInt:1];
+    }
 }
 
 - (void)_setLoginItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:1];
-    dict[@"menuName"] = kMenuLoginName;
-    dict[@"iconImage"] = [UIImage imageNamed:kLoginIcon];
-    dict[@"block"] = ^() {
-        [self performSegueWithIdentifier:kToLoginBySegue sender:self];
-    };
+    UserData *user = [[DataManager sharedManager] getUser];
+    if ([user isLogin]) {
+        dict[@"menuName"] = kMenuLogoutName;
+        dict[@"iconImage"] = [UIImage imageNamed:kLogoutIcon];
+        dict[@"block"] = ^() {
+            [user Logout];
+        };
+    } else {
+        dict[@"menuName"] = kMenuLoginName;
+        dict[@"iconImage"] = [UIImage imageNamed:kLoginIcon];
+        dict[@"block"] = ^() {
+            [self performSegueWithIdentifier:kToLoginBySegue sender:self];
+        };
+    }
 }
 
 - (void)_setHelpItem:(NSMutableDictionary *)dict {
@@ -313,7 +310,6 @@
 
 - (void)_setVersionItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:2];
-    dict[@"menuName"] = kMenuVersionName;
     dict[@"menuName"] = [NSString stringWithFormat:@"%@", kMenuVersionName];
     dict[@"iconImage"] = [UIImage imageNamed:kVersionIcon];
     dict[@"block"] = ^() {};

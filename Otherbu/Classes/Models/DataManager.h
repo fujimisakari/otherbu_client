@@ -8,7 +8,7 @@
 
 #import "DataInterface.h"
 
-@class UserData, PageData, CategoryData, BookmarkData, ColorData, DesignData, SearchData;
+@class UserData, PageData, CategoryData, BookmarkData, ColorData, DesignData, SearchData, AccountTypeData;
 
 @interface DataManager : NSObject
 
@@ -31,7 +31,7 @@
 - (ColorData *)getBookmarkBGColor:(NSString *)dataId;
 - (DesignData *)getDesign;
 - (SearchData *)getSearch:(NSString *)dataId;
-- (SearchData *)getAccountType:(NSString *)dataId;
+- (AccountTypeData *)getAccountType:(NSString *)dataId;
 
 // データ一覧を取得
 - (NSMutableArray *)getCategoryList;

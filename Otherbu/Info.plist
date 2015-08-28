@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb111857865829637</string>
+				<string>fb170591299734610</string>
 			</array>
 		</dict>
 	</array>
@@ -49,9 +49,9 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>111857865829637</string>
+	<string>170591299734610</string>
 	<key>FacebookDisplayName</key>
-	<string>Otherbu-Client</string>
+	<string>OtherBu</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

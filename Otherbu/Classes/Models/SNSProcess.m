@@ -8,33 +8,58 @@
 
 #import "FBSDKCoreKit.h"
 #import "FBSDKLoginKit.h"
+#import "UserData.h"
+#import "AccountTypeData.h"
 
 @implementation SNSProcess
 
 + (void)loginByFacebook {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login logInWithReadPermissions: @[@"public_profile"]
-                            handler: ^(FBSDKLoginManagerLoginResult *result, NSError *error) {
+                            handler: ^(FBSDKLoginManagerLoginResult *loginResult, NSError *error) {
         if (error) {
-            NSLog(@"Process error");
-        } else if (result.isCancelled) {
-            NSLog(@"Cancelled");
+            LOG(@"Process error");
+        } else if (loginResult.isCancelled) {
+            LOG(@"Cancelled");
         } else {
-            NSLog(@"Logged in");
+            LOG(@"Logged in");
+            if ([FBSDKAccessToken currentAccessToken]) {
+               [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
+                startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id graphResult, NSError *error) {
+                   if (!error) {
+                       LOG(@"fetched user:%@", graphResult);
+                       UserData *user = [[DataManager sharedManager] getUser];
+                       NSMutableDictionary *result = (NSMutableDictionary *)graphResult;
+                       [user Login:result[@"name"]
+                              Type:[[DataManager sharedManager] getAccountType:@"2"].name
+                            TypeId:result[@"id"]
+                             Token:loginResult.token.tokenString];
+                   }
+               }];
+            }
         }
     }];
+}
+
++ (void)logoutByFacebook {
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    [loginManager logOut];
 }
 
 + (void)loginByTwitter {
     [[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error) {
         if (error) {
-            NSLog(@"Process error");
+            LOG(@"Process error");
         } else if (session) {
-            NSLog(@"Logged in");
+            LOG(@"Logged in");
         } else {
-            NSLog(@"Cancelled");
+            LOG(@"Cancelled");
         }
     }];
+}
+
++ (void)logoutByTwitter {
+    [[Twitter sharedInstance] logOut];
 }
 
 @end

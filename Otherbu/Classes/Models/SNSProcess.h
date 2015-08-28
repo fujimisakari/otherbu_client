@@ -9,6 +9,8 @@
 @interface SNSProcess : NSObject
 
 + (void)loginByFacebook;
++ (void)logoutByFacebook;
 + (void)loginByTwitter;
++ (void)logoutByTwitter;
 
 @end

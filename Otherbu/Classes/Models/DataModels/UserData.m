@@ -26,14 +26,14 @@
 
 - (void)updateWithDictionary:(NSDictionary *)dataDict {
     _dataId = [dataDict[@"id"] stringValue];
-    _type = dataDict[@"type"];
-    _typeId = dataDict[@"type_id"];
+    // _type = dataDict[@"type"];
+    // _typeId = dataDict[@"type_id"];
     _pageId = [dataDict[@"page_id"] stringValue];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, type=%@, typeId=%@, page=%@, searchId=%@, updatedAt=%@", _dataId, _type, _typeId,
-                                      _pageId, _searchId, _updatedAt];
+    return [NSString stringWithFormat:@"dataId=%@, name=%@, type=%@, typeId=%@, page=%@, searchId=%@, updatedAt=%@",
+                     _dataId, _name, _type, _typeId, _pageId, _searchId, _updatedAt];
 }
 
 //--------------------------------------------------------------//
@@ -62,13 +62,32 @@
     _searchId = dataId;
 }
 
+- (void)iUpdateAt {
+    _updatedAt = [[NSDate alloc] init];
+}
+
+- (void)Login:(NSString *)name Type:(NSString *)type TypeId:(NSString *)typeId Token:(NSString *)token {
+    _name = name;
+    _type = type;
+    _typeId = typeId;
+    _token = token;
+}
+
+- (void)Logout {
+    if ([_type isEqualToString:@"Twitter"]) {
+        [SNSProcess logoutByTwitter];
+    } else if ([_type isEqualToString:@"Facebook"]) {
+        [SNSProcess logoutByFacebook];
+    }
+
+    _name = @"";
+    _type = nil;
+    _typeId = nil;
+}
+
 - (BOOL)isLogin {
     LOG(@"isLogin - %@", self);
     return (_type && _typeId) ? YES : NO;
-}
-
-- (void)iUpdateAt {
-    _updatedAt = [[NSDate alloc] init];
 }
 
 //--------------------------------------------------------------//
@@ -83,8 +102,10 @@
     }
 
     _dataId = [decoder decodeObjectForKey:@"dataId"];
+    _name = [decoder decodeObjectForKey:@"name"];
     _type = [decoder decodeObjectForKey:@"type"];
     _typeId = [decoder decodeObjectForKey:@"typeId"];
+    _token = [decoder decodeObjectForKey:@"token"];
     _pageId = [decoder decodeObjectForKey:@"pageId"];
     _searchId = [decoder decodeObjectForKey:@"searchId"];
 
@@ -94,8 +115,10 @@
 - (void)encodeWithCoder:(NSCoder *)encoder {
     // インスタンス変数をエンコードする
     [encoder encodeObject:_dataId forKey:@"dataId"];
+    [encoder encodeObject:_name forKey:@"name"];
     [encoder encodeObject:_type forKey:@"type"];
     [encoder encodeObject:_typeId forKey:@"typeId"];
+    [encoder encodeObject:_token forKey:@"token"];
     [encoder encodeObject:_pageId forKey:@"pageId"];
     [encoder encodeObject:_searchId forKey:@"searchId"];
 }
