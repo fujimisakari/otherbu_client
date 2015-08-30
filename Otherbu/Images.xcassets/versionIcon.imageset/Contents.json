@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "gem_32.png"
+      "filename" : "versionIcon@1x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "gem_64.png"
+      "filename" : "versionIcon@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "versionIcon@3x.png"
     }
   ],
   "info" : {

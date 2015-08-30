@@ -3,16 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "squared_32.png"
+      "filename" : "pageIcon@1x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "squared_64.png"
+      "filename" : "pageIcon@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "pageIcon@3x.png"
     }
   ],
   "info" : {

@@ -157,7 +157,7 @@ extern NSString * const kHelpIcon;
 extern NSString * const kWebSiteIcon;
 extern NSString * const kReviewIcon;
 extern NSString * const kVersionIcon;
-extern NSString * const kRighttArrowIcon;
+extern NSString * const kRightArrowIcon;
 extern NSString * const kCheckMarkIcon;
 extern NSString * const kTwitterIcon;
 extern NSString * const kFacebookIcon;

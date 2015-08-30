@@ -114,7 +114,7 @@
 
 - (void)setup {
     // Cellの矢印アクセサリーへはカスタム画像を設定する
-    UIImageView *righttArrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kRighttArrowIcon]];
+    UIImageView *righttArrowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kRightArrowIcon]];
     self.accessoryView = righttArrowImageView;
 
     // Cellが用意しているUIViewは使用せず、willDisplayCellでCustomUIVeiwを挿入する
