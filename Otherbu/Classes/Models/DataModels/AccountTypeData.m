@@ -19,25 +19,14 @@
     if (self) {
         _dataId = dataDict[@"dataId"];
         _name = dataDict[@"name"];
+        _iconName = dataDict[@"iconName"];
         _sort = [dataDict[@"sort"] integerValue];
     }
     return self;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"dataId=%@, name=%@, sort=%ld", _dataId, _name, _sort];
-}
-
-//--------------------------------------------------------------//
-#pragma mark -- Login Action Methods --
-//--------------------------------------------------------------//
-
-- (void)login {
-    if ([self.name isEqualToString:@"Twitter"]) {
-        [SNSProcess loginByTwitter];
-    } else if ([self.name isEqualToString:@"Facebook"]) {
-        [SNSProcess loginByFacebook];
-    }
+    return [NSString stringWithFormat:@"dataId=%@, name=%@, iconName=%@, sort=%ld", _dataId, _name, _iconName, _sort];
 }
 
 //--------------------------------------------------------------//

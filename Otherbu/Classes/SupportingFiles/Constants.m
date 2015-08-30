@@ -183,6 +183,8 @@ NSString * const kReviewIcon = @"reviewIcon.png";
 NSString * const kVersionIcon = @"versionIcon.png";
 NSString * const kRighttArrowIcon = @"righttArrowIcon.png";
 NSString * const kCheckMarkIcon = @"checkMarkIcon.png";
+NSString * const kTwitterIcon = @"twitterIcon.png";
+NSString * const kFacebookIcon = @"facebookIcon.png";
 
 //--------------------------------------------------------------//
 #pragma mark -- segue --

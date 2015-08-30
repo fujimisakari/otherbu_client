@@ -12,9 +12,10 @@
 
 @property(nonatomic) NSString  *dataId;      // ID
 @property(nonatomic) NSString  *name;        // Account名
+@property(nonatomic) NSString  *iconName;    // icon名
 @property(nonatomic) NSInteger sort;         // Sort番号
 
 - (id)initWithDictionary:(NSDictionary *)dataDict;
-- (void)login;
+- (NSString *)iconName;
 
 @end

@@ -48,15 +48,16 @@
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.textLabel.text = accountType.name;
-    cell.imageView.image = [UIImage imageNamed:kLoginIcon];
+    cell.imageView.image = [UIImage imageNamed:accountType.iconName];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // セルタップ時にSearchDataの情報を更新する
-    // UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    // セルタップ時のLogin手続き
     AccountTypeData *accountType = (AccountTypeData *)_accountTypeList[indexPath.row];
-    [accountType login];
+    [SNSProcess login:self.navigationController TypeName:accountType.name];
+
+    // UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     // SearchData *search = (SearchData *)_searchList[indexPath.row];
     // if (cell.accessoryType == UITableViewCellAccessoryNone) {
     //     _selectCell.accessoryType = UITableViewCellAccessoryNone;

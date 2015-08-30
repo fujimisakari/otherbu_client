@@ -7,6 +7,7 @@
 //
 
 #import "UserData.h"
+#import "AccountTypeData.h"
 
 @implementation UserData
 
@@ -50,6 +51,15 @@
     return page;
 }
 
+- (AccountTypeData *)accountType {
+    for (AccountTypeData *accountType in [[DataManager sharedManager] getAccountTypeList]) {
+        if ([accountType.name isEqualToString:self.type]) {
+            return accountType;
+        }
+    }
+    return nil;
+}
+
 - (SearchData *)search {
     return [[DataManager sharedManager] getSearch:_searchId];
 }
@@ -66,20 +76,15 @@
     _updatedAt = [[NSDate alloc] init];
 }
 
-- (void)Login:(NSString *)name Type:(NSString *)type TypeId:(NSString *)typeId Token:(NSString *)token {
+- (void)Login:(NSString *)name Type:(NSString *)type TypeId:(NSString *)typeId {
+    LOG(@"Login - %@", type);
     _name = name;
     _type = type;
     _typeId = typeId;
-    _token = token;
 }
 
 - (void)Logout {
-    if ([_type isEqualToString:@"Twitter"]) {
-        [SNSProcess logoutByTwitter];
-    } else if ([_type isEqualToString:@"Facebook"]) {
-        [SNSProcess logoutByFacebook];
-    }
-
+    LOG(@"Logout - %@", _type);
     _name = @"";
     _type = nil;
     _typeId = nil;
@@ -105,7 +110,6 @@
     _name = [decoder decodeObjectForKey:@"name"];
     _type = [decoder decodeObjectForKey:@"type"];
     _typeId = [decoder decodeObjectForKey:@"typeId"];
-    _token = [decoder decodeObjectForKey:@"token"];
     _pageId = [decoder decodeObjectForKey:@"pageId"];
     _searchId = [decoder decodeObjectForKey:@"searchId"];
 
@@ -118,7 +122,6 @@
     [encoder encodeObject:_name forKey:@"name"];
     [encoder encodeObject:_type forKey:@"type"];
     [encoder encodeObject:_typeId forKey:@"typeId"];
-    [encoder encodeObject:_token forKey:@"token"];
     [encoder encodeObject:_pageId forKey:@"pageId"];
     [encoder encodeObject:_searchId forKey:@"searchId"];
 }

@@ -12,6 +12,7 @@
 #import "SectionHeaderView.h"
 #import "SettingAlertView.h"
 #import "UserData.h"
+#import "AccountTypeData.h"
 
 @interface SGIndexTableViewController () {
     NSArray *_menuSectionList;
@@ -28,12 +29,22 @@
     [super viewDidLoad];
 
     _menuSectionList = @[ kMenuSectionName1, kMenuSectionName2, kMenuSectionName3 ];
-    _menuSectionCountList = [@[ [Helper getNumberByInt:0], [Helper getNumberByInt:0], [Helper getNumberByInt:0] ] mutableCopy];
-    [self _setupMenuData];
     [self.tableView setTableHeaderView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0.1, 20)]];
 
     // 同期終了時のポップアップ
     _alertView = [[SettingAlertView alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self _pageReload];
+}
+
+
+- (void)_pageReload {
+    _menuSectionCountList = [@[ [Helper getNumberByInt:0], [Helper getNumberByInt:0], [Helper getNumberByInt:0] ] mutableCopy];
+    [self _setupMenuData];
+    [self.tableView reloadData];
 }
 
 //--------------------------------------------------------------//
@@ -55,6 +66,11 @@
     NSMutableDictionary *menuItem = _menuItems[itemKey];
     cell.textLabel.text = menuItem[@"menuName"];
     cell.imageView.image = menuItem[@"iconImage"];
+    if ([menuItem[@"styleNone"] boolValue]) {
+        // タップを無効、アクセサリを非表示
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
 
     if ([cell.textLabel.text isEqualToString:kMenuVersionName]) {
         [self _setAppVersion:cell];
@@ -89,8 +105,6 @@
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     [container addSubview:label];
     cell.accessoryView = container;
-    // タップを無効
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 //--------------------------------------------------------------//
@@ -172,6 +186,9 @@
         case MENU_SEARCH: {
             [self _setSearchItem:dict];
         } break;
+        case MENU_ACCOUNT: {
+            [self _setAccountItem:dict];
+        } break;
         case MENU_SYNC: {
             [self _setSyncItem:dict];
         } break;
@@ -239,6 +256,19 @@
     };
 }
 
+- (void)_setAccountItem:(NSMutableDictionary *)dict {
+    UserData *user = [[DataManager sharedManager] getUser];
+    if ([user isLogin]) {
+        dict[@"section"] = [Helper getNumberByInt:1];
+        dict[@"menuName"] = [NSString stringWithFormat:@"%@でログイン中", user.name];
+        dict[@"iconImage"] = [UIImage imageNamed:[user accountType].iconName];
+        dict[@"block"] = ^() {};
+        dict[@"styleNone"] = [NSNumber numberWithBool:YES];
+    } else {
+        dict[@"ignore"] = [Helper getNumberByInt:1];
+    }
+}
+
 - (void)_setSyncItem:(NSMutableDictionary *)dict {
     dict[@"section"] = [Helper getNumberByInt:1];
     dict[@"menuName"] = kMenuSyncName;
@@ -270,7 +300,8 @@
         dict[@"menuName"] = kMenuLogoutName;
         dict[@"iconImage"] = [UIImage imageNamed:kLogoutIcon];
         dict[@"block"] = ^() {
-            [user Logout];
+            [SNSProcess logout:user.type];
+            [self _pageReload];
         };
     } else {
         dict[@"menuName"] = kMenuLoginName;
@@ -313,6 +344,7 @@
     dict[@"menuName"] = [NSString stringWithFormat:@"%@", kMenuVersionName];
     dict[@"iconImage"] = [UIImage imageNamed:kVersionIcon];
     dict[@"block"] = ^() {};
+    dict[@"styleNone"] = [NSNumber numberWithBool:YES];
 }
 
 @end
