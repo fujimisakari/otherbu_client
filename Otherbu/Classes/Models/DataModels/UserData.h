@@ -26,7 +26,6 @@
 - (SearchData *)search;
 - (void)updatePage:(NSString *)dataId;
 - (void)updateSearch:(NSString *)dataId;
-- (NSDictionary *)syncData;
 
 - (void)Login:(NSString *)name Type:(NSString *)type TypeId:(NSString *)typeId;
 - (void)Logout;

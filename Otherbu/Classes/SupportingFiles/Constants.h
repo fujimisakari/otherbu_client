@@ -47,11 +47,11 @@ extern NSString * const kTitle;
 extern const int kFontSizeOfTitle;
 extern const float kOffsetYOfTitle;
 
-extern NSString * const kAppVersion;
 extern NSString * const kDefaultFont;
 extern NSString * const kDefaultImageName;
 extern NSString * const kCustomImageName;
 extern NSString * const kCellIdentifier;
+extern NSString * const kDefaultUserDataId;
 extern NSString * const kDefaultPageDataId;
 extern NSString * const kDefaultSearchDataId;
 extern const int kNumberOfPages;

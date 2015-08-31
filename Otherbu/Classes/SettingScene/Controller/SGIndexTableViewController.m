@@ -101,7 +101,7 @@
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 50, 30)];
     label.textColor = [UIColor grayColor];
     label.backgroundColor = [UIColor clearColor];
-    label.text = kAppVersion;
+    label.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
     [container addSubview:label];
     cell.accessoryView = container;

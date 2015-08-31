@@ -35,6 +35,7 @@
             [user Login:session.userName
                    Type:[[DataManager sharedManager] getAccountType:@"1"].name
                  TypeId:session.userID];
+            [[DataManager sharedManager] save:SAVE_USER];
             [nav popViewControllerAnimated:YES];
         } else {
             LOG(@"Twitter Cancelled");
@@ -62,6 +63,7 @@
                        [user Login:result[@"name"]
                               Type:[[DataManager sharedManager] getAccountType:@"2"].name
                             TypeId:result[@"id"]];
+                       [[DataManager sharedManager] save:SAVE_USER];
                        [nav popViewControllerAnimated:YES];
                    }
                }];
@@ -83,12 +85,12 @@
 
     UserData *user = [[DataManager sharedManager] getUser];
     [user Logout];
+    [[DataManager sharedManager] save:SAVE_USER];
 }
 
 + (void)_logoutByTwitter {
     [[Twitter sharedInstance] logOut];
 }
-
 
 + (void)_logoutByFacebook {
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];

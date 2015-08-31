@@ -562,7 +562,9 @@ static DataManager *intance = nil;
     // userDataのIDは同期時に必ず必要なため、更新がなくても含める
     NSDictionary *userData = _syncData[kSaveFileNameList[SAVE_USER]];
     if ([userData count] == 0) {
-        _syncData[kSaveFileNameList[SAVE_USER]] = [_user syncData];
+        NSMutableDictionary *userSyncData = [[NSMutableDictionary alloc] init];
+        userSyncData[@"id"] = _user.dataId;
+        _syncData[kSaveFileNameList[SAVE_USER]] = userSyncData;
     } else {
         _syncData[kSaveFileNameList[SAVE_USER]][@"id"] = _user.dataId;
     }
@@ -570,7 +572,6 @@ static DataManager *intance = nil;
 }
 
 - (void)updateSyncData:(id<DataInterface>)data DataType:(int)dataType Action:(NSString *)action {
-
     // データ更新時間をセット
     [data iUpdateAt];
 
