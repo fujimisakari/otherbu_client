@@ -11,10 +11,12 @@
 #import "DescHeaderView.h"
 #import "UserData.h"
 #import "AccountTypeData.h"
+#import "SettingAlertView.h"
 
 @interface SGLoginController () {
     NSArray *_accountTypeList;
     UITableViewCell *_selectCell;
+    SettingAlertView *_alertView;
 }
 
 @end
@@ -29,6 +31,9 @@
     CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
     [descHeaderView setupWithCGSize:size descMessage:@"同期で利用するアカウントを選択ください"];
     [self.tableView setTableHeaderView:descHeaderView];
+
+    // エラー時のポップアップ
+    _alertView = [[SettingAlertView alloc] init];
 
     _accountTypeList = [[DataManager sharedManager] getAccountTypeList];
     self.navigationItem.title = [NSString stringWithFormat:@"%@%@", kMenuLoginName, @"設定"];
@@ -55,17 +60,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // セルタップ時のLogin手続き
     AccountTypeData *accountType = (AccountTypeData *)_accountTypeList[indexPath.row];
-    [SNSProcess login:self.navigationController TypeName:accountType.name];
-
-    // UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    // SearchData *search = (SearchData *)_searchList[indexPath.row];
-    // if (cell.accessoryType == UITableViewCellAccessoryNone) {
-    //     _selectCell.accessoryType = UITableViewCellAccessoryNone;
-    //     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    //     _selectCell = cell;
-    //     [[[DataManager sharedManager] getUser] updateSearch:search.dataId];
-    //     [[DataManager sharedManager] save:SAVE_USER];
-    // }
+    [SNSProcess login:self.navigationController
+             TypeName:accountType.name
+             Callback:^(int statusCode, NSError *error) {
+               if (error) {
+                   LOG(@"\nerror = %@", error);
+                   [_alertView setup:statusCode];
+                   [_alertView show];
+               }
+             }
+     ];
 }
 
 @end

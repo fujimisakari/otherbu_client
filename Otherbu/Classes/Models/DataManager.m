@@ -144,6 +144,15 @@ static DataManager *intance = nil;
     return _accountTypeDict[dataId];
 }
 
+- (AccountTypeData *)getTwitterAccountType {
+    return _accountTypeDict[@"1"];
+}
+
+- (AccountTypeData *)getFacebookAccountType {
+    return _accountTypeDict[@"2"];
+}
+
+
 - (PageData *)_getPageOfAllCategory {
     NSMutableArray *categoryIdList = [[NSMutableArray alloc] init];
     NSMutableArray *angleIdList = [[NSMutableArray alloc] init];

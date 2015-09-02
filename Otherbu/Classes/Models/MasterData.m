@@ -13,8 +13,8 @@
 + (NSArray *)initAccountTypeData {
     // アカウントタイプのデータ
     NSArray *dataList = @[
-        @{@"dataId" : @"1", @"name" : @"Twitter", @"iconName": kTwitterIcon, @"sort" : @"1"},
-        @{@"dataId" : @"2", @"name" : @"Facebook", @"iconName": kFacebookIcon, @"sort" : @"2"},
+        @{@"dataId" : @"1", @"name" : @"twitter", @"iconName": kTwitterIcon, @"sort" : @"1"},
+        @{@"dataId" : @"2", @"name" : @"facebook", @"iconName": kFacebookIcon, @"sort" : @"2"},
     ];
     return dataList;
 }

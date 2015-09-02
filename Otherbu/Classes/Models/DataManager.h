@@ -32,6 +32,8 @@
 - (DesignData *)getDesign;
 - (SearchData *)getSearch:(NSString *)dataId;
 - (AccountTypeData *)getAccountType:(NSString *)dataId;
+- (AccountTypeData *)getTwitterAccountType;
+- (AccountTypeData *)getFacebookAccountType;
 
 // データ一覧を取得
 - (NSMutableArray *)getCategoryList;

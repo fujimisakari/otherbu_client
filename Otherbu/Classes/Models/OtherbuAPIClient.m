@@ -42,6 +42,27 @@
     return self;
 }
 
+- (void)loginWithCompletion:(NSDictionary *)param
+               requestBlock:(void (^)(int statusCode, NSDictionary *results, NSError *error))block {
+    self.sessionManager.session.configuration.HTTPAdditionalHeaders = @{@"Otherbu-Auth": [Helper getCertificationString],
+                                                                        @"Accept" : @"application/json"};
+    _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.sessionManager POST:@"/client_api/login/"
+       parameters:param
+        success:
+             ^(NSURLSessionDataTask *task, id responseObject) {
+                LOG(@"\n== Login Success ==\n");
+                if (block) block((int)((NSHTTPURLResponse *)task.response).statusCode, responseObject, nil);
+             }
+        failure:
+             ^(NSURLSessionDataTask *task, NSError *error) {
+             LOG(@"\n== Login Erro ==\n");
+             if (block) {
+                 block((int)((NSHTTPURLResponse *)task.response).statusCode, nil, error);
+             }
+    }];
+}
+
 - (void)syncWithCompletion:(void (^)(int statusCode, NSDictionary *results, NSError *error))block {
     self.sessionManager.session.configuration.HTTPAdditionalHeaders = @{@"Otherbu-Auth": [Helper getCertificationString],
                                                                         @"Accept" : @"application/json"};
@@ -51,12 +72,12 @@
        parameters:param
         success:
              ^(NSURLSessionDataTask *task, id responseObject) {
-                LOG(@"\n== Success ==\n");
+                LOG(@"\n== Sync Success ==\n");
                 if (block) block((int)((NSHTTPURLResponse *)task.response).statusCode, responseObject, nil);
              }
         failure:
              ^(NSURLSessionDataTask *task, NSError *error) {
-             LOG(@"\n== Erro ==\n");
+             LOG(@"\n== Sync Erro ==\n");
              if (block) {
                  block((int)((NSHTTPURLResponse *)task.response).statusCode, nil, error);
              }

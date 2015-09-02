@@ -16,8 +16,14 @@
         self.message = @"現在メンテナンス中です";
     } else if (statusCode == 405) {
         self.message = @"リクエストに失敗しました";
+    } else if (statusCode == 404) {
+        self.message = @"アクセス先が見つかりませんでした";
     } else if (statusCode == 401) {
         self.message = @"認証に失敗しました";
+    } else if (statusCode == 4011) {
+        self.message = @"Twitterの認証に失敗しました";
+    } else if (statusCode == 4012) {
+        self.message = @"Facebookの認証に失敗しました";
     } else if (statusCode == 500) {
         self.message = @"システムエラーで同期に失敗しました";
     } else {

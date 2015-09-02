@@ -83,14 +83,14 @@
 
 - (void)Logout {
     LOG(@"Logout - %@", _type);
+    _dataId = @"0";
     _name = @"";
     _type = nil;
     _typeId = nil;
 }
 
 - (BOOL)isLogin {
-    LOG(@"isLogin - %@", self);
-    return (_type && _typeId) ? YES : NO;
+    return (![_dataId isEqualToString:@"0"] && _type && _typeId) ? YES : NO;
 }
 
 //--------------------------------------------------------------//
