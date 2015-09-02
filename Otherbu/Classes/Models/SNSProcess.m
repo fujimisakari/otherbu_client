@@ -115,9 +115,9 @@
 //--------------------------------------------------------------//
 
 + (void)logout:(NSString *)typeName {
-    if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAccountType].name]]) {
+    if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAccountType].name]) {
         [SNSProcess _logoutByTwitter];
-    } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAccountType].name]]) {
+    } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAccountType].name]) {
         [SNSProcess _logoutByFacebook];
     }
 
