@@ -8,7 +8,7 @@
 
 @interface SNSProcess : NSObject
 
-+ (void)login:(UINavigationController *)nav TypeName:(NSString *)typeName Callback:(void (^)(int statusCode, NSError *error))block;
++ (void)login:(UINavigationController *)nav View:(UIView *)view TypeName:(NSString *)typeName Callback:(void (^)(int statusCode, NSError *error))block;
 + (void)logout:(NSString *)typeName;
 
 @end

@@ -11,6 +11,7 @@
 #import "OtherbuAPIClient.h"
 #import "UserData.h"
 #import "AuthTypeData.h"
+#import "MBProgressHUD.h"
 
 @implementation SNSProcess
 
@@ -19,16 +20,19 @@
 //--------------------------------------------------------------//
 
 + (void)login:(UINavigationController *)nav
+         View:(UIView *)view
      TypeName:(NSString *)typeName
      Callback:(void (^)(int statusCode, NSError *error))block {
     if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAuthType].name]) {
-        [SNSProcess _loginByTwitter:nav Callback:block];
+        [SNSProcess _loginByTwitter:nav View:view Callback:block];
     } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAuthType].name]) {
-        [SNSProcess _loginByFacebook:nav Callback:block];
+        [SNSProcess _loginByFacebook:nav View:view Callback:block];
     }
 }
 
-+ (void)_loginByTwitter:(UINavigationController *)nav Callback:(void (^)(int statusCode, NSError *error))block {
++ (void)_loginByTwitter:(UINavigationController *)nav
+                   View:(UIView *)view
+               Callback:(void (^)(int statusCode, NSError *error))block {
     [[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error) {
         if (error) {
             LOG(@"Twitter Process error");
@@ -46,7 +50,8 @@
                        @"auth_type" : typeName,
                        @"profile_image_url" : twUser.profileImageURL
                      };
-                     [self _getUserAccount:nav RequestParam:param Callback:block];
+                     [MBProgressHUD showHUDAddedTo:view animated:YES];
+                     [self _getUserAccount:nav View:view RequestParam:param Callback:block];
                  }
             }];
         } else {
@@ -55,7 +60,9 @@
     }];
 }
 
-+ (void)_loginByFacebook:(UINavigationController *)nav Callback:(void (^)(int statusCode, NSError *error))block {
++ (void)_loginByFacebook:(UINavigationController *)nav
+                    View:(UIView *)view
+                Callback:(void (^)(int statusCode, NSError *error))block {
     FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
     [login logInWithReadPermissions: @[@"public_profile"]
                             handler: ^(FBSDKLoginManagerLoginResult *loginResult, NSError *error) {
@@ -79,7 +86,8 @@
                          @"type_id" : result[@"id"],
                          @"auth_type" : typeName,
                        };
-                       [self _getUserAccount:nav RequestParam:param Callback:block];
+                       [MBProgressHUD showHUDAddedTo:view animated:YES];
+                       [self _getUserAccount:nav View:view RequestParam:param Callback:block];
                    }
                }];
             }
@@ -88,11 +96,13 @@
 }
 
 + (void)_getUserAccount:(UINavigationController *)nav
+                   View:(UIView *)view
            RequestParam:(NSDictionary *)param
                Callback:(void (^)(int statusCode, NSError *error))block {
     [[OtherbuAPIClient sharedClient]
         loginWithCompletion:param
         requestBlock:^(int statusCode, NSDictionary *results, NSError *error) {
+        [MBProgressHUD hideHUDForView:view animated:YES];
         if (results) {
             // データ更新
             [[DataManager sharedManager] dataFormat];

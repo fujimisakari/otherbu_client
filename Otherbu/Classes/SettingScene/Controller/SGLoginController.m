@@ -61,6 +61,7 @@
     // セルタップ時のLogin手続き
     AuthTypeData *authType = (AuthTypeData *)_authTypeList[indexPath.row];
     [SNSProcess login:self.navigationController
+                 View:self.view
              TypeName:authType.name
              Callback:^(int statusCode, NSError *error) {
                if (error) {
