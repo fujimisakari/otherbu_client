@@ -22,6 +22,7 @@
     // ステータスバーを文字を白にする
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
+    [[DataManager sharedManager] loadType];
     [[DataManager sharedManager] load];
 
     // 起動画面を1.5秒間見せるので、ここでスレッドを止める

@@ -26,6 +26,7 @@ NSString * const kDefaultFont = @"Helvetica";                  // デフォル�
 NSString * const kDefaultImageName = @"default-wallpeper.jpg"; // デフォルト背景画像名
 NSString * const kCustomImageName = @"user-wallpaper.jpg";     // ユーザーのカスタム背景画像名
 NSString * const kCellIdentifier = @"Cell";                    // セルの識別子
+NSString * const kDefaultSelectType = @"default";              // アカウント無しのType名
 NSString * const kDefaultUserDataId = @"0";                    // アカウント無しのUserID
 NSString * const kDefaultPageDataId = @"0";                    // デフォルトのPageの識別子
 NSString * const kDefaultSearchDataId = @"1";                  // デフォルトの検索サイト
@@ -41,6 +42,7 @@ NSString * const kSaveFileNameList[] = {
     [SAVE_PAGE] = @"Page",
     [SAVE_SYNC] = @"Sync"
 };
+NSString * const kSaveAccountTypeFileName = @"AccountType";
 
 //--------------------------------------------------------------//
 #pragma mark -- Color Hex --

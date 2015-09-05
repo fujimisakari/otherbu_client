@@ -21,6 +21,11 @@
 @property(nonatomic) NSMutableDictionary *accountTypeDict;
 
 + (DataManager *)sharedManager;
+- (void)dataFormat;
+
+// アカンウトタイプを設定
+- (void)loadType;
+- (void)setSelectType:(NSString *)typeName;
 
 // 単体でデータ取得
 - (UserData *)getUser;

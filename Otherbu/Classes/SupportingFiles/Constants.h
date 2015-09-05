@@ -51,12 +51,14 @@ extern NSString * const kDefaultFont;
 extern NSString * const kDefaultImageName;
 extern NSString * const kCustomImageName;
 extern NSString * const kCellIdentifier;
+extern NSString * const kDefaultSelectType;
 extern NSString * const kDefaultUserDataId;
 extern NSString * const kDefaultPageDataId;
 extern NSString * const kDefaultSearchDataId;
 extern const int kNumberOfPages;
 extern const float kCellAlpha;
 extern NSString * const kSaveFileNameList[];
+extern NSString * const kSaveAccountTypeFileName;
 
 extern NSString * const kTextFieldColorOfModal;
 extern NSString * const kBorderColorOfModal;

@@ -27,6 +27,9 @@
 
 - (void)updateWithDictionary:(NSDictionary *)dataDict {
     _dataId = [dataDict[@"id"] stringValue];
+    _name = dataDict[@"name"];
+    _type = dataDict[@"type"];
+    _typeId = dataDict[@"type_id"];
     _pageId = [dataDict[@"page_id"] stringValue];
 }
 
@@ -72,21 +75,6 @@
 
 - (void)iUpdateAt {
     _updatedAt = [[NSDate alloc] init];
-}
-
-- (void)Login:(NSString *)name Type:(NSString *)type TypeId:(NSString *)typeId {
-    LOG(@"Login - %@", type);
-    _name = name;
-    _type = type;
-    _typeId = typeId;
-}
-
-- (void)Logout {
-    LOG(@"Logout - %@", _type);
-    _dataId = @"0";
-    _name = @"";
-    _type = nil;
-    _typeId = nil;
 }
 
 - (BOOL)isLogin {

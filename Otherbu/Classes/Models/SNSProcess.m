@@ -46,9 +46,7 @@
                        @"auth_type" : typeName,
                        @"profile_image_url" : twUser.profileImageURL
                      };
-                     UserData *user = [[DataManager sharedManager] getUser];
-                     [user Login:session.userName Type:typeName TypeId:session.userID];
-                     [self _getUserAccount:nav User:user RequestParam:param Callback:block];
+                     [self _getUserAccount:nav RequestParam:param Callback:block];
                  }
             }];
         } else {
@@ -81,9 +79,7 @@
                          @"type_id" : result[@"id"],
                          @"auth_type" : typeName,
                        };
-                       UserData *user = [[DataManager sharedManager] getUser];
-                       [user Login:result[@"name"] Type:typeName TypeId:result[@"id"]];
-                       [self _getUserAccount:nav User:user RequestParam:param Callback:block];
+                       [self _getUserAccount:nav RequestParam:param Callback:block];
                    }
                }];
             }
@@ -92,7 +88,6 @@
 }
 
 + (void)_getUserAccount:(UINavigationController *)nav
-                   User:(UserData *)user
            RequestParam:(NSDictionary *)param
                Callback:(void (^)(int statusCode, NSError *error))block {
     [[OtherbuAPIClient sharedClient]
@@ -100,10 +95,13 @@
         requestBlock:^(int statusCode, NSDictionary *results, NSError *error) {
         if (results) {
             // データ更新
+            [[DataManager sharedManager] dataFormat];
+            [[DataManager sharedManager] setSelectType:param[@"auth_type"]];
+            [[DataManager sharedManager] load];
+            UserData *user = [[DataManager sharedManager] getUser];
             NSDictionary *userData = [results objectForKey:@"user_data"];
             LOG(@"== response Data ==\n%@\n", userData);
             [user updateWithDictionary:userData];
-            [[DataManager sharedManager] save:SAVE_USER];
             [nav popViewControllerAnimated:YES];
         }
         if (error) block(statusCode, error);
@@ -121,9 +119,14 @@
         [SNSProcess _logoutByFacebook];
     }
 
-    UserData *user = [[DataManager sharedManager] getUser];
-    [user Logout];
-    [[DataManager sharedManager] save:SAVE_USER];
+    // データを保存する
+    for (int idx = 0; idx < LastSave; ++idx) {
+        [[DataManager sharedManager] save:idx];
+    }
+    [[DataManager sharedManager] dataFormat];
+    [[DataManager sharedManager] setSelectType:kDefaultSelectType];
+    [[DataManager sharedManager] load];
+    LOG(@"== logout ==\n");
 }
 
 + (void)_logoutByTwitter {

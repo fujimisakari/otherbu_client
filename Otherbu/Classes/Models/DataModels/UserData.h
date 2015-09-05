@@ -27,8 +27,6 @@
 - (void)updatePage:(NSString *)dataId;
 - (void)updateSearch:(NSString *)dataId;
 
-- (void)Login:(NSString *)name Type:(NSString *)type TypeId:(NSString *)typeId;
-- (void)Logout;
 - (BOOL)isLogin;
 
 @end

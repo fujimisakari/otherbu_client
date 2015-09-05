@@ -16,8 +16,10 @@
 #import "DesignData.h"
 #import "SearchData.h"
 #import "AccountTypeData.h"
+#import "SelectTypeData.h"
 
 @interface DataManager () {
+    SelectTypeData *_selectType;
     UserData *_user;
     DesignData *_design;
     NSMutableDictionary *_syncData;
@@ -43,44 +45,54 @@ static DataManager *intance = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        _user = [[UserData alloc] init];
-        _design = [[DesignData alloc] init];
-        _categoryDict = [@{} mutableCopy];
-        _bookmarkDict = [@{} mutableCopy];
-        _pageDict = [@{} mutableCopy];
-
-        _colorDict = [@{} mutableCopy];
-        for (NSDictionary *colorDict in [MasterData initColorData]) {
-            ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
-            [_colorDict setObject:data forKey:data.dataId];
-        }
-
-        _colorDictOfBookmarkBG = [@{} mutableCopy];
-        for (NSDictionary *colorDict in [MasterData initBookmarkBGColorData]) {
-            ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
-            [_colorDictOfBookmarkBG setObject:data forKey:data.dataId];
-        }
-
-        _searchDict = [@{} mutableCopy];
-        for (NSDictionary *searchDict in [MasterData initSearchData]) {
-            SearchData *data = [[SearchData alloc] initWithDictionary:searchDict];
-            [_searchDict setObject:data forKey:data.dataId];
-        }
-
-        _accountTypeDict = [@{} mutableCopy];
-        for (NSDictionary *accountTypeDict in [MasterData initAccountTypeData]) {
-            AccountTypeData *data = [[AccountTypeData alloc] initWithDictionary:accountTypeDict];
-            [_accountTypeDict setObject:data forKey:data.dataId];
-        }
-
-        _syncData = [self _restSyncData];
+        [self dataFormat];
     }
     return self;
+}
+
+- (void)dataFormat {
+    _selectType = [[SelectTypeData alloc] init];
+    _user = [[UserData alloc] init];
+    _design = [[DesignData alloc] init];
+    _categoryDict = [@{} mutableCopy];
+    _bookmarkDict = [@{} mutableCopy];
+    _pageDict = [@{} mutableCopy];
+
+    _colorDict = [@{} mutableCopy];
+    for (NSDictionary *colorDict in [MasterData initColorData]) {
+        ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
+        [_colorDict setObject:data forKey:data.dataId];
+    }
+
+    _colorDictOfBookmarkBG = [@{} mutableCopy];
+    for (NSDictionary *colorDict in [MasterData initBookmarkBGColorData]) {
+        ColorData *data = [[ColorData alloc] initWithDictionary:colorDict];
+        [_colorDictOfBookmarkBG setObject:data forKey:data.dataId];
+    }
+
+    _searchDict = [@{} mutableCopy];
+    for (NSDictionary *searchDict in [MasterData initSearchData]) {
+        SearchData *data = [[SearchData alloc] initWithDictionary:searchDict];
+        [_searchDict setObject:data forKey:data.dataId];
+    }
+
+    _accountTypeDict = [@{} mutableCopy];
+    for (NSDictionary *accountTypeDict in [MasterData initAccountTypeData]) {
+        AccountTypeData *data = [[AccountTypeData alloc] initWithDictionary:accountTypeDict];
+        [_accountTypeDict setObject:data forKey:data.dataId];
+    }
+
+    _syncData = [self _restSyncData];
 }
 
 //--------------------------------------------------------------//
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
+
+- (void)setSelectType:(NSString *)typeName {
+    _selectType.name = typeName;
+    [self saveAccountType];
+}
 
 - (void)syncToWebWithBlock:(void (^)(int statusCode, NSError *error))block {
     [[OtherbuAPIClient sharedClient]
@@ -152,7 +164,6 @@ static DataManager *intance = nil;
     return _accountTypeDict[@"2"];
 }
 
-
 - (PageData *)_getPageOfAllCategory {
     NSMutableArray *categoryIdList = [[NSMutableArray alloc] init];
     NSMutableArray *angleIdList = [[NSMutableArray alloc] init];
@@ -185,7 +196,6 @@ static DataManager *intance = nil;
     for (NSString *key in self.categoryDict) {
         [itemList addObject:[self getCategory:key]];
     }
-
     // カテゴリ名で昇順ソート
     NSArray *tmpResultList = [Helper doSortArrayWithKey:@"name" Array:itemList];
     NSMutableArray *resultList = [tmpResultList mutableCopy];
@@ -326,7 +336,7 @@ static DataManager *intance = nil;
 
 - (void)_updateResponseData:(NSDictionary *)jsonData {
     // webから取得したjsonDataの反映
-    LOG(@"== response Data ==\n%@\n", jsonData);
+    LOG(@"== %@ response Data ==\n%@\n", _selectType.name, jsonData);
 
     // 追加、更新
     NSDictionary *user = [[jsonData objectForKey:@"update_data"] objectForKey:@"User"];
@@ -343,9 +353,9 @@ static DataManager *intance = nil;
     for (NSString *key in updatePageList) {
         PageData *data;
         if (_pageDict[key]) {
-           [_pageDict[key] updateWithDictionary:updatePageList[key]];
+            [_pageDict[key] updateWithDictionary:updatePageList[key]];
             data = _pageDict[key];
-           [_pageDict removeObjectForKey:key];
+            [_pageDict removeObjectForKey:key];
         } else {
             data = [[PageData alloc] initWithDictionary:updatePageList[key]];
         }
@@ -356,9 +366,9 @@ static DataManager *intance = nil;
     for (NSString *key in updateCategoryList) {
         CategoryData *data;
         if (_categoryDict[key]) {
-           [_categoryDict[key] updateWithDictionary:updateCategoryList[key]];
+            [_categoryDict[key] updateWithDictionary:updateCategoryList[key]];
             data = _categoryDict[key];
-           [_categoryDict removeObjectForKey:key];
+            [_categoryDict removeObjectForKey:key];
         } else {
             data = [[CategoryData alloc] initWithDictionary:updateCategoryList[key]];
         }
@@ -369,9 +379,9 @@ static DataManager *intance = nil;
     for (NSString *key in updateBookmarkList) {
         BookmarkData *data;
         if (_bookmarkDict[key]) {
-           [_bookmarkDict[key] updateWithDictionary:updateBookmarkList[key]];
+            [_bookmarkDict[key] updateWithDictionary:updateBookmarkList[key]];
             data = _bookmarkDict[key];
-           [_bookmarkDict removeObjectForKey:key];
+            [_bookmarkDict removeObjectForKey:key];
         } else {
             data = [[BookmarkData alloc] initWithDictionary:updateBookmarkList[key]];
         }
@@ -423,7 +433,7 @@ static DataManager *intance = nil;
 #pragma mark-- Serialize --
 //--------------------------------------------------------------//
 
-- (NSString *)_userDirPath {
+- (NSString *)_userDirPath:(NSString *)directory {
     // ドキュメントPathを取得する
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     if ([paths count] < 1) {
@@ -432,22 +442,56 @@ static DataManager *intance = nil;
     NSString *documentPath = [paths objectAtIndex:0];
 
     // .UserDataディレクトリを作成する
-    documentPath = [documentPath stringByAppendingPathComponent:@".UserData"];
+    documentPath = [documentPath stringByAppendingPathComponent:directory];
     return documentPath;
 }
 
 - (NSString *)_datafilePath:(NSString *)fileName {
     // データファイルまでのPathを作成する
     NSString *fullName = [NSString stringWithFormat:@"%@.dat", fileName];
-    NSString *path = [[self _userDirPath] stringByAppendingPathComponent:fullName];
+    NSString *path = [[self _userDirPath:@".UserData"] stringByAppendingPathComponent:fullName];
     return path;
 }
 
+- (void)loadType {
+    NSString *filePath = [self _datafilePath:kSaveAccountTypeFileName];
+    if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        return;
+    }
+    id loadData = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+    if (!loadData) {
+        return;
+    }
+    _selectType = (SelectTypeData *)loadData;
+    LOG(@"== loadType ==\n%@\n", _selectType.name);
+}
+
+- (void)saveAccountType {
+
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+
+    // .UserDataディレクトリを作成する
+    NSString *DirName = [NSString stringWithFormat:@"%@", @".UserData"];
+    NSString *userDirPath = [self _userDirPath:DirName];
+    if (![fileMgr fileExistsAtPath:userDirPath]) {
+        NSError *error;
+        [fileMgr createDirectoryAtPath:userDirPath withIntermediateDirectories:YES attributes:nil error:&error];
+    }
+
+    // ファイルパスを取得する
+    NSString *filePath = [self _datafilePath:kSaveAccountTypeFileName];
+    LOG(@"== Save SelectAuth Data ==\n%@\n", _selectType.name);
+    [NSKeyedArchiver archiveRootObject:_selectType toFile:filePath];
+}
+
+
 - (void)load {
+    LOG(@"== %@ load ==\n", _selectType.name);
 
     for (int idx = 0; idx < LastSave; ++idx) {
         // ファイルパスを取得する
-        NSString *filePath = [self _datafilePath:kSaveFileNameList[idx]];
+        NSString *fileName = [NSString stringWithFormat:@"%@/%@", _selectType.name, kSaveFileNameList[idx]];
+        NSString *filePath = [self _datafilePath:fileName];
         if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
             continue;
         }
@@ -498,44 +542,46 @@ static DataManager *intance = nil;
     NSFileManager *fileMgr = [NSFileManager defaultManager];
 
     // .UserDataディレクトリを作成する
-    NSString *userDirPath = [self _userDirPath];
+    NSString *DirName = [NSString stringWithFormat:@"%@/%@", @".UserData", _selectType.name];
+    NSString *userDirPath = [self _userDirPath:DirName];
     if (![fileMgr fileExistsAtPath:userDirPath]) {
         NSError *error;
         [fileMgr createDirectoryAtPath:userDirPath withIntermediateDirectories:YES attributes:nil error:&error];
     }
 
     // ファイルパスを取得する
-    NSString *filePath = [self _datafilePath:kSaveFileNameList[saveIdx]];
+    NSString *fileName = [NSString stringWithFormat:@"%@/%@", _selectType.name, kSaveFileNameList[saveIdx]];
+    NSString *filePath = [self _datafilePath:fileName];
 
     // Dataを保存する
     switch (saveIdx) {
         case SAVE_USER: {
-            LOG(@"== Save Uer Data ==\n%@\n", _user);
+            LOG(@"== %@ Save Uer Data ==\n%@\n", _selectType.name, _user);
             [NSKeyedArchiver archiveRootObject:_user toFile:filePath];
             break;
         };
         case SAVE_DESIGN: {
-            LOG(@"== Save Design Data ==\n%@\n", _design);
+            LOG(@"== %@ Save Design Data ==\n%@\n", _selectType.name, _design);
             [NSKeyedArchiver archiveRootObject:_design toFile:filePath];
             break;
         };
         case SAVE_BOOKMARK: {
-            LOG(@"== Save Bookmark Data ==\n%@\n", _bookmarkDict);
+            LOG(@"== %@ Save Bookmark Data ==\n%@\n", _selectType.name, _bookmarkDict);
             [NSKeyedArchiver archiveRootObject:_bookmarkDict toFile:filePath];
             break;
         };
         case SAVE_CATEGORY: {
-            LOG(@"== Save Category Data ==\n%@\n", _categoryDict);
+            LOG(@"== %@ Save Category Data ==\n%@\n", _selectType.name, _categoryDict);
             [NSKeyedArchiver archiveRootObject:_categoryDict toFile:filePath];
             break;
         };
         case SAVE_PAGE: {
-            LOG(@"== Save Page Data ==\n%@\n", _pageDict);
+            LOG(@"== %@ Save Page Data ==\n%@\n", _selectType.name, _pageDict);
             [NSKeyedArchiver archiveRootObject:_pageDict toFile:filePath];
             break;
         };
         case SAVE_SYNC: {
-            LOG(@"== Save Sync Data ==\n%@\n", _syncData);
+            LOG(@"== %@ Save Sync Data ==\n%@\n", _selectType.name, _syncData);
             [NSKeyedArchiver archiveRootObject:_syncData toFile:filePath];
             break;
         };
