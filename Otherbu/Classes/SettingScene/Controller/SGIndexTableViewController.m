@@ -12,7 +12,7 @@
 #import "SectionHeaderView.h"
 #import "SettingAlertView.h"
 #import "UserData.h"
-#import "AccountTypeData.h"
+#import "AuthTypeData.h"
 
 @interface SGIndexTableViewController () {
     NSArray *_menuSectionList;
@@ -186,8 +186,8 @@
         case MENU_SEARCH: {
             [self _setSearchItem:dict];
         } break;
-        case MENU_ACCOUNT: {
-            [self _setAccountItem:dict];
+        case MENU_AUTHTYPE: {
+            [self _setAuthTypeItem:dict];
         } break;
         case MENU_SYNC: {
             [self _setSyncItem:dict];
@@ -256,12 +256,12 @@
     };
 }
 
-- (void)_setAccountItem:(NSMutableDictionary *)dict {
+- (void)_setAuthTypeItem:(NSMutableDictionary *)dict {
     UserData *user = [[DataManager sharedManager] getUser];
     if ([user isLogin]) {
         dict[@"section"] = [Helper getNumberByInt:1];
         dict[@"menuName"] = [NSString stringWithFormat:@"%@でログイン中", user.name];
-        dict[@"iconImage"] = [UIImage imageNamed:[user accountType].iconName];
+        dict[@"iconImage"] = [UIImage imageNamed:[user authType].iconName];
         dict[@"block"] = ^() {};
         dict[@"styleNone"] = [NSNumber numberWithBool:YES];
     } else {

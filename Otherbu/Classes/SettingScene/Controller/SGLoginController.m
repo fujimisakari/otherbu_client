@@ -10,11 +10,11 @@
 
 #import "DescHeaderView.h"
 #import "UserData.h"
-#import "AccountTypeData.h"
+#import "AuthTypeData.h"
 #import "SettingAlertView.h"
 
 @interface SGLoginController () {
-    NSArray *_accountTypeList;
+    NSArray *_authTypeList;
     UITableViewCell *_selectCell;
     SettingAlertView *_alertView;
 }
@@ -35,7 +35,7 @@
     // エラー時のポップアップ
     _alertView = [[SettingAlertView alloc] init];
 
-    _accountTypeList = [[DataManager sharedManager] getAccountTypeList];
+    _authTypeList = [[DataManager sharedManager] getAuthTypeList];
     self.navigationItem.title = [NSString stringWithFormat:@"%@%@", kMenuLoginName, @"設定"];
 }
 
@@ -44,24 +44,24 @@
 //--------------------------------------------------------------//
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _accountTypeList.count;
+    return _authTypeList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // セルの生成
-    AccountTypeData *accountType = (AccountTypeData *)_accountTypeList[indexPath.row];
+    AuthTypeData *authType = (AuthTypeData *)_authTypeList[indexPath.row];
     UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.textLabel.text = accountType.name;
-    cell.imageView.image = [UIImage imageNamed:accountType.iconName];
+    cell.textLabel.text = authType.name;
+    cell.imageView.image = [UIImage imageNamed:authType.iconName];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // セルタップ時のLogin手続き
-    AccountTypeData *accountType = (AccountTypeData *)_accountTypeList[indexPath.row];
+    AuthTypeData *authType = (AuthTypeData *)_authTypeList[indexPath.row];
     [SNSProcess login:self.navigationController
-             TypeName:accountType.name
+             TypeName:authType.name
              Callback:^(int statusCode, NSError *error) {
                if (error) {
                    LOG(@"\nerror = %@", error);

@@ -10,7 +10,7 @@
 
 @implementation MasterData
 
-+ (NSArray *)initAccountTypeData {
++ (NSArray *)initAuthTypeData {
     // アカウントタイプのデータ
     NSArray *dataList = @[
         @{@"dataId" : @"1", @"name" : @"twitter", @"iconName": kTwitterIcon, @"sort" : @"1"},

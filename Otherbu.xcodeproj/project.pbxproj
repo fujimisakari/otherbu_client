@@ -39,7 +39,7 @@
 		7BF9EA511B8F6DC9008DCE22 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF9EA4D1B8F6DC9008DCE22 /* TwitterKit.framework */; };
 		7BF9EA521B8F6DC9008DCE22 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BF9EA4E1B8F6DC9008DCE22 /* TwitterKitResources.bundle */; };
 		7BF9EA531B8F6DC9008DCE22 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF9EA4F1B8F6DC9008DCE22 /* TwitterCore.framework */; };
-		7BF9EA571B8F939C008DCE22 /* AccountTypeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9EA561B8F939C008DCE22 /* AccountTypeData.m */; };
+		7BF9EA571B8F939C008DCE22 /* AuthTypeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9EA561B8F939C008DCE22 /* AuthTypeData.m */; };
 		7BF9EA5A1B8F940E008DCE22 /* SGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9EA591B8F940E008DCE22 /* SGLoginController.m */; };
 		7BF9EA5D1B8FA2D3008DCE22 /* SNSProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9EA5C1B8FA2D3008DCE22 /* SNSProcess.m */; };
 		7BFDDF161AD9AB3200DD60EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFDDF151AD9AB3200DD60EF /* AppDelegate.m */; };
@@ -145,8 +145,8 @@
 		7BF9EA4D1B8F6DC9008DCE22 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
 		7BF9EA4E1B8F6DC9008DCE22 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
 		7BF9EA4F1B8F6DC9008DCE22 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
-		7BF9EA551B8F939C008DCE22 /* AccountTypeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountTypeData.h; path = Classes/Models/DataModels/AccountTypeData.h; sourceTree = "<group>"; };
-		7BF9EA561B8F939C008DCE22 /* AccountTypeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountTypeData.m; path = Classes/Models/DataModels/AccountTypeData.m; sourceTree = "<group>"; };
+		7BF9EA551B8F939C008DCE22 /* AuthTypeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AuthTypeData.h; path = Classes/Models/DataModels/AuthTypeData.h; sourceTree = "<group>"; };
+		7BF9EA561B8F939C008DCE22 /* AuthTypeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AuthTypeData.m; path = Classes/Models/DataModels/AuthTypeData.m; sourceTree = "<group>"; };
 		7BF9EA581B8F940E008DCE22 /* SGLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SGLoginController.h; path = Classes/SettingScene/Controller/SGLoginController.h; sourceTree = "<group>"; };
 		7BF9EA591B8F940E008DCE22 /* SGLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SGLoginController.m; path = Classes/SettingScene/Controller/SGLoginController.m; sourceTree = "<group>"; };
 		7BF9EA5B1B8FA2D3008DCE22 /* SNSProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNSProcess.h; path = Classes/Models/SNSProcess.h; sourceTree = "<group>"; };
@@ -498,8 +498,8 @@
 			children = (
 				7B158F8C1B9A02C000021454 /* SelectTypeData.h */,
 				7B158F8D1B9A02C000021454 /* SelectTypeData.m */,
-				7BF9EA551B8F939C008DCE22 /* AccountTypeData.h */,
-				7BF9EA561B8F939C008DCE22 /* AccountTypeData.m */,
+				7BF9EA551B8F939C008DCE22 /* AuthTypeData.h */,
+				7BF9EA561B8F939C008DCE22 /* AuthTypeData.m */,
 				7BFDDF631AD9AC8400DD60EF /* BookmarkData.h */,
 				7BFDDF641AD9AC8400DD60EF /* BookmarkData.m */,
 				7BFDDF651AD9AC8400DD60EF /* CategoryData.h */,
@@ -740,7 +740,7 @@
 				7B5F37311AF406EF00CF48F9 /* SearchData.m in Sources */,
 				7B5346F01AE35D2D008DA1EB /* ModalBaseView.m in Sources */,
 				7BE2B4551AECC58B00A30F67 /* DescHeaderView.m in Sources */,
-				7BF9EA571B8F939C008DCE22 /* AccountTypeData.m in Sources */,
+				7BF9EA571B8F939C008DCE22 /* AuthTypeData.m in Sources */,
 				7BFDDF7C1AD9ACD300DD60EF /* Helper.m in Sources */,
 				7B5346F11AE35D2D008DA1EB /* ModalBKView.m in Sources */,
 				7BFDDF281AD9AB8100DD60EF /* MainTableCellView.m in Sources */,

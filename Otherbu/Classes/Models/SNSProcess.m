@@ -10,7 +10,7 @@
 #import "FBSDKLoginKit.h"
 #import "OtherbuAPIClient.h"
 #import "UserData.h"
-#import "AccountTypeData.h"
+#import "AuthTypeData.h"
 
 @implementation SNSProcess
 
@@ -21,9 +21,9 @@
 + (void)login:(UINavigationController *)nav
      TypeName:(NSString *)typeName
      Callback:(void (^)(int statusCode, NSError *error))block {
-    if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAccountType].name]) {
+    if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAuthType].name]) {
         [SNSProcess _loginByTwitter:nav Callback:block];
-    } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAccountType].name]) {
+    } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAuthType].name]) {
         [SNSProcess _loginByFacebook:nav Callback:block];
     }
 }
@@ -39,7 +39,7 @@
                  if (twError) {
                      block(4011, twError);
                  } else {
-                     NSString *typeName = [[DataManager sharedManager] getTwitterAccountType].name;
+                     NSString *typeName = [[DataManager sharedManager] getTwitterAuthType].name;
                      NSDictionary *param = @{
                        @"name" : session.userName,
                        @"type_id" : session.userID,
@@ -73,7 +73,7 @@
                        block(4012, graphError);
                    } else {
                        NSMutableDictionary *result = (NSMutableDictionary *)graphResult;
-                       NSString *typeName = [[DataManager sharedManager] getFacebookAccountType].name;
+                       NSString *typeName = [[DataManager sharedManager] getFacebookAuthType].name;
                        NSDictionary *param = @{
                          @"name" : result[@"name"],
                          @"type_id" : result[@"id"],
@@ -113,9 +113,9 @@
 //--------------------------------------------------------------//
 
 + (void)logout:(NSString *)typeName {
-    if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAccountType].name]) {
+    if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAuthType].name]) {
         [SNSProcess _logoutByTwitter];
-    } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAccountType].name]) {
+    } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAuthType].name]) {
         [SNSProcess _logoutByFacebook];
     }
 

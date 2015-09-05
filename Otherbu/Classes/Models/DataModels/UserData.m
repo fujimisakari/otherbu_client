@@ -7,7 +7,7 @@
 //
 
 #import "UserData.h"
-#import "AccountTypeData.h"
+#import "AuthTypeData.h"
 
 @implementation UserData
 
@@ -52,10 +52,10 @@
     return page;
 }
 
-- (AccountTypeData *)accountType {
-    for (AccountTypeData *accountType in [[DataManager sharedManager] getAccountTypeList]) {
-        if ([accountType.name isEqualToString:self.type]) {
-            return accountType;
+- (AuthTypeData *)authType {
+    for (AuthTypeData *authType in [[DataManager sharedManager] getAuthTypeList]) {
+        if ([authType.name isEqualToString:self.type]) {
+            return authType;
         }
     }
     return nil;

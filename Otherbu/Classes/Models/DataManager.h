@@ -8,7 +8,7 @@
 
 #import "DataInterface.h"
 
-@class UserData, PageData, CategoryData, BookmarkData, ColorData, DesignData, SearchData, AccountTypeData;
+@class UserData, PageData, CategoryData, BookmarkData, ColorData, DesignData, SearchData, AuthTypeData;
 
 @interface DataManager : NSObject
 
@@ -18,13 +18,13 @@
 @property(nonatomic) NSMutableDictionary *colorDict;
 @property(nonatomic) NSMutableDictionary *colorDictOfBookmarkBG;
 @property(nonatomic) NSMutableDictionary *searchDict;
-@property(nonatomic) NSMutableDictionary *accountTypeDict;
+@property(nonatomic) NSMutableDictionary *authTypeDict;
 
 + (DataManager *)sharedManager;
 - (void)dataFormat;
 
 // アカンウトタイプを設定
-- (void)loadType;
+- (void)loadAuthType;
 - (void)setSelectType:(NSString *)typeName;
 
 // 単体でデータ取得
@@ -36,9 +36,9 @@
 - (ColorData *)getBookmarkBGColor:(NSString *)dataId;
 - (DesignData *)getDesign;
 - (SearchData *)getSearch:(NSString *)dataId;
-- (AccountTypeData *)getAccountType:(NSString *)dataId;
-- (AccountTypeData *)getTwitterAccountType;
-- (AccountTypeData *)getFacebookAccountType;
+- (AuthTypeData *)getAuthType:(NSString *)dataId;
+- (AuthTypeData *)getTwitterAuthType;
+- (AuthTypeData *)getFacebookAuthType;
 
 // データ一覧を取得
 - (NSMutableArray *)getCategoryList;
@@ -47,7 +47,7 @@
 - (NSArray *)getColorList;
 - (NSArray *)getBookmarkBGColorList;
 - (NSArray *)getSearchList;
-- (NSArray *)getAccountTypeList;
+- (NSArray *)getAuthTypeList;
 
 // データの追加
 - (void)addCategory:(CategoryData *)data;

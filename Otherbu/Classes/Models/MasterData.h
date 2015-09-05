@@ -8,7 +8,7 @@
 
 @interface MasterData : NSObject
 
-+ (NSArray *)initAccountTypeData;
++ (NSArray *)initAuthTypeData;
 + (NSArray *)initSearchData;
 + (NSArray *)initColorData;
 + (NSArray *)initBookmarkBGColorData;

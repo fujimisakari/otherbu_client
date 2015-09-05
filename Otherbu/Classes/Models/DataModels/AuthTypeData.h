@@ -1,5 +1,5 @@
 //
-//  AccountTypeData.h
+//  AuthTypeData.h
 //  Otherbu
 //
 //  Created by fujimisakari
@@ -8,7 +8,7 @@
 
 # import "DataInterface.h"
 
-@interface AccountTypeData : NSObject<DataInterface>
+@interface AuthTypeData : NSObject<DataInterface>
 
 @property(nonatomic) NSString  *dataId;      // ID
 @property(nonatomic) NSString  *name;        // Account名

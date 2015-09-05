@@ -15,7 +15,7 @@
 #import "ColorData.h"
 #import "DesignData.h"
 #import "SearchData.h"
-#import "AccountTypeData.h"
+#import "AuthTypeData.h"
 #import "SelectTypeData.h"
 
 @interface DataManager () {
@@ -76,10 +76,10 @@ static DataManager *intance = nil;
         [_searchDict setObject:data forKey:data.dataId];
     }
 
-    _accountTypeDict = [@{} mutableCopy];
-    for (NSDictionary *accountTypeDict in [MasterData initAccountTypeData]) {
-        AccountTypeData *data = [[AccountTypeData alloc] initWithDictionary:accountTypeDict];
-        [_accountTypeDict setObject:data forKey:data.dataId];
+    _authTypeDict = [@{} mutableCopy];
+    for (NSDictionary *authTypeDict in [MasterData initAuthTypeData]) {
+        AuthTypeData *data = [[AuthTypeData alloc] initWithDictionary:authTypeDict];
+        [_authTypeDict setObject:data forKey:data.dataId];
     }
 
     _syncData = [self _restSyncData];
@@ -91,7 +91,7 @@ static DataManager *intance = nil;
 
 - (void)setSelectType:(NSString *)typeName {
     _selectType.name = typeName;
-    [self saveAccountType];
+    [self saveAuthType];
 }
 
 - (void)syncToWebWithBlock:(void (^)(int statusCode, NSError *error))block {
@@ -152,16 +152,16 @@ static DataManager *intance = nil;
     return _searchDict[dataId];
 }
 
-- (AccountTypeData *)getAccountType:(NSString *)dataId {
-    return _accountTypeDict[dataId];
+- (AuthTypeData *)getAuthType:(NSString *)dataId {
+    return _authTypeDict[dataId];
 }
 
-- (AccountTypeData *)getTwitterAccountType {
-    return _accountTypeDict[@"1"];
+- (AuthTypeData *)getTwitterAuthType {
+    return _authTypeDict[@"1"];
 }
 
-- (AccountTypeData *)getFacebookAccountType {
-    return _accountTypeDict[@"2"];
+- (AuthTypeData *)getFacebookAuthType {
+    return _authTypeDict[@"2"];
 }
 
 - (PageData *)_getPageOfAllCategory {
@@ -251,10 +251,10 @@ static DataManager *intance = nil;
     return resultList;
 }
 
-- (NSArray *)getAccountTypeList {
+- (NSArray *)getAuthTypeList {
     NSMutableArray *itemList = [NSMutableArray array];
-    for (NSString *key in _accountTypeDict) {
-        [itemList addObject:_accountTypeDict[key]];
+    for (NSString *key in _authTypeDict) {
+        [itemList addObject:_authTypeDict[key]];
     }
     // sort番号で昇順ソート
     NSArray *resultList = [Helper doSortArrayWithKey:@"sort" Array:itemList];
@@ -453,8 +453,8 @@ static DataManager *intance = nil;
     return path;
 }
 
-- (void)loadType {
-    NSString *filePath = [self _datafilePath:kSaveAccountTypeFileName];
+- (void)loadAuthType {
+    NSString *filePath = [self _datafilePath:kSaveAuthTypeFileName];
     if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
         return;
     }
@@ -466,7 +466,7 @@ static DataManager *intance = nil;
     LOG(@"== loadType ==\n%@\n", _selectType.name);
 }
 
-- (void)saveAccountType {
+- (void)saveAuthType {
 
     NSFileManager *fileMgr = [NSFileManager defaultManager];
 
@@ -479,7 +479,7 @@ static DataManager *intance = nil;
     }
 
     // ファイルパスを取得する
-    NSString *filePath = [self _datafilePath:kSaveAccountTypeFileName];
+    NSString *filePath = [self _datafilePath:kSaveAuthTypeFileName];
     LOG(@"== Save SelectAuth Data ==\n%@\n", _selectType.name);
     [NSKeyedArchiver archiveRootObject:_selectType toFile:filePath];
 }

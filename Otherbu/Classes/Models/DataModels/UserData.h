@@ -22,7 +22,7 @@
 - (void)updateWithDictionary:(NSDictionary *)dataDict;
 
 - (PageData *)page;
-- (AccountTypeData *)accountType;
+- (AuthTypeData *)authType;
 - (SearchData *)search;
 - (void)updatePage:(NSString *)dataId;
 - (void)updateSearch:(NSString *)dataId;

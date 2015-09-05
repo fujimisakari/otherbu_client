@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, MenuList) {
     MENU_PAGE,
     MENU_DESIGN,
     MENU_SEARCH,
-    MENU_ACCOUNT,
+    MENU_AUTHTYPE,
     MENU_SYNC,
     MENU_LOGIN,
     MENU_HELP,
@@ -58,7 +58,7 @@ extern NSString * const kDefaultSearchDataId;
 extern const int kNumberOfPages;
 extern const float kCellAlpha;
 extern NSString * const kSaveFileNameList[];
-extern NSString * const kSaveAccountTypeFileName;
+extern NSString * const kSaveAuthTypeFileName;
 
 extern NSString * const kTextFieldColorOfModal;
 extern NSString * const kBorderColorOfModal;

@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "AccountTypeData.h"
+#import "AuthTypeData.h"
 
-@implementation AccountTypeData
+@implementation AuthTypeData
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --

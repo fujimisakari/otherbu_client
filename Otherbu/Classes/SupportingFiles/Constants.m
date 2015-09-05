@@ -42,7 +42,7 @@ NSString * const kSaveFileNameList[] = {
     [SAVE_PAGE] = @"Page",
     [SAVE_SYNC] = @"Sync"
 };
-NSString * const kSaveAccountTypeFileName = @"AccountType";
+NSString * const kSaveAuthTypeFileName = @"AuthType";
 
 //--------------------------------------------------------------//
 #pragma mark -- Color Hex --
