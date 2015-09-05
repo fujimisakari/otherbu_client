@@ -51,7 +51,7 @@ extern NSString * const kDefaultFont;
 extern NSString * const kDefaultImageName;
 extern NSString * const kCustomImageName;
 extern NSString * const kCellIdentifier;
-extern NSString * const kDefaultSelectType;
+extern NSString * const kDefaultAuthType;
 extern NSString * const kDefaultUserDataId;
 extern NSString * const kDefaultPageDataId;
 extern NSString * const kDefaultSearchDataId;

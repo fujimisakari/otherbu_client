@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		590F230F1AA81F4900589E7C /* default-wallpeper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 590F230E1AA81F4900589E7C /* default-wallpeper.jpg */; };
-		7B158F8E1B9A02C000021454 /* SelectTypeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B158F8D1B9A02C000021454 /* SelectTypeData.m */; };
+		7B158F8E1B9A02C000021454 /* SelectAuthTypeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B158F8D1B9A02C000021454 /* SelectAuthTypeData.m */; };
 		7B5346E81AE35D11008DA1EB /* ModalBKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346E41AE35D11008DA1EB /* ModalBKViewController.m */; };
 		7B5346E91AE35D11008DA1EB /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346E71AE35D11008DA1EB /* ModalViewController.m */; };
 		7B5346F01AE35D2D008DA1EB /* ModalBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5346EB1AE35D2D008DA1EB /* ModalBaseView.m */; };
@@ -87,8 +87,8 @@
 
 /* Begin PBXFileReference section */
 		590F230E1AA81F4900589E7C /* default-wallpeper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "default-wallpeper.jpg"; sourceTree = "<group>"; };
-		7B158F8C1B9A02C000021454 /* SelectTypeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectTypeData.h; path = Classes/Models/DataModels/SelectTypeData.h; sourceTree = "<group>"; };
-		7B158F8D1B9A02C000021454 /* SelectTypeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectTypeData.m; path = Classes/Models/DataModels/SelectTypeData.m; sourceTree = "<group>"; };
+		7B158F8C1B9A02C000021454 /* SelectAuthTypeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectAuthTypeData.h; path = Classes/Models/DataModels/SelectAuthTypeData.h; sourceTree = "<group>"; };
+		7B158F8D1B9A02C000021454 /* SelectAuthTypeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectAuthTypeData.m; path = Classes/Models/DataModels/SelectAuthTypeData.m; sourceTree = "<group>"; };
 		7B5346E31AE35D11008DA1EB /* ModalBKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalBKViewController.h; path = Classes/ModalScene/Controller/ModalBKViewController.h; sourceTree = "<group>"; };
 		7B5346E41AE35D11008DA1EB /* ModalBKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModalBKViewController.m; path = Classes/ModalScene/Controller/ModalBKViewController.m; sourceTree = "<group>"; };
 		7B5346E51AE35D11008DA1EB /* ModalInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModalInterface.h; path = Classes/ModalScene/Controller/ModalInterface.h; sourceTree = "<group>"; };
@@ -496,8 +496,8 @@
 		7BFDDEA01AD99EE900DD60EF /* DataModels */ = {
 			isa = PBXGroup;
 			children = (
-				7B158F8C1B9A02C000021454 /* SelectTypeData.h */,
-				7B158F8D1B9A02C000021454 /* SelectTypeData.m */,
+				7B158F8C1B9A02C000021454 /* SelectAuthTypeData.h */,
+				7B158F8D1B9A02C000021454 /* SelectAuthTypeData.m */,
 				7BF9EA551B8F939C008DCE22 /* AuthTypeData.h */,
 				7BF9EA561B8F939C008DCE22 /* AuthTypeData.m */,
 				7BFDDF631AD9AC8400DD60EF /* BookmarkData.h */,
@@ -753,7 +753,7 @@
 				7BFDDF581AD9AC3500DD60EF /* SGIndexTableViewController.m in Sources */,
 				7BFDDF7D1AD9ACD300DD60EF /* UIColor+Hex.m in Sources */,
 				7B5F372B1AF28BFA00CF48F9 /* SectionHeaderView.m in Sources */,
-				7B158F8E1B9A02C000021454 /* SelectTypeData.m in Sources */,
+				7B158F8E1B9A02C000021454 /* SelectAuthTypeData.m in Sources */,
 				7BCC7FFD1B6E9BA700C348A6 /* HelpWebView.m in Sources */,
 				7BF9EA5D1B8FA2D3008DCE22 /* SNSProcess.m in Sources */,
 				7BFDDF731AD9AC8400DD60EF /* PageData.m in Sources */,

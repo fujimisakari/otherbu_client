@@ -16,10 +16,10 @@
 #import "DesignData.h"
 #import "SearchData.h"
 #import "AuthTypeData.h"
-#import "SelectTypeData.h"
+#import "SelectAuthTypeData.h"
 
 @interface DataManager () {
-    SelectTypeData *_selectType;
+    SelectAuthTypeData *_selectAuthType;
     UserData *_user;
     DesignData *_design;
     NSMutableDictionary *_syncData;
@@ -51,7 +51,7 @@ static DataManager *intance = nil;
 }
 
 - (void)dataFormat {
-    _selectType = [[SelectTypeData alloc] init];
+    _selectAuthType = [[SelectAuthTypeData alloc] init];
     _user = [[UserData alloc] init];
     _design = [[DesignData alloc] init];
     _categoryDict = [@{} mutableCopy];
@@ -89,8 +89,8 @@ static DataManager *intance = nil;
 #pragma mark -- Public Method --
 //--------------------------------------------------------------//
 
-- (void)setSelectType:(NSString *)typeName {
-    _selectType.name = typeName;
+- (void)setSelectAuthType:(NSString *)typeName {
+    _selectAuthType.name = typeName;
     [self saveAuthType];
 }
 
@@ -336,7 +336,7 @@ static DataManager *intance = nil;
 
 - (void)_updateResponseData:(NSDictionary *)jsonData {
     // webから取得したjsonDataの反映
-    LOG(@"== %@ response Data ==\n%@\n", _selectType.name, jsonData);
+    LOG(@"== %@ response Data ==\n%@\n", _selectAuthType.name, jsonData);
 
     // 追加、更新
     NSDictionary *user = [[jsonData objectForKey:@"update_data"] objectForKey:@"User"];
@@ -462,8 +462,8 @@ static DataManager *intance = nil;
     if (!loadData) {
         return;
     }
-    _selectType = (SelectTypeData *)loadData;
-    LOG(@"== loadType ==\n%@\n", _selectType.name);
+    _selectAuthType = (SelectAuthTypeData *)loadData;
+    LOG(@"== loadType ==\n%@\n", _selectAuthType.name);
 }
 
 - (void)saveAuthType {
@@ -480,17 +480,17 @@ static DataManager *intance = nil;
 
     // ファイルパスを取得する
     NSString *filePath = [self _datafilePath:kSaveAuthTypeFileName];
-    LOG(@"== Save SelectAuth Data ==\n%@\n", _selectType.name);
-    [NSKeyedArchiver archiveRootObject:_selectType toFile:filePath];
+    LOG(@"== Save SelectAuth Data ==\n%@\n", _selectAuthType.name);
+    [NSKeyedArchiver archiveRootObject:_selectAuthType toFile:filePath];
 }
 
 
 - (void)load {
-    LOG(@"== %@ load ==\n", _selectType.name);
+    LOG(@"== %@ load ==\n", _selectAuthType.name);
 
     for (int idx = 0; idx < LastSave; ++idx) {
         // ファイルパスを取得する
-        NSString *fileName = [NSString stringWithFormat:@"%@/%@", _selectType.name, kSaveFileNameList[idx]];
+        NSString *fileName = [NSString stringWithFormat:@"%@/%@", _selectAuthType.name, kSaveFileNameList[idx]];
         NSString *filePath = [self _datafilePath:fileName];
         if (!filePath || ![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
             continue;
@@ -542,7 +542,7 @@ static DataManager *intance = nil;
     NSFileManager *fileMgr = [NSFileManager defaultManager];
 
     // .UserDataディレクトリを作成する
-    NSString *DirName = [NSString stringWithFormat:@"%@/%@", @".UserData", _selectType.name];
+    NSString *DirName = [NSString stringWithFormat:@"%@/%@", @".UserData", _selectAuthType.name];
     NSString *userDirPath = [self _userDirPath:DirName];
     if (![fileMgr fileExistsAtPath:userDirPath]) {
         NSError *error;
@@ -550,38 +550,38 @@ static DataManager *intance = nil;
     }
 
     // ファイルパスを取得する
-    NSString *fileName = [NSString stringWithFormat:@"%@/%@", _selectType.name, kSaveFileNameList[saveIdx]];
+    NSString *fileName = [NSString stringWithFormat:@"%@/%@", _selectAuthType.name, kSaveFileNameList[saveIdx]];
     NSString *filePath = [self _datafilePath:fileName];
 
     // Dataを保存する
     switch (saveIdx) {
         case SAVE_USER: {
-            LOG(@"== %@ Save Uer Data ==\n%@\n", _selectType.name, _user);
+            LOG(@"== %@ Save Uer Data ==\n%@\n", _selectAuthType.name, _user);
             [NSKeyedArchiver archiveRootObject:_user toFile:filePath];
             break;
         };
         case SAVE_DESIGN: {
-            LOG(@"== %@ Save Design Data ==\n%@\n", _selectType.name, _design);
+            LOG(@"== %@ Save Design Data ==\n%@\n", _selectAuthType.name, _design);
             [NSKeyedArchiver archiveRootObject:_design toFile:filePath];
             break;
         };
         case SAVE_BOOKMARK: {
-            LOG(@"== %@ Save Bookmark Data ==\n%@\n", _selectType.name, _bookmarkDict);
+            LOG(@"== %@ Save Bookmark Data ==\n%@\n", _selectAuthType.name, _bookmarkDict);
             [NSKeyedArchiver archiveRootObject:_bookmarkDict toFile:filePath];
             break;
         };
         case SAVE_CATEGORY: {
-            LOG(@"== %@ Save Category Data ==\n%@\n", _selectType.name, _categoryDict);
+            LOG(@"== %@ Save Category Data ==\n%@\n", _selectAuthType.name, _categoryDict);
             [NSKeyedArchiver archiveRootObject:_categoryDict toFile:filePath];
             break;
         };
         case SAVE_PAGE: {
-            LOG(@"== %@ Save Page Data ==\n%@\n", _selectType.name, _pageDict);
+            LOG(@"== %@ Save Page Data ==\n%@\n", _selectAuthType.name, _pageDict);
             [NSKeyedArchiver archiveRootObject:_pageDict toFile:filePath];
             break;
         };
         case SAVE_SYNC: {
-            LOG(@"== %@ Save Sync Data ==\n%@\n", _selectType.name, _syncData);
+            LOG(@"== %@ Save Sync Data ==\n%@\n", _selectAuthType.name, _syncData);
             [NSKeyedArchiver archiveRootObject:_syncData toFile:filePath];
             break;
         };

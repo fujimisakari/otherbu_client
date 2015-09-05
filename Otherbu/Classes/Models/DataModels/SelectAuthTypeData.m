@@ -1,14 +1,14 @@
 //
-//  SelectTypeData.m
+//  SelectAuthTypeData.m
 //  Otherbu
 //
 //  Created by fujimisakari
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "SelectTypeData.h"
+#import "SelectAuthTypeData.h"
 
-@implementation SelectTypeData
+@implementation SelectAuthTypeData
 
 //--------------------------------------------------------------//
 #pragma mark -- initialize --
@@ -17,7 +17,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _name = kDefaultSelectType;
+        _name = kDefaultAuthType;
     }
     return self;
 }

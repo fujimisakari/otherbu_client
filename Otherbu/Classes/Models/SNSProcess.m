@@ -96,12 +96,13 @@
         if (results) {
             // データ更新
             [[DataManager sharedManager] dataFormat];
-            [[DataManager sharedManager] setSelectType:param[@"auth_type"]];
+            [[DataManager sharedManager] setSelectAuthType:param[@"auth_type"]];
             [[DataManager sharedManager] load];
             UserData *user = [[DataManager sharedManager] getUser];
             NSDictionary *userData = [results objectForKey:@"user_data"];
             LOG(@"== response Data ==\n%@\n", userData);
             [user updateWithDictionary:userData];
+            [[DataManager sharedManager] save:SAVE_USER];
             [nav popViewControllerAnimated:YES];
         }
         if (error) block(statusCode, error);
@@ -124,7 +125,7 @@
         [[DataManager sharedManager] save:idx];
     }
     [[DataManager sharedManager] dataFormat];
-    [[DataManager sharedManager] setSelectType:kDefaultSelectType];
+    [[DataManager sharedManager] setSelectAuthType:kDefaultAuthType];
     [[DataManager sharedManager] load];
     LOG(@"== logout ==\n");
 }

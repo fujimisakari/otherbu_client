@@ -25,7 +25,7 @@
 
 // アカンウトタイプを設定
 - (void)loadAuthType;
-- (void)setSelectType:(NSString *)typeName;
+- (void)setSelectAuthType:(NSString *)typeName;
 
 // 単体でデータ取得
 - (UserData *)getUser;
