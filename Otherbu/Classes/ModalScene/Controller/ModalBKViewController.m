@@ -30,6 +30,11 @@
     _modalView.editItem = _editItem;
     _modalView.delegate = self;
     [self.view addSubview:_modalView];
+
+    // 背景をクリックしたら、キーボードを隠す
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_closeSoftKeyboard)];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -146,6 +151,11 @@
     CategoryData *category = [bookmark category];
     NSInteger row = [_categoryList indexOfObject:category];
     [_modalView.categoryPicker selectRow:row inComponent:0 animated:YES];
+}
+
+- (void)_closeSoftKeyboard {
+    // キーボードを隠す
+    [self.view endEditing: YES];
 }
 
 @end

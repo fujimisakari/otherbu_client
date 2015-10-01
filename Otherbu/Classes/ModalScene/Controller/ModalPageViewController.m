@@ -35,6 +35,11 @@
     CGSize size = CGSizeMake(self.view.frame.size.width - (kOffsetXOfTableCell * 2), kHeightOfSettingDesc + kMarginOfSettingDesc);
     [descHeaderView setupWithCGSize:size descMessage:@"Pageに入れるCategoryの選択ができます"];
     [self.tableView setTableHeaderView:descHeaderView];
+
+    // 背景をクリックしたら、キーボードを隠す
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_closeSoftKeyboard)];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -137,6 +142,15 @@
     // 画面を閉じるを閉じる
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.delegate closeModalView];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Private Method --
+//--------------------------------------------------------------//
+
+- (void)_closeSoftKeyboard {
+    // キーボードを隠す
+    [self.view endEditing: YES];
 }
 
 @end

@@ -33,6 +33,11 @@
     _modalView.editItem = _editItem;
     _modalView.delegate = self;
     [self.view addSubview:_modalView];
+
+    // 背景をキリックしたら、キーボードを隠す
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(_closeSoftKeyboard)];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:gestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -206,6 +211,15 @@
     // 画面を閉じる
     [self.delegate returnActionOfModal:[_editItem iGetMenuId]];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- Private Method --
+//--------------------------------------------------------------//
+
+- (void)_closeSoftKeyboard {
+    // キーボードを隠す
+    [self.view endEditing: YES];
 }
 
 @end
