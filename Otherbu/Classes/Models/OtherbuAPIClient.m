@@ -17,7 +17,7 @@
 
 @interface OtherbuAPIClient ()
 
-@property(nonatomic) AFHTTPSessionManager *sessionManager;
+// @property(nonatomic) AFHTTPSessionManager *sessionManager;
 
 @end
 
@@ -33,21 +33,29 @@
 
 - (id)init {
     self = [super init];
-    if (self) {
-        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        self.sessionManager =
-            [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString] sessionConfiguration:configuration];
-    }
+    // if (self) {
+    //     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    //     self.sessionManager =
+    //         [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString] sessionConfiguration:configuration];
+    // }
 
     return self;
 }
 
+- (AFHTTPSessionManager *)makeSessionManager {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuration.HTTPAdditionalHeaders = @{@"Otherbu-Auth": [Helper getCertificationString],
+                                            @"Accept": @"application/json"};
+    AFHTTPSessionManager *sessionManager =
+        [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:OtherbuAPIBaseURLString] sessionConfiguration:configuration];
+    return sessionManager;
+}
+
 - (void)loginWithCompletion:(NSDictionary *)param
                requestBlock:(void (^)(int statusCode, NSDictionary *results, NSError *error))block {
-    self.sessionManager.session.configuration.HTTPAdditionalHeaders = @{@"Otherbu-Auth": [Helper getCertificationString],
-                                                                        @"Accept" : @"application/json"};
-    _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [self.sessionManager POST:@"/client_api/login/"
+    AFHTTPSessionManager *sessionManager = [self makeSessionManager];
+    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [sessionManager POST:@"/client_api/login/"
        parameters:param
         success:
              ^(NSURLSessionDataTask *task, id responseObject) {
@@ -64,11 +72,10 @@
 }
 
 - (void)syncWithCompletion:(void (^)(int statusCode, NSDictionary *results, NSError *error))block {
-    self.sessionManager.session.configuration.HTTPAdditionalHeaders = @{@"Otherbu-Auth": [Helper getCertificationString],
-                                                                        @"Accept" : @"application/json"};
+    AFHTTPSessionManager *sessionManager = [self makeSessionManager];
+    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
     NSMutableDictionary *param = [[DataManager sharedManager] getSyncData];
-    _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [self.sessionManager POST:@"/client_api/sync/"
+    [sessionManager POST:@"/client_api/sync/"
        parameters:param
         success:
              ^(NSURLSessionDataTask *task, id responseObject) {
