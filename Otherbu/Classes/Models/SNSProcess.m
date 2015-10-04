@@ -8,9 +8,11 @@
 
 #import "FBSDKCoreKit.h"
 #import "FBSDKLoginKit.h"
+#import "FBSDKShareKit.h"
 #import "OtherbuAPIClient.h"
 #import "UserData.h"
 #import "AuthTypeData.h"
+#import "CustomWebView.h"
 #import "MBProgressHUD.h"
 
 @implementation SNSProcess
@@ -147,6 +149,41 @@
 + (void)_logoutByFacebook {
     FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
     [loginManager logOut];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- SNS LinkShare --
+//--------------------------------------------------------------//
+
++ (void)linkShare:(NSString *)typeName WebView:(UIWebView *)webView {
+    if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAuthType].name]) {
+        [SNSProcess _linkShareByTwitter:webView];
+    } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAuthType].name]) {
+        [SNSProcess _linkShareByFacebook:webView];
+    }
+}
+
++ (void)_linkShareByTwitter:(UIWebView *)webView {
+    NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    NSString *url = [webView stringByEvaluatingJavaScriptFromString:@"document.URL"];
+    NSString *tweetText = [NSString stringWithFormat:@"%@ - %@", title, url];
+
+    TWTRComposer *composer = [TWTRComposer new];
+    [composer setText:tweetText];
+    [composer showWithCompletion:^(TWTRComposerResult result) {
+        if (result == TWTRComposerResultCancelled) {
+            LOG(@"tweet cancelled");
+        } else {
+            LOG(@"tweet done.");
+        }
+    }];
+}
+
++ (void)_linkShareByFacebook:(UIWebView *)webView {
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    NSString *url = [webView stringByEvaluatingJavaScriptFromString:@"document.URL"];
+    content.contentURL = [NSURL URLWithString:[NSString stringWithFormat:url]];
+    [FBSDKShareDialog showFromViewController:webView withContent:content delegate:nil];
 }
 
 @end

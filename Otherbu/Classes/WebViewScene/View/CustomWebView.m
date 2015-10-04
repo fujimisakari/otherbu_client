@@ -7,6 +7,9 @@
 //
 
 #import "CustomWebView.h"
+#import "UserData.h"
+#import "AuthTypeData.h"
+#import "SNSProcess.h"
 
 @interface CustomWebView () {
     UIToolbar       *_toolbar;
@@ -37,8 +40,28 @@
     _rightArrow = [[UIBarButtonItem alloc] initWithTitle:@"〉" style:UIBarButtonItemStylePlain target:self action:@selector(_fowardDidPush)];
     _rightArrow.width = kArrowWidthOfToolbar;
 
+    // スペーサを生成
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+
+    // linkShare用のボタン生成
+    UIBarButtonItem *shareButton = nil;
+    UserData *user = [[DataManager sharedManager] getUser];
+    if ([user isLogin]) {
+        UIImage *image = nil;
+        if ([user.authType.name isEqualToString:[[DataManager sharedManager] getTwitterAuthType].name]) {
+            image = [UIImage imageNamed:kTwitterIcon];
+        } else if ([user.authType.name isEqualToString:[[DataManager sharedManager] getFacebookAuthType].name]) {
+            image = [UIImage imageNamed:kFacebookIcon];
+        }
+
+        shareButton =
+            [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStylePlain target:self action:@selector(_linkShareAction)];
+        shareButton.width = kArrowWidthOfToolbar;
+        shareButton.enabled = YES;
+    }
+
     // 画面下部のツールバー生成
-    NSArray *items = [NSArray arrayWithObjects:_leftArrow, _rightArrow, nil, nil];
+    NSArray *items = [NSArray arrayWithObjects:_leftArrow, _rightArrow, spacer, shareButton, nil];
     _toolbar = [[UIToolbar alloc] initWithFrame:_baseRectOfToolbar];
     [view addSubview:_toolbar];
     _toolbar.items = items;
@@ -65,11 +88,12 @@
 
 - (void)_updateToolbar {
     // ツールバーを表示、非表示
-    if ([self _isStanbyToolbar]) {
-        [self _didStanbyToolbar];
-    } else {
-        [self _didActiveToolbar];
-    }
+    [self _didActiveToolbar];
+    // if ([self _isStanbyToolbar]) {
+    //     [self _didStanbyToolbar];
+    // } else {
+    //     [self _didActiveToolbar];
+    // }
 
     // ツールバーボタンの有効、無効
     _rightArrow.enabled = self.canGoForward;
@@ -140,6 +164,11 @@
     if (self.canGoBack) {
         [self goBack];
     }
+}
+
+- (void)_linkShareAction {
+    UserData *user = [[DataManager sharedManager] getUser];
+    [SNSProcess linkShare:user.authType.name WebView:self];
 }
 
 //--------------------------------------------------------------//
