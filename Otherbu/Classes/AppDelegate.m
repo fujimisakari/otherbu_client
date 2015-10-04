@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "FBSDKCoreKit.h"
 #import <Fabric/Fabric.h>
+#import <TwitterKit/TwitterKit.h>
 
 @interface AppDelegate ()
 

@@ -8,6 +8,6 @@
 
 @interface CustomWebView : UIWebView<UIScrollViewDelegate, UIWebViewDelegate>
 
-- (void)setupWithView:(UIView *)view;
+- (void)setupWithView:(UIViewController *)viewController;
 
 @end

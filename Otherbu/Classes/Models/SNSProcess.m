@@ -14,6 +14,7 @@
 #import "AuthTypeData.h"
 #import "CustomWebView.h"
 #import "MBProgressHUD.h"
+#import <Social/Social.h>
 
 @implementation SNSProcess
 
@@ -155,35 +156,42 @@
 #pragma mark -- SNS LinkShare --
 //--------------------------------------------------------------//
 
-+ (void)linkShare:(NSString *)typeName WebView:(UIWebView *)webView {
++ (void)linkShare:(NSString *)typeName WebView:(UIWebView *)webView ViewController:(UIViewController *)viewController {
     if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAuthType].name]) {
-        [SNSProcess _linkShareByTwitter:webView];
+        [SNSProcess _linkShareByTwitter:webView ViewController:viewController];
     } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAuthType].name]) {
-        [SNSProcess _linkShareByFacebook:webView];
+        [SNSProcess _linkShareByFacebook:webView ViewController:viewController];
     }
 }
 
-+ (void)_linkShareByTwitter:(UIWebView *)webView {
-    NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    NSString *url = [webView stringByEvaluatingJavaScriptFromString:@"document.URL"];
-    NSString *tweetText = [NSString stringWithFormat:@"%@ - %@", title, url];
++ (void)_linkShareByTwitter:(UIWebView *)webView ViewController:(UIViewController *)viewController {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        NSString *url = [webView stringByEvaluatingJavaScriptFromString:@"document.URL"];
+        NSString *tweetText = [NSString stringWithFormat:@"%@ - %@", title, url];
 
-    TWTRComposer *composer = [TWTRComposer new];
-    [composer setText:tweetText];
-    [composer showWithCompletion:^(TWTRComposerResult result) {
-        if (result == TWTRComposerResultCancelled) {
-            LOG(@"tweet cancelled");
-        } else {
-            LOG(@"tweet done.");
-        }
-    }];
+        SLComposeViewController *composeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        void (^completion) (SLComposeViewControllerResult result) = ^(SLComposeViewControllerResult result) {
+            [composeViewController dismissViewControllerAnimated:YES completion:nil];
+        };
+        [composeViewController setCompletionHandler:completion];
+        [composeViewController setInitialText:tweetText];
+        [viewController presentViewController:composeViewController animated:YES completion:Nil];
+    }
 }
 
-+ (void)_linkShareByFacebook:(UIWebView *)webView {
-    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
-    NSString *url = [webView stringByEvaluatingJavaScriptFromString:@"document.URL"];
-    content.contentURL = [NSURL URLWithString:[NSString stringWithFormat:url]];
-    [FBSDKShareDialog showFromViewController:webView withContent:content delegate:nil];
++ (void)_linkShareByFacebook:(UIWebView *)webView ViewController:(UIViewController *)viewController {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+        NSString *url = [webView stringByEvaluatingJavaScriptFromString:@"document.URL"];
+
+        SLComposeViewController *composeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        void (^completion) (SLComposeViewControllerResult result) = ^(SLComposeViewControllerResult result) {
+            [composeViewController dismissViewControllerAnimated:YES completion:nil];
+        };
+        [composeViewController setCompletionHandler:completion];
+        [composeViewController addURL:[NSURL URLWithString:url]];
+        [viewController presentViewController:composeViewController animated:YES completion:Nil];
+    }
 }
 
 @end

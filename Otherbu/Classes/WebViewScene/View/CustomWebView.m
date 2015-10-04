@@ -12,12 +12,13 @@
 #import "SNSProcess.h"
 
 @interface CustomWebView () {
-    UIToolbar       *_toolbar;
-    UIBarButtonItem *_rightArrow;
-    UIBarButtonItem *_leftArrow;
-    float           _beginScrollOffsetY;
-    CGRect          _baseRectOfToolbar;
-    BOOL            _isScrollingToolbar;
+    UIViewController *_viewController;
+    UIToolbar        *_toolbar;
+    UIBarButtonItem  *_rightArrow;
+    UIBarButtonItem  *_leftArrow;
+    float            _beginScrollOffsetY;
+    CGRect           _baseRectOfToolbar;
+    BOOL             _isScrollingToolbar;
 }
 
 @end
@@ -28,11 +29,12 @@
 #pragma mark -- initialize --
 //--------------------------------------------------------------//
 
-- (void)setupWithView:(UIView *)view {
+- (void)setupWithView:(UIViewController *)viewController {
     // 初期値設定
     self.delegate = self;
     self.scalesPageToFit = YES;  // Webページの大きさを自動的に画面にフィットさせる
-    _baseRectOfToolbar = CGRectMake(0, view.bounds.size.height, view.frame.size.width, kHeightOfToolbar);
+    _viewController = viewController;
+    _baseRectOfToolbar = CGRectMake(0, viewController.view.bounds.size.height, viewController.view.frame.size.width, kHeightOfToolbar);
 
     // <(戻る)、>(進む)のボタン生成
     _leftArrow = [[UIBarButtonItem alloc] initWithTitle:@"〈" style:UIBarButtonItemStylePlain target:self action:@selector(_backDidPush)];
@@ -63,7 +65,7 @@
     // 画面下部のツールバー生成
     NSArray *items = [NSArray arrayWithObjects:_leftArrow, _rightArrow, spacer, shareButton, nil];
     _toolbar = [[UIToolbar alloc] initWithFrame:_baseRectOfToolbar];
-    [view addSubview:_toolbar];
+    [viewController.view addSubview:_toolbar];
     _toolbar.items = items;
 }
 
@@ -168,7 +170,7 @@
 
 - (void)_linkShareAction {
     UserData *user = [[DataManager sharedManager] getUser];
-    [SNSProcess linkShare:user.authType.name WebView:self];
+    [SNSProcess linkShare:user.authType.name WebView:self ViewController:_viewController];
 }
 
 //--------------------------------------------------------------//

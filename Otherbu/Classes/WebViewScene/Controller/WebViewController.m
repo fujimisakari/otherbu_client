@@ -24,7 +24,7 @@
     [super viewDidLoad];
 
     // set Webview
-    [_webView setupWithView:self.view];
+    [_webView setupWithView:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

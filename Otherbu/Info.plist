@@ -28,7 +28,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.2</string>
+	<string>1.0.5</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -52,8 +52,17 @@
 	<string>170591299734610</string>
 	<key>FacebookDisplayName</key>
 	<string>OtherBu</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbauth</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -73,10 +82,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-	    <key>NSAllowsArbitraryLoads</key>
-	    <true/>
-    </dict>
 </dict>
 </plist>
