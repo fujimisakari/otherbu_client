@@ -64,8 +64,7 @@
                  View:self.view
              TypeName:authType.name
              Callback:^(int statusCode, NSError *error) {
-               if (error) {
-                   LOG(@"\nerror = %@", error);
+               if (statusCode || error) {
                    [_alertView setup:statusCode];
                    [_alertView show];
                }

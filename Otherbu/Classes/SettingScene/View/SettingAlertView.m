@@ -25,7 +25,7 @@
     } else if (statusCode == 4012) {
         self.message = @"iOSにFacebookアカウントが登録されていません。設定→FacebookからFacebookアカウントを追加してください";
     } else if (statusCode == 4013) {
-        self.message = @"Facebookが有効になっていません";
+        self.message = @"Facebookアカウントの使用が許可されていません。設定→Facebookからアプリ使用の許可してください";
     } else if (statusCode == 500) {
         self.message = @"システムエラーで同期に失敗しました";
     } else {
