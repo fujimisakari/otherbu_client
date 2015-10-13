@@ -6,15 +6,13 @@
 //  Copyright (c) 2015 fujimisakari. All rights reserved.
 //
 
-#import "FBSDKCoreKit.h"
-#import "FBSDKLoginKit.h"
-#import "FBSDKShareKit.h"
 #import "OtherbuAPIClient.h"
 #import "UserData.h"
 #import "AuthTypeData.h"
 #import "CustomWebView.h"
 #import "MBProgressHUD.h"
 #import <Social/Social.h>
+#import <Accounts/Accounts.h>
 
 @implementation SNSProcess
 
@@ -63,39 +61,50 @@
     }];
 }
 
+
 + (void)_loginByFacebook:(UINavigationController *)nav
                     View:(UIView *)view
                 Callback:(void (^)(int statusCode, NSError *error))block {
-    FBSDKLoginManager *login = [[FBSDKLoginManager alloc] init];
-    [login logInWithReadPermissions: @[@"public_profile"]
-                            handler: ^(FBSDKLoginManagerLoginResult *loginResult, NSError *error) {
-        if (error) {
-            LOG(@"Facebook Process error");
-            block(4012, error);
-        } else if (loginResult.isCancelled) {
-            LOG(@"Facebook Cancelled");
-        } else {
-            LOG(@"Facebook Logged in");
-            if ([FBSDKAccessToken currentAccessToken]) {
-               [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:nil]
-                startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id graphResult, NSError *graphError) {
-                   if (error) {
-                       block(4012, graphError);
-                   } else {
-                       NSMutableDictionary *result = (NSMutableDictionary *)graphResult;
-                       NSString *typeName = [[DataManager sharedManager] getFacebookAuthType].name;
-                       NSDictionary *param = @{
-                         @"name" : result[@"name"],
-                         @"type_id" : result[@"id"],
-                         @"auth_type" : typeName,
-                       };
-                       [MBProgressHUD showHUDAddedTo:view animated:YES];
-                       [self _getUserAccount:nav View:view RequestParam:param Callback:block];
-                   }
-               }];
-            }
-        }
-    }];
+
+    ACAccountStore *accountStore = [ACAccountStore new];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
+    NSDictionary *options = @{ ACFacebookAppIdKey : kFacebookAppIdKey,
+                               ACFacebookAudienceKey : kFacebookAudienceKey,
+                               ACFacebookPermissionsKey : @[@"email"] };
+
+    [accountStore
+        requestAccessToAccountsWithType:accountType
+                                options:options
+                             completion:^(BOOL granted, NSError *error) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    if (granted) {
+                                        // ユーザーがFacebookアカウントへのアクセスを許可した
+                                        NSArray *facebookAccounts = [accountStore accountsWithAccountType:accountType];
+                                        if (facebookAccounts.count > 0) {
+                                            // ログイン処理
+                                            ACAccount *facebookAccount = [facebookAccounts lastObject];
+                                            NSString *uid = [[facebookAccount valueForKey:@"properties"] objectForKey:@"uid"];
+                                            NSString *typeName = [[DataManager sharedManager] getFacebookAuthType].name;
+                                            NSDictionary *param = @{
+                                              @"name" : facebookAccount.userFullName,
+                                              @"type_id" : uid,
+                                              @"auth_type" : typeName,
+                                            };
+                                            [MBProgressHUD showHUDAddedTo:view animated:YES];
+                                            [self _getUserAccount:nav View:view RequestParam:param Callback:block];
+                                        }
+                                    } else {
+                                        if([error code]== ACErrorAccountNotFound){
+                                            //  iOSに登録されているFacebookアカウントがありません。
+                                            block(4012, error);
+                                        } else {
+                                            // ユーザーが許可しない
+                                            // 設定→Facebook→アカウントの使用許可するApp→YOUR_APPをオンにする必要がある
+                                            block(4013, error);
+                                        }
+                                    }
+                                });
+                            }];
 }
 
 + (void)_getUserAccount:(UINavigationController *)nav
@@ -127,12 +136,6 @@
 //--------------------------------------------------------------//
 
 + (void)logout:(NSString *)typeName {
-    if ([typeName isEqualToString:[[DataManager sharedManager] getTwitterAuthType].name]) {
-        [SNSProcess _logoutByTwitter];
-    } else if ([typeName isEqualToString:[[DataManager sharedManager] getFacebookAuthType].name]) {
-        [SNSProcess _logoutByFacebook];
-    }
-
     // データを保存する
     for (int idx = 0; idx < LastSave; ++idx) {
         [[DataManager sharedManager] save:idx];
@@ -141,15 +144,6 @@
     [[DataManager sharedManager] setSelectAuthType:kDefaultAuthType];
     [[DataManager sharedManager] load];
     LOG(@"== logout ==\n");
-}
-
-+ (void)_logoutByTwitter {
-    [[Twitter sharedInstance] logOut];
-}
-
-+ (void)_logoutByFacebook {
-    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-    [loginManager logOut];
 }
 
 //--------------------------------------------------------------//

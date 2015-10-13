@@ -45,6 +45,13 @@ NSString * const kSaveFileNameList[] = {
 NSString * const kSaveAuthTypeFileName = @"AuthType";
 
 //--------------------------------------------------------------//
+#pragma mark -- APP key --
+//--------------------------------------------------------------//
+
+NSString * const kFacebookAppIdKey = @"170591299734610";
+NSString * const kFacebookAudienceKey = @"38040b9076aea3085a5163bf1bbb718d";
+
+//--------------------------------------------------------------//
 #pragma mark -- Color Hex --
 //--------------------------------------------------------------//
 

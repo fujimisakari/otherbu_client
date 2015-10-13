@@ -23,7 +23,9 @@
     } else if (statusCode == 4011) {
         self.message = @"Twitterの認証に失敗しました";
     } else if (statusCode == 4012) {
-        self.message = @"Facebookの認証に失敗しました";
+        self.message = @"iOSにFacebookアカウントが登録されていません。設定→FacebookからFacebookアカウントを追加してください";
+    } else if (statusCode == 4013) {
+        self.message = @"Facebookが有効になっていません";
     } else if (statusCode == 500) {
         self.message = @"システムエラーで同期に失敗しました";
     } else {

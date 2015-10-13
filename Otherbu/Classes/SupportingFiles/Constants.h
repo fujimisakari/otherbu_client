@@ -41,8 +41,6 @@ typedef NS_ENUM(NSUInteger, SaveList) {
     LastSave,
 };
 
-extern NSArray * const khoge;
-
 extern NSString * const kTitle;
 extern const int kFontSizeOfTitle;
 extern const float kOffsetYOfTitle;
@@ -59,6 +57,9 @@ extern const int kNumberOfPages;
 extern const float kCellAlpha;
 extern NSString * const kSaveFileNameList[];
 extern NSString * const kSaveAuthTypeFileName;
+
+extern NSString * const kFacebookAppIdKey;
+extern NSString * const kFacebookAudienceKey;
 
 extern NSString * const kTextFieldColorOfModal;
 extern NSString * const kBorderColorOfModal;
