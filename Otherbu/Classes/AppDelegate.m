@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <Fabric/Fabric.h>
-#import <TwitterKit/TwitterKit.h>
 
 @interface AppDelegate ()
 
@@ -27,9 +25,6 @@
 
     // 起動画面を1.5秒間見せるので、ここでスレッドを止める
     [NSThread sleepForTimeInterval:1.5];
-
-    // Twitter(fabric) SDK
-    [Fabric with:@[[Twitter class]]];
 
     return YES;
 }

@@ -15,10 +15,8 @@
 #endif
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 #ifdef __OBJC__
-    #import <TwitterKit/TwitterKit.h>
     #import "Classes/SupportingFiles/UIColor+Hex.h"
     #import "Classes/SupportingFiles/Constants.h"
     #import "Classes/SupportingFiles/Device.h"

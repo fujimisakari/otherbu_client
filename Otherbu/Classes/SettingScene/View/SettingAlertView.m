@@ -20,8 +20,10 @@
         self.message = @"アクセス先が見つかりませんでした";
     } else if (statusCode == 401) {
         self.message = @"認証に失敗しました";
+    } else if (statusCode == 4010) {
+        self.message = @"iOSにTwitterアカウントが登録されていません。設定→TwitterからTwitterアカウントを追加してください";
     } else if (statusCode == 4011) {
-        self.message = @"Twitterの認証に失敗しました";
+        self.message = @"Twitterアカウントの使用が許可されていません。設定→Twitterからアプリ使用の許可してください";
     } else if (statusCode == 4012) {
         self.message = @"iOSにFacebookアカウントが登録されていません。設定→FacebookからFacebookアカウントを追加してください";
     } else if (statusCode == 4013) {

@@ -34,33 +34,45 @@
 + (void)_loginByTwitter:(UINavigationController *)nav
                    View:(UIView *)view
                Callback:(void (^)(int statusCode, NSError *error))block {
-    [[Twitter sharedInstance] logInWithCompletion:^(TWTRSession *session, NSError *error) {
-        if (error) {
-            LOG(@"Twitter Process error");
-            block(4011, error);
-        } else if (session) {
-            LOG(@"Twitter Logged in");
-            [[[Twitter sharedInstance] APIClient] loadUserWithID:session.userID completion:^(TWTRUser *twUser, NSError *twError) {
-                 if (twError) {
-                     block(4011, twError);
-                 } else {
-                     NSString *typeName = [[DataManager sharedManager] getTwitterAuthType].name;
-                     NSDictionary *param = @{
-                       @"name" : session.userName,
-                       @"type_id" : session.userID,
-                       @"auth_type" : typeName,
-                       @"profile_image_url" : twUser.profileImageURL
-                     };
-                     [MBProgressHUD showHUDAddedTo:view animated:YES];
-                     [self _getUserAccount:nav View:view RequestParam:param Callback:block];
-                 }
-            }];
-        } else {
-            LOG(@"Twitter Cancelled");
-        }
-    }];
-}
+    ACAccountStore *accountStore = [ACAccountStore new];
+    ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 
+    [accountStore
+        requestAccessToAccountsWithType:accountType
+                                options:nil
+                             completion:^(BOOL granted, NSError *error) {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    if (granted) {
+                                        // ユーザーがTwitterアカウントへのアクセスを許可した
+                                        NSArray *twitterAccounts = [accountStore accountsWithAccountType:accountType];
+                                        if (twitterAccounts.count > 0) {
+                                            // ログイン処理
+                                            ACAccount *twitterAccount = [twitterAccounts lastObject];
+                                            NSString *uid = [[twitterAccount valueForKey:@"properties"] objectForKey:@"user_id"];
+                                            NSString *typeName = [[DataManager sharedManager] getTwitterAuthType].name;
+                                            NSDictionary *param = @{
+                                              @"name" : twitterAccount.userFullName,
+                                              @"type_id" : uid,
+                                              @"auth_type" : typeName,
+                                              @"profile_image_url" : @""
+                                            };
+                                            [MBProgressHUD showHUDAddedTo:view animated:YES];
+                                            [self _getUserAccount:nav View:view RequestParam:param Callback:block];
+                                            LOG(@"Twitter Logged in");
+                                        }
+                                    } else {
+                                        if([error code]== ACErrorAccountNotFound){
+                                            //  iOSに登録されているTwitterアカウントがありません。
+                                            block(4010, error);
+                                        } else {
+                                            // ユーザーが許可しない
+                                            // 設定→Twitter→アカウントの使用許可するApp→YOUR_APPをオンにする必要がある
+                                            block(4011, error);
+                                        }
+                                    }
+                                });
+                            }];
+}
 
 + (void)_loginByFacebook:(UINavigationController *)nav
                     View:(UIView *)view
@@ -92,6 +104,7 @@
                                             };
                                             [MBProgressHUD showHUDAddedTo:view animated:YES];
                                             [self _getUserAccount:nav View:view RequestParam:param Callback:block];
+                                            LOG(@"Facebook Logged in");
                                         }
                                     } else {
                                         if([error code]== ACErrorAccountNotFound){
