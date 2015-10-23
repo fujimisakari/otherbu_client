@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, MenuList) {
     MENU_SYNC,
     MENU_LOGIN,
     MENU_HELP,
-    // MENU_REVIEW,
+    MENU_REVIEW,
     MENU_WEBSITE,
     MENU_VERSION,
     LastMenu,

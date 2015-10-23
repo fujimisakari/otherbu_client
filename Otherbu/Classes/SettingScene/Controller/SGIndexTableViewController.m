@@ -198,9 +198,9 @@
         case MENU_HELP: {
             [self _setHelpItem:dict];
         } break;
-        // case MENU_REVIEW: {
-        //     [self _setReviewItem:dict];
-        // } break;
+        case MENU_REVIEW: {
+            [self _setReviewItem:dict];
+        } break;
         case MENU_WEBSITE: {
             [self _setWebSiteItem:dict];
         } break;
@@ -326,7 +326,8 @@
     dict[@"menuName"] = kMenuReviewName;
     dict[@"iconImage"] = [UIImage imageNamed:kReviewIcon];
     dict[@"block"] = ^() {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://otherbu.com/"]];
+        NSString* url = @"itms://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1026662962";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
     };
 }
 
