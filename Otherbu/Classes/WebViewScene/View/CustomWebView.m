@@ -90,12 +90,11 @@
 
 - (void)_updateToolbar {
     // ツールバーを表示、非表示
-    [self _didActiveToolbar];
-    // if ([self _isStanbyToolbar]) {
-    //     [self _didStanbyToolbar];
-    // } else {
-    //     [self _didActiveToolbar];
-    // }
+    if ([self _isStanbyToolbar]) {
+        [self _didStanbyToolbar];
+    } else {
+        [self _didActiveToolbar];
+    }
 
     // ツールバーボタンの有効、無効
     _rightArrow.enabled = self.canGoForward;
