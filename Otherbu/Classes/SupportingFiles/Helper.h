@@ -12,7 +12,7 @@
 + (NSNumber *)getNumberByInt:(int)value;
 + (int) getSameCountByDict:(NSDictionary *)dict TargetValue:(NSNumber *)value;
 + (NSArray *)doSortArrayWithKey:(NSString *)key Array:(NSArray *)array;
-+ (void)setupBackgroundImage:(CGRect)rect TargetView:(UIView *)view;
++ (void)setupBackgroundImage:(UIView *)view;
 + (NSString *)convertDateToString:(NSDate *)baseDate;
 + (NSString *)getCertificationString;
 

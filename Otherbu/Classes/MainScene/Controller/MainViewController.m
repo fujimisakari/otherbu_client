@@ -74,9 +74,7 @@
     [self _setupNavigationBar];
 
     // 背景画像設定
-    CGRect rect = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y + _navigationBar.frame.size.height,
-                             self.view.frame.size.width, self.view.frame.size.height);
-    [Helper setupBackgroundImage:rect TargetView:self.view];
+    [Helper setupBackgroundImage:self.view];
 
     // tableを最新に更新
     _categoryListOfAngle = [_currentPage getCategoryListOfAngle];

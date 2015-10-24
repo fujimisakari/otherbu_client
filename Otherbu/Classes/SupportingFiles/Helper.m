@@ -38,18 +38,23 @@
     return resultList;
 }
 
-+ (void)setupBackgroundImage:(CGRect)rect TargetView:(UIView *)view {
++ (void)setupBackgroundImage:(UIView *)view {
     // 背景画像を設定
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0.0);
+    UIImageView *imageView = (UIImageView *)[view viewWithTag:999];
+    if (!imageView) {
+        imageView = [[UIImageView alloc] initWithFrame:view.frame];
+        imageView.tag = 999;
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [view insertSubview:imageView atIndex:0];
+    }
     NSString *imageName = [[[DataManager sharedManager] getDesign] getbackgroundPicturePath];
-    [[UIImage imageNamed:imageName] drawInRect:view.bounds];
-    UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    CALayer *layer = [CALayer layer];
-    layer.contents = (id)backgroundImage.CGImage;
-    layer.frame = rect;
-    layer.zPosition = -1.0;
-    [view.layer addSublayer:layer];
+    UIImage *image;
+    if ([imageName isEqualToString:kDefaultImageName]) {
+        image = [UIImage imageNamed:imageName];
+    } else {
+        image = [UIImage imageWithContentsOfFile:imageName];
+    }
+    imageView.image = image;
 }
 
 + (NSString *)convertDateToString:(NSDate *)baseDate {

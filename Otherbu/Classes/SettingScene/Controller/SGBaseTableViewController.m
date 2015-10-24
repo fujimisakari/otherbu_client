@@ -34,11 +34,8 @@
 }
 
 - (void)updateBackgroundView {
-    float height = self.navigationController.navigationBar.frame.size.height + 20;  // 20はステータスバーの高さ
-    CGRect rect = CGRectMake(self.tableView.frame.origin.x,   self.tableView.frame.origin.y + height,
-                             self.tableView.frame.size.width, self.tableView.frame.size.height);
     UIView *bgView = [[UIView alloc] initWithFrame:self.tableView.frame];
-    [Helper setupBackgroundImage:rect TargetView:bgView];
+    [Helper setupBackgroundImage:bgView];
     self.tableView.backgroundView = bgView;
 }
 
