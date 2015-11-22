@@ -22,6 +22,7 @@ static DesignData *intance = nil;
         _tableBackGroundColor = @"#1e1e1e";
         _bookmarkColor = @"#ffffff";
         _urlColor = @"#808080";
+        _alpha = 1.0f;
         _backgroundPicture = kDefaultImageName;
     }
     return self;
@@ -43,7 +44,7 @@ static DesignData *intance = nil;
 
 - (UIColor *)getTableBackGroundColor {
     // テーブル背景色を取得
-    return [UIColor colorWithHex:[UIColor removeSharp:_tableBackGroundColor]];
+    return [UIColor colorWithHex:[UIColor removeSharp:_tableBackGroundColor] alpha:_alpha];
 }
 
 - (UIColor *)getbookmarkColor {
@@ -84,6 +85,11 @@ static DesignData *intance = nil;
     _backgroundPicture = fileName;
 }
 
+- (void)updateAlpha:(CGFloat)alpha {
+    // 透明度の更新
+    _alpha = alpha;
+}
+
 - (void)iUpdateAt {
     _updatedAt = [[NSDate alloc] init];
 }
@@ -102,6 +108,7 @@ static DesignData *intance = nil;
     _tableBackGroundColor = [decoder decodeObjectForKey:@"tableBackGroundColor"];
     _bookmarkColor = [decoder decodeObjectForKey:@"bookmarkColor"];
     _urlColor = [decoder decodeObjectForKey:@"urlColor"];
+    _alpha = [decoder decodeFloatForKey:@"alpha"];
     _backgroundPicture = [decoder decodeObjectForKey:@"backgroundPicture"];
 
     return self;
@@ -112,6 +119,7 @@ static DesignData *intance = nil;
     [encoder encodeObject:_tableBackGroundColor forKey:@"tableBackGroundColor"];
     [encoder encodeObject:_bookmarkColor forKey:@"bookmarkColor"];
     [encoder encodeObject:_urlColor forKey:@"urlColor"];
+    [encoder encodeFloat:_alpha forKey:@"alpha"];
     [encoder encodeObject:_backgroundPicture forKey:@"backgroundPicture"];
 }
 

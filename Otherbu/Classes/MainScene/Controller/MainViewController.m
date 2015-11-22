@@ -192,6 +192,7 @@
         cell = [[MainTableCellView alloc] initWithCellIdentifier:kCellIdentifier ContentSizeWidth:tableView.contentSize.width];
     }
     cell.delegate = self;
+    cell.backgroundColor = [UIColor clearColor];
 
     if (_currentPage) {
         CategoryData *categoryData = [self _getCategoryListByTag:tableView.tag][indexPath.section];

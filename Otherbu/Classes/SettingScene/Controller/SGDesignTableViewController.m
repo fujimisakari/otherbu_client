@@ -20,6 +20,7 @@
     NSMutableArray *_menuIndexPathList;
     NSMutableArray *_openFlagArray;
     UICollectionView *_collectionView;
+    UISlider *_slider;
     CellDesignView *_cellDesignView;
     NSArray *_colorList;
     NSArray *_bookmarkBGColorList;
@@ -35,8 +36,9 @@
 // メニューのArray番号
 const int kBackgroundChengeMenuIdx = 0;
 const int kBackgroundColorChengeMenuIdx = 1;
-const int kNameFontColorChengeMenuIdx = 2;
-const int kUrlFontColorChengeMenuIdx = 3;
+const int kBackgroundAlphaChengeMenuIdx = 2;
+const int kNameFontColorChengeMenuIdx = 3;
+const int kUrlFontColorChengeMenuIdx = 4;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +47,7 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
     _menuIndexPathList = [[NSMutableArray alloc] init];
 
-    _menuList = @[ @"背景画像を変更", @"Bookmark背景色の変更", @"Bookmark名の色の変更", @"BookmarkURLの色の変更" ];
+    _menuList = @[ @"背景画像を変更", @"Bookmark背景色の変更", @"Bookmark背景の透明度変更", @"Bookmark名の色の変更", @"BookmarkURLの色の変更" ];
 
     // カラーパレット用のカラーリスト
     _colorList = [[DataManager sharedManager] getColorList];
@@ -81,6 +83,9 @@ const int kUrlFontColorChengeMenuIdx = 3;
     [self _setColorPalette:colorRect];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
+
+    // スライダーの生成
+    [self _setSlider];
 }
 
 - (void)_setColorPalette:(CGRect)rect {
@@ -98,6 +103,29 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
 - (void)updateBackgroundView {
     [super updateBackgroundView];
+}
+
+//--------------------------------------------------------------//
+#pragma mark -- set Slider --
+//--------------------------------------------------------------//
+
+-(void)_setSlider {
+    // 透明度用のスライダー
+    int size = self.view.frame.size.width - (kCellMarginOfSlider * 2);
+    int height = 20;
+    int y = kCellHeightOfSlider / 2 + height;
+    _slider = [[UISlider alloc] initWithFrame:CGRectMake(kCellMarginOfSlider, y, size, height)];
+    _slider.minimumValue = 0.00f;  // 最小値
+    _slider.maximumValue = 1.00f;  // 最大値
+    _slider.value = [[DataManager sharedManager] getDesign].alpha;  // 初期値
+    [_slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)sliderAction:(UISlider *)slider{
+    // データの保存
+    [[[DataManager sharedManager] getDesign] updateAlpha:slider.value];
+    [[DataManager sharedManager] save:SAVE_DESIGN];
+    _cellDesignView.backgroundColor = [[[DataManager sharedManager] getDesign] getTableBackGroundColor];
 }
 
 //--------------------------------------------------------------//
@@ -119,6 +147,26 @@ const int kUrlFontColorChengeMenuIdx = 3;
     if (indexPath.row == kBackgroundChengeMenuIdx) {
         // 背景画像の変更の場合、アクションシートを表示
         [self presentViewController:_alertController animated:YES completion:nil];
+    } else if (indexPath.row == kBackgroundAlphaChengeMenuIdx) {
+        // スライダーの場合
+        if ([[_openFlagArray objectAtIndex:indexPath.row] boolValue]) {
+            // すでに表示していた場合
+            [self _openFlagReset];
+            NSArray *indexPaths = [_menuIndexPathList copy];
+            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            _menuIndexPathList = [[NSMutableArray alloc] init];
+        } else {
+            // 表示する場合
+            [self _openFlagReset];
+            _openFlagArray[indexPath.row] = @"1";
+            [_menuIndexPathList addObject:indexPath];
+            NSArray *indexPaths = [_menuIndexPathList copy];
+            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
+            // すでに表示されていたindexPathが入ってる場合があるので
+            // 今回表示するindexPathのみ入ってる状態にする
+            _menuIndexPathList = [[NSMutableArray alloc] init];
+            [_menuIndexPathList addObject:indexPath];
+        }
     } else {
         // Bookmarkの色の変更の場合、セルにカラーパレット表示する
         if ([[_openFlagArray objectAtIndex:indexPath.row] boolValue]) {
@@ -151,7 +199,11 @@ const int kUrlFontColorChengeMenuIdx = 3;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([[_openFlagArray objectAtIndex:indexPath.row] boolValue]) {
-        return kCellHeightOfSGColorPalette;
+        if (indexPath.row == kBackgroundAlphaChengeMenuIdx) {
+            return kCellHeightOfSlider;
+        } else {
+            return kCellHeightOfSGColorPalette;
+        }
     } else {
         return kCellHeightOfSetting;
     }
@@ -172,6 +224,16 @@ const int kUrlFontColorChengeMenuIdx = 3;
     [super tableView:tableView willDisplayCell:cell forRowAtIndexPath:indexPath];
 
     if ([[_openFlagArray objectAtIndex:indexPath.row] boolValue]) {
+
+        // 1つCellをキャッシュで使い回しされるので
+        // UISliderとUICollectionViewはキャッシュから削除してから利用する
+        for (UIView *view in cell.contentView.subviews) {
+            if ([[[view class] description] isEqualToString:@"UISlider"] ||
+                [[[view class] description] isEqualToString:@"UICollectionView"]) {
+                [view removeFromSuperview];
+            }
+        }
+
         // ラベル生成
         float _width = cell.frame.size.width - kCellMarginOfSetting * 3;
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, _width, kCellHeightOfSetting)];
@@ -187,8 +249,13 @@ const int kUrlFontColorChengeMenuIdx = 3;
         separator.backgroundColor = [UIColor blackColor];
         [cell.contentView addSubview:separator];
 
-        // カラーパレット配置
-        [cell.contentView addSubview:_collectionView];
+        if (indexPath.row == kBackgroundAlphaChengeMenuIdx) {
+            // スライダー配置
+            [cell.contentView addSubview:_slider];
+        } else {
+            // カラーパレット配置
+            [cell.contentView addSubview:_collectionView];
+        }
 
         cell.textLabel.text = @"";
         cell.accessoryType = UITableViewCellAccessoryNone;

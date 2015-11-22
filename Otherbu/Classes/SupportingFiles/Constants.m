@@ -148,6 +148,8 @@ const int kMarginOfSettingDesc = 20;                         // Setting画面の
 const int kHeightOfSettingDesc = 30;                         // Setting画面の説明Viewの高さ
 const float kCellHeightOfSGColorPalette = 210.0f;            // Setting画面のカラーパレット用のCellの高さ
 const int kCellMarginOfSGColorPalette = 140;                 // Setting画面のカラーパレット用のCellの余白
+const float kCellHeightOfSlider = 120.0f;                    // Setting画面のスライダー用のCellの高さ
+const int kCellMarginOfSlider = 30;                          // Setting画面のスライダー用のCellの余白
 
 //--------------------------------------------------------------//
 #pragma mark -- Menu Of Setting View --

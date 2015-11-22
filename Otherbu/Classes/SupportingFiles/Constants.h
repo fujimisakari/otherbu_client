@@ -126,6 +126,8 @@ extern const int kMarginOfSettingDesc;
 extern const int kHeightOfSettingDesc;
 extern const float kCellHeightOfSGColorPalette;
 extern const int kCellMarginOfSGColorPalette;
+extern const float kCellHeightOfSlider;
+extern const int kCellMarginOfSlider;
 
 extern NSString * const kMenuSectionName1;
 extern NSString * const kMenuSectionName2;

@@ -78,7 +78,17 @@
 
 - (void)_setBackground {
     // 後面の背景指定
-    _cellBackgroundView.backgroundColor = [[_category color] getBackGroundColor];
+    _cellBackgroundView.backgroundColor = [UIColor clearColor];
+
+    // 左フレームのUIView
+    int left_x = self.bounds.origin.x;
+    UIView *leftSideView = [self createSideView:left_x];
+    [_cellBackgroundView addSubview:leftSideView];
+
+    // 右フレームのUIView
+    int right_x = self.bounds.origin.x + (_cellInnerWidth + kSizeOfTableFrame);
+    UIView *rightSideView = [self createSideView:right_x];
+    [_cellBackgroundView addSubview:rightSideView];
 
     // セクションの最後のセルの場合はfooterのUIViewを付ける
     if ([self _isLastCellOfSection]) {
@@ -100,7 +110,17 @@
 - (void)_setCellSelectBackground {
     // 後面の背景指定
     UIView *cellSelectedBackgroundView = [[UIView alloc] init];
-    cellSelectedBackgroundView.backgroundColor = [[_category color] getBackGroundColor];
+    cellSelectedBackgroundView.backgroundColor = [UIColor clearColor];
+
+    // 左フレームのUIView
+    int left_x = self.bounds.origin.x;
+    UIView *leftSideView = [self createSideView:left_x];
+    [cellSelectedBackgroundView addSubview:leftSideView];
+
+    // 右フレームのUIView
+    int right_x = self.bounds.origin.x + (_cellInnerWidth + kSizeOfTableFrame);
+    UIView *rightSideView = [self createSideView:right_x];
+    [cellSelectedBackgroundView addSubview:rightSideView];
 
     // セクションの最後のセルの場合はfooterのUIViewを付ける
     if ([self _isLastCellOfSection]) {
@@ -182,6 +202,18 @@
         blue -= 0.1;
     }
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
+- (UIView *)createSideView:(int)x {
+    // セルの左右のフレームUIViewを生成
+    int y = self.bounds.origin.y;
+    float width = kSizeOfTableFrame;
+    float height = self.bounds.size.height;
+    CGRect rect = CGRectMake(x, y, width, height);
+
+    UIView *sideView = [[UIView alloc] initWithFrame:rect];
+    sideView.backgroundColor = [[_category color] getBackGroundColor];
+    return sideView;
 }
 
 - (UIView *)createFooterViewOfLastCell {

@@ -13,6 +13,7 @@
 @property(nonatomic) NSString *tableBackGroundColor;  // Tableセル背景
 @property(nonatomic) NSString *bookmarkColor;         // Bookmarkカラー
 @property(nonatomic) NSString *urlColor;              // URLカラー
+@property(nonatomic) CGFloat  alpha;                  // 透明度
 @property(nonatomic) NSString *backgroundPicture;     // 背景画像名
 @property(nonatomic) NSDate   *updatedAt;             // 更新時間
 
@@ -29,5 +30,6 @@
 - (void)updatetbookmarkNameColor:(NSString *)colorCode;
 - (void)updatetbookmarkUrlColor:(NSString *)colorCode;
 - (void)updatetBackgroundPicture:(NSString *)fileName;
+- (void)updateAlpha:(CGFloat)alpha;
 
 @end
