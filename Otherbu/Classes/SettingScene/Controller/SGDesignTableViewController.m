@@ -182,7 +182,11 @@ const int kUrlFontColorChengeMenuIdx = 4;
             if (indexPath.row == kBackgroundColorChengeMenuIdx) {
                 _colorCode = [[DataManager sharedManager] getDesign].tableBackGroundColor;
             } else {
-                _colorCode = [[DataManager sharedManager] getDesign].bookmarkColor;
+                if (indexPath.row == kNameFontColorChengeMenuIdx) {
+                    _colorCode = [[DataManager sharedManager] getDesign].bookmarkColor;
+                } else {
+                    _colorCode = [[DataManager sharedManager] getDesign].urlColor;
+                }
             }
             _openFlagArray[indexPath.row] = @"1";
             [_menuIndexPathList addObject:indexPath];
